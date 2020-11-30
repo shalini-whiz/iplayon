@@ -1,0 +1,57 @@
+<template name="emptyDrawsFromTourn">
+ <form id="application-emptyDrawsFromTourn">
+ <div  class="modal" id="emptyDrawsFromTourn" aria-hidden="true" >
+    <div class="modal-dialog downloadTemplateXXX-lg" style="width: 436px !important;">
+      <div class="modal-content" style="width: 436px !important;">
+        <div class="modal-header headerClass">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title myModalLabel " style="text-align:center;">Download empty draws</h4>
+        </div>
+
+        <div class="modal-body">
+             <!--form class="form-horizontal" role="form"-->
+             
+
+              <div class="form-group">
+                <label class="control-label col-sm-5 customLabel" >Number of Entries</label>
+                <div class="col-sm-4"> 
+                  <input type="text" id="entries_EMP" name="entries_EMP" autocomplete="off" placeholder="">
+            
+                </div>
+              </div>
+            <!--/form-->
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12 " style="margin-top:10px;">
+                <div class="row">
+                    <p id="setForErrors2" style="font-size: 12px;color: orange;margin-left: 4px;"></p>
+                </div>
+            </div>
+        </div>
+
+
+       
+         <div class="modal-footer">
+        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+          <div class="row">
+            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " >
+              <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " >
+                <p id="impMsg" class='impMsg'></p> 
+              </div>
+
+              <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 " style='text-align:center;' >
+                <button type="button" id="DownloadEmptyDraws" class="ip_button_Popup_Black" >Download</button>
+                <button type="button" class="ip_button_Popup_Red" data-dismiss="modal">Close</button>
+              </div>
+
+              <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " > </div>               
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      </div>
+    </div>
+  </div>
+</form>
+</template>
+<!-- shalini codes ends here -->

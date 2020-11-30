@@ -1,0 +1,38 @@
+<template name="adminFinancePlayers">
+	{{#if notAdmin}}
+		<div class=''>
+			<p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+		</div>
+	{{else}}
+		<div class="container" style="background:white;margin-top:5px;">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 5px;border-radius: 5px;background:none repeat scroll 0% 0%;padding: 0px 0px 0px 5px;height:50em;border:1px solid black;">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;">
+					<label  name="selectAssociation" class="adminUpload_label">Set Financials</label>
+					<br>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;margin-top:10px;">
+						<select id="manageEventType1" style="font-size:12px;width:50%;">
+							<option selected disabled>Select Tournament</option>
+							{{#each eventListSelect}}
+							<option value={{this._id}}>{{this.eventName}}</option>
+							{{/each}}
+						</select>
+					</div>
+					<br>
+					<br>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;margin-top:10px;">
+						<select id="manageEventType2" style="font-size:12px;width:50%;">
+							<option selected disabled>Select Event</option>
+							{{#each eventCategoriesSelect}}
+							<option value={{this._id}}>{{this.eventName}}</option>
+							{{/each}}
+						</select>
+					</div>
+					<br>
+					<input class="adminUpload_button" id="setFinancials" value="Save" type="button" style="width: 20%;margin-top:10px;"> 
+				</div>
+			</div>
+		</div>
+	{{/if}}
+</template>

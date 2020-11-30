@@ -1,0 +1,116 @@
+<template name="downloadSubscribersCSVPast">
+    <form id="application-editPointsDraws">
+        <div class="modal" id="downloadSubscribersCSVPast" aria-hidden="true">
+            <div id="subDomainCenter" class="modal-dialog" style="width:400px !important" >
+                <div class="eventAddTourPopup" style="width:400px !important">
+                    <div class="modal-content">
+                        <div class="modal-header headerClass">
+                            <h5 class="modal-title myModalLabel" id="myModalLabel_past">
+                                Select To Download CSV
+                            </h5>
+                        </div>
+                        <div class="modal-body subDomainModalBody" style="padding:15px !important;height:6.6em;">
+                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;overflow-x:hidden;overflow-y:auto;border:1px solid black;border-top:0px;">
+                                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name="consolidated">
+                                    <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name=consolidated>
+                                        <label class="checkBoxDivLabel" name="checkConsolidated_past">
+                                            Consolidated Events
+                                            </label>
+                                    </div>
+                                    <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name="consolidated">
+                                        <input value="{{consolidateID_past}}" type="checkbox" name="checkConsolidated_past" id="checkConsolidated_past" class=""  style="cursor:pointer!important">
+                                        <label name="checkConsolidated_past" for="consolidated_past" class="checkBoxDivLabelCheck">
+                                            </label>
+                                    </div>
+                                </div>
+                                 <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name="consolidated">
+                                    <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name=consolidated>
+                                        <label class="checkBoxDivLabel" name="checkConsolidated">
+                                            Consolidated Team Events
+                                            </label>
+                                    </div>
+                                    <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name="consolidated">
+                                        <input value="{{consolidateID_past}}" type="checkbox" name="checkConsolidated_pastTeam" id="checkConsolidated_pastTeam" class=""  style="cursor:pointer!important">
+                                        <label name="checkConsolidated_pastTeam" for="consolidated" class="checkBoxDivLabelCheck">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 mainDIV_CSV" style="">
+                                    <label class="checkBoxDivLabel" name="checkDomainName_past" style="margin: 3px;text-align: center !important;">
+                                        Events
+                                    </label>
+                                </div>
+                                {{#each getEventsName_past}}
+                                    {{#if partPresentsPAst this}}
+                                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;background:#ffebe6;" name={{getABBNAMEPAst this}}>
+                                        <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this}}>
+                                            <label class="checkBoxDivLabel" name="checkEventWise_past">
+                                            {{getABBNAMEPAst this}}
+                                            </label>
+                                        </div>
+                                        <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{getABBNAMEPAst this}}>
+                                            <input value={{this}} type="checkbox" name="checkEventWise_past" id="{{this}}" class=""  style="cursor:pointer!important">
+                                            <label name="checkEventWise_past" for={{this}} class="checkBoxDivLabelCheck">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    {{/if}}
+                                {{/each}}
+                                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name="consolidated">
+                                    <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name="clubWise">
+                                        <label class="checkBoxDivLabel" name="checkClubWise">
+                                            Clubwise
+                                        </label>
+                                    </div>
+                                    <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name="clubWise_past">
+                                        <input value="{{consolidateID_past}}" type="checkbox" name="checkClubWise_past" id="checkClubWise_past" class=""  style="cursor:pointer!important">
+                                        <label name="checkClubWise_past" for="checkClubWise_past" class="checkBoxDivLabelCheck">
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name="consolidated">
+                                    <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name="districtWise">
+                                        <label class="checkBoxDivLabel" name="checkDistrictWise">
+                                            DistrictWise
+                                        </label>
+                                    </div>
+                                    <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name="clubWise_past">
+                                        <input value="{{consolidateID_past}}" type="checkbox" name="checkDistrictWise_past" id="checkDistrictWise_past" class=""  style="cursor:pointer!important">
+                                        <label name="checkClubWise_past" for="checkDistrictWise_past" class="checkBoxDivLabelCheck">
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height: 2em !important;">
+                                <p style="font-size:12px;color:red;cursor:default;" id="editSettingsPopupError_past"></p>
+                                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc_past"></p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                                 <div class ="row">
+                                    <p id="infoMsg_past" class='impMsg'></p> 
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 footerDivPopupEditPoints" style="padding-right:0px !important;padding-bottom: 4px;">
+                                        <button type="submit" class="ip_button_Popup_Black" id="saveEditSettingsDraws_past" style="" >Download
+                                        </button>
+                                        <button type="button" class="ip_button_Popup_Red" id="cancelEditSettingsDraws_past"  style="margin-left:3px;" data-dismiss="modal" >Cancel
+                                       </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<input type="text" id="test" name="test" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>
+                        <input type="text" id="test1" name="test1" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>
+                        <input type="text" id="test2" name="test2" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>
+                        <input type="text" id="test3" name="test3" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</template>

@@ -1,0 +1,393 @@
+<template name="detailedScoresTeamDraws">
+	{{#if Template.subscriptionsReady}}
+	<form id="application-detailedScoresTeamDraws">
+        <div class="modal" id="detailedScoresTeamDraws" aria-hidden="true">
+            <div id="subDomainCenter" class="modal-dialog eventAddTourModal-sm" style="width:970px !important;">
+                <div class="eventAddTourPopup" style="width:970px !important;">
+                    <div class="modal-content" style="  position: relative;display:table;overflow-y: auto;width:100%;">
+                        <div class="modal-header loginHeaderIplayon" style="background-color: #000;">
+                            <p class="modal-title loginHeadeIplayonPTag" style="">Team Detailed Scores
+                            </p>
+                            <span style="margin: -6px 0px 0px; font-size: 22px; color: white; cursor: pointer;" id="closeTeamPopupIplayon">x</span>
+                        </div>
+                        <div class="modal-body subDomainModalBody" style="padding:15px !important;min-height:5em;padding: 15px !important;min-height: 5em;height: 25em;overflow-y: auto;">
+                        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;padding-top:10px!important;">
+                                <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding:0px!important;">
+                                	<button type="button" class="ip_button_Popup_Red" id="notifyAppRound" style="width:100%;background:white!important;color:green;text-decoration:underlined;">Notify by Round
+	                                </button>
+                                </div>
+                            </div>
+                            
+                        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;font-size:12px;">
+                        		<p>{{findTheTeamNamedraw teamAIDMatch}} v/s {{findTheTeamNamedraw teamBIDMatch}}</p>
+                        	</div>
+                            <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+						        <tbody class="">
+						        	<!--match a vs x header-->
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="headerDetScoreTeam" style="">Match Type</td>
+						                <td class="headerDetScoreTeam" style="">Match:A v/s X</td>
+						                <td class="headerDetScoreTeam" style="">1</td>
+						                <td class="headerDetScoreTeam" style="">2</td>
+						                <td class="headerDetScoreTeam" style="">3</td>
+						                <td class="headerDetScoreTeam" style="">4</td>
+						                <td class="headerDetScoreTeam" style="">5</td>
+						                <td class="headerDetScoreTeam" style="">6</td>
+						                <td class="headerDetScoreTeam" style="">7</td>
+						                <td class="headerDetScoreTeam">Winner</td>
+						            </tr>
+						            
+						            <!--player A-->
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="matchRowDEtScore" style="">		
+						                	<select style="font-size:12px;width:95%;" id="AVSXStatus" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+						                		<option value="notPlayed" selected="{{findAVSXStatusType notPlayed}}">Not Played</option>
+						                		<option value="bye" selected="{{findAVSXStatusType bye}}">Bye</option>
+						                		<option value="walkover" selected="{{findAVSXStatusType walkover}}">Walkover</option>
+						                		<option value="completed" selected="{{findAVSXStatusType completed}}">Completed</option>
+						                	</select>
+						                </td>
+						                <td class="matchRowDEtScore" style="">{{findThePlayerName matchAVSXPlayerA}}</td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSXScoreA.[0]}}" id="AVSXPlayerAScore1" name={{matchAVSXPlayerA}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSXScoreA.[1]}}" id="AVSXPlayerAScore2" name={{matchAVSXPlayerA}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSXScoreA.[2]}}" id="AVSXPlayerAScore3" name={{matchAVSXPlayerA}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSXScoreA.[3]}}" id="AVSXPlayerAScore4" name={{matchAVSXPlayerA}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSXScoreA.[4]}}" id="AVSXPlayerAScore5" name={{matchAVSXPlayerA}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSXScoreA.[5]}}" id="AVSXPlayerAScore6" name={{matchAVSXPlayerA}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSXScoreA.[6]}}" id="AVSXPlayerAScore7" name={{matchAVSXPlayerA}}></td>
+						                <td class="matchRowDEtScore" style="">		
+						                	<select style="font-size:12px;width:95%;" id="AVSXWinner" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+						                		<option value="1" selected id="1">Select Winner</option>
+						                		<option value="{{matchAVSXPlayerA}}" id="{{teamAIDMatch}}" selected="{{selectedWinnerAVSX matchAVSXPlayerA}}">{{findThePlayerName matchAVSXPlayerA}}</option>
+						                		<option value="{{matchAVSXPlayerX}}" id="{{teamBIDMatch}}" selected="{{selectedWinnerAVSX matchAVSXPlayerX}}">{{findThePlayerName matchAVSXPlayerX}}</option>
+						                	</select>
+						                </td>
+						            </tr>
+
+						            <!--player x-->
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="matchRowDEtScore" style="">		
+						                </td>
+						                <td class="matchRowDEtScore" style="">{{findThePlayerName matchAVSXPlayerX}}</td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSXScoreX.[0]}}" id="AVSXPlayerXScore1" name={{matchAVSXPlayerX}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSXScoreX.[1]}}" id="AVSXPlayerXScore2" name={{matchAVSXPlayerX}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSXScoreX.[2]}}" id="AVSXPlayerXScore3" name={{matchAVSXPlayerX}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSXScoreX.[3]}}" id="AVSXPlayerXScore4" name={{matchAVSXPlayerX}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSXScoreX.[4]}}" id="AVSXPlayerXScore5" name={{matchAVSXPlayerX}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSXScoreX.[5]}}" id="AVSXPlayerXScore6" name={{matchAVSXPlayerX}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSXScoreX.[6]}}" id="AVSXPlayerXScore7" name={{matchAVSXPlayerX}}></td>
+						                <td class="matchRowDEtScore" style="">		
+						                </td>
+						            </tr>
+
+						            <!--match b vs y header-->
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="headerDetScoreTeam" style="">Match Type</td>
+						                <td class="headerDetScoreTeam" style="">Match:B v/s Y</td>
+						                <td class="headerDetScoreTeam" style="">1</td>
+						                <td class="headerDetScoreTeam" style="">2</td>
+						                <td class="headerDetScoreTeam" style="">3</td>
+						                <td class="headerDetScoreTeam" style="">4</td>
+						                <td class="headerDetScoreTeam" style="">5</td>
+						                <td class="headerDetScoreTeam" style="">6</td>
+						                <td class="headerDetScoreTeam" style="">7</td>
+						                <td class="headerDetScoreTeam">Winner</td>
+						            </tr>
+
+						            <!--player B-->
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="matchRowDEtScore" style="">		
+						                	<select style="font-size:12px;width:95%;" id="BVSYStatus" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+						                		<option value="notPlayed" selected="{{findBVSYStatusType notPlayed}}">Not Played</option>
+						                		<option value="bye" selected="{{findBVSYStatusType bye}}">Bye</option>
+						                		<option value="walkover" selected="{{findBVSYStatusType walkover}}">Walkover</option>
+						                		<option value="completed" selected="{{findBVSYStatusType completed}}">Completed</option>
+						                	</select>
+						                </td>
+						                <td class="matchRowDEtScore" style="">{{findThePlayerName matchBVSYPlayerB}}</td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSYScoreB.[0]}}" id="BVSYPlayerBScore1" name={{matchBVSYPlayerB}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSYScoreB.[1]}}" id="BVSYPlayerBScore2" name={{matchBVSYPlayerB}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSYScoreB.[2]}}" id="BVSYPlayerBScore3" name={{matchBVSYPlayerB}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSYScoreB.[3]}}" id="BVSYPlayerBScore4" name={{matchBVSYPlayerB}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSYScoreB.[4]}}" id="BVSYPlayerBScore5" name={{matchBVSYPlayerB}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSYScoreB.[5]}}" id="BVSYPlayerBScore6" name={{matchBVSYPlayerB}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSYScoreB.[6]}}" id="BVSYPlayerBScore7" name={{matchBVSYPlayerB}}></td>
+						                <td class="matchRowDEtScore" style="">		
+						                	<select style="font-size:12px;width:95%;" id="BVSYWinner" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+						                		<option value="1" selected=true id="1">Select Winner</option>
+						                		<option value="{{matchBVSYPlayerB}}" id="{{teamAIDMatch}}" selected="{{selectedWinnerBVSY matchBVSYPlayerB}}">{{findThePlayerName matchBVSYPlayerB}}</option>
+						                		<option value="{{matchBVSYPlayerY}}" id="{{teamBIDMatch}}" selected="{{selectedWinnerBVSY matchBVSYPlayerY}}">{{findThePlayerName matchBVSYPlayerY}}</option>
+						                	</select>
+						                </td>
+						            </tr>
+
+						            <!--player Y-->
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="matchRowDEtScore" style="">		
+						                </td>
+						                <td class="matchRowDEtScore" style="">{{findThePlayerName matchBVSYPlayerY}}</td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSYScoreY.[0]}}" id="BVSYPlayerYScore1" name={{matchBVSYPlayerY}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSYScoreY.[1]}}" id="BVSYPlayerYScore2" name={{matchBVSYPlayerY}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSYScoreY.[2]}}" id="BVSYPlayerYScore3" name={{matchBVSYPlayerY}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSYScoreY.[3]}}" id="BVSYPlayerYScore4" name={{matchBVSYPlayerY}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSYScoreY.[4]}}" id="BVSYPlayerYScore5" name={{matchBVSYPlayerY}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSYScoreY.[5]}}" id="BVSYPlayerYScore6" name={{matchBVSYPlayerY}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSYScoreY.[6]}}" id="BVSYPlayerYScore7" name={{matchBVSYPlayerY}}></td>
+						                <td class="matchRowDEtScore" style="">		
+						                </td>
+						            </tr>
+
+						            <!--match doubles header-->
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="headerDetScoreTeam" style="">Match Type</td>
+						                <td class="headerDetScoreTeam" style="">Match:Doubles</td>
+						                <td class="headerDetScoreTeam" style="">1</td>
+						                <td class="headerDetScoreTeam" style="">2</td>
+						                <td class="headerDetScoreTeam" style="">3</td>
+						                <td class="headerDetScoreTeam" style="">4</td>
+						                <td class="headerDetScoreTeam" style="">5</td>
+						                <td class="headerDetScoreTeam" style="">6</td>
+						                <td class="headerDetScoreTeam" style="">7</td>
+						                <td class="headerDetScoreTeam">Winner</td>
+						            </tr>
+
+									<!--player d1 d2 team a-->
+									<tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="matchRowDEtScore" style="">		
+						                	<select style="font-size:12px;width:95%;" id="doublesMatchStatus" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+						                		<option value="notPlayed" selected="{{findDoublesStatusType notPlayed}}">Not Played</option>
+						                		<option value="bye" selected="{{findDoublesStatusType bye}}">Bye</option>
+						                		<option value="walkover" selected="{{findDoublesStatusType walkover}}">Walkover</option>
+						                		<option value="completed" selected="{{findDoublesStatusType completed}}">Completed</option>
+						                	</select>
+						                </td>
+						                <td class="matchRowDEtScore" style="">{{findThePlayerName matchdoublesA1}}, {{findThePlayerName matchdoublesA2}}</td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresDoublesScoreA.[0]}}" id="DoublesPlayerAScore1" name="{{matchdoublesA1}},{{matchdoublesA2}}"></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresDoublesScoreA.[1]}}" id="DoublesPlayerAScore2" name="{{matchdoublesA1}},{{matchdoublesA2}}"></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresDoublesScoreA.[2]}}" id="DoublesPlayerAScore3" name="{{matchdoublesA1}},{{matchdoublesA2}}"></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresDoublesScoreA.[3]}}" id="DoublesPlayerAScore4" name="{{matchdoublesA1}},{{matchdoublesA2}}"></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresDoublesScoreA.[4]}}" id="DoublesPlayerAScore5" name="{{matchdoublesA1}},{{matchdoublesA2}}"></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresDoublesScoreA.[5]}}" id="DoublesPlayerAScore6" name="{{matchdoublesA1}},{{matchdoublesA2}}"></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresDoublesScoreA.[6]}}" id="DoublesPlayerAScore7" name="{{matchdoublesA1}},{{matchdoublesA2}}"></td>
+						                <td class="matchRowDEtScore" style="">		
+						                	<select style="font-size:12px;width:95%;" id="doublesWinnerID" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+						                		<option value="1" selected=true id="1">Select Winner</option>
+						                		<option value="{{matchdoublesA1}},{{matchdoublesA2}}" id="{{teamAIDMatch}}" selected="{{selectDoubleWinner teamAIDMatch}}">{{findThePlayerName matchdoublesA1}}, {{findThePlayerName matchdoublesA2}}</option>
+						                		<option value="{{matchdoublesB1}},{{matchdoublesB2}}" id="{{teamBIDMatch}}" selected="{{selectDoubleWinner teamBIDMatch}}">{{findThePlayerName matchdoublesB1}},{{findThePlayerName matchdoublesB2}}</option>
+						                	</select>
+						                </td>
+						            </tr>
+
+						            <!--player d1 d2 team b-->
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="matchRowDEtScore" style="">							                	
+						                </td>
+						                <td class="matchRowDEtScore" style="">{{findThePlayerName matchdoublesB1}},{{findThePlayerName matchdoublesB2}}</td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresDoublesScoreB.[0]}}" id="DoublesPlayerBScore1" name="{{matchdoublesB1}},{{matchdoublesB2}}"></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresDoublesScoreB.[1]}}" id="DoublesPlayerBScore2" name="{{matchdoublesB1}},{{matchdoublesB2}}"></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresDoublesScoreB.[2]}}" id="DoublesPlayerBScore3" name="{{matchdoublesB1}},{{matchdoublesB2}}"></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresDoublesScoreB.[3]}}" id="DoublesPlayerBScore4" name="{{matchdoublesB1}},{{matchdoublesB2}}"></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresDoublesScoreB.[4]}}" id="DoublesPlayerBScore5" name="{{matchdoublesB1}},{{matchdoublesB2}}"></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresDoublesScoreB.[5]}}" id="DoublesPlayerBScore6" name="{{matchdoublesB1}},{{matchdoublesB2}}"></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresDoublesScoreB.[6]}}" id="DoublesPlayerBScore7" name="{{matchdoublesB1}},{{matchdoublesB2}}"></td>
+						                <td class="matchRowDEtScore" style="">		
+						                </td>
+						            </tr>
+
+						            <!--player b v/s x header-->
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="headerDetScoreTeam" style="">Match Type</td>
+						                <td class="headerDetScoreTeam" style="">Match:B v/s X</td>
+						                <td class="headerDetScoreTeam" style="">1</td>
+						                <td class="headerDetScoreTeam" style="">2</td>
+						                <td class="headerDetScoreTeam" style="">3</td>
+						                <td class="headerDetScoreTeam" style="">4</td>
+						                <td class="headerDetScoreTeam" style="">5</td>
+						                <td class="headerDetScoreTeam" style="">6</td>
+						                <td class="headerDetScoreTeam" style="">7</td>
+						                <td class="headerDetScoreTeam">Winner</td>
+						            </tr>
+
+						            <!--player B-->
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="matchRowDEtScore" style="">		
+						                	<select style="font-size:12px;width:95%;"  id="BVSXStatus" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+						                		<option value="notPlayed" selected="{{findBVSXStatusType notPlayed}}">Not Played</option>
+						                		<option value="bye" selected="{{findBVSXStatusType bye}}">Bye</option>
+						                		<option value="walkover" selected="{{findBVSXStatusType walkover}}">Walkover</option>
+						                		<option value="completed" selected="{{findBVSXStatusType completed}}">Completed</option>
+						                	</select>
+						                </td>
+						                <td class="matchRowDEtScore" style="">{{findThePlayerName matchBVSXPlayerB}}</td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSXScoreB.[0]}}" id="BVSXPlayerBScore1" name={{matchBVSXPlayerB}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSXScoreB.[1]}}" id="BVSXPlayerBScore2" name={{matchBVSXPlayerB}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSXScoreB.[2]}}" id="BVSXPlayerBScore3" name={{matchBVSXPlayerB}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSXScoreB.[3]}}" id="BVSXPlayerBScore4" name={{matchBVSXPlayerB}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSXScoreB.[4]}}" id="BVSXPlayerBScore5" name={{matchBVSXPlayerB}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSXScoreB.[5]}}" id="BVSXPlayerBScore6" name={{matchBVSXPlayerB}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSXScoreB.[6]}}" id="BVSXPlayerBScore7" name={{matchBVSXPlayerB}}></td>
+						                <td class="matchRowDEtScore" style="">		
+						                	<select style="font-size:12px;width:95%;" id="BVSXWinner" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+						                		<option value="1" selected=true id="1">Select Winner</option>
+						                		<option value="{{matchBVSXPlayerB}}" id="{{teamAIDMatch}}" selected="{{selectedWinnerBVSX matchBVSXPlayerB}}">{{findThePlayerName matchBVSXPlayerB}}</option>
+						                		<option value="{{matchBVSXPlayerX}}" id="{{teamBIDMatch}}" selected="{{selectedWinnerBVSX matchBVSXPlayerX}}">{{findThePlayerName matchBVSXPlayerX}}</option>
+						                	</select>
+						                </td>
+						            </tr>
+
+						            <!--player x-->
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="matchRowDEtScore" style="">		
+						                </td>
+						                <td class="matchRowDEtScore" style="">{{findThePlayerName matchBVSXPlayerX}}</td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSXScoreX.[0]}}" id="BVSXPlayerXScore1" name={{matchBVSXPlayerX}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSXScoreX.[1]}}" id="BVSXPlayerXScore2" name={{matchBVSXPlayerX}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSXScoreX.[2]}}" id="BVSXPlayerXScore3" name={{matchBVSXPlayerX}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSXScoreX.[3]}}" id="BVSXPlayerXScore4" name={{matchBVSXPlayerX}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSXScoreX.[4]}}" id="BVSXPlayerXScore5" name={{matchBVSXPlayerX}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSXScoreX.[5]}}" id="BVSXPlayerXScore6" name={{matchBVSXPlayerX}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresBVSXScoreX.[6]}}" id="BVSXPlayerXScore7" name={{matchBVSXPlayerX}}></td>
+						                <td class="matchRowDEtScore" style="">		
+						                </td>
+						            </tr>
+
+						            <!--player a v/s y header-->
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="headerDetScoreTeam" style="">Match Type</td>
+						                <td class="headerDetScoreTeam" style="">Match:A v/s Y</td>
+						                <td class="headerDetScoreTeam" style="">1</td>
+						                <td class="headerDetScoreTeam" style="">2</td>
+						                <td class="headerDetScoreTeam" style="">3</td>
+						                <td class="headerDetScoreTeam" style="">4</td>
+						                <td class="headerDetScoreTeam" style="">5</td>
+						                <td class="headerDetScoreTeam" style="">6</td>
+						                <td class="headerDetScoreTeam" style="">7</td>
+						                <td class="headerDetScoreTeam">Winner</td>
+						            </tr>
+
+						            <!--player a-->
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="matchRowDEtScore" style="">		
+						                	<select style="font-size:12px;width:95%;" id="AVSYStatus" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+						                		<option value="notPlayed" selected="{{findAVSYStatusType notPlayed}}">Not Played</option>
+						                		<option value="bye" selected="{{findAVSYStatusType bye}}">Bye</option>
+						                		<option value="walkover" selected="{{findAVSYStatusType walkover}}">Walkover</option>
+						                		<option value="completed" selected="{{findAVSYStatusType completed}}">Completed</option>
+						                	</select>
+						                </td>
+						                <td class="matchRowDEtScore" style="">{{findThePlayerName matchAVSYPlayerA}}</td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSYScoreA.[0]}}" id="AVSYPlayerAScore1" name={{matchAVSYPlayerA}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSYScoreA.[1]}}" id="AVSYPlayerAScore2" name={{matchAVSYPlayerA}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSYScoreA.[2]}}" id="AVSYPlayerAScore3" name={{matchAVSYPlayerA}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSYScoreA.[3]}}" id="AVSYPlayerAScore4" name={{matchAVSYPlayerA}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSYScoreA.[4]}}" id="AVSYPlayerAScore5" name={{matchAVSYPlayerA}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSYScoreA.[5]}}" id="AVSYPlayerAScore6" name={{matchAVSYPlayerA}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSYScoreA.[6]}}" id="AVSYPlayerAScore7" name={{matchAVSYPlayerA}}></td>
+						                <td class="matchRowDEtScore" style="">		
+						                	<select style="font-size:12px;width:95%;" id="AVSYWinner" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+						                		<option value="1" selected=true id="1">Select Winner</option>
+						                		<option value="{{matchAVSYPlayerA}}" id="{{teamAIDMatch}}" selected="{{selectedWinnerAVSY matchAVSYPlayerA}}">{{findThePlayerName matchAVSYPlayerA}}</option>
+						                		<option value="{{matchAVSYPlayerY}}" id="{{teamBIDMatch}}" selected="{{selectedWinnerAVSY matchAVSYPlayerY}}">{{findThePlayerName matchAVSYPlayerY}}</option>
+						                	</select>
+						                </td>
+						            </tr>
+
+						            <!--player y-->
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="matchRowDEtScore" style="">		
+						                </td>
+						                <td class="matchRowDEtScore" style="">{{findThePlayerName matchAVSYPlayerY}}</td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSYScoreY.[0]}}" id="AVSYPlayerYScore1" name={{matchAVSYPlayerY}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSYScoreY.[1]}}" id="AVSYPlayerYScore2" name={{matchAVSYPlayerY}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSYScoreY.[2]}}" id="AVSYPlayerYScore3" name={{matchAVSYPlayerY}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSYScoreY.[3]}}" id="AVSYPlayerYScore4" name={{matchAVSYPlayerY}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSYScoreY.[4]}}" id="AVSYPlayerYScore5" name={{matchAVSYPlayerY}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSYScoreY.[5]}}" id="AVSYPlayerYScore6" name={{matchAVSYPlayerY}}></td>
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{matchScoresAVSYScoreY.[6]}}" id="AVSYPlayerYScore7" name={{matchAVSYPlayerY}}></td>
+						                <td class="matchRowDEtScore" style="">		
+						                </td> 
+						            </tr>
+						        </tbody>
+					    	</table>
+
+						    <!--ultimate winner-->
+						    <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+						        <tbody class="">
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="headerDetScoreTeamU" style="">Ultimate Winner</td>
+						            	<td class="headerDetScoreTeamW" style="">
+						                	<select style="font-size:12px;width:95%;" id="TeamMatchType" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+						                		<option value="1" selected=true>Select Match Type</option>
+						                		<option value="notPlayed" selected="{{findteamStatusType notPlayed}}">Not Played</option>
+						                		<option value="bye" selected="{{findteamStatusType bye}}">Bye</option>
+						                		<option value="walkover" selected="{{findteamStatusType walkover}}">Walkover</option>
+						                		<option value="completed" selected="{{findteamStatusType completed}}">Completed</option>
+						                	</select>
+						                </td>
+						                <td class="headerDetScoreTeamW" style="">
+						                	<select style="font-size:12px;width:95%;" id="TeamWinnerId" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+						                		<option value="1" id="1" selected=true>Select Winning Team</option>
+						                		<option value="{{teamAIDMatch}}" id="{{teamA}}" selected="{{findIfUltimateWinner teamAIDMatch}}">{{findTheTeamNamedraw teamAIDMatch}}</option>
+						                		<option value="{{teamBIDMatch}}" id="{{teamB}}" selected="{{findIfUltimateWinner teamBIDMatch}}">{{findTheTeamNamedraw teamBIDMatch}}</option>
+						                	</select>
+						                </td>
+						            </tr>
+						        </tbody>
+						    </table>
+
+                        </div>
+                        <div class="modal-footer">
+                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height:auto !important;">
+                                <p style="font-size:12px;color:red;cursor:default;text-align: left;" id="TeamSpecErrorShow"></p>
+                                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+                            </div>
+                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-right:0px !important;padding-bottom: 4px;">
+                                <div class="row">
+                                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 ">
+                                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 ">
+                                        </div>
+                                        <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 " style='text-align:center;'>
+                                        	{{#if checkOnlyEventOrganizer}}
+                                        		{{#if checkLockStatusSet lockStatus}}
+                                                    <button type="submit" class="ip_button_Popup_Black" id="saveTeamDETailsForm" style="">Set
+                                            		</button>
+
+                                                    <button type="button" class="ip_button_Popup_Red" id="cancelTeamSpecForm" >Cancel
+                                            		</button>
+                           							<button type="button" class="ip_button_Popup_Red" id="notifyApp" >Notify
+	                                            	 	</button>
+                                                {{else}}
+                                                   <button type="button" class="ip_button_Popup_Red" id="cancelTeamSpecForm" >Ok
+                                            	 	</button>
+                         
+                                                {{/if}}
+
+                                            
+                                           
+                                            <button type="button" class="ip_button_Popup_Black" id="PrintTeamDetailedScore" >Print
+                                            </button>                                    
+                                            {{else}}
+                                            <button type="button" class="ip_button_Popup_Red" id="cancelTeamSpecForm" >Ok
+                                            </button>
+                                            {{/if}}
+                                        </div>
+                                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row no-gutter col-md-6 col-xs-6 col-sm-6 col-lg-6" style="">
+                                <div class="checkAcceptTerms" style="height: 2.4em !important;">
+                                    <input value="" name="checkAcceptbox" id="checkAcceptboxTweett" class="checkboxAccept" checked="" type="checkbox">
+                                    <p class="downloadAcceptTitle" style="margin-top: 0px; margin-left: 0px; color: rgb(88, 88, 88);"><span style="color: rgb(0, 172, 237); font-size: 14px ! important; margin-top: 3px; cursor: default; margin-left: 5px;" class="fa fa-twitter" aria-hidden="true">Auto Tweet</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    {{/if}}
+</template>

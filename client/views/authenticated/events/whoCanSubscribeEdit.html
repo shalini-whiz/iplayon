@@ -1,0 +1,169 @@
+<template name="whoCanSubscribeEdit">
+    <div class="modal" id="whoCanSubscribeEdit" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-sm" style="width: 600px !important;">
+            <div class="modal-content modal-content-modReg1" style="width: 600px !important;left: 50%;transform: translateX(-50%) translateY(0%) !important;">
+                <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height:34px !important;background:0;">
+                    <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;height:34px !important;">
+                        <div class="row" style="margin:0 !important;height:34px !important;">
+                            <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8 contRegNEwHead" style="border-top-right-radius: 0px;height:34px !important;000;border-top-left-radius: 0px;!important;">
+                                <p class="modal-title titeofregistemodal" style="text-align: left;margin-top:5px;">List of {{getrolename}} who can subscribe</p>
+                            </div>
+                            <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 contRegNEwHead" style="border-top-right-radius: 0px;height:34px !important;border-top-left-radius: 0px !important;padding-left: 3px !important;padding-right: 3px !important;padding-bottom: 2px !important;">
+
+                            </div>
+                            <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 contRegNEwHead" style="border-top-right-radius: 0px;height:34px !important;border-top-left-radius: 0px !important;padding-left: 3px !important;padding-right: 3px !important;padding-bottom: 2px !important;">
+                                <button type="" class="ip_button_Popup_Black" id="CancelSubRest" style="width:100%;height:100%">Ok
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body  modal-body-modReg1" id="changeHeightOfModal" style="min-height: 225px!important;">
+                    <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12 divClassMAINtag">
+                        {{#if checkNotOrganizer}}
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top:0px;padding-left:0px !important;">
+                            <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 padding0px widthAletered">
+                                <input type="radio" class="checkSUBTYPe" name="selectSubcriptionType" id="selfOnly" style="height:100%;margin-top: 0px;cursor:disabled;" value="selfOnly" {{checkedORNOtSelf}} disabled readonly/>
+                            </div>
+                            <div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 padding0px">
+                                <p class="ptagSUBTYPe" id="selfOnly" name="selfOnly">Self Only</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top:0px;padding-left:0px !important;">
+                            <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 padding0px widthAletered">
+                                <input type="radio" class="checkSUBTYPe" name="selectSubcriptionType" id="allSub" style="height:100%;margin-top: 0px;cursor:disabled;" value="allSub" {{checkedORNOtAll}} disabled readonly/>
+                            </div>
+                            <div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 padding0px">
+                                <p class="ptagSUBTYPe" id="allSub" name="allSub">All</p>
+                            </div>
+                        </div>
+                        {{else}}
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top:0px;padding-left:0px !important;">
+                            <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 padding0px widthAletered">
+                                <input type="radio" class="checkSUBTYPe" name="selectSubcriptionType" id="allExceptSchool" style="height:100%;margin-top: 0px;cursor:pointer;" value="allExceptSchool" {{checkedORNOtAllExceptSchool}} disabled readonly/>
+                            </div>
+                            <div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 padding0px">
+                                <p class="ptagSUBTYPe" id="allExceptSchool" name="allExceptSchool">All Except School</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top:0px;padding-left:0px !important;">
+                            <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 padding0px widthAletered">
+                                <input type="radio" class="checkSUBTYPe" name="selectSubcriptionType" id="schoolOnly" style="height:100%;margin-top: 0px;cursor:pointer;" value="schoolOnly" {{checkedORNOtSchoolOnly}} disabled readonly/>
+                            </div>
+                            <div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 padding0px">
+                                <p class="ptagSUBTYPe" id="schoolOnly" name="schoolOnly">School Only</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top:0px;padding-left:0px !important;">
+                             <div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 padding0px">
+                                <p class="ptagSUBTYPe">Tournament Type : {{schoolSelectedType}}</p>
+                            </div>
+                        </div>
+                        {{/if}}
+                        {{#if roleWhoValid}}
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top:0px;padding-left:0px !important;">
+                            <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 padding0px widthAletered">
+                                <input type="radio" class="checkSUBTYPe" name="selectSubcriptionType" id="resrictP" style="height:100%;margin-top: 0px;cursor:disabled;" value="resrictP" {{checkedORNOtRest}} disabled readonly/>
+                            </div>
+                            <div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 padding0px">
+                                <p class="ptagSUBTYPe" id="resrictP" name="resrictP">Restrict to my parent {{getrolename}} only</p>
+                            </div>
+                        </div>
+                        {{/if}} 
+                        {{#if associationNameOrAcademyName}}
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top:0px;padding-left:0px !important;">
+                            <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 padding0px widthAletered">
+                                <input type="radio" class="checkSUBTYPe" name="selectSubcriptionType" id="pickASSAC" style="height:100%;margin-top: 0px;cursor:disabled;" value="pickASSAC" {{checkedORNOtPick}} disabled readonly/>
+                            </div>
+                            <div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 padding0px">
+                                <p class="ptagSUBTYPe" id="pickASSAC" name="pickASSAC">Pick {{getrolename}} of my parent</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="margin-top:3px;padding-left:30px !important;margin-top: 3px;padding-left: 30px !important;max-height: 112px;overflow-y: auto;">
+                            {{#each associationNameOrAcademyName}}
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="margin-top:3px;padding:0px !important;border: 1px solid black;">
+                                <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 padding0px widthAletered" style="padding-top: 4px !important;">
+                                    <input type="checkbox" class="checkSUBTYPe" name="selectedNamesAssocAcad" id="selectedNamesAssocAcad" style="height:100%;margin-top: 0px;cursor:disabled;" {{checkPicked}} disabled readonly/>
+                                </div>
+                                {{#if this.clubName}}
+                                <div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 padding0px">
+                                    <p class="ptagSUBTYPe">{{this.clubName}}</p>
+                                </div>
+                                {{else}}
+                                <div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 padding0px">
+                                    <p class="ptagSUBTYPe">{{this.associationName}}</p>
+                                </div>
+                                {{/if}}
+                            </div>
+                            {{/each}}
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<template name="subscriptionDOB_editEvents">
+    <!--form id="subscriptionDOBForm"-->
+    <div class="modal" id="subscriptionDOB_editEvents" aria-hidden="true">
+        <div id="subDomainCenter" class="modal-dialog eventAddTourModal-sm">
+            <div class="eventAddTourPopup">
+                <div class="modal-content">
+                    <div class="selectevenaddHeader">
+                        <p class="modal-title" style="width:95%!important;" id="setEventNameHeader">Date of birth filter to subscribe</p>
+                    </div>
+
+                    <div class="modal-body subDomainModalBody">
+                        <div id="renderselectedEventsCategories">
+                            {{> selectedEventsCategories_editEvents}}
+                        </div>
+                        <p type="text" id="eveDomProvideDetails_NEW" name="eveDomProvideDetails_NEW" style="background-color:none; border:none; cursor:default font-weight:normal;color:red;font-size:12px;" onfocus="this.blur()" readonly></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="selectedEventsCategories_editEvents">
+    <div class="">
+        {{#if lTourns_Sports2}}
+        <div class="" style="height: 12em;overflow: auto;" id="divDateB">
+            <table class="table table-striped tableOFCSVHTML_SetDOB" id="tableSetDOB">
+                <thead style="">
+                    <tr class="headerAnalytics2_SetDOB">
+                        <th class="pAnalytics2_SetDOB">event name</th>
+                        <th class="pAnalytics2_SetDOB">date of birth filter</th>
+                        <th class="pAnalytics2_SetDOB">allow ranking</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each lTourns_Sports2}} {{#each this.details}}
+                    <tr class="headerAnalytics2_SetDOB" id="{{../_id}}">
+                        <td class="pAnalytics2_SetDOB">{{getEVENTNAME_DOB this.eventId}}:{{this.gender}}</td>
+                        <td class="pAnalytics2_SetDOB">
+                            <input type="text" placeholder="DD MMM YYYY" class="setDOB_Input" name="" id="" autocomplete="off" value="{{savedDOBRender this.eventId}}" readonly>
+                        </td>
+                        <td class="pAnalytics2_SetDOB" id="rankingForEvent">
+                            <input type="text" placeholder="yes/no" class="setDOB_Input" name="" id="" autocomplete="off" value="{{savedRankingRender this.eventId}}" readonly>
+                        </td>
+                    </tr>
+                    {{/each}} {{/each}}
+                </tbody>
+            </table>
+        </div>
+        {{/if}}
+
+    </div>
+    <div class="setemptyeventaddDivContentOk">
+        <div class="sponsorUploadsContentAddEvents">
+            <div class="noSponsorUploads" style="margin-right:auto;margin-left: auto;">
+                <button type="button" id="cancelFromDob" class="ip_button_Popup_Black">Ok</button>
+            </div>
+        </div>
+    </div>
+</template>

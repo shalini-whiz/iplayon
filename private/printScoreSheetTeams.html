@@ -1,0 +1,94 @@
+
+<div class="container">
+      <p>&nbsp;</p>  
+
+ {{#each matchRecords}}
+     <!--<p style="page-break-before:always"></p> -->
+  <div>
+    <p><div class="row" style="font-size: 18px;font-weight:bold; text-align: center;">{{../tournamentName}}</div></p>
+    <p><div class="row" style="font-size: 16px; text-align: center;">
+      <!--{{#if ../tournamentVenue}}
+        {{../tournamentVenue}}, 
+      {{/if}}-->
+      {{../tournamentAddress}}</div></p>
+    <div class ="row" >
+    <table class="table scoreSheet">
+      <tbody>
+      <tr>
+          <td colspan=3>EVENT : {{../eventName}}</td>
+          <td colspan=3>{{roundName}}</td>
+          <td colspan=3>{{matchNumber}}</td>
+          <td colspan=3>{{../eventStartDate}} - {{../eventEndDate}}</td>
+      </tr>
+      <tr class ="header">
+          <td>Sl. No.</td>
+          <td width="30%">{{../headerName}}</td>
+          <td width="5%">1</td>
+          <td width="5%">2</td>
+          <td width="5%">3</td>
+          <td width="5%">4</td>
+          <td width="5%">5</td>
+          <td width="5%">6</td>
+          <td width="5%">7</td>
+          <td >TIME OUT</td>
+          <td >TABLE</td>
+      </tr>
+      <tr class="data">
+          <td> 1 </td>
+          <!--<td style="position: relative;">  
+            <span style="position: absolute;
+    width:100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;">{{players.playerA}}
+    
+            </span> 
+          </td>-->
+          <td width="30%">
+            {{players.playerA}}
+          </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td rowspan="2"></td>
+      </tr>
+      <tr class="data">
+          <td> 2 </td>
+          <td width="30%">
+            {{players.playerB}}
+          </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td rowspan="2"> </td>
+      </tr>
+        
+      </tbody>
+    </table>
+    <table class="table scoreSheet ">
+      <tbody>
+        <tr class ="header">
+          <td>WINNER</td>
+          <td>UMPIRE</td>
+          <td>REFEREE</td>
+        </tr>
+        <tr class="data">
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+{{/each}}
+ </div>

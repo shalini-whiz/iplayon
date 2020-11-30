@@ -1,0 +1,186 @@
+<template name="iplayonProfile">
+    {{> iplayonHome}}
+</template>
+<template name="iplayonHome">
+    {{#if Template.subscriptionsReady}}
+    <div style="height: auto;background: none repeat scroll 0% 0% rgb(255, 255, 255); padding: 0px 55px 0 ! important; margin: auto; top: 0px; left: 0px; bottom: 0px; right: 0px; " class="container">
+        <div class="row navigationBar navBARIPlayonHome" style="">
+            <div style="width: 14%;" class="navbar-header">
+                <div class="navbar-brandIplayon" href="#">
+                    <img src="/logo.png" style="width: 100%; margin: 0px ! important;height:100%;">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 divHeadRowIPlayon" style="">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 divSponsorsIPlayon" style="padding:0px !important;">
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 divPaddingZero" style="">
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 divPaddingZero" style="padding:0px !important;height:62px;display:flex;">
+                        <div style="width:40%;height:100%;order:1;margin-right:3px;">                            
+                        </div>
+                        <div style="width:40%;height:100%;order:2;margin-right:3px;">                            
+                        </div>
+                        <div style="width:40%;height:100%;order:3;">
+                        </div>
+                    </div>
+                </div>
+                {{#if checkLoggedInUSerIp}}
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 divMainIplayon" style="padding:0px !important;">
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 divPaddingZero" style="">
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 divMain2IPlayon" style="padding:0px !important;">
+                        <div style="float:right;">
+                            <div class="" style="padding:0px !important;display:flex;width:100%;">
+                                <button style="order:2;padding: 6px;" class="logoutFrontPageButtonIp" value="SIGN UP" id="signInWithoutTournuserLogout">
+                                    <span class="glyphicon glyphicon-off logoutFrontPageIp" id=""></span>
+                                </button>
+                                <button style="order: 1;padding: 5px;margin-right: 6px;" class="logoutFrontPageButtonIp" value="SIGN UP" id="signInWithoutTournupcomingEvents">
+                                    <span class="glyphicon glyphicon-log-in logoutFrontPageIp logScreenUpcomGlypButton" id="" style=""></span>
+                                </button>
+                                <div style="" class="loggedInUserNAmeIP">
+                                    <p style="" class="loggedInUserNameIPPTag">{{userNAMe}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{else}}
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 divMainIplayon" style="">
+                    <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10 divPaddingZero" style="">
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 divMain2IPlayon" style="">
+                        <input type="button" class="signInButtonIPlayon" style="" id="signInWithoutTourn" value="SIGN UP">
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 divMain2IPlayon" style="">
+                        <input type="button" class="loginButtonIPlayon" style="" id="loginButtonIplayonWithoutTourn" value="LOG IN">
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 divPaddingZero divSecondMainIplayon" style="">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 divPaddingZero divResults2UpcomingIplayon">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 divPaddingZero divResultIplayon">
+                    <h2 class="keyResultH2">Key Results</h2>
+                    <hr class="keyResultHR"> {{#if threeResultsSEt}}
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 divPaddingZero" style="height: 23.4vh;overflow: auto;min-height: 14em;">
+                        {{#each threeResultsSEt}}
+                        <ul class="divHeadUL" id="" style="margin-bottom:0px;">
+                            <li class="liUpcoming"><span class="spanUpcoming">{{this.tournName}}</span>, <span class="">{{this.defeated}}</span>
+                            </li>
+                        </ul>
+                        {{/each}}
+                    </div>
+                    {{else}}
+                    <div style="width: 100%; height: 11.4vh; min-height: 13.8em; text-align: center; display: table;">
+                        <p style="text-align: center; font-size: 13px; width: 100%; margin: auto; vertical-align: middle; display: table-cell;">{{yearNow}} Season just starting, await for results..!</p>
+                    </div>
+                    {{/if}}
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 divPaddingZero divUpcomingIplayon">
+                    <h2 class="keyResultH2">Upcoming Tournaments</h2>
+                    <hr class="keyResultHR">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 divPaddingZero" style="height: 25.4vh;overflow: auto;min-height:14em;">{{#if threeUpcomingEventsFetch}} {{#each threeUpcomingEventsFetch}}
+                        <ul class="divHeadUL" id="liUPCOmingTourn" style="cursor:pointer;">
+                            <li class="liUpcoming"><span class="spanUpcoming">{{this.eventName}}</span>, @<span class="spanUpcoming">{{this.domainName}}</span>, starts on <span class="spanUpcoming">{{this.eventStartDate}}</span>
+                            </li>
+                        </ul>
+                        {{/each}} {{else}}
+                        <div style="width: 100%; height: 11.4vh; min-height: 13.8em; text-align: center; display: table;">
+                            <p style="text-align: center; font-size: 13px; width: 100%; margin: auto; vertical-align: middle; display: table-cell;">Wait For Updates..!</p>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 divPaddingZero divCalendarIplayon" id="parentCalendar">
+                {{> renderCalendar}}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 divPaddingZero divThirdMainIplayon" style="">
+            <div class="row divForAboutIplayon" style="">
+                <h4 style="color: #F60;text-align: left;margin: 0px !important;font-weight: bold;">iPlayOn - an initiative to promote sports!</h4>
+            </div>
+            <div class="row divAboutIplayonP1" style="">
+                <p class="" style="font-size:13px;">Whether you are a professional sportsman, an academy, a coach, a sport event organizer, a corporate sports events organizer, a corporate player, a Gully/Nukkad sport event organizer, iPlayOn provides a platform to promote yourself or your event. </p>
+                <p class="" style="font-size:13px;">The iPlayOn software platform is a free, world-wide platform for organizing any sporting event anywhere in the world, of any level - right from professional tournaments, Intra and Inter School/College/University tournaments, Local Colony/Town/City tournaments, small Intra office tournaments to Inter-Office tournaments all the way upto Intra and Inter state/country tournaments. You can conduct and participate in any game be it Badminton, Volleyball, Tennis, Table Tennis, Cricket, Football, Board games, Cycling, Swimming.. <span style="color:green;text-decoration:underline;cursor:pointer;font-weight:bold;" id="ipHelpRender">more</span>
+                </p>
+            </div>
+        </div>
+        <div id="renderIplayonLogin"></div>
+        <div id="infoModal"></div>
+
+        {{> confirmlogoutIplayon}}
+    </div>
+    {{/if}}
+</template>
+
+<template name="renderCalendar">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 divPaddingZero divCalenderWrapperIp" id="checkGOTTO">
+        <!--{{ > ReactiveFullcalendar options=calendarOptions }}-->
+    </div>
+</template>
+
+<template name="renderTournamentDetails">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 divPaddingZero divTournDetailsIplayon">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 divPaddingZero">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 divPaddingZero" style="padding-left: 5px !important;">
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 divPaddingZero" style="width:2.1% !important;">
+                    <span class="glyphicon glyphicon-calendar backGlyphiconIplayon" id="backToCalendar"></span>
+                </div>
+                <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 divPaddingZero" style="padding-left: 10px !important;">
+                    <h2 class="tournDetPTagIplayon">{{getSelectedDATE}}</h2>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 divPaddingZero divToShowTournDetIplayon" id="calenderClickedEventsa">
+                <table class="table table table-fixed table-striped tableIplayonTourn">
+                    <tbody class="">
+                        {{#each fetchEventsForSelectedDate}}
+                        <tr class="" id="allTournIplayon">
+                            <td class="tableIplayonTournTd" id="goToEventToSubscribe">
+                                <p class="tournHEADRow">{{this.eventName}}</p>
+                            </td>
+                            <td class="tableIplayonTournTd" id="goToEventToSubscribe">
+                                <p class="tournHEADRow">{{this.domainName}}</p>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<template name="confirmlogoutIplayon">
+    <!-- main div of confirm pop up-->
+    <div class="modal" id="confirmlogoutIplayon">
+
+        <!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains yes and no buttons
+-->
+
+        <div id="confirmCenter" class="modal-dialog modal-sm">
+            <div class="confirmPopup">
+                <div class="modal-content">
+                    <div class="modal-header confirmHeader">
+                        <p class="modal-title" id="conFirmHeaderLog"></p>
+                    </div>
+                    <div class="modal-body">
+                        <div class="confirmPopupContent">
+                            <div class="yes">
+                                <button type="button" id="yesButtonLogout" class="ip_button_Popup_Black">OK</button>
+                            </div>
+                            <div class="no">
+                                <button type="button" id="noButtonLogoutIp" class="ip_button_Popup_Red">CANCEL</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

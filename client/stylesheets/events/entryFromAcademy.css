@@ -1,0 +1,135 @@
+.headerDiv_entryFAca{
+	margin-top: 0px;
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+	height: 15.4em;
+	overflow: auto;
+}
+
+.headeSubDiv_entryFAca{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	height: 26px !important;
+}
+
+.headeSubDiv2_entryFAca{
+	color: white;
+	background: rgb(84, 84, 84) none repeat scroll 0% 0%;
+	height: 26px !important;
+	border-right: 1px solid white !important;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.pAnalytics2_entryFAca{
+	font-size: 11px;
+	text-align: center;
+	border: 1px solid #FFF;
+	background: transparent none repeat scroll 0px center !important;
+	font-weight: normal !important;
+}
+
+.pAnalytics2_entryFAca2 {
+    font-size: 11px;
+    text-align: center;
+    border: 1px solid #fff !important;
+    background: transparent none repeat scroll 0px center !important;
+    font-weight: normal !important;
+    color: #fff;
+}
+.tableOFCSVHTML_entryFAca2{
+	margin-top: 5px;
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+}
+
+.tableOFCSVHTML_entryFAcatableBody{
+		width:100%; 
+		border-collapse:collapse; 
+		background: white none repeat scroll 0% 0%;
+}
+	
+	.tableOFCSVHTML_entryFAcatableBody td{ 
+	}
+	/* improve visual readability for IE8 and below */
+	.tableOFCSVHTML_entryFAcatableBody tr{
+		
+	}
+	/*  Define the background color for all the ODD table columns  */
+	.tableOFCSVHTML_entryFAcatableBody tr td:nth-child(odd){ 
+		background: #808080 none repeat scroll 0% 0% !important;
+		border-bottom: 1px solid #000 !important;
+
+	}
+	/*  Define the background color for all the EVEN table columns  */
+	.tableOFCSVHTML_entryFAcatableBody tr td:nth-child(even){
+		background: #656565 none repeat scroll 0% 0% !important;
+		border-bottom: 1px solid #000 !important;
+
+	}
+
+
+	.tableOFCSVHTML_entryFAcatableHead th{ 
+	}
+	/* improve visual readability for IE8 and below */
+	.tableOFCSVHTML_entryFAcatableHead tr{
+		
+	}
+	/*  Define the background color for all the ODD table columns  */
+	.tableOFCSVHTML_entryFAcatableHead tr th:nth-child(odd){ 
+		background: #808080 none repeat scroll 0% 0% !important;
+		border-bottom: 1px solid #000 !important;
+	}
+	/*  Define the background color for all the EVEN table columns  */
+	.tableOFCSVHTML_entryFAcatableHead tr th:nth-child(even){
+		background: #656565 none repeat scroll 0% 0% !important;
+		border-bottom: 1px solid #000 !important;
+	}
+	
+
+	/**/
+	.headerDiv_entryFAca_backWhite{
+	margin-top: 0px;
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+	height: 15.4em;
+	overflow: auto;
+}
+
+.headeSubDiv_entryFAca_backWhite{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	height: 26px !important;
+}
+
+.headeSubDiv2_entryFAca_backWhite{
+	color: white;
+	background: rgb(84, 84, 84) none repeat scroll 0% 0%;
+	height: 26px !important;
+	border-right: 1px solid black !important;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.pAnalytics2_entryFAca_backWhite{
+	font-size: 11px;
+	text-align: center;
+	border: 1px solid #000;
+	background: #fff none repeat scroll 0px center !important;
+	font-weight: normal !important;
+	color: black;
+}
+
+.pAnalytics2_entryFAca2_backWhite{
+    font-size: 11px;
+    text-align: center;
+    border: 1px solid #000 !important;
+    background: transparent none repeat scroll 0px center !important;
+    font-weight: normal !important;
+    color: #000;
+}
+.tableOFCSVHTML_entryFAca2_backWhite{
+	margin-top: 5px;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+}

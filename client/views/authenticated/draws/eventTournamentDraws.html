@@ -1,0 +1,454 @@
+    <template name="eventTournamentDraws">
+        {{> drawNavBar}}
+        {{#if showDraws}}
+          {{getMatches}}
+          {{> draws}}
+        {{/if}}
+        {{#if showTeamDraws}}
+          {{> Teamdraws}}
+        {{/if}}
+    </template>
+
+
+
+    <template name="drawNavBar">
+      <!-- shalini codes starts here -->
+        {{loginOrganizer}}
+
+     
+
+      <div class="row navigationBar navbar-fixed-top" style='height:80px !important'>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+
+          <div style="font-size:14px;color:#FFA500;font-weight:bold">{{tournamentName}} - KnockOut</div>
+        </div>
+          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <p class = "" style="font-size: 12px; color:white">
+              <span class="dot" style="background-color:#dfff80"></span>Bye &nbsp;
+              <span class="dot" style="background-color:#ffe680"></span>Walkover &nbsp;
+              <span class="dot" style="background-color:#EEEAEA"></span>Completed &nbsp;
+            </p>
+                
+            </div>
+        </div>
+        <div class="container-fluid">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 ">
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                <span style="" class="websiteHeader">iPlayOn</span>
+              </div>
+              <!--{{#if upcomingTournament}}-->
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="drawsMenu">
+                <ul class="nav nav-pills nav-justified">
+                  <li class="dropdown" style='' id="drawsSelectionMenu">
+                    <a class="dropdown-toggle customDropDown" data-toggle="" href="#">Draws</a>
+                    <ul class="dropdown-menu dropdown-menu-bottom customInnerDropDown">
+                      <!--li><a href="#" id="playerAnalyticsHeadOn" class ="customInnerDropDownAnchor">Head to Head Collision</a></li-->
+                      <li class="divider"></li>
+                      <li><a href="#" id="createDrawBtn" class ="customInnerDropDownAnchor">Create Draws</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#" id='reset' class ="customInnerDropDownAnchor" {{checkeveOrg tourIdDraws}}>Reset Draws</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#" id='downloadTemplate' class ="customInnerDropDownAnchor" >Download Draws</a></li>
+                      <!--vin-->
+                      <li class="divider"></li>
+                      <li><a href="#" id='downloadEmpytDraws_N' class ="customInnerDropDownAnchor" >Download Empty Draws</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <!--{{/if}}-->
+
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="eventsMenu">
+               <ul class="nav nav-pills nav-justified">
+                <li class="dropdown" id="eventSelectionMenu">                  
+                  <a class="dropdown-toggle customDropDown" data-toggle="" href="#" id='eventSelectionAnchor'>Events</a>
+                  <ul class="dropdown-menu dropdown-menu-bottom customInnerDropDown" style="max-height:200px;min-height:20px;overflow-y:auto">
+                  {{#if selectedSportOrNot}} 
+                    {{#each drawsEvents}}
+                        {{#if selectedSportFromLive this}}
+                          <li><a href="#" id="event_selection" class ="customInnerDropDownAnchor">{{this}}</a></li>
+                          <li class="divider"></li>
+                          {{#each drawsEvents}}
+                            {{#if selectedEvent this}}
+                            {{else}}
+                            <li><a href="#" id="event_selection" class ="customInnerDropDownAnchor">{{this}}</a></li>  
+                            <li class="divider"></li>
+                            {{/if}}
+
+
+                          {{/each}}
+
+
+                        {{/if}} 
+                        {{else}}
+                            <li>
+                          <a href="#" id="event_selection" class ="customInnerDropDownAnchor" style="cursor:default !important">Empty Events</a></li>   
+                      {{/each}}
+                    {{else}} 
+                      {{#each drawsEvents}}
+                        <li><a href="#" id="event_selection" class ="customInnerDropDownAnchor">{{this}}</a></li>  
+                        <li class="divider"></li>
+                        {{else}}
+                        <li>
+                          <a href="#" id="" class ="customInnerDropDownAnchor not-active" style="cursor:default !important">Empty Events</a></li>  
+                      {{/each}}
+                    {{/if}}
+                   </ul>
+                  </li>
+                </ul>
+              </div>
+
+
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style='padding:5px;'>
+                <a href="#">
+                  <span class="glyphicon glyphicon-triangle-left ipGlyphBtn" id="decrRound" style='top:0px !important;font-size:26px !important;'></span>
+                </a> 
+              </div>
+
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style='padding:5px;'>
+                <a href="#">
+                  <span class="glyphicon glyphicon-triangle-right ipGlyphBtn" id="incrRound" style='top:0px !important;font-size:26px !important;'></span>
+                </a>
+              </div>
+
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id='stationaryMenu'>
+                <ul class="nav nav-pills nav-justified">
+                  <li class="dropdown" style='' id="stationarySelectionMenu">
+                    <a class="dropdown-toggle customDropDown" data-toggle="" href="#">Stationery</a>
+                    <ul class="dropdown-menu dropdown-menu-bottom customInnerDropDown">
+                      <li><a href="#" id="receiptBtn" class ="customInnerDropDownAnchor">Receipt...</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#" id="receiptBtnForTeamEvents" class ="customInnerDropDownAnchor">Receipt For Team Events...</a></li>
+                      <li class="divider"></li>
+                      
+                      <li><a href="#" id='scoreSheetBtn' class ="customInnerDropDownAnchor" {{checkeveOrg tourIdDraws}}>Score Sheets...</a></li>
+                      <li class="divider"></li>
+                      <li style='display:none'><a href="#" id='resultsBtn' class ="customInnerDropDownAnchor" >Results</a></li>
+                      <li style='display:none' class="divider"></li>
+                      <li><a href="#" id='certificateBtn' class ="customInnerDropDownAnchor" >Certificate...</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#" id='leaveRequestBtn' class ="customInnerDropDownAnchor" >Leave Request...</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#" id='printScreenEventDraws' class ="customInnerDropDownAnchor" >Print Draws</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#" id='lockEventDraws' class ="customInnerDropDownAnchor" >Lock Draws</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" id='resultsMenu'>
+                <ul class="nav nav-pills nav-justified">
+                  <li class="dropdown" style='' id="resultsSelectionMenu">
+                    <a id="resultSelectionAnchor" class="dropdown-toggle customDropDown" data-toggle="" href="#">Results</a>
+                    <ul class="dropdown-menu dropdown-menu-bottom customInnerDropDown">
+                      <li><a href="#" id="emailResultBtn" class ="customInnerDropDownAnchor">Email Results...</a></li>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+             
+
+            </div>
+           
+
+            
+          </div>
+        </div>
+      </div>
+          
+   <!-- shorter menu -->
+
+
+   {{> alreadySubscribed}}{{> confirmlogout}}
+   <div id="editRender"></div>
+   <div id="editRender2"></div>
+   <!-- shalini codes starts here -->
+   <div id="createDrawPopUp"></div>
+   <div id="knockOutPopUp"></div>
+   <div id="settingsPopUp"></div>
+   <div id="settingsPopUpForTeam"></div>
+   <div id="pointsPopUp"></div>
+   <div id="downloadTemplatePopUp"></div>
+
+
+   <!-- stationary related code -->
+   <div id="receiptPopUp"></div>
+   <div id="scoreSheetPopUp"></div>
+   <div id="resultsPopUp"></div>
+   <div id="certificatePopUp"></div>
+   <div id="leaveRequestPopUp"></div>
+   <div id="printableDrawsPopUp"></div>
+
+   <!--vin-->
+   <div id="emptyDrawsRen"></div>
+
+   <div id="confirmPasswordForResetPopUp"></div>
+   <div id ="drawsToLockContent"></div>
+   <div id="confirmPasswordForLockDrawsPopUp"></div>
+
+   <!-- shalini codes ends here -->
+
+ </template>
+
+
+
+
+
+
+
+
+ <template name="draws">
+ 
+<div class ="row">
+    <p class="ipRoundsHeader">{{drawName}}</p>
+  
+
+  </div>
+
+
+  <div class="row" >
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ipRoundsToolBar" align="center"> ROUND {{lRoundNum}}</div>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ipRoundsToolBar" align="center"> ROUND {{rRoundNum}}</div>
+  </div>
+   <div class = "row">
+    <button id="addBMRoundInd" style="height:30px;width:30%;font-size:12px;">Add Bronze Round</button>
+  </div>
+  <div class = "row">
+  </div>
+  <!--/nav-->
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="background-color:white;">
+      <div>
+        {{#each leftRMatches}}
+        <div class="row" id="PlayerA">
+          <div class="row" style={{matchSettingsA}}>
+            <!--p>match num: {{matchNumber1}} </p-->
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 match_number"> M{{matchNumber}} </div>
+            <div class="col-xs-3 col-sm-3 col-md-5 col-lg-5 {{getStatusColorA}}"  id="PlayerAL" name="PlayerAL">  <!--contenteditable={{inputBoxedit tourIdDraws}} -->
+              <span style="padding:5px;color:#337ab7">{{playerANo}}</span>
+              {{playerA}}
+              <!--<input type="text" style="width:100%;background:0;border:0;" name="score"   value=" {{playerA}}" id="PlayerALI" readonly/>-->
+            </div>
+            <div class="col-xs-7 col-sm-7 col-md-6 col-lg-6" style={{matchSettingsAScore}}>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset1">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} placeholder="-" value="{{AS1}}" class="ip_input_box_type_scores_input" style="width:22px;{{AS1Settings}}" readonly/>
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset2">
+                <input type="text" class="ip_input_box_type_scores_input" name="score" {{scoreDispType tourIdDraws}} placeholder="-" value="{{AS2}}" style="width:22px;{{AS2Settings}}"  readonly/>
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset3">
+                <input type="text" class="ip_input_box_type_scores_input" name="score" {{scoreDispType tourIdDraws}} placeholder="-" value="{{AS3}}" style="width:22px;{{AS3Settings}}" readonly/>
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset4">
+                <input type="text" class="ip_input_box_type_scores_input" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{AS4}}" style="width:22px;{{AS4Settings}}" readonly/>
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset5">
+                <input type="text" class="ip_input_box_type_scores_input" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{AS5}}" style="width:22px;{{AS5Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset6">
+                <input type="text" class="ip_input_box_type_scores_input" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{AS6}}" style="width:22px;{{AS6Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset7">
+                <input type="text" class="ip_input_box_type_scores_input" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{AS7}}" style="width:22px;{{AS7Settings}}" readonly/>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row" id="PlayerB">
+          <div class="row" style={{matchSettingsB}}>
+            <!--p>match num: {{matchNumber1}}readonly={{inputBoxedit tourIdDraws}} </p-->
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 match_number" name={{playerB}}><span class="glyphicon glyphicon-cog" style={{matchSettingsBSettings}} id="byeWalkOverPlayerBL" name="{{playerA}}" ></span></div>
+            <div class=" col-xs-3 col-sm-3 col-md-5 col-lg-5  {{getStatusColorB}}"  id="PlayerBL">
+              <span style="padding:5px;color:#337ab7">{{playerBNo}}</span>
+              {{playerB}}
+
+              <!--
+              <input type="text" style="width:100%;background:0;border:0;" name="score"   onfocus="{{onfocusEdit tourIdDraws}}" value=" {{playerB}}" id="PlayerBLI" readonly/>
+              -->
+            </div>
+            <div class="col-xs-7 col-sm-7 col-md-6 col-lg-6" style={{matchSettingsBScore}}>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset1">
+                <input type="text"  name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{BS1}}" class="ip_input_box_type_scores_input" style="width:22px;{{BS1Settings}}"  readonly />
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset2">
+                <input type="text"  name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{BS2}}" class="ip_input_box_type_scores_input" style="width:22px;{{BS2Settings}}" readonly />
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset3">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{BS3}}" class="ip_input_box_type_scores_input" style="width:22px;{{BS3Settings}}" readonly />
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset4">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{BS4}}"  class="ip_input_box_type_scores_input" style="width:22px;{{BS4Settings}}"  readonly/>
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset5">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{BS5}}" class="ip_input_box_type_scores_input" style="width:22px;{{BS5Settings}}"  readonly />
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset6">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{BS6}}" class="ip_input_box_type_scores_input" style="width:22px;{{BS6Settings}}" readonly />
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset7">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{BS7}}" class="ip_input_box_type_scores_input" style="width:22px;{{BS7Settings}}" readonly />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {{> blankRow}}
+        {{> blankRow}}
+        {{/each}}
+      </div>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="background-color:white;">
+      <div>
+        {{#each rightRMatches}}
+        {{> blankRow}}
+        {{> blankRow}}
+        <div class="row" id="PlayerA">
+          <div class="row">
+            <!--p>match num: {{matchNumber1}} </p-->
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 match_number"> M{{matchNumber}} </div>
+            <div class="col-xs-3 col-sm-3 col-md-5 col-lg-5 {{getStatusColorA}}"  id="PlayerAR">
+                            <span style="padding:5px;color:#337ab7">{{playerANo}}</span>
+
+              {{playerA}}
+            </div>
+            <div class="col-xs-7 col-sm-7 col-md-6 col-lg-6">
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset1">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="ip_input_box_type_scores_input"  placeholder="-"  value={{AS1}} style="width:22px;{{AS1Settings}}" readonly />
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset2">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="ip_input_box_type_scores_input"  placeholder="-"  value={{AS2}} style="width:22px;{{AS2Settings}}" readonly/>
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset3">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="ip_input_box_type_scores_input"  placeholder="-"  value={{AS3}} style="width:22px;{{AS3Settings}}" readonly/>
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset4">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="ip_input_box_type_scores_input"  placeholder="-"  value={{AS4}} style="width:22px;{{AS4Settings}}" readonly/>
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset5">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="ip_input_box_type_scores_input"  placeholder="-"  value={{AS5}} style="width:22px;{{AS5Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset6">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="ip_input_box_type_scores_input"  placeholder="-"  value={{AS6}} style="width:22px;{{AS6Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset7">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="ip_input_box_type_scores_input"  placeholder="-"  value={{AS7}} style="width:22px;{{AS7Settings}}" readonly/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" id="PlayerB">
+          <div class="row">
+            <!--p>match num: {{matchNumber1}} </p-->
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 match_number" name="{{playerA}}"><span class="glyphicon glyphicon-cog" style="font-size: 12px;cursor: pointer;" id="byeWalkOverPlayerBR" name={{playerB}}></span></div>
+            <div class="col-xs-3 col-sm-3 col-md-5 col-lg-5  {{getStatusColorB}}" id="PlayerBR" readonly>
+                            <span style="padding:5px;color:#337ab7">{{playerBNo}}</span>
+
+              {{playerB}}
+            </div>
+            <div class="col-xs-7 col-sm-7 col-md-6 col-lg-6">
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset1">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="ip_input_box_type_scores_input"   placeholder="-"  value={{BS1}} style="width:22px;{{BS1Settings}}" readonly/>
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset2">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="ip_input_box_type_scores_input"  placeholder="-"  value={{BS2}} style="width:22px;{{BS2Settings}}" readonly/>
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset3">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="ip_input_box_type_scores_input" placeholder="-"  value={{BS3}} style="width:22px;{{BS3Settings}}" readonly/>
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset4">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="ip_input_box_type_scores_input" placeholder="-"  value={{BS4}} style="width:22px;{{BS4Settings}}" readonly/>
+              </div>
+              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset5">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="ip_input_box_type_scores_input" placeholder="-"  value={{BS5}} style="width:22px;{{BS5Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset6">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="ip_input_box_type_scores_input" placeholder="-"  value={{BS6}} style="width:22px;{{BS6Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset7">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="ip_input_box_type_scores_input" placeholder="-"  value={{BS7}} style="width:22px;{{BS7Settings}}" readonly/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {{> blankRow}}
+        {{> blankRow}}
+        {{> blankRow}}
+        {{> blankRow}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div id="renderbyeWalkOver"></div>
+  <div id="render34roundInd"></div>
+  <div id="renderRoundData"></div>
+</template>
+
+<template name="blankRow">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-2 col-sm-offset-1 col-sm-2 col-md-offset-1 col-md-2 col-lg-offset-1 col-lg-2  blank_row"> </div>
+    </div>
+  </div>
+</template>
+
+
+
+<template name="confirmPasswordLockDraws">
+  <form id="application-confirmPasswordLockDraws">
+  <div class="modal" id="confirmPasswordLockDraws" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm" style="transform: translate(0px, 0px)!important;">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style=""><span class="glyphicon glyphicon-lock" style="color:white;margin-right: 6px;margin-left: -7px !important;margin-top: 3px;"></span>Confirm Password</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body  modal-body-modReg1" style="min-height: 3.4em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                      <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;padding-left: 47px;">
+                          <p class="labelWhoNewChangePas">
+                            Password:
+                          </p>
+                      </div>
+                       <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                          <input type="password" autocomplete="off" id="oldPassword" value="" maxlength="60" placeholder="enter your password" name="oldPassword" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                        </div>
+                  </div>
+              </div>
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <p style="font-size:12px;color:red;cursor:default;" id="changePasswordError"></p>
+                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-right:0px !important;padding-bottom: 4px;">
+                    <input type="submit" class="ip_button_Popup_Black" id="changePasswordSubmit" style="order:2;margin:0px;padding:0px; height:2.2em!important;margin-right:0px;" value="Ok">
+                  </div>
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-left:0px !important;padding-bottom: 4px;padding-right: 111px;">
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                  </div>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+ </form>
+</template>

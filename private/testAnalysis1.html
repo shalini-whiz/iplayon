@@ -1,0 +1,94 @@
+{{{getDocType_team}}}
+<html lang="en">
+<head>
+    <style type="text/css">
+	    {{css}}
+    </style>
+</head>
+<body>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="container">
+		<div style="display:block">
+			<img src="http://www.iplayon.in/logo.png" style="width:8%;height:8%;float:right;margin:0px !important;"/>
+			<span style="float:left;;margin:0px !important;">
+				<p style="text-align:left;color:#0297DB !important;font-size:13px;margin:0px !important;">Playing record analysis of</p>
+			</span>
+			<br>
+			<span style="float:left;font-size:12px;;margin:0px !important;">
+				<p style="text-align:left;color:#0297DB !important;font-size:11px;;margin:0px !important;"><span style="font-weight:bold;">{{Player1}}</span> v/s <span style="font-weight:bold;">{{Player2}}</span> </p>
+			</span>			
+			<p>	
+			<span style="float:left;font-size:12px;;margin:0px !important;">
+				<p style="text-align:left;color:#0297DB !important;font-size:11px;margin:0px !important;">Since <span style="font-weight:bold;">{{sinceTime}}</span></p>
+			</span>
+			</p>
+		</div>
+	</div>
+
+
+		 <!--service points-->
+    {{#if fetchServicePointsData}}
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="">
+		
+		<p style="text-align:left;font-size:13px;color:#0297DB !important;margin:0px !important;margin-left:3px !important;font-weight:bold;text-decoration:underline;">SERVICES</p>
+
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">      
+		{{#if fetchServicePointsData}}
+		   	<p style="text-align:left;font-size:11px;;margin:0px !important;margin-left:2px !important;">{{descriptionOfSEPAnalysis}}&nbsp;{{Player1}} against {{Player2}}
+			</p>
+		    {{#each fetchServicePointsData}}
+		    	<p class="AnalyticsTableRow_PlayerSeq" style='text-align: left !important'>{{fullNAmeService this.serviceHand}} served to {{fullNAmeDest this.serviceDestination}} location, {{this.win}} service point won</p>
+
+		    {{/each}}
+
+		    <p class="AnalyticsTableRow_PlayerSeq" style='text-align: left !important'>Inference : </p>
+
+	    {{/if}}
+
+	    {{#if fetchServiceLossData}}
+	    	<p style="text-align:left;font-size:11px;;margin:0px !important;margin-left:2px !important;">{{descriptionOfSELAnalysis}}&nbsp;{{Player1}} against {{Player2}}
+			</p>
+	    	{{#each fetchServiceLossData}}
+	    		<p class="AnalyticsTableRow_PlayerSeq" style='text-align: left !important'>{{fullNAmeService this.serviceHand}} served to {{fullNAmeDest this.serviceDestination}} location, {{this.win}} service points conceded</p>            
+		    {{/each}}
+		    <p class="AnalyticsTableRow_PlayerSeq" style='text-align: left !important'>Inference : </p>
+	    {{/if}}
+		</div>
+
+		
+	</div>
+	{{/if}}
+
+
+
+	<!-- receive -->
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="">
+		<p style="text-align:left;font-size:13px;color:#0297DB !important;margin:0px !important;margin-left:3px !important;font-weight:bold;text-decoration:underline;">RECEIVE</p>
+
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">      
+		{{#if fetchReceivePointsData}}
+		   	<p style="text-align:left;font-size:11px;;margin:0px !important;margin-left:2px !important;">{{descriptionOfREPAnalysis}}&nbsp;{{Player1}} against {{Player2}}
+			</p>
+		    {{#each fetchReceivePointsData}}
+		    	<p class="AnalyticsTableRow_PlayerSeq" style='text-align: left !important'>{{fullNAmeService this.serviceHand}} served to {{fullNAmeDest this.serviceDestination}} was responded by a {{fullNameWinningShot this.strokeHand this.strokeDestination}}, {{this.win}} receive point won</p>
+
+		    {{/each}}
+
+		    <p class="AnalyticsTableRow_PlayerSeq" style='text-align: left !important'>Inference : </p>
+
+	    {{/if}}
+		</div>
+	</div>
+
+
+
+
+
+
+	<!--- ends here -->
+	
+	</div>
+
+
+</body>
+</html>

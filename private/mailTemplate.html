@@ -1,0 +1,56 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+
+    <table border="0"  height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+      <tbody>
+        <tr style="border-bottom: 4px solid rgb(255, 165, 0) !important;">
+          <td style="border-bottom: 18px solid rgb(255, 165, 0) !important;padding: 4px;width: 67%;">
+            {{#if sponsorLogoURL}}
+             {{#each sponsorLogoURL}}
+              <img src={{../imageURL}}{{this.url}} width="70" height="70">
+             {{/each}}
+             {{/if}}
+
+          </td>
+          <td style="border-bottom: 18px solid rgb(255, 165, 0) !important; padding: 0px; font-size: 17px;"></td>
+        </tr>
+        <tr style="text-align:center !important;font-size:25px; text-align:center !important; font-weight:bold">
+          <td colspan="2"><p> {{tournamentName}}</p></td>
+        </tr>
+        <tr>
+          <td colspan="2"><p> {{message}} </p> </td>
+        </tr>
+        <tr style="font-size: 16px; text-align: left;color:maroon;">
+          <td colspan="2"><p> Event : {{./eventName}}</p> </td>
+        </tr>
+        {{#if ./winner}}
+        <tr style="font-size: 16px; text-align: left;color:maroon;">
+          <td colspan="2"><p> Winner : {{./winner}}</p> </td>
+        </tr>
+        {{/if}}
+        {{#each rounds}}
+
+        <tr class= "header" style='color:maroon;'>
+          <td colspan="2"><p> Round : {{./round}}</p> </td>
+          {{#each playerInfo}}
+              <tr class = "data">
+                <td>&nbsp;{{this}}</td>
+              </tr>
+            {{/each}}
+        </tr>
+        {{/each}}
+
+        <tr style="border-bottom: 4px solid rgb(255, 165, 0) !important;font-size: 12px; text-align: left;">
+        </tr>
+        <tr style="border-bottom: 4px solid rgb(255, 165, 0) !important;font-size: 12px; text-align: left;">
+          <p>Powered By iPlayOn</p>
+
+        </tr>
+
+        </tbody>
+      </table>
+</body>
+

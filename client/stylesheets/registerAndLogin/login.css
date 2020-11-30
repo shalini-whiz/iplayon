@@ -1,0 +1,413 @@
+@import "compass/css3";
+
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);
+
+
+.mainContentLoginCss{
+    background: white;
+    padding-right: 0%;
+    padding-left: 0%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-bottom: 0.5%;
+    margin-top: 0.5%;
+    height: 22em;
+    overflow: hidden;
+    min-height: 22em;
+    outline: 0;
+    padding-top: 0%;
+    padding-bottom: 0%;
+}
+        
+
+    
+        .loginTitle{
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            background: #b30000;
+            margin-top: 0%;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            box-shadow: 1px 1px 2px #888888;
+            padding-top:0.5%; 
+            height:2.36em;
+            padding-left: 0.6%;
+              outline: 0;
+        }
+
+        .titleLoginCss {
+            -webkit-box-flex: 1 200px;
+            -moz-box-flex:  1 200px;
+            flex:  1 200px;
+            -webkit-box-ordinal-group: 1;  
+            -moz-box-ordinal-group: 1;     
+            -ms-flex-order: 1;     
+            order: 1;
+            color:white;
+            font-weight: bold;
+            font-size: 14px;
+              outline: 0;
+        }
+
+        
+
+        
+
+    
+
+        
+        
+
+        
+
+        
+
+        
+
+
+
+        
+
+
+        .aboutIplayOn{
+            /**display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;**/
+            margin-top: 0.5%;
+            /**-moz-border-radius: 5px;
+            border-radius: 5px;**/
+            width:50%;
+            height:19.5em;
+            color:grey;
+            
+        }
+
+        .innerDivAboutIplayOn{
+            order:1;
+            margin-right:1%;
+            background: #B0B0B0;
+            border: 1px solid #B0B0B0;
+            color:black;
+            width:50%;
+          /*    min-height: 10em;*/
+          /*    min-width:30%;*/
+            cursor: pointer;
+            outline: 0;
+            overflow: hidden;
+            height: 100%;
+            margin-bottom:0.3%;
+            float:left;
+            display:inline;
+        }
+
+        
+
+    
+        
+        
+        
+
+        
+
+        
+
+        
+
+
+
+         
+
+    
+
+
+        
+
+        
+
+        
+
+        
+
+
+
+    
+        
+        .iplayOnDescription{
+          padding-left:25%;
+          padding-top:20%;
+          color:white;
+          font-size:35px;
+          padding-bottom:9%;
+          height:9em;
+          background-color:white;
+          cursor:default;
+        }
+        
+        .iplayOnLogin{
+          padding-left:25%;
+          padding-top:20%;
+          color:white;
+          font-size:35px;
+          padding-bottom:9%;
+        }
+        .about{
+          padding-left:6%;
+          color:grey;
+        }
+        .loginButtons{
+          
+            order:1;
+            background: white;
+            border: 0.5px solid #B0B0B0;
+            color:black;
+            width:50%;
+            cursor: default;
+            outline: 0;
+            overflow: hidden;
+            height: 100%;
+            margin-bottom:0.3%;
+            
+        }
+        
+ div.social-wrap button {
+    padding-left:15%;
+    height: 0.5%;
+    background: none;
+    border: none;
+    display: block;
+    background-size: 35px 35px;
+    background-position: right center;
+    background-repeat: no-repeat;
+   /** border-radius: 4px;**/
+    color: white;
+    font-family:"Merriweather Sans", sans-serif;
+    font-size: 12px;
+    margin-bottom: 15px;
+    width: 65%;
+    border-bottom: 2px solid transparent;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    box-shadow: 0 4px 2px -2px gray;
+    text-shadow: rgba(0, 0, 0, .5) -1px -1px 0;
+}
+.social-wrap{
+    margin-top:-19%;
+    margin-left:-5%;
+    margin-bottom:5%;
+    width:79%;  
+}
+.googleLogin{
+    margin-left:-5%;
+    width:79%;
+    margin-top:-7%;
+}
+button#facebook {
+    border-color: #2d5073;
+    background-color: #3b5998;
+    background-image: url(facebook-icon.png);
+    background-position:left center;
+}
+
+
+div.social-wrap button:active {
+    background-color: #222;
+}
+.or{
+    font-size:17px;
+    border-top:1px solid #a6a6a6;
+    margin-top:8%;
+    width:135%;
+    margin-left:-34%;
+}
+
+.orText{
+    position:relative;
+    
+    /**left:50%;**/
+    /**background:none repeat scroll 0% 0% rgb(176, 176, 176);**/
+    font-size:12px;
+    margin-top:-3%;
+    margin-left:50%;
+}
+
+.meteorLogin{
+    font-size:15px;
+}
+
+.error::-webkit-input-placeholder { /* WebKit browsers */
+     color: #FF0000;
+     opacity: 1 !important;
+}
+
+.error:-moz-placeholder { /* Firefox 18- */
+    color: #FF0000;
+    opacity: 1 !important;
+}
+
+.error::-moz-placeholder {  /* Firefox 19+ */
+    color: #FF0000;
+    opacity: 1 !important;
+}
+
+#userNamesSignUp.error{
+    color:rgb(255, 26, 26);
+
+    }
+.meteorLogin input{
+    /**margin-top:2.5%;**/
+    margin-left:-10%;
+    width:106%;
+    height:2.9em;
+    background-color:white;
+    border:1px solid rgb(204, 204, 204);
+    padding-left:3%;
+    font-size:12px;
+    color:#404040;
+    margin-bottom:2%;
+}
+
+#password{
+    margin-top:0.5%;
+}
+
+.glyphicon-user{
+    position:relative;
+    margin-left:-13%;
+    cursor:default;
+}
+.glyphicon{
+    position:relative;
+}
+.glyphicon-lock{
+    position:relative;
+    margin-left:-13.0%;
+    cursor:default;
+    
+}
+
+.registerText{
+    font-size:11.67px;
+    margin-left:-10%;
+    color:rgb(64,64,64);
+    cursor:default;
+}
+
+#emailIdForget{
+	margin-top:5%;
+	color:rgb(179, 0, 0);
+	font-size:11.67px;
+	margin-left:5%;
+}
+
+#application-login{
+	margin-bottom:31%;
+	/**margin-top:16%;**/
+	margin-left:13%;
+}
+
+.redFont{
+    color:black;
+    cursor:pointer;
+}
+
+.redFontRegister{
+    color:rgb(179,0,0);
+    cursor:pointer;
+}
+
+#loginButton{
+    background-color:rgb(204, 204, 204);
+    border:none;
+    position:relative;
+    margin-left:-10%;
+    height:32px;
+    width:55%;
+    margin-top:-2%;
+    color:rgb(89, 89, 89);
+    
+    
+}
+
+.loginHeading{
+	font-size:24px;
+	position:relative;
+	margin-left:4%;
+	margin-top:14%;
+	margin-bottom:0%;
+	cursor:default;
+	color:grey !important;
+}
+
+.loginButton{
+    margin-top:2%;
+    font-size:14px;
+    
+    /** Second column in loginAndForgotText **/ 
+    order:1;
+}
+
+
+
+.glyphicon-log-in{
+  position:absolute;
+  top:62%;
+  left:89%;
+  z-index:1;
+}
+
+.fbText{
+    position:relative;
+    font-size:12px;
+    margin-left:17%;
+}
+
+.gText{
+    position:relative;
+    font-size:12px;
+    margin-left:17%;
+}
+
+.btn-facebook{
+    height:2.4em;
+    padding-top:2%;
+}
+
+.loginAndForgotText{
+	/** fLEX FOR column wise view **/
+	-webkit-flex: 1;  /* Safari 6.1+ */
+    -ms-flex: 1;  /* IE 10 */    
+    flex: 1;
+}
+
+.forgotText{
+	/** First in loginAndForgotText **/
+	order:2;
+	
+	color:rgb(179, 0, 0);
+	font-size:10.67px;
+	float:right;
+	/**margin-left:-10%;**/
+	margin-right:13%;
+	margin-top:-11%;
+	width:40%
+}
+
+.forgotText p:hover{
+	color:blue;
+}
+
+.redFont:hover{
+	color:blue;
+}
+
+.btn-google{
+    height:2.4em;
+    padding-top:2%;
+}
+
+.registerHeading{
+    margin-top:-27%;
+}

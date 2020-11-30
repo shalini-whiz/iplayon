@@ -1,0 +1,345 @@
+<template name="playerSequenceAnalyze">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 0px; padding-top: 0px; margin-top: 0px; padding-left: 15px ! important; height: 36px; padding-right: 15px ! important;">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 0px; padding-top: 0px; margin-top: 0px; padding-left: 0px ! important; padding-right: 0px ! important; height: 55px ! important; border-bottom: 1px solid rgb(208, 208, 208);">
+            <div style="padding: 0px ! important;margin-top:10px;display:flex;" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <div style="margin-top: 1px; text-align: center; padding-top: 5px; background: none repeat scroll 0% 0% rgb(255, 255, 255); padding-right: 4px;"><span class="glyphicon glyphicon-stats" style="font-size:15px !important;"></span>
+                </div>
+                <select class="selectpickerMenu show-menu-arrow" data-style="AnalysisClass_SEle AnalysisClass_Font" data-width='90%' id="typeOfSequence">
+                    <option style="font-size:12px;" value="7">Errors</option>
+                    <option style="font-size:12px;" value="2">Service Points</option>
+                    <option style="font-size:12px;" value="10">Service Faults</option>
+                    <option style="font-size:12px;" value="3">Receive Points</option>
+                    <option style="font-size:12px;" value="4">Service Loss</option>
+                    <option style="font-size:12px;" value="9">Service Response</option>
+                    <option style="font-size:12px;" value="8">3rd Ball Attack</option>
+                    <option style="font-size:12px;" value="1">Last Shot Analysis</option>
+                    <option style="font-size:12px;" value="5">Rally Length</option>
+                    <option style="font-size:12px;" value="6">Stroke Analysis</option>
+                    <!--option style="font-size:12px;" value="9">4th Ball Shot</option-->
+                </select>
+            </div>
+            <div style="padding: 0px ! important;margin-top:10px;padding-left:5px !important;display:flex !important;" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <div style="margin-top: 1px; text-align: center; padding-top: 5px; background: none repeat scroll 0% 0% rgb(255, 255, 255); padding-right: 4px;"><span class="glyphicon glyphicon-user" style="font-size:15px !important;"></span>
+                </div>
+                <select class="selectpicker2 show-menu-arrow" data-style="btn-info AnalysisClass_Font" data-width='91%' data-live-search="true" id="playerSetASelect">
+                    {{#each playerSetA}}
+                    <option style="font-size:12px;" value="{{this.userId}}" {{selectedPlayerSetA @index this.playerName this.userId}}>{{this.playerName}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div style="padding: 0px ! important;margin-top:10px;padding-left:0px !important;" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <select class="selectpicker2 show-menu-arrow" data-style="btn-info AnalysisClass_Font" data-width='92%' id="playerSetBSelect">
+                    {{#each opponentPlayers}}
+                    <option style="font-size:12px;" value="{{this.userId}}" {{selectedPlayerSet2 @index this.playerName this.userId}}>{{this.playerName}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div style="padding: 0px ! important;margin-top:10px;padding-left:2px !important;display:{{lastshotAnalysisOnly}};" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <div style="margin-top: 1px; text-align: center; padding-top: 5px; background: none repeat scroll 0% 0% rgb(255, 255, 255); padding-right: 4px;"><span class="glyphicon glyphicon-refresh" style="font-size:15px !important;"></span>
+                </div>
+                <select class="selectpickerMenu show-menu-arrow" data-style="AnalysisClass_SEle AnalysisClass_Font" data-width='90%' id="sortByEffect">
+                    <option style="font-size:12px;" disabled>Sort By</option>
+                    <option style="font-size:12px;" selected>Win Effectiveness</option>
+                    <option style="font-size:12px;">Loss Percentage</option>
+                    <option style="font-size:12px;">Stroke Type</option>
+                </select>
+            </div>
+            <div style="padding: 0px ! important;margin-top:10px;padding-left:5px !important;display:flex;" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <div style="margin-top: 1px; text-align: center; padding-top: 5px; background: none repeat scroll 0% 0% rgb(255, 255, 255); padding-right: 4px;"><span class="glyphicon glyphicon-time" style="font-size:15px !important;"></span>
+                </div>
+                <select class="selectpickerMenu show-menu-arrow" data-style="AnalysisClass_SEle AnalysisClass_Font" data-width='90%' id="sortByTime">
+                    <option style="font-size:12px;" disabled>Since</option>
+                    <option style="font-size:12px;" selected>Any Time</option>
+                    <option style="font-size:12px;">Last 3 Months</option>
+                    <option style="font-size:12px;">Last Month</option>
+                    <option style="font-size:12px;">Last Week</option>
+                </select>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="height: 35px; padding: 0px ! important; text-align: center ! important; margin-top:10px; margin-right: 0px;padding-left:5px !important;">
+                <input style="font-size: 12px ! important; height: 86%; background: none repeat scroll 0% 0% rgb(0, 164, 228); border: 0px none; color: white; border-radius: 5px; width: 100%;" value="Download" type="button" id="downloadPDF">
+            </div>
+        </div>
+        {{> savingDataPopupNew}}
+    </div>
+</template>
+
+<template name="playerSequenceAnalyzeSub">
+    <div style="padding-left: 50px ! important; padding-right: 50px ! important;" id="renderSequenceTypes"></div>
+</template>
+
+<template name="playerLastStrokeSequence">
+    <table style="border: 1px solid white ! important;margin-top: 141px !important;" id="tblOne" class="table table-fixed table-striped ">
+        <thead style="border: 1px solid white;">
+            <tr style="" class="">
+                <th style="" class="AnalyticsTable_PlayerSeq">Stroke</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Placement</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Played</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Win</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Loss</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            {{#each LastSeqAnalysisData}}
+            <tr class="" id="allStrokesTable">
+                <td class="AnalyticsTableRow_PlayerSeq" style="">{{fullStroke this.strokeKey}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="">{{fullDest this.strokeKey}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="">{{this.strokesPlayed}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="">{{this.win}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="">{{this.loss}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="playerSequenceAnalyzeSubServicePoints">
+    <table style="border: 1px solid white ! important;margin-top: 141px !important;" id="tblOne" class="table table-fixed table-striped ">
+        <thead style="border: 1px solid white;">
+            <tr style="" class="">
+                <th style="" class="AnalyticsTable_PlayerSeq">Service</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Placement</th>
+                <th style="" class="AnalyticsTable_PlayerSeq"># Times</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            {{#each fetchServicePointsData}}
+            <tr class="" id="allStrokesTable">
+                <td class="AnalyticsTableRow_PlayerSeq" style="">{{fullNAmeService this.serviceHand}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="">{{fullNAmeDest this.serviceDestination}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="">{{this.win}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="playerSequenceAnalyzeSubReceivePoints">
+    <table style="border: 1px solid white ! important;margin-top: 141px !important;" id="tblOne" class="table table-fixed table-striped ">
+        <thead style="border: 1px solid white;">
+            <tr style="" class="">
+                <th style="" class="AnalyticsTable_PlayerSeq">Service</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Placement</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Winning Shot</th>
+                <th style="" class="AnalyticsTable_PlayerSeq"># Times</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            {{#each fetchReceivePointsData}}
+            <tr class="" id="allStrokesTable">
+                <td class="AnalyticsTableRow_PlayerSeq" style="">{{fullNAmeService this.serviceHand}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="">{{fullNAmeDest this.serviceDestination}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="">{{fullNameWinningShot this.strokeHand this.strokeDestination}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="">{{this.win}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<!--background:{{backgroundDiv @index}} !important;-->
+<template name="playerSequenceServiceLoss">
+    <table style="border: 1px solid white ! important;margin-top: 141px !important;" id="tblOne" class="table table-fixed table-striped ">
+        <thead style="border: 1px solid white;">
+            <tr style="" class="">
+                <th style="" class="AnalyticsTable_PlayerSeq">Service</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Placement</th>
+                <th style="" class="AnalyticsTable_PlayerSeq"># Times</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            {{#each fetchServiceLossData}}
+            <tr class="" id="allStrokesTable">
+                <td class="AnalyticsTableRow_PlayerSeq" style="">{{fullNAmeService this.serviceHand}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="">{{fullNAmeDest this.serviceDestination}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="">{{this.win}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="playerSequenceRallyLength">
+    <table style="border: 1px solid white ! important;margin-top: 141px !important;" id="tblOne" class="table table-fixed table-striped ">
+        <thead style="border: 1px solid white;">
+            <tr style="" class="">
+                <th style="" class="AnalyticsTable_PlayerSeq">Rally Length</th>
+                <th style="" class="AnalyticsTable_PlayerSeq"># Times Played</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Wins</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Losses</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Win %</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            {{#each fetchRallyLengthData}}
+            <tr class="" id="">
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv @index}} !important;">{{this.sequenceLen}} shots</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv @index}} !important;">{{this.played}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv @index}} !important;">{{this.winCount}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv @index}} !important;">{{this.lossCount}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv @index}} !important;">{{normalizeDecimal this.efficiency}}%</td>
+
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<!--background:{{backgroundDiv @index}} !important;-->
+<template name="playerSequenceErrors">
+    <table style="border: 1px solid white ! important;margin-top: 141px !important;" id="tblOne" class="table table-fixed table-striped ">
+        <thead style="border: 1px solid white;">
+            <tr style="" class="">
+                <th style="" class="AnalyticsTable_PlayerSeq">From</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Stroke</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Net</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Miss</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Edge</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Out</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">#</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            {{#each fetchErrorSequenceData}} {{#let rowIndex=@index}}
+            <tr class="" id="">
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{fullNAmeDest this.fromDestination}}</td>
+
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{getFullNameOfStroke this.strokeHand}}</td>
+
+                {{#if checkNet}}
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{checkNet}}</td>
+                {{else}}
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">0</td>
+                {{/if}} {{#if checkMissed}}
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{checkMissed }}</td>
+                {{else}}
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">0</td>
+                {{/if}} {{#if checkEdge}}
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{checkEdge}}</td>
+                {{else}}
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">0</td>
+                {{/if}} {{#if checkOut}}
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{checkOut}}</td>
+                {{else}}
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">0</td>
+                {{/if}}
+
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{this.totalPlayed}}</td>
+            </tr>
+            {{/let}} {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="playerSequence3RDBall">
+    <table style="border: 1px solid white ! important;margin-top: 141px !important;" id="tblOne" class="table table-fixed table-striped ">
+        <thead style="border: 1px solid white;">
+            <tr style="" class="">
+                <th style="" class="AnalyticsTable_PlayerSeq">Service</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Placement</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Receive Shot</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Receive Placement</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">3rd Ball</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Winners</th>
+            </tr>
+        </thead>
+        <!--background:{{backgroundDiv rowIndex}} !important;-->
+        <tbody class="">
+            {{#each fetch3RDBallSequenceData}} {{#let rowIndex=@index}} {{#each this.dataSet}}
+            <tr class="" id="">
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{fullNAmeService ../serviceHand}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{fullNAmeDest ../serviceDestination}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{getFullNameOfStroke this.recvShot}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{fullNAmeDest this.recvDestination}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{getFullNameOfStroke this.strokeHand}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{this.winCount}}/{{this.count}}</td>
+            </tr>
+            {{/each}} {{/let}} {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="playerSequenceAllStrokes">
+    <table style="border: 1px solid white ! important;margin-top: 141px !important;" id="tblOne" class="table table-fixed table-striped ">
+        <thead style="border: 1px solid white;">
+            <tr style="" class="">
+                <th style="" class="AnalyticsTable_PlayerSeq">From</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Stroke</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Set Score</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Point Score</th>
+                <th style="" class="AnalyticsTable_PlayerSeq">Playing Record</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            {{#each fetchAllStrokesData}} {{#let rowIndex=@index}} {{#each this.dataSet}}
+            <tr class="" id="">
+                <!--{{#if checkWhichRowToBefilled @index}}
+                    <td class="AnalyticsTableRow_PlayerSeq" style="">{{fullNAmeDest ../fromDestination}}</td>
+                    <td class="AnalyticsTableRow_PlayerSeq" style="">{{getFullNameOfStroke ../strokeHand}}</td>
+                    {{else}}
+                    <td class="AnalyticsTableRow_PlayerSeq" style="">&nbsp;</td>
+                    <td class="AnalyticsTableRow_PlayerSeq" style="">&nbsp;</td>
+                    {{/if}}-->
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{fullNAmeDest ../fromDestination}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{getFullNameOfStroke ../strokeHand}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{this.p1Set}}-{{this.p2Set}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{this.p1Points}}-{{this.p2Points}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;">{{this.played}}/{{../totalPlayed}}</td>
+            </tr>
+            {{/each}} {{/let}} {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="playerServiceFault">
+    <table style="border: 1px solid white ! important;margin-top: 141px !important;" id="tblOne" class="table table-fixed table-striped ">
+        <thead style="border-spacing:0;">
+            <tr style="border-spacing:0;" class="">
+                <th style="border-spacing:0;" class="AnalyticsTable_PlayerSeq">Service</th>
+                <th style="border-spacing:0;" class="AnalyticsTable_PlayerSeq">Error</th>               
+                <th style="border-spacing:0;" class="AnalyticsTable_PlayerSeq">Set</th>
+                <th style="border-spacing:0;" class="AnalyticsTable_PlayerSeq">Points</th>
+                <th style="border-spacing:0;" class="AnalyticsTable_PlayerSeq"># Times</th>
+            </tr>
+        </thead>
+        <tbody class="border-spacing:0;">
+            {{#each fetchServiceserviceFaultSequenceData}}
+            {{#let rowIndex=@index}} 
+            {{#each this.dataSet}}
+            <tr class="" id="allStrokesTable">
+                <td class="AnalyticsTableRow_PlayerSeq" style="border-spacing:0;background:{{backgroundDiv rowIndex}} !important;">{{fullNAmeService ../serviceHand}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="border-spacing:0;background:{{backgroundDiv rowIndex}} !important;">{{fullNAmeDest ../serviceDestination}}</td>               
+                <td class="AnalyticsTableRow_PlayerSeq" style="border-spacing:0;background:{{backgroundDiv rowIndex}} !important;">{{this.p1Set}}-{{this.p2Set}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="border-spacing:0;background:{{backgroundDiv rowIndex}} !important;">{{this.p1Points}}-{{this.p2Points}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="border-spacing:0;background:{{backgroundDiv rowIndex}} !important;">{{this.count}}</td>
+            </tr>
+            {{/each}}
+            {{/let}}
+            {{/each}}
+        </tbody>
+    </table>
+</template>
+
+
+<template name="playerServiceResponse">
+    <table style="border: 1px solid white ! important;margin-top: 141px !important;" id="tblOne" class="table table-fixed table-striped ">
+        <thead style="border-spacing: 0;">
+            <tr style="border-spacing: 0;" class="">
+                <th style="border-spacing: 0;" class="AnalyticsTable_PlayerSeq">Service</th>
+                <th style="border-spacing: 0;" class="AnalyticsTable_PlayerSeq"> Placement</th>
+                <th style="border-spacing: 0;" class="AnalyticsTable_PlayerSeq">Receive Shot</th>
+                <th style=" border-spacing: 0;" class="AnalyticsTable_PlayerSeq"># Times</th>
+            </tr>
+        </thead>
+        <!--background:{{backgroundDiv rowIndex}} !important;-->
+        <tbody class="" style="border-spacing: 0;">
+            {{#each fetchServiceResponseData}} {{#let rowIndex=@index}} {{#each this.dataSet}}
+            <tr class="" id="">
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;">{{fullNAmeService ../serviceHand}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;">{{fullNAmeDest ../serviceDestination}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;">{{getFullNameOfStroke this.strokeHand}}</td>
+                <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;">{{this.count}}</td>
+            </tr>
+            {{/each}} {{/let}} {{/each}}
+        </tbody>
+    </table>
+</template>

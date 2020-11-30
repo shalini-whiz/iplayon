@@ -1,0 +1,61 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+<div class="container">
+
+
+     
+     
+
+       <br>
+       <div style="text-align:center !important;">
+       <span style="font-size:25px; text-align:center !important; font-weight:bold"> {{tournamentName}} </span> <br>
+       <span>held at 
+        <!--{{#if tournamentVenue}}
+          {{tournamentVenue}},  
+        {{/if}}-->
+
+        {{tournamentAddress}} between {{tournamentStartDate}} and {{tournamentEndDate}}</span>
+     </div>
+       <br><br>
+
+
+
+       <span style="font-size:20px;float:left"><i>Received from Mr/Ms. <span style="text-decoration: underline;font-weight:bold">{{player}}</span> a sum of Rs {{totalAmount}} <span style="text-decoration: underline;font-weight:bold">{{maxRoundName}}</span> towards fees to the following accounts - </i></span>
+
+       <br>
+       <table class="table scoreSheet">
+      <tbody>
+      <tr class ="receiptHeader">
+          <td>Event</td>
+          <td style='text-align:center !important'>Amount</td>
+      </tr>
+      {{#each paidRecords}}
+
+      <tr class="receiptData" style='border:0px !important' >
+          <td style='border:0px !important;text-align:left;border-right:2px solid black !important;'>{{eventName}}</td>
+          <td style='border:0px !important;text-align:center !important'>{{eventPrice}} </td>
+      </tr>
+      {{/each}}
+      <tr class="receiptFooter" style='height:20px !important'>
+          <td style="border-right:2px solid black !important;">TOTAL (In Rupees)</td>
+          <td style='text-align:center !important'>{{totalAmount}}</td>
+      </tr>
+     
+    </tbody>
+  </table>
+ 
+
+       <br>
+
+  <div style='font-size:20px;text-align:left !important'>
+    <span style='display: block'><br><br></span>
+
+    <span >Accounts Department</span><br>
+    <span >Place : {{tournamentVenue}} </span><br>
+    <span >Date : </span>
+  </div>
+
+</div>
+

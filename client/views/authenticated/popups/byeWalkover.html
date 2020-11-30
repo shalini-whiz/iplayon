@@ -1,0 +1,356 @@
+<template name="byeWalkOver">
+
+  <form id="application-byeWalkOver">
+    <div class="modal" id="byeWalkOver" aria-hidden="true">
+      <div id="subDomainCenter" class="modal-dialog eventAddTourModal-sm" style="width:400px !important;">
+        <div class="eventAddTourPopup" style="width:400px !important;">
+          <div class="modal-content">
+            <div class="modal-header headerClass">
+              <h5 class="modal-title myModalLabel" id="myModalLabel">Set Bye or Walkover</h5>
+            </div>
+            <div class="modal-body subDomainModalBody" style="padding:15px !important;">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important">
+                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important; border:1px solid black;border-radius:5px;height:100%;">
+                  <div class="row no-gutter">
+                    <ul style="list-style: none;margin: 0;padding: 0;">
+                      <li>
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="">
+                          <input class="col-md-1 col-xs-1 col-lg-1 col-sm-1" type="radio" id="setBye" name="set" style="height:100%;margin-top:0px !important;cursor:pointer;" {{checkByeLabel bye}} value="Bye">
+                          <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTag" id="byePTagsub">Bye</p>
+                        </div>
+                        <ul style="list-style:none;margin: 0;padding: 0;margin-left: 20px;">
+                          <li>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="">
+                              <input type="radio" name="byeWalkover" class="col-md-1 col-xs-1 col-lg-1 col-sm-1 byeCheck" id="byeA" style="height:100%;margin-top: 0px;cursor:pointer;" value="{{namePlayerA}}" {{setBye matchPlayerA}}/>
+                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub">{{namePlayerA}}</p>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top:0px;">
+                              <input type="radio" class="col-md-1 col-xs-1 col-lg-1 col-sm-1 byeCheck" name="byeWalkover" id="byeB" style="height:100%;margin-top: 0px;cursor:pointer;" {{setBye matchPlayerB}} value="{{namePlayerB}}" />
+                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub">{{namePlayerB}}</p>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top: 0px; ">
+                          <input class="col-md-1 col-xs-1 col-lg-1 col-sm-1" type="radio" id="setWalkover" name="set" style="height:100%;margin-top:0px !important;;cursor:pointer;" value="Walkover" {{checkWalkoverLabel walkover}}>
+                          <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTag" id="byePTagsub">Walkover</p>
+                        </div>
+                        <ul style="list-style:none;margin: 0;padding: 0;margin-left: 20px;">
+                          <li>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="">
+                              <input type="radio" id="walkoverA" name="byeWalkover" class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="height:100%;margin-top: 0px;cursor:pointer;" value="{{namePlayerA}}" {{setWalk matchPlayerA}}/>
+                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub">{{namePlayerA}}</p>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top:0px;">
+                              <input type="radio" class="col-md-1 col-xs-1 col-lg-1 col-sm-1" name="byeWalkover" id="walkoverB" style="height:100%;margin-top: 0px;cursor:pointer;" value="{{namePlayerB}}" {{setWalk matchPlayerB}}/>
+                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub">{{namePlayerB}}</p>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+
+                      <!-- shalini code starts here -->
+
+                      <li>
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top: 0px; ">
+                          <input class="col-md-1 col-xs-1 col-lg-1 col-sm-1" type="radio" id="setCompleted" name="set" style="height:100%;margin-top:0px !important;;cursor:pointer;" value="Completed" {{checkCompletedLabel completed}}>
+                          <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTag" id="byePTagsub">Completed</p>
+                        </div>
+                        <ul style="list-style:none;margin: 0;padding: 0;margin-left: 20px;">
+                          <li>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="">
+                              <input type="radio" id="completedA" name="byeWalkover" class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="height:100%;margin-top: 0px;cursor:pointer;" value="{{namePlayerA}}" {{setCompleted matchPlayerA}}/>
+                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub">{{namePlayerA}}</p>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top:0px;">
+                              <input type="radio" class="col-md-1 col-xs-1 col-lg-1 col-sm-1" name="byeWalkover" id="completedB" style="height:100%;margin-top: 0px;cursor:pointer;" value="{{namePlayerB}}" {{setCompleted matchPlayerB}}/>
+                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub">{{namePlayerB}}</p>
+                            </div>
+                          </li>
+                        </ul>
+
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " style="">
+
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="scoresInfo" style='display:none'>
+                            <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+                              <p class="byePTagsub" id="byePTagsub">Scores</p>
+                            </div>
+                            {{#each possibleScores}}
+                            <div data-value="{{@index}}" id="compSet{{@index}}" class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores">
+                              <input type="text" style="width:24px;" id="score" name="score" {{scoreDispType tourIdDraws}} placeholder="-" value="{{CS @index}}" />
+                            </div>
+                            {{/each}}
+                            <!--  
+                               <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="compSet1">
+                                <input type="text" style="width:22px;" id= "score" name="score" {{scoreDispType tourIdDraws}} placeholder="-" value="{{AS1}}"/>
+                              </div>
+                              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="compSet2">
+                                <input type="text" style="width:22px;" id= "score" name="score" {{scoreDispType tourIdDraws}} placeholder="-" value="{{AS2}}"/>
+                              </div>
+                              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="compSet3">
+                                <input type="text" style="width:22px;" id= "score"  name="score" {{scoreDispType tourIdDraws}} placeholder="-" value="{{AS3}}"/>
+                              </div>
+                              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="compSet4">
+                                <input type="text" style="width:22px;" id= "score" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{AS4}}"/>
+                              </div>
+                              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="compSet5">
+                                <input type="text" style="width:22px;" id= "score" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{AS5}}"/>
+                              </div>
+                              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="compSet6">
+                                <input type="text" style="width:22px;" id= "score" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{AS6}}"/>
+                              </div>
+                              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="compSet7">
+                                <input type="text" style="width:22px;" id= "score" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{AS7}}"/>
+                              </div> -->
+                          </div>
+
+                        </div>
+
+                      </li>
+
+                      <!-- shalini code ends here -->
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height:auto !important;">
+                <p style="font-size:12px;color:red;cursor:default;" id="editSettingsPopupError"></p>
+                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+              </div>
+            </div>
+
+            <!-- shalini codes starts here -->
+
+            <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-right:0px !important;padding-bottom: 4px;">
+                <div class="row">
+
+                  <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " style="text-align: center;">
+                    <!--<div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 ">
+                    </div>
+                    <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style=''>-->
+                        {{#if checkLockStatusSet lockStatus}}
+                          <button type="submit" class="ip_button_Popup_Black" id="savebyewalkover" style="width:auto !important">Set
+                          </button>
+
+
+                          <button type="button" class="ip_button_Popup_Black" id="notifyMatchSet" style="width:auto !important">Notify
+                          </button>
+
+                          <button type="button" class="ip_button_Popup_Black" id="notifyByRound" style="width:auto !important">Notify by Round
+                </button>
+
+
+                           <button type="button" class="ip_button_Popup_Red" id="cancelbyewalkover" data-dismiss="modal">Cancel
+                        </button>
+                        {{else}}
+
+                         <button type="button" class="ip_button_Popup_Black" id="" data-dismiss="modal">OK
+                        </button>  
+                          <button type="button" class="ip_button_Popup_Red" id="cancelbyewalkover" data-dismiss="modal">Cancel
+                        </button>
+                        {{/if}}
+                     
+                    <!--</div>
+                    <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2">
+                    </div>-->
+                  </div>
+                </div>
+              </div>
+              <div class="row no-gutter col-md-6 col-xs-6 col-sm-6 col-lg-6" style="">
+                  <div class="checkAcceptTerms" style="height: 2.4em !important;">
+                    <input value="" name="checkAcceptbox" id="checkAcceptboxTweett" class="checkboxAccept" checked="" type="checkbox">
+                    <p class="downloadAcceptTitle" style="margin-top: 0px; margin-left: 0px; color: rgb(88, 88, 88);"><span style="color: rgb(0, 172, 237); font-size: 14px ! important; margin-top: 3px; cursor: default; margin-left: 5px;" class="fa fa-twitter" aria-hidden="true">Auto Tweet</span></p>
+                  </div>
+              </div>
+              <!--{{#if checkLockStatusSet lockStatus}}
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " style="text-align: center;">
+                <button type="button" class="ip_button_Popup_Black" id="notifyByRound" style="">Notify by Round
+                </button>
+              </div>
+              {{/if}}-->
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</template>
+
+
+<template name="byeWalkOver_team">
+  <form id="application-byeWalkOver_team">
+    <div class="modal" id="byeWalkOver_team" aria-hidden="true">
+      <div id="subDomainCenter" class="modal-dialog eventAddTourModal-sm" style="width:400px !important;">
+        <div class="eventAddTourPopup" style="width:400px !important;">
+          <div class="modal-content">
+            <div class="modal-header headerClass">
+              <h5 class="modal-title myModalLabel" id="myModalLabel">Set Bye or Walkover</h5>
+            </div>
+            <div class="modal-body subDomainModalBody" style="padding:15px !important;">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important">
+                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important; border:1px solid black;border-radius:5px;height:100%;">
+                  <div class="row no-gutter">
+                    <ul style="list-style: none;margin: 0;padding: 0;">
+                      <li>
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="">
+                          <input class="col-md-1 col-xs-1 col-lg-1 col-sm-1" type="radio" id="set_teamBye" name="set_team" style="height:100%;margin-top:0px !important;cursor:pointer;" {{checkByeLabel_Team bye}} value="Bye">
+                          <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTag" id="byePTagsub">Bye</p>
+                        </div>
+                        <ul style="list-style:none;margin: 0;padding: 0;margin-left: 20px;">
+                          <li>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="">
+                              <input type="radio" name="byeWalkover_Team_Radio" class="col-md-1 col-xs-1 col-lg-1 col-sm-1 byeCheck" id="byeA_team" style="height:100%;margin-top: 0px;cursor:pointer;" value="{{namePlayerA_team}}" {{checkBye_Team namePlayerA_team}}/>
+                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub">{{namePlayerA_team}}</p>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top:0px;">
+                              <input type="radio" class="col-md-1 col-xs-1 col-lg-1 col-sm-1 byeCheck" name="byeWalkover_Team_Radio" id="byeB_team" style="height:100%;margin-top: 0px;cursor:pointer;" {{checkBye_Team namePlayerB_team}} value="{{namePlayerB_team}}" />
+                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub">{{namePlayerB_team}}</p>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top: 0px; ">
+                          <input class="col-md-1 col-xs-1 col-lg-1 col-sm-1" type="radio" id="set_teamWalkover" name="set_team" style="height:100%;margin-top:0px !important;;cursor:pointer;" value="Walkover" {{checkWalkoverLabel_Team walkover}}>
+                          <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTag" id="byePTagsub">Walkover</p>
+                        </div>
+                        <ul style="list-style:none;margin: 0;padding: 0;margin-left: 20px;">
+                          <li>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="">
+                              <input type="radio" id="walkoverA_team" name="byeWalkover_Team_Radio" class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="height:100%;margin-top: 0px;cursor:pointer;" value="{{namePlayerA_team}}" {{checkWalk_Team namePlayerA_team}}/>
+                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub">{{namePlayerA_team}}</p>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top:0px;">
+                              <input type="radio" class="col-md-1 col-xs-1 col-lg-1 col-sm-1" name="byeWalkover_Team_Radio" id="walkoverB_team" style="height:100%;margin-top: 0px;cursor:pointer;" value="{{namePlayerB_team}}" {{checkWalk_Team namePlayerB_team}}/>
+                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub">{{namePlayerB_team}}</p>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+
+                      <!-- shalini code starts here -->
+
+                      <li>
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top: 0px; ">
+                          <input class="col-md-1 col-xs-1 col-lg-1 col-sm-1" type="radio" id="set_teamCompleted" name="set_team" style="height:100%;margin-top:0px !important;;cursor:pointer;" value="Completed" {{checkCompletedLabel_Team completed}}>
+                          <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTag" id="byePTagsub">Completed</p>
+                        </div>
+                        <ul style="list-style:none;margin: 0;padding: 0;margin-left: 20px;">
+                          <li>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="">
+                              <input type="radio" id="completedA_team" name="byeWalkover_Team_Radio" class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="height:100%;margin-top: 0px;cursor:pointer;" value="{{namePlayerA_team}}" {{checkCompleted_Team namePlayerA_team}}/>
+                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub">{{namePlayerA_team}}</p>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top:0px;">
+                              <input type="radio" class="col-md-1 col-xs-1 col-lg-1 col-sm-1" name="byeWalkover_Team_Radio" id="completedB_team" style="height:100%;margin-top: 0px;cursor:pointer;" value="{{namePlayerB_team}}" {{checkCompleted_Team namePlayerB_team}}/>
+                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub">{{namePlayerB_team}}</p>
+                            </div>
+                          </li>
+                        </ul>
+
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " style="">
+
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="scoresInfo_team" style='display:none'>
+                            <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+                              <p class="byePTagsub" id="byePTagsub">Scores</p>
+                            </div>
+                            {{#each possibleScores_team}}
+                            <div data-value="{{@index}}" id="compSet_team{{@index}}" class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores">
+                              <input type="text" style="width:22px;" id="score_team" name="score_team" {{scoreDispType tourIdDraws}} placeholder="-" value="{{CS_Team @index}}" />
+                            </div>
+                            {{/each}}
+                            <!--  
+                               <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="compSet1">
+                                <input type="text" style="width:22px;" id= "score" name="score" {{scoreDispType tourIdDraws}} placeholder="-" value="{{AS1}}"/>
+                              </div>
+                              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="compSet2">
+                                <input type="text" style="width:22px;" id= "score" name="score" {{scoreDispType tourIdDraws}} placeholder="-" value="{{AS2}}"/>
+                              </div>
+                              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="compSet3">
+                                <input type="text" style="width:22px;" id= "score"  name="score" {{scoreDispType tourIdDraws}} placeholder="-" value="{{AS3}}"/>
+                              </div>
+                              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="compSet4">
+                                <input type="text" style="width:22px;" id= "score" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{AS4}}"/>
+                              </div>
+                              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="compSet5">
+                                <input type="text" style="width:22px;" id= "score" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{AS5}}"/>
+                              </div>
+                              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="compSet6">
+                                <input type="text" style="width:22px;" id= "score" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{AS6}}"/>
+                              </div>
+                              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="compSet7">
+                                <input type="text" style="width:22px;" id= "score" name="score" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{AS7}}"/>
+                              </div> -->
+                          </div>
+
+                        </div>
+
+                      </li>
+
+                      <!-- shalini code ends here -->
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height:1.5em !important;">
+                <p style="font-size:12px;color:red;cursor:default;" id="editSettingsPopupError"></p>
+                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+              </div>
+            </div>
+
+            <!-- shalini codes starts here -->
+
+            <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-right:0px !important;padding-bottom: 4px;">
+                <div class="row">
+                  <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 ">
+                    <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 ">
+                    </div>
+                    <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 " style='text-align:center;'>
+                      
+                      <button type="button" class="ip_button_Popup_Black" id="savebyewalkover_team_SET" style="">Set
+                      </button>
+                      <button type="button" class="ip_button_Popup_Red" id="cancelbyewalkover_team" >Cancel
+                      </button>
+                    </div>
+                    <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 ">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row no-gutter col-md-6 col-xs-6 col-sm-6 col-lg-6" style="">
+                  <div class="checkAcceptTerms" style="height: 2.4em !important;">
+                    <input value="" name="checkAcceptbox" id="checkAcceptboxTweett" class="checkboxAccept" checked="" type="checkbox">
+                    <p class="downloadAcceptTitle" style="margin-top: 0px; margin-left: 0px; color: rgb(88, 88, 88);"><span style="color: rgb(0, 172, 237); font-size: 14px ! important; margin-top: 3px; cursor: default; margin-left: 5px;" class="fa fa-twitter" aria-hidden="true">Auto Tweet</span></p>
+                  </div>
+              </div>
+            </div>
+            <!-- shalini codes ends here -->
+
+            <!--<input type="text" id="test" name="test" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>
+                            <input type="text" id="test1" name="test1" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>
+                            <input type="text" id="test2" name="test2" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>
+                            <input type="text" id="test3" name="test3" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</template>

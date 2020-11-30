@@ -1,0 +1,92 @@
+<!-- Template to create events-->
+
+<template name="insertPlayers">
+    <form id="eventCreation">
+        <!--Main div of the template uses class name mainContent *CSSLink* : createEvent.css-->
+        <div class="row mainContent_myEvents" style="padding-top:54px;">
+            <div class="row-same-height">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" >
+                    <div class="headingMenuD">
+                        <p class="headingMenuC" style="cursor:default;">Insert Users</p>
+                        <input type="button" id="cancelMenu" class="ip_button_LightGrey" value="Cancel" />
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top:2px;height:84px;">
+                    <div class="row no-gutter" style="">
+                        <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                            <div class="row no-gutter" style="">
+                                <p>insert users:</p>
+                                <input type="file" class="ip_button" value = 'Upload File' id='${multipartFilePath}' name='insertPlayers'  onclick="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> 
+                                 <p class="tourMenu" style="color:green" id="inserted"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                            <div class="row no-gutter" style="">
+                                <p>change club name id:</p>
+                                <input type="button" value="update" id="changeclubNameId"> 
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                            <div class="row no-gutter" style="">
+                                <p>download csv:</p>
+                                <input type="button" value="download users" id="downloadCsv"> 
+                            </div>
+                        </div>
+                        <!--div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-left:2px!important;">
+                            <div class="row no-gutter" style="">
+                                <div id="createMenuEvent" class="menuEvent">
+                                    <p class="tourMenu1" >Weekend League</p>
+                                </div>
+                            </div>
+                        </div-->
+                    </div>
+                </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top:2px;height:50px;overflow-y:scroll;border:1px solid black;">
+                    <b>updated players:</b><br>
+                        {{#each changedNames}}
+                        {{this}}<br>
+                        {{/each}}
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top:2px;height:auto;;border:1px solid black;">
+                        <input type="button" value="download users json" id="downloadAllCSV"> 
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top:2px;height:auto;border:1px solid black;">
+                    <b>delete players by name:</b><br>
+                    <input type="text" style="font-size:12px;" id="deleteUserName">
+                    <input type="button" value="delete" id="delete">
+                    <input type="button" value="view deleted user id" id="deletedView">
+                    </div>
+                    <!--div class="row no-gutter" style="">
+                        <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
+                            <p>insert academy:</p>
+                            <div class="row no-gutter" style="">
+                               
+                                <input type="file" class="ip_button" value = 'Upload File' id='${multipartFilePath}' name='insertClub'  onclick="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> 
+                                 <p class="tourMenu" style="color:green" id="insertClub"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top:2px;">
+                    <div class="row no-gutter" style="">
+                        <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
+                            <div class="row no-gutter" style="">
+                                <div id="createMenuCoaching"  class="menuTournament2">
+                                    <p class="tourMenu2">Coaching Camp</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-left:2px!important;">
+                            <div id="createMenuEvent2" class="menuEvent2">
+                                <p class="tourMenu3">Selection Trials</p>
+                            </div>
+                        </div>
+                    </div>
+                </div-->
+            </div>
+            {{> alreadySubscribed}}
+            <div id="confirmInsertPlayerRender"></div>
+        </div>
+    </form>
+</template>

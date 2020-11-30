@@ -1,0 +1,115 @@
+<html lang="en">
+<head>
+    <style type="text/css">
+      {{css}}
+    </style>
+</head>
+<body>
+  <div class="container">
+        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+          <img src="{{imageURL}}/logo.png"  style="width:90%;height:12%;float:left;margin:0px !important;margin-top:-3px !important;border:0"/>
+        </div>
+        <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8" style="padding:0px!important;">
+          <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading" style="">Score Sheet</p>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:auto!important;">
+                <p class="pclassPDFHeading" style="">{{tournamentName_team}} - {{drawsEventName}}</p>
+            </div>
+          
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading2" style="margin-top:0px;">{{eventDate_team}}, {{domainName_team}}</p>
+            </div>
+           
+        </div>
+        {{#if get5sImage}}
+        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+          {{#if get5sImage.url}}
+          <img src="{{imageURL}}{{get5sImage.url}}" style="width:94%;height:14%;float:right;margin:0px !important;margin-top:-3px !important;border:0"/>
+          {{/if}}
+        </div>
+        {{/if}}
+  </div>
+  
+  {{#if getRoundRobinRecords}}
+    {{#each getRoundRobinRecords}}
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 ">
+          <table class="table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne"  style="width:100%">
+              <tbody>
+
+                <tr class="headerAnalytics3" id="headerAnalytics3">
+                  <td class="robin_header" style="border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;">
+                    </p></td>
+                  <td class="robin_header" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;">
+                      {{this.groupName}}
+                    </p>
+                  </td>
+                  {{#each loopCount this.groupMaxSize}}
+                    <td class="robin_header" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+                      <p style="text-align:center;margin:0px;margin-top:2px;">
+                        {{incremented @index}}
+                      </p>
+                      </td>
+                  {{/each}}
+                  <td class="robin_header" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;">
+                      Pts.
+                    </p>
+                  </td>
+                  <td class="robin_header" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;">
+                      Pos.
+                    </p>
+                  </td>
+                </tr>
+                {{#each loopCount this.groupMaxSize}}
+                  <tr class="headerAnalytics3" id="headerAnalytics3">
+                    <td class="robin_td" style="border-spacing:0;padding:2px !important;">
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">
+                        {{incremented @index}}
+                      </p>
+                    </td>
+                    <td class="robin_td" style="border-spacing:0;padding:2px !important;">
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">
+                        
+                      </p>
+                    </td>
+                
+                    {{#each fetchRowRecord @index ../groupDetails ../groupMaxSize}} 
+                      {{#if compare this.rowNo this.colNo}} 
+                        <td class="robin_td robin_tdcolor" id="" name={{../../_id}} style="border-spacing:0;padding:2px !important;">   
+                          <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                          </p>                      
+                        </td>
+                      {{else}}
+                        <td class="robin_td " id="detailScorePop" name={{../../_id}} style="border-spacing:0;padding:2px !important;">  
+                            <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">
+                              
+                            </p>
+                          </td>
+                                   
+                      {{/if}}                                       
+                    {{/each}}
+                    <td class="robin_td" style="border-spacing:0;padding:2px !important;" >
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">
+                      </p>
+                    </td>
+                    <td class="robin_td" style="border-spacing:0;padding:2px !important;" >
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">
+                      </p>
+                    </td>
+                  </tr>
+                {{/each}}
+
+              </tbody>
+            </table>
+        </div>
+    {{/each}}
+  {{/if}}
+
+</body>
+</html>

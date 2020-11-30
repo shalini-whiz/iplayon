@@ -1,0 +1,549 @@
+<template name="roundRobinDraws">
+    {{> roundRobinMenu}} 
+    {{#if showRoundRobinDraws}}
+      <div style='background-color:white'>
+        {{> roundRobinDrawView}}
+      </div>
+    {{/if}} 
+    {{#if showRoundRobinTeamDraws}}
+      <div style='background-color:white'>
+        {{> roundRobinTeamDrawView}}
+      </div>
+    {{/if}}
+</template>
+
+
+<template name="roundRobinMenu">
+	{{loginOrganizer}}
+	<div class="row navigationBar navbar-fixed-top" style='height:70px !important'>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div style="font-size:14px;color:#FFA500;font-weight:bold">{{tournamentName}} - RoundRobin</div>
+        </div>
+        <div class="container-fluid">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 ">
+
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                <span style="" class="websiteHeader">iPlayOn</span>
+              </div>
+              <!--{{#if upcomingTournament}}-->
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="drawsMenu">
+                <ul class="nav nav-pills nav-justified">
+                  <li class="dropdown" style='' id="drawsSelectionMenu_RR">
+                    <a class="dropdown-toggle customDropDown" data-toggle="" href="#">Draws</a>
+                    <ul class="dropdown-menu dropdown-menu-bottom customInnerDropDown">
+                      
+                      <li class="divider"></li>
+                      <li><a href="#" id="createDrawBtn_RR" class ="customInnerDropDownAnchor">Create Draws</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#" id='resetDraw_RR' class ="customInnerDropDownAnchor" >Reset Draws</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#" id='downloadTemplate_RR' class ="customInnerDropDownAnchor" >Download Draws</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#" id='downloadWinnerDraws_RR' class ="customInnerDropDownAnchor" >Download Winners</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <!--{{/if}}-->
+
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="eventsMenu">
+               <ul class="nav nav-pills nav-justified">
+                <li class="dropdown" id="eventSelectionMenu_RR">                  
+                  <a class="dropdown-toggle customDropDown" data-toggle="" href="#" id='eventSelectionAnchor_RR'>Events</a>
+                  <ul class="dropdown-menu dropdown-menu-bottom customInnerDropDown" style="max-height:200px;min-height:20px;overflow-y:auto">
+                  {{#if selectedSportOrNot}} 
+                    {{#each drawsEvents}}
+                        {{#if selectedSportFromLive this}}
+                          <li><a href="#" id="event_selection_RR" class ="customInnerDropDownAnchor">{{this}}</a></li>
+                          <li class="divider"></li>
+                          {{#each drawsEvents}}
+                            {{#if selectedEvent this}}
+                            {{else}}
+                            <li><a href="#" id="event_selection_RR" class ="customInnerDropDownAnchor">{{this}}</a></li>  
+                            <li class="divider"></li>
+                            {{/if}}
+
+
+                          {{/each}}
+
+
+                        {{/if}} 
+                        {{else}}
+                            <li>
+                          <a href="#" id="event_selection_RR" class ="customInnerDropDownAnchor" style="cursor:default !important">Empty Events</a></li>   
+                      {{/each}}
+                    {{else}} 
+                      {{#each drawsEvents}}
+                        <li><a href="#" id="event_selection_RR" class ="customInnerDropDownAnchor">{{this}}</a></li>  
+                        <li class="divider"></li>
+                        {{else}}
+                        <li>
+                          <a href="#" id="" class ="customInnerDropDownAnchor not-active" style="cursor:default !important">Empty Events</a></li>  
+                      {{/each}}
+                    {{/if}}
+                   </ul>
+                  </li>
+                </ul>
+              </div>
+
+              
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id='stationaryMenu'>
+                <ul class="nav nav-pills nav-justified">
+                  <li class="dropdown" style='' id="stationarySelectionMenu_RR">
+                    <a class="dropdown-toggle customDropDown" data-toggle="" href="#">Stationery</a>
+                    <ul class="dropdown-menu dropdown-menu-bottom customInnerDropDown">
+                      <li><a href="#" id="receiptBtn_RR" class ="customInnerDropDownAnchor">Receipt...</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#" id="receiptBtnForTeamEvents_RR" class ="customInnerDropDownAnchor">Receipt For Team Events...</a></li>
+                      <li class="divider"></li>
+                      
+                      <li><a href="#" id='scoreSheetBtn_RR' class ="customInnerDropDownAnchor" {{checkeveOrg tourIdDraws}}>Score Sheets...</a></li>
+                      <li class="divider"></li>
+                      <li style='display:none'><a href="#" id='resultsBtn' class ="customInnerDropDownAnchor" >Results</a></li>
+                      <li style='display:none' class="divider"></li>
+                      <li><a href="#" id='certificateBtn_RR' class ="customInnerDropDownAnchor" >Certificate...</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#" id='leaveRequestBtn_RR' class ="customInnerDropDownAnchor" >Leave Request...</a></li>
+                      <!--<li class="divider"></li>
+                      <li><a href="#" id='printScreenEventDraws' class ="customInnerDropDownAnchor" >Print Draws</a></li>
+                      -->
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" id='resultsMenu'>
+                <ul class="nav nav-pills nav-justified">
+                  <li class="dropdown" style='' id="resultsSelectionMenu_RR">
+                    <a id="resultSelectionAnchor" class="dropdown-toggle customDropDown" data-toggle="" href="#">Results</a>
+                    <ul class="dropdown-menu dropdown-menu-bottom customInnerDropDown">
+                      <li><a href="#" id="emailResultBtn_RR" class ="customInnerDropDownAnchor">Email Results...</a></li>
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+            
+            
+            </div>
+          </div>
+        </div>
+    </div>
+    <div id="createDrawPopUp"></div>
+    <div id="downloadTemplateRRPopUp"></div>
+    <div id="downloadWinnerRRPopUp"></div>
+
+    <div id="resetDrawsDialogPopUp"></div>
+    <div id="setRRScorePopUp"></div>
+    <div id="setRRStandingPopUp"></div>
+    <div id="continuePopUp"></div>
+    <div id="teamDrawsCapturePopUp"></div>
+    <div id="teamDrawsSpecificationPopUp"></div>
+    <div id="teamDrawsDetailsPopUp"></div>
+
+
+    <div id="receiptPopUp"></div>
+    <div id="leaveRequestPopUp"></div>
+    <div id="scoreSheetPopUp"></div>
+    <div id="certificatePopUp"></div>
+    <div id="resultsPopUp_RR"></div>
+    <div id="matchRROrderPopUp"></div>
+    <div id="groupScoreViewPopUp"></div>
+
+
+
+   {{> alreadySubscribed}}
+   {{> confirmlogout}}
+   {{> confirmOk}}
+   {{> confirmOkCancel}}
+
+</template>
+
+
+
+<template name="resetDrawsDialog">
+  <form id="application-resetDrawsDialog">
+  <div class="modal" id="resetDrawsDialog" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm" style="transform: translate(0px, 0px)!important;">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style=""><span class="glyphicon glyphicon-lock" style="color:white;margin-right: 6px;margin-left: -7px !important;margin-top: 3px;"></span>Confirm Password</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body  modal-body-modReg1" style="min-height: 3.4em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                      <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;padding-left: 47px;">
+                          <p class="labelWhoNewChangePas">
+                            Password:
+                          </p>
+                      </div>
+                       <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                          <input type="password" autocomplete="off" id="oldPassword" value="" maxlength="60" placeholder="enter your password" name="oldPassword" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                        </div>
+                  </div>
+              </div>
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <p style="font-size:12px;color:red;cursor:default;" id="changePasswordError"></p>
+                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-right:0px !important;padding-bottom: 4px;">
+                    <input type="submit" class="ip_button_Popup_Black" id="changePasswordSubmit" style="order:2;margin:0px;padding:0px; height:2.2em!important;margin-right:0px;" value="Ok">
+                  </div>
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-left:0px !important;padding-bottom: 4px;padding-right: 111px;">
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                  </div>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+ </form>
+</template>
+
+
+<template name="roundRobinDrawView">
+  {{#if Template.subscriptionsReady}}
+  <div class ="row">
+      <p class="ipRoundsHeader">{{drawsEventName}}</p>
+  </div>
+  {{#if getRoundRobinRecords}}
+    {{#if drawsOrderPlay}}
+     <div class ="row">
+      <p class="" style="margin:20px;font-size:14px; color:#FFA500; font-weight:bold">Match Order<span id="editMatchOrder" style="color:#007700; font-size: 14px; margin:1px 0px 0px 1px; width:15%; transform: rotate(0deg); cursor: pointer" class="glyphicon glyphicon-pencil eventEdit_my"></span></p>
+    </div>
+    {{/if}}
+    {{#each getRoundRobinRecords}}
+      <div class ="row subDomainModalBody" >
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 ">
+          {{#if this.orderPlay}}
+          <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+            <table class="table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne"  style="width:100%;table-layout:fixed;" >
+              <tbody>            
+                <tr class="headerAnalytics3" id="headerAnalytics3">
+                  <td class="robin_header" style="border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;font-size:12px;">
+                    Match</p>
+                  </td>
+                  <td class="robin_header" style="border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;font-size:12px;">
+                    Date</p>
+                  </td>
+                  <td class="robin_header" style="border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;font-size:12px;">
+                    Time</p>
+                  </td>
+                  <td class="robin_header" style="border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;font-size:12px;">
+                    Table</p>
+                  </td>
+                </tr>
+                {{#each this.orderPlay}}
+                  <tr class="headerAnalytics3" id="headerAnalytics3">
+                    <td class="robin_td" style="border-spacing:0;padding:2px !important;">
+                      <p style="text-align:center;margin:0px;font-size:9px;">
+                        {{#each this.matchOrder}}
+                          {{this}}<br>
+                        {{/each}}
+                        
+                      </p>
+                    </td>
+                     <td class="robin_td" style="border-spacing:0;padding:2px !important;">
+                       -
+                     </td>
+                      <td class="robin_td" style="border-spacing:0;padding:2px !important;">-
+                      </td>
+                       <td class="robin_td" style="border-spacing:0;padding:2px !important;">-</td>
+                  </tr>
+                {{/each}}
+              </tbody>
+
+
+              
+            </table>
+          </div>
+          {{/if}}
+          <div class={{orderPlayExists this}}>
+
+           <table class="table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="table-layout:fixed;">
+              <tbody>
+                <tr class="headerAnalytics3" id="headerAnalytics3">
+                  
+                  <td class="robin_header" style=""></td>
+                  <td class="robin_header" style="font-weight: bold;">{{this.groupName}} <span class="glyphicon glyphicon-print" id="groupScoreSheet">
+                    
+                  </span></td>
+                  {{#each loopCount this.groupMaxSize}}
+                    <td class="robin_header" style="">{{incremented @index}}</td>
+                  {{/each}}
+                  <td class="robin_header" style="">Points
+                    {{#if loginOrganizer}}
+                      <!--{{#if upcomingTournamentDraw}}-->
+                        <span class="glyphicon glyphicon-pencil" style="padding:5px !important;color:#007700; font-size: 12px; transform: rotate(0deg); cursor: pointer" id="editPoints{{this.groupNumber}}"></span>
+                        <span style="padding:5px !important;font-size: 12px; color:maroon;transform: rotate(0deg); cursor: pointer;display:none" id="closeeditpoints{{this.groupNumber}}" >close edit</span>
+                      <!--{{/if}}-->
+                    {{/if}}    
+                  </td>
+                  <td class="robin_header" style="">Standings
+                    {{#if loginOrganizer}}
+                      <!--{{#if upcomingTournamentDraw}}-->
+                        <span class="glyphicon glyphicon-pencil" style="padding:5px !important;color:#007700; font-size: 12px; transform: rotate(0deg); cursor: pointer" id="editStanding{{this.groupNumber}}"></span>
+                        <span style="padding:5px !important;font-size: 12px; color:maroon;transform: rotate(0deg); cursor: pointer;display:none" id="closeedit{{this.groupNumber}}" >close edit</span>
+                      <!--{{/if}}-->
+                    {{/if}}    
+                  </td>
+                </tr>
+                {{#each loopCount this.groupMaxSize}}
+                  <tr class="headerAnalytics3" id="headerAnalytics3">
+                   
+
+                    <td class="robin_td">{{incremented @index}}</td>
+
+                    <td class="robin_td">
+                      {{#if standingExists @index ../groupStandingInfo}}
+
+                        {{fetchRowMember @index ../groupDetails ../groupStandingInfo}}
+
+                      {{else}}
+                          BYE
+                      {{/if}}
+
+                      </td>
+
+                      {{#if loginOrganizer}}
+                        {{#each fetchRowRecord @index ../groupDetails ../groupMaxSize}} 
+                    
+                          {{#if compare this.rowNo this.colNo}} 
+                            <td class="robin_td robin_tdcolor" id="" name={{../../_id}} > &nbsp;&nbsp;&nbsp;          
+                            </td>
+                          {{else}}
+                            {{#if and this.playersID.playerAId this.playersID.playerBId}}
+                              <td class="robin_td " id="detailScorePop" name={{../../_id}} style='cursor:pointer'>   
+                                {{this.setWins.playerA}} - {{this.setWins.playerB}}
+                              </td>
+                            {{else}}
+                                <td class="robin_td " id="" name={{../../_id}} >
+                                &nbsp;&nbsp;&nbsp;</td>
+                            {{/if}}
+
+                          {{/if}}  
+                        {{/each}}
+                        <td class="robin_td" id="setStandingRank" name={{../_id}}>
+                          {{#if standingExists @index ../groupStandingInfo}}
+                            <input autocomplete="off"  type="text"  readonly
+                            style="font-size:12px;width:20%;text-align:center;" value="{{fetchRowPoints @index ../groupStandingInfo}}" id='setStandingPointScore{{../groupNumber}}' >
+                            {{/if}}
+                          </td>
+                         <td class="robin_td" id="setStandingRank" name={{../_id}}>
+                          {{#if standingExists @index ../groupStandingInfo}}
+                            <input autocomplete="off"  type="text"  readonly
+                            style="font-size:12px;width:20%;text-align:center;" value="{{fetchRowStandings @index ../groupStandingInfo}}" id='setStandingRankScore{{../groupNumber}}' >
+                            {{/if}}
+                          </td>
+
+                      {{else}}
+                        {{#each fetchRowRecord @index ../groupDetails ../groupMaxSize}} 
+                          {{#if compare this.rowNo this.colNo}} 
+                            <td class="robin_td robin_tdcolor" id="" name={{../../_id}} >                         
+                            </td>
+                          {{else}}
+
+                            {{#if and this.playersID.playerAId this.playersID.playerBId}}
+                              <td class="robin_td " id="detailScorePop" name={{../../_id}}>   
+                                {{this.setWins.playerA}} - {{this.setWins.playerB}}
+                              </td>
+                            {{else}}
+                                <td class="robin_td " id="" name={{../../_id}} >
+                                </td>
+                            {{/if}}
+                            
+                          {{/if}}                                       
+                        {{/each}}
+                        <td class="robin_td" >
+                          {{fetchRowPoints @index ../groupStandingInfo}}
+                        </td>
+                        <td class="robin_td" >
+                          {{fetchRowStandings @index ../groupStandingInfo}}
+                        </td>
+                      {{/if}}
+
+
+                  </tr>
+                {{/each}}
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  {{/if}}
+  {{/if}}
+
+</template>
+
+
+<template name="roundRobinTeamDrawView">
+  <div class ="row">
+      <p class="ipRoundsHeader">{{drawsEventName}}</p>
+  </div>
+  {{#if getRoundRobinTeamRecords}}
+   {{#if drawsOrderPlay}}
+     <div class ="row">
+      <p class="" style="margin:20px;font-size:14px; color:#FFA500; font-weight:bold">Match Order<span id="editMatchOrder" style="color:#007700; font-size: 14px; margin:1px 0px 0px 1px; width:15%; transform: rotate(0deg); cursor: pointer" class="glyphicon glyphicon-pencil eventEdit_my"></span></p>
+    </div>
+    {{/if}}
+    {{#each getRoundRobinTeamRecords}}
+      <div class ="row subDomainModalBody" >
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 ">
+           {{#if this.orderPlay}}
+          <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+            <table class="table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne"  style="width:100%;table-layout:fixed;" >
+              <tbody>            
+                <tr class="headerAnalytics3" id="headerAnalytics3">
+                  <td class="robin_header" style="border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;font-size:12px;">
+                    Match</p>
+                  </td>
+                  <td class="robin_header" style="border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;font-size:12px;">
+                    Date</p>
+                  </td>
+                  <td class="robin_header" style="border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;font-size:12px;">
+                    Time</p>
+                  </td>
+                  <td class="robin_header" style="border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;font-size:12px;">
+                    Table</p>
+                  </td>
+                </tr>
+                {{#each this.orderPlay}}
+                  <tr class="headerAnalytics3" id="headerAnalytics3">
+                    <td class="robin_td" style="border-spacing:0;padding:2px !important;">
+                      <p style="text-align:center;margin:0px;font-size:9px;">
+                        {{#each this.matchOrder}}
+                          {{this}}<br>
+                        {{/each}}
+                        
+                      </p>
+                    </td>
+                     <td class="robin_td" style="border-spacing:0;padding:2px !important;">
+                       -
+                     </td>
+                      <td class="robin_td" style="border-spacing:0;padding:2px !important;">-
+                      </td>
+                       <td class="robin_td" style="border-spacing:0;padding:2px !important;">-</td>
+                  </tr>
+                {{/each}}
+              </tbody>
+
+
+              
+            </table>
+          </div>
+          {{/if}}
+
+          <div class={{orderPlayExists this}}>
+           <table class="table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="table-layout:fixed;">
+              <tbody>
+                <tr class="headerAnalytics3" id="headerAnalytics3">
+                  <td class="robin_header" style=""></td>
+                  <td class="robin_header" style="font-weight: bold;">{{this.groupName}} <span class="glyphicon glyphicon-print" id="groupScoreSheet">
+                    
+                  </span></td>
+                  {{#each loopCount this.groupMaxSize}}
+                    <td class="robin_header" style="">{{incremented @index}}</td>
+                  {{/each}}
+                  <td class="robin_header" style="">Points
+                    {{#if loginOrganizer}}
+                      <!--{{#if upcomingTournamentDraw}}-->
+                        <span class="glyphicon glyphicon-pencil" style="padding:5px !important;color:#007700; font-size: 12px; transform: rotate(0deg); cursor: pointer" id="editPointsTeamRR{{this.groupNumber}}"></span>
+                        <span style="padding:5px !important;font-size: 12px; color:maroon;transform: rotate(0deg); cursor: pointer;display:none" id="closeeditpointsTeamRR{{this.groupNumber}}" >close edit</span>
+                      <!--{{/if}}-->
+                    {{/if}}      
+                  </td>
+                  <td class="robin_header" style="">Standings
+                    {{#if loginOrganizer}}
+                      <!--{{#if upcomingTournamentDraw}}-->
+                        <span class="glyphicon glyphicon-pencil" style="padding:5px !important;color:#007700; font-size: 12px; transform: rotate(0deg); cursor: pointer" id="editStandingTeamRR{{this.groupNumber}}"></span>
+                        <span style="padding:5px !important;font-size: 12px; color:maroon;transform: rotate(0deg); cursor: pointer;display:none" id="closeeditTeamRR{{this.groupNumber}}" >close edit</span>
+                      <!--{{/if}}-->
+                    {{/if}}      
+                  </td>
+                </tr>
+                {{#each loopCount this.groupMaxSize}}
+                  <tr class="headerAnalytics3" id="headerAnalytics3">
+                    <td class="robin_td">{{incremented @index}}</td>
+
+                    <td class="robin_td">
+                      {{#if standingExists @index ../groupStandingInfo}}
+
+
+                        {{fetchRowMember @index ../groupDetails}}
+                      {{else}}
+                        BYE
+                      {{/if}}
+
+                      </td>
+
+                        {{#each fetchRowRecord @index ../groupDetails ../groupMaxSize}} 
+                    
+                          {{#if compare this.rowNo this.colNo}} 
+                            <td class="robin_td robin_tdcolor" id="" name={{../../_id}} > &nbsp;&nbsp;&nbsp;          
+                            </td>
+                          {{else}}
+                            {{#if and this.teamsID.teamAId this.teamsID.teamBId}}
+                              <td class="robin_td " id="teamdetailScorePop" name={{../../_id}} style='cursor:pointer'>   
+                                {{this.setWins.teamA}} - {{this.setWins.teamB}}
+                              </td>
+                            {{else}}
+                                <td class="robin_td " id="" name={{../../_id}} >
+                                &nbsp; - &nbsp;</td>
+                            {{/if}}
+
+                          {{/if}}  
+                        {{/each}}
+                        <td class="robin_td" id="setStandingRank" name={{../_id}}>
+                          {{#if standingExists @index ../groupStandingInfo}}
+                            <input autocomplete="off"  type="text"  readonly
+                            style="font-size:12px;width:20%;text-align:center;" value="{{fetchRowPoints @index ../groupStandingInfo}}" id='setStandingPointScoreTeamRR{{../groupNumber}}' >
+                            {{/if}}
+                          </td>
+                         <td class="robin_td" id="setStandingRank" name={{../_id}}>
+                          {{#if standingExists @index ../groupStandingInfo}}
+                            <input autocomplete="off"  type="text"  readonly
+                            style="font-size:12px;width:20%;text-align:center;" value="{{fetchRowStandings @index ../groupStandingInfo}}" id='setStandingRankScoreTeamRR{{../groupNumber}}' >
+                            {{/if}}
+                          </td>
+
+                      
+
+
+                  </tr>
+                {{/each}}
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  {{/if}}
+
+</template>
+
+

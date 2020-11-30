@@ -1,0 +1,48 @@
+<template name="RankingAnalytics">
+		<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:5px;">
+			<div class="col-md-6 col-xs-6 col-sm-5 col-lg-6" style="padding-right:0px !important;padding-left:0px !important;margin-top:1px;">
+				<select id="sportSelect" style="background: maroon;border: 0;color: white;font-size: 12px;height: 34px;width: 166px;">
+					<option selected disabled>Select Category</option>
+					{{#each categoryList}}
+					<option value="{{this.projectName}}">{{this.projectName}}</option>
+					{{/each}}
+				</select>
+			</div>
+		</div>
+		{{#if playersRanking}}
+		<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;">
+			<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:20px;">
+				<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 headerAnalytics">
+					<p class="pAnalytics">Ranking</p>
+				</div>
+				<div class="col-md-5 col-xs-5 col-sm-5 col-lg-5 headerAnalytics">
+					<p class="pAnalytics">Name</p>
+				</div>
+				<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 headerAnalytics">
+					<p class="pAnalytics">Academy</p>
+				</div>
+				<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 headerAnalytics" style="border-right: 1px solid white;">
+					<p class="pAnalytics">Points</p>
+				</div>
+			</div>
+		</div>
+		{{/if}}
+	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;">
+		{{#each playersRanking}}
+			<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:-1px;">
+				<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 headerAnalytics_RANK">
+					<p class="pAnalytics">{{this.rank}}</p>
+				</div>
+				<div class="col-md-5 col-xs-5 col-sm-5 col-lg-5 headerAnalytics_RANK">
+					<p class="pAnalytics">{{this.userName}}</p>
+				</div>
+				<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 headerAnalytics_RANK">
+					<p class="pAnalytics">{{this.academyName}}</p>
+				</div>
+				<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 headerAnalytics_RANK" style="border-right: 1px solid white;">
+					<p class="pAnalytics">{{this.points}}</p>
+				</div>
+			</div>
+		{{/each}}
+	</div>
+</template>

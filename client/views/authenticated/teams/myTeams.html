@@ -1,0 +1,81 @@
+<!-- Template for upcoming events-->
+
+<!--Used CSS Classes and CSS Links-->
+<!--
+    1.FileName : myEvents.css
+            classes : mainContent_myEvents, titleName, myEventSort, firstDiv
+                      myEventsData, eventDate_myTdChild, eventName_myTdChild,
+                      eventPalce_myTdChild
+
+    2. FileName : userDropDown.css
+            classes : userProfileMenu,
+            ids     : userDropDown
+
+    3. FileName : createEvent.css
+            classes : mainTitle
+
+    4. FileName : pastEvents.css
+            classes : eventDataParent1, eventDataWrapper1, eventName_myTd_u, eventPlace_myTd_u,myEventsMainTitle
+                      eventDate_myTd_u, eventDate_myTdChild_red, eventName_myTdChild_red,
+                      eventPlace_myTdChild_red
+-->
+
+<!--Templates Included-->
+<!--
+    1. sideMenu
+-->
+<template name="myTeams">
+  <form id="eventCreation">
+    <div class="row mainContent_myEvents">
+      <div class="row-same-height">
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">{{> userProfileMenu}}</div>
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+          <div class="myEventsMainTitle">
+            <p class="titleName">My Teams</p>                
+          </div>
+        </div>
+
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="height:16em;">
+          <div class="row no-gutter" style="height:16em;">
+            <div class="col-sm-9 col-md-9 col-xs-9 col-lg-9 form-group"  style="margin-top:3px;">
+              <div class="myEventsData" style="overflow:hidden;">
+                <div id="eventDataParent1" class="eventDataParent1" style="overflow-y:scroll;">
+                  {{#if Template.subscriptionsReady}}
+                  {{#each lTeam}}
+                  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 fir">
+                    <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-left:3px !important; padding-right:0px !important;">
+                      <div class="fir2Teams"  id="venueTeam">
+                        <input type="button" value={{this.teamName}} id="viewTeam" name="viewTeam"   class="eventPlace_myTdChild">
+                      </div>
+                    </div> 
+                    <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="padding-left:3px !important; padding-right:0px !important;">
+                      <div class="fir2Teams"  id="venueTeam">
+                        <input type="button" value={{checkTeamFormatType this.teamFormatId}} id="viewTeam" name="viewTeam"  class="eventPlace_myTdChild">
+                      </div>
+                    </div> 
+                    <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-left:3px !important; padding-right:0px !important;">
+                      <span id="{{checkTeamManager this.teamManager 'editTeam'}}" class="glyphicon glyphicon-pencil eventEdit_my" style ="color:#007700;font-size: 22px;margin:3px 0px 0px 4%; width:15%;transform: rotate(0deg); {{checkTeamManager_Style this.teamManager}}"></span>                    
+                    </div> 
+                     <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-left:3px !important; padding-right:0px !important;">                    
+                      <span id="{{checkTeamManager this.teamManager 'deleteTeam'}}" style ="color:#770000;font-size: 22px;margin: 3px 0px 0px 0px;width:15%; transform: rotate(0deg); {{checkTeamManager_Style this.teamManager}}"   class="glyphicon glyphicon-remove eventDelete_my"  ></span>
+                    </div>                      
+                  </div>  
+                  {{/each}}
+                  {{else}}
+                    {{> loaderForUPCOM}}
+                  {{/if}}
+
+                </div>
+              </div><!-- end of eventDataParent1 -->
+            </div>
+            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 form-group" style="margin-top:3px;">
+              {{> sideMenu}}
+            </div>
+          </div>
+        </div>
+      </div>
+      {{> alreadySubscribed}} {{> confirm}}
+    </div>
+    <div id="downloadPopRender"></div>
+  </form>
+</template>

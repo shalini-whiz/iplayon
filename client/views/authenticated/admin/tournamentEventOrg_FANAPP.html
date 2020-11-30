@@ -1,0 +1,169 @@
+<template name="tournamentEventOrg_FANAPP">
+   {{#if notAdmin}}
+   <div class=''>
+      <p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+   </div>
+   {{else}}
+   <div class="container" style="background:#333; height:auto;">
+      <div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+         <div class="row-same-height">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+               <div class="mainTitle">
+                  <p class="title">
+                     Add or update State Association Id ( KTTA And other Association APPS)
+                  </p>
+               </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;
+               ">
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <p class="title"> Select Country : </p>
+               </div>
+               <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                  <select id="selectState">
+                     <option value="0">Select</option>
+                     {{#each stateList}}
+                     <option value={{this.countryName}}>{{this.countryName}}</option>
+                     {{/each}}
+                  </select>
+               </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <p class="title"> Enter Organizer Id : </p>
+               </div>
+               <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                  <input type="text" placeholder="Organizer Id" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="organizerId"/>
+               </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <p class="title"> Enter Organizer Name : </p>
+               </div>
+               <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                  <input type="text" placeholder="Organizer Name" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="organizerName"/>
+               </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;
+               ">
+               <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="height: 100%;
+                  ">
+                  <input type="button" id="saveAssocIdForState" class="ip_button_LightGrey" style="order:1" value="Save">
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+         <div class="row-same-height">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+               <div class="mainTitle">
+                  <p class="title">
+                     Delete State Association Id ( KTTA And other Association APPS)
+                  </p>
+               </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;
+               ">
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <p class="title"> Select State : </p>
+               </div>
+               <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                  <select id="selectStateForDelete">
+                     <option value="0">Select</option>
+                     {{#each stateList}}
+                     <option value={{this.countryName}}>{{this.countryName}}</option>
+                     {{/each}}
+                  </select>
+               </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+               <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+                  <thead style="">
+                     <tr class="headeSubDiv2_entryFAca_backWhite">
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Association Id:</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Association Name:</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">State Id:</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Country:</th>
+                     </tr>
+                  </thead>
+                  <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                     {{#each listOfAddedAssocs}}
+                     <tr class="headerAnalytics3" id="headerAnalytics3">
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{this.stateAssocIds}}</td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{this.associationName}}</td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{this.stateId}}</td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{this.country}}</td>
+                     </tr>
+                     {{/each}}
+                  </tbody>
+               </table>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <p class="title"> Enter Association Id to delete : </p>
+               </div>
+               <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                  <input type="text" placeholder="Association Id" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="organizerIddelete"/>
+               </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;
+               ">
+               <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="height: 100%;
+                  ">
+                  <input type="button" id="deleteSelectedStateAssocId" class="ip_button_LightGrey" style="order:1" value="Delete">
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+         <div class="row-same-height">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+               <div class="mainTitle">
+                  <p class="title">
+                     Delete School Entries (Nationals)
+                  </p>
+               </div>
+            </div>
+
+
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <p class="title"> Enter School ID : </p>
+               </div>
+               <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                  <input type="text" placeholder="Enter School ID" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="schoolId"/>
+               </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <p class="title"> Enter tournament ID : </p>
+               </div>
+               <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                  <input type="text" placeholder="Enter tournament ID" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="tournamentId"/>
+               </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;
+               ">
+               <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="height: 100%;
+                  ">
+                  <input type="button" id="deleteEntriesFromSChool" class="ip_button_LightGrey" style="order:1" value="Delete">
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   {{/if}}
+</template>

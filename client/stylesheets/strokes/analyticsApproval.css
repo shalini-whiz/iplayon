@@ -1,0 +1,59 @@
+/*css for select2 is not opened*/
+ .selectAnalyticsApprovalMenu + .select2-container--default .select2-selection--single{
+      background: #989898;
+      height: 100% !important;
+      font-size: 12px;
+      position: relative;
+      border: 0px;
+  }
+
+	.selectAnalyticsApprovalMenu + .select2-container--default .select2-selection--single .select2-selection__arrow {
+      /*background: #B0B0B0 url(/arrow.gif) no-repeat 90% 50%;*/
+      border: 0px;
+      font-size: 12px;
+      position: absolute;
+      outline: 0;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      height: 100% !important;
+  }
+	.selectAnalyticsApprovalMenu +.select2-container--default .select2-selection--single .select2-selection__rendered{
+		color: #fff;
+	}
+  .selectAnalyticsApprovalMenu + .select2-container--default .select2-selection--single .select2-selection__arrow b{
+  color: #fff;
+  }
+  .selectAnalyticsApprovalMenu + .select2-dropdown.select2-dropdown--below {
+    height: auto !important;
+}
+
+
+ .selectApprovalUserMenu + .select2-container--default .select2-selection--single{
+      background: #989898;
+      height: 100% !important;
+      font-size: 12px;
+      position: relative;
+      border: 0px;
+  }
+
+  .selectApprovalUserMenu + .select2-container--default .select2-selection--single .select2-selection__arrow {
+      /*background: #B0B0B0 url(/arrow.gif) no-repeat 90% 50%;*/
+      border: 0px;
+      font-size: 12px;
+      position: absolute;
+      outline: 0;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      height: 100% !important;
+  }
+  .selectApprovalUserMenu +.select2-container--default .select2-selection--single .select2-selection__rendered{
+    color: #fff;
+  }
+  .selectApprovalUserMenu + .select2-container--default .select2-selection--single .select2-selection__arrow b{
+  color: #fff;
+  }
+  .selectApprovalUserMenu + .select2-dropdown.select2-dropdown--below {
+    height: auto !important;
+}
+
+

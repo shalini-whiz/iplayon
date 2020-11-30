@@ -1,0 +1,37 @@
+.selectForTeamPlayers{
+	padding-top: 3px !important;
+	padding-right: 0px !important;
+	padding-bottom: 0px !important;
+	height: 3.4em;
+	border-right: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	border-top: 1px solid #FFF;
+	background: none repeat scroll 0% 0% #808080;
+	color: white !important;
+	border-left: 1px solid white;
+}
+
+.addUSERSForTeam{
+	padding: 0px;
+	margin: 5px 0px 0px;
+	background: none repeat scroll 0px center transparent;
+	height: 21px;
+}
+
+.userSelectedForTeamP{
+	background: none repeat scroll 0px center transparent;
+	color: maroon;
+	margin: 0px;
+	padding: 5px;
+	text-align: left;
+	width: 93%;
+	cursor: default;
+	height: 100%;
+	font-size: 12px;
+	float: left;
+	border-radius: 5px;
+	border-radius: 5px;
+	border: 0px solid;
+	order: 2;
+	display: inline;
+}

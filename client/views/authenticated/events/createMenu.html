@@ -1,0 +1,129 @@
+<!-- Template to create events-->
+
+<template name="createMenu">
+    <form id="eventCreation">
+        <div class="row mainContent_myEvents" style="padding-top:54px;">
+            <div class="row-same-height">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" >
+                    <div class="headingMenuD">
+                        <p class="headingMenuC" style="cursor:default;">Select Type of Event</p>
+                        <input type="button" id="cancelMenu" class="ip_button_LightGrey" value="Cancel" />
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top:2px;height:84px;">
+                    <div class="row no-gutter" style="">
+                        <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
+                            <div class="row no-gutter" style="">
+                                <div id="createMenuTournament" class="menuTournament">
+                                    <p class="tourMenu">Tournament</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-left:2px!important;">
+                            <div class="row no-gutter" style="">
+                                <div id="createMenuEvent" class="menuEvent">
+                                    <p class="tourMenu1" >Weekend League</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top:2px;">
+                    <div class="row no-gutter" style="">
+                        <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
+                            <div class="row no-gutter" style="">
+                                <div id="createMenuCoaching"  class="menuTournament2">
+                                    <p class="tourMenu2">Coaching Camp</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-left:2px!important;">
+                            <div id="createMenuEvent2" class="menuEvent2">
+                                <p class="tourMenu3">Selection Trials</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{> alreadySubscribed}}
+            <div id="subscriptionDOBRen"></div>
+        </div>
+    </form>
+</template>
+
+
+<template name="subscriptionDOB">
+    <!--form id="subscriptionDOBForm"-->
+    <div class="modal" id="subscriptionDOB" aria-hidden="true">
+        <div id="subDomainCenter" class="modal-dialog eventAddTourModal-sm">
+            <div class="eventAddTourPopup">
+            <div class="modal-content">
+                <div class="selectevenaddHeader">
+                    <p class="modal-title" style="width:95%!important;" id="setEventNameHeader">Set Date of birth filter to subscribe</p>
+                </div>
+
+                 <div class="modal-body subDomainModalBody">
+                    <div class="" style="padding: 0px !important;">
+                    <div class="setDobSubDiv2">
+                      <select class="setDobSubSelect1" id="changeOfTourn">
+                        <option selected disaled>Select Sports</option>
+                        {{#each lTourns}}
+                            <option value="{{this._id}}">{{this.projectMainName}}</option>
+                        {{/each}}
+                      </select>
+                    </div>
+                </div>
+                <div id="renderselectedEventsCategories">
+                    <div class="noSponsorUploads" style="padding-left:38%;">
+                            <button type="button" id="noAddEventsaA" class="ip_button_Popup_Red">CANCEL</button>
+                    </div>
+                </div>
+            <p type="text" id="eveDomProvideDetails" name="eveDomProvideDetails" style="background-color:none; border:none; cursor:default font-weight:normal;color:red;font-size:12px;" onfocus="this.blur()" readonly></p>
+             </div>
+            </div>
+        </div>
+    </div>
+</div>
+</template>
+
+<template name="selectedEventsCategories">
+            <form id="subscriptionDOBForm_1">
+            <div class="">
+                {{#if leventLists}}
+                    <div class="" style="height: 12em;overflow: auto;" id="divDateB">
+                        <table class="table table-striped tableOFCSVHTML_SetDOB" id="tableSetDOB">
+                            <thead style="">
+                                <tr class="headerAnalytics2_SetDOB">
+                                   <th class="pAnalytics2_SetDOB">event name</th>
+                                   <th class="pAnalytics2_SetDOB">date of birth filter</th>
+                                   <th class="pAnalytics2_SetDOB">allow ranking</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each leventLists}}
+                                {{#each this.projectSubName}}
+                                <tr class="headerAnalytics2_SetDOB" id="{{../_id}}">
+                                    <td class="pAnalytics2_SetDOB">{{this.projectName}}:{{this.gender}}</td>
+                                    <td class="pAnalytics2_SetDOB" ><input type="text" placeholder="DD MMM YYYY" class="setDOB_Input" name="dateOfBirthForEvent{{this._id}}{{../_id}}" id="{{this._id}}" autocomplete="off" value="{{savedDOBRender this._id}}"></td>
+                                    <td class="pAnalytics2_SetDOB" id="rankingForEvent"><input type="text" placeholder="yes/no" class="setDOB_Input" name="rankingForEvent{{this._id}}{{../_id}}" id="{{this._id}}" autocomplete="off" value="{{savedRankingRender this._id}}"></td>
+                                </tr>
+                                {{/each}}
+                                {{/each}}
+                           </tbody>
+                        </table>
+                    </div>
+                {{/if}}
+                
+            </div>
+            <div class="setemptyeventaddDivContentOk">
+                    <div class="sponsorUploadsContentAddEvents">
+                        <div class="yesSponsorUploads">
+                            <button type="submit" id="setDOBforSubscribe" class="ip_button_Popup_Black">SET</button>
+                        </div>
+                        <div class="noSponsorUploads">
+                            <button type="button" id="noAddEvents" class="ip_button_Popup_Red">CANCEL</button>
+                        </div>
+                    </div>
+            </div>
+        </form>
+</template>

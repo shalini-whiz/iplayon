@@ -1,0 +1,73 @@
+{{{getDocType}}}
+<html lang="en">
+<head>
+    <style type="text/css">
+	    {{css}}
+    </style>
+</head>
+<body>
+
+	<template name="sendRegisterationEmailToAcaFromAss">
+		<body style="background: #FAFAFA; color: #333333;">
+			<center>
+			<table border="0" cellpadding="20" cellspacing="0" height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+				<tbody>
+					<tr style="border-bottom: 4px solid rgb(255, 165, 0) !important;">
+						<td style="border-bottom: 18px solid rgb(255, 165, 0) !important;padding: 4px;width: 0%;">
+							<!--img style="width:100px;height:100%;"  src="http://www.iplayon.in/logo.png"-->
+						</td>
+						<td style="border-bottom: 18px solid rgb(255, 165, 0) !important; padding: 0px; font-size: 17px;">Welcome</td>
+					</tr>
+					{{#if type}}
+						<tr>
+							<td style="padding: 8px;">You are affialited to {{associationName}}</td>
+						</tr>
+
+					{{else}}
+						<tr>
+							<td style="font-size: 22px; color: blueviolet; padding: 6px;">Thanks for Registering</td>
+						</tr>
+						<tr>
+							<td style="padding: 8px;">You are registered as an academy by: {{associationName}}</td>
+						</tr>
+
+					{{/if}}
+
+					
+					
+					<!--
+					<tr>
+						<td style="padding: 8px;">Your password: {{password}}</td>
+					</tr>
+					-->
+					<tr>
+						<td style="padding: 0px 8px 8px;">Your affiliated academy name: {{academyName}}</td>
+					</tr>
+					<tr style="">
+						<td style="padding: 8px; font-size: 12px; color: green!important;">As an academy
+							<ul>
+								<li style="font-size: 12px; color: goldenrod!important; padding-top: 5px;">Get updated information about each event of interest.</li>
+								<li style="font-size: 12px; color: goldenrod!important; padding-top: 5px;">Manage entries, entry fees and communication to your students effectively. </li>
+								<li style="font-size: 12px; color: goldenrod!important; padding-top: 5px;">Access online performance record and results of each of your students. </li>
+								<li style="font-size: 12px; color: goldenrod!important; padding-top: 5px;">Promote your academies. </li>
+							</ul>
+						</td>
+					</tr>
+									
+					<tr>
+						<td style="padding:12px">
+							<div style="">
+								<p href="" style="background: rgb(52, 142, 218) none repeat scroll 0% 0%; border: 0px none; height: 29px; border-radius: 3px;color: white;
+												text-decoration: none;padding: 8px" class="btn btn-default">Login in to your account to start using these features
+								</p>
+							</div>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</center>
+		</body>
+	</template>
+</body>
+</html>

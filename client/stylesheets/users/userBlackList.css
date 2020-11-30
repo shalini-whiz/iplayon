@@ -1,0 +1,130 @@
+/*css for drop down of blackList of userProfileSettings Template*/
+
+/* div of blackList drop down
+*/
+#blackListDropDown {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+  font-size: 12px;
+  color: #656565;
+  font-weight: normal;
+  -webkit-transition: all 0.15s linear;
+  -moz-transition: all 0.15s linear;
+  -ms-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+   z-index: 1;
+  transition: all 0.15s linear;
+}
+
+/*not used*/
+#blackListDropDown:hover { color: #898989; }
+
+/*when blackList drop down is open*/
+#blackListDropDown.open {
+  background: #5a90e0;
+  color: #fff;
+  z-index: 1;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+/* css of unordered list of blackList
+*/
+#blackListDropDown ul {
+  position: absolute;
+  top: 100%;
+  right: 0%;
+  width: 264px;
+  padding: 0px 0px;
+  display: none;
+  background: #fff;
+  list-style-type: none;
+   z-index: 1;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+/* css of li of unordered list of blackList
+*/
+#blackListDropDown ul li { font-size: 12px; }
+
+/* css for a tags of li of blackList
+*/
+#blackListDropDown ul li a {
+  text-decoration: none;
+  display: block;
+  color: #447dd3;
+  padding: 7px 15px;
+   z-index: 1;
+}
+
+/* not used*/
+#blackListDropDown ul li a:hover {
+  color: #6fa0e9;
+  background: #e7f0f7;
+   z-index: 1;
+}
+
+/* css for li if blacklist is not empty
+*/
+#blackSubscriberListLi{
+    border-bottom: 1px solid black;
+    background: white none repeat scroll 0% 0%;
+    font-weight: normal;
+    font-size: 12px;
+    color: #595959;
+    padding-left: 6px;
+    height: 2em;
+    display: flex;
+}
+
+/* css for li if blacklist is empty
+*/
+#blackSubscriberListLiEmpty{
+    border-bottom: 1px solid black;
+    background: white none repeat scroll 0% 0%;
+    font-weight: normal;
+    font-size: 12px;
+    color: #595959;
+    text-align: center;
+    height: 2em;
+    display: flex;
+}
+
+/* css for p tag blackListed subscriber name
+*/
+.blackSubscriberName{
+    width:93%;
+    overflow: hidden;
+    height: 1.3em;
+    margin-bottom: 0px;
+    margin-top: 3px;
+    box-sizing: border-box;
+}
+.blackTeamSubscribedName{
+    width:93%;
+    overflow: hidden;
+    height: 1.3em;
+    margin-bottom: 0px;
+    margin-top: 3px;
+    box-sizing: border-box;
+    color: black;
+}
+/* css for image to convert blacklist into whitelist
+*/
+.whiteSubscribers_img{
+    width: 5%;
+    height: 13px;
+    margin: 5px 0px 0px;
+}
+
+/* css for ul of blacklisted users
+*/
+.blackListOfUsers{
+  max-height: 8.1em;
+  overflow: auto;
+}

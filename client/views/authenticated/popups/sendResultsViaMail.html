@@ -1,0 +1,149 @@
+<template name="sendResultsViaMail">
+  <body style="background: #FAFAFA; color: #333333;">
+    <p>&nbsp;</p>  
+  <div>
+    <div style="text-align:center !important;">
+       <span style="font-size: 18px;font-weight:bold; text-align: center;color:#FFA500;"> {{./tournamentName}} </span> <br>
+       <span>held at 
+        {{#if ./tournamentVenue}}
+          {{./tournamentVenue}},  
+        {{/if}}
+        {{./tournamentAddress}} between {{./tournamentStartDate}} and {{./tournamentEndDate}}</span>
+     </div>
+
+    <p><div class="row" style="font-size: 16px; text-align: left;color:maroon;">Event : {{./eventName}}</div></p>
+    <p><div class="row" style="font-size: 16px; text-align: left;color:maroon;">Winner : {{./winner}}</div></p>
+
+    {{#each rounds}}
+      <div class ="row" >
+      <table class="table scoreSheet">
+        <tbody>
+          <tr class= "header" style='color:maroon;'>
+            <td>Round : {{./round}}</td>
+          </tr>
+          {{#each playerInfo}}
+            <tr class = "data">
+              <td style="">  
+                <span style="width:100%;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">{{this}}
+                </span> 
+              </td>
+            </tr>
+          {{/each}}
+          {{#if teamInfo}}
+            {{#each teamInfo}}
+            <tr class = "data">
+              <tr class= "header" style='color:Blue;'>
+                <td>&nbsp;&nbsp;Match Details:</td>
+              </tr>
+              <td>&nbsp;&nbsp;{{this.teamWIN}}</td>
+              {{#if this.matchAVSX}}
+              <tr class= "header" style='color:Blue;'>
+                <td>&nbsp;&nbsp;Team Detailed Scores</td>
+              </tr>
+              {{else}}
+              {{#if this.matchBVsY}}
+             <tr class= "header" style='color:oBlue'>
+                <td>&nbsp;&nbsp;Team Detailed Scores</td>
+              </tr>
+              {{else}}
+              {{#if matchDoubles}}
+              <tr class= "header" style='color:Blue;'>
+                <td>&nbsp;&nbsp;Team Detailed Scores</td>
+              </tr>
+              {{else}}
+              {{#if matchBVsX}}
+              <tr class= "header" style='color:Blue;'>
+                <td>&nbsp;&nbsp;Team Detailed Scores</td>
+              </tr>
+              {{else}}
+              {{#if matchAVsY}}
+              <tr class= "header" style='color:Blue;'>
+                <td>&nbsp;&nbsp;Team Detailed Scores:</td>
+              </tr>
+              {{/if}}
+              {{/if}}
+              {{/if}}
+              {{/if}}
+              {{/if}}
+              {{#if this.matchAVSX}}
+              <tr class= "header" style='color:orange;'>
+                <td>&nbsp;&nbsp;Match:A v/s X</td>
+              </tr>
+              <tr class = "data">
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;{{this.matchAVSX}}</td>
+              </tr>
+              {{/if}}
+              {{#if this.matchBVsY}}
+              <tr class= "header" style='color:orange;'>
+                <td>&nbsp;&nbsp;Match:B v/s Y</td>
+              </tr>
+              <tr class = "data">
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;{{this.matchBVsY}}</td>
+              </tr>
+              {{/if}}
+              {{#if this.matchDoubles}}
+              <tr class= "header" style='color:orange;'>
+                <td>&nbsp;&nbsp;Match:doubles</td>
+              </tr>
+              <tr class = "data">
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;{{this.matchDoubles}}</td>
+              </tr>
+              {{/if}}
+              {{#if this.matchBVsX}}
+              <tr class= "header" style='color:orange;'>
+                <td>&nbsp;&nbsp;Match:B v/s X</td>
+              </tr>
+              <tr class = "data">
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;{{this.matchBVsX}}</td>
+              </tr>
+              {{/if}}
+              {{#if this.matchAVsY}}
+              <tr class= "header" style='color:orange;'>
+                <td>&nbsp;&nbsp;Match:A v/s Y</td>
+              </tr>
+              <tr class = "data">
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;{{this.matchAVsY}}</td>
+              </tr>
+              {{/if}}
+            </tr>
+            {{/each}}
+          {{/if}}
+        </tbody>
+      </table>
+      </div>
+  {{/each}}
+
+  </div>
+
+</body>
+</template>
+
+
+
+
+<template name="sendSMSResults">
+  <p>ScoreSheet Result: {{./tournamentName}} </p> 
+  <br>
+  <p>Event : {{./eventName}}</p>
+  <br>
+  <p>Winner : {{./winner}}</p>
+  <br>
+   {{#each rounds}}
+      {{#if compareRoundVal @index}}
+      <p>Round : {{./round}}</p>
+      <br>
+          {{#each playerInfo}}
+              <p>{{this}}</p><br>
+          {{/each}}
+          {{#if teamInfo}}
+            {{#each teamInfo}}
+                <p>Match Details:</p><br>
+              <p>{{this.teamWIN}}</p>                
+            {{/each}}
+          {{/if}}
+      {{/if}}
+  {{/each}}
+</template>
+
+
+

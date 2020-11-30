@@ -1,0 +1,20 @@
+.eventTournUpd{
+	order:2;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	font-size: 24px;
+	color: blue;
+	outline: none;
+}
+
+.eventTournUpd:hover{
+	background: none;
+	color: blue;
+	outline: none;
+}
+
+.eventTournUpd:active{
+	background: none;
+	color: blue;
+	outline: none;
+}

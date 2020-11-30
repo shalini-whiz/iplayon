@@ -1,0 +1,62 @@
+<template name="standingRRDetails">
+  <form id="application-standingRRDetails">
+  <div class="modal" id="standingRRDetails" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm" style="transform: translate(0px, 0px)!important;">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style=""><span class="glyphicon glyphicon-lock" style="color:white;margin-right: 6px;margin-left: -7px !important;margin-top: 3px;"></span>Standings</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body  modal-body-modReg1" style="min-height: 3.4em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              {{#if standingInfo}}
+                 <div class="row">
+                      <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;padding-left:27px;">
+                          <p class="labelWhoNewChangePas">
+                           Player:
+                          </p>
+                      </div>
+                       <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                          <p class="labelWhoNewChangePas">
+
+                          </p>
+                        </div>
+                  </div>
+                  <div class="row" style="margin-top:7px;">
+                      <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;padding-left: 47px;">
+                          <p class="labelWhoNewChangePas">
+                            Standing:
+                          </p>
+                      </div>
+                       <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                          <input type="text" autocomplete="off" id="standingVal" value="" style="text-align:left;height:2em;margin-bottom:0.25%;width:22px;display:block;font-size:13px;padding-left:2%;" class="ip_input_box_type_scores_input">
+                        </div>
+                  </div>
+                  {{/if}}
+              </div>
+              
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-right:0px !important;padding-bottom: 4px;">
+                    <input type="submit" class="ip_button_Popup_Black" id="changePasswordSubmit" style="order:2;margin:0px;padding:0px; height:2.2em!important;margin-right:0px;" value="Ok">
+                  </div>
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-left:0px !important;padding-bottom: 4px;padding-right: 111px;">
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                  </div>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+ </form>
+</template>

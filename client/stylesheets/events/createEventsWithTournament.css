@@ -1,0 +1,215 @@
+.prizeChange {
+    height: 2.4em;
+    width: 100%;
+    background: #B0B0B0 none repeat scroll 0% 0%;
+    border-radius: 5px;
+    border: 0px solid;
+    color: #FFF;
+    float: left;
+    margin-top: 0.54%;
+}
+
+.rulesParentChange {
+    width: 100%;
+    height: 34px;
+    background: grey none repeat scroll 0% 0%;
+    border-radius: 5px 0px 0px 5px;
+    border: 0px solid;
+    color: #FFF;
+    float: left;
+}
+
+
+
+.overlayRulesAndRegPdfChange {
+    display: flex;
+    height: 2em;
+    padding-left: 1%;
+    left: 0%;
+    width: 100%;
+    cursor: pointer;
+    position: absolute;
+    top: 7px;
+    padding-top: 0;
+}
+
+.prizeChangeTourn {
+    order: 1;
+    background-color: grey;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 5px;
+    border: 0px solid;
+    padding-top: 0%;
+    height: 100%;
+    width: 100%;
+    color: #d9d9d9;
+    text-align: left;
+    font-size: 12px;
+    padding-left: 1%;
+    margin-right: 0.6%;
+}
+
+.descriptionChange {
+    order: 3;
+    float: left;
+    width: 100%;
+    margin-top: 1.6%;
+    overflow: hidden;
+    height: 4.8em;
+}
+
+.prizeAndVenueChange {
+    order: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 0%;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 2.42em;
+    outline: 0;
+}
+
+.venueChange {
+    height: 100%;
+    order: 2;
+    background: grey;
+    border-radius: 5px;
+    border: 0px solid;
+    color: white;
+    /*width:120px;*/
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    font-size: 12px;
+    background: #B0B0B0 no-repeat 90% 50%;
+    overflow: hidden;
+    outline: 0;
+}
+
+.eventTitleChange {
+    order: 2;
+    background-color: grey;
+    display: flex;
+    border-radius: 5px;
+    border: 0px solid;
+    padding-top: 1%;
+    height: 100%;
+    width: 100%;
+    color: #FFF;
+    font-size: 12px;
+    padding-left: 1%;
+    outline: 0px none;
+}
+
+.venueSelectPaddingChange {
+    order: 1;
+}
+
+#domainNameTour + .select2-container--default .select2-selection--single,
+ #editDomainNameTour + .select2-container--default .select2-selection--single{
+      background: #B0B0B0;
+      height: 100%;
+      width: 329px;
+      font-size: 12px;
+      position: relative;
+      border: 0px;
+  }
+ /*css for select2 arrow*/
+
+
+   #domainNameTour  + .select2-container--default .select2-selection--single .select2-selection__arrow,
+#editDomainNameTour  + .select2-container--default .select2-selection--single .select2-selection__arrow {
+      background: #B0B0B0;
+      border: 0px;
+      font-size: 12px;
+      position: absolute;
+      outline: 0;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .tournamentsSelect {
+    height: 100%;
+    background: #B0B0B0;
+    border-radius: 5px;
+    border: 0px solid;
+    color: white;
+    /*width:120px;*/
+    
+    width: 100%;
+    font-size: 12px;
+    outline: 0;
+    overflow: hidden;
+    padding-top: 3px;
+    margin-right: 0%;
+}
+/*view events*/
+.tournName {
+    order: 1;
+    display: flex;
+    border-radius: 5px;
+    border: 0px solid;
+    padding-top: 1%;
+    height: 100%;
+    width: 99.8%;
+    color: #FFF;
+    font-size: 12px;
+    padding-left: 1%;
+    cursor: default;
+    text-align: left;
+    background: #B0B0B0 none repeat scroll 0% 0%;
+}
+
+.viewEventVenueChange {
+    order: 2;
+    background-color: #B0B0B0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 5px;
+    border: 0px solid;
+    padding-top: 1%;
+    height:100%;
+    width: 50%;
+    color: white;
+    font-size: 12px;
+    padding-left: 1%;
+    cursor: pointer;
+    text-align: left;
+    background: #B0B0B0 url(/mapPin.ico) no-repeat;
+    background-position: right;
+    background-size: 27px 31px;
+    margin-left: 0.5%;
+}
+
+.tourEParent {
+    order: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 0.4%;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 2.42em;
+    outline: 0;
+    margin-left: 0.5%;
+}
+.clearDateTimeBoot{
+    border: 0px none;
+    background: transparent none repeat scroll 0% 0%;
+    order: 2;
+    color: #800000;
+    font-size: 13px;
+    font-weight: normal;
+    margin-top: 4px;
+    cursor: pointer;
+}

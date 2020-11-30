@@ -1,0 +1,393 @@
+<template name="viewEvents">
+    <form id="eventCreation">
+        {{#if lEvent}}
+        <div class="row mainContent_myEvents">
+            <div class="row-same-height">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                  <div class="mainTitle">
+                    {{#if Template.subscriptionsReady}}
+                    {{#each lEvent}}
+                        <p class="title">{{NameSubString this.projectName}}:&nbsp;{{NameSubString this.eventName}}</p>
+                    {{/each}}
+                    {{else}}
+                        <p class="title">Tournament&nbsp;</p>
+                    {{/if}}
+                    {{#if Template.subscriptionsReady}}
+                    <!--{{#if checkSubHideStar lEventid}}
+                    <a href="" class="eventTournUpd" id="eventTournamentUpdates"><span class="glyphicon glyphicon-star"></span></a>
+                    {{/if}}-->
+                    <!--{{#if checkSubHide lEventid}}
+                        <input type="submit" id="eventSubscribe" class="ip_button_LightGrey" style="order:1" value="Subscribe" />-->
+                        <span class="glyphicon glyphicon-save" style="order: 1;color: #FFF;margin-left:6px;margin-top: 11px;font-size: 15px;cursor:pointer;" id="downloadTEAMPlayers"></span>
+                        <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="Done" />
+                    <!--{{else}}
+                    {{#if Template.subscriptionsReady}}
+                    <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="" />
+                    {{else}}
+                    <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="" />
+                    {{/if}}
+                    {{/if}}
+                    {{else}}
+                        <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="" />-->
+                    {{/if}}
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 " style="padding-right:0px !important;padding-left:0px !important;padding-top: 2px;"><!--0.4%-->
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:0px !important;">
+                                <div class="row no-gutter" style="">
+                                    <div class="viewStartDateGridView">
+                                        {{#each lEvent}}
+                                        <p disabled  id="organizerName" name="organizerName" class="viewEventStartDate" style="cursor:default!important;"> {{viewformatDate1 this.eventStartDate1}} &nbsp; <span style="font-weight:normal">to</span> &nbsp; {{viewformatDate1 this.eventEndDate1}} </p> 
+                                        {{/each}}      
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 " style="padding-
+                            right:0px !important;padding-left:3px !important;">
+                                <div class="row no-gutter" style="">
+                                    <div class="viewEventSubscriber">
+                                        <div id="currentEntriesListDropDown" class="ddmenu">
+                                            <p  id="blackList" class="viewEventCurrentEntries">
+                                                Current Entries
+                                            </p>
+                                            <ul id="blackListOfUsers" class="blackListOfUsers" style="overflow:auto!important;">
+                                                {{#if lEventDetails.eventParticipants}}{{#each  lEventDetails.eventParticipants}}
+                                                <li id="currentEntriesSubscriberListLi">
+                                                    <p class="currentEntriesSubscriberName">{{displaySubscriberName this}}</p>
+                                                </li>
+                                                {{/each}}
+                                                {{else}}{{#if lEventDetails.eventTeamParticipants}}{{#each  lEventDetails.eventTeamParticipants}}
+                                                <li id="currentEntriesSubscriberListLi">
+                                                    <p class="currentEntriesSubscriberName">{{displayTeamSubscriberName this.teamId}}</p>
+                                                </li>
+                                                {{/each}}
+                                                {{else}}
+                                                <li id="blackSubscriberListLiEmpty">
+                                                    <p class="blackSubscriberName">No Current Entries</p>
+                                                </li>
+                                                {{/if}}
+                                                {{/if}}
+                                            </ul>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 " style="padding-right:0px !important;padding-left:0px !important;padding-top: 2px;">     
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:0px !important;">  
+                                <div class="row no-gutter" style="">   
+                                    {{#each lEvent}}
+                                        <input class="tourNameGridView" onfocus="this.blur()" style="background:grey!important;cursor:default!important;width:100%!important;height:34px!important;" value="{{tournNameView this.tournamentId}}" readonly>
+                                    {{/each}}          
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:3px !important;">  
+                                <div class="row no-gutter" style="">   
+                                    {{#if lPrizePdf}}{{#each lPrizePdf}}
+                                        <p class="viewRulesParent2" style="background:grey!important;cursor:default!important;">{{#each lEvent}}Entry Fee:&nbsp;Rs.&nbsp;{{this.prize}}.00&nbsp;{{/each}}
+                                        </p> {{/each}}
+                                    {{else}}
+                                        <p  class="viewRulesParent2" style="background:grey!important;cursor:default!important;">{{#each lEvent}} Entry Fee:&nbsp;Rs.&nbsp;{{this.prize}}.00{{/each}}
+                                        </p> 
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>           
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;height: 10.6em; margin-top:2px;" >
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="padding-right:0px !important;padding-left:0px !important;height: 10.6em;">
+                                <div class="row no-gutter" style="">
+                                    <div id="sponsor" class="sponsor">
+                                        {{#if Template.subscriptionsReady}}
+                                        {{#if lSponsorLogo}}{{#each lSponsorLogo}}
+                                        <img src="{{this.url}}" class="sponImg" id="sponImg" /> {{/each}}
+                                        {{else}}
+                                        <p id ="sponImg" class="sponsorImgEmptyGrid">Sponsor's Logo</p>
+                                        {{/if}}
+                                        {{/if}}
+                                        <p class="sponsorHoverText ">Sponsored by</p>
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9" style="height: 10.6em;">
+                                <div class="row no-gutter" style="height: 10.6em;">
+                                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:2px!important; padding-right:0px!important;cursor:pointer!important;" id="domainName">
+                                        <div class="row no-gutter" style="">
+                                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11 venueSelectPaddingChange">
+                                                <div class="row no-gutter form-group" style="">
+                                                    {{#each lEvent}}
+                                                    <!--<input class="tournName" onfocus="this.blur()" style="background:grey!important;cursor:default!important;" value="{{tournNameView this.tournamentId}}" readonly> -->
+                                                    <input type="text" name="domainName" value="@ {{editDomainName this.domainId}}" class="viewEventVenueChangeview" onfocus="this.blur()">
+                                                    {{/each}}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="background:#b0b0b0; border-top-right-radius: 5px;border-bottom-right-radius: 5px;height: 32px;">
+                                                <div class="createGoogleDivchangedGrid">
+                                                    <span class="glyphicon glyphicon-map-marker" style="font-size:22px;"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:2px!important; padding-right:0px!important;">
+                                        <div class="row no-gutter" style="">
+                                            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:0px!important; padding-right:0px!important;">
+                                                <div class="row no-gutter" style="">
+                                                    <div id="downloadRules" class="downloadRules">
+                                                        <div class="rulesDownloadViewEvents">
+                                                            {{#if lRulesAndReg}}{{#each lRulesAndReg}}
+                                                            <a id="downloadRulesHref" href="{{this.url download=true}}" class="viewRulesParent1" target="_parent">Rules & Regulations</a> {{/each}}
+                                                            {{else}}
+                                                            <a class="viewRulesParent1" style="cursor:default;">Rules & Regulations
+                                                            </a> 
+                                                            {{/if}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:2px!important; padding-right:0px!important;margin-top:-1px;">
+                                        <div class="row no-gutter" style="">
+                                            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:0px!important; padding-right:0px!important;">
+                                                <div class="row no-gutter" style="">
+                                                    <div id="downloadRules" class="downloadRules">
+                                                        <div class="rulesDownloadViewEvents">
+                                                            {{#if lresultsOfTheEvents}}{{#each lresultsOfTheEvents}}
+                                                            <a id="downloadRulesHref" href="{{this.url download=true}}" class="viewRulesParent1" target="_parent">Results</a> {{/each}}
+                                                            {{else}}
+                                                            <a class="viewRulesParent1" style="cursor:default;">Results
+                                                            </a> 
+                                                            {{/if}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:2px!important; padding-right:0px!important;margin-top:-1px;">
+                                        <div class="row no-gutter" style="">
+                                            <div class="">
+                                                <div class="closureDateViewEvents" style="cursor:default;">
+                                                    {{#each lEvent}}
+                                                    <p name="closureDate" id="closureDate" class="viewClosureDate" readonly>Entries close by:<span style="font-weight:bold;"> {{ viewClosureDate this.eventSubscriptionLastDate1}}</span>  </p> {{/each}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:2px!important; padding-right:0px!important;margin-top:-5px;">
+                                        <div class="row no-gutter" style="">
+                                            <div class="viewRulesParent" style="cursor:default;">
+                                                 {{#each lEvent}}
+                                                <p id="rules" class="viewEventsOrganizerName">Organizer : {{currentEntryUserName this.eventOrganizer}}</p>
+                                                {{/each}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>         
+                </div>
+            </div>
+                {{#each lEvent}}
+                        <input type="text" id="{{this.venueLatitude}}" name="subLat" style="background-color:none;  height:0em; width:0em; border:none; cursor:default; font-weight:normal" onfocus="this.blur()" readonly >
+                        <input type="text" id="{{this.venueLongitude}}" name="subLong" style="background-color:none;  height:0em; width:0em; border:none; cursor:default; font-weight:normal" onfocus="this.blur()" readonly >
+                        <input type="text" id="{{this.venueAddress}}" name="subAddress" style="background-color:none;   height:0em; width:0em;  border:none; cursor:default; font-weight:normal" onfocus="this.blur()" readonly >
+                  {{/each}}
+        </div>        
+        {{/if}}
+        {{> sponsorDownload}} {{>confirm}}{{> confirmModalwithterms}} {{>alreadySubscribed}} 
+        {{>teamSubscribePopup}} <div id="content"></div>
+    </form>
+</template>
+<!--<template name="viewSponsorUpload">
+    <form id="sponsorDetails">
+        <div class="modal fade" id="viewSponsorUpload">
+            <div class="modal-dialog modal-sm1">
+                <div class="modal-content1">
+                    <div class="popup">
+                        <div class="modal-body">
+                            <a href="" id="popupClose" class="sponsorPopupClose">X</a>
+                            <div class="popupContent">
+                                <div class="file-upload-contdownload">
+                                    <a class="c" target="_blank" id="downloadSponsorLogo"><img src="/1450271092_hard-drive-download_red.ico" class="downloadButton" />
+                                    </a>
+                                </div>
+                                <div>
+                                    <input class="overlay" id="sponsorLogoName" name="sponsorLogoName" readonly value="sponsor logo" />
+                                </div>
+                                <div class="file-upload-contdownload2">
+                                    <a class="c" target="_blank" id="downloadSponsorPdf"><img src="/1450271092_hard-drive-download_red.ico" class="downloadButton2" />
+                                    </a>
+                                </div>
+                                <div>
+                                    <input class="overlay1" id="sponsorPdfName" readonly value="sponsor pdf" />
+                                </div>
+                                <div>
+                                    <input class="sponsorUrl" readonly id="sponsorUrl" name="sponsorUrl" placeholder="sponsor web link" />
+                                </div>
+                                <div>
+                                    <input class="sponsorMailId" readonly id="sponsorMailId" name="sponsorMailId" placeholder="sponsor mail Id" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</template>-->
+
+
+
+<template name="sponsorDownload">
+    <form id="sponsorDetails">
+        <div class="modal fade" id="sponsorDownload">
+        <div id="sponsorUploadCenter" class="modal-dialog subdoModal-sm">
+            <div class="sponsorUploadsPopup">
+            <div class="modal-content">
+                <div class="modal-header sponsorUploadsHeader">
+                    <p class="modal-title" id="sponsorUploadsHeader">Sponsored By</p>
+                </div>
+                 <div class="modal-body sponsorUploadsBody">
+            <div class="sponsorUploadsMainTitleSponDown">
+                    <!--<div class="sponsorLogoMainDiv">
+                        <div class="sponsorLogoContentDiv">
+                                <div class="file-upload-cont" style="cursor:default!important">
+
+                                </div>
+                                <div class="sponPdfWhole">
+                                   {{#if lDownloadSponsorLogo}}{{#each lDownloadSponsorLogo}}
+                                     <a href="{{this.url download=true}}"  target="_parent" > <img name="sponsorLogo" src="/mountain.png" class="my-button" alt="browse"></a>
+                                {{/each}}
+                                {{else}}
+                                   <img name="sponsorLogo" src="/mountain.png" class="my-button"  style="cursor:default!important">>
+                                {{/if}}
+                                </div>
+                                <div class="overlayDiv" style="cursor:default!important">
+                                {{#if lDownloadSponsorLogo}}{{#each lDownloadSponsorLogo}}
+                                <a href="{{this.url download=true}}"  target="_parent" id="sponsorPdfName" class="sponsorLabelDownload">
+                                    <p id="sponsorLogoName" style="color:black!important" class="sponsorLabelDownload">
+                                       {{sponsorPdfNameSubString this.original.name}}
+                                    </p>
+                                </a>
+                                {{/each}}
+                                {{else}}
+                                    <p id="sponsorLogoName" class="sponsorLabelDownload" style="cursor:default!important">
+                                      No Sponsor's Logo Details
+                                    </p>
+                                {{/if}}
+                                </div>
+                        </div>
+                    </div>-->
+                    <div class="sponsorPdfMainDiv">
+                        <div class="sponsorPdfContentDiv">
+                            <div class="file-upload-cont1SponDown" style="cursor:default!important">
+                            </div>
+                            <div class="sponPdfWhole" style="cursor:default!important">
+                                {{#if Template.subscriptionsReady}}
+                                {{#if lDownloadSponsorPdf}}{{#each lDownloadSponsorPdf}}
+                                     <a href="{{this.url download=true}}"  target="_parent" ><img src="/adobe-reader.png" class="my-button1SponDown"></a>
+                                {{/each}}
+                                {{else}}
+                                    <img src="/adobe-reader.png" class="my-button1SponDown" style="cursor:default!important">>
+                                 {{/if}}
+                                 {{/if}}
+                            </div>
+                            <div class="overLay1DivSponDown" style="cursor:default!important">
+                                {{#if Template.subscriptionsReady}}
+                                {{#if lDownloadSponsorPdf}}{{#each lDownloadSponsorPdf}}
+                                <a href="{{this.url download=true}}"  target="_parent" id="sponsorPdfName" class="sponsorLabelDownload">
+                                    <p id="sponsorLabelDownload" style="color:black!important" class="sponsorLabel">
+                                       {{sponsorPdfNameSubString this.original.name}}
+                                    </p>
+                                </a>
+                                {{/each}}
+                                {{else}}
+                                    <p id="sponsorLogoName" class="sponsorLabelDownload" style="cursor:default!important">
+                                      No Sponsor's PDF Details
+                                    </p>
+                                {{/if}}
+                                {{/if}}
+                               <!--<a  id="clearSponsorPdf" class="sponsorLabelClear" type="button">X</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sponsorMailMainDiv" id="sponsorMailMainDiv">
+                        <div class="sponsorMailContentDiv">
+                            <div class="file-upload-cont2SponDown">
+                               
+                            </div>
+                            {{#if Template.subscriptionsReady}}
+                            {{#if lGoSponsorURL}}
+                                <span name="sponsorLogo" id="sponURLGo" class="glyphicon glyphicon-envelope my-button2SponDown" style="cursor:pointer!important"></span>
+                            {{else}}
+                                 <!--<img src="/at.png" id="sponURLGo" class="my-button2SponDown">-->
+                                 <span name="sponsorLogo" id="sponURLGo" class="glyphicon glyphicon-envelope my-button2SponDown"></span>
+                            {{/if}}
+                            <div class="overlay2DivSponDown">
+                                {{#if lGoSponsorURL}}
+                                <p  id="sponURLGo" class="sponsorLabelDownload" style="cursor:pointer!important; color:black!important;">
+                                      {{lGoSponsorURL}}
+                                </p>
+                                {{else}}
+                                <p  class="sponsorLabelDownload" style="cursor:default!important;">
+                                      No Sponsor's URL Details
+                                </p>
+                                {{/if}}
+
+                               <!--<a  id="clearSponsorURL" class="sponsorLabelClear" type="button">X</a>-->
+                                <!--<input class="overlay2"  type="text" placeholder="Sponsor's URL" />-->
+                            </div>
+                             {{/if}}
+                        </div>
+                    </div>
+                    <input type="text" id="provideDetails" name="provideDetails" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>
+            </div>
+                    <div class="sponsorUploadsContent">
+                        <div class="yesSponsorUploads" style="margin-right:auto;">
+                            <button type="submit" id="sponsorDownloadOk" class="ip_button_Popup_Black">OK</button>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </form>
+</template>
+
+<template name="viewGoogleDetailsVenue">
+        <div class="modal fade" id="viewGoogleDetailsVenue">
+        <div id="googleUploadCenter" class="modal-dialog googleMapModal-sm">
+            <div class="googleMapModalPopup">
+            <div class="modal-content">
+                <div class="modal-header sponsorUploadsHeader">
+                    <p class="modal-title" id="sponsorUploadsHeader">Zoom to see the venue</p>
+                </div>
+                 <div class="modal-body googleUploadsBody" style="padding-bottom:0px;">
+            <div class="googleMapMainTitle">
+                    <div class="googleMapMainDiv">
+                        <div class="googleMapContentDiv ">
+                            <input id="pac-input-view" class="controls" onfocus="this.blur()"   readonly type="text" placeholder="Search Box" value="Miami, Florida">
+                           <div id="map"> {{> googleMap name="map" options=mapOptions}} </div>
+                          
+                        </div>
+                    </div>
+                </div>
+                    <div class="googleUploadsContent">
+                        <div class="yesSponsorUploads" style="margin-right:auto!important; margin-left:auto!important;">
+                            <button type="submit" id="googleVenueYes"  class="ip_button_Popup_Black">OK</button>
+                        </div>
+                    </div>
+                 </div>
+                 <input id="pac-input-view1"  readonly type="text" 
+                    style="background-color:none; border:none; cursor:default font-weight:normal;" onfocus="this.blur()" >
+            </div>
+            </div>
+        </div>
+        </div>
+</template>

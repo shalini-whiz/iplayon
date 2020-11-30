@@ -1,0 +1,94 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+ 
+
+    <table border="0"  height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+      <tbody>
+        <!--
+        <tr style="border-bottom: 4px solid rgb(255, 165, 0) !important;">
+          <td style="border-bottom: 18px solid rgb(255, 165, 0) !important;padding: 4px;width: 67%;">
+            {{#if sponsorLogoData}}
+              <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+                {{#if sponsorLogoData.url}}
+                  <img src="{{imageURL}}{{sponsorLogoData.url}}" style="width:12%;height:14%;float:right;margin:0px !important;margin-top:-3px !important;border:0"/>
+                {{/if}}
+              </div>
+            {{/if}}         
+          </td>
+          <td style="border-bottom: 18px solid rgb(255, 165, 0) !important; padding: 0px; font-size: 17px;"></td>
+        </tr> 
+      -->
+        <tr>
+          <td colspan="2" style="text-align:center !important">
+            <span style="text-align:center !important;font-size:25px;font-weight:bold;color:#FFA500;align:center !important">  {{tournamentName}}</span>
+            <br>
+            <span style="text-align:center !important;font-size:14px;"> @ 
+              <!--{{#if tournamentVenue}}
+                {{tournamentVenue}},   
+              {{/if}}-->
+
+              {{tournamentAddress}} 
+            </span>
+            <br>
+            <span style="text-align:center !important;font-size:14px;">
+              {{tournamentStartDate}} to {{tournamentEndDate}}
+            </span>
+          </td>
+        </tr>
+        
+        
+        <tr style="font-size: 16px; text-align: left;color:maroon;">
+          <td colspan="2"><p> Event : {{eventName}}</p> </td>
+        </tr>
+      
+        
+        {{#each resultSet}}
+
+        <tr class= "header" style='color:maroon;'>
+          <td colspan="2">
+            <p> Standings of {{groupName}}</p> 
+          </td> 
+          {{#each standings}}
+            <tr class = "data">
+              <td>{{rank}} &nbsp;&nbsp;{{playerName}}</td>
+            </tr>
+          {{/each}}
+          {{#if matchresults}}
+            <tr class= "header" style='color:maroon;'>
+              <td colspan="2">
+                <p> Scores</p> 
+              </td> 
+            {{#each matchresults}}
+              <tr class = "data">
+                <p style='color:green'>Player:&nbsp;&nbsp;{{firstPlayer}}</p>
+              </tr>
+              {{#each this.matchresults}}
+                <tr class = "data">
+                  <td>&nbsp;&nbsp;&nbsp;&nbsp;{{this}}</td>         
+                </tr>
+              {{/each}}
+            {{/each}}
+
+            
+              
+            </tr>
+          {{/if}}
+
+              
+        </tr>
+        {{/each}}
+
+        <tr style="border-bottom: 4px solid rgb(255, 165, 0) !important;font-size: 12px; text-align: left;">
+        </tr>
+        <tr style="border-bottom: 4px solid rgb(255, 165, 0) !important;font-size: 12px; text-align: left;">
+          <p>Powered By iPlayOn</p>
+
+        </tr>
+
+        </tbody>
+      </table>
+</body>
+

@@ -1,0 +1,266 @@
+<template name="homeResults">
+   
+
+  <div class="container" style="background:white;padding: 0px !important">
+  
+    <nav class="navbar navbar-inverse" style="">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="color:white;margin-right: 20px !important">iPlayOn</a>
+          </div>
+        {{#if checkTour}}
+          <ul class="nav navbar-nav" style="padding:0px !important;">
+            {{#each checkTour}}
+              
+              <li class="dropdown" style="margin-right: 20px !important">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id={{this.tournamentId}}>{{this.tournamentName}}
+              </a>
+
+              <ul class="dropdown-menu" style="margin-top: 40px !important">
+                {{#each this.drawEvents}}
+                <li><a href = "#" id="tourEvent" name={{../tournamentId}} group = {{this}}>{{this}}</a></li>
+                {{/each}}
+
+              </ul>
+            </li>
+            {{/each}}
+           
+          </ul>
+          {{/if}}
+        </div>
+
+        </nav>
+
+    <div class="tab-content" style="background-color:white !important;">
+    {{#if showResults}}
+      <div class="row" style="background-color:white !important;">
+        <p class="ipRoundsHeader" style="background-color: transparent;margin:0px;font-size: 16px;color:black;padding: 0px !important"> {{showResults.eventName}}</p>
+             
+      </div>
+      <div class="row">
+        <p class="ipRoundsHeader" style="background-color: transparent;margin:0px;font-size: 16px;color:black;padding: 0px !important">{{showResults.roundName}}</p>  
+      </div>
+
+      <div class="row" style="float:right;margin-right:20px">
+        <a target="_blank"  rel="noopener noreferrer" href="{{showResults.urlValue}}/eventTournamentDraws1/{{showResults.tournamentId}}" style="font-size: 12px;">View More>></a>
+      </div>
+
+      <div class = "row">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 hidden-xs" ></div>
+          <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+            {{#each showLResults}}
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row" style="margin-left:10px !important;margin-right:10px !important"> 
+                  <p>Match Number : {{this.matchNumber}}</p> 
+                </div>
+                <div class="row" style="margin-left:10px !important;margin-right:10px !important">
+                  <div class="row outer_top_score_input col-xs-10 col-sm-10 col-md-10 col-lg-10" id="PlayerA">
+                    <div class="row">
+                      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="height:30px;">
+                        <img alt="" class="img-responsive playerImgDraw"  src="http://www.goto5s.com/imagesPublic/{{imgAffiliationId this.playersID.playerAId}}.jpg" >
+                      </div>
+                      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 {{getStatusColorA}}"  id="PlayerAL" name="PlayerAL"  style="border-style: none !important"> 
+                        <input type="text" class="player_score_name"  name="score"   value=" {{playerA}}" id="PlayerALI" readonly/>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" >
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="">    
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset1" style="padding: 1px !important">
+                          <input type="text" name="score" {{scoreDispType tourIdDraws}} value="{{AS1}}" class="score_input" style="width:22px;{{AS1Settings}}" readonly/>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset2" style="padding: 1px !important">
+                          <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}} value="{{AS2}}" style="width:22px;{{AS2Settings}}"  readonly/>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset3" style="padding: 1px !important">
+                          <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}} value="{{AS3}}" style="width:22px;{{AS3Settings}}" readonly/>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset4" style="padding: 1px !important">
+                          <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}}  value="{{AS4}}" style="width:22px;{{AS4Settings}}" readonly/>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset5" style="padding: 1px !important">
+                          <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}}  value="{{AS5}}" style="width:22px;{{AS5Settings}}" readonly/>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset6" style="padding: 1px !important">
+                          <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}}  value="{{AS6}}" style="width:22px;{{AS6Settings}}" readonly/>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset7" style="padding: 1px !important">
+                          <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}}  value="{{AS7}}" style="width:22px;{{AS7Settings}}" readonly/>
+                        </div>           
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" id="">        
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+                </div>
+
+                <!-- separator  -->
+                <div class="row" style="">
+                  <div class="separator_div col-xs-10 col-sm-10 col-md-10 col-lg-10"></div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+                </div>
+
+                <!-- Player B -->
+                <div class="row" style="margin-left:10px !important;margin-right:10px !important">
+                  <div class="row outer_bottom_score_input col-xs-10 col-sm-10 col-md-10 col-lg-10" id="PlayerB" >
+                    <div class="row">
+                      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="height:30px;">
+                        <img alt="" class="img-responsive playerImgDraw"  src="http://www.goto5s.com/imagesPublic/{{imgAffiliationId this.playersID.playerBId}}.jpg" >
+                      </div>
+
+                      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4  {{getStatusColorB}}"  id="PlayerBL"  style="border-style: none !important">
+                            <input type="text" class="player_score_name"  name="score"   onfocus="{{onfocusEdit tourIdDraws}}" value=" {{playerB}}" id="PlayerBLI" readonly/>
+                      </div>
+
+                      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style={{matchSettingsBScore}}>
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id=""></div>
+                        <div class="col-xs-1 col-sm-1  col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset1" style="padding: 1px !important">
+                          <input type="text"  name="score" {{scoreDispType tourIdDraws}}  value="{{BS1}}" class="score_input" style="width:22px;{{BS1Settings}}"  readonly />
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset2" style="padding: 1px !important">
+                          <input type="text"  name="score" {{scoreDispType tourIdDraws}}  value="{{BS2}}" class="score_input" style="width:22px;{{BS2Settings}}" readonly />
+                        </div>
+                        <div class="col-xs-1 col-sm-1  col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset3" style="padding: 1px !important">
+                          <input type="text" name="score" {{scoreDispType tourIdDraws}}  value="{{BS3}}" class="score_input" style="width:22px;{{BS3Settings}}" readonly />
+                        </div>
+                        <div class="col-xs-1 col-sm-1  col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset4" style="padding: 1px !important">
+                          <input type="text" name="score" {{scoreDispType tourIdDraws}}  value="{{BS4}}"  class="score_input" style="width:22px;{{BS4Settings}}"  readonly/>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset5" style="padding: 1px !important">
+                          <input type="text" name="score" {{scoreDispType tourIdDraws}}  value="{{BS5}}" class="score_input" style="width:22px;{{BS5Settings}}"  readonly />
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset6" style="padding: 1px !important">
+                          <input type="text" name="score" {{scoreDispType tourIdDraws}}  value="{{BS6}}" class="score_input" style="width:22px;{{BS6Settings}}" readonly />
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset7" style="padding: 1px !important">
+                          <input type="text" name="score" {{scoreDispType tourIdDraws}}  value="{{BS7}}" class="score_input" style="width:22px;{{BS7Settings}}" readonly />
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" id=""></div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id=""></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+                </div>
+
+                {{> blankRow1}}
+                {{> blankRow1}}
+              </div>
+            {{/each}}
+          </div>
+          <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+            {{#each showRResults}}
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row" style="margin-left:10px !important;margin-right:10px !important"> 
+                  <p>Match Number : {{this.matchNumber}}</p> 
+                </div>
+                <div class="row" style="margin-left:10px !important;margin-right:10px !important">
+                  <div class="row outer_top_score_input col-xs-10 col-sm-10 col-md-10 col-lg-10" id="PlayerA">
+                    <div class="row">
+                      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="height:30px;">
+                        <img alt="" class="img-responsive playerImgDraw"  src="http://www.goto5s.com/imagesPublic/{{imgAffiliationId this.playersID.playerAId}}.jpg" >
+                      </div>
+
+                      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 {{getStatusColorA}}"  id="PlayerAL" name="PlayerAL"  style="border-style: none !important"> 
+                        <input type="text" class="player_score_name"  name="score"   value=" {{playerA}}" id="PlayerALI" readonly/>
+                      </div>
+
+                      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" >
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="">  </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset1" style="padding: 1px !important">
+                          <input type="text" name="score" {{scoreDispType tourIdDraws}} value="{{AS1}}" class="score_input" style="width:22px;{{AS1Settings}}" readonly/>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset2" style="padding: 1px !important">
+                          <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}} value="{{AS2}}" style="width:22px;{{AS2Settings}}"  readonly/>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset3" style="padding: 1px !important">
+                          <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}} value="{{AS3}}" style="width:22px;{{AS3Settings}}" readonly/>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset4" style="padding: 1px !important">
+                          <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}}  value="{{AS4}}" style="width:22px;{{AS4Settings}}" readonly/>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset5" style="padding: 1px !important">
+                          <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}}  value="{{AS5}}" style="width:22px;{{AS5Settings}}" readonly/>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset6" style="padding: 1px !important">
+                          <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}}  value="{{AS6}}" style="width:22px;{{AS6Settings}}" readonly/>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset7" style="padding: 1px !important">
+                          <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}}  value="{{AS7}}" style="width:22px;{{AS7Settings}}" readonly/>
+                        </div>
+                      
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" id=""></div>
+                      
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id=""></div>
+              
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+                </div>
+
+                <!-- separator  -->
+                <div class="row" style="">
+                  <div class="separator_div col-xs-10 col-sm-10 col-md-10 col-lg-10"></div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+                </div>
+
+                <!-- Player B -->
+                <div class="row" style="margin-left:10px !important;margin-right:10px !important">
+                  <div class="row outer_bottom_score_input col-xs-10 col-sm-10 col-md-10 col-lg-10" id="PlayerB" >
+                    <div class="row">
+                      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="" style="height:30px;">
+                        <img alt="" class="img-responsive playerImgDraw"  src="http://www.goto5s.com/imagesPublic/{{imgAffiliationId this.playersID.playerBId}}.jpg" >
+                      </div>
+
+                      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4  {{getStatusColorB}}"  id="PlayerBL"  style="border-style: none !important">
+                        <input type="text" class="player_score_name"  name="score"   onfocus="{{onfocusEdit tourIdDraws}}" value=" {{playerB}}" id="PlayerBLI" readonly/>
+                      </div>
+
+                      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style={{matchSettingsBScore}}>
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id=""></div>
+                        <div class="col-xs-1 col-sm-1  col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset1" style="padding: 1px !important">
+                          <input type="text"  name="score" {{scoreDispType tourIdDraws}}  value="{{BS1}}" class="score_input" style="width:22px;{{BS1Settings}}"  readonly />
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset2" style="padding: 1px !important">
+                          <input type="text"  name="score" {{scoreDispType tourIdDraws}}  value="{{BS2}}" class="score_input" style="width:22px;{{BS2Settings}}" readonly />
+                        </div>
+                        <div class="col-xs-1 col-sm-1  col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset3" style="padding: 1px !important">
+                          <input type="text" name="score" {{scoreDispType tourIdDraws}}  value="{{BS3}}" class="score_input" style="width:22px;{{BS3Settings}}" readonly />
+                        </div>
+                        <div class="col-xs-1 col-sm-1  col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset4" style="padding: 1px !important">
+                          <input type="text" name="score" {{scoreDispType tourIdDraws}}  value="{{BS4}}"  class="score_input" style="width:22px;{{BS4Settings}}"  readonly/>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset5" style="padding: 1px !important">
+                          <input type="text" name="score" {{scoreDispType tourIdDraws}}  value="{{BS5}}" class="score_input" style="width:22px;{{BS5Settings}}"  readonly />
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset6" style="padding: 1px !important">
+                          <input type="text" name="score" {{scoreDispType tourIdDraws}}  value="{{BS6}}" class="score_input" style="width:22px;{{BS6Settings}}" readonly />
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset7" style="padding: 1px !important">
+                          <input type="text" name="score" {{scoreDispType tourIdDraws}}  value="{{BS7}}" class="score_input" style="width:22px;{{BS7Settings}}" readonly />
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" id=""></div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id=""></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+                </div>
+
+                {{> blankRow1}}
+                {{> blankRow1}}
+              </div>
+            {{/each}}
+          </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+      </div>    
+    {{/if}}
+    </div>
+    
+  </div>     
+</template>
+
+ 

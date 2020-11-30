@@ -1,0 +1,171 @@
+<template name="tournSchedulerPastEventsView">
+   <!--{{#if notAdmin}}
+   <div class=''>
+      <p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+   </div>
+   {{else}}-->
+    <div class="container" style="background:#333; height:auto;">
+      <div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+         <div class="row-same-height">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+               <div class="mainTitle">
+                  <p class="title">
+                     Tournament Scheduler View (Past Tournaments)
+                  </p>
+               </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;
+               ">
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <select class="" style="width: 100%;height: 100%;margin:0px;" id="tournamentList">
+                     <option selected disabled>Select Tournaments</option>
+                     {{#each tournamentList}}
+                     <option value = {{this._id}}>{{this.eventName}}</option>
+                     {{/each}}
+                  </select>
+               </div>
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <select class="" style="width: 100%;height: 100%;margin:0px;" id="eventList">
+                     <option selected disabled>Select Events</option>
+                     {{#each eventList}}
+                     <option value = {{this.eventName}}>{{this.eventName}}</option>
+                     {{/each}}
+                  </select>
+               </div>
+               
+               {{#if showmatchNumbers}}
+               <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="height: 100%;
+                  ">
+                  <select class="" style="width: 100%;height: 100%;margin:0px;" id="selectDateList">
+                     <option selected disabled>Select Date</option>
+                     {{#each showDates}}
+                        <option value = {{this}}>{{this}}</option>
+                     {{/each}}
+                  </select>
+               </div>
+               {{/if}}
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;margin-bottom: 15px;margin-left: 30px;margin-right: 30px;padding-right: 30px;
+               ">
+               {{#if selectedTorun}}
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;" name="userSelectedForTeamP"> Tournament Name : {{selectedTorun.eventName}}</p>
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;" name="userSelectedForTeamP"> Start Date : {{selectedTorun.eventStartDate}}</p>
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;" name="userSelectedForTeamP"> End Date : {{selectedTorun.eventEndDate}}</p>
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;" name="userSelectedForTeamP"> Entry Ends On : {{selectedTorun.eventSubscriptionLastDate}}</p>
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;" name="userSelectedForTeamP"> Venue  : {{selectedTorun.domainName}}</p>
+               {{/if}}
+            </div>
+            
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;margin-bottom: 15px;margin-left: 30px;margin-right: 30px;padding-right: 30px;
+               ">
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <button id="showTourn">by Tournament</button>
+               </div>
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <button id="showEve">by Event</button>
+               </div>
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <button id="showByDate">by Date</button>
+               </div>
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <button id="downloadSched">Download</button>
+               </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;margin-bottom: 15px;margin-left: 30px;margin-right: 30px;padding-right: 30px;
+               ">
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  padding:0px !important;">
+                  <button id="prevmatches" style="width:80%">Prev</button>
+               </div>
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  padding:0px !important;">
+                  <button id="nextmatches" style="width:80%">Next</button>
+               </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;width:100%;
+               ">
+                {{#if showloaderSess}}
+                {{> loaderForUPCOM}}
+                 {{else}}
+               <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="    margin-left: 30px;">
+                   <thead style="">
+                     <tr class="headeSubDiv2_entryFAca_backWhite">
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;;font-size:12px;">Sl NO.</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;;font-size:12px;">Event</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;;font-size:12px;">Date</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;;font-size:12px;">Match Number</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;;font-size:12px;">Start Time</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;;font-size:12px;">Round</th>
+                        
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;;font-size:12px;">Table Number</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;;font-size:12px;">Order</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;;font-size:12px;">Player A/Team A</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;;font-size:12px;">Player B/Team B</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;;font-size:12px;">Result</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;;font-size:12px;">Winner</th>
+                     </tr>
+                  </thead>
+                  <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                   
+                     {{#each editData}}
+                      
+                     <tr class="headerAnalytics3" id="headerAnalytics3">
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px;font-size:12px;">&nbsp; <!--{{durationDAta this.sc.round this.duration}} mins &nbsp;--> {{indexSchedule @index}}</td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px;font-size:12px;">&nbsp; {{this.ev}} &nbsp;</td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px;font-size:12px;">&nbsp; {{this.sc.dateOfEvent}} &nbsp;</td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px;font-size:12px;">&nbsp; {{this.sc.match}} &nbsp;</td>
+                         <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px;font-size:12px;">&nbsp; {{this.sc.time}} &nbsp;</td>
+                         <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px;font-size:12px;">&nbsp; {{this.sc.round}} &nbsp;</td>
+                         
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px;font-size:12px;">&nbsp; {{this.sc.table}} &nbsp;</td>
+                         <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px;font-size:12px;">&nbsp; {{this.sc.order}} &nbsp;</td>
+                        <!--{{#each matchCollectionData}}-->
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px;font-size:12px;">
+                           &nbsp;
+                           {{findDetailsUsersSchedule this.playerA}}
+                           <!--{{ matchCollectionData 1 this.projectType this.sc.match this.ev}}-->
+                           &nbsp;
+                        </td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px;font-size:12px;">
+                           &nbsp;
+                           {{findDetailsUsersSchedule this.playerB}}
+                           <!--{{ matchCollectionData  2 this.projectType this.sc.match this.ev}}-->
+                           &nbsp;
+                        </td>
+                         <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px;font-size:12px;">
+                           &nbsp;
+                           {{scoresOfMatch this.scoresA this.scoresB this.status  this.playerA this.playerB this.winnerId}}
+                           <!--{{matchCollectionData 3 this.projectType this.sc.match this.ev}}-->
+                           &nbsp;
+                        </td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px;font-size:12px;">
+                           &nbsp;
+                            <!--{{ matchCollectionData 5 this.projectType this.sc.match this.ev}}-->
+                            {{findDetailsUsersSchedule this.winnerId}}
+                            &nbsp;
+                        </td>
+                        <!--{{/each}}-->
+                     </tr>
+
+                     {{/each}}
+                  </tbody>
+               </table>
+               
+               {{/if}}
+            </div>
+         </div>
+      </div>
+   </div>
+   <!--{{/if}}-->
+</template>

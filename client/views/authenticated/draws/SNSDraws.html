@@ -1,0 +1,153 @@
+<template name="SNSDraws">
+	<div class="container-fluid">
+		<div class="row" style="margin-top: 45px;">
+			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" style="background-color:0;padding: 0px;padding-right: 20px;">{{participantList}}
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectedUserDiv_SNS">
+					{{#each selectedParticipant}}
+					<input class="selectedUserName_SNS" value="{{this.userName}}" readonly onfocus="this.blur()">
+					{{/each}}
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 otherUserDiv_SNS">
+					<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 matchNumberDiv_SNS">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 header1_SNS">
+								<p class="header1p_SNS">No.</p>
+						</div>
+						{{#each participants}}
+							{{#if checkMatchNumDup this.matchNumber}}
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{askForApprovalCSSname}}" name="{{this.userId}}">
+									<p class="{{askforAprrovalmatchNumber_SNS}}" style="color:maroon">{{this.matchNumber}}</p>
+									<p class="matchNumber_SNS">
+										<span class="glyphicon glyphicon-{{byeWalkOverPlayerBL}} byeOrWalkOver_SNS"  id="byeWalkOverPlayerBL" name="{{this.userId}}" style="color:maroon"></span>
+									</p>
+								</div>
+							{{/if}}
+						{{/each}}
+					</div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 otherUserNameDiv_SNS">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 header1_SNS" name="{{this.userId}}">
+							<p class="header1p_SNS">Players</p>
+						</div>
+						{{#each participants}}
+							{{#if checkMatchNumDup this.matchNumber}}
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{askForApprovalCSSname}}" name="{{this.userId}}">
+									{{#if colorOfPlayer}}
+									<!--<i class="glyphicon glyphicon-{{walkoverglyph colorOfPlayer}}"></i>-->
+									<input type="text" class="{{colorOfPlayer}}" value="{{this.userName}}" onfocus="this.blur()" id="userNameChange" readonly>
+									{{else}}
+									<input type="text" class="otherUserName_SNS" value="{{this.userName}}" onfocus="this.blur()" id="userNameChange" readonly>
+									{{/if}}
+								</div>	
+							{{/if}}
+						{{/each}}
+					</div>
+					<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 otherUserNameDiv2_SNS">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0px !important;">
+							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 header2_SNS">
+								<p class="header1p_SNS">Scores</p>
+							</div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 header2_SNS">
+								<p class="header1p2_SNS">Points</p>
+							</div>
+						</div>
+						{{#each participants}}
+							{{#if checkMatchNumDup this.matchNumber}}
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 scoresMAinDiv_SNStopUp1">
+								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 scoresMAinDiv_SNStop" name="{{this.userId}}" id="">
+									<div class="scoresSubDiv_SNS">
+										<input type="text" style="width:93%" name="scorePlayerA" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{scoreA1.[0]}}" id="scoreA1" class="scoreinput_SNS" readonly={{checkWhichUser}} onfocus={{checkWhichUserOnfocus}} />
+									</div>
+									<div class="scoresSubDiv_SNS">
+										<input type="text" style="width:93%" name="scorePlayerA" {{scoreDispType tourIdDraws}} placeholder="-"  id="scoreA2" value="{{scoreA1.[1]}}" class="scoreinput_SNS" readonly={{checkWhichUser}}  onfocus={{checkWhichUserOnfocus}} />
+									</div>
+									<div class="scoresSubDiv_SNS">
+										<input type="text" style="width:93%" name="scorePlayerA" {{scoreDispType tourIdDraws}} placeholder="-" id="scoreA3"  value="{{scoreA1.[2]}}" class="scoreinput_SNS" readonly={{checkWhichUser}}  onfocus={{checkWhichUserOnfocus}} />
+									</div>
+									<div class="scoresSubDiv_SNS">
+										<input type="text" style="width:93%" name="scorePlayerA" {{scoreDispType tourIdDraws}} placeholder="-"   id="scoreA4" value="{{scoreA1.[3]}}" class="scoreinput_SNS" readonly={{checkWhichUser}}  onfocus={{checkWhichUserOnfocus}} />
+									</div>
+									<div class="scoresSubDiv_SNS">
+										<input type="text" style="width:93%" name="scorePlayerA" {{scoreDispType tourIdDraws}} placeholder="-"   id="scoreA5" value="{{scoreA1.[4]}}" class="scoreinput_SNS" readonly={{checkWhichUser}}  onfocus={{checkWhichUserOnfocus}} />
+									</div>
+									<div class="scoresSubDiv_SNS">
+										<input type="text" style="width:93%" name="scorePlayerA" {{scoreDispType tourIdDraws}} placeholder="-"  id="scoreA6" value="{{scoreA1.[5]}}" class="scoreinput_SNS" readonly={{checkWhichUser}}  onfocus={{checkWhichUserOnfocus}} />
+									</div>
+									<div class="scoresSubDiv_SNS">
+										<input type="text" style="width:93%" name="scorePlayerA" {{scoreDispType tourIdDraws}} placeholder="-"  id="scoreA7" value="{{scoreA1.[6]}}" class="scoreinput_SNS" readonly={{checkWhichUser}}  onfocus={{checkWhichUserOnfocus}} />
+									</div>
+								</div>		
+								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 {{scoresMAinDiv_SNStophead}}" name="{{this.userId}}">
+									<input type="text" style="width:93%" name="pointsPlayerA" {{scoreDispType tourIdDraws}} placeholder="-"  value="{{pointsA}}" class="headerPointsNumber_SNS" onfocus="this.blur()" readonly/>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{askForApprovalCSSdiv}}">	
+								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 scoresMAinDiv_SNSbottom" name="{{this.userId}}">
+									<div class="scoresSubDiv_SNS">
+										<input type="text" style="width:93%" name="scorePlayerB" {{scoreDispType tourIdDraws}} placeholder="-"  id="scoreB1" value="{{scoreB1.[0]}}" class="scoreinput_SNSB" readonly={{checkWhichUser}}  onfocus={{checkWhichUserOnfocus}} />
+									</div>
+									<div class="scoresSubDiv_SNS">
+										<input type="text" style="width:93%" name="scorePlayerB" {{scoreDispType tourIdDraws}} placeholder="-"  id="scoreB2" value="{{scoreB1.[1]}}" class="scoreinput_SNSB" readonly={{checkWhichUser}}  onfocus={{checkWhichUserOnfocus}} />
+									</div>
+									<div class="scoresSubDiv_SNS">
+										<input type="text" style="width:93%" name="scorePlayerB" {{scoreDispType tourIdDraws}} placeholder="-"  id="scoreB3" value="{{scoreB1.[2]}}" class="scoreinput_SNSB" readonly={{checkWhichUser}}  onfocus={{checkWhichUserOnfocus}} />
+									</div>
+									<div class="scoresSubDiv_SNS">
+										<input type="text" style="width:93%" name="scorePlayerB" {{scoreDispType tourIdDraws}} placeholder="-"  id="scoreB4" value="{{scoreB1.[3]}}" class="scoreinput_SNSB" readonly={{checkWhichUser}}  onfocus={{checkWhichUserOnfocus}} />
+									</div>
+									<div class="scoresSubDiv_SNS">
+										<input type="text" style="width:93%" name="scorePlayerB" {{scoreDispType tourIdDraws}} placeholder="-"   id="scoreB5" value="{{scoreB1.[4]}}" class="scoreinput_SNSB" readonly={{checkWhichUser}}  onfocus={{checkWhichUserOnfocus}} />
+									</div>
+									<div class="scoresSubDiv_SNS">
+										<input type="text" style="width:93%" name="scorePlayerB" {{scoreDispType tourIdDraws}} placeholder="-"   id="scoreB6" value="{{scoreB1.[5]}}" class="scoreinput_SNSB" readonly={{checkWhichUser}}  onfocus={{checkWhichUserOnfocus}} />
+									</div>
+									<div class="scoresSubDiv_SNS">
+										<input type="text" style="width:93%" name="scorePlayerB" {{scoreDispType tourIdDraws}} placeholder="-"  id="scoreB7" value="{{scoreB1.[6]}}" class="scoreinput_SNSB" readonly={{checkWhichUser}}  onfocus={{checkWhichUserOnfocus}} />
+									</div>
+								</div>	
+								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 scoresAskApproveMAinDiv_SNS">	
+									<a href="" class="askApprovalLink_SNS" id="askForApprovalId" name="{{scoreA1}}|{{scoreB1}}|{{pointsA}}">{{askForApproval}}</a>
+								</div>
+							</div>	
+							{{/if}}	
+						{{/each}}
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bottomTotal_SNS">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 header1_SNS" style="border-bottom:1px solid #fff !important">
+						<p class="header1p_SNS" onfocus="this.blur()">Total Points: {{totalPoints}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="padding: 0px;">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectedUserDiv_SNS">
+					<input class="RankingList_SNS" value="Rank List" readonly onfocus="this.blur()">
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 rankListDiv1">
+					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 rankListDiv1_NO">
+						<p class="header1p_SNS">No.</p>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 rankListDiv1_PlayerName">
+						<p class="header1p_SNS">Players</p>
+					</div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 rankListDiv1_TotalPoints">
+						<p class="header1p_SNS">Points</p>
+					</div>
+				</div>
+				{{#each rankingList}}
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 rankListDiv2">
+					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 rankListDiv2_NO">
+						<p class="headerRankingp_SNS1">{{this.matchNumber}}</p>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 rankListDiv2_PlayerName">
+						<p class="headerRankingp_SNS">{{userNameForUserIDSNS this.mainPlayerID}}</p>
+					</div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 rankListDiv2_TotalPoints">
+						<p class="headerRankingp_SNS1">{{this.totalPoints}}</p>
+					</div>
+				</div>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+	<div id="renderWalkOver"></div>
+	{{> sendingMailPopup2}}{{> sendingMailPopup}}
+</template>

@@ -1,0 +1,78 @@
+.overLay1DivSponDown{
+    position: absolute;
+    top: 17%;
+    border: 1px solid #000;
+    cursor: pointer;
+    width: 83%;
+    left: 13.3%;
+    padding-left: 1%;
+    padding-top: 0.6%;
+    height: 2em;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+  }
+
+  .my-button1SponDown{
+    position: absolute;
+    text-align: center;
+    top: 11%;
+    z-index: 1;
+    width: 33px;
+    height: 20px;
+    padding: 0px 5px;
+}
+
+.my-button2SponDown {
+    position: absolute;
+    text-align: center;
+    top: 41%;
+    z-index: 1;
+    margin-left: 2px;
+    width: 30px;
+    font-size: 28px;
+    color: orange;
+}
+
+.overlay2DivSponDown {
+    position: absolute;
+    top: 41.5%;
+    border: 1px solid black;
+    width: 83%;
+    left: 13.3%;
+    padding-left: 1%;
+    padding-top: 0.6%;
+    height: 2em;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.file-upload-cont1SponDown {
+    position: relative;
+    top: 18%;
+    width: 27px;
+    height: 25px;
+    background: #000 none repeat scroll 0% 0%;
+    border: 1px solid #F00;
+    left: 1%;
+}
+
+.sponsorUploadsMainTitleSponDown {
+    order: 1;
+    margin-top: 1%;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 6.1em;
+    outline: 0;
+    padding-top: 3px;
+}
+
+.file-upload-cont2SponDown {
+    position: relative;
+    top: 15%;
+    width: 32px;
+    height: 24px;
+    /*border: 1px solid orange;*/
+}

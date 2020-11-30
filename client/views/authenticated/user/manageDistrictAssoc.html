@@ -1,0 +1,250 @@
+<template name="manageDistrictAssoc">
+	<div class="modal" id="manageDistrictAssoc" role="dialog" data-backdrop="static">
+	    <div class="modal-dialog modal-sm">
+	      <div class="modal-content modalMANage">
+	        <div class="modal-header  modal-header-modRegAcademy" style="padding: 0px 0px;">
+	        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 headerDivAcaAct" style="padding:0px;height: 100%;">
+		        	<div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding:0px;height: 100%;border-right: 1px solid white;">
+		          		<p class="modal-title titeofregistemodalA" style="text-align: center;margin-top: 3px;color: #FFF !important;" id="addDistAssoc">Add Dist. Association
+		          		</p>
+		          	</div>
+		          	<div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 headerDivAcaDeAct" style="padding:0px;height: 100%;">
+						<p class="modal-title titeofregistemodalA" style="text-align: center;margin-top: 3px;color: maroon !important;" id="viewDistAssoc">View/Delete Dist. Association
+						</p>
+					</div>
+				</div>
+	        </div>
+	        <div class="modal-body  modal-body-modReg1" style="min-height:18em;">
+	        	{{#if deleteSelectedClub_PAD}}
+	        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height:22px;margin-top:-14px;">
+	        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 deleteConfirmationAcademy">
+	        			{{#if deleteSelectedClub_PAD}}
+		        			<p id="deleteConfirm2_PAD" class="yesDeleteP">Do you want to add ({{deleteSelectedClub_PAD}}) Dist. Assoc?</p>
+	        			{{/if}}
+	        		</div>
+	        	</div>
+	        	{{/if}}
+	         	<div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+		            <div class="row">
+		               <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9 divClass2_MNM" style="margin-left: -9px;height: 26px;padding: 0px;">
+		              	<input type="text" id="searchUserManage_PAD" class="searchAcaInput" placeholder="Search existing dist. association" autocomplete="off">
+		              	{{#if searchResultsOfMNM_PAD}}
+	                        <div class="searchResults" style="left: 0px;z-index: 100;display: block;position: absolute;background: #dfe3ee none repeat scroll 0% 0%;width: 100%;border: 0px solid maroon;min-height:20px;max-height:60px;overflow-y:auto;">
+		                        {{#each searchResultsOfMNM_PAD}}
+		                          <div id="{{this._id}}" class="addIcon" name="addAcademyMNM_PAD" value="{{this.clubName}}">
+		                            <p  id="{{this._id}}" name="clubName_PAD" value="{{this.clubName}}">{{this.clubName}}</p>
+		                          </div>
+		                        {{/each}}
+	                        </div>
+	                    {{/if}}
+		                </div>
+		                {{#if searchResultsOfMNM_PAD}}
+			                <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 divClass1_MNM" style="padding-right:0px !important;padding-top:2px;padding-left:12px;background: #595959 none repeat scroll 0% 0%;height: 26px;cursor:pointer;"  id="addSearchedPLayers_PAD">
+			              		<span class="glyphicon glyphicon-search searchAca"></span>
+			              	</div>
+						{{else}}
+			              	<div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 divClass1_MNM" style="padding-right:0px !important;padding-top:2px;padding-left:12px;background: #595959 none repeat scroll 0% 0%;height: 26px;cursor:pointer;"  id="addSearchedPLayers2_PAD">
+			              		<span class="glyphicon glyphicon-search searchAca"></span>
+			              	</div>
+		              	{{/if}}
+		              <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 divClass3_MNM" style="">
+		              	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 divClass4_MNM" style="padding-left:0px !important;padding-right:0px !important;">
+		              		<div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 divClass5_MNM" style="width: 0% !important;font-size: 8px;">
+		              			<span class="glyphicon glyphicon-plus"></span>
+		              		</div>
+		              		<div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 divClass6_MNM" style="">
+		              			<input type="button" id="regisNewDistAssoc" class="addAcaInput" value="New Dist. Assoc" style="margin-left: 6px !important;font-size: 11px;">
+		              		</div>
+		              	</div>
+					  </div>
+		            </div>
+		        </div>
+		        {{#if addedAcademyArray_PAD}}
+		        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px !important;">
+		        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 addedAcademyMainDiv">
+		        		{{#each addedAcademyArray_PAD}}
+				        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 addedAcademyDiv" >
+				        		<div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 addedAcademyName" style="width: 5%;border-top-right-radius: 0px;border-top-left-radius: 5px;padding-left: 4px !important;padding-top: 2px;">
+				        			<input type="checkbox" id="checkedPlayers_PAD" style="cursor:pointer;">
+				        		</div>
+								<div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 addedAcademyName" style="margin-right:2px;">
+				        			<p style="font-size: 12px;margin-left: 7px;font-weight: 600;">{{this.clubName}}</p>
+				        		</div>
+				        		<!--div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 addedAcademyName" style="margin-right:2px;">
+				        			<p style="text-align:center;font-size: 12px;font-weight: normal;">{{this.phone}}</p>
+				        		</div>
+				        		<div class="col-md-5 col-xs-5 col-lg-5 col-sm-5 addedAcademyName" style="margin-right: 2px;width: 51% !important;padding-left: 2% !important;">
+				        			<p style="font-size: 12px;font-weight: normal;">{{this.city}},{{this.state}}-{{this.pin}}</p>
+				        		</div>
+				        		<div class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="margin-right: 0px;width: 5% !important;padding: 5px 0px 0px !important;" id="addedAcademyDelete_P">
+				        			<span name="addedAcademyDelete_P" id="addedAcademyDelete_P" class="glyphicon glyphicon-remove addedAcademyDelete"></span>
+				        		</div-->
+				        	</div>
+				        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 addedAcademyDiv" style="border: 1px solid grey;margin-left: 7px;border-radius: 0px 5px 5px;margin-top: 0px;">
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent">
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Dist. Association Contact Person:</span>{{this.contactPerson}}</p>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent">
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Address:</span>{{this.address}}</p>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent">
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">City:</span>{{this.city}}</p>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent">
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">State:</span>{{getPlayerState_PAD this.state}}-{{this.pinCode}}</p>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent">
+				        			<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent" style="margin: 0px;">
+				        				<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Email:</span>{{getPlayerEmail_PAD this._id}}</p>
+				        			</div>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent">
+				        			<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent" style="margin: 0px;">
+				        				<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Phone:</span>{{this.phoneNumber}}</p>
+				        			</div>
+				        		</div>
+				        	</div>
+			        	{{/each}}
+		        	</div>
+				</div>		
+				{{/if}}
+				<div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+					<p id="searchUserManage_PA" style="font-size:12px;color:maroon;"></p>
+				</div>
+		    </div>
+	        <div class="modal-footer">
+	          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+	            <div class="row">
+	              <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-right:0px !important;padding-bottom: 4px;">
+	                <button type="button" class="btn btn-default ip_button_Register_Popup" id="cancelDeleteAc1_PA" data-dismiss="modal" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Cancel
+	                </button>
+	              </div>
+	              <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-left:6px !important;padding-bottom: 4px;">
+	              	{{#if deleteSelectedClub_PAD}}
+	                	<button type="button" class="btn btn-default ip_button_Register_Popup" id="saveDeleteAc1_PAD"  style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;">Add
+	                	</button>
+	                {{else}}
+	                	<button type="button" class="btn btn-default ip_button_Register_Popup" id="saveDeleteAc1_PAD"  style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" disabled>Add
+	                	</button>
+	                {{/if}}
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+ 	</div>
+ 	{{> confirm}}
+</template>
+
+<template name="viewAdedDistrictAssoc">
+	<div class="modal" id="viewAdedDistrictAssoc" role="dialog" data-backdrop="static">
+	    <div class="modal-dialog modal-sm">
+	      <div class="modal-content modalMANage">
+	        <div class="modal-header   modal-header-modRegAcademy" style="padding: 0px 0px;">
+	        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px;height: 100%;">
+		        	<div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 headerDivAcaDeAct" style="padding:0px;height: 100%;border-right: 1px solid white;">
+		          		<p class="modal-title titeofregistemodalA" style="color:maroon;margin-top: 3px;" id="addDistAssoc">Add  Dist. Association
+		          		</p>
+		          	</div>
+		          	<div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 headerDivAcaAct" style="padding:0px;height: 100%;">
+						<p class="modal-title titeofregistemodalA" style="color:white;;margin-top: 3px;" id="viewDistAssoc">View/Delete Dist. Association
+						</p>
+					</div>
+				</div>
+	        </div>
+	        <div class="modal-body  modal-body-modReg1" style="min-height:18em;">
+	        	{{#if deleteSelectedClub_P21_PAD}}
+	        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height:22px;margin-top:-14px;">
+	        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 deleteConfirmationAcademy">
+	        			{{#if deleteSelectedClub_P21_PAD}}
+		        			<p id="deleteConfirmp2_PAD" class="yesDeleteP">Do you want to delete ({{deleteSelectedClub_P21_PAD}}) Dist. Associations?</p>
+	        			{{/if}}
+	        		</div>
+	        	</div>
+	        	{{/if}}
+	         	<div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+		            <div class="row">
+		            	<!--div style="margin-top: 0px;" class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
+							<div style="padding: 0px ! important;" class="col-md-11 col-xs-11 col-lg-11 col-sm-11">
+								<input placeholder="search by academy name" style="font-size: 12px; width: 100%;" type="text" id="mainTagSearchPlay">
+							</div>
+							<div style="padding-right: 0px ! important; padding-bottom: 0px ! important; padding-left: 0px ! important; padding-top: 4px;" class="col-md-1 col-xs-1 col-lg-1 col-sm-1">
+								<span class="glyphicon glyphicon-search searchAca"></span>
+							</div>
+						</div-->
+						<div class="col-md-9 col-xs-9 col-lg-9 col-sm-9 divClass2_MNM" style="margin-left: -9px;height: 26px;padding: 0px;">
+							<input type="text" id="mainTagSearchPlay_PAD" class="searchAcaInput" placeholder="Search dist. association by name" autocomplete="off">
+						</div>
+						<div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 divClass1_MNM" style="padding-right:0px !important;padding-top:2px;padding-left:12px;background: #595959 none repeat scroll 0% 0%;height: 26px;cursor:pointer;"  id="">
+							<span class="glyphicon glyphicon-search searchAca"></span>
+						</div>
+			            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 divViewAcaMain" id="selectTagopPlay_PAD">
+			              <!--{{#each lAcademies_P}}-->
+		        		{{#each lAcademies_PAD}}
+		        		<div name={{this.clubName}}>
+				        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 addedAcademyDiv" >
+				        		<div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 addedAcademyName" style="width: 5%;border-top-right-radius: 0px;border-top-left-radius: 5px;padding-left: 4px !important;padding-top: 2px;" >
+				        			<input type="checkbox" id="checkedPlayersToDelete_PAD" style="cursor:pointer;">
+				        		</div>
+								<div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 addedAcademyName" style="margin-right:2px;" >
+				        			<p style="font-size: 12px;margin-left: 7px;font-weight: 600;">{{this.clubName}}</p>
+				        		</div>
+				        	</div>
+				        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 addedAcademyDiv" style="border: 1px solid grey;margin-left: 7px;border-radius: 0px 5px 5px;margin-top: 0px;" >
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent" >
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Dist. Association Contact Person:</span>{{this.contactPerson}}</p>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent">
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Address:</span>{{this.address}}</p>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent">
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">City:</span>{{this.city}}</p>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent" >
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">State:</span>{{getPlayerState this.state}}-{{this.pinCode}}</p>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent">
+				        			<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent" style="margin: 0px;">
+				        				<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Email:</span>{{getPlayerEmail_PAD this._id}}</p>
+				        			</div>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent">
+				        			<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent" style="margin: 0px;">
+				        				<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Phone:</span>{{this.phoneNumber}}</p>
+				        			</div>
+				        		</div>
+				        	</div>
+				        </div>
+			        	{{/each}}	
+			              <!--{{/each}}-->
+			            </div>
+		            </div>
+		        </div>
+		    </div>
+	        <div class="modal-footer">
+	          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+	            <div class="row">
+	              <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-right: 0px !important;padding-left: 22px !important;">
+	                <button type="button" class="btn btn-default ip_button_Register_Popup" id="cancelDeleteAc2_PA" data-dismiss="modal" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Cancel
+	                </button>
+	              </div>
+	              {{#if deleteSelectedClub_P2_PAD}}
+	              	<div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-bottom: 4px;padding-left: 6px !important;padding-right: 22px !important;">
+	                	<button type="button" class="btn btn-default ip_button_Register_Popup" id="deleteSelectedCLUB2_PAD" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Delete
+	                	</button>
+	                </div>
+				  {{else}}
+				  	<div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-bottom: 4px;padding-left: 6px !important;padding-right: 22px !important;">
+	                	<button type="button" class="btn btn-default ip_button_Register_Popup" id=""  style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;" disabled>Delete
+	               		</button>
+	              	</div>
+				  {{/if}}
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+ 	</div>
+ 	{{> confirm}}
+</template>

@@ -1,0 +1,33 @@
+.robin_td {
+    font-size: 12px;
+    text-align: center;
+	background: none repeat scroll 0% 0% #E0E0E0 !important;
+    font-weight: normal !important;
+	border:1px solid #fff !important;
+    color: black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.robin_table{
+	margin-top: 5px;
+	border: 1px solid #000;
+}
+
+.robin_tdcolor{
+	background: none repeat scroll 0% 0% #C0C0C0 !important;
+
+}
+
+.robin_header{
+	border-right: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	border-top: 1px solid #FFF;
+	background: none repeat scroll 0% 0% #808080;
+	color: white !important;
+	font-size: 14px;
+	text-align: center;
+}
+
+

@@ -1,0 +1,189 @@
+<template name="scoreRRDetails">
+	{{#if Template.subscriptionsReady}}
+	<form id="application-scoreRRDetails">
+        <div class="modal" id="scoreRRDetails" aria-hidden="true">
+            <div id="subDomainCenter" class="modal-dialog eventAddTourModal-sm" style="width:970px !important;">
+                <div class="eventAddTourPopup" style="width:970px !important;">
+                    <div class="modal-content" style="  position: relative;display:table;overflow-y: auto;width:100%;">
+                        <div class="modal-header loginHeaderIplayon" style="background-color: #000;">
+                            <p class="modal-title loginHeadeIplayonPTag" style="">Detailed Scores
+                            </p>
+                            <span style="margin: -6px 0px 0px; font-size: 22px; color: white; cursor: pointer;" id="closeRRScorePopUp">x</span>
+                        </div>
+                        <div class="modal-body subDomainModalBody" style="padding:15px !important;min-height:5em;padding: 15px !important;min-height: 5em;height: 25em;overflow-y: auto;">
+                        	{{refreshTeamDetailedScore}}
+                            <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="table-layout:fixed;">
+						        <tbody class="">
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="headerDetScoreTeam" style=""></td>
+						            	<td class="headerDetScoreTeam" style="">set 1</td>
+						                <td class="headerDetScoreTeam" style="">set 2</td>
+						                <td class="headerDetScoreTeam" style="">set 3</td>
+						                <td class="headerDetScoreTeam" style="">set 4</td>
+						                <td class="headerDetScoreTeam" style="">set 5</td>
+						                <td class="headerDetScoreTeam" style="">set 6</td>
+						                <td class="headerDetScoreTeam" style="">set 7</td>				                
+						            </tr>
+						            {{#if fetchDetailScore}}
+						            <!--player A-->
+						            <tr class="headerAnalytics3" id="headerAnalytics3">				            
+						                
+						                <td class="matchRowDEtScore" style="width:5%;text-overflow: ellipsis;overflow: hidden" >{{displayPlayerName fetchDetailScore.playersID.playerAId}}</td>
+
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{fetchDetailScore.scores.setScoresA.[0]}}" id="playerAScoreRR1" name={{matchAVSXPlayerA}}></td>
+
+ 										<td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{fetchDetailScore.scores.setScoresA.[1]}}" id="playerAScoreRR2" name={{matchAVSXPlayerA}}></td>
+						                
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{fetchDetailScore.scores.setScoresA.[2]}}" id="playerAScoreRR3" name={{matchAVSXPlayerA}}></td>
+						                
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{fetchDetailScore.scores.setScoresA.[3]}}" id="playerAScoreRR4" name={{matchAVSXPlayerA}}></td>
+
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{fetchDetailScore.scores.setScoresA.[4]}}" id="playerAScoreRR5" name={{matchAVSXPlayerA}}></td>
+
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{fetchDetailScore.scores.setScoresA.[5]}}" id="playerAScoreRR6" name={{matchAVSXPlayerA}}></td>
+
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{fetchDetailScore.scores.setScoresA.[6]}}" id="playerAScoreRR7" name={{matchAVSXPlayerA}}></td>
+						               
+						               
+
+						            </tr>
+
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            				
+						            	<td class="matchRowDEtScore" style="width:5%;text-overflow: ellipsis;overflow: hidden">{{displayPlayerName fetchDetailScore.playersID.playerBId}}</td>
+
+						              
+ 										<td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{fetchDetailScore.scores.setScoresB.[0]}}" id="playerBScoreRR1" name={{matchAVSXPlayerA}}></td>
+
+ 										<td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{fetchDetailScore.scores.setScoresB.[1]}}" id="playerBScoreRR2" name={{matchAVSXPlayerA}}></td>
+						                
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{fetchDetailScore.scores.setScoresB.[2]}}" id="playerBScoreRR3" name={{matchAVSXPlayerA}}></td>
+						                
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{fetchDetailScore.scores.setScoresB.[3]}}" id="playerBScoreRR4" name={{matchAVSXPlayerA}}></td>
+
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{fetchDetailScore.scores.setScoresB.[4]}}" id="playerBScoreRR5" name={{matchAVSXPlayerA}}></td>
+
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{fetchDetailScore.scores.setScoresB.[5]}}" id="playerBScoreRR6" name={{matchAVSXPlayerA}}></td>
+
+						                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{fetchDetailScore.scores.setScoresB.[6]}}" id="playerBScoreRR7" name={{matchAVSXPlayerA}}></td>
+						                
+						                
+
+						                		           
+						            </tr>
+						            {{/if}}
+
+						         
+						        </tbody>
+					    	</table>
+
+					    	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top: 0px; "> 
+					    		<div class="col-md-2 col-xs-2 col-lg-2 col-sm-2">
+	                        		<p class="byePTag" id="byePTagsub">Type</p>
+	                        	</div>
+					    		<div class="col-md-10 col-xs-10 col-lg-10 col-sm-10">
+		                        	<ul style="list-style:none;margin: 0;padding: 0;margin-left: 20px;display:inline;">
+		                        		{{#if fetchDetailScore}}
+
+			                          <li style="display:inline-block;">
+
+			                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="">
+			                              		<input type="radio" id="bye_RR" name="setRRWinnerType" class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="height:100%;margin-top: 0px;cursor:pointer;" value="bye" {{checkWinnerType fetchDetailScore.status 'bye'}}>
+			                              
+			                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub">Bye</p>
+			                            </div>
+			                          </li>
+			                          <li style="display:inline-block;">
+			                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="">
+			                              		<input type="radio" id="walkover_RR" name="setRRWinnerType" class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="height:100%;margin-top: 0px;cursor:pointer;" value="walkover" {{checkWinnerType fetchDetailScore.status 'walkover'}}>
+			                              	
+			                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub">Walkover</p>
+			                            </div>
+			                          </li>
+			                          <li style="display:inline-block;">
+			                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="">
+			                              		<input type="radio" id="completed_RR" name="setRRWinnerType" class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="height:100%;margin-top: 0px;cursor:pointer;" value="completed" {{checkWinnerType fetchDetailScore.status 'completed'}}>
+											
+			                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub">Completed</p>
+			                            </div>
+			                          </li>
+			                          {{/if}}
+			                        </ul>
+		                    	</div>
+
+	                        </div>
+
+	                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top: 0px; ">  
+	                        	<p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTag" id="byePTagsub">Select Winner</p>
+	                        </div>
+	                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="margin-top: 0px; "> 
+	                        	{{#if fetchDetailScore}}						           
+		                        <ul style="list-style:none;margin: 0;padding: 0;margin-left: 20px;">
+		                          <li>
+		                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="">
+		                              <input type="radio" id="completedA" name="setRRWinner" class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="height:100%;margin-top: 0px;cursor:pointer;" value="playerAId" {{checkWinner fetchDetailScore.playersID.playerAId fetchDetailScore.winnerID}}>
+		                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub" style="text-overflow:clip !important;overflow:visible">{{displayPlayerName fetchDetailScore.playersID.playerAId}}</p>
+		                            </div>
+		                          </li>
+		                          <li>
+		                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk" style="">
+		                              <input type="radio" id="completedB" name="setRRWinner" class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="height:100%;margin-top: 0px;cursor:pointer;" value="playerBId" {{checkWinner fetchDetailScore.playersID.playerBId fetchDetailScore.winnerID}}>
+		                              <p class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub" id="byePTagsub" style="text-overflow:clip !important;overflow:visible">{{displayPlayerName fetchDetailScore.playersID.playerBId}}</p>
+		                            </div>
+		                          </li>
+		                        </ul>
+		                        {{/if}}
+		                    </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height:auto !important;">
+                                <p style="font-size:12px;color:red;cursor:default;text-align: left;" id="TeamSpecErrorShow"></p>
+                                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+                            </div>
+                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-right:0px !important;padding-bottom: 4px;">
+                                <div class="row">
+                                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 ">
+                                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 ">
+                                        </div>
+                                        <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 " style='text-align:center;'>
+                                        	{{#if checkOnlyEventOrganizer}}
+
+                                        	<!--{{#if upcomingTournamentDraw}}-->
+
+	                                            <button type="submit" class="ip_button_Popup_Black" id="saveRRScoreForm" style="">Set
+	                                            </button>
+	                                            <button type="button" class="ip_button_Popup_Black" id="printRRScoreForm" style="">Print
+	                                            </button>
+	                                            <button type="button" class="ip_button_Popup_Black" id="printRRBlankScoreForm" style="">Blank
+	                                            </button>
+	                                            <!--<button type="button" class="ip_button_Popup_Black" id="blankRRScoreForm" style="">Blank
+	                                            </button>-->
+	                                            <button type="button" class="ip_button_Popup_Red" id="cancelRRScorePopUp" >Cancel
+                                            	</button>  
+	                                        <!--{{else}}
+	                                        	 <button type="button" class="ip_button_Popup_Black" id="okRRScorePopUp" >OK
+                                            	</button>    
+
+                                            {{/if}}
+                                                 -->                                                            
+                                            {{else}}
+                                            <button type="button" class="ip_button_Popup_Black" id="okRRScorePopUp" >Ok
+                                            </button>
+                                            {{/if}}
+                                        </div>
+                                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    {{/if}}
+</template>

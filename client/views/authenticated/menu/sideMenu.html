@@ -1,0 +1,112 @@
+<!-- Template for side menu-->
+
+<!-- this template is included in other templates
+     1. myEvents.html
+     2. upcomingEvents.html
+     3. pastEvents.html
+-->
+
+<!--Used CSS Classes and CSS Links-->
+<!--
+    1.FileName : myEvents.css
+            classes : myEventsParent, upcomingParent, pastParent, upcomingChild
+                      pastChild, myEntriesParent, myEntriesChild,
+                      myEventsParent, myEventsChild, myTeamsParent,
+                      myTeamsChild, teamsParent, teamsChild,
+                      eventsParent, eventsChild
+                      
+-->
+
+<template name="sideMenu">
+<!--
+   div includes a input type button for upcoming events
+-->
+   <div class="upcomingParent">
+      <input type="button" value="Upcoming Events" id="upcomingEvents" name="upcoming"   class="ip_button_DarkGrey">
+   </div>
+
+<!--
+   div includes a input type button for past events
+-->
+   <div class="pastParent">
+      <input type="button" name="past" id="pastEvents" value="Past Events"  readonly class="ip_button_DarkGrey"/>
+   </div>
+
+
+
+<!--
+   div includes a input type button for my events
+-->
+
+
+<!--
+   div includes a input type button for my teams
+-->
+   <div class="myTeamsParent">
+      <input type="button" name="myTeams" id="myTeams" value="My Teams"  readonly class="ip_button_DarkGrey"/>
+   </div>
+
+<!--
+   div includes a input type button for create team
+-->
+   <div class="teamsParent">
+      <input type="button" name="t_Teams" id="t_Team" value="Create Team"  readonly class="ip_button_DarkGrey"/>
+   </div>
+<!--
+   div includes a input type button for my entries
+-->
+   <div class="myEntriesParent">
+      <input type="button" name="myEntries" id="myEntries" value="My Entries"  readonly class="ip_button_DarkGrey" style="height:31px;"/>
+      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 chekck_myEntries" id="chekck_myEntries" style="display: none; height: 20px; padding-left: 15px; padding-right: 0px; padding-top: 0px; margin-top: 0px;">
+        <div class="col-md-2 col-xs-0 col-sm-0 col-lg-2" style="height: 17px; text-align: center; margin-top: 0px; padding-top: 0px;">
+        </div>
+        <div class="col-md-3 col-xs-4 col-sm-4 col-lg-3" style="height: 17px; text-align: center; margin-top: 0px; padding-top: 0px;">
+          <a style="font-size: 12px; text-decoration: underline; color: rgb(51, 51, 51); cursor: pointer; font-weight: bold;" id="myEntriesPAst">Past</a>
+        </div>
+        <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="height: 17px; text-align: center;">
+          <a style="font-size:12px;text-decoration:underline;color:green;cursor:pointer;font-weight:bold;" id="myEntriesUpcom">Upcoming</a>
+        </div>
+      </div>
+   </div>
+<!--
+   div includes a input type button for create event
+-->
+   <!--<div class="eventsParent">
+      <input type="button" name="e_Events" id="e_Event" value="Create Event"  readonly class="eventsChild"/>
+   </div>-->
+  <div class=" myEventsParent">
+      <input type="button" name="myEvents" id="myEvents" value="My Events"  readonly class="ip_button_DarkGrey" style="height:31px;"/>
+      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 chekck_myEvents" id="chekck_myEvents" style="display: none; height: 20px; padding-left: 15px; padding-right: 0px; padding-top: 0px; margin-top: 0px;">
+        <div class="col-md-2 col-xs-0 col-sm-0 col-lg-2" style="height: 17px; text-align: center; margin-top: 0px; padding-top: 0px;">
+        </div>
+        <div class="col-md-3 col-xs-4 col-sm-4 col-lg-3" style="height: 17px; text-align: center; margin-top: 0px; padding-top: 0px;">
+          <a style="font-size: 12px; text-decoration: underline; color: rgb(51, 51, 51); cursor: pointer; font-weight: bold;" id="myEventsPAst">Past</a>
+        </div>
+        <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="height: 17px; text-align: center;">
+          <a style="font-size:12px;text-decoration:underline;color:green;cursor:pointer;font-weight:bold;" id="myEventsUpcom">Upcoming</a>
+        </div>
+      </div>
+      <!--div class="chekck_myEvents" style="display:none;width: 99%;padding-left:7%;padding-right:5%;padding-top:2px;">
+        <a style="font-size:12px;text-decoration:underline;color:#333;cursor:pointer;font-weight:bold;margin-right:4px;" id="myEventsPAst">Past</a>
+        <a style="font-size:12px;text-decoration:underline;color:green;cursor:pointer;font-weight:bold;" id="myEventsUpcom">Upcoming</a>
+      </div-->
+   </div>
+    <div class="eventsParent">
+      <input style="background: maroon none repeat scroll 0% 0%;height:31px;" value="Go...!" name="e_Event_MM" id="e_Event_MM" readonly="" class="ip_button_DarkGrey" type="button">
+      <!--div class="chekck_LiveEvents" id="chekck_LiveEvents" style="display:none;width: 99%;padding-left: 30%;padding-right:12px;padding-top:2px;">
+        <a style="font-size:12px;text-decoration:underline;color:#333;cursor:pointer;font-weight:bold;margin-right:4px;">Past!</a>
+        <a style="font-size:12px;text-decoration:underline;color:green;cursor:pointer;font-weight:bold;">Live!</a>
+      </div-->
+      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 chekck_LiveEvents" id="chekck_LiveEvents" style="height: 20px; padding-left: 15px; padding-right: 0px; padding-top: 0px; margin-top: 0px; display: none;">
+        <div class="col-md-2 col-xs-1 col-sm-2 col-lg-3" style="height: 17px; text-align: center; margin-top: 0px; padding-top: 0px;">
+        </div>
+        <div class="col-md-3 col-xs-4 col-sm-3 col-lg-2" style="height: 17px; text-align: center; margin-top: 0px; padding-top: 0px; margin-right: 4px;">
+          <a style="font-size: 12px; text-decoration: underline; color: rgb(51, 51, 51); cursor: pointer; font-weight: bold;" id="goLivePAst">Past!</a>
+        </div>
+        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 17px; text-align: center;">
+          <a style="font-size:12px;text-decoration:underline;color:green;cursor:pointer;font-weight:bold;" id="goLiveUpcom">Live!</a>
+        </div>
+      </div>
+    </div>
+</template>
+

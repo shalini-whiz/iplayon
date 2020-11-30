@@ -1,0 +1,763 @@
+.organizerParent {
+    order: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 0.8%;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 2.38em;
+    outline: 0;
+}
+.organizerName {
+    order: 1;
+    background-color: #B0B0B0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 0.8%;
+    border-radius: 5px;
+    border: 0px solid;
+    padding-top: 1%;
+    height: 100%;
+    width: 100%;
+    color: white;
+    font-size: 12px;
+    padding-left: 1%;
+}
+.viewEventVenue {
+    order: 1;
+    background-color: #B0B0B0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 5px;
+    border: 0px solid;
+    padding-top: 1%;
+    height:100%;
+    width: 99.8%;
+    color: white;
+    font-size: 12px;
+    padding-left: 1%;
+    cursor: pointer;
+    text-align: left;
+    background: #B0B0B0 url(/mapPin.ico) no-repeat;
+    background-position: right;
+    background-size: 27px 31px;
+}
+.viewClosureDate {
+    width: 100%;
+    /*background: #B0B0B0;
+    border-radius: 5px;
+    border: 0px solid;*/
+    height: 100%;
+    color: white;
+    float: left;
+    font-size: 12px;
+    padding-left: 0%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin: 0;
+}
+.datesParentForView {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-inline-flex;
+    /* Safari */
+    
+    display: inline-flex;
+    width: 100%;
+    height: 2.4em;
+    margin-top: 0.5%;
+}
+.viewDatesParent1 {
+    order: 3;
+    width: 100%;
+    height: 2.45em;
+}
+.viewDatesParent2 {
+    order: 3;
+    width: 100%;
+    margin-top: 0.5%;
+    height: 2.3em;
+}
+.viewPrizeAndVenue {
+    order: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 0.4%;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 2.4em;
+    outline: 0;
+}
+.viewRulesParent {
+    width: 100%;
+    /*min-width:100%;*/
+    
+    background: grey;
+    border-radius: 5px;
+    border: 0px solid;
+    color: white;
+    float: left;
+    font-size: 12px;
+    height: 27px;
+    margin-top: 0.5%;
+}
+.viewRulesParent1 {
+    width: 100%;
+    /*min-width:100%;*/
+    
+    height: 100%;
+    /*background: grey url(/adobe-past.png) no-repeat;
+    background-position: 99.1%;
+    background-size: 27px 31px;
+    border-radius: 5px;
+    border-radius: 5px;
+    border: 0px solid;*/
+    color: white;
+    float: center;
+    font-size: 12px;
+    padding-left: 0%;
+    padding-top: 1%;
+    margin: 0 auto;
+    text-decoration: none !important;
+    margin-top: 0%;
+    display: block;
+}
+.viewRulesParent1:hover,.viewRulesParent2:hover {
+    background: none;
+   /* background: grey url(/adobe-past.png) no-repeat;
+    background-position: 99.1%;
+    background-size: 27px 31px;*/
+}
+ 
+.prizeDownloadViewEvents{
+    height: 100%;
+    background: grey none repeat scroll 0% 0%;
+    border-radius: 5px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 1%;
+    order: 2;
+    width: 33%;
+    margin-left: 0.6%;
+}
+
+.prizeDownloadPastViewEvents{
+    width: 100%;
+    height: 100%;
+    background: #B0B0B0 no-repeat scroll 99.1% center / 27px 31px;
+    border-radius: 5px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 1%;
+}
+.closureDateViewEvents {
+    width: 100%;
+    /*height: 100%;*/
+    background: #b8b8b8 none repeat scroll 0% 0%;
+    border-radius: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 1%;
+    height: 30px;
+}
+.closureDatePastViewEvents {
+    width: 100%;
+    background: grey  url("/adobe-past.png") no-repeat scroll 99.1% center / 27px 31px;
+    border-radius: 5px;
+   /* padding-top: 19%;
+    padding-bottom: 19%;*/
+    height: 2.3em;
+    margin-top: 10.5%;
+    padding-left: 1%;
+}
+
+.rulesDownloadViewEvents{
+    background: #808080 url("/adobe-past.png") no-repeat scroll 99.1% center / 27px 31px;
+    border-radius: 5px;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    padding-left: 1%;
+    /*margin-top: -1.1%;*/
+    height:31px;
+    width: 100%;
+    order:1;
+}
+.rulesDownloadViewEventsResults{
+    background: #808080 url("/adobe-past.png") no-repeat scroll 99.1% center / 27px 31px;
+    border-radius: 5px;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    padding-left: 1%;
+    /*margin-top: -1.1%;*/
+    height: 2.4em;
+    width: 54%;
+    margin-left: 0.5%;
+    order:2;
+}
+.downloadRules{
+    height: 32px;
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.viewRulesParent2{
+        width: 100%;
+        height: 34px;
+    /*min-width:100%;*/
+    
+   /* height: 2.9em;
+    background: grey url(/adobe-past.png) no-repeat;
+    background-position: 99.1%;
+    background-size: 27px 31px;
+    border-radius: 5px;
+    border-radius: 5px;
+    border: 0px solid;*/
+    color: white;
+    float: center;
+    font-size: 12px;
+    padding-left: 3px;
+    padding-top: 7px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 5px;
+    text-decoration: none !important;
+}
+.downloadButton {
+    margin: 0px;
+    width: 52px;
+    height: 28px;
+    display: block;
+}
+.downloadButton2 {
+    margin: 0px;
+    width: 56px;
+    height: 29px;
+    display: block;
+}
+.c {
+    display: inline-block;
+    padding: 0px;
+    text-align: center;
+}
+.c:hover {
+    background: none;
+}
+.file-upload-contdownload {
+    position: relative;
+    width: 62px;
+    height: 28px;
+    top: 8%;
+    left: 77%;
+}
+.file-upload-contdownload2 {
+    position: relative;
+    width: 62px;
+    height: 28px;
+    top: 23%;
+    left: 58.3%;
+}
+#alreadySubscribedText {
+    font-size: 12px;
+    padding-left:  0px;
+    padding-right: 0px;
+    font-weight: normal;
+}
+.alreadySubscribedText {
+    margin-left: auto;
+    margin-right: auto;
+}
+.aSubscribed {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 2px;
+}
+.alreadySubHeader{
+    padding: 3px;
+    background: #b30000;
+    color: white;
+    font-size: 12px;
+    text-align: left;
+    height: 2em;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 0px solid;
+    font-weight: bold;
+    background: black none repeat scroll 0% 0%;
+}
+.alreadySubyes {
+    margin-left: auto;
+    margin-right: auto;
+}
+.alreadySubPopup {
+    width: 290px;    /*width of confirm popup */
+    margin-top: 100px;
+    border-radius: 5px;
+    border: 0.01px outset;
+    -moz-box-shadow: 0 0 10px #000;
+    -webkit-box-shadow: 0 0 10px;
+    box-shadow: 2px 2px 2px grey;
+}
+.alreadySubPopup-sm{
+    width: 290px;
+}
+#dataConfirm{
+    font-weight: bold;
+    color: white;
+}
+#questConfirm{
+    font-weight: normal;
+    color: white;
+}
+/**/
+.viewfirstrow{
+    width: 50%;
+    height: 100%;
+}
+.viewEventStartDate{
+    order: 1;
+    background:#B0B0B0;
+    display: flex;
+    border-radius: 5px;
+    border: 0px solid;
+   /* padding-top: 1%;*/
+    height: 100%;
+    margin-right: 0.6%;
+    color: white;
+    text-align: left;
+    font-size: 12px;
+    padding-left: 1%;
+    width: 100%;
+    font-weight: bold;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-top: 0;
+}
+.viewEventStartDateP{
+    order: 1;
+    background:#B0B0B0;
+    display: flex;
+    border-radius: 5px;
+    border: 0px solid;
+   /* padding-top: 1%;*/
+    height: 100%;
+    margin-right: 0.6%;
+    color: white;
+    text-align: left;
+    font-size: 12px;
+    padding-left: 1%;
+    width: 45%;
+    font-weight: bold;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-top: 0;
+}
+.viewEventSubscriber{
+    height: 34px;
+    order: 2;
+    border-radius: 5px;
+    border: 0px solid;
+    color: #FFF;
+    font-size: 12px;
+    background: #B0B0B0 url("/arrow.gif") no-repeat scroll 98% 50%;
+    /*overflow: hidden;*/
+    outline: 0px none;
+    padding-top: 3px;
+    background-position: 98% 6px;
+    width: 100%;
+}
+.viewEventCurrentEntries{
+    background-color: transparent;
+    color: white;
+    padding-top: 4px;
+    border: 0;
+    border-color: none;
+    margin: 0;
+    padding-left: 3px;
+}
+
+
+#currentEntriesListDropDown {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+  font-size: 12px;
+  color: #656565;
+  font-weight: normal;
+  -webkit-transition: all 0.15s linear;
+  -moz-transition: all 0.15s linear;
+  -ms-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+   z-index: 1;
+  transition: all 0.15s linear;
+}
+
+/*not used*/
+#currentEntriesListDropDown:hover { color: #898989; }
+
+/*when blackList drop down is open*/
+#currentEntriesListDropDown.open {
+  background: none;
+  color: #fff;
+  z-index: 1;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+/* css of unordered list of blackList
+*/
+#currentEntriesListDropDown ul {
+  position: absolute;
+  top: 100%;
+  right: 0%;
+  width: 100%;
+  padding: 0px 0px;
+  display: none;
+  background: #fff;
+  list-style-type: none;
+   z-index: 1;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+/* css of li of unordered list of blackList
+*/
+#currentEntriesListDropDown ul li { font-size: 12px; }
+
+/* css for a tags of li of blackList
+*/
+#currentEntriesListDropDown ul li a {
+  text-decoration: none;
+  display: block;
+  color: #447dd3;
+  padding: 7px 15px;
+   z-index: 1;
+}
+
+/* not used*/
+#currentEntriesListDropDown ul li a:hover {
+  color: #6fa0e9;
+  background: #e7f0f7;
+   z-index: 1;
+}
+
+#currentEntriesSubscriberListLi{
+    border-bottom: 1px solid black;
+    background: white none repeat scroll 0% 0%;
+    font-weight: normal;
+    font-size: 12px;
+    color: #595959;
+    padding-left:5px;
+    padding-right:5px;
+    height: 2em;
+    display: flex;
+}
+.currentEntriesSubscriberName{
+    width:100%;
+    overflow: hidden;
+    height: 1.3em;
+    margin-bottom: 0px;
+    margin-top: 3px;
+    box-sizing: border-box;
+}
+
+.viewEventsOrganizerName {
+    width: 100%;
+    /*min-width:100%;*/
+    
+    padding-top:0%;
+    color: white;
+    font-size: 12px;
+    padding-left: 1%;
+}
+.viewRulesParent1:focus, .viewRulesParent2:focus {
+    color: white;
+    text-decoration: none;
+   /* background: grey url(/adobe-past.png) no-repeat;
+    background-position: 99.1%;
+    background-size: 27px 31px;
+    border-radius: 5px;*/
+    background: 0;
+    outline: 0;
+    display: block;
+}
+.viewPrizeDetails:focus {
+    color: white;
+    text-decoration: none;
+    outline: 0;
+}
+
+.viewPrizeDetails {
+    width: 100%;
+    background: grey;
+    border-radius: 5px;
+    border: 0px solid;
+    height: 100%;
+    color: white;
+    float: left;
+    font-size: 12px;
+    padding-left: 1%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: 0;
+}
+.sponImgEmpty {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-size: 12px;
+    color: grey;
+    padding-top: 40%;
+    padding-bottom: 40%;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.pastViewEventOrganizer{
+    height: 100%;
+    order: 2;
+    border-radius: 5px;
+    border: 0px solid;
+    color: #FFF;
+    font-size: 12px;
+    background: #B0B0B0;
+    /*overflow: hidden;*/
+    outline: 0px none;
+    padding-top: 3px;
+    background-position: 98% 6px;
+    width: 56%;
+}
+
+.pastViewEventParent2{
+    width: 100%;
+    /*min-width:100%;*/
+    
+    height: 2.9em;
+    /*background:  #B0B0B0;
+    border-radius: 5px;
+    border: 0px solid;*/
+    color: white;
+    float: center;
+    font-size: 12px;
+    padding-left: 0%;
+    padding-top: 0%;
+    margin: 0 auto;
+    text-decoration: none !important;
+}
+
+.pastViewEventsResults {
+    width: 100%;
+   /* background: grey url(/adobe-past.png) no-repeat;
+    background-position: 99.1%;
+    background-size: 27px 31px;
+    border-radius: 5px;
+    border: 0px solid;*/
+    height: 100%;
+    color: white;
+    float: left;
+    font-size: 12px;
+    display: block;
+    /*padding-left: 1%;*/
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: 0;
+}
+.pastViewEventsResults:hover{
+    background: none;
+    /* background: grey;url(/adobe-past.png) no-repeat;
+    background-position: 99.1%;
+    background-size: 27px 31px;*/
+}
+
+/*fdhssss*/
+@media screen and (min-width:1360px) {
+    
+/*.viewPrizeAndVenue {
+    order: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 0.5%;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 2.4em;
+    outline: 0;
+}*/
+
+.sponImgEmpty {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-size: 12px;
+    color: grey;
+    padding-top: 40%;
+    padding-bottom: 40%;
+    padding-left: 23%;
+    padding-right: 23%;
+}
+
+/*.prizeAndVenue {
+    order: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 0.4%;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 2.43em;
+    outline: 0;
+}
+
+.viewRulesParent2{
+        width: 100%;*/
+    /*min-width:100%;*/
+    
+  /*  height: 2.89em;
+    background: grey url(/adobe-past.png) no-repeat;
+    background-position: 99.1%;
+    background-size: 27px 31px;
+    border-radius: 5px;
+    border-radius: 5px;
+    border: 0px solid;
+    color: white;
+    float: center;
+    font-size: 12px;
+    padding-left: 1%;
+    padding-top: 2%;
+    display: block;
+    margin: 0 auto;
+    text-decoration: none !important;
+}
+
+.pastViewEventParent2{
+    width: 100%;*/
+    /*min-width:100%;*/
+    
+   /* height: 2.89em;
+    background:  #B0B0B0;
+    border-radius: 5px;
+    border: 0px solid;
+    color: white;
+    float: center;
+    font-size: 12px;
+    padding-left: 1%;
+    padding-top: 2%;
+    display: block;
+    margin: 0 auto;
+    text-decoration: none !important;
+}*/
+}
+.venueChangeview {
+    height: 100%;
+    order: 2;
+    background: grey;
+    border-radius: 5px;
+    border: 0px solid;
+    color: white;
+    /*width:120px;*/
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    font-size: 12px;
+    background: #B0B0B0 no-repeat 90% 50%;
+    overflow: hidden;
+    outline: 0;
+    cursor: pointer;
+}
+
+.viewEventVenueChangeview {
+    order: 2;
+    background-color: #B0B0B0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 5px;
+    border: 0px solid;
+    height:32px;
+    width: 100%;
+    color: white;
+    font-size: 12px;
+    padding-left: 2px;
+    cursor: pointer;
+    text-align: left;
+    background: #B0B0B0 no-repeat;
+    background-position: right;
+    background-size: 27px 31px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.viewVenueviewEvent{
+    order: 2;
+    color: maroon;
+    font-size: 25px;
+    padding-top: 5px;
+    padding-right: 1%;
+}
+
+.viewStartDateGridView{
+    background: #B0B0B0 none repeat scroll 0% 0%;
+    border-radius: 5px;
+    border: 0px solid;
+    color: #FFF;
+    font-size: 12px;
+    outline: 0px none;
+    overflow: hidden;
+    padding-top: 3px;
+    margin-right: 3px;
+    width: 100%;
+    height: 34px;
+}
+
+.tourNameGridView{
+    border-radius: 5px;
+    border: 0px solid;
+    padding-top: 0px;
+    height:34px;
+    width: 100%;
+    color: #FFF;
+    font-size: 12px;
+    padding-left: 3px;
+    cursor: default;
+    text-align: left;
+    background: #B0B0B0 none repeat scroll 0% 0%;
+}
+.sponsorImgEmptyGrid{
+    width: 88px;
+    height: 100%;
+    margin: 0px;
+    font-size: 12px;
+    color: #808080;
+    padding:0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 62px;
+}
+
+.createGoogleDivchangedGrid {
+    border-bottom-right-radius: 5px!important;
+    background: none repeat scroll 0% 0%!important;
+    border-top-right-radius: 5px!important;
+    color: #893C54!important;
+    padding-top: 3px;
+    padding-left: 5px;
+}

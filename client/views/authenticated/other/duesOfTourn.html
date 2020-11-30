@@ -1,0 +1,229 @@
+<template name="duesOfTourn">
+  <form id="application-duesOfTourn">
+    <div class="modal" id="duesOfTourn" aria-hidden="true">
+      <div id="subDomainCenter" class="modal-dialog" style="width:400px !important" >
+        <div class="eventAddTourPopup" style="width:451px !important">
+          <div class="modal-content">
+            <div class="modal-header headerClass">
+              <h5 class="modal-title myModalLabel" id="myModalLabel" style='text-align:center;'>Dues of {{userName}}</h5>
+            </div>
+                           
+            <div class="modal-body subDomainModalBody" style="padding:15px !important;height:14em;">               
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important">
+                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;height:14em;overflow-y:auto;padding-left:15px !important;padding-right:15px !important;">
+                  <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important">
+                    <div class="row no-gutter">
+                      <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 tableHeadPopup1"  style="border-right:0px">
+                        <p class="tableHeadPopupPtagH">No.</p>
+                      </div>
+                      <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7 tableHeadPopup1" style="border-right:1px solid black">
+                         <p class="tableHeadPopupPtagH">Tournament</p>
+                      </div>
+                      <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup1" style="border-right:1px solid black">
+                        <p class="tableHeadPopupPtagH">Total due</p>
+                      </div>
+                      <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup1" style="border-right:1px solid black">
+                        <p class="tableHeadPopupPtagH">Receipt</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 scrollableDiv" style="padding:0px !important;min-height:3em;border: 1px solid;border-top: 0px;border-bottom: 0px !important;" id="scrollableDiv2" >
+                    {{#each eventLists}}
+                    {{#if this}}
+                      <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important" >
+                        <div class="row no-gutter" id="test">
+                          <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 tableHeadPopup"  style="border-left:0px;">
+                            <p class="tableHeadPopupPtag roundNumVal" >{{this.slNo}}</p>
+                          </div>
+                          <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7 tableHeadPopup"  style="border-left:0px;border-right:0px;">
+                            <p class="tableHeadPopupPtag roundNumVal" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{getTournamentName this.tournamentId}}</p>
+                          </div>
+                          <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup" style="border-right:0px;">
+                             <p class="tableHeadPopupPtag roundNumVal" >{{this.total}}/-</p>
+                          </div>
+                          <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup" style="border-right:0px;">
+                            <input type=button value="send" class="sendReciept" id="sendRecDue" style="height: 18px;" name={{this.tournamentId}}>
+                          </div>
+                        </div>
+                      </div>
+                      {{/if}}
+                      {{/each}}
+                     </div>
+                   </div>                               
+                  </div>
+                  <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height: 2em !important;margin-top:5px;">
+                    <p style="font-size:12px;color:red;cursor:default;" id="editSettingsPopupError"></p>
+                    <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+                  </div>
+                </div>
+                            
+                <div class="modal-footer">
+                    <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style='padding-bottom:4px;'>
+                      <div style="margin-bottom: 5px; margin-top: 5px;display:none;" class="col-md-12 col-xs-12 col-lg-12 col-sm-12" id="askPasswordCheck">
+                        <div style="padding-top: 0px ! important; padding-bottom: 0px ! important; padding-left: 0px ! important; padding-right: 0px !important;" class="col-md-6 col-xs-6 col-lg-6 col-sm-6">
+                          <input placeholder="password" style="width: 100%; font-size: 12px; height: 25px; border: 1px solid;" type="password" id="askPasswordText">
+                        </div>
+                        <div style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 3px ! important;" class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+                          <input style="width: 88%; font-size: 13px; border: 1px solid black; background: grey none repeat scroll 0% 0%; color: white; height: 25px;" id="passwordAskOK" value="ok" type="button">
+                        </div>    
+                        <div style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px ! important;" class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+                          <input style="width: 88%; font-size: 13px; background: grey none repeat scroll 0% 0%; border: 1px solid black; color: white; height: 25px;" id="passwordAskCancel" value="cancel" type="button">
+                        </div>    
+                      </div>
+                      <div style="margin-bottom: 5px; margin-top: 5px;display:none;" class="col-md-12 col-xs-12 col-lg-12 col-sm-12" id="askPasswordCheck2">
+                        <div style="padding-top: 0px ! important; padding-bottom: 0px ! important; padding-left: 0px ! important; padding-right: 0px !important;" class="col-md-6 col-xs-6 col-lg-6 col-sm-6">
+                          <input placeholder="password" style="width: 100%; font-size: 12px; height: 25px; border: 1px solid;" type="password" id="askPasswordText2">
+                        </div>
+                        <div style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 3px ! important;" class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+                          <input style="width: 88%; font-size: 13px; border: 1px solid black; background: grey none repeat scroll 0% 0%; color: white; height: 25px;" id="passwordAskOK2" value="ok" type="button">
+                        </div>    
+                        <div style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px ! important;" class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+                          <input style="width: 88%; font-size: 13px; background: grey none repeat scroll 0% 0%; border: 1px solid black; color: white; height: 25px;" id="passwordAskCancel2" value="cancel" type="button">
+                        </div>    
+                      </div>
+                      <div style="margin-bottom: 5px; margin-top: 5px;display:none;" class="col-md-12 col-xs-12 col-lg-12 col-sm-12" id="askPasswordCheck3">
+                        <div style="padding-top: 0px ! important; padding-bottom: 0px ! important; padding-left: 0px ! important; padding-right: 0px !important;" class="col-md-6 col-xs-6 col-lg-6 col-sm-6">
+                          <input placeholder="password" style="width: 100%; font-size: 12px; height: 25px; border: 1px solid;" type="password" id="askPasswordText3">
+                        </div>
+                        <div style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 3px ! important;" class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+                          <input style="width: 88%; font-size: 13px; border: 1px solid black; background: grey none repeat scroll 0% 0%; color: white; height: 25px;" id="passwordAskOK3" value="ok" type="button">
+                        </div>    
+                        <div style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px ! important;" class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+                          <input style="width: 88%; font-size: 13px; background: grey none repeat scroll 0% 0%; border: 1px solid black; color: white; height: 25px;" id="passwordAskCancel3" value="cancel" type="button">
+                        </div>    
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " >
+                          <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 " > 
+                          </div>
+                          <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 " >
+                            <button type="submit" class="ip_button_Popup_Black" id="saveEditSettingsDraws" data-dismiss= modal style="">Done</button>
+                          </div>
+                          <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 " > 
+                          </div>
+                        </div>
+                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+    </template>
+
+
+    <!-- Academy wise Due's Template -->
+    <template name="duesOfAcademyTourn">
+  <form id="application-duesOfAcademyTourn">
+    <div class="modal" id="duesOfAcademyTourn" aria-hidden="true">
+      <div id="subDomainCenter" class="modal-dialog" style="width:400px !important" >
+        <div class="eventAddTourPopup" style="width:451px !important">
+          <div class="modal-content">
+            <div class="modal-header headerClass">
+              <h5 class="modal-title myModalLabel" id="myModalLabel" style='text-align:center;'>Dues of {{userName}}</h5>
+            </div>
+                           
+            <div class="modal-body subDomainModalBody" style="padding:15px !important;height:14em;">               
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important">
+                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;height:14em;overflow-y:auto;padding-left:15px !important;padding-right:15px !important;">
+                  <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important">
+                    <div class="row no-gutter">
+                      <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 tableHeadPopup1"  style="border-right:0px">
+                        <p class="tableHeadPopupPtagH">No.</p>
+                      </div>
+                      <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7 tableHeadPopup1" style="border-right:1px solid black">
+                         <p class="tableHeadPopupPtagH">Tournament</p>
+                      </div>
+                      <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup1" style="border-right:1px solid black">
+                        <p class="tableHeadPopupPtagH">Total due</p>
+                      </div>
+                      <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup1" style="border-right:1px solid black">
+                        <p class="tableHeadPopupPtagH">Receipt</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 scrollableDiv" style="padding:0px !important;min-height:3em;border: 1px solid;border-top: 0px;border-bottom: 0px !important;" id="scrollableDiv2" >
+                    {{#each eventLists}}
+                    {{#if this}}
+                      <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important" >
+                        <div class="row no-gutter" id="test">
+                          <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 tableHeadPopup"  style="border-left:0px;">
+                            <p class="tableHeadPopupPtag roundNumVal" >{{this.slNo}}</p>
+                          </div>
+                          <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7 tableHeadPopup"  style="border-left:0px;border-right:0px;">
+                            <p class="tableHeadPopupPtag roundNumVal" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{getTournamentName this.tournamentId}}</p>
+                          </div>
+                          <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup" style="border-right:0px;">
+                             <p class="tableHeadPopupPtag roundNumVal" >{{this.total}}/-</p>
+                          </div>
+                          <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup" style="border-right:0px;">
+                            <input type=button value="send" class="sendReciept" id="sendRecDue" style="height: 18px;" name={{this.tournamentId}}>
+                          </div>
+                        </div>
+                      </div>
+                      {{/if}}
+                      {{/each}}
+                     </div>
+                   </div>                               
+                  </div>
+                  <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height: 2em !important;margin-top:5px;">
+                    <p style="font-size:12px;color:red;cursor:default;" id="editSettingsPopupError"></p>
+                    <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+                  </div>
+                </div>
+                            
+                <div class="modal-footer">
+                    <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style='padding-bottom:4px;'>
+                      <div style="margin-bottom: 5px; margin-top: 5px;display:none;" class="col-md-12 col-xs-12 col-lg-12 col-sm-12" id="askPasswordCheck">
+                        <div style="padding-top: 0px ! important; padding-bottom: 0px ! important; padding-left: 0px ! important; padding-right: 0px !important;" class="col-md-6 col-xs-6 col-lg-6 col-sm-6">
+                          <input placeholder="password" style="width: 100%; font-size: 12px; height: 25px; border: 1px solid;" type="password" id="askPasswordText">
+                        </div>
+                        <div style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 3px ! important;" class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+                          <input style="width: 88%; font-size: 13px; border: 1px solid black; background: grey none repeat scroll 0% 0%; color: white; height: 25px;" id="passwordAskOK" value="ok" type="button">
+                        </div>    
+                        <div style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px ! important;" class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+                          <input style="width: 88%; font-size: 13px; background: grey none repeat scroll 0% 0%; border: 1px solid black; color: white; height: 25px;" id="passwordAskCancel" value="cancel" type="button">
+                        </div>    
+                      </div>
+                      <div style="margin-bottom: 5px; margin-top: 5px;display:none;" class="col-md-12 col-xs-12 col-lg-12 col-sm-12" id="askPasswordCheck2">
+                        <div style="padding-top: 0px ! important; padding-bottom: 0px ! important; padding-left: 0px ! important; padding-right: 0px !important;" class="col-md-6 col-xs-6 col-lg-6 col-sm-6">
+                          <input placeholder="password" style="width: 100%; font-size: 12px; height: 25px; border: 1px solid;" type="password" id="askPasswordText2">
+                        </div>
+                        <div style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 3px ! important;" class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+                          <input style="width: 88%; font-size: 13px; border: 1px solid black; background: grey none repeat scroll 0% 0%; color: white; height: 25px;" id="passwordAskOK2" value="ok" type="button">
+                        </div>    
+                        <div style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px ! important;" class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+                          <input style="width: 88%; font-size: 13px; background: grey none repeat scroll 0% 0%; border: 1px solid black; color: white; height: 25px;" id="passwordAskCancel2" value="cancel" type="button">
+                        </div>    
+                      </div>
+                      <div style="margin-bottom: 5px; margin-top: 5px;display:none;" class="col-md-12 col-xs-12 col-lg-12 col-sm-12" id="askPasswordCheck3">
+                        <div style="padding-top: 0px ! important; padding-bottom: 0px ! important; padding-left: 0px ! important; padding-right: 0px !important;" class="col-md-6 col-xs-6 col-lg-6 col-sm-6">
+                          <input placeholder="password" style="width: 100%; font-size: 12px; height: 25px; border: 1px solid;" type="password" id="askPasswordText3">
+                        </div>
+                        <div style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 3px ! important;" class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+                          <input style="width: 88%; font-size: 13px; border: 1px solid black; background: grey none repeat scroll 0% 0%; color: white; height: 25px;" id="passwordAskOK3" value="ok" type="button">
+                        </div>    
+                        <div style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px ! important;" class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+                          <input style="width: 88%; font-size: 13px; background: grey none repeat scroll 0% 0%; border: 1px solid black; color: white; height: 25px;" id="passwordAskCancel3" value="cancel" type="button">
+                        </div>    
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " >
+                          <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 " > 
+                          </div>
+                          <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 " >
+                            <button type="submit" class="ip_button_Popup_Black" id="saveEditSettingsDraws" data-dismiss= modal style="">Done</button>
+                          </div>
+                          <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 " > 
+                          </div>
+                        </div>
+                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+    </template>

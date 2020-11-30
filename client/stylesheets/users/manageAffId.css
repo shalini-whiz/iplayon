@@ -1,0 +1,23 @@
+.mainSelectDiv_AFFID{
+
+}
+
+.pTagFirst_AFFID{
+	font-size: 12px;
+	color: maroon;	
+}
+
+.selectTagFirst_AFFID{
+	font-size: 12px;
+	width: 100%;
+}
+.modalManage_AFFID{
+	width: 301px !important;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.inputFirst_AFFID{
+	font-size: 12px;
+	width: 25%;
+}

@@ -1,0 +1,335 @@
+/*css for drop down of selectWhoDropDown of myEvents,
+pastEvents, upcomingEvents Template*/
+
+/* div of sort Events Drop Down
+*/
+#selectWhoDropDown {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+    background-position: 0% 32%;
+    font-size: 12px;
+    color: #000;
+    font-weight: normal;
+    order: 2;
+    background-size: 30px auto;
+    margin-left: 2px;
+    height: 2em;
+    padding-top: 2px;
+    width: 92%;
+    border-radius: 5px;
+    border: 1px solid black;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -ms-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+    /*margin-right: -1%;*/
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+/*not used*/
+#selectWhoDropDown:hover {}
+
+/*when sort Events Drop Down is open*/
+#selectWhoDropDown.open {
+    /*background: url("/imageedit_5_4285196360.png") no-repeat 0%;*/
+    background-size: 30px;
+    background-height: 16px;
+    background-position: 0% 32%;
+    color:black;
+    z-index: 1;
+    width: 92%;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+/* css of unordered list of selectWhoDropDown
+*/
+#selectWhoDropDown ul {
+    position: absolute;
+    top: 100%;
+    /* move content -4px because of container left border */
+    width:100%;
+    /*width: 102px;*/
+    padding: 0px 0px;
+    display: none;
+    background: #fff;
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    list-style-type: none;
+    min-height: 2.7em;
+    height: 8em;
+    overflow: auto;
+}
+
+/* css of li of unordered list of selectWhoDropDown
+*/
+#selectWhoDropDown ul li {
+    font-size: 12px;
+}
+
+/* css for a tags of li of selectWhoDropDown
+*/
+#selectWhoDropDown ul li a {
+    text-decoration: none;
+    display: block;
+    color: grey;
+    padding: 7px 15px;
+    border-bottom: 1px solid black;
+    font-size: 12px;
+    color: black;
+}
+
+/* css for a tags hover of li of selectWhoDropDown
+*/
+#selectWhoDropDown ul li a:hover {
+    color: #fff;
+    background: #D0D0D0;
+}
+
+.trya {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    outline: 0;
+    height: 1.5em;
+}
+
+.abndfSortChange {
+    font-size: 16px;
+    margin-top: 0px;
+    color: maroon;
+    float: right;
+}
+
+.labelWhoNew {
+    order: 1;
+    width: 73px;
+    font-size: 12px;
+    color: maroon;
+}
+.labelWhoNew2 {
+    order: 1;
+    width: 100%;
+    font-size: 12px;
+    color: maroon;
+    margin: 0;
+}
+.myEventSortSelectWho {
+    order: 2;
+    margin-left: 1%;
+    padding: 4px 15%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.myEventSortSelectWho2{
+    margin-left: 1%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.selectWho {
+    width: 97%;
+    margin: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.justFooter{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+}
+
+/*css for drop down of selectWhoDropDown of myEvents,
+pastEvents, upcomingEvents Template*/
+
+/* div of sort Events Drop Down
+*/
+#selectWhoDropDown2 {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+    background-position: 0% 32%;
+    font-size: 12px;
+    color: #000;
+    font-weight: normal;
+    order: 2;
+    background-size: 30px auto;
+    margin-left: 2px;
+    height: 2em;
+    padding-top: 2px;
+    width: 92%;
+    border-radius: 5px;
+    border: 1px solid black;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -ms-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+    /*margin-right: -1%;*/
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+/*not used*/
+#selectWhoDropDown2:hover {}
+
+/*when sort Events Drop Down is open*/
+#selectWhoDropDown2.open {
+    /*background: url("/imageedit_5_4285196360.png") no-repeat 0%;*/
+    background-size: 30px;
+    background-height: 16px;
+    background-position: 0% 32%;
+    color:black;
+    z-index: 1;
+    width: 92%;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+/* css of unordered list of selectWhoDropDown
+*/
+#selectWhoDropDown2 ul {
+    position: absolute;
+    top: 100%;
+    /* move content -4px because of container left border */
+    width:100%;
+    /*width: 102px;*/
+    padding: 0px 0px;
+    display: none;
+    background: #fff;
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    list-style-type: none;
+    min-height: 2.7em;
+    height: 8em;
+    overflow: auto;
+}
+
+/* css of li of unordered list of selectWhoDropDown
+*/
+#selectWhoDropDown2 ul li {
+    font-size: 12px;
+}
+
+/* css for a tags of li of selectWhoDropDown
+*/
+#selectWhoDropDown2 ul li a {
+    text-decoration: none;
+    display: block;
+    color: grey;
+    padding: 7px 15px;
+    border-bottom: 1px solid black;
+    font-size: 12px;
+    color: black;
+}
+
+/* css for a tags hover of li of selectWhoDropDown
+*/
+#selectWhoDropDown2 ul li a:hover {
+    color: #fff;
+    background: #D0D0D0;
+}
+
+#selectWhoDropDown3 {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+    background-position: 0% 32%;
+    font-size: 12px;
+    color: #000;
+    font-weight: normal;
+    order: 2;
+    background-size: 30px auto;
+    margin-left: 2px;
+    height: 2em;
+    padding-top: 2px;
+    width: 92%;
+    border-radius: 5px;
+    border: 1px solid black;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -ms-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+    /*margin-right: -1%;*/
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+/*not used*/
+#selectWhoDropDown3:hover {}
+
+/*when sort Events Drop Down is open*/
+#selectWhoDropDown3.open {
+    /*background: url("/imageedit_5_4285196360.png") no-repeat 0%;*/
+    background-size: 30px;
+    background-height: 16px;
+    background-position: 0% 32%;
+    color:black;
+    z-index: 1;
+    width: 92%;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+/* css of unordered list of selectWhoDropDown
+*/
+#selectWhoDropDown3 ul {
+    position: absolute;
+    top: 100%;
+    /* move content -4px because of container left border */
+    width:100%;
+    /*width: 102px;*/
+    padding: 0px 0px;
+    display: none;
+    background: #fff;
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    list-style-type: none;
+    min-height: 2.7em;
+    height: 8em;
+    overflow: auto;
+}
+
+/* css of li of unordered list of selectWhoDropDown
+*/
+#selectWhoDropDown3 ul li {
+    font-size: 12px;
+}
+
+/* css for a tags of li of selectWhoDropDown
+*/
+#selectWhoDropDown3 ul li a {
+    text-decoration: none;
+    display: block;
+    color: grey;
+    padding: 7px 15px;
+    border-bottom: 1px solid black;
+    font-size: 12px;
+    color: black;
+}
+
+/* css for a tags hover of li of selectWhoDropDown
+*/
+#selectWhoDropDown3 ul li a:hover {
+    color: #fff;
+    background: #D0D0D0;
+}

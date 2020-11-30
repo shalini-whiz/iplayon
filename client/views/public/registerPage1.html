@@ -1,0 +1,37 @@
+<!-- registerPage1 -->
+
+<!-- meteorLogin page template for meteor meteor login -->
+<template name="registerPage1">
+<div style="flex: 1;-webkit-flex: 1;-ms-flex: 1;">
+<div id="innerDivAboutIplayOn" class="innerDivAboutIplayOn" style="order: 1;display:inline;">
+			<div class="iplayOnDescription">
+				<p style="margin-top:23%">
+					<span class="about">IPlayOn</span><br>
+				</p>
+			</div>
+		</div>
+<div class="loginButtons" style="order: 2;height:35.2em;width:49%">
+<p id="emailIdForget_registerPage1"></p>
+<p style="color:rgb(179,0,0)" class="loginHeading_registerPage1">Register</p>
+<form id="application-registerPage1">
+	<div class="meteorLogin">
+		<input type="text" name="emailAddress" id="userName"
+			placeholder="Email Id" /> 
+	</div>
+	<div class="loginAndForgotText">
+	  <div class="loginButton">
+		<input type="submit" id="loginButton" value="Continue">
+	  </div>
+	  
+	  
+	</div>
+	<div class="registerText">
+		<p>
+			Already have an account? <span class="redFont" id="goToLogin">Login</span>
+		</p>
+	</div>
+</form>
+</div>
+{{> confirmOk}}
+</div>
+</template>

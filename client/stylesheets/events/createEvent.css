@@ -1,0 +1,947 @@
+.mainContent {
+    background: white;
+    padding-right: 5%;
+    padding-left: 5%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-bottom: 0.42%;
+    margin-top: 0.42%;
+    height: 22em;
+    min-height: 22em;
+    outline: 0;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-width: 3px 3px 1.5px 1.5px;
+    border-style: solid;
+    border-color: grey;
+    border-radius:5px;
+}
+@-moz-document url-prefix() {
+    /*select {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        box-shadow: none;
+        background-color: transparent;
+        background-image: none;
+        -moz-appearance: none;
+        outline: 0;
+        padding-left: 5px;
+    }*/
+}
+.mainTitle {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: #b30000;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 1px -1px #888888;
+    padding-left: 0.6%;
+    outline: 0;
+    height: 2.46em;
+    margin-top: 1.9em;
+}
+.title {
+    -webkit-box-flex: 1 200px;
+    -moz-box-flex: 1 200px;
+    flex: 1 200px;
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: auto;
+    margin-bottom: auto;
+    outline: 0;
+    width: 100%;
+    height: 1.45em;
+    overflow: hidden;
+}
+.selectSubDomainsStar {
+    margin-left: 0.8%;
+    order: 2;
+    width: 6%;
+    margin-bottom: 0%;
+    margin-top: 0;
+    outline: 0;
+    cursor: pointer;
+}
+.selectTags {
+    margin-right: 0%;
+    padding-left: 2%;
+}
+.selectTag1 {
+    order: 1;
+    padding-left: 0.5%;
+    padding-right: 1%;
+    width: 50%;
+    height: 100px;
+    overflow-y: scroll;
+}
+.selectTag2 {
+    order: 2;
+    padding-left: 0.5%;
+    padding-right: 1%;
+    width: 50%;
+    height: 100px;
+    overflow-y: scroll;
+}
+/*.selectTag1{
+
+    padding-top: 0px;
+    padding-bottom: 0px;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -moz-appearance: none;
+    outline: 0px none;
+    padding-left: 0px;
+    height:23px;
+    box-shadow: 1px;
+    background-color: default;
+    background-image: none;
+    -moz-appearance: value;
+}*/
+
+input[type=radio].css-checkbox {
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 1px solid black;
+}
+.bv {
+    border: 1px solid black;
+    border-top: 0;
+}
+.bv1 {
+    border: 1px solid black;
+}
+input[type=radio].css-checkbox + label.css-label {
+    padding-left: 104px;
+    height: 25px;
+    display: inline-block;
+    line-height: 25px;
+    background-repeat: no-repeat;
+    background-position: 81px 0;
+    font-size: 12px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+input[type=radio].css-checkbox:checked + label.css-label {
+    background-position: 81px -25px;
+}
+label.css-label {
+    background-image: url(/check1.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.dropdown-menu {
+    top: 15%;
+}
+.cancelButton {
+    margin-left: 0.5%;
+    margin-right: 0.2%;
+    order: 4;
+    width: 15%;
+    /*min-width:15%;*/
+    height: 2.9em;
+    margin-bottom: auto;
+    margin-top: auto;
+    background-color: grey;
+    color: white;
+    border: 2px solid;
+    border-radius: 8px;
+    font-size: 12px;
+    outline: 0;
+    cursor: pointer;
+}
+.saveButton {
+    margin-left: 0.5%;
+    margin-right: 0.2%;
+    width: 15%;
+    height: 2.9em;
+    /*min-width:15%;*/
+    margin-bottom: auto;
+    margin-top: auto;
+    order: 3;
+    background-color: grey;
+    color: white;
+    border: 2px solid;
+    border-radius: 8px;
+    font-size: 12px;
+    outline: 0;
+    cursor: pointer;
+}
+.gamesParent {
+    order: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 2px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 2.42em;
+    outline: 0;
+}
+.games {
+    height: 100%;
+    background: #B0B0B0;
+    border-radius: 5px;
+    border: 0px solid;
+    color: white;
+    /*width:120px;*/
+    
+    width: 150px;
+    font-size: 12px;
+    outline: 0;
+    overflow: hidden;
+    padding-top: 3px;
+    margin-right: 3px;
+}
+/*          .gamesSelect > option{
+            color: white;
+            background:white;
+            box-shadow: 0 0 10px 100px grey inset;
+            outline: 0px;
+        }
+        .gamesSelect > option:hover{
+                box-shadow: 0 0 10px 100px maroon inset;
+                transition: all .2s ease-in-out;
+                outline: 0px;
+            }
+            .gamesSelect > option:active{
+                outline: 0px;
+                box-shadow: none;
+                box-shadow: 0 0 10px 100px maroon inset;
+                transition: all .2s ease-in-out;
+            }
+
+    .games .gamesSelect:focus {
+        outline: 0;
+    }*/
+
+.eventTitle {
+    order: 2;
+    background-color: #B0B0B0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 5px;
+    border: 0px solid;
+    height:100%;
+    color: #FFF;
+    font-size: 12px;
+    padding-left: 1%;
+    outline: 0px none;
+    color: white;
+    font-size: 12px;
+    outline: 0;
+    width: 100%;
+}
+.prizeAndVenue {
+    order: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 0.4%;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 2.42em;
+    outline: 0;
+}
+.venue {
+    height: 100%;
+    order: 2;
+    background: grey;
+    border-radius: 5px;
+    border: 0px solid;
+    color: white;
+    /*width:120px;*/
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 188px;
+    font-size: 12px;
+    background: grey no-repeat 90% 50%;
+    overflow: hidden;
+    outline: 0;
+}
+
+.createGoogleDiv{
+    order: 2;
+    width: 20%;
+    border-bottom-right-radius: 5px;
+    border: 1px solid grey;
+    background: white none repeat scroll 0% 0%;
+    border-top-right-radius: 5px;
+    color: maroon;
+
+}
+.venueSelectPadding {
+    width: 112px;
+    order: 1;
+    padding-top: 3px;
+}
+.venueSelect {
+    height: 100%;
+    width: 120px;
+    border-radius: 5px;
+    border: 0px solid;
+    color: white;
+    border: none;
+    box-shadow: none;
+    background-color: grey;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    overflow: hidden;
+    outline: 0;
+}
+.venue .venueSelect:focus {
+    outline: 0;
+}
+.prize {
+    order: 1;
+    background-color: grey;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 5px;
+    border: 0px solid;
+    padding-top: 1%;
+    height: 100%;
+    width: 98%;
+    color: #d9d9d9;
+    text-align: left;
+    font-size: 12px;
+    padding-left: 1%;
+    margin-right: 0.6%;
+}
+.sponsoredBy {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 0.4%;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 10em;
+
+    /*min-height: 10.2em;
+            max-height: 10.2em;*/
+}
+.sponsor {
+    order: 1;
+    margin-right: 0.75%;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #B0B0B0;
+    color: black;
+    /*  min-height: 10em;*/
+    /*  min-width:30%;*/
+    
+    cursor: pointer!important;
+    outline: 0;
+    overflow: hidden;
+    height: 10.6em;
+}
+.rulesAndReg {
+    order: 2;
+    width: 70%;
+    /*min-width:69%;*/
+    /*max-width:69%;*/
+    
+    position: relative;
+    height: 100%;
+}
+.rulesParent {
+    width: 100%;
+    /*min-width:100%;*/
+    
+    height: 2.4em;
+    background: #B0B0B0;
+    border-radius: 5px;
+    border: 0px solid;
+    color: white;
+    float: left;
+}
+.rules {
+    width: 100%;
+    /*min-width:100%;*/
+    
+    padding-top: 1%;
+    color: #d9d9d9;
+    font-size: 12px;
+    padding-left: 1.5%;
+}
+.rulesChild {
+    width: 100%;
+    /*min-width:100%;*/
+    
+    height: 35px;
+    background: #B0B0B0;
+    border-radius: 5px;
+    border: 0px solid;
+    margin: auto;
+    margin-top: -9%;
+    cursor: pointer;
+    color: white;
+    position: relative;
+    /*This makes the button huge. If you want a bigger button, increase the font size*/
+    
+    font-size: 50px;
+    /*Opacity settings for all browsers*/
+    
+    opacity: 0;
+    -moz-opacity: 0;
+    filter: progid: DXImageTransform.Microsoft.Alpha(opacity=0)
+}
+.datesParent {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-inline-flex;
+    /* Safari */
+    
+    display: inline-flex;
+    width: 100%;
+   /* height: 2.4em;*/
+    padding-top: 0.52%;
+}
+.datesParent1 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-inline-flex;
+    background: grey;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px 5px 5px 5px;
+    height: 34px;
+    width: 100%;
+}
+.closureDate {
+    width: 83%;
+    background: grey;
+    border-radius: 5px;
+    border: 0px solid;
+    height: 100%;
+    color: white;
+    order:1;
+    font-size: 12px;
+}
+.startDate {
+    width:83%;
+    order:1;
+    -moz-box-ordinal-group: 2;
+    background: grey;
+    border-radius: 5px;
+    border: 0px solid;
+    height: 100%;
+    color: white;
+    font-size: 12px;
+}
+.datesParent2 {
+    order: 3;
+    /*width: 30%;*/
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-inline-flex;
+    background: grey;
+    border-radius: 5px 5px 5px 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    height: 34px;
+     width: 100%;
+}
+.datesParent3 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-inline-flex;
+    background: grey;
+    border-radius: 5px 5px 5px 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    height: 34px;
+     width: 100%;
+
+}
+.datesParent4{
+    order: 2;
+    margin-right: 0.6%;
+    -moz-box-ordinal-group: 2;
+    background: grey;
+    border-radius: 0px 5px 5px 0px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    padding-left: 5%!important;
+}
+.datesParent5{
+    order: 4;
+    /*width: 3%;*/
+    margin-right: 0.6%;
+    -moz-box-ordinal-group: 5;
+    background: grey;
+    border-radius: 0px 5px 5px 0px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    padding-left: 5%!important;
+}
+.datesParent6{
+    order: 6;
+    -moz-box-ordinal-group: 6;
+    background: grey;
+    border-radius: 0px 5px 5px 0px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+     padding-left: 5%!important;
+}
+.endDate {
+    order: 1;
+    width:83%;
+    background: grey;
+    border-radius: 5px;
+    border: 0px solid;
+    height: 100%;
+    color: white;
+    font-size: 12px;
+}
+.description {
+    order: 3;
+    float: left;
+    width: 100%;
+    /*margin-top: 0.5%;*/
+    overflow: hidden;
+    height: 68px;
+}
+.checkAcceptTerms{
+    width: 100%;
+    overflow: hidden;
+    height: 1.4em;
+    float: left;
+    padding-left: 0.5%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.checkboxAccept{
+    cursor: pointer;
+    order:1;
+}
+.downloadAcceptTitle{
+    order:2;
+    cursor: default;
+    margin: 2px;
+    padding: 0;
+    font-size: 12px;
+    color: blue;
+}
+.downloadAcceptPdf{
+    font-size: 12px;
+    margin-top: 2px;
+    margin-left: 1%;
+    text-decoration: none;
+}
+
+.downloadAcceptPdf{
+    order:3;
+    cursor: pointer;
+    text-decoration: underline!important;
+    outline: none;
+}
+
+
+.downloadAcceptPdf:hover {
+    text-decoration: underline!important;
+    background: none;
+    outline: none;
+    color: blue;
+}
+
+.downloadAcceptPdf:active {
+    text-decoration: underline!important;;
+    background: none;
+    outline: none;
+    color: blue;
+}
+.eventDescription {
+    width: 100%;
+    background: #B0B0B0;
+    border-radius: 5px;
+    border: 0px solid;
+    color: #FFF;
+    height: 100%;
+    float: left;
+    resize: none;
+    font-size: 12px;
+    padding-top: 1%;
+    padding-left: 1%;
+}
+.sponsorHoverText {
+    position: relative;
+    bottom: 30px;
+    left: 0px;
+    visibility: hidden;
+    font-size: 11px;
+    font-weight: bold;
+    background: rgb(229, 229, 255) none repeat scroll 0% 0%;
+    border: 1px solid;
+    }
+
+.eventTitle::-webkit-input-placeholder,
+.prize::-webkit-input-placeholder,
+.closureDate::-webkit-input-placeholder,
+.startDate::-webkit-input-placeholder,
+.endDate::-webkit-input-placeholder,
+.eventDescription::-webkit-input-placeholder {
+    color: white;
+}
+.eventTitle:-moz-placeholder,
+.prize:-moz-placeholder,
+.closureDate:-moz-placeholder,
+.startDate:-moz-placeholder .endDate:-moz-placeholder .eventDescription:-moz-placeholder {
+    /* Firefox 18- */
+    
+    color: white;
+}
+.eventTitle::-moz-placeholder,
+.prize::-moz-placeholder,
+.closureDate::-moz-placeholder,
+.startDate::-moz-placeholder .endDate::-moz-placeholder .eventDescription::-moz-placeholder {
+    /* Firefox 19+ */
+    
+    color: white;
+}
+.eventTitle:-ms-input-placeholder,
+.prize:-ms-input-placeholder,
+.closureDate:-ms-input-placeholder,
+.startDate:-ms-input-placeholder .endDate:-ms-input-placeholder .eventDescription::-ms-input-placeholder {
+    color: white;
+}
+.sponsorHeader {
+    margin-top: 1%;
+    font-size: 13px;
+    font-weight: bold;
+    padding-left: 2%;
+    cursor: pointer;
+    outline: 0;
+}
+.sponsorHeaderEdit{
+    margin-top: -20%;
+    font-size: 13px;
+    font-weight: bold;
+    padding-left: 2%;
+    cursor: pointer;
+    outline: 0;
+}
+.handImage {
+    padding-left: 35%;
+    padding-top: 10%;
+    outline: 0;
+    background: no-repeat url(hand.ico) 0 0;
+    background-size: 25px, 20px;
+    width: 30%;
+    height: 20%;
+    margin-top: 12%;
+    margin-left: 40%;
+    border: none;
+}
+.sponsorHeaderDetails1 {
+    font-size: 1.7vh;
+    width: 28%;
+    padding-left: 35%;
+    margin-top: -6%;
+    cursor: pointer;
+    outline: 0;
+}
+.sponsorHeaderDetails {
+    font-size: 1.7vh;
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    outline: 0px none;
+    cursor: pointer;
+    outline: 0;
+}
+.bootstrap-datetimepicker-widget td.day {
+    width: 50px;
+    font-size: 10px;
+}
+.bootstrap-datetimepicker-widget .datepicker table {
+    width: 16.5em;
+}
+th.dow {
+    font-size: 10px;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu {
+    margin: 0;
+    padding: 0;
+    width: 17em;
+}
+.input-group {
+    display: inline;
+}
+.input-group .form-control:last-child,
+.input-group-addon:last-child,
+.input-group-btn:last-child > .btn,
+.input-group-btn:last-child > .btn-group > .btn,
+.input-group-btn:last-child > .dropdown-toggle,
+.input-group-btn:first-child > .btn:not(:first-child),
+.input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.input-group .form-control:first-child,
+.input-group-addon:first-child,
+.input-group-btn:first-child > .btn,
+.input-group-btn:first-child > .btn-group > .btn,
+.input-group-btn:first-child > .dropdown-toggle,
+.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+.input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-radius: 5px;
+}
+.input-group-addon {
+    padding: 0px;
+    cursor: pointer;
+}
+
+
+/*fdhssss*/
+@media screen and (min-width:1360px) {
+    
+.sponsoredBy {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding-top: 0.4%;
+    margin: 0px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 10em;
+}
+
+.sponsorHeaderDetails {
+    font-size: 1.8vh;
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    cursor: pointer;
+    outline: 0;
+}
+}
+
+.createGoogleMap{
+    width: 80%;
+    height: 78%;
+    margin: 15% 0% 0% 17%;
+}
+
+.googleMapMainDiv {
+    display: flex;
+    border-radius: 0px;
+    height: 16.5em;
+    outline: 0px none;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+/*new rules*/
+
+.rulesPdfContentDiv {
+    font-size: 12px;
+    font-weight: normal;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.file-upload-cont-rules{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.rulesEditPdf {
+    opacity: 0;
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.overlayRulesAndRegPdf{
+    position: absolute;
+    top: 0%;
+    cursor: pointer;
+    width: 100%;
+    left: 0%;
+    padding-left: 1%;
+    height: 2em;
+    padding-top: 2.6%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.rulesLabel {
+    width: 94%;
+    padding-top: 0%;
+    color: #d9d9d9;
+    font-size: 12px;
+    padding-left:3px;
+    margin:0;
+}
+
+/*.datepicker-years .picker-switch {
+    cursor: default !important;
+    background: inherit !important;
+}*/
+
+#closureDate.input-group-addon:not(:first-child):not(:last-child),
+#closureDate.input-group-btn:not(:first-child):not(:last-child),
+.input-group .form-control:not(:first-child):not(:last-child),
+#awayToDate.input-group-addon:not(:first-child):not(:last-child),
+#awayToDate.input-group-btn:not(:first-child):not(:last-child),
+.input-group .form-control:not(:first-child):not(:last-child) {
+    border-radius: 5px;
+}
+#closureDate.input-group-addon,
+#awayToDate.input-group-addon {
+    text-align: center;
+    /*background-color: #fff;*/
+}
+
+.bootstrap-datetimepicker-widget .dropdown-menu .usetwentyfour .bottom{
+    width: 35%!important;
+}
+
+
+.addEvents {
+    order: 7;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: grey none repeat scroll 0% 0%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 5px;
+    height: 34px;
+    width: 100%;
+}
+
+.plusDivAddEvent {
+    width: 44%;
+    cursor: pointer;
+    background: grey none repeat scroll 0% 0%;
+    border-right: 1px solid white;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.plusAddEvent {
+    color: white;
+    padding-right: 5%;
+   /* margin: 43% auto auto 30%;
+    width: 48%;*/
+}
+
+.addEventsButton {
+    width: 100%;
+    height: 100%;
+    background: grey none repeat scroll 0% 0%;
+    font-size: 12px;
+    color: white;
+    border: 0px solid;
+    border-radius: 5px;
+}
+
+.createGoogleMap {
+    width: 75%!important;
+    height: 76%!important;
+    border: 0px none!important;
+    background: transparent none repeat scroll 0px center!important;
+    font-size: 24px!important;
+    margin: 7% 0% 0% 10%!important;
+}
+
+.sponsorHeaderDetailsfinal {
+    font-size: 11px;
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    outline: 0px none;
+    cursor: pointer;
+    outline: 0;
+}
+
+
+.handImageChange {
+    outline: 0px none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: 0px 0px;
+    background-clip: border-box;
+    background-origin: padding-box;
+    width: 24%;
+    height: 32%;
+    margin-top: 12%;
+    margin-left: 35%;
+    border: medium none;
+    font-size: 29px;
+}
+
+.createGoogleDivchanged {
+    order: 2 !important;
+    border-bottom-right-radius: 5px!important;
+    border-left: 1px solid #fff!important;
+    background: none repeat scroll 0% 0%!important;
+    border-top-right-radius: 5px!important;
+    color: #893C54!important;
+}
+.clearDate{
+    width: 10%;
+}

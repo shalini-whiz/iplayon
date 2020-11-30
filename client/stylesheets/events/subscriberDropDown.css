@@ -1,0 +1,160 @@
+/*css for subscribers list used in myEvents Template*/
+
+/*id of unordered list of subscriber events
+which contains li of subscriber names and and image to delete
+the subscriber*/
+#mainMenuSubscriberList {
+    list-style: none;
+    margin-left: -40px;
+}
+
+/*float the li elements of ul class mainMenuSubscriberList*/
+.mainMenuSubscriberList > li {
+    float: left;
+}
+
+/*li class which contains subscriber image,
+onclick of this shows subscriber list drop down*/
+.subscriberListImgLi {
+    border: 1px solid maroon;
+    border-radius: 27px;
+    width: 92%;
+    height: 2em;
+    padding-left: 1.5%;
+    padding-top: 12%;
+}
+
+/*setting width of subscriberListImage which is
+inside mainMenuSubscriberList ul*/
+.mainMenuSubscriberList #subcriberListImage {
+    border: 0;
+    cursor: pointer;
+    width: 95.2%;
+}
+
+/*remove dotted lines onclick of the image of subscribers
+list or mainMenuSubscriberList*/
+.mainMenuSubscriberList #subcriberListImage:hover,
+.mainMenuSubscriberList #subcriberListImage:focus {
+    outline: 0;
+    text-decoration: underline;
+}
+
+/*this is the subMenuofSubscriberList
+of mainMenuSubscriberList*/
+.subMenuSubscriberList {
+    display: none;
+    position: absolute;
+    padding: 0px;
+    width: 45%;
+    margin-top: -4.5%;
+    margin-left: 3%;
+    list-style-type: none;
+}
+
+/*.subMenuSubscriberList2:hover{
+    overflow-y: auto;
+}*/
+
+/*when clicked on image of
+subscriber list display is made as block*/
+.mainMenuSubscriberList #subcriberListImage:focus + .subMenuSubscriberList,
+.subMenuSubscriberList:hover {
+    display: block;
+}
+
+/*setting the subscirber list image or icon*/
+.subcriberListImage {
+    background: transparent url("/subscribers.png") no-repeat scroll 59% 59% / 18px 13px;
+    width: 27px;
+}
+
+/*li of subMenu inside mainMenuSubscriberList*/
+#subMenuSubscriberListLi {
+    border-bottom: 1px solid black;
+    background: white none repeat scroll 0% 0%;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-weight: normal;
+    font-size: 12px;
+    color: #595959;
+    padding-left: 6px;
+    height: 1.25em;
+    display: flex;
+}
+
+/*header li for subscriber list li
+which holds the title "Subscribers List"*/
+#headerSubscribers {
+    box-shadow: 1px 1px 2px #505050;
+    background: -webkit-linear-gradient(left, #505050, #888888);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #505050, #888888);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #505050, #888888);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #505050, #888888);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-weight: normal;
+    font-size: 12px;
+    color: white;
+    height: 1.5em;
+    padding-top: 2px;
+    padding-left: 5px;
+}
+
+/*not scrollable div of subscribers list
+of defined height*/
+.subMenuSubscriberList2 {
+    list-style-type: none;
+    position: relative;
+    width: 100%;
+    height: 3.35em;
+    overflow: hidden;
+}
+
+/*scrollable div of subscribers list
+of defined height*/
+.subListScroll {
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/*css for delete subscriber image
+which is placed next to each subscriber name*/
+.deleteSubscribers_img {
+    width: 4%;
+    height: 11px;
+    margin: 2px 0px 0px 1px;
+}
+
+/*css for p tag which holds subscriber name*/
+.subscriberName {
+    width: 93%;
+    overflow: hidden;
+    height: 1.3em;
+    margin-bottom: 0px;
+    margin-top: -1px;
+    box-sizing: border-box;
+}
+
+/*css for li when list is empty*/
+.subMenuSubscriberListLiEmpty {
+    background: white none repeat scroll 0% 0%;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-weight: normal;
+    font-size: 11px;
+    color: #595959;
+    height: 1.27em;
+    text-align: center;
+    display: flex;
+}
+
+/*div of subscribers when there is no subscribers in the list*/
+.subscriberListEmpty {
+    border: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+}

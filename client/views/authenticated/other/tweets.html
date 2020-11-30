@@ -1,0 +1,43 @@
+<template name="tweets">
+	<div class="ui piled feed segment">
+  		<h2 class="ui header" style="color:white;font-size:12px;">
+  			Recent Activity
+  		</h2>
+  		{{#each tweets}}
+  			<div class="event">
+					{{#if retweeted_status}}
+						<i class="circular retweet icon" style="color:white;font-size:12px;"></i>
+					{{else}}
+						<a href="http://twitter.com/{{user.screen_name}}" title="{{user.name}}">
+		  					<img src="{{user.profile_image_url}}">
+		  				</a>
+		  			{{/if}}
+				<div class="content">
+	  				<div class="date" style="color:white;">{{moments created_at}}</div>
+	  				<div class="summary" style="color:white;font-size:12px;">
+	  					{{#if retweeted_status}}
+	  						<a href="http://twitter.com/{{user.screen_name}}">{{user.name}}</a> retweeted
+	  					{{else}}
+	  						{{{linkify this}}}
+	  					{{/if}}
+	  				</div>
+	  				{{#if retweeted_status}}
+	  					<div class="extra text" style="color:white;font-size:12px;">
+	  						{{{linkify retweeted_status}}}
+	  					</div>
+	  				{{else}}
+		  				{{#if entities.media}}
+		  					<div class="extra images" style="color:white;font-size:12px;">
+		  						{{#each entities.media}}
+		  							{{#if isPhoto}}
+										<a href="{{expanded_url}}"><img src="{{media_url}}" /></a>
+									{{/if}}
+								{{/each}}
+		  					</div>
+		  				{{/if}}
+		  			{{/if}}
+				</div>
+  			</div>
+		{{/each}}
+	</div>
+</template>

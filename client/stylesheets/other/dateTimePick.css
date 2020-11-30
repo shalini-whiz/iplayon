@@ -1,0 +1,291 @@
+#startDate + .bootstrap-datetimepicker-widget.dropdown-menu {
+	/*top: 249.833px !important;*/
+	width: 17em !important;
+}
+#startDate + .bootstrap-datetimepicker-widget .list-unstyled {
+    margin: 1px !important;
+}
+#startDate + .dropdown-menu {
+    list-style: outside none none;
+    font-size: 10px !important;
+    text-align: left !important;
+}
+#startDate + .bootstrap-datetimepicker-widget .datepicker table {
+    width: 13.5em !important;
+}
+
+#startDate + .bootstrap-datetimepicker-widget table {
+    width: 100% !important;
+    margin: 0px !important;
+}
+#startDate + .bootstrap-datetimepicker-widget table td.day {
+    line-height: 9px !important;
+    width: 20px!important;
+    height: 0px !important;
+}
+
+#startDate +.bootstrap-datetimepicker-widget .picker-switch td span {
+    line-height: 1.5;
+    height: 0em;
+    width: 100%;
+}
+
+#startDate + .table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {
+    padding: 4px;
+}
+
+
+
+#endDate + .bootstrap-datetimepicker-widget.dropdown-menu {
+	/*top: 249.833px !important;*/
+	width: 17em !important;
+}
+#endDate + .bootstrap-datetimepicker-widget .list-unstyled {
+    margin: 1px !important;
+}
+#endDate + .dropdown-menu {
+    list-style: outside none none;
+    font-size: 10px !important;
+    text-align: left !important;
+}
+#endDate + .bootstrap-datetimepicker-widget .datepicker table {
+    width: 13.5em !important;
+}
+
+#endDate + .bootstrap-datetimepicker-widget table {
+    width: 100% !important;
+    margin: 0px !important;
+}
+#endDate + .bootstrap-datetimepicker-widget table td.day {
+    line-height: 9px !important;
+    width: 20px!important;
+    height: 0px !important;
+}
+
+#endDate +.bootstrap-datetimepicker-widget .picker-switch td span {
+    line-height: 1.5;
+    height: 0em;
+    width: 100%;
+}
+
+#endDate + .table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {
+    padding: 4px;
+}
+
+
+
+#closureDate + .bootstrap-datetimepicker-widget.dropdown-menu {
+	/*top: 249.833px !important;*/
+	width: 17em !important;
+}
+#closureDate + .bootstrap-datetimepicker-widget .list-unstyled {
+    margin: 1px !important;
+}
+#closureDate + .dropdown-menu {
+    list-style: outside none none;
+    font-size: 10px !important;
+    text-align: left !important;
+}
+#closureDate + .bootstrap-datetimepicker-widget .datepicker table {
+    width: 13.5em !important;
+}
+
+#closureDate + .bootstrap-datetimepicker-widget table {
+    width: 100% !important;
+    margin: 0px !important;
+}
+#closureDate + .bootstrap-datetimepicker-widget table td.day {
+    line-height: 9px !important;
+    width: 20px!important;
+    height: 0px !important;
+}
+
+#closureDate +.bootstrap-datetimepicker-widget .picker-switch td span {
+    line-height: 1.5;
+    height: 0em;
+    width: 100%;
+}
+
+#closureDate + .table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {
+    padding: 4px;
+}
+
+#startDate + .datepicker-months {
+    padding: 10px !important;
+}
+
+
+#awayFromDate + .bootstrap-datetimepicker-widget.dropdown-menu {
+	/*top: 191.833px !important;*/
+	width: 17em ;
+    left:191.717px ;
+}
+#awayFromDate + .bootstrap-datetimepicker-widget .list-unstyled {
+    margin: 1px !important;
+}
+#awayFromDate + .dropdown-menu {
+    list-style: outside none none;
+    font-size: 10px !important;
+    text-align: left !important;
+}
+#awayFromDate + .bootstrap-datetimepicker-widget .datepicker table {
+    width: 13.5em !important;
+}
+
+#awayFromDate + .bootstrap-datetimepicker-widget table {
+    width: 100% !important;
+    margin: 0px !important;
+}
+#awayFromDate + .bootstrap-datetimepicker-widget table td.day {
+    line-height: 9px !important;
+    width: 20px!important;
+    height: 0px !important;
+}
+
+#awayFromDate +.bootstrap-datetimepicker-widget .picker-switch td span {
+    line-height: 1.5;
+    height: 0em;
+    width: 100%;
+}
+
+#awayFromDate + .table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {
+    padding: 4px;
+}
+
+
+#startDate + .bootstrap-datetimepicker-widget table td span {
+	cursor: pointer !important;
+	border-radius: 4px !important;
+	width: 16px !important;
+	display: inline-block !important;
+	margin: 0px 5px !important;
+	height: 0px !important;
+	line-height: 0px !important;
+}
+
+/*months*/
+.datepicker-months {
+    padding: 10px !important;
+}
+
+#endDate + .bootstrap-datetimepicker-widget table td span {
+	cursor: pointer !important;
+	border-radius: 4px !important;
+	width: 16px !important;
+	display: inline-block !important;
+	margin: 0px 5px !important;
+	height: 0px !important;
+	line-height: 0px !important;
+}
+
+#closureDate + .bootstrap-datetimepicker-widget table td span {
+	cursor: pointer !important;
+	border-radius: 4px !important;
+	width: 16px !important;
+	display: inline-block !important;
+	margin: 0px 5px !important;
+	height: 0px !important;
+	line-height: 0px !important;
+}
+#awayFromDate + .bootstrap-datetimepicker-widget table td span {
+	cursor: pointer !important;
+	border-radius: 4px !important;
+	width: 16px !important;
+	display: inline-block !important;
+	margin: 0px 5px !important;
+	height: 0px !important;
+	line-height: 0px !important;
+}
+
+/*years*/
+.datepicker-years {
+    padding: 10px;
+}
+
+
+/*pickadate*/
+
+.picker__select--month {
+    width: 35% !important;
+    height: 0%!important;
+}
+.picker__select--year {
+    width: 35%!important;
+    height: 0%!important;
+}
+.picker__holder {
+    width: 100%!important;
+    overflow-y: hidden !important;
+}
+
+.picker--opened .picker__frame {
+    top: 29.5%!important;
+    bottom: 0px!important;
+    width: 50%!important;
+}
+
+.picker__box {
+    display: block!important;
+    font-size: 12px!important;
+    border-width: 1px 1px 0px!important;
+    border-style: solid!important;
+    border-color: #898989 #777 #777!important;
+    border-image: none!important;
+    border-radius: 0px 0px 0px 0px!important;
+    box-shadow: 0px 12px 36px 16px rgba(0, 0, 0, 0.24)!important;
+}
+
+.picker--opened .picker__holder {
+	background: none!important;
+}
+
+.picker__input.picker__input--active {
+    background: #e0e0e0;
+    border: 0;
+}
+
+.picker__input {
+    cursor: pointer;
+}
+
+
+#awayFromDatePop + .bootstrap-datetimepicker-widget.dropdown-menu {
+    /*top: 191.833px !important;*/
+    width: 17em ;
+    left:191.717px ;
+}
+#awayFromDatePop + .bootstrap-datetimepicker-widget .list-unstyled {
+    margin: 1px !important;
+}
+#awayFromDatePop + .dropdown-menu {
+    list-style: outside none none;
+    font-size: 10px !important;
+    text-align: left !important;
+}
+#awayFromDatePop + .bootstrap-datetimepicker-widget .datepicker table {
+    width: 13.5em !important;
+}
+
+#awayFromDatePop + .bootstrap-datetimepicker-widget table {
+    width: 100% !important;
+    margin: 0px !important;
+}
+#awayFromDatePop + .bootstrap-datetimepicker-widget table td.day {
+    line-height: 9px !important;
+    width: 20px!important;
+    height: 0px !important;
+}
+
+#awayFromDatePop +.bootstrap-datetimepicker-widget .picker-switch td span {
+    line-height: 1.5;
+    height: 0em;
+    width: 100%;
+}
+
+#awayFromDatePop + .table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {
+    padding: 4px;
+}
+
+/*#awayFromDatePop + .bootstrap-datetimepicker-widget a[data-action]{
+    display: none !important;
+}*/

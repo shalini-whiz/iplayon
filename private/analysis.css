@@ -1,0 +1,108 @@
+
+
+/*************Reporter Match report ********************************/
+/*.subDomainModalBody{
+    width:100%;
+    padding: 12px 15px 2px;
+}
+.tableOFCSVHTML_entryFAca2_backWhite{
+	margin-top: 5px;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+	.tableOFCSVHTML_entryFAcatableHead th{ 
+	}
+	.tableOFCSVHTML_entryFAcatableHead tr{
+		
+	}
+	.tableOFCSVHTML_entryFAcatableHead tr th:nth-child(odd){ 
+		background: #808080 none repeat scroll 0% 0% !important;
+		border-bottom: 1px solid #000 !important;
+	}
+	.tableOFCSVHTML_entryFAcatableHead tr th:nth-child(even){
+		background: #656565 none repeat scroll 0% 0% !important;
+		border-bottom: 1px solid #000 !important;
+	}
+
+
+  .headerAnalytics3{
+	padding: 3px 0px 0px;
+	background: transparent none repeat scroll 0px center !important;
+	color: #FFF;
+	border-left: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+ }
+
+ .matchRowDEtScore{
+	background: none repeat scroll 0% 0% #E0E0E0 !important;
+	border-right: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	border-top: 1px solid #FFF;
+	color: black;
+	text-align: center;
+	font-size: 12px;
+}
+
+.headerDetScoreTeam{
+	border-right: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	border-top: 1px solid #FFF;
+	background: none repeat scroll 0% 0% #808080;
+	color: white !important;
+	font-size: 12px;
+	text-align: center;
+}
+*/
+
+/****************************************************************************/
+#allStrokesTable:nth-child(even) {
+	background: white  !important;
+	border: 1px solid #5BC0DE !important;
+}
+#allStrokesTable:nth-child(odd) {
+	background: #D5EEF6 !important;
+}
+
+.AnalyticsTable_PlayerSeq{
+	color: #FFF !important;
+	font-weight: bold !important;
+	font-size: 12px !important;
+	background: none repeat scroll 0% 0% #05B8CC !important;
+	text-align: center;
+	border: 1px solid #5BC0DE;
+}
+
+.AnalyticsTableRow_PlayerSeq{
+	font-size: 10px !important;
+	color: #585858 !important;
+	text-align: center;
+	
+}
+
+table {
+    border-collapse: collapse !important;
+}
+body{
+	/*background: white url(http://www.iplayon.in/logo.png) no-repeat !important;
+  	border-collapse: collapse !important;
+  	background-position: bottom !important;
+  	background-size: 80px 60px; */
+}
+table, td, th {
+    border: 1px solid #5BC0DE !important;
+}
+.pHa{ page-break-after: always; }
+.footer { position: fixed; bottom: 0px; }
+.pagenum:before { content: counter(page); }
+
+
+#footer {
+  height: 50px; /* the footer's total height */
+}
+
+#footer-content {
+  background-color: #f3e5f5;
+  border: 1px solid #ab47bc;
+  height: 32px; /* height + top/bottom paddding + top/bottom border must add up to footer height */
+  padding: 8px;
+}

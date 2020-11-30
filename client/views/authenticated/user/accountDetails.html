@@ -1,0 +1,267 @@
+<template name="accountDetails">
+  <form id="application-accountDetails">
+  <div class="modal" id="accountDetails" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style=""><span class="glyphicon glyphicon-lock" style="color:white;margin-right: 6px;margin-left: -7px !important;margin-top: 3px;"></span>Account Details</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body  modal-body-modReg1" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              <div class="row">
+                <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                  <p class="labelWhoNewChangePas">Country:</p>
+                </div>
+                <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                  {{#if profileDetails}}
+                    <input type="text" disabled readonly autocomplete="off" id="" value={{profileDetails.country}} maxlength="60" placeholder="" name="" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                  {{/if}}
+                  
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                  <p class="labelWhoNewChangePas">Bank Name *</p>
+                </div>
+                <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                  {{#if getAccDetails}}
+                    <input type="text" autocomplete="off" id="bankName" value={{getAccDetails.bankName}} maxlength="60" placeholder="Bank Name" name="bankName" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                  {{else}}
+                    <input type="text" autocomplete="off" id="bankName" value="" maxlength="60" placeholder="Bank Name" name="bankName" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                  {{/if}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                  <p class="labelWhoNewChangePas">Account No *</p>
+                </div>
+                <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                  {{#if getAccDetails}}
+                    <input type="text" autocomplete="off" id="accNo" value={{getAccDetails.accNo}} maxlength="60" placeholder="Account Number" name="accNo" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                  {{else}}
+                    <input type="text" autocomplete="off" id="accNo" value="" maxlength="60" placeholder="Account Number" name="accNo" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                  {{/if}}
+                </div>
+              </div>
+
+              <div class="row" style="padding-top:5px">
+                <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+                  <p class="labelWhoNewChangePas">Account Type *</p>
+                </div>
+                <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-left:30px !important;">
+                  {{#if getAccDetails}}
+                
+                    <select class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;" name="accType" id="accType" >
+                      
+                      {{#each getAccountType}}
+                        <option name={{this}} {{setAccountType this getAccDetails.accType}}>{{this}}</option>
+                      {{/each}}
+                    </select>
+                  {{else}}
+                    <select class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;" name="accType" id="accType">
+                      <option disabled="" selected="">--select--</option>
+                      {{#each getAccountType}}
+                        <option name={{this}}  >{{this}}</option>
+                      {{/each}}
+                    </select>
+                  {{/if}}
+                </div>
+              </div>
+
+              <div class="row" style="padding-top:5px">
+                <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                  <p class="labelWhoNewChangePas">IFSC Code *</p>
+                </div>
+                <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                  {{#if getAccDetails}}
+                    <input type="text" autocomplete="off" id="accIfsc" value={{getAccDetails.accIfsc}} maxlength="60" placeholder="Ifsc" name="accIfsc" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                  {{else}}
+                    <input type="text" autocomplete="off" id="accIfsc" value="" maxlength="60" placeholder="Ifsc" name="accIfsc" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                  {{/if}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                  <p class="labelWhoNewChangePas">GST Reg No </p>
+                </div>
+                <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                  {{#if checkCountryCriteria}}
+
+                    {{#if getAccDetails}}
+                      <input type="text" autocomplete="off" id="gstNo" value={{getAccDetails.gstNo}} maxlength="60" placeholder="GST Reg No" name="gstNo" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                    {{else}}
+                      <input type="text" autocomplete="off" id="gstNo" value="" maxlength="60" placeholder="GST Reg No" name="gstNo" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                    {{/if}}
+                  {{else}}
+                    <input type="text" autocomplete="off" id="gstNo" value="NA" maxlength="60" readonly placeholder="GST Reg No" name="gstNo" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+
+                  {{/if}}
+                </div>
+              </div>
+
+
+              {{#if getIdentityType}}
+                  {{#each getIdentityType}}
+                    <div class="row">
+                      <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                        <p class="labelWhoNewChangePas">{{this.key}}</p>
+                      </div>
+                      <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+
+                        {{#if getAccDetails.nationalIdentities}}
+                        <input type="text" autocomplete="off" 
+                        class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;"
+                         value={{ getIdentityVal this.key getAccDetails.nationalIdentities}} maxlength="60" placeholder={{this.key}} name={{this.key}} 
+                      >
+                      {{else}}
+                        <input type="text" autocomplete="off" 
+                        class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;"
+                         maxlength="60" placeholder={{this.key}} name={{this.key}}
+                      >
+                      {{/if}}
+                      </div>
+                    </div>
+                  {{/each}}
+
+              {{else}}
+              <div class="row">
+                <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                  <p class="labelWhoNewChangePas">National Identity Type *</p>
+                </div>
+                <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                  
+
+                    {{#if getAccDetails}}
+                      <input type="text" autocomplete="off" id="nationalIdentityType" value={{getAccDetails.nationalIdentityType}} maxlength="60" placeholder="National Identity Type" name="nationalIdentityType" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                    {{else}}
+                      <input type="text" autocomplete="off" id="nationalIdentityType" value="" maxlength="60" placeholder="National Identity Type" name="nationalIdentityType" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                    {{/if}}
+                 
+                  
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                  <p class="labelWhoNewChangePas">National Identity No*</p>
+                </div>
+                <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                  
+                    {{#if getAccDetails}}
+                      <input type="text" autocomplete="off" id="nationalIdentityNo" value={{getAccDetails.nationalIdentityNo}} maxlength="60" placeholder="National Identity No" name="nationalIdentityNo" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                    {{else}}
+                      <input type="text" autocomplete="off" id="nationalIdentityNo" value="" maxlength="60" placeholder="National Identity No" name="nationalIdentityNo" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                    {{/if}}
+                  
+                 
+                </div>
+              </div>
+              
+              {{/if}}
+
+              <!--
+              <div class="row">
+                <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                  <p class="labelWhoNewChangePas">PAN No *</p>
+                </div>
+                <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                  {{#if checkCountryCriteria}}
+                    {{#if getAccDetails}}
+                      <input type="text" autocomplete="off" id="panNo" value={{getAccDetails.panNo}} maxlength="60" placeholder="PAN No" name="panNo" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                    {{else}}
+                      <input type="text" autocomplete="off" id="panNo" value="" maxlength="60" placeholder="PAN No" name="panNo" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                    {{/if}}
+                  {{else}}
+                    <input type="text" autocomplete="off" id="panNo" value="NA" readonly maxlength="60" placeholder="PAN No" name="panNo" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                  {{/if}}
+                </div>
+              </div>
+              -->
+
+                      <div class="row" style="padding-top:5px">
+                      <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-right:0px !important;padding-top:2px;">
+                        {{#if getAccDetails}}
+                            <input type="checkbox"  id="accTaxLiable" value={{getAccDetails.taxLiable}}  name="accTaxLiable" class="checkboxAccept" style="" {{taxStatus getAccDetails.taxLiable}}>
+                          {{else}}
+                            <input type="checkbox" autocomplete="off" id="accTaxLiable"   name="accTaxLiable" class="checkboxAccept" >
+                          {{/if}}
+                          <span class="labelWhoNewChangePas">Tax Liable *
+                          </span>
+                      </div>
+                        
+                      </div>
+              </div>
+
+              
+
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <p style="font-size:12px;color:red;cursor:default;" id="accountDetailsError"></p>
+                <p style="font-size:12px;color:green;cursor:default;" id="accountDetailsSucc"></p>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-right:0px !important;padding-bottom: 4px;">
+                    <input type="submit" class="ip_button_Popup_Black" id="accountDetailsSubmit" style="order:2;margin:0px;padding:0px; height:2.2em!important;" value="Save">
+                  </div>
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-left:0px !important;padding-bottom: 4px;padding-right: 111px;">
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                  </div>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+ </form>
+</template>
+
+
+<template name="countryIdentityDetails">
+  <div class="modal" id="countryIdentityDetails" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style=""><span class="glyphicon glyphicon-lock" style="color:white;margin-right: 6px;margin-left: -7px !important;margin-top: 3px;"></span>National Identity Details</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body  modal-body-modReg1" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+             
+            </div>
+
+              
+
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <p style="font-size:12px;color:red;cursor:default;" id="accountDetailsError"></p>
+                <p style="font-size:12px;color:green;cursor:default;" id="accountDetailsSucc"></p>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                  
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; height:2.2em!important;">OK
+                    </button>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</template>
+

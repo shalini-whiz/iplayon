@@ -1,0 +1,550 @@
+<template name="adminFinance">
+	{{#if notAdmin}}
+	<div class=''>
+		<p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+	</div>
+	{{else}}
+
+	<div style="background:#333;height:auto;" class="container">
+        <div id="filterSelectionForm">
+
+        </div>
+
+
+    </div>
+
+
+
+	<div class="container" style="background:#333; height:auto;">
+		<div class="row navigationBar navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <span style="" class="websiteHeader">iPlayOn</span>
+                    </div>
+                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                     	<button type="button" class="ip_button_DarkGrey" id="packageBtn">Approved Payments</button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                    	<button type="button" class="ip_button_DarkGrey" id="pendingPayBtn">Pending Payments</button>
+                        
+                    </div>
+                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                      <button type="button" class="ip_button_DarkGrey" id="pendingServicesBtn">Pending/Rejected Services</button>
+                        
+                    </div>
+                   
+
+                </div>
+            </div>
+        </div>	
+       
+	</div>
+	{{/if}}
+	{{> errorPopup}}
+	{{> sendingMailPopup3}}
+
+
+	<div id = "packageDiv"></div>
+	<div id = "pendingPayDiv"></div>
+  <div id = "sellerServicesDiv"></div>
+
+	<div id="confirmInsertPlayerRender"></div>
+	<div id = "confirmDeleteTF"></div>
+	<div id = "createStrokeDiv"></div>
+	<div id = "mailerDiv"></div>
+  <div id="editTaxForm"></div>
+  <div id ="editCommissionForm"></div>
+
+</template>
+
+
+<template name="taxForm">
+    <div id ="taxDiv">
+        <p class="selectionForm_N4" style="font-size:15px !important">Current Tax : 
+        {{#if getCurrentTax}}
+            {{getCurrentTax}} %
+        {{/if}} <span class="glyphicon glyphicon-pencil eventEdit_my" style="color:#ffffff; font-size: 15px; width:15%; transform: rotate(0deg); cursor: pointer" id="editTax"></span>
+        </p>
+        <p class="selectionForm_N4" style="font-size:10px !important">Note: Inclusive Of GST Tax</p>
+</div>
+</template>
+
+
+<template name="commissionForm">
+    <div id ="taxDiv">
+        <p class="selectionForm_N4" style="font-size:15px !important">Commision Charge : 
+        {{#if getCurrentCommision}}
+            {{getCurrentCommision}} %
+        {{/if}} <span class="glyphicon glyphicon-pencil eventEdit_my" style="color:#ffffff; font-size: 15px; width:15%; transform: rotate(0deg); cursor: pointer" id="editCommission"></span>
+        </p>
+       
+</div>
+</template>
+
+
+ <template name="editCommissionTemplate">
+     <div  class="modal" id="editCommissionTemplate" aria-hidden="true" >
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content modal-content-modReg1">
+            <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style=""><span class="glyphicon glyphicon-lock" style="color:white;margin-right: 6px;margin-left: -7px !important;margin-top: 3px;"></span>Tax Details</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-body  modal-body-modReg1" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                    <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                      <p class="labelWhoNewChangePas">
+                        Commission:
+                      </p>
+                    </div>
+                    <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                        
+                        {{#if fetchCurrentCommission}}
+                            <input type="text" autocomplete="off" id="newCommission" value={{fetchCurrentCommission}} maxlength="60" placeholder="Commission Rate" name="newCommission" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                        {{else}}
+                            <input type="text" autocomplete="off" id="newCommission" value="" maxlength="60" placeholder="Commission Rate" name="newCommission" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                        {{/if}}
+                    </div>
+                  </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-right:0px !important;padding-bottom: 4px;">
+                    <input type="submit" class="ip_button_Popup_Black" id="commissionSubmit" style="order:2;margin:0px;padding:0px; height:2.2em!important;" value="Save">
+                  </div>
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-left:0px !important;padding-bottom: 4px;padding-right: 111px;">
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                  </div>
+                 </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+  <template name="editTaxTemplate">
+     <div  class="modal" id="editTaxTemplate" aria-hidden="true" >
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content modal-content-modReg1">
+            <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style=""><span class="glyphicon glyphicon-lock" style="color:white;margin-right: 6px;margin-left: -7px !important;margin-top: 3px;"></span>Tax Details</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-body  modal-body-modReg1" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                    <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                      <p class="labelWhoNewChangePas">
+                        Tax:
+                      </p>
+                    </div>
+                    <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                        
+                        {{#if fetchCurrentTax}}
+                            <input type="text" autocomplete="off" id="newTax" value={{fetchCurrentTax.taxRate}} maxlength="60" placeholder="Tax Rate" name="newTax" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                        {{else}}
+                            <input type="text" autocomplete="off" id="newTax" value="" maxlength="60" placeholder="Tax Rate" name="newTax" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                        {{/if}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                      <p class="labelWhoNewChangePas">
+                        CGST:
+                      </p>
+                    </div>
+                    <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                        
+                        {{#if fetchCurrentTax}}
+                            <input type="text" autocomplete="off" id="newCgst" value={{fetchCurrentTax.cgst}} maxlength="60" placeholder="CGST" name="newCgst" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                        {{else}}
+                            <input type="text" autocomplete="off" id="newCgst" value="" maxlength="60" placeholder="CGST" name="newCgst" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                        {{/if}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                      <p class="labelWhoNewChangePas">
+                        SGST:
+                      </p>
+                    </div>
+                    <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                        
+                        {{#if fetchCurrentTax}}
+                            <input type="text" autocomplete="off" id="newSgst" value={{fetchCurrentTax.sgst}} maxlength="60" placeholder="SGST" name="newSgst" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                        {{else}}
+                            <input type="text" autocomplete="off" id="newSgst" value="" maxlength="60" placeholder="SGST" name="newSgst" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                        {{/if}}
+                    </div>
+                  </div>
+
+            </div>
+        </div>
+
+        <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-right:0px !important;padding-bottom: 4px;">
+                    <input type="submit" class="ip_button_Popup_Black" id="taxSubmit" style="order:2;margin:0px;padding:0px; height:2.2em!important;" value="Save">
+                  </div>
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-left:0px !important;padding-bottom: 4px;padding-right: 111px;">
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                  </div>
+                 </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="packageSelectionForm">
+    {{#if Template.subscriptionsReady}}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N" id="selectionFormData" style="">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="selectionForm_N2">Please Select Your Keys of Interest to Search:</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N3">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+               <p class="selectionForm_N4" id="sportsLabel"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Buyer:</p>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <p class="selectionForm_N4" id="filterByLabel"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Seller:</p> 
+            </div>
+             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5" id="approvalLabel" >
+                 <p class="selectionForm_N4" id="filteredLabel6"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Package:</p> 
+            </div>
+
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                 <p class="selectionForm_N4" id="filterDataLabel">&nbsp;
+                  <span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>From Date(Paid Date):
+
+                </p> 
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5" >
+                 <p class="selectionForm_N4" id="filteredLabel2"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>End Date(Paid Date):</p> 
+            </div>
+           
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 selectionForm_N5" >
+                 <p class="selectionForm_N4">&nbsp;</p> 
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N3">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+            	<select class="selectionForm_N6" id="buyerList" name="buyerList">
+                    <option selected disabled>Select Buyer</option>
+                    {{#if buyerList}}
+                    {{#each buyerList}}
+                        <option id="eventSelection" name="{{this.userId}}">{{displayNameOfUser this.userId}}</option>
+                    {{/each}}
+                    <option id="eventSelection" name="All">All</option>
+                    {{/if}}
+                </select>
+                
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+            	<select class="selectionForm_N6" id="sellerList" name="sellerList">
+                    <option selected disabled>Select Seller</option>
+                    {{#if sellerList}}
+                    {{#each sellerList}}
+                        <option id="eventSelection" name="{{this.packPayToUserId}}">{{displayNameOfUser this.packPayToUserId}}</option>
+                    {{/each}}
+                    <option id="eventSelection" name="All">All</option>
+                    {{/if}}
+                </select>
+                
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <select class="selectionForm_N6" id="packageList" name="packageList">
+                    <option selected disabled>Select Package</option>
+                    {{#if packageList}}
+                    {{#each packageList}}
+                        <option id="eventSelection" name="{{this.packId}}">{{getPackName this.packId}}</option>
+                    {{/each}}
+                    <option id="eventSelection" name="All">All</option>
+                    {{/if}}
+                </select>
+            </div>
+
+           
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 " id="eventsMenu" style='' >
+            	<input type="text" name="fromDate" id="fromDate" placeholder="DD MMM YYYY" style="text-align:left; padding-left:2%; height:2.5em; margin-bottom:0.25%; font-size:12px;" class="emailAddressUserProf" value="" autocomplete="off"/> 
+                
+            </div>
+             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5" style=''>
+              <input type="text" name="endDate" id="endDate" placeholder="DD MMM YYYY" style="text-align:left; padding-left:2%; height:2.5em; margin-bottom:0.25%; font-size:12px;" class="emailAddressUserProf" value="" autocomplete="off"/>
+            </div>
+             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 playerAnalyticsSubDiv">
+             </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 playerAnalyticsSubDiv">
+                <input type="button" value="Download" class="playerAnalyticsInputBox playerAnalyticsShowButton" id="adminFinDownload">
+            </div>
+        </div>
+      
+    </div>
+    {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+
+<template name="adminPackage">
+
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " >
+                {{> taxForm}}
+         
+            </div>
+        </div>
+	 	
+    	<div class="row">
+        	<table class="table table-striped tableOFCSVHTML_New">
+            	<thead style="">
+                	<tr class="headerAnalytics2">
+                		<th class="pAnalytics2">Sl.No</th>
+	                    <th class="pAnalytics2">Buyer</th>
+	                    <th class="pAnalytics2">Seller</th>
+	                    <th class="pAnalytics2">Package Name</th>
+	                    <th class="pAnalytics2">Amount</th>
+                      <th class="pAnalytics2">Commission</th>
+                      <th class="pAnalytics2">Seller Amount</th>
+                      <th class="pAnalytics2">Seller Tax Liable</th>             
+	                    <th class="pAnalytics2">Plan Starts On</th>
+	                    <th class="pAnalytics2">Plan Ends On</th>               
+                      <th class="pAnalytics2">Seller Status</th>
+                      <th class="pAnalytics2">Admin Status</th>
+                      <th class="pAnalytics2">Admin Paid On</th>
+                	</tr>
+                </thead>
+                <tbody id="selectTagop">
+                	{{#if packageList}}
+                	{{#each packageList}}               		
+                		<tr class="headerAnalytics3" name="sdfsd">
+                			<td class="pAnalytics2">{{this.slNo}}</td>
+                    		<td class="pAnalytics2" style=" max-width: 50px;overflow: hidden;">{{displayNameOfUser this.userId}}</td>
+                    		<td class="pAnalytics2">{{displayNameOfUser this.packPayToUserId}}</td>
+                    		<td class="pAnalytics2">{{getPackName this.packId}}</td>
+                    		<td class="pAnalytics2">{{{fetchTaxAmt this}}}</td>
+                        <td class="pAnalytics2">{{this.commissionRate}}%</td>
+                        <td class="pAnalytics2">{{this.sellerAmount}}</td>
+                        <td class="pAnalytics2">{{this.sellerTaxLiable}}</td>
+                    		
+                    		<td class="pAnalytics2">{{formatDateWithTime this.planStartsOn}}</td>
+                    		<td class="pAnalytics2">{{formatDateWithTime this.planEndsOn}}</td>
+                    	   <td class="pAnalytics2">{{displayFinanceStatus this.acknowledgeStatus}}
+                            </td>
+                    		<td class="pAnalytics2">{{this.adminTransaction}}
+                    		</td>
+                        <td class="pAnalytics2">{{formatDateWithTime this.adminReceiptOn}}</td>
+
+                    		
+                    	</tr>
+                    {{/each}}
+                    {{/if}}
+                </tbody>
+            </table>
+        </div>
+</template>
+
+
+<template name="adminPendingPay">
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                {{> taxForm}}
+                {{> commissionForm}}
+            </div>
+        </div>
+    	<div class="row">
+        	<table class="table table-striped tableOFCSVHTML_New">
+            	<thead style="">
+                	<tr class="headerAnalytics2">
+                		<th class="pAnalytics2">Sl.No</th>
+	                    <th class="pAnalytics2">Buyer</th>
+	                    <th class="pAnalytics2">Seller</th>
+	                    <th class="pAnalytics2">Package Name</th>
+	                    <th class="pAnalytics2">Amount(Rs)</th>
+                      <th class="pAnalytics2">Commission(%)</th>
+                      <th class="pAnalytics2">Seller GST Liable</th>
+                      <th class="pAnalytics2">Seller Amount(Rs)</th>
+
+	                    <th class="pAnalytics2">Paid Date</th>
+	                    <th class="pAnalytics2">Plan Starts On</th>
+	                    <th class="pAnalytics2">Plan Ends On</th>
+                        
+
+	                    <th class="pAnalytics2">Admin Status</th>
+                        <th class="pAnalytics2">Seller Status</th>
+	                    <th class="pAnalytics2">Receipt</th>
+                	</tr>
+                </thead>
+                <tbody id="selectTagop">
+                	{{#if packageList}}
+                	{{#each packageList}}               		
+                		<tr class="headerAnalytics3" name="sdfsd">
+                			<td class="pAnalytics2">{{this.slNo}}</td>
+                    		<td class="pAnalytics2" style=" max-width: 50px;overflow: hidden;">{{displayNameOfUser this.userId}}</td>
+                    		<td class="pAnalytics2">{{displayNameOfUser this.packPayToUserId}}</td>
+                    		<td class="pAnalytics2">{{getPackName this.packId}}</td>
+                    		<td class="pAnalytics2">    
+                          {{this.buyerAmount}}             
+                          <!--{{{fetchTaxAmt this}}}-->
+                        </td>
+                        <td class="pAnalytics2">
+                          {{this.commissionRate}}
+                        </td>
+                        <td class="pAnalytics2">
+                          <!--{{getGSTLiable this.packPayToUserId}}-->
+                          {{this.sellerTaxLiable}}
+                        </td>
+                        <td class="pAnalytics2" id="sellerAmount">
+                          {{this.sellerAmount}}             
+                          <!--{{fetchAmtOnCommission this}}-->
+                        </td>
+                    		<td class="pAnalytics2">{{formatDateWithTime this.paidDate}}</td>
+                    		<td class="pAnalytics2">{{formatDateWithTime this.planStartsOn}}</td>
+                    		<td class="pAnalytics2">{{formatDateWithTime this.planEndsOn}}</td>
+                        
+                    		<td class="pAnalytics2">{{this.adminTransaction}}
+                    		</td>
+                            <td class="pAnalytics2">{{displayFinanceStatus this.acknowledgeStatus}}
+                            </td>
+                    		{{#if adminFinanceStatus this}}
+                    			<td class="pAnalytics2">
+                    			   <input type="button" value="Generate" class="sendReciept"  id="editFinanceStatus" style="">
+                    		
+                    			</td>
+                    		{{else}}
+								<td class="pAnalytics2"></td>
+                    		{{/if}}
+                    	</tr>
+                    {{/each}}
+                    {{/if}}
+                </tbody>
+            </table>
+        </div>
+
+            {{> adminReceipt}}
+
+</template>
+
+
+
+<template name="adminSellerServices">
+  <div class = "row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+      {{> taxForm}}
+      {{> commissionForm}}
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-striped tableOFCSVHTML_New">
+      <thead style="">
+        <tr class="headerAnalytics2">
+          <th class="pAnalytics2">Sl.No</th>
+          <th class="pAnalytics2">Buyer</th>
+          <th class="pAnalytics2">Seller</th>
+          <th class="pAnalytics2">Package Name</th>
+          <th class="pAnalytics2">Amount(Rs)</th>
+          <th class="pAnalytics2">Seller GST Liable</th>
+          <th class="pAnalytics2">Paid Date</th>
+          <th class="pAnalytics2">Plan Starts On</th>
+          <th class="pAnalytics2">Plan Ends On</th>        
+          <th class="pAnalytics2">Admin Status</th>
+          <th class="pAnalytics2">Seller Status</th>
+        </tr>
+      </thead>
+      <tbody id="selectTagop">
+        {{#if packageList}}
+        {{#each packageList}}                   
+          <tr class="headerAnalytics3" name="sdfsd">
+            <td class="pAnalytics2">{{this.slNo}}</td>
+            <td class="pAnalytics2" style=" max-width: 50px;overflow: hidden;">{{displayNameOfUser this.userId}}</td>
+            <td class="pAnalytics2">{{displayNameOfUser this.packPayToUserId}}</td>
+            <td class="pAnalytics2">{{getPackName this.packId}}</td>
+            <td class="pAnalytics2">    
+              {{this.buyerAmount}}             
+            </td>
+            <td class="pAnalytics2"> 
+              {{getGSTLiable this.packPayToUserId}}            
+            </td>
+            
+            <td class="pAnalytics2">
+              {{formatDateWithTime this.paidDate}}
+            </td>
+            <td class="pAnalytics2">
+              {{formatDateWithTime this.planStartsOn}}
+            </td>
+            <td class="pAnalytics2">
+              {{formatDateWithTime this.planEndsOn}}
+            </td>                
+            <td class="pAnalytics2">
+              {{this.adminTransaction}}
+            </td>
+            <td class="pAnalytics2">
+              {{displayFinanceStatus this.acknowledgeStatus}}
+            </td>
+            
+          </tr>
+        {{/each}}
+        {{/if}}
+      </tbody>
+    </table>
+  </div>
+</template>
+
+
+
+<template name="adminReceipt">
+  <div class="modal" id="adminReceiptModal">
+      <div id="confirmCenter" class="modal-dialog modal-sm">
+        <div class="confirmPopup">
+        <div class="modal-content">
+        <div class="modal-header confirmHeader">
+              <p class="modal-title" id="conFirmHeader">Receipt Generation</p>
+            </div>
+             <div class="modal-body">
+               <p id = "infoMsg" class="selectionForm_N4" style="color:#000000 !important;font-size:12px">
+                {{invoiceMsg}}
+               </p>
+              <div class="confirmPopupContent">
+                <div class="yes">
+                  <button type="button" id="yesButton" class="ip_button_Popup_Black">OK</button>
+              </div>
+              <div class="no">
+                    <button type="button" id="noButton" class="ip_button_Popup_Red">CANCEL</button>
+              </div>
+            </div>
+
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>
+
+
+
+
+

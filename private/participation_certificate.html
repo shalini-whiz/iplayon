@@ -1,0 +1,79 @@
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<style type="text/css">
+  .outer {
+    width:auto; height:670px;  text-align:center; 
+    border: 10px double #CD5C5C;
+    margin: 5px !important;
+    outline: 5px solid #CD5C5C;
+    outline-offset: -6px;
+  }
+
+  .footer {
+    height:10%;
+    padding: 10px !important;
+  }
+
+</style>
+<div class="container" >
+  <div id="outer" class="outer">
+    <div class="header" style="height:10%;">
+      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding: 10px !important">
+        <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+        {{#if siteImg}}
+          <span class="pull-left"> <img src='http://www.iplayon.in/{{siteImg}}' width="70" height="70"></span>
+        {{/if}}
+        </div>
+        <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
+          <span style="font-size:28px; text-align:center; font-weight:bold;color:#3f3f3f !important">Participation Certificate</span>
+        </div>
+        <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+        {{#if sponsorLogoURL}}
+          {{#each sponsorLogoURL}}
+            <span class="pull-right"> <img id="sponImg" class="sponImg" src={{../imageURL}}{{this.url}} width="70" height="70"></span>
+          {{/each}}
+       {{/if}}
+        </div>
+      </div>
+    </div>
+
+    <div class="content" style="height:80%;">
+       <span style="font-size:28px; text-align:center; font-weight:bold;color:#3B5998 !important"> {{tournamentName}} </span> <br>
+       <span style="font-size:22px">{{eventStartDate}} - {{eventEndDate}}, {{address}}</span>
+        <br>
+        {{#if organizer}}
+          <span style="font-size:16px">UNDER THE AEGIS OF</span>
+          <br>
+           <span style="font-size:22px">{{organizer}}</span>
+        {{/if}}
+       <br><br>
+       <br><br>
+      <span style="font-size:25px;margin: 10px !important" ><i>This is to certify that <span style="font-weight:bold;width: auto;word-wrap: break-word;color:#3B5998 !important">{{player}}
+      </span><!--{{#if playerDOB}} (Date Of Birth : <span style="font-weight:bold;word-wrap: break-word;color:#3B5998 !important">{{playerDOB}}</span>){{/if}}-->
+        has participated as a {{type}} in the {{tournamentName}} {{#if eventValues}}(Events: 
+        {{eventValues}}){{/if}} held at {{address}} from {{eventStartDate}} to {{eventEndDate}}</i></span>
+    </div>
+
+    <div class="footer" style="">
+      <div class="row col-md-12 col-xs-12 col-sm-12 col-lg-12" style="">
+            <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="text-align: left">
+              <span class="" style="font-size:12px; border-top: solid black;text-align:left">Organizing Committee</span>
+            </div>
+            <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="text-align:center;">
+              <span style="font-size:12px; border-top: solid black;text-align:center;">Chief Referee</span>
+            </div>
+            <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="text-align:right;">
+              <span class="" style="font-size:12px; border-top: solid black;text-align:right">Secretary</span>
+            </div>
+        </div> 
+        <div class="row" style="text-align:right;padding-right: 20px !important;">
+            <span style="text-align:bottom;font-size:10px !important">Powered by</span>
+            <img style="vertical-align: baseline;" width="30" height="30" src="http://www.iplayon.in/logo.png" align="middle"/>
+        </div> 
+    </div>
+</div>
+</div>
+

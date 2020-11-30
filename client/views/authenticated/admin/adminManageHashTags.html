@@ -1,0 +1,423 @@
+<template name="adminManageHashTags">
+    {{#if notAdmin}}
+    <div class=''>
+        <p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+    </div>
+    {{else}}
+    <div class="container" style="background:white;margin-top:5px;height:130em !important;">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 5px;border-radius: 5px;background:none repeat scroll 0% 0%;padding: 0px 0px 0px 5px;height:230em;border:1px solid black;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;">
+                <label name="selectAssociation" class="adminUpload_label">Manage Twitter HashTags</label>
+                <br>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                    <input type="button" value="Create Hashtag" id="createNewHashtag" style="width:100%;width: 100%;height: 25px;font-size: 12px;">
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                    <!--input type="button" value="View or Edit Hashtags" style="width:100%;width: 100%;height: 25px;font-size: 12px;"-->
+                </div>
+            </div>
+            <div id="renderTempHashTag"></div>
+            <div id="renderErrorPopup"></div>
+        </div>
+    </div>
+    {{/if}}
+</template>
+
+<template name="createNewHashTag">
+    <form id="manageTwitterHasghTag">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;padding-top:15px !important;;">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                <label name="selectSportLabel" class="adminUpload_label">Select Sport*:</label>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding: 0px !important;">
+                <select name="selectSport" class="adminUpload_label" style="resize:none;width:100%;" id="selectSport">
+                    <option selected disabled value="Select sport">Select sport</option>
+                    {{#each lTourns}}
+                    <option value={{this._id}}>{{this.projectMainName}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;padding-top:15px !important;;">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                <label name="iplayonHashtokenLAbel" class="adminUpload_label">Select Role*:</label>
+                <label name="entityNameLabel" class="adminUpload_label" style="font-size:12px;">Based On the role entity name can be searched</label>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding: 0px !important;">
+                <select name="selectrole" class="adminUpload_label" style="resize:none;width:100%;" id="selectRole">
+                    <option selected disabled value="Select role">Select role</option>
+                    <option value="Academy">Academy</option>
+                    <option value="Association">Association</option>
+                    <option value="Organiser">Organiser</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;padding-top:15px !important;;">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                <label name="selectAssociation" class="adminUpload_label">Entity Name*:</label>
+                <label name="entityNameLabel" class="adminUpload_label" style="font-size:12px;">entity name (association name if association, academy name if academy, organizer name if organizer)</label>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding: 0px !important;">
+                <input id="entityName"  name="entityName" type="text" placeholder="Type Entity Name" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #000;border: 1px solid grey;border-radius: 5px;padding: 5px;"/>
+                {{#if searchResultsForEntityName}}
+                <div style="float: left; padding: 0px ! important; background: none repeat scroll 0% 0% #E0E0E0; border: 1px solid white; margin-top: 1px ! important;border:0px" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div style="left: 0px; z-index: 100; display: block; position: absolute; background: #fff !important;width: 100%; border: 1px solid black;" class="searchResults">
+                        {{#each searchResultsForEntityName}}
+                        <div id="{{this.userId}}" class="addIcon" name="addAcademyMNM_P" value="{{this.userName}}">
+                            <p id="{{this.userId}}" name="userName" value="{{this.userName}}" style="text-align: left;margin:0px !important;font-size:12px;">{{this.userName}}</p>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+                {{/if}} 
+                {{#if selectedEntityNameSearch}} 
+                {{#each selectedEntityNameSearch}}
+                <div type="text" id="" class="addUSERSForTeam">
+                    <p style="width: 100% ! important; font-size: 14px;" class="userSelectedForTeamP"><span style="color: black; text-decoration: none ! important;">Selected Entity Name:</span>&nbsp;&nbsp;<span style="text-decoration: underline;" id="userNAmeSelected" value={{this.userName}}>{{this.userName}}</span></p>
+                </div>
+                {{/each}} 
+                {{/if}}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;padding-top:15px !important;;">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                <label name="iplayonHashtokenLAbel" class="adminUpload_label">iPlayon hashtag:</label>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding: 0px !important;">
+                <input name="iplayonHashtoken" class="adminUpload_label" placeholder="iplayon hashtag" style="resize:none;width:100%;font-size:12px;" id="iplayonHashtoken">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;padding-top:15px !important;">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                <label name="selectAssociation" class="adminUpload_label">Select Place:</label>
+                <label name="entityNameLabel" class="adminUpload_label" style="font-size:12px;">Users who are interested in these places will get tweets</label>
+            </div>
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:3px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                                <input type="text" autocomplete="off" placeholder="Place" id="mainTag1" value="" class="selectProjectsE">
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    <span class="glyphicon glyphicon-search userProjectSearch" style="font-size: 18px;">
+                                        </span>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;margin-top:0px;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    {{#if checkalldomainsPlayer lPlayer}}
+                                    <input type="checkbox" name="checkAllPlaces" id="checkAllPlaces" class="checkAllprojuser" checked>{{else}}
+                                    <input type="checkbox" name="checkAllPlaces" id="checkAllPlaces" class="checkAllprojuser"> 
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagod2" style="overflow: auto !important;">
+                        {{#if lDomainName}} {{#each lDomainName}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.domainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.domainName}}>
+                                <label class="checkBoxDivLabel" name="checkDomainName">
+                                    {{this.domainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.domainName}}>
+                                <input value={{this._id}} type="checkbox" name="checkDomainName" id="{{this._id}}" class="" style="cursor:pointer!important">
+                                <label name="checkDomainName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{/each}} {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;padding-top:15px !important;;">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                <label name="selectAssociationLAbel" class="adminUpload_label">List of Target Hashtags *:</label>
+                <label name="selectAssociationlabel2" class="adminUpload_label" style="font-size:12px;">(atleast one is mandatory)</label>
+            </div>
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:3px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                                <input type="text" autocomplete="off" placeholder="Saved Tags" id="mainTag1SavedHashTags" value="" class="selectProjectsE">
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    <span class="glyphicon glyphicon-search userProjectSearch" style="font-size: 18px;">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;margin-top:0px;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    {{#if checkalldomainsPlayer lPlayer}}
+                                    <input type="checkbox" name="checkAllPlacesSavedHashTags" id="checkAllPlacesSavedHashTags" class="checkAllprojuser" checked>{{else}}
+                                    <input type="checkbox" name="checkAllPlacesSavedHashTags" id="checkAllPlacesSavedHashTags" class="checkAllprojuser"> {{/if}} 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagod2SavedTAgs" style="overflow: auto !important;">
+                       {{#if lSavedHashTags}} 
+                       {{#each lSavedHashTags}}
+                       {{#each this.savedTags}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this}}>
+                                <label class="checkBoxDivLabel" name="checkDomainNameSavedHashTags">
+                                    {{getNAmeOFEntity ../selectedRole ../entityName}}-<span id="" style="color:maroon !important;">{{this}}</span>
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this}}>
+                                <input value={{this}} type="checkbox" name="checkDomainNameSavedHashTags" id="{{this}}" class="" style="cursor:pointer!important" {{showCheckForCustomTag this}}>
+                                <label name="checkDomainNameSavedHashTags" for={{this}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{/each}} 
+                        {{/each}}
+                        {{/if}} 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;padding-top:15px !important;;">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                <label name="selectAssociationLAbel" class="adminUpload_label">Custom Target Hashtag:</label>
+                <!--label name="selectAssociationlabel2" class="adminUpload_label" style="font-size:12px;">(comma separated hash tag list)</label-->
+            </div>
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 0px !important;">
+                <input name="iplayonSendToHashTags" class="adminUpload_label" placeholder="custom hash tag" style="resize:none;width:100%;font-size:12px;" id="iplayonSendToHashTags">
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding: 0px !important;padding-left:5px !important;">
+                <input type="button" value="Add New Target Hashtag" id="addCustomHashTag" style="width:100%;width: 100%;height: 25px;font-size: 12px;">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;padding-top:15px !important;">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                <input type="button" value="save" id="iplayonTweetTags" style="width:100%;width: 100%;height: 25px;font-size: 12px;">
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;padding-left:5px !important;">
+                <input type="button" value="cancel" id="iplayonTweetTagscancel" style="width:100%;width: 100%;height: 25px;font-size: 12px;">
+            </div>
+        </div>
+        <input type="text" id="checkDomain" name="checkDomain" style="background-color:none; border:none; height:0px; width:0px;  cursor:default; font-weight:normal" onfocus="this.blur()" readonly> {{> errorPopup}}
+    </form>
+</template>
+
+
+
+<template name="editViewHashTags">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;padding-top:15px !important;;">
+        <table style="width:100%;">
+            <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Sport</th>
+            <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Entity Name</th>
+            <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">iplayon hashtag</th>
+            <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Edit</th>
+            <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Delete</th>
+            <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                {{#each hashTagList}}
+                <tr class="headerAnalytics3" id="headerAnalytics3">
+                    <td class="pAnalytics2_entryFAca2_backWhite" style="background: #585858 !important;font-size:14px;color:white">{{tournaName}}</td>
+                    <td class="pAnalytics2_entryFAca2_backWhite" style="background: #585858 !important;font-size:14px;color:white">{{this.entityName}}</td>
+                    <td class="pAnalytics2_entryFAca2_backWhite" style="background: #585858 !important;font-size:14px;color:white">{{this.iphashTag}}</td>
+                    <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;font-size:14px;color:white">
+                        <span class="glyphicon glyphicon-pencil eventEdit_my" style="color:#007700; font-size: 22px; margin:3px 0px 0px 4%; width:15%; transform: rotate(0deg); cursor: pointer" id="editHASHTag"></span>
+                    </td>
+                    <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;font-size:14px;color:white">
+                        <span class="glyphicon glyphicon-remove eventDelete_my" style="color:#770000; font-size: 22px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="deleteHASHTAg"></span>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>
+
+<template name="editHashTags">
+    <form id="manageTwitterHasghTagEdit">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;padding-top:15px !important;;">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                <label name="selectSportLabel" class="adminUpload_label">select sport:</label>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding: 0px !important;">
+                <select name="selectSportEdit" class="adminUpload_label" placeholder="global tags" style="resize:none;width:100%;" id="selectSport">
+                    <option selected disabled>Select sport</option>
+                    {{#each lTourns}} {{#if checkSportSelectedHAshtag this._id}}
+                    <option value={{this._id}} selected>{{this.projectMainName}}</option>
+                    {{else}}
+                    <option value={{this._id}}>{{this.projectMainName}}</option>
+                    {{/if}} {{/each}}
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;padding-top:15px !important;;">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                <label name="selectAssociation" class="adminUpload_label">entity name:</label>
+                <label name="entityNameLabel" class="adminUpload_label" style="font-size:12px;">entity name (association name if association, academy name if academy, organizer name if organizer)</label>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding: 0px !important;">
+                <input type="text" name="entityNameEdit" class="adminUpload_label" style="resize:none;width:100%;font-size:12px;" id="entityName" placeholder="entity name" value={{entityNameFetched}}>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;padding-top:15px !important;;">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                <label name="iplayonHashtokenLAbel" class="adminUpload_label">iPlayon hashtag:</label>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding: 0px !important;">
+                <input name="iplayonHashtokenEdit" class="adminUpload_label" placeholder="iplayon hashtoken" style="resize:none;width:100%;font-size:12px;" id="iplayonHashtoken" value={{iplayonHashTokenFetched}}>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;padding-top:15px !important;">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                <label name="selectAssociation" class="adminUpload_label">Select Domains:</label>
+            </div>
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:3px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                                <input type="text" autocomplete="off" placeholder="Place" id="mainTag1" value="" class="selectProjectsE">
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    <span class="glyphicon glyphicon-search userProjectSearch" style="font-size: 18px;">
+                                        </span>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;margin-top:0px;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    {{#if Template.subscriptionsReady}} {{#if checkalldomainsHashTags2 lHasTAgs}}
+                                    <input type="checkbox" name="checkAllPlaces" id="checkAllPlaces" class="checkAllprojuser" checked>{{else}}
+                                    <input type="checkbox" name="checkAllPlaces" id="checkAllPlaces" class="checkAllprojuser"> {{/if}} {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagod2" style="overflow: auto !important;">
+                        {{#if Template.subscriptionsReady}} {{#if lDomainName}} {{#each lDomainName}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.domainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.domainName}}>
+                                <label class="checkBoxDivLabel" name="checkDomainNameEdit2">
+                                    {{this.domainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.domainName}}>
+                                <input value={{this._id}} type="checkbox" name="checkDomainNameEdit" id="{{this._id}}" class="" style="cursor:pointer!important" {{checkedHAshTags}}>
+                                <label name="checkDomainNameEdit2" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{/each}} {{/if}} {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;padding-top:15px !important;;">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                <label name="selectAssociationLAbel" class="adminUpload_label">send to:</label>
+                <label name="selectAssociationlabel2" class="adminUpload_label" style="font-size:12px;">(comma separated hash tag list)</label>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding: 0px !important;">
+                <textarea name="iplayonSendToHashTagsEdit" class="adminUpload_label" placeholder="hash token list" style="resize:none;width:100%;font-size:12px;" id="iplayonSendToHashTags" value={{hashTagList}}></textarea>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;padding-top:15px !important;;">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                <label name="selectAssociationLAbel" class="adminUpload_label">send to:</label>
+                <label name="selectAssociationlabel2" class="adminUpload_label" style="font-size:12px;">(already saved hash tags)</label>
+            </div>
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:3px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                                <input type="text" autocomplete="off" placeholder="Saved Tags" id="mainTag1SavedHashTagsEdit" value="" class="selectProjectsE">
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    <span class="glyphicon glyphicon-search userProjectSearch" style="font-size: 18px;">
+                                        </span>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;margin-top:0px;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    {{#if Template.subscriptionsReady}} {{#if checkalldomainsPlayer lPlayer}}
+                                    <input type="checkbox" name="checkAllSavedHashTagsEdit" id="checkAllSavedHashTagsEdit" class="checkAllprojuser" checked>{{else}}
+                                    <input type="checkbox" name="checkAllSavedHashTagsEdit" id="checkAllSavedHashTagsEdit" class="checkAllprojuser"> {{/if}} {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagod2SavedTAgsEdit" style="overflow: auto !important;">
+                        {{#if Template.subscriptionsReady}} {{#if lDomainNameSavedHashTagsEdit}} {{#each lDomainNameSavedHashTagsEdit}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this}}>
+                                <label class="checkBoxDivLabel" name="checkSavedHashTagsEdit2">
+                                    {{this}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this}}>
+                                <input value={{this}} type="checkbox" name="checkSavedHashTagsEdit" id="{{this}}" class="" style="cursor:pointer!important" {{checkSavedTags}}>
+                                <label name="checkSavedHashTagsEdit2" for={{this}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{/each}} {{/if}} {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;padding-top:15px !important;">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;">
+                <input type="submit" value="save" id="iplayonTweetTags" style="width:100%;width: 100%;height: 25px;font-size: 12px;">
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px !important;padding-left:5px !important;">
+                <input type="button" value="cancel" id="iplayonTweetTagscancel" style="width:100%;width: 100%;height: 25px;font-size: 12px;">
+            </div>
+        </div>
+        <input type="text" id="checkDomain" name="checkDomain" style="background-color:none; border:none; height:0px; width:0px;  cursor:default; font-weight:normal" onfocus="this.blur()" readonly> {{>errorPopup2}}
+    </form>
+</template>
+
+
+<template name="errorPopup2">
+    <!-- main div of error pop up-->
+    <div class="modal fade" id="errorPopup2">
+
+        <!-- div is the center of the popup contains
+     1. header div which contains an image and p tag.
+     2. body contains error popup content  and errorpopup container
+       which are filled with ul and li tags
+       when there are errors shown by javascript validator
+-->
+        <div class="modal-dialog modal-sm">
+            <div class="errorPopup">
+                <div class="modal-content">
+                    <a href="" id="errorPopupClose2" class="errorClose">X</a>
+                    <div class="modal-header errorHeader" style="padding-top: 2%;
+            padding-left: 5%; padding-right: 2%;">
+                        <span class="glyphicon glyphicon-exclamation-sign errorImage" src="/error.png" style="font-size: 14px;"></span>
+                        <p class="modal-title" id="errorHeader">Please correct the following errors and try again</p>
+                    </div>
+                    <div class="modal-body" style="padding: 5px 15px;">
+                        <div class="errorPopupContent">
+                            <div class="errorPopupContent">
+                                <div id="errorContainer2">
+                                    <ul> </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

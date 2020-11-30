@@ -1,0 +1,230 @@
+<div class="container" style="margin:5px !important">
+  <div class="row" style="font-size: 18px;font-weight:bold; text-align: center;"><p>{{tournamentName}}</p></div>
+  {{#if organizer}}
+   <div class="row" style="font-size: 16px; text-align: center;"> <p>
+      Organised by : {{organizer}}</p></div>
+      {{/if}}
+      <div class="row" style="font-size: 16px; text-align: center;">{{eventStartDate}} - {{eventEndDate}}</div>
+    <div class="row"><p><br><br></p></div>
+    <div class="row"><p><br><br></p></div>
+
+    <div class ="row col-md-12 col-xs-12 col-sm-12 col-lg-12" style="">
+      <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+          GROUP: _______
+      </div>
+      <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+          EVENT: _______
+      </div>
+      <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+        ROUND: _______
+      </div>
+      <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+          TIME: _______
+      </div>
+      <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+          TABLE: _______
+      </div>
+      <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+          DATE: _______
+      </div>
+    </div>
+    <div class="row"><p><br><br></p></div>
+    <div class ="row col-md-12 col-xs-12 col-sm-12 col-lg-12" style="">
+      <div class="col-md-5 col-xs-5 col-sm-5 col-lg-5">
+        <span style="font-size:14px; text-align:center;">TEAM NAME (ABC) : _____________________</span> 
+      </div>
+      <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+        <span style="font-size:14px; text-align:center;">Vs</span>
+      </div>
+      <div class="col-md-5 col-xs-5 col-sm-5 col-lg-5">
+        <span style="font-size:14px; text-align:center;">TEAM NAME (XYZ) : _____________________</span>
+      </div>
+    </div>
+    <div class="row"><p><br><br></p></div>
+
+    <table class="table scoreSheet">
+      <tbody>
+        <tr class="header">
+          <td>ORDER</td>
+          <td>NAMES</td>
+          <td>ORDER</td>
+          <td>NAMES</td>
+          <td>ORDER</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>GAMES</td>
+          <td>SET</td>
+          <td>TIME OUT</td>
+        </tr>
+        <tr class="data">
+          <td rowspan="2" style='vertical-align : middle;text-align:center;'>A</td>
+          <td rowspan="2" width="20%"></td>
+          <td rowspan="2" style='vertical-align : middle;text-align:center;'>X</td>
+          <td rowspan="2" width="20%"></td>
+          <td>A</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td rowspan="2"></td>
+          <td rowspan="2"></td>
+          <td></td>
+        </tr>
+        <tr class="data">
+          <td>X</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <!-- b vs y -->
+        <tr class="data">
+          <td rowspan="2" style='vertical-align : middle;text-align:center;'>B</td>
+          <td rowspan="2" width="20%"></td>
+          <td rowspan="2" style='vertical-align : middle;text-align:center;'>Y</td>
+          <td rowspan="2" width="20%"></td>
+          <td>B</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td rowspan="2"></td>
+          <td rowspan="2"></td>
+          <td></td>
+        </tr>
+        <tr class="data">
+          <td>Y</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <!-- doubles/c vs z -->
+        <tr class="data">
+          <td rowspan="2" style='vertical-align : middle;text-align:center;'>Doubles/C</td>
+          <td rowspan="2" width="20%"></td>
+          <td rowspan="2" style='vertical-align : middle;text-align:center;'>Doubles/Z</td>
+          <td rowspan="2" width="20%"></td>
+          <td>C</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td rowspan="2"></td>
+          <td rowspan="2"></td>
+          <td></td>
+        </tr>
+        <tr class="data">
+          <td>Z</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+         <!-- A vs y -->
+        <tr class="data">
+          <td rowspan="2" style='vertical-align : middle;text-align:center;'>A</td>
+          <td rowspan="2" width="20%"></td>
+          <td rowspan="2" style='vertical-align : middle;text-align:center;'>Y</td>
+          <td rowspan="2" width="20%"></td>
+          <td>A</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td rowspan="2"></td>
+          <td rowspan="2"></td>
+          <td></td>
+        </tr>
+        <tr class="data">
+          <td>Y</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+         <!-- A vs y -->
+        <tr class="data">
+          <td rowspan="2" style='vertical-align : middle;text-align:center;'>B</td>
+          <td rowspan="2" width="20%"></td>
+          <td rowspan="2" style='vertical-align : middle;text-align:center;'>X</td>
+          <td rowspan="2" width="20%"></td>
+          <td>B</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td rowspan="2"></td>
+          <td rowspan="2"></td>
+          <td></td>
+        </tr>
+        <tr class="data">
+          <td>X</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+   <div class="row col-md-12 col-xs-12 col-sm-12 col-lg-12" style="font-size: 16px;">
+    <p>MATCH WON BY _____________________________________ by _______</p>
+    </div>
+    <div class="row"><p><br><br><br><br><br><br><br></p></div>
+    <div class ="row col-md-12 col-xs-12 col-sm-12 col-lg-12" style="font-size: 14px;">
+      <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">SIGNATURE</div>
+      <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">&nbsp;</div>
+      <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">&nbsp;</div>
+    </div>
+     <div class ="row col-md-12 col-xs-12 col-sm-12 col-lg-12" style="font-size: 14px;">
+      <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">WINNING TEAM'S CAPTAIN</div>
+      <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="text-align:center">UMPIRE</div>
+      <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">&nbsp;</div>
+    </div>
+    <div class ="row col-md-12 col-xs-12 col-sm-12 col-lg-12" style="font-size: 14px;">
+      <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">REFERREE</div>
+      <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">&nbsp;</div>
+      <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">&nbsp;</div>
+    </div>
+ </div>
+

@@ -1,0 +1,182 @@
+.menuCreateTourOrSele{
+	width: 100%;
+	margin-top: 28px;
+	margin-bottom: 35px;
+	height: 14em;
+}
+
+.firstMenuCreate{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 90%;
+    height: 6em;
+    margin: auto;
+    margin-top: 3px;
+}
+
+.menuTournament{
+	width: 100%;
+	background: #808080 none repeat scroll 0% 0%;
+	padding-top: 32px;
+	padding-bottom: 32px;
+	order: 1;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.tourMenu{
+	margin: auto;
+	color: #FFF;
+	width:75px;
+	font-size: 14px;
+}
+
+.tourMenu1{
+	color: white;
+	width:113px;
+	margin: auto;
+	font-size: 14px;
+}
+
+.firstMenuCreate2{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 90%;
+    height: 6em;
+	margin-top: 3px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.menuTournament2{
+	width: 100%;
+	padding-top: 32px;
+	padding-bottom: 32px;
+	order: 1;
+	border-radius: 3px;
+	background: #b0b0b0 none repeat scroll 0% 0%;
+	cursor: pointer;
+}
+
+.tourMenu2{
+	margin: auto;
+	color: #FFF;
+	width: 103px;
+	font-size: 14px;
+}
+
+.menuEvent2{
+	width: 100%;
+	padding-top: 32px;
+	padding-bottom: 32px;
+	order: 2;
+	border-radius: 3px;
+	background:#808080 none repeat scroll 0% 0%;
+	cursor: pointer;
+}
+
+.tourMenu3{
+	margin: auto;
+	color: #FFF;
+	width:97px;
+	font-size: 14px;
+}
+
+.menuEvent{
+	width: 100%;
+	padding-top: 32px;
+	padding-bottom: 32px;
+	background: #b0b0b0 none repeat scroll 0% 0%;
+	order: 2;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.headingMenuC {
+    width: 30%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+}
+.headingMenuD {
+    width: 100%;
+    margin: auto;
+    border-radius: 3px;
+    background: #b30000 none repeat scroll 0% 0%;
+    height: 2.46em;
+	padding-top: 0px;
+	padding-left: 1%;
+	display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.cancelButtonChange {
+    order: 2;
+    width: 16%;
+    background-color: grey;
+    color: #FFF;
+    border-radius: 8px;
+    font-size: 12px;
+    outline: 0px none;
+    cursor: pointer;
+    margin: auto 0%;
+    height: 2.8em;
+}
+
+.setDobSubDiv1{
+	padding: 0px !important;
+	font-size: 12px;
+	margin: 0px;
+}
+
+.setDobSubDiv2{
+	padding: 0px !important;
+	font-size: 12px;
+	margin: 0px;
+}
+
+.setDobSubP1{
+	font-size: 12px;
+}
+
+.setDobSubSelect1{
+	font-size: 12px;
+	width: 100%;
+}
+
+.tableOFCSVHTML_SetDOB {
+    margin-top: 6px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.headerAnalytics2_SetDOB {
+    background: transparent none repeat scroll 0px center;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 0px;
+    color: #000;
+}
+
+.pAnalytics2_SetDOB {
+    font-size: 12px;
+    text-align: center;
+    border: 1px solid #000;
+    background: transparent none repeat scroll 0px center !important;
+    border-bottom: 1px solid #000 !important;
+    padding: 2px !important;
+}
+.setDOB_Input{
+	width: 100%;
+	border: 0px;
+	text-align: center;
+}

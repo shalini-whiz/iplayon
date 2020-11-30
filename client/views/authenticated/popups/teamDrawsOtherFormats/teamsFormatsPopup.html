@@ -1,0 +1,196 @@
+<template name="teamsFormatsPopup">
+    <!-- main div of selectSubDomainsPopUp pop up-->
+    <div class="modal" id="teamsFormatsPopup">
+        <div id="subDomainCenter" class="modal-dialog subTeamSubsModal-sm" style="width: 601px !important;">
+            <div class="selectTeamSubsPopup" style="width: 601px !important;">
+                <div class="modal-content">
+                    <div class="modal-header selectSubDomainsHeader">
+                        <p class="modal-title" id="setEventNameHeader" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;text-align:center">
+                           Create Match Team Format
+                        </p>
+                    </div>
+                    <div class="modal-body subDomainModalBody" style="max-height: 50vh;overflow: auto;">
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-bottom:4px;">
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;padding-top:10px!important;">
+                                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding:0px!important;">
+                                    <p style="font-size:12px;width:100%;">Format Name:</p>
+                                </div>
+                                <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding:0px!important;">
+                                    <input style="font-size:12px;width:100%;text-align:center;" placeholder="Enter Name of the Format" type="text" id="teamFormatName">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px important!;padding: 0px !important;" id="insertNewRow">
+
+                            </div>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;padding-top: 5px !important;">
+                                <input style="width:50%;font-size:12px;" value="+ Add Match" type="button" id="addNoOfMatches">
+                            </div>
+                            <div class="modal-footer">
+                                <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style='padding-bottom:4px;'>
+                                    <div class="row">
+                                        <p id="errorMsg" class='impMsg'></p>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " style="padding: 0px !important;">
+                                            <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 ">
+                                            </div>
+
+                                            <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 ">
+                                                <button type="button" class="ip_button_Popup_Black" id="previousTeamFormatDraw">Previous</button>
+                                                <button type="button" class="ip_button_Popup_Black" id="createTeamFormat">Continue</button>
+                                                <button type="button" class="ip_button_Popup_Red"  id="closeTeamFormatCreate">Cancel</button>
+                                            </div>
+
+                                            <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 "> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="renderKnockOutForm"></div>
+</template>
+
+<template name="rowOfTeamsFormat">
+    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px important!;padding-top: 5px !important;" id="addedID">
+        <div style="padding:0px!important;padding-right: 2px !important;height: 20px;" class="col-md-1 col-xs-1 col-lg-1 col-sm-1">
+            <p value="" style="width:100%;font-size:12px;height: 100%;border: 0px;background: none;" id="matchNo"></p>
+        </div>
+        <div style="padding:0px!important;padding-right: 5px !important;height: 20px;" class="col-md-1 col-xs-1 col-lg-1 col-sm-1">
+            <input value="x" style="width:100%;font-size:12px;color:red;height: 100%;border: 0px;background: none;" type="button" id="removableID">
+        </div>
+        <div style="padding:0px!important;padding-right: 5px !important;height: 20px;" class="col-md-5 col-xs-5 col-lg-5 col-sm-5">
+            <input placeholder="Type Name" style="width:100%;font-size:12px;height: 100%;" type="text" id="displayLabel">
+        </div>
+        <div style="padding:0px!important;height: 20px;" class="col-md-5 col-xs-5 col-lg-5 col-sm-5">
+            <select style="width:100%;font-size:12px;height: 100%;" id="selectedType">
+                <option value="0">Select Match Type</option>
+                <option value="1">Singles</option>
+                <option value="2">Doubles</option>
+            </select>
+        </div>
+    </div>
+</template>
+
+<template name="selectTeamFormatsOldNew">
+    <div class="modal" id="selectTeamFormatsOldNew">
+        <div id="subDomainCenter" class="modal-dialog subTeamSubsModal-sm" style="width: 601px !important;">
+            <div class="selectTeamSubsPopup" style="width: 601px !important;">
+                <div class="modal-content">
+                    <div class="modal-header selectSubDomainsHeader">
+                        <p class="modal-title" id="setEventNameHeader" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;text-align:center">
+                            Match Type For Team
+                        </p>
+                    </div>
+                    <div class="modal-body subDomainModalBody" style="max-height: 50vh;overflow: auto;">
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-bottom:4px;">
+
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px important!;padding: 0px !important;" id="">
+                                {{#if listOfTeamFormats}}
+                                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px important!;padding: 0px !important;" id="">
+                                        <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="padding: 0px important!;padding: 0px !important;margin-top: 3px;" id="">
+                                            <input type="radio" id="selectTeam" value="selectTeam" name="createdTeamsFormatRadio" 
+                                        style="width:100%;">
+                                        </div>
+                                        <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding: 0px important!;padding: 0px !important;" id="">
+                                            <p style="width:100%;font-size:12px;">Select</p>
+                                        </div>
+                                    </div>
+                                    {{#if selectedRadio}}
+                                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px important!;padding: 0px !important;" id="">
+                                            <div class="col-md-2 col-xs-2col-lg-2col-sm-2">
+                                            </div>
+                                            <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding: 0px important!;padding: 0px !important;">
+                                                <select id="selectCreatedTeamsFormat" style="width:100%;font-size:12px;">
+                                                    <option value="0">
+                                                        Select team Format for matches
+                                                    </option>
+                                                    {{#each listOfTeamFormats}}
+                                                        <option value={{this._id}}>
+                                                            {{this.formatName}}
+                                                        </option>
+                                                    {{/each}}
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding: 0px important!;padding: 0px !important;">
+                                            </div>
+                                            <div class="col-md-2col-xs-2col-lg-2col-sm-2">
+                                            </div>
+                                        </div>
+
+                                        {{#if selectedTeamsFormatDet}}
+                                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-bottom:4px;">
+                                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;padding-top:10px!important;">
+                                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;">
+                                                    <p style="font-size:12px;width:100%;">Format Name:{{selectedTeamsFormatDet.formatName}}</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px important!;padding: 0px !important;" id="insertSelectedNewRows">
+                                                   <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+                                                        <thead style="">
+                                                            <tr class="headeSubDiv2_entryFAca_backWhite">
+                                                                <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">No.</th>
+                                                                <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Name of the format</th>
+                                                                <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Type</th>
+                                                            </tr>
+                                                        </thead>
+
+                                                        <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                                                            {{#each selectedTeamsFormatDet.specifications}}
+                                                            <tr class="headerAnalytics3" id="headerAnalytics3">
+                                                                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{this.no}}</td>
+                                                                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{this.displayLabel}}</td>
+                                                                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{toStringType this.type}}</td>
+                                                            </tr>
+                                                            {{/each}}
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                        </div>
+                                        {{/if}}
+                                    {{/if}}
+                                {{/if}}
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px important!;padding: 0px !important;" id="">
+                                    <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="padding: 0px important!;padding: 0px !important;margin-top: 2px;" id="">
+                                        <input id="createTeam" value="createTeam" name="createdTeamsFormatRadio" style="width:100%;" type="radio">
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding: 0px important!;padding: 0px !important;" id="">
+                                        <p style="width:100%;font-size:12px;">Create</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style='padding-bottom:4px;'>
+                                    <div class="row">
+                                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " style="padding: 0px !important;">
+                                            <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 ">
+                                            </div>
+
+                                            <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 ">
+                                                <button type="button" class="ip_button_Popup_Black" id="previousTeamFormatDraw1">Previous</button>
+                                                <button type="button" class="ip_button_Popup_Black" id="continueWithSelected">Continue</button>
+                                                <button type="button" class="ip_button_Popup_Red"  id="closeTeamFormat1">Cancel</button>
+                                            </div>
+
+                                            <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 "> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <div id="renderTeamsFormatSelect"></div>
+    <div id="renderTeamsFormatCreate"></div>
+</template>

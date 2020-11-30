@@ -1,0 +1,538 @@
+<template name="adminTeamFormat">
+	{{#if notAdmin}}
+	<div class=''>
+		<p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+	</div>
+	{{else}}
+	<div class="container" style="background:#333; height:auto;">
+		<div class="row navigationBar navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <span style="" class="websiteHeader">iPlayOn</span>
+                    </div>
+                   
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                        <span style="color:white !important" class="websiteHeader">Team Format</span>
+                     
+                     
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <div class = "row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:40px">
+	        	<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+	        		<button type="button" id="adminCreateTeamFormat" class="ip_button_DarkGrey">Create</button>
+	        	</div>
+		        <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+					<button type="button" id="adminEditTeamFormat" class="ip_button_DarkGrey">Edit</button>
+				</div>
+	        </div>
+    	</div>
+    	<div class = "row">
+        	<div id="teamFormatLayout" ></div>
+        </div>
+        		
+	</div>
+	{{/if}}
+	{{> errorPopup}}
+	{{> sendingMailPopup3}}
+
+	<div id="confirmInsertPlayerRender"></div>
+	<div id = "confirmDeleteTF"></div>
+</template>
+
+
+<template name="createTeamFormat">
+
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:2.1px !important;border: 1px solid #000;border-radius: 5px;background:#333; height:auto;" >
+
+		<div style="margin-top:5px !important;" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div style="float:right;padding:5px !important"><button style="width:100%; !important;margin:10px !important" type="button" id="saveTeamFormat" class="ip_button_LightGrey">Save</button></div>	
+										
+			{{#if formatType}}
+				<div style="float:right;padding:5px !important" class=""><button style="width:100% !important;margin:10px !important" class="ip_button_LightGrey" id="deleteTeamFormat" type="button">Delete</button></div>
+
+			{{else}}
+				<div style="float:right;padding:5px !important" class=""><button style="width:100% !important;margin:10px !important" class="ip_button_LightGrey" id="resetTeamFormat" type="button">Reset</button></div>
+			{{/if}}
+
+		</div>
+
+		{{#if formatType}}
+			{{> editTeamFormat}}
+		{{/if}}
+
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:20px !important">
+			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 " style="padding:5px !important">
+	            <p class="adminUpload_label" id="sportsLabel" style="font-size:12px !important;color:white"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Sport :</p>
+	        </div>
+	        <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				<select class="" id="sportsList" name="sportsList" style="font-size:12px !important;height:2.5em !important;color:black;">
+				 	<option selected disabled value="0" name="select">Select</option>
+				 	{{#if formatType}}
+		        		{{#if selectedEditTF}}
+							{{#each tournamentEvents_Sports}}
+
+								<option id="sportSelection" name="{{this._id}}" 
+									{{checkPresetValue selectedEditTF.selectedProjectId this._id}}>{{this.projectMainName}} </option>
+							{{/each}}
+						{{/if}}
+		        	{{else}}
+			       	
+						{{#if tournamentEvents_Sports}}
+							{{#each tournamentEvents_Sports}}
+								<option id="sportSelection" name="{{this._id}}">{{this.projectMainName}}</option>
+							{{/each}}
+						{{/if}}
+					{{/if}}
+				</select> 
+			</div>
+
+	        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 " style="padding:5px !important">
+	            <p class="adminUpload_label" id="sportsLabel" style="font-size:12px !important;color:white"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Team Format Name :</p>
+	        </div>
+	        {{#if formatType}}
+	        	{{#if selectedEditTF}}
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding:5px !important" >
+					<input type="text" id="teamFormatName" name="teamFormatName" class="clubNameUserProf"  autocomplete="off" style='color:black;height:2.5em' readonly disabled value={{selectedEditTF.teamFormatName}}>
+				</div>
+				{{/if}}
+	        {{else}}
+		        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding:5px !important" >
+					<input type="text" id="teamFormatName" name="teamFormatName" class="clubNameUserProf"  autocomplete="off" style='color:black;height:2.5em'>
+				</div>
+			{{/if}}
+	        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 " style="padding:5px !important">
+	           <p class="adminUpload_label"  id="filterByLabel" style="font-size:12px !important;color:white"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Min:</p> 
+	        </div>
+
+	        {{#if formatType}}
+	        	{{#if selectedEditTF}}
+		        	<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding:5px !important">		<input type="text" id="minPlayers" name="minPlayers" class="clubNameUserProf"  autocomplete="off" style='color:black;height:2.5em' value={{selectedEditTF.minPlayers}}>
+					</div>
+				{{/if}}
+	        {{else}}
+		        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding:5px !important">
+					<input type="text" id="minPlayers" name="minPlayers" class="clubNameUserProf"  autocomplete="off" style='color:black;height:2.5em'>
+				</div>
+			{{/if}}
+
+			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 " style="padding:5px !important">
+	            <p class="adminUpload_label"  id="filterByLabel" style="font-size:12px !important;color:white"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Max:</p> 
+	        </div>
+	        {{#if formatType}}
+	        	{{#if selectedEditTF}}
+					 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding:5px !important">
+						<input type="text" id="maxPlayers"  name="maxPlayers" class="clubNameUserProf" autocomplete="off" readonly style='color:black;height:2.5em' value={{selectedEditTF.maxPlayers}} disabled>	
+					</div>
+				{{/if}}
+	        {{else}}
+		        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding:5px !important">
+					<input type="text" id="maxPlayers"  name="maxPlayers" class="clubNameUserProf"  autocomplete="off" style='color:black;height:2.5em'>	
+				</div>
+			{{/if}}
+
+			
+
+
+
+			
+			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 " style="padding:5px !important">
+				<span id="addPlayerEntry" style ="color:#FFA500;font-size: 18px;margin: 3px 0px 0px 0px;width:15%; transform: rotate(0deg);cursor: pointer" class="glyphicon glyphicon-plus"></span>
+			</div>
+
+			
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:20px !important">
+			{{#if formatType}}
+	        	{{#if selectedEditTF}}
+	        		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 " style="padding:5px !important">
+	            		<p class="adminUpload_label"  id="filterByLabel" style="font-size:12px !important;color:white"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Affiliated Players:</p> 
+	        		</div>
+	         		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding:5px !important">
+	         			<input type="text" id="maxPlayers"  name="maxPlayers" class="clubNameUserProf" autocomplete="off" readonly style='color:black;height:2.5em' value={{selectedEditTF.rankedOrNot}} disabled>
+			
+					</div>
+
+	        	{{/if}}
+	        {{else}}
+	        	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 " style="padding:5px !important">
+	            	<p class="adminUpload_label"  id="filterByLabel" style="font-size:12px !important;color:white"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Affiliated Players:</p> 
+	        	</div>
+	         	<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding:5px !important">
+					<select class="" id="teamRank" name="teamRank" style="font-size:12px !important;height:2.5em !important;color:black;">
+				 		<option selected disabled value="0" name="select">Select</option>
+				 		<option name="yes">yes</option>
+				 		<option name="no">no</option>
+			 		</select>	
+				</div>
+
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 " style="padding:5px !important">
+	            	<p class="adminUpload_label"  id="filterByLabel" style="font-size:12px !important;color:white"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Type"</p> 
+	        	</div>
+	         	<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding:5px !important">
+					<select class="" id="teamFormatType" name="teamFormatType" style="font-size:12px !important;height:2.5em !important;color:black;">
+				 		<option name="allExceptSchool">All Except School</option>
+				 		<option name="schoolOnly">School Only</option>
+			 		</select>	
+				</div>
+
+
+	        {{/if}}
+		</div>
+
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:2.1px !important;max-height:300px; min-height:20px; overflow-y:auto" >
+
+
+			{{#if formatType}}
+				<table class="table table-striped tableOFCSVHTML_New" id= "playerFormatTable">
+		            	<thead style="">
+		                	<tr class="headerAnalytics2">
+			                    <th class="pAnalytics2"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Mandatory</th>
+			                    <th class="pAnalytics2"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>DOB Criteria</th>
+			                    <th class="pAnalytics2">Date Value</th>
+			                    <th class="pAnalytics2"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Gender Criteria</th>
+			                    <th class="pAnalytics2"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Locality Criteria</th>
+			                    <th class="pAnalytics2">Min Class Criteria</th>
+			                    <th class="pAnalytics2">Max Class Criteria</th>
+			                    <th class="pAnalytics2">Delete</th>
+			                </tr>
+			            </thead>
+			            <tbody id="playerFormatBody" > 
+			            	{{#if selectedEditTF.playerFormatArray}}
+			            		{{#each selectedEditTF.playerFormatArray}}
+			            			<tr class="headerAnalytics3" name=player{{@index}}>
+				            			<td class="pAnalytics2" name={{this.userName}}>
+											<select class="" id="mandatoryList" name="mandatoryList" 		style="font-size:12px !important;height:2.5em 				!important;color:black;">             		
+									            <option id="sportSelection" name="yes" {{checkPresetValue this.mandatory 'yes'}}>yes</option>
+									            <option id="sportSelection" name="no" {{checkPresetValue this.mandatory 'no'}}>no</option>
+						        			</select> 
+				                    	</td>
+				                    	<td class="pAnalytics2" name={{this.userName}}>
+				                    		<select class="" id="dateType" name="dateType" style="font-size:12px !important;height:2.5em !important;color:black;"> 
+							            		<option id="dateTypeSelection" name="any" {{checkPresetValue this.dateType 'any'}}>Any</option>
+									            <option id="dateTypeSelection" name="before" {{checkPresetValue this.dateType 'before'}}>Before</option>
+									            <option id="dateTypeSelection" name="onBefore" {{checkPresetValue this.dateType 'onBefore'}}>On/Before</option>
+									            <option id="dateTypeSelection" name="after" {{checkPresetValue this.dateType 'after'}}>After</option>
+									            <option id="dateTypeSelection" name="onAfter" {{checkPresetValue this.dateType 'onAfter'}}>On/After</option>
+					        				</select> 											
+				                    	</td>
+				                    	<td class="pAnalytics2" name={{this.userName}}>
+				                    		{{#if this.dateValue}}
+												<input type="text" name="dateValue" id="dateValue" placeholder="DD MMM YYYY" class="clubNameUserProf" autocomplete="off" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;color:black" value={{upcomingformatDate this.dateValue}} >
+											{{else}}
+												<input type="text" name="dateValue" id="dateValue" placeholder="DD MMM YYYY" class="clubNameUserProf" autocomplete="off" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;color:black" value={{this.dateValue}} >
+											{{/if}}
+
+				                    	</td>
+				                    	<td class="pAnalytics2" name={{this.userName}}>
+											<select class="" id="genderList" name="genderList" style="font-size:12px !important;height:2.5em !important;color:black;"> 
+							            		
+									            <option id="sportSelection" name="Male" {{checkPresetValue this.gender 'Male'}}>Male</option>
+									            <option id="sportSelection" name="Female" {{checkPresetValue this.gender 'Female'}}>Female</option>
+									            <option id="sportSelection" name="any" {{checkPresetValue this.gender 'any'}}>Any</option>
+					        				</select> 
+				                    	</td>
+				                    	<td class="pAnalytics2" name={{this.userName}}>
+											<select class="" id="localityList" name="localityList" style="font-size:12px !important;height:2.5em !important;color:black;"> 
+									            <option id="sportSelection" name="local" {{checkPresetValue this.locationType 'local'}}>Local</option>
+									            <option id="sportSelection" name="imported" {{checkPresetValue this.locationType 'imported'}}>Import</option>
+									            <option id="sportSelection" name="any" {{checkPresetValue this.locationType 'any'}}>Any</option>
+					        				</select> 
+				                    	</td>
+				                    	<td class="pAnalytics2" name={{this.userName}}>
+				                    		{{#if this.minClass}}
+
+											<select class="" id="minClassList" name="minClassList" style="font-size:12px !important;height:2.5em !important;color:black;"> 								           
+									            <option id="sportSelection" name="5" {{checkPresetValue this.minClass '5'}}>5</option>
+							            		<option id="sportSelection" name="6" {{checkPresetValue this.minClass '6'}}>6</option>
+							            		<option id="sportSelection" name="7" {{checkPresetValue this.minClass '7'}}>7</option>
+							            		<option id="sportSelection" name="8" {{checkPresetValue this.minClass '8'}}>8</option>
+							            		<option id="sportSelection" name="9" {{checkPresetValue this.minClass '9'}}>9</option>
+							            		<option id="sportSelection" name="10" {{checkPresetValue this.minClass '10'}}>10</option>
+							            		<option id="sportSelection" name="any" {{checkPresetValue this.minClass 'any'}}>Any</option>
+
+
+
+					        				</select> 
+					        				{{/if}}
+				                    	</td>
+				                    	<td class="pAnalytics2" name={{this.userName}}>
+				                    		{{#if this.maxClass}}
+				                    		<select class="" id="maxClassList" name="maxClassList" style="font-size:12px !important;height:2.5em !important;color:black;"> 
+									         <option id="sportSelection" name="5" {{checkPresetValue this.maxClass '5'}}>5</option>
+							            		<option id="sportSelection" name="6" {{checkPresetValue this.maxClass '6'}}>6</option>
+							            		<option id="sportSelection" name="7" {{checkPresetValue this.maxClass '7'}}>7</option>
+							            		<option id="sportSelection" name="8" {{checkPresetValue this.maxClass '8'}}>8</option>
+							            		<option id="sportSelection" name="9" {{checkPresetValue this.maxClass '9'}}>9</option>
+							            		<option id="sportSelection" name="10" {{checkPresetValue this.maxClass '10'}}>10</option>
+							            		<option id="sportSelection" name="any" {{checkPresetValue this.maxClass 'any'}}>Any</option>
+					        				</select> 
+					        				{{/if}}
+				                    	</td>
+				                    	<td class="pAnalytics2" name={{this.userName}}>
+											<span id="deletePlayerEntry" name=player{{@index}} style ="color:#FFA500;font-size: 18px;margin: 3px 0px 0px 0px;width:15%; transform: rotate(0deg);cursor: pointer" class="glyphicon glyphicon-remove"></span>
+				                    	</td>
+			                    	</tr>
+			                    {{/each}}
+			            	{{/if}}
+
+			            	{{#each extraMaxPlayers}}
+		                	<tr class="headerAnalytics3" value={{@index}} name={{checkExtraMax @index}}>
+			                    <td class="pAnalytics2" name={{this.userName}}>
+									<select class="" id="mandatoryList" name="mandatoryList" style="font-size:12px !important;height:2.5em !important;color:black;"> 
+							            <option selected disabled value="0" name="select">Select</option>		
+							            <option id="sportSelection" name="yes">yes</option>
+							            <option id="sportSelection" name="no">no</option>
+						        	</select> 
+			                    </td>
+			                    <td class="pAnalytics2">
+			                    	<select class="" id="dateType" name="dateType" style="font-size:12px !important;height:2.5em !important;color:black;"> 
+							            <option selected disabled value="0" name="select">Select</option>		
+							            <option id="dateTypeSelection" name="any">Any</option>
+							            <option id="dateTypeSelection" name="before">Before</option>
+							            <option id="dateTypeSelection" name="onBefore">On/Before</option>
+							            <option id="dateTypeSelection" name="after">After</option>
+							            <option id="dateTypeSelection" name="onAfter">On/After</option>
+					        		</select> 
+			                    </td>
+
+			                    <td class="pAnalytics2">
+			                    	<input type="text" name="dateValue" id="dateValue" placeholder="DD MMM YYYY" class="clubNameUserProf" autocomplete="off" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;color:black" />
+			                    </td>
+
+			                    <td class="pAnalytics2">
+			                    	<select class="" id="genderList" name="genderList" style="font-size:12px !important;height:2.5em !important;color:black;"> 
+							            <option selected disabled value="0"  name="select">Select</option>		
+							            <option id="sportSelection" name="Male">Male</option>
+							            <option id="sportSelection" name="Female">Female</option>
+							            <option id="sportSelection" name="any">Any</option>
+					        		</select> 
+			                    </td>
+
+			                    <td class="pAnalytics2">
+			                    	<select class="" id="localityList" name="localityList" style="font-size:12px !important;height:2.5em !important;color:black;"> 
+							            <option selected disabled value="0"  name="select">Select</option>
+							            <option id="sportSelection" name="local">Local</option>
+							            <option id="sportSelection" name="imported">Import</option>
+							            <option id="sportSelection" name="any">Any</option>
+					        		</select> 
+			                    </td>
+
+			                    <td class="pAnalytics2">
+			                    	<select class="" id="minClassList" name="minClassList" style="font-size:12px !important;height:2.5em !important;color:black;"> 
+							            <option id="sportSelection" name="5">5</option>
+							            <option id="sportSelection" name="6">6</option>
+							            <option id="sportSelection" name="7">7</option>
+							            <option id="sportSelection" name="8">8</option>
+							            <option id="sportSelection" name="9">9</option>
+							            <option id="sportSelection" name="10">10</option>
+							            <option id="sportSelection" name="any" selected>Any</option>
+					        		</select> 
+			                    </td>
+			                    <td class="pAnalytics2">
+			                    	<select class="" id="maxClassList" name="maxClassList" style="font-size:12px !important;height:2.5em !important;color:black;"> 
+							            <option id="sportSelection" name="5">5</option>
+							            <option id="sportSelection" name="6">6</option>
+							            <option id="sportSelection" name="7">7</option>
+							            <option id="sportSelection" name="8">8</option>
+							            <option id="sportSelection" name="9">9</option>
+							            <option id="sportSelection" name="10">10</option>
+							            <option id="sportSelection" name="any" selected>Any</option>
+					        		</select> 
+			                    </td>
+
+			                    <td class="pAnalytics2" >
+			                    	<span id="deletePlayerEntry" name={{checkExtraMax @index}} style ="color:#FFA500;font-size: 18px;margin: 3px 0px 0px 0px;width:15%; transform: rotate(0deg);cursor: pointer" class="glyphicon glyphicon-remove"></span>
+			                    </td>		               
+
+			                </tr>
+
+
+
+			            	{{/each}}
+
+			            </tbody>
+
+			    </table>
+			{{else}}
+		    	{{#if maxTeamPlayers}}
+		    		<table class="table table-striped tableOFCSVHTML_New" id= "playerFormatTable">
+		            	<thead style="">
+		                	<tr class="headerAnalytics2">
+			                    <th class="pAnalytics2"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Mandatory</th>
+			                    <th class="pAnalytics2"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>DOB Criteria</th>
+			                    <th class="pAnalytics2">Date Value</th>
+			                    <th class="pAnalytics2"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Gender Criteria</th>
+			                    <th class="pAnalytics2"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Locality Criteria</th>
+			                    <th class="pAnalytics2">Min Class Criteria</th>
+			                    <th class="pAnalytics2">Max Class Criteria</th>
+			                    <th class="pAnalytics2">Delete</th>
+			                </tr>
+			            </thead>
+			            <tbody id="playerFormatBody" > 
+							{{#each maxTeamPlayers}}
+		                	<tr class="headerAnalytics3" name=player{{@index}}>
+			                    <td class="pAnalytics2" name={{this.userName}}>
+									<select class="" id="mandatoryList" name="mandatoryList" style="font-size:12px !important;height:2.5em !important;color:black;"> 
+							            <option selected disabled value="0" name="select">Select</option>		
+							            <option id="sportSelection" name="yes">yes</option>
+							            <option id="sportSelection" name="no">no</option>
+						        	</select> 
+			                    </td>
+			                    <td class="pAnalytics2">
+			                    	<select class="" id="dateType" name="dateType" style="font-size:12px !important;height:2.5em !important;color:black;"> 
+							            <option selected disabled value="0" name="select">Select</option>		
+							            <option id="dateTypeSelection" name="any">Any</option>
+							            <option id="dateTypeSelection" name="before">Before</option>
+							            <option id="dateTypeSelection" name="onBefore">On/Before</option>
+							            <option id="dateTypeSelection" name="after">After</option>
+							            <option id="dateTypeSelection" name="onAfter">On/After</option>
+					        		</select> 
+			                    </td>
+
+			                    <td class="pAnalytics2">
+			                    	<input type="text" name="dateValue" id="dateValue" placeholder="DD MMM YYYY" class="clubNameUserProf" autocomplete="off" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;color:black" />
+			                    </td>
+
+			                    <td class="pAnalytics2">
+			                    	<select class="" id="genderList" name="genderList" style="font-size:12px !important;height:2.5em !important;color:black;"> 
+							            <option selected disabled value="0"  name="select">Select</option>		
+							            <option id="sportSelection" name="Male">Male</option>
+							            <option id="sportSelection" name="Female">Female</option>
+							            <option id="sportSelection" name="any">Any</option>
+					        		</select> 
+			                    </td>
+
+			                    <td class="pAnalytics2">
+			                    	<select class="" id="localityList" name="localityList" style="font-size:12px !important;height:2.5em !important;color:black;"> 
+							            <option selected disabled value="0"  name="select">Select</option>
+							            <option id="sportSelection" name="local">Local</option>
+							            <option id="sportSelection" name="imported">Import</option>
+							            <option id="sportSelection" name="any">Any</option>
+					        		</select> 
+			                    </td>
+
+			                    <td class="pAnalytics2">
+			                    	<select class="" id="minClassList" name="minClassList" style="font-size:12px !important;height:2.5em !important;color:black;"> 
+							            <option selected disabled value="0"  name="select">Select</option>
+							            <option id="sportSelection" name="5">5</option>
+							            <option id="sportSelection" name="6">6</option>
+							            <option id="sportSelection" name="7">7</option>
+							            <option id="sportSelection" name="8">8</option>
+							            <option id="sportSelection" name="9">9</option>
+							            <option id="sportSelection" name="10">10</option>
+							            <option id="sportSelection" name="any" selected>Any</option>
+					        		</select> 
+			                    </td>
+			                    <td class="pAnalytics2">
+			                    	<select class="" id="maxClassList" name="maxClassList" style="font-size:12px !important;height:2.5em !important;color:black;"> 
+							            <option id="sportSelection" name="5">5</option>
+							            <option id="sportSelection" name="6">6</option>
+							            <option id="sportSelection" name="7">7</option>
+							            <option id="sportSelection" name="8">8</option>
+							            <option id="sportSelection" name="9">9</option>
+							            <option id="sportSelection" name="10">10</option>
+							            <option id="sportSelection" name="any" selected>Any</option>
+					        		</select> 
+			                    </td>
+
+			                    <td class="pAnalytics2" >
+			                    	<span id="deletePlayerEntry" name=player{{@index}} style ="color:#FFA500;font-size: 18px;margin: 3px 0px 0px 0px;width:15%; transform: rotate(0deg);cursor: pointer" class="glyphicon glyphicon-remove"></span>
+			                    </td>		               
+
+			                </tr>
+			                {{/each}}
+
+
+			            </tbody>
+			        </table>
+
+					
+				{{/if}}
+			{{/if}}
+		</div>
+	</div>
+	
+</template>
+
+
+<template name = "editTeamFormat">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:2.1px !important;background:#333; height:auto;" >
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5" style="padding:5px !important">
+            <p class="selectionForm_N4" id="sportsLabel"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Choose Team Format:</p>
+        </div>
+		<div class = "col-xs-3 col-sm-3 col-md-3 col-lg-3">
+			<select class="" id="teamFormatList" name="teamFormatList" style="font-size:12px !important;height:2.5em !important;color:black;">
+			 	<option selected disabled value="0" name="select">Select</option>	
+				{{#if listOfTeamFormat}}
+					{{#each listOfTeamFormat}}
+						<option id="sportSelection" name="{{this._id}}">{{this.teamFormatName}}</option>
+					{{/each}}
+				{{/if}}
+			</select> 
+		</div>
+	</div>
+</template>
+
+
+
+<!-- password validation -->
+
+<template name="confirmPasswordTF">
+  <form id="application-confirmPasswordTF">
+  <div class="modal" id="confirmPasswordTF" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm" style="transform: translate(0px, 0px)!important;">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style=""><span class="glyphicon glyphicon-lock" style="color:white;margin-right: 6px;margin-left: -7px !important;margin-top: 3px;"></span>Confirm Password</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body  modal-body-modReg1" style="min-height: 3.4em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                      <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;padding-left: 47px;">
+                          <p class="labelWhoNewChangePas">
+                            Password:
+                          </p>
+                      </div>
+                       <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                          <input type="password" autocomplete="off" id="oldPassword" value="" maxlength="60" placeholder="enter your password" name="oldPassword" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                        </div>
+                  </div>
+              </div>
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <p style="font-size:12px;color:red;cursor:default;" id="changePasswordError"></p>
+                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-right:0px !important;padding-bottom: 4px;">
+                    <input type="submit" class="ip_button_Popup_Black" id="changePasswordSubmit" style="order:2;margin:0px;padding:0px; height:2.2em!important;margin-right:0px;" value="Ok">
+                  </div>
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-left:0px !important;padding-bottom: 4px;padding-right: 111px;">
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                  </div>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+ </form>
+</template>
+
+
+

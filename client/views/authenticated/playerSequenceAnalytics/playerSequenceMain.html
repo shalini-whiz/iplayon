@@ -1,0 +1,118 @@
+<template name="playerSequenceMain">
+    <div style="background:#fff !important;height:auto;padding:0px !important;" class="container">
+        <div class="row navigationBar navbar-fixed-top" style="border:0px !important;border-radius:0px !important;margin:0px;background: none repeat scroll 0% 0% {{backGroundColor}} !important;height:{{heightOfNavBar}}">
+            <div class="">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 0px !important;height: 37px !important;background: none repeat scroll 0% 0% #0297DB !important;">
+                    <!--div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">                       
+                    </div-->
+                    <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1" style="text-align:left;padding:5px;">
+                        <span style="font-size: 23px !important;font-weight: bold !important;color:white!important;" class="websiteHeader">iPlayOn</span>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="text-align:left;font-size: 14px !important;">
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding:0px !important;width: 2% !important;">
+                            <span class="websiteHeader" style="font-size: 16px ! important; margin-top: 14px ! important; font-weight: bold; color: white;">|</span>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding:0px !important;">
+                            <span class="websiteHeader" style="font-size: 13px ! important; margin-top: 18px ! important; color: white; margin-left: 4px;">
+					  		Player Analytics</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px; height: 27px; background: none repeat scroll 0% 0% #EC971F;">
+                    <!--div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 5px ! important;">                       
+                    </div-->
+                    <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; text-align: left ! important; padding-left: 15px ! important;">
+                        <span style="font-size: 12px ! important; color: white; float: none ! important; font-weight: normal ! important; cursor: pointer;" class="websiteHeader" id="hoverPLayerAnalyticsRecord">RECORD</span>
+                    </div>
+                    <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; text-align: left ! important; padding-left: 15px ! important;">
+                        <span style="font-size: 12px ! important; color: white; float: none ! important; font-weight: normal ! important; cursor: pointer;" class="websiteHeader" id="hoverPLayerAnalyticsReview">REVIEW</span>
+                    </div>
+                    <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1" style="padding-top: 5px; padding-right: 5px; 	padding-bottom: 5px; text-align: left ! important; padding-left: 15px ! important;">
+                        <span style="font-size: 12px ! important; color: white; float: none ! important; font-weight: normal ! important; cursor: pointer;" class="websiteHeader" id="hoverPLayerAnalyticsAnalyze">ANALYZE</span>
+                    </div>
+                </div>
+                <div id="templRenderOnFunction"></div>
+            </div>
+        </div>
+        <div id="templRenderOnFunctionSub"></div>
+    </div>
+    {{> confirmOkDelete}}
+</template>
+
+<template name="serviceBYPlayerSequence">
+<form id="application-serviceBYPlayerSequence">
+        <div style="display: block;" aria-hidden="true" id="serviceBYPlayerSequence" class="modal in">
+            <div style="width:451px;" class="modal-dialog" id="subDomainCenter">
+                <div style="width:451px;" class="">
+                    <div class="modal-content">
+                        <div class="modal-header headerClass">
+                            <h5 class="modal-title myModalLabel" id="myModalLabel" style="text-align:center">Choose Service by</h5>
+                        </div>
+                        <div style="padding: 15px ! important; height: 8em;" class="modal-body subDomainModalBody">
+                            <div style="border: 1px solid;" class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk">
+                              <input value="{{player1Name}}" style="height:100%; margin-top: 0px; cursor:pointer;" id="player1Name" class="col-md-1 col-xs-1 col-lg-1 col-sm-1 byeCheck" name="serviceBy" type="radio">
+                              <p id="serviceBy" class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub">{{player1Name}}</p>
+                            </div>
+                            <div style="border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color black black; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none;" class="col-md-12 col-xs-12 col-lg-12 col-sm-12 labelByeOrWalk">
+                              <input value="{{player2Name}}" style="height:100%; margin-top: 0px; cursor:pointer;" id="player2Name" class="col-md-1 col-xs-1 col-lg-1 col-sm-1 byeCheck" name="serviceBy" type="radio">
+                              <p id="serviceBy" class="col-md-11 col-xs-11 col-lg-11 col-sm-11 byePTagsub">{{player2Name}}</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-bottom:4px;">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2">
+                                </div>
+                                <div style="margin-left: 10px;" class="col-md-4 col-xs-4 col-lg-4 col-sm-4">
+                                    <button type="button" class="ip_button_Popup_Black" id="saveServiceBySequence" style="">Ok</button>
+                                </div>
+                                <div style="padding: 0px ! important; text-align: left;" class="col-md-4 col-xs-4 col-lg-4 col-sm-4 ">
+                                    <button type="button" class="ip_button_Popup_Red" id="cancelServiceBySequence" style="margin-left: 0px;">Cancel</button>
+                                </div>
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2">
+                                </div>
+                            </div>
+                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-bottom:4px;">
+                                <p id="errorTagService" style="font-size:12px;color:red;margin:0px;text-align:left;"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</template>
+
+
+<template name="confirmDELETEShot">
+<!-- main div of confirm pop up-->
+  <div class="modal" id="confirmDELETEShot">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains yes and no buttons
+-->
+
+      <div id="confirmCenter" class="modal-dialog modal-sm">
+        <div class="confirmPopup">
+        <div class="modal-content">
+        <div class="modal-header confirmHeader">
+              <p class="modal-title" id="conFirmHeader">Confirm Delete Shot?</p>
+            </div>
+             <div class="modal-body">
+               <p id = "infoMsg"></p>
+              <div class="confirmPopupContent">
+                <div class="yes">
+                  <button type="button" id="yesButtonDelShot" class="ip_button_Popup_Black">OK</button>
+              </div>
+              <div class="no">
+                    <button type="button" id="noButtonDelShot" class="ip_button_Popup_Red">CANCEL</button>
+              </div>
+            </div>
+
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>

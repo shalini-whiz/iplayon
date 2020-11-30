@@ -1,0 +1,66 @@
+<template name="entryFromAcademy2">
+	<form>
+		<div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12 mainContent_myEvents" style="padding-left:15px !important;padding-right:15px !important;">
+			<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+	            <div class="mainTitle">
+                {{#if Template.subscriptionsReady}}
+                    {{#each eventList}}
+                        <p class="title">{{NameSubString this.projectName}}:&nbsp;{{NameSubString this.eventName}}</p>
+                    {{/each}}
+                    {{else}}
+                        <p class="title">Tournament&nbsp;</p>
+                    {{/if}}
+                    {{#if Template.subscriptionsReady}}
+                    <!--{{#if checkSubHideStar lEventid}}
+                    <a href="" class="eventTournUpd" id="eventTournamentUpdates"><span class="glyphicon glyphicon-star"></span></a>
+                    {{/if}}-->
+                    {{#if checkSubHide lEventid}}
+                        <input type="submit" id="eventSubscribe" class="ip_button_LightGrey" style="order:1" value="Save" />
+                        <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="Cancel" />
+                    {{else}}
+                    {{#if Template.subscriptionsReady}}
+                    <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="" />
+                    {{else}}
+                    <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="" />
+                    {{/if}}
+                    {{/if}}
+                    {{else}}
+                        <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="" />
+                {{/if}}
+            </div>                
+	        </div>
+	        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 headerDiv_entryFAca" id="xyscroll">
+	        	<div class="">
+				    <table class="table table-striped tableOFCSVHTML_entryFAca2" id="tblOne">
+				        <thead style="">
+				        	<tr class="headeSubDiv2_entryFAca">
+				               <th class="pAnalytics2_entryFAca">Sl No.</th>
+				               <th class="pAnalytics2_entryFAca">Player Name</th>
+					            {{#each eventsDetails.[0].eventIds}}
+					               <th class="pAnalytics2_entryFAca" id="viewEvent2" style="cursor:pointer;">{{eventAbbName this}}
+					               	<p >Fee:{{eventFees this}}/-</p>
+					               </th>
+					            {{/each}}
+				            </tr>
+				        </thead>
+				        <tbody>
+				        	{{#each playersWithCheck}}
+				            <tr class="headerAnalytics3" id="headerAnalytics3">
+				                <td class="pAnalytics2_entryFAca2">{{this.slNo}}</td>
+				                <td class="pAnalytics2_entryFAca2">{{this.userName}}</td>
+				                {{#each eventsDetails.[0].eventIds}}
+				                	<td class="pAnalytics2_entryFAca2" >
+				                		<input type="checkbox" name="checkEvents" style="cursor:pointer!important;" value="{{../userId}}||{{this}}" checked="{{registeredOrNot this ../userId}}">
+				                	</td>
+				                {{/each}}
+				            </tr>
+				            {{/each}}
+				       </tbody>
+				    </table>
+				    <div id="confirmPasswordRender"></div>
+				    {{> sendingMailPopup2}}
+				</div>
+	        </div>
+		</div>
+	</form>
+</template>

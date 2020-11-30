@@ -1,0 +1,334 @@
+<!-- Template to create events-->
+
+<template name="adminMenu">
+    <form id="eventCreation">
+        <div class="row mainContent_myEvents" style="padding-top:54px;">
+            <div class="row-same-height">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" >
+                    <div class="headingMenuD">
+                        <p class="headingMenuC" style="cursor:default;">Select Type</p>
+                        <input type="button" id="cancelMenu" class="ip_button_LightGrey" value="Cancel" />
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top:2px;height:84px;">
+                    <div class="row no-gutter" style="">
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                            <div class="row no-gutter" style="">
+                                <div id="uploadPlayers" class="menuTournament" style="padding-bottom: 12px;">
+                                    <p class="tourMenu" style="width: 100% !important;text-align:center">Upload Players to academy</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;">
+                            <div class="row no-gutter" style="margin-left: 2px !important;">
+                                <div id="tournScheduler" class="menuTournament" style="padding-bottom: 12px;">
+                                    <p class="tourMenu" style="width: 100% !important;text-align:center">Tournament Scheduler</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-left:2px!important;">
+                            <div class="row no-gutter" style="">
+                                <div id="uploadPoints" class="menuEvent" style="">
+                                    <p class="tourMenu1" style="width: auto !important;text-align:center">Upload Points</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-left:2px!important;">
+                            <div class="row no-gutter" style="">
+                                <div id="manageTournament" class="menuEvent" style="padding-bottom:12px;">
+                                    <p class="tourMenu1" style="width: auto !important;text-align:center">Manage Tournament</p>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="padding-left:2px!important;">
+                            <div id="adminTeamFormat" class="menuEvent2" style="padding-bottom: 32px;">
+                                <p class="tourMenu3" style="width: 187px!important;">Create Team Format</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top:2px;">
+                    <div class="row no-gutter" style="">
+                        <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                            <div class="row no-gutter" style="">
+                                <div id="managePlayers"  class="menuTournament2">
+                                    <p class="tourMenu2" style="width: 114px !important;">Manage Players</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-left:2px!important;">
+                            <div id="uploadPlayersToAssoc" class="menuEvent2" style="padding-top: 22px !important;padding-bottom:23px;">
+                                <p class="tourMenu3"  style="width: auto !important;text-align: center;">Upload Players to association</p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-left:2px!important;padding-right:2px !important;">
+                            <div id="twitterHASHTags" class="menuEvent2" style="padding-top: 22px !important;padding-bottom: 23px !important;">
+                                <p class="tourMenu3" style="width: auto !important;text-align: center;">Manage Twitter Hashtags</p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                            <div class="row no-gutter" style="padding-right:2px !important;">
+                                <div id="createStrokes"  class="menuTournament2">
+                                    <p class="tourMenu2" style="width: 114px !important;">Create Strokes</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                            <div id="createArticles" class="menuEvent2" style="padding-bottom:12px;">
+                                <p class="tourMenu3" style="width: auto !important;text-align: center;">Create Articles/Packs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+
+            </div>
+            {{> alreadySubscribed}}
+            <div id="subscriptionDOBRen"></div>
+        </div>
+    </form>
+</template>
+
+
+<template name="confirmDeletePlayersAdmin">
+<!-- main div of confirm pop up-->
+  <div class="modal" id="confirmDeletePlayersAdmin">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains yes and no buttons
+-->
+
+      <div id="confirmCenter" class="modal-dialog modal-sm">
+        <div class="confirmPopup">
+        <div class="modal-content">
+        <div class="modal-header confirmHeader">
+              <p class="modal-title" id="confirmModalRedirectLog"></p>
+            </div>
+             <div class="modal-body">
+                <div>
+                    <p style="font-size: 12px;">This might effect the following collections..</p>
+                    <ul style="font-size: 12px; overflow-y: scroll; height: 100px;">
+                         <li>academies</li>
+                         <li>events</li>
+                         <li>MatchCollectionDB</li>
+                         <li>myEntriesReadStatus</li>
+                         <li>PlayerPoints</li>
+                         <li>sentReceipt</li>
+                         <li>teams</li>
+                         <li>upcomingReadStatus</li>
+                         <li>users</li>
+                   </ul>
+                </div>
+              <div class="confirmPopupContent">
+                <div class="yes">
+                  <button type="button" id="confirmModalRedirectYes" class="ip_button_Popup_Black">OK</button>
+              </div>
+              <div class="no">
+                    <button type="button" id="confirmModalRedirectNo" class="ip_button_Popup_Red" data-dismiss="modal">CANCEL</button>
+              </div>
+            </div>
+
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>
+
+<template name="confirmPasswordDeletePlayerAdmin">
+  <form id="application-confirmPasswordDeletePlayerAdmin">
+  <div class="modal" id="confirmPasswordDeletePlayerAdmin" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm" style="transform: translate(0px, 0px)!important;">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style=""><span class="glyphicon glyphicon-lock" style="color:white;margin-right: 6px;margin-left: -7px !important;margin-top: 3px;"></span>Confirm Password</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body  modal-body-modReg1" style="min-height: 3.4em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                      <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;padding-left: 47px;">
+                          <p class="labelWhoNewChangePas">
+                            Password:
+                          </p>
+                      </div>
+                       <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                          <input type="password" autocomplete="off" id="oldPassword" value="" maxlength="60" placeholder="enter your password" name="oldPassword" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                        </div>
+                  </div>
+              </div>
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <p style="font-size:12px;color:red;cursor:default;" id="changePasswordError"></p>
+                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-right:0px !important;padding-bottom: 4px;">
+                    <input type="submit" class="ip_button_Popup_Black" id="changePasswordSubmit" style="order:2;margin:0px;padding:0px; height:2.2em!important;margin-right:0px;" value="Ok">
+                  </div>
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-left:0px !important;padding-bottom: 4px;padding-right: 111px;">
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                  </div>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+ </form>
+</template>
+
+
+<template name="confirmMovePlayersAdmin">
+<!-- main div of confirm pop up-->
+  <div class="modal" id="confirmMovePlayersAdmin">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains yes and no buttons
+-->
+
+      <div id="confirmCenter" class="modal-dialog modal-sm">
+        <div class="confirmPopup">
+        <div class="modal-content">
+        <div class="modal-header confirmHeader">
+              <p class="modal-title" id="confirmModalRedirectLog"></p>
+            </div>
+             <div class="modal-body">
+                <div>
+                    <p style="font-size: 12px;" id="moveClubNames"></p>
+                </div>
+              <div class="confirmPopupContent">
+                <div class="yes">
+                  <button type="button" id="confirmModalRedirectYesMove" class="ip_button_Popup_Black">OK</button>
+              </div>
+              <div class="no">
+                    <button type="button" id="confirmModalRedirectNo" class="ip_button_Popup_Red" data-dismiss="modal">CANCEL</button>
+              </div>
+            </div>
+
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>
+
+
+<template name="confirmPasswordMovePlayerAdmin">
+  <form id="application-confirmPasswordMovePlayerAdmin">
+  <div class="modal" id="confirmPasswordMovePlayerAdmin" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm" style="transform: translate(0px, 0px)!important;">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style=""><span class="glyphicon glyphicon-lock" style="color:white;margin-right: 6px;margin-left: -7px !important;margin-top: 3px;"></span>Confirm Password</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body  modal-body-modReg1" style="min-height: 3.4em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                      <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;padding-left: 47px;">
+                          <p class="labelWhoNewChangePas">
+                            Password:
+                          </p>
+                      </div>
+                       <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                          <input type="password" autocomplete="off" id="oldPassword" value="" maxlength="60" placeholder="enter your password" name="oldPassword" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                        </div>
+                  </div>
+              </div>
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <p style="font-size:12px;color:red;cursor:default;" id="changePasswordError"></p>
+                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-right:0px !important;padding-bottom: 4px;">
+                    <input type="submit" class="ip_button_Popup_Black" id="changePasswordSubmit" style="order:2;margin:0px;padding:0px; height:2.2em!important;margin-right:0px;" value="Ok">
+                  </div>
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-left:0px !important;padding-bottom: 4px;padding-right: 111px;">
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                  </div>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+ </form>
+</template>
+
+
+
+<template name="confirmPasswordRemoveDBUsers">
+  <form id="application-confirmPasswordRemoveDBUsers">
+  <div class="modal" id="confirmPasswordRemoveDBUsers" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm" style="transform: translate(0px, 0px)!important;">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style=""><span class="glyphicon glyphicon-lock" style="color:white;margin-right: 6px;margin-left: -7px !important;margin-top: 3px;"></span>Confirm Password</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body  modal-body-modReg1" style="min-height: 3.4em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                      <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;padding-left: 47px;">
+                          <p class="labelWhoNewChangePas">
+                            Password:
+                          </p>
+                      </div>
+                       <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                          <input type="password" autocomplete="off" id="oldPassword" value="" maxlength="60" placeholder="enter your password" name="oldPassword" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                        </div>
+                  </div>
+              </div>
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <p style="font-size:12px;color:red;cursor:default;" id="changePasswordError"></p>
+                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-right:0px !important;padding-bottom: 4px;">
+                    <input type="submit" class="ip_button_Popup_Black" id="changePasswordSubmit" style="order:2;margin:0px;padding:0px; height:2.2em!important;margin-right:0px;" value="Ok">
+                  </div>
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-left:0px !important;padding-bottom: 4px;padding-right: 111px;">
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                  </div>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+ </form>
+</template>

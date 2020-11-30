@@ -1,0 +1,131 @@
+<template name="playerAnalytics">
+	<div style="background:#333;height:auto;" class="container">    
+        <div class="row navigationBar navbar-fixed-top">
+            <div class="">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <span style="" class="websiteHeader">iPlayOn</span>
+                    </div>
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align: left; padding: 5px; background: linear-gradient(to right, rgb(136, 136, 136), rgb(80, 80, 80)) repeat scroll 0% 0% transparent; height: 36px; border-radius: 5px; box-shadow: 1px 1px 2px rgb(136, 136, 136);">
+                        <p class="" style="background:0px!important;border:0px; text-align:center;color: #FFF;font-size: 12px;font-weight: bold;height:100% !important;border:0px !important;">Head to Head Collision</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 playerAnalyticsMAinDiv">
+                	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 playerAnalyticsSubDiv">
+	                	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+	                		<p class="playerAnalyticsPtag">Select Event</p>
+	                	</div>
+	                	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+	                		<p class="playerAnalyticsPtag">Select Player1</p>
+	                	</div>
+	                	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+	                		<p class="playerAnalyticsPtag">Select Player2</p>
+	                	</div>
+	                	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+	                	</div>
+                	</div>
+                	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 playerAnalyticsSubDiv">
+	                	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+	                		<select class="playerAnalyticsSelectBox" id="selectEventPlayerAnalytics">
+	                			<option selected disaled>Select Event</option>	                			
+	                			{{#each sportsDetails}}
+		                			{{#if checkForSingleEvents this.projectType}}
+		                			<option value={{this.projectName}}>{{this.projectName}}</option>
+		                			{{/if}}
+	                			{{/each}}	                			
+	                		</select>
+	                	</div>
+	                	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+	                		<input type="text" placeholder="Type Player1 Name" class="playerAnalyticsInputBox" id="searchUser1ForPA">
+	                		{{#if player1SearchResults}}
+	                		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 searchResultsPlayerAnalytics">
+                                <div style="left: 0px; z-index: 100; display: block; position: absolute;background: none repeat scroll 0% 0% #585F58 !important;;width: 100%; border: 1px solid black;" class="searchResults">
+                             	    {{#each player1SearchResults}}
+                                        <div id="{{this.userId}}" class="addIcon" name="player1Focused" value="{{this.userName}}" style="color:white !important;">
+                                            <p  id="{{this.userId}}" name="userName" value="{{this.userName}}"  style="text-align: left;margin:0px !important;font-size:12px;">{{this.userName}}</p>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                            {{/if}}
+	                	</div>
+	                	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+	                		<input type="text" placeholder="Type Player2 Name" class="playerAnalyticsInputBox" id="searchUser2ForPA">
+	                		{{#if player2SearchResults}}
+	                		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 searchResultsPlayerAnalytics">
+                                <div style="left: 0px; z-index: 100; display: block; position: absolute;background: none repeat scroll 0% 0% #585F58 !important;;width: 100%; border: 1px solid black;" class="searchResults">
+                             	    {{#each player2SearchResults}}
+                                        <div id="{{this.userId}}" class="addIcon" name="player2Focused" value="{{this.userName}}" style="color:white !important;">
+                                            <p  id="{{this.userId}}" name="userName" value="{{this.userName}}"  style="text-align: left;margin:0px !important;font-size:12px;">{{this.userName}}</p>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                            {{/if}}
+	                	</div>
+	                	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+	                		<input type="button" value="Show tournaments" class="playerAnalyticsInputBox playerAnalyticsShowButton" id="showTournaments">
+	                	</div>
+                	</div>
+                	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 playerAnalyticsSubDiv">
+	                	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+
+	                	</div>
+	                	
+	                	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv" style="padding: 0px !important;">
+	                		{{#each selectedPlayer1Display}}
+	                		<p type="text" placeholder="Type Player1 Name" class="playerAnalyticsPtag selectedPlayerAnalyticsPtag" style="color: mediumaquamarine !important;padding: 0px !important;">{{this.userName}}</p>
+	                		{{/each}}
+	                	</div>
+	                	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv" style="padding: 0px !important;">
+	                		{{#each selectedPlayer2Display}}
+	                			<p type="text" placeholder="Type Player1 Name" class="playerAnalyticsPtag selectedPlayerAnalyticsPtag" style="color: mediumaquamarine !important;padding: 0px !important;">{{this.userName}}</p>
+	                		{{/each}}
+	                	</div>
+	                	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+	                		
+	                	</div>
+                	</div>
+                </div>
+            </div>
+        </div>
+        <div>
+        	<div style="display: flex; margin-top: 135px;">
+		        <a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 1; height: 30px;pointer-events:{{prevPageClass}};" href="{{prevPage}}"   id="eventSubscribePrev">previous</a>
+				<a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 2; margin-left: 5px; height: 30px;pointer-events:{{nextPageClass}};" href="{{nextPage}}"  id="eventSubscribeNext" >next</a>
+			</div>
+	        <div class="row" style="margin-top:0px !important;">
+		        <table class="table table-striped tableOFCSVHTML_New">
+		            <thead style="">
+		               <tr class="headerAnalytics2">
+		                    <th class="pAnalytics2">No.</th>
+		                    <th class="pAnalytics2">Tournament Name</th>
+		                    <th class="pAnalytics2">Tournament Start Date</th>
+		                    <th class="pAnalytics2">Round Name</th>
+		                </tr>
+		            </thead>
+		            <tbody id="selectTagop">	                   
+		                {{#if pastEventsDetails}}
+			                {{#each pastEventsDetails}}
+			                <tr class="headerAnalytics3" name={{this}}>
+			                    <td class="pAnalytics2">{{getSLNUMB @index}}</td>
+			                    <td class="pAnalytics2" name={{this.tournamentId}}>
+			                        <a href="#" id="tournamentInfoBTN" name="{{this.tournamentId}}">{{tournamnetNAMe}}</a>
+			                    </td>
+			                    <td class="pAnalytics2">			                    
+			                    	<p  id="{{this.tournamentId}}" name="" value="{{this.tournamentId}}"  style="text-align: center;margin:0px !important;font-size:12px;">{{tournamentStartDate}}</p>
+			                    </td>
+			                    <td class="pAnalytics2">
+			                    	 <p  id="{{this.tournamentId}}" name="" value="{{this.tournamentId}}"  style="text-align: center;margin:0px !important;font-size:12px;">{{roundNames}}</p>
+			                    </td>	                  
+			                </tr>
+			                {{/each}}
+		                {{/if}}	               
+		            </tbody>
+		        </table>
+		        <div id="renderTournaMentInfo"></div>
+		        {{> confirm}} {{> confirmOkDelete}}
+	    	</div>
+    	</div>
+    </div>
+</template>

@@ -1,0 +1,24 @@
+<template name="getListofPlayers">
+	<!--{{#each usersList}}
+	<li style="color:orange;font-size:13px">{{this.userName}}</li>
+	{{/each}}-->
+	<form>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<p style="font-size:12px;color:white;">Website Name :</p>
+			<input type="text" id="websiteName" style="font-size:12px;"><br>
+			<p style="font-size:12px;color:white;">Source :</p>
+			<input type="text" id="source" style="font-size:12px;"><br>
+			<br>
+			<input type="submit" value="generate api key" style="font-size:12px;"> 
+		</div>
+
+		
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			{{#if apiKey}}
+				<p style="font-size:12px;color:white;">
+					Your Api key:{{apiKey}}
+				</p>
+			{{/if}}
+		</div>
+	</form>
+</template>

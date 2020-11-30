@@ -1,0 +1,74 @@
+{{{getDocType}}}
+<html lang="en">
+
+<head>
+    <style type="text/css">
+        {{css}}
+    </style>
+</head>
+    <div class="container">
+        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding:0px!important;margin:0px !important;">
+            <img src="{{imageURL}}/logo.png" style="width:90%;height:12%;float:left;margin:0px !important;margin-top:-3px !important;border:0" />
+        </div>
+        <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8" style="padding:0px!important;">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading" style="">Seeding Details</p>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading" style="">{{tournamentName}}</p>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading2" style="margin-top:0px;">{{eventName}}</p>
+            </div>
+        </div>
+        <!--{{#if get5sImage}}
+             <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+                {{#if get5sImage.url}}
+                <img src="{{imageURL}}{{get5sImage.url}}" style="width:94%;height:14%;float:right;margin:0px !important;margin-top:-3px !important;border:0"/>
+                {{/if}}
+             </div>
+             {{/if}}-->
+    </div>
+
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;width:100%;">
+        <table style="width:100%;border-spacing: 0;margin-top:5px;" id="tblOne" class="table table-fixed table-striped ">
+            <thead style="border: 1px solid white;">
+                <tr style="border-spacing: 0;" class="">
+                  <th style="border-spacing: 0;font-size:15px!important;;width:60px!important;" class="AnalyticsTable_PlayerSeq">&nbsp;&nbsp;slno&nbsp;&nbsp;</th>
+                  <th style="border-spacing: 0;font-size:15px!important;width:140px!important;" class="AnalyticsTable_PlayerSeq">&nbsp;&nbsp;Player&nbsp;&nbsp;</th>
+                  <th style="border-spacing: 0;font-size:15px!important;swidth:80px!important;" class="AnalyticsTable_PlayerSeq">&nbsp;&nbsp;Affiliation Id&nbsp;&nbsp;</th>
+                  <th style="border-spacing: 0;font-size:15px!important;width:80px!important;;" class="AnalyticsTable_PlayerSeq">&nbsp;&nbsp;Points &nbsp;&nbsp;</th>
+                </tr>
+                <div style="height:8px;">
+                    <br><br><br>
+                    <br><br><br>
+                    <br><br><br>
+                </div>
+            </thead>
+            <tbody class="" style="border-spacing: 0;">
+               {{#each dataDetailsplayers}}
+               <tr class="" id="allStrokesTable" style="border-spacing: 0;">
+                  <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;font-size:13px!important;width:60px!important;">
+                     <br>
+                     <p style="width:100%;margin-top:5px;margin-bottom:5px;">&nbsp; {{this.slNo}} &nbsp;</p>
+                  </td>
+                  <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;font-size:13px!important;width:140px!important;">
+                     <br>
+                     <p style="width:100%;margin-top:5px;margin-bottom:5px;">&nbsp; {{this.Name}} &nbsp;</p>
+                  </td>
+                  <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;font-size:13px!important;width:80px!important;">
+                     <br>
+                     <p style="width:100%;margin-top:5px;margin-bottom:5px;">&nbsp; {{this.affiliationId}} &nbsp;</p>
+                  </td>
+                  <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;font-size:13px!important;width:80px!important;">
+                     <br>
+                     <p style="width:100%;margin-top:5px;margin-bottom:5px;">&nbsp;
+                        {{this.Points}}&nbsp;</p>
+                  </td>
+                  
+               </tr>
+               {{/each}}
+            </tbody>
+        </table>
+    </div>
+</html>

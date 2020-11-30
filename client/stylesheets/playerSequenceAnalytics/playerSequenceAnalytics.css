@@ -1,0 +1,97 @@
+#hoverPLayerAnalyticsRecord:hover{
+	text-decoration: underline !important;
+}
+#hoverPLayerAnalyticsReview:hover{
+	text-decoration: underline !important;
+}
+#hoverPLayerAnalyticsAnalyze:hover{
+	text-decoration: underline !important;
+}
+
+.AnalysisClass_SEle{
+	background: none repeat scroll 0% 0% #D0D0D0 !important;
+	font-size: 12px !important;
+}
+
+.AnalysisClass_Font{
+	font-size: 12px !important;
+}
+
+.AnalyticsTable_PlayerSeq{
+	color: #FFF !important;
+	font-weight: bold !important;
+	border: 1px solid #5BC0DE !important;
+	font-size: 12px !important;
+	background: none repeat scroll 0% 0% #05B8CC !important;
+	text-align: center;
+}
+
+.AnalyticsTableRow_PlayerSeq{
+	font-size: 12px !important;
+	color: #585858 !important;
+	text-align: center;
+	border: 1px solid #5BC0DE;
+}
+
+/*css for select2 is not opened*/
+ .selectpickerMenu + .select2-container--default .select2-selection--single{
+      background: #989898;
+      height: 100% !important;
+      font-size: 12px;
+      position: relative;
+      border: 0px;
+  }
+
+	.selectpickerMenu + .select2-container--default .select2-selection--single .select2-selection__arrow {
+      /*background: #B0B0B0 url(/arrow.gif) no-repeat 90% 50%;*/
+      border: 0px;
+      font-size: 12px;
+      position: absolute;
+      outline: 0;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      height: 100% !important;
+  }
+	.selectpickerMenu +.select2-container--default .select2-selection--single .select2-selection__rendered{
+		color: #fff;
+	}
+.select2-container--default .select2-selection--single {
+    background-color: #FFF;
+    border: 1px solid #AAA;
+    border-radius: 4px;
+}
+
+.selectpicker2+ .select2-container--default .select2-selection--single{
+      background: #05B8CC;
+      height: 100% !important;
+      font-size: 12px;
+      position: relative;
+      border: 0px;
+  }
+.selectpicker2 +.select2-container--default .select2-selection--single .select2-selection__rendered{
+		color: #fff;
+	}
+
+.selectpickerMenu +	.select2-container--default .select2-selection--single .select2-selection__arrow b{
+	color: #fff;
+}
+.selectpicker2 +	.select2-container--default .select2-selection--single .select2-selection__arrow b{
+	color: #fff;
+}
+
+.selectpicker2 + .select2-dropdown.select2-dropdown--below {
+    width: 116px;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    height: auto !important;
+    border: 0px none;
+}
+.selectpickerMenu + .select2-dropdown.select2-dropdown--below {
+    height: auto !important;
+}
+.selectpicker2 + .select2-dropdown.select2-dropdown--below{
+	height: auto !important;
+}
+
+#allStrokesTable:nth-child(even) {background: white}
+#allStrokesTable:nth-child(odd) {background: #D5EEF6}

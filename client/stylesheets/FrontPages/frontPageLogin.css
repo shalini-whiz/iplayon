@@ -1,0 +1,60 @@
+.modal-content-modIplayon {
+	left: 50% !important;
+	transform: translateX(-50%);
+}
+
+.loginHeaderIplayon{
+	background-color: #0091D2;
+	padding: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	height: 3.3em;
+	border-bottom: 1px solid rgba(0, 132, 180, 0.25);
+	display: flex;
+}
+
+.loginHeadeIplayonPTag{
+	text-align: center;
+	font-size: 16px;
+	width: 99%;
+	color: #FFF !important;
+}
+
+.modal-body-modIplayon{
+	min-height: 12em;
+	height: 100%;
+	background: none repeat scroll 0% 0% rgba(0, 132, 180, 0.1);
+	display: table;
+}
+
+.loginFormIplayonPTAgEmail{
+	font-size: 12px;
+}
+
+.loginFormIplayonPTAgPassword{
+	font-size: 12px;
+	margin-top: 11px;
+}
+
+.loginFormIplayonInputTag{
+	width: 100%;
+	font-size: 14px;
+	border: 1px solid grey;
+	padding-left: 5px;
+	background: #fff;
+}
+
+.divForLoginSignIplayon{
+	margin-top: 13px;
+}
+
+.popupLogin{
+	padding: 2px;
+}
+
+.popupLoginForgotPassIplayon{
+	font-size: 12px;
+	color: maroon;
+	text-decoration: underline;
+	cursor:pointer !important;
+}

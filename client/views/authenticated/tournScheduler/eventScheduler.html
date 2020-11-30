@@ -1,0 +1,201 @@
+<template name="eventSchedule">
+  <div class ="row">
+    <a  style="margin-top:50px !important;float:right !important;margin-right:15px !important;font-size:15px !important" id="addEventSchedule" >
+        Add Event Schedule
+    </a>
+  </div>
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">Tournament</th>
+                            <th class="pAnalytics2">Event</th>
+                            <th class="pAnalytics2">Date</th>
+                            <th class="pAnalytics2">Time</th>
+                            <th class="pAnalytics2">Round No</th>
+                            <th class="pAnalytics2">Edit</th>   
+                            <th class="pAnalytics2">Delete</th>   
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each eventScheduleList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                          <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                          <td class="pAnalytics2">{{fetchTour this.tournamentId}}</td>
+                          <td class="pAnalytics2">{{this.eventName}}</td>
+                          <td class="pAnalytics2">{{formatDate this.scheduleDate}}</td>
+                          <td class="pAnalytics2">{{this.startTime}} - {{this.endTime}}</td>        
+                          <td class="pAnalytics2">{{this.roundNo}}</td>
+                         
+                          <td class="pAnalytics2">
+                            <span class="glyphicon glyphicon-pencil" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer"  id="editEventSchedule"></span></td>
+                           <td class="pAnalytics2" id="selectedIdToEdit">
+                            <span class="glyphicon glyphicon-remove" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="delEventSchedule"></span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+    <div id="eventScheduleModalContent"></div>
+</template>
+
+
+<template name="addScheduleModal">
+  <div class="modal" id="addScheduleModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                  {{#if eventScheduleExist}}
+              Modify Event Schedule
+            {{else}}
+              Create Event Schedule
+            {{/if}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Tournament*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if eventScheduleExist}}
+                      <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="tournamentId" disabled="true">
+                        {{#each tourList}}    
+                          <option value={{this._id}} {{setTour this._id}}>{{this.eventName}}</option>
+                        {{/each}}       
+                       </select> 
+                    {{else}}
+                       <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="tournamentId">
+                          <option>--select--</option>
+                        {{#each tourList}}    
+                          <option value={{this._id}} >{{this.eventName}}</option>
+                        {{/each}}       
+                       </select>             
+                    {{/if}}
+                  </div>
+               </div> 
+
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Event*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if eventScheduleExist}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="eventName" value={{eventScheduleExist.eventName}} disabled="true">
+                    {{else}}
+                      <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="eventName">
+                        {{#each eventList}}    
+                          <option value={{this.eventName}} >{{this.eventName}}</option>
+                        {{/each}}       
+                       </select> 
+                    {{/if}}
+                  </div>
+               </div> 
+
+              <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Date*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if eventScheduleExist}}
+                      <input   type="text" placeholder="DD MMM YYYY" autocomplete="off" spellcheck="off" class="userName" id="scheduleDate" value={{formatDate eventScheduleExist.scheduleDate}}>
+                    {{else}}
+                      <input   type="text" placeholder="DD MMM YYYY" autocomplete="off" spellcheck="off" class="userName" id="scheduleDate" >
+
+                    {{/if}}
+                  </div>
+               </div> 
+
+            
+
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Start Time*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if eventScheduleExist}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="startTime" value={{eventScheduleExist.startTime}}>
+                    {{else}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="startTime" >
+
+                    {{/if}}
+                  </div>
+               </div> 
+
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >End Time*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if eventScheduleExist}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="endTime" value={{eventScheduleExist.endTime}}>
+                    {{else}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="endTime" >
+
+                    {{/if}}
+                  </div>
+               </div>
+
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Round No*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if eventScheduleExist}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="roundNo" value={{eventScheduleExist.roundNo}}>
+                    {{else}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="roundNo" >
+
+                    {{/if}}
+                  </div>
+               </div>
+               
+              
+                 
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class ="row">
+                  <p id="eventScheduleImpMsg" class='impMsg'></p>
+
+                </div>
+                 <div class="row" style="text-align: center;">
+                  {{#if eventScheduleExist}}
+                    <button type="button" class="ip_button_Popup_Black" id="modifyEventSchedule"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                  {{else}}
+                     <button type="button" class="ip_button_Popup_Black" id="createEventSchedule"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                  {{/if}}
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:2;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                 </div>
+              </div>
+          </div>
+
+          
+        </div>
+    </div>
+  </div>
+</template>
+

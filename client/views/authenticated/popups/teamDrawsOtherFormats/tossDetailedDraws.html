@@ -1,0 +1,248 @@
+<template name="tossDetailedDraws">
+	<!-- main div of selectSubDomainsPopUp pop up-->
+    <div class="modal" id="tossDetailedDraws">
+    	{{#if Template.subscriptionsReady}}
+        <div id="subDomainCenter" class="modal-dialog subTeamSubsModal-sm" style="width: 970px !important;">
+            <div class="selectTeamSubsPopup" style="width: 970px !important;">
+                <div class="modal-content">
+                    <div class="modal-header selectSubDomainsHeader">
+                        <p class="modal-title" id="setEventNameHeader" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;text-align:center">
+                           Team Detailed Draws
+                        </p>
+                    </div>
+                    <div class="modal-body subDomainModalBody" style="max-height: 50vh;overflow: auto;">
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-bottom:4px;">
+                        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;padding-top:10px!important;">
+                                <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding:0px!important;">
+                                	<button type="button" class="ip_button_Popup_Red" id="notifyAppRound" style="width:100%;background:white!important;color:green;text-decoration:underlined;">Notify by Round
+	                                </button>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;padding-top:10px!important;">
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;">
+                                	<!--team a vs team b-->
+                                	<p style="font-size:12px;width:100%;">
+                                		{{roundNumMatchnum}}
+                                	</p>
+                                    <p style="font-size:12px;width:100%;">Team A : {{getTeamsNamesForId teamIDAOth}} vs Team B : {{getTeamsNamesForId teamIDBOth}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px important!;padding: 0px !important;" id="insertNewRow">
+                            	<table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+						        	<tbody class="">
+						        	{{#each specificationDetails}}
+						        	<!--match a vs x header-->
+						            	<tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="headerDetScoreTeam" style="">Match No: {{this.no}} <br> Match Type: {{this.displayLabel}}</td>
+						                <td class="headerDetScoreTeam" style="">Select Players</td>
+						                <td class="headerDetScoreTeam" style="">1</td>
+						                <td class="headerDetScoreTeam" style="">2</td>
+						                <td class="headerDetScoreTeam" style="">3</td>
+						                <td class="headerDetScoreTeam" style="">4</td>
+						                <td class="headerDetScoreTeam" style="">5</td>
+						                <td class="headerDetScoreTeam" style="">6</td>
+						                <td class="headerDetScoreTeam" style="">7</td>
+						                <td class="headerDetScoreTeam">Winner</td>
+						            	</tr>
+						            
+						            <!--player A-->
+						            	<tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="matchRowDEtScore" style="" >		
+						                	<select style="font-size:12px;width:95%;" id="selectMatchType_{{this.no}}">
+						                		{{#each matchesTypes}}
+						                			<option value="{{this.l}}" selected={{setMatchType ../no this.l}}>{{this.d}}</option>
+						                		{{/each}}
+						                	</select>
+						                </td>
+						                {{#if checkForType this.type}}
+						                <td class="matchRowDEtScore" style="">
+						                	<select style="font-size:12px;width:95%;" id="playerOfTeamASingle_{{this.no}}">
+						                		<option value="1" selected="">Select Player of Team A</option>
+						                		{{#each getTeamPlayersListTeamAOth teamIDAOth}}
+	                                            	<option value="{{this.userId}}"
+	                                            	selected={{setPlayerAID ../no this.userId}} >{{this.userName}}</option>
+	                                            {{/each}}
+						                	</select>
+						            	</td>
+						            	{{else}}
+						            	<td class="matchRowDEtScore" style="">
+						                	<select style="font-size:12px;width:95%;" 
+						                	id="playerOfTeamA1Doub_{{this.no}}">
+						                		<option value="1" selected="">Select Player 1 of Team A</option>
+						                		{{#each getTeamPlayersListTeamAOth teamIDAOth}}
+	                                            	<option value="{{this.userId}}" selected="{{setPlayerA1ID ../no this.userId}}">{{this.userName}}</option>
+	                                            {{/each}}
+						                	</select>
+						                	<select style="font-size:12px;width:95%;" id="playerOfTeamA2Doub_{{this.no}}">
+						                		<option value="1" selected="">Select Player 2 of Team A</option>
+						                		{{#each getTeamPlayersListTeamAOth teamIDAOth}}
+	                                            	<option value="{{this.userId}}" selected="{{setPlayerA2ID ../no this.userId}}">{{this.userName}}</option>
+	                                            {{/each}}
+						                	</select>
+						            	</td>
+						            	{{/if}}
+						            	{{#each setScoresTempp}}
+						                	<td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off"  type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{setScoresARender ../no this.i}}" id="setScoresTeamA{{this.i}}_{{../no}}" readonly={{readonlyForNonOrganizers}}></td>
+						                {{/each}}
+						                <td class="matchRowDEtScore" style="">
+						                {{#if checkForType this.type}}		
+						                	<select style="font-size:12px;width:95%;" id="selectWinnerSing_{{this.no}}">
+						                		<option value="1" selected=true id="1">Select Winner</option>
+						                		{{#if setWinnersList}}
+						                			{{#if checkNotOne setWinnersList.playerAId}}
+						                			<option value="{{setWinnersList.playerAId}}"  id="{{teamIDAOth}}"
+						                			selected="{{setPlayerSinglesWinner this.no setWinnersList.playerAId}}" >{{getUserNameForId setWinnersList.playerAId}}</option>
+						                			{{/if}}
+						                			{{#if checkNotOne setWinnersList.playerBId}}
+						                			<option value="{{setWinnersList.playerBId}}"  id="{{teamIDBOth}}" 
+						                			selected="{{setPlayerSinglesWinner this.no setWinnersList.playerBId}}">{{getUserNameForId setWinnersList.playerBId}}</option>
+						                			{{/if}}
+						                		{{/if}}
+						                	</select>
+						                {{else}}
+						                	<select style="font-size:12px;width:95%;" id="selectWinnerDoub_{{this.no}}">
+						                		<option value="1" id="1" team="1" selected=true>Select Winner</option>
+						                		{{#if setWinnersList}}
+						                			{{#if checkNotOne setWinnersList.playerA1Id}}
+						                			{{#if checkNotOne setWinnersList.playerA2Id}}
+						                			<option value="{{setWinnersList.playerA1Id}}" id="{{setWinnersList.playerA2Id}}" team="{{teamIDAOth}}" selected="{{setPlayerDoublesWinner this.no setWinnersList.playerA1Id setWinnersList.playerA2Id}}">{{getUserNameForId setWinnersList.playerA1Id}},{{getUserNameForId setWinnersList.playerA2Id}}</option>
+						                			{{/if}}
+						                			{{/if}}
+						                			{{#if checkNotOne setWinnersList.playerB1Id}}
+						                			{{#if checkNotOne setWinnersList.playerB2Id}}
+						                			<option value="{{setWinnersList.playerB1Id}}"  id="{{setWinnersList.playerB2Id}}" team="{{teamIDBOth}}" selected="{{setPlayerDoublesWinner this.no setWinnersList.playerB1Id setWinnersList.playerB2Id}}">{{getUserNameForId setWinnersList.playerB1Id}},{{getUserNameForId setWinnersList.playerB2Id}}</option>
+						                			{{/if}}
+						                			{{/if}}
+						                		{{/if}}
+						                	</select>
+						                {{/if}}
+						                </td>
+						            	</tr>
+
+						            <!--player x-->
+						            	<tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="matchRowDEtScore" style="">		
+						                </td>
+						                {{#if checkForType this.type}}
+						                <td class="matchRowDEtScore" style="">
+						                	<select style="font-size:12px;width:95%;" id="playerOfTeamBSingle_{{this.no}}">
+						                		<option value="1" selected="">Select Player of Team B</option>
+						                		{{#each getTeamPlayersListTeamAOth teamIDBOth}}
+	                                            	<option value="{{this.userId}}" selected="{{setPlayerBID ../no this.userId}}">{{this.userName}}</option>
+	                                            {{/each}}
+						                	</select>
+						            	</td>
+						            	{{else}}
+						            	<td class="matchRowDEtScore" style="">
+						                	<select style="font-size:12px;width:95%;" id="playerOfTeamB1Doub_{{this.no}}">
+						                		<option value="1" selected="">Select Player 1 of Team B</option>
+						                		{{#each getTeamPlayersListTeamAOth teamIDBOth}}
+	                                            	<option value="{{this.userId}}" selected="{{setPlayerB1ID ../no this.userId}}">{{this.userName}}</option>
+	                                            {{/each}}
+						                	</select>
+						                	<select style="font-size:12px;width:95%;" id="playerOfTeamB2Doub_{{this.no}}">
+						                		<option value="1" selected="">Select Player 2 of Team B</option>
+						                		{{#each getTeamPlayersListTeamAOth teamIDBOth}}
+	                                            	<option value="{{this.userId}}" selected="{{setPlayerB2ID ../no this.userId}}">{{this.userName}}</option>
+	                                            {{/each}}
+						                	</select>
+						            	</td>
+						            	{{/if}}
+						                {{#each setScoresTempp}}
+						                	<td class="matchRowDEtScore" style="width:5%;readonly:{{readonlyForNonOrganizers}}"><input autocomplete="off"  type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{setScoresBRender ../no this.i}}" id="setScoresTeamB{{this.i}}_{{../no}}" readonly={{readonlyForNonOrganizers}}></td>
+						                {{/each}}
+						            	</tr>
+						            {{/each}}
+						        	</tbody>
+					    		</table>
+					    		<!--ultimate winner-->
+						   		<table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+						        	<tbody class="">
+						            	<tr class="headerAnalytics3" id="headerAnalytics3">
+						            		<td class="headerDetScoreTeamU" style="">Ultimate Winner</td>
+						            		<td class="headerDetScoreTeamW" style="">
+						                	<select style="font-size:12px;width:95%;" id="selectedMatchTypeUltimate">
+						                		{{#each matchesTypes}}
+						                			<option value="{{this.l}}" selected={{setUltimateteamMatchType this.l}}>{{this.d}}</option>
+						                		{{/each}}
+						                	</select>
+						                	</td>
+						                	<td class="headerDetScoreTeamW" style="">
+						                	<select style="font-size:12px;width:95%;" id="selectedTeamUltimate">
+						                		<option value="1" selected=true id="selectedTeamUltimate" teamType="1">Select Winning Team</option>
+						                		<option value="{{teamIDAOth}}" id="" selected = {{setUltimateWinner teamIDAOth}} teamType='TeamA'>{{getTeamsNamesForId teamIDAOth}}</option>
+						                		<option value="{{teamIDBOth}}" id="" selected = {{setUltimateWinner teamIDBOth}} teamType='TeamB'>{{getTeamsNamesForId teamIDBOth}}</option>
+						                	</select>
+						                	</td>
+						            	</tr>
+						        	</tbody>
+						    	</table>
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+	                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height:auto !important;">
+	                                <p style="font-size:12px;color:red;cursor:default;text-align: left;" id="TeamSpecErrorShow"></p>
+	                                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+	                            </div>
+	                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-right:0px !important;padding-bottom: 4px;">
+	                                <div class="row">
+	                                	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                                        	<p id="errorMsgTeamDet" class='impMsg'></p>
+                                    	</div>
+	                                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 ">
+	                                        <div class="col-md-2  col-xs-2  col-lg-2 col-sm-2 ">
+	                                        </div>
+	                                        <div class="col-md-8 col-xs-8 col-lg-8 col-sm-6 " style='text-align:center;'>
+	                                        		{{#if checkLockStatusSet lockStatus}}
+	                                        			{{#if readonlyForNonOrganizers}}
+	                                        			{{else}}
+	                                                    <button type="submit" class="ip_button_Popup_Black" id="saveTeamDETailsForm" style="">Set
+	                                            		</button>
+	                                            		{{/if}}
+	                                                    <button type="button" class="ip_button_Popup_Red" id="closePopupToss" >close
+	                                            		</button>
+	                           							<button type="button" class="ip_button_Popup_Red" id="notifyApp" >Notify
+	                                            	 	</button>
+	                                                {{else}}
+	                                                   <button type="button" class="ip_button_Popup_Red" id="cancelTeamSpecForm" >Ok
+	                                            	 	</button>
+	                         							
+	                                                {{/if}}
+
+	                                            
+	                                           
+	                                            <button type="button" class="ip_button_Popup_Black" id="printDrawsOtherFormats" >Print
+	                                            </button>   
+	                                            <button type="button" class="ip_button_Popup_Black" id="printDrawsOtherFormatsBlank" >Blank
+	                                            </button>                                 
+	                                            
+	                                        </div>
+	                                        <div class="col-md-2  col-xs-2  col-lg-2 col-sm-2 ">
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <div class="row no-gutter col-md-6 col-xs-6 col-sm-6 col-lg-6" style="">
+	                                <div class="checkAcceptTerms" style="height: 2.4em !important;">
+	                                    <input value="" name="checkAcceptbox" id="checkAcceptboxTweett" class="checkboxAccept" checked="" type="checkbox">
+	                                    <p class="downloadAcceptTitle" style="margin-top: 0px; margin-left: 0px; color: rgb(88, 88, 88);"><span style="color: rgb(0, 172, 237); font-size: 14px ! important; margin-top: 3px; cursor: default; margin-left: 5px;" class="fa fa-twitter" aria-hidden="true">Auto Tweet</span>
+	                                    </p>
+	                                </div>
+	                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+           {{> loaderForUPCOM}}
+        {{/if}}
+    </div>
+</template>
+
+
+

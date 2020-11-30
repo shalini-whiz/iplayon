@@ -1,0 +1,134 @@
+<template name="teamMultiSubscribePopup">
+    <!-- main div of selectSubDomainsPopUp pop up-->
+    <div class="modal" id="teamMultiSubscribePopup">
+
+        <!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains two radio buttons
+        one is deleteOnly and delete and black list
+        and yes and no buttons
+-->
+        <div id="subDomainCenter" class="modal-dialog subTeamSubsModal-sm" style="width: 601px !important;">
+            <div class="selectTeamSubsPopup" style="width: 601px !important;">
+                <div class="modal-content">
+                    <div class="modal-header selectSubDomainsHeader">
+                        <p class="modal-title" id="setEventNameHeader" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;text-align:center"></p>
+                    </div>
+                    <div class="modal-body subDomainModalBody">
+                        <div class="teamSubscribeMainTitle" style="height:18em;overflow:auto;margin-top:-1% !important;">
+                            <div class="checkMainTag">
+                                <div class="selectTeamSubscribeEvent" id="selectMainTag">
+                                    {{#if lTeams}}
+                                    <div class="subTeamSubscribeCheckBoxDiv" style="border:0px !important;">
+                                        {{#if checkSubHide lEventid}}
+                                        <select id="mainTag" style="width:100%;">
+                                            <option value="1" disabled selected>Select Team</option>
+                                            {{#each lTeams}}
+                                            <option value={{this._id}} {{checkTempBeforeSave this._id}}>{{teamNameCheckSubString this._id}}</option>
+                                            {{/each}}
+                                        </select>
+                                        {{else}}
+                                        <select id="mainTag" style="width:100%;" disabled>
+                                            <option value="1" disabled selected>Select Team</option>
+                                            {{#each lTeams}}
+                                            <option value={{this._id}} {{checkTempBeforeSave this._id}} disabled>{{teamNameCheckSubString this._id}}</option>
+                                            {{/each}}
+                                        </select>
+                                        {{/if}}
+                                    </div>
+                                    {{else}}
+                                    <div class="subTeamSubscribeCheckBoxDiv" style="border:0px !important;">
+                                        <select id="mainTag" style="width:100%;">
+                                            <option value="1" disabled selected>No Teams</option>
+                                        </select>
+                                    </div>
+                                    <div style="width: 100%; margin-top: 44px;"><p style="text-align: center;"><input style="font-size: 12px; border: 0px none; color: green; background: none repeat scroll 0px center transparent; text-decoration: underline;" value="Create a team and continue your subscription" id="createTeamForNoTeam" type="button"></p></div>
+                                    {{/if}}
+                                </div>
+                                <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+                                    {{#if selectedPlayerNameEdit}}
+                                    <thead style="">
+                                        <tr class="headeSubDiv2_entryFAca_backWhite">
+                                            <th class="pAnalytics2_entryFAca_backWhite" style="background: #505050!important;color:white;font-size:10px;">Sl No.</th>
+                                            <th class="pAnalytics2_entryFAca_backWhite" style="background: #505050 !important;color:white;font-size:10px;">Player Type</th>
+                                            <th class="pAnalytics2_entryFAca_backWhite" style="background: #505050 !important;color:white;font-size:10px;">Players</th>
+                                            <!--th class="pAnalytics2_entryFAca_backWhite" style="background: #505050 !important;color:white;font-size:10px;">Criteria Validation</th-->
+                                        </tr>
+                                    </thead>
+                                    {{/if}}
+                                    <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                                        {{#if selectedPlayerNameEdit}}
+                                        {{#each playerCriteriasEdit}}
+                                        <tr class="headerAnalytics3" id="headerAnalytics3">
+                                            <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{getSlNoPlayerTeam this.playerNo}}{{mandatoryCriteriaEdit}}</td>
+                                            <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">
+                                                <p style="text-align: left;margin:0px !important;font-size:12px;">&nbsp;Gender:&nbsp;{{GenderCriteriaEdit}}</p>
+                                                <p style="text-align: left;margin:0px !important;font-size:12px;">&nbsp;Born:&nbsp;{{dobCriteriaEdit}}</p>
+                                                <p style="text-align: left;margin:0px !important;font-size:12px;">&nbsp;Player Location:&nbsp;{{locCriteriaEdit}}</p>
+                                                {{#if requiredAffiliation}}
+                                                    <p style="text-align: left;margin:0px !important;font-size:12px;">&nbsp;Affiliation Id:&nbsp;{{requiredAffiliation}}</p>
+                                                {{/if}}
+                                            </td>
+                                            <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">
+                                                 {{#each selectedPlayerNameEdit}}
+                                                 {{#if checkForThisPlayerNumber this.playerNumber ../playerNo}}
+                                                <div type="text" id="" class="addUSERSForTeam">
+                                                    <p class="userSelectedForTeamP" style="text-align: center;margin:0px !important;font-size:12px;color:{{CriteriaValidOrNot}};">&nbsp;&nbsp;{{userNAMeForThisId this.playerId}}</p>
+                                                </div>
+                                                {{/if}}
+                                                {{/each}} 
+                                            </td>
+                                            <!--td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">
+                                                 {{#each selectedPlayerNameEdit}}
+                                                 {{#if checkForThisPlayerNumber this.playerNumber ../playerNo}}
+                                                <div type="text" id="" class="addUSERSForTeam">
+                                                    <p class="userSelectedForTeamP" style="text-align: center;margin:0px !important;font-size:12px;color:black;">&nbsp;&nbsp;{{CriteriaValidOrNot}}</p>
+                                                </div>
+                                                {{/if}}
+                                                {{/each}} 
+                                            </td-->
+                                        </tr>
+                                        {{/each}}
+                                        {{/if}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="selectTeamSubscribeContent">
+                            {{#if checkSubHide lEventid}}
+                            <div class="yesSubDomains">
+                                <button type="submit" id="yesButtonSubTeamEvent" class="ip_button_Popup_Black">OK</button>
+                            </div>
+                            {{/if}}
+                            <div class="noSelectTeam">
+                                <button type="button" id="noButtonSubTeamEvent" class="ip_button_Popup_Red">CANCEL</button>
+                            </div>
+                        </div>
+                        <div style="width: 100%; margin-top: 0px;"><p class="downloadAcceptTitle" style="color: black; text-align: right;">* Mandatory</p></div>
+                        {{#if validationMsg}}
+                            <p type="text" id="confirmDomProvideDetailsTeam" name="confirmDomProvideDetailsTeam" style="background-color:none; border:none; cursor:default; font-weight:normal; width:100%;font-size: 12px;color: red;" onfocus="this.blur()" readonly> <span style="font-size: 12px; border: 0px none; color: red; background: none repeat scroll 0px center transparent;">* Highlighted players does not match team criteria
+                                {{#if MandatoryValidationPlayers}}
+                                    and all mandatory players are required
+                                {{/if}}
+                            </span>
+                                <input style="font-size: 12px; border: 0px none; color: blue; background: none repeat scroll 0px center transparent; text-decoration: underline;" value="Edit team and continue your subscription" id="editTeamForNoTeam" type="button"><span style="font-size: 12px; border: 0px none; color: red; background: none repeat scroll 0px center transparent;">or</span><input style="font-size: 12px; border: 0px none; color: blue; background: none repeat scroll 0px center transparent; text-decoration: underline;" value="Create new team and continue your subscription" id="createTeamForNoTeam" type="button">
+                        </p>
+                        {{else}}
+                        {{#if MandatoryValidationPlayers}}
+                            <p type="text" id="confirmDomProvideDetailsTeam" name="confirmDomProvideDetailsTeam" style="background-color:none; border:none; cursor:default; font-weight:normal; width:100%;font-size: 12px;color: red;" onfocus="this.blur()" readonly> <span style="font-size: 12px; border: 0px none; color: red; background: none repeat scroll 0px center transparent;">
+                                All mandatory players are required
+                            </span>
+                            <input style="font-size: 12px; border: 0px none; color: blue; background: none repeat scroll 0px center transparent; text-decoration: underline;" value="Edit team and continue your subscription" id="editTeamForNoTeam" type="button"><span style="font-size: 12px; border: 0px none; color: red; background: none repeat scroll 0px center transparent;">or</span><input style="font-size: 12px; border: 0px none; color: blue; background: none repeat scroll 0px center transparent; text-decoration: underline;" value="Create new team and continue your subscription" id="createTeamForNoTeam" type="button">
+                        </p>
+                        {{else}}
+                            <p type="text" id="confirmDomProvideDetailsTeam" name="confirmDomProvideDetailsTeam" style="background-color:none; border:none; cursor:default; font-weight:normal; width:100%;font-size: 12px;color: red;" onfocus="this.blur()" readonly></p>
+                        {{/if}}
+                        {{/if}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

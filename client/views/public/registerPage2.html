@@ -1,0 +1,59 @@
+<!-- Template for forgot password login-->
+<!--
+   @Author: Alekhya 
+   -->
+<!-- meteorLogin page template for meteor meteor login -->
+<template name="registerPage2">
+   <div style="flex: 1;-webkit-flex: 1;-ms-flex: 1;">
+      <div id="innerDivAboutIplayOn" class="innerDivAboutIplayOn" style="order: 1;display:inline;">
+         <div class="iplayOnDescription">
+            <p style="margin-top:23%">
+               <span class="about">IPlayOn</span><br>
+            </p>
+         </div>
+      </div>
+      <div class="loginButtons" style="order: 2;height:35.2em;width:49%">
+         <p id="verificationSucess_registerPage2"><span class="glyphicon glyphicon-ok-sign green"></span>
+            {{#if firstOTPStatus}} 
+            Verification code sent to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{emailId}}
+            {{else}}
+            Sending verification code to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{emailId}}
+            {{/if}}
+         </p>
+         <p style="color:rgb(179,0,0)" class="loginHeading_loginForgotPassword">Register</p>
+         <form id="application-registerPage2">
+            <div class="meteorLogin">
+               <input type="text" name="emailAddress" id="userName" placeholder="Email Id" value="{{emailId}}" style="cursor:default;" readonly />  
+               <div class="change">
+                  <span id="change" style="cursor:pointer">change?</span>
+               </div>
+               <input type="text" name="verificationCode" id="verificationCode" placeholder="Enter  a valid Verification Code" />
+               <div class="resend">
+                  <span id="resend" style="cursor:pointer">resend?</span>
+               </div>
+               <input type="password" name="password" id="password" placeholder="Enter a Password" />
+               <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Retype Password" />
+            </div>
+            <div class="loginAndForgotText">
+               <div class="loginButton_loginForgotPassword">
+                  <input type="submit" id="loginButton_loginForgotPassword" value="Continue">
+               </div>
+            </div>
+            <div class="registerText">
+               <p>
+                  Already have an account? <span class="redFont" id="goToLogin">Login</span>
+               </p>
+            </div>
+         </form>
+      </div>
+      {{> confirmOk}}{{> sendingMailPopup3}}<!-- {{> modReg1}} {{> modReg2}} {{> modReg3}} {{> modReg4}}-->
+      <div id="mod1"></div>
+      <div id="mod2"></div>
+      <div id="mod3"></div>
+      <div id="mod4"></div>
+      <div id="mod5"></div>
+      <div id="mod6"></div>
+      <div id="mod7"></div>
+      <div id="mod8"></div>
+   </div>
+</template>

@@ -1,0 +1,444 @@
+.selectedUserDiv_SNS{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	margin-bottom: 0px;
+	margin-top: 4px;
+}
+.otherUserDiv_SNS{
+	padding-right: 0px !important;
+	border: 0px solid #fff;
+	border-radius: 5px;
+	padding-left: 0px !important;
+	margin-bottom: 6px;
+	background: rgb(230, 255, 231) none repeat scroll 0% 0%;
+}
+.otherUserNameDiv_SNS{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+/*#3F9F3F*/
+.selectedUserName_SNS{
+	font-size: 14px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: pointer;
+	padding-left: 3px;
+	font-weight: bold;
+	height: 26px;
+	text-align: center;
+	color: white;
+	width: 64%;
+	border-radius: 5px 5px 0px 0px;
+	border:0px;
+	background: rgb(0, 77, 0) none repeat scroll 0% center ;
+	border-bottom: 1px solid #fff;
+}
+
+
+.otherUserName_SNS{
+	font-size: 12px;
+	background: 0px;
+	border :0px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 12px;
+	cursor: pointer;
+	height: 18px;
+	margin-top: 28px;
+	width: 95.5%;
+	color: maroon;
+	text-align: center;
+}
+.matchNumberDiv_SNS{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	border-right: 1px solid #fff;
+}
+
+.matchNumber_SNS{
+	font-size: 12px;
+	text-align: center;
+	width: 100%;
+	margin-top: 20px;
+}
+
+.match_Number_SNS{
+    padding: 0px 0px 0px 5px !important;
+    height: 56px;
+    border-bottom: 1px solid #fff;
+}
+.match_Number_SNS2{
+    padding: 18px 0px 0px 5px !important;
+    height: 56px;
+    border-bottom: 1px solid #fff;
+}
+.byeOrWalkOver_SNS{
+	font-size: 11px;
+	cursor: pointer;
+	height: 11px;
+}
+.byeOrWalkOver_SNSDisabled{
+	font-size: 11px;
+	cursor: not-allowed;
+	height: 11px;
+}
+.scoresMAinDiv_SNStop{
+	padding-left: 0px !important;
+	padding-right: 5px !important;
+	margin-top: 5px;
+	display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.scoresMAinDiv_SNStophead{
+    height: 56px;
+    margin-top: 0px;
+    padding: 0px !important;
+    border-left: 1px solid #fff;
+}
+.scoresMAinDiv_SNStop2{
+	padding-left: 0px !important;
+	padding-right: 5px !important;
+	margin-top: 5px;
+}
+
+.scoresMAinDiv_SNSbottom{
+	padding-left: 0px !important;
+	padding-right: 5px !important;
+	margin-top: 4px;
+	display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.scoresSubDiv_SNS{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	margin-right:0px;
+	width: 25%;
+}
+
+.scoresMAinDiv_SNStopUp1{
+	padding-left: 5px !important;
+	padding-right: 0px !important;	
+	height: 24px;
+}
+.scoresMAinDiv_SNStopUp2{
+	padding-left: 5px !important;
+	padding-right: 0px !important;	
+	height: 32px;
+	border-bottom: 1px solid #fff;
+}
+.otherUserNameDiv2_SNS{
+	padding-left:0px !important;
+	padding-right: 0px !important;
+	border-left: 1px solid #fff;
+}
+
+.scoreinput_SNS{
+	text-align: center;
+	border: 0px;
+	background:  #006600 none repeat scroll 0% 0%;
+	font-size: 12px;
+	width:91% !important;
+	color: white;
+	/*border-bottom: 1px solid black;*/
+}
+.scoreinput_SNSB{
+	text-align: center;
+	background: #00b300 none repeat scroll 0% 0%;
+	border: 0px none;
+	font-size: 12px;
+	width: 91% !important;
+	color: white;
+	/*border-bottom: 1px solid black;*/
+}
+
+.header1_SNS{
+	border-bottom: 1px solid #fff;
+	height: 27px;
+	width: 100%;
+	padding: 0px;
+	background:green none repeat scroll 0% 0%;
+}
+
+.header1p_SNS{
+	width: 100%;
+	font-size: 13px;
+	color: white;
+	text-align: center;
+	cursor: default;
+	font-weight: bold;
+}
+.header1p2_SNS{
+	width: 100%;
+	font-size: 13px;
+	color: white;
+	text-align: center;
+	cursor: default;
+	border-left: 1px solid #fff;
+	margin-left: 2px;
+	margin-left: 2px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	height: 100%;
+	padding-top: 3px;
+	font-weight: bold;
+}
+.header2_SNS{
+	border-bottom: 1px solid #fff;
+	height: 27px;
+	padding: 0px;
+	background: green none repeat scroll 0% 0%;
+}
+
+.headerPointsNumber_SNS{
+	width: 100% !important;
+	margin-top: 21px;
+	background: 0px;
+	margin-bottom: 21px;
+	border: 0px;
+	text-align: center;
+	font-size: 12px;
+	color: maroon;
+}
+
+.bottomTotal_SNS{
+	padding: 0px !important;
+	margin-top: 0px;
+	margin-bottom: 3px;
+}
+
+.otherUserName_SNSWin{
+	font-size: 12px;
+	background: 0px;
+	border :0px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 12px;
+	cursor: pointer;
+	height: 18px;
+	margin-top: 28px;
+	width: 95.5%;
+	color: green;
+	text-align: center;
+}
+
+
+.otherUserName_SNSLost{
+	font-size: 12px;
+	background: 0px;
+	border :0px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 12px;
+	cursor: pointer;
+	height: 18px;
+	margin-top: 28px;
+	width: 95.5%;
+	color: grey;
+	text-align: center;
+}
+
+.otherUserName_SNSWalkover{
+	font-size: 12px;
+	background: 0px;
+	border :0px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 12px;
+	cursor: pointer;
+	height: 18px;
+	margin-top: 28px;
+	width: 95.5%;
+	color: blue;
+	text-align: center;
+	text-decoration: line-through;
+}
+
+.otherUserName_SNSWalkOver2{
+	font-size: 12px;
+	background: 0px;
+	border :0px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 12px;
+	cursor: pointer;
+	height: 18px;
+	margin-top: 28px;
+	width: 95.5%;
+	color: blue;
+	text-align: center;
+}
+
+.rankListDiv1{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	margin-bottom: 0px;
+}
+.rankListDiv1_NO{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	margin-bottom: 0px;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
+	height: 27px;
+	padding: 0px;
+	background: black none repeat scroll 0% 0%;
+}
+
+.rankListDiv1_PlayerName{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	margin-bottom: 0px;
+	border-bottom: 1px solid black;
+	border-left: 1px solid #585858;
+	height: 27px;
+	padding: 0px;
+	background: black none repeat scroll 0% 0%;
+}
+
+.rankListDiv1_TotalPoints{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	margin-bottom: 0px;
+	border-bottom: 1px solid black;
+	border-left: 1px solid #585858;
+	height: 27px;
+	padding: 0px;
+	background:black none repeat scroll 0% 0%;
+}
+
+.rankListDiv2{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	margin-bottom: 0px;
+	height: 55px;
+}
+.rankListDiv2_NO{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	margin-bottom: 0px;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
+	height:100%;
+	padding: 0px;
+	padding-top: 15px;
+	background: #008000 none repeat scroll 0% 0%;
+}
+
+.rankListDiv2_PlayerName{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	margin-bottom: 0px;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
+	height: 100%;;
+	padding: 0px;
+	padding-top: 15px;
+	background: #008000 none repeat scroll 0% 0%;
+}
+
+.rankListDiv2_TotalPoints{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	margin-bottom: 0px;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
+	height: 100%;;
+	padding: 0px;
+	padding-top: 15px;
+	background: #008000 none repeat scroll 0% 0%;
+}
+
+.RankingList_SNS{
+	font-size: 14px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: default;
+	padding-left: 3px;
+	font-weight: normal;
+	height: 26px;
+	text-align: center;
+	color: white;
+	width: 100%;
+	border-radius: 5px 5px 0px 0px;
+	border:0px;
+	background: #004D00 none repeat scroll 0% center ;
+	border-bottom: 1px solid #fff;
+}
+
+.headerRankingp_SNS{
+	width: 100%;
+	font-size: 13px;
+	color: white;
+	text-align: center;
+	cursor: pointer;
+	font-weight: normal;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.headerRankingp_SNS1{
+	width: 100%;
+	font-size: 13px;
+	color: white;
+	text-align: center;
+	cursor: default;
+	font-weight: normal;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.scoresAskApproveMAinDiv_SNS{
+	padding-left: 5px !important;
+	padding-right: 0px !important;	
+	height: 22px;
+	border-bottom: 1px solid #fff;
+	padding-top: 3px;
+}
+
+.askApprovalLink_SNS{
+	width: 100%;
+	text-align: right;
+	font-size: 11px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.askforAprrovalmatch_Number_SNS{
+    padding: 0px 0px 0px 5px !important;
+    height: 69px;
+    border-bottom: 1px solid #fff;
+}
+
+.askforAprrovalscoresMAinDiv_SNStopUp2{
+	padding-left: 5px !important;
+	padding-right: 0px !important;	
+	height: 45px;
+	border-bottom: 1px solid #fff;
+}
+
+.askforAprrovalscoresMAinDiv_SNStophead{
+    height: 68px;
+    margin-top: 0px;
+    padding: 0px !important;
+    border-left: 1px solid #fff;
+}
+
+.askforAprrovalmatchNumber_SNS{
+	font-size: 12px;
+	text-align: center;
+	width: 100%;
+}

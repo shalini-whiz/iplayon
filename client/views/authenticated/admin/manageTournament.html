@@ -1,0 +1,1494 @@
+<template name="adminManageTournament">
+	{{#if notAdmin}}
+	<div class=''>
+		<p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+	</div>
+	{{else}}
+	<div class="container" style="background:#333; height:auto;">
+		<div class="row navigationBar navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                   
+                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                     	<button type="button" class="ip_button_DarkGrey" id="manageSubscription">Manage Subscription</button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                    	<button type="button" class="ip_button_DarkGrey" id="tournamentSubscription">Tournament Subscription</button>
+                        
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                        <button type="button" class="ip_button_DarkGrey" id="manageTournamentDraws">Manage Tournament Draws</button>
+                        
+                    </div>   
+
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                        <button type="button" class="ip_button_DarkGrey" id="manageTournamentEntryDraws">Manage Tournament Entry Draws</button>
+                        
+                    </div>   
+
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                        <button type="button" class="ip_button_DarkGrey" id="manageTournament">Manage Tournament</button>
+                        
+                    </div>  
+
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                        <button type="button" class="ip_button_DarkGrey" id="uploadSubscription">Bulk Subscription</button>
+                        
+                    </div>         
+                </div>
+            </div>
+        </div>	
+       
+	</div>
+	{{/if}}
+	
+	<div id="manageSubscriptionDisplay"></div>
+	<div id="roleBasedSubscriptionDisplay"></div>
+    <div id="controlSubscriptionDisplay"></div>
+    <div id="tournamentSubscriptionLayout"></div>
+    <div id="renderTeamMultiSubs"></div>
+    <div id="drawFilterContent"></div>
+    <div id="drawsContent"></div>
+    <div id="manageTournamentContent"></div>
+    <div id="bulkSubscriptionContent"></div>
+
+</template>
+
+
+
+<template name="manageSubscription">
+	 
+    <div class="row" style="margin-top:40px !important">
+        <table class="table table-striped tableOFCSVHTML_New">
+            <thead style="">
+                <tr class="headerAnalytics2">
+	                <th class="pAnalytics2">Tournament</th>
+	                <th class="pAnalytics2">Subscription Date</th>
+	                <th class="pAnalytics2">Start Date</th>
+	                <th class="pAnalytics2">End Date</th>
+	                <th class="pAnalytics2">Edit</th>
+                </tr>
+            </thead>
+            <tbody id="selectTagop">
+                {{#if upcomingEvents}}
+                	{{#each upcomingEvents}}               		
+                		<tr class="headerAnalytics3" name="sdfsd">
+                    		<td class="pAnalytics2">{{this.eventName}}</td>
+                    		<td class="pAnalytics2">{{this.eventSubscriptionLastDate}}</td>
+                    		<td class="pAnalytics2">{{this.eventStartDate}}</td>
+                    		<td class="pAnalytics2">{{this.eventEndDate}}</td>
+                    		<td class="pAnalytics2"><span id="controlSubscription" name={{this._id}} style ="color:#FFA500;font-size: 18px;margin: 3px 0px 0px 0px;width:15%; transform: rotate(0deg);cursor: pointer" class="glyphicon glyphicon-edit"></span></td>
+                    	</tr>
+                    {{/each}}
+                {{/if}}
+            </tbody>
+        </table>
+    </div>
+
+</template>
+
+
+
+<template name="controlSubscriptionLayout">
+  	<div  class="modal" id="controlSubscriptionLayout" aria-hidden="true" >
+      <div class="modal-dialog controlSubscriptionLayout-lg">
+        <div class="modal-content">
+          <div class="modal-header headerClass">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title myModalLabel " style='text-align:center'>Control Subscription</h4>
+         </div>
+
+         <div class="modal-body">
+          <form class="form-horizontal" role="form">
+            
+          	{{#if tournamentCategories}}
+          	<table class="table table-striped tableOFCSVHTML_New">
+	            <thead style="">
+	                <tr class="headerAnalytics2">
+		                <th class="pAnalytics2" >Event</th>
+		                <th class="pAnalytics2">Subscription Date</th>
+		                <th class="pAnalytics2">Start Date</th>
+		                <th class="pAnalytics2">End Date</th>
+		                <th class="pAnalytics2">Allow</th>
+	                </tr>
+	            </thead>
+	            <tbody id="tournamentCategoryBody">
+
+          		{{#each tournamentCategories}}
+          		    <tr class="headerAnalytics3" style='color:black' name={{this._id}}>
+          		    	<td class="pAnalytics2" >{{this.eventName}}</td>
+                    	<td class="pAnalytics2">{{this.eventSubscriptionLastDate}}</td>
+                    	<td class="pAnalytics2">{{this.eventStartDate}}</td>
+                    	<td class="pAnalytics2">{{this.eventEndDate}}</td>
+                    	<td class="pAnalytics2">
+                    		<select id="configurationDropDown" class="form-control customDropDown" name='allowSubscriptionVal'>	                  
+		                  		<option name="yes" {{checkAllowedSubscription this.allowSubscription 'yes' }}>yes</option>  	
+		                  		<option name="no" {{checkAllowedSubscription this.allowSubscription 'no' }}>no</option>                 
+               
+		                	</select> 
+                    	</td>
+
+          		    </tr>
+		           
+            	{{/each}}
+            	</tbody>
+
+            </table>
+            {{/if}}
+            
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style='padding-bottom:4px;'>
+            <div class ="row">
+              <p id="impMsg" class='impMsg'></p><p id="infoMsg" class='impMsg'></p> 
+ 
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " >
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " >
+                </div>
+
+                <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 " style='text-align:center;' >
+                  <button type="button" class="ip_button_Popup_Black" id="saveAllowedSubscription">Save</button>
+                  <button type="button" class="ip_button_Popup_Red" data-dismiss="modal" id="closeCreateDraw">Cancel</button>
+                </div>
+
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " > </div>               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<template name="subscriptionSelectionForm">
+    {{#if Template.subscriptionsReady}}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N" id="selectionFormData" >
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="selectionForm_N2">Please Select Your Keys of Interest to Search:</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N3">
+           
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <p class="selectionForm_N4" id="filterByLabel"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Tournament:</p> 
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+               <p class="selectionForm_N4" id="sportsLabel"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Player:</p>
+            </div>            
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N3">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <select class="selectionForm_N6" id="tournamentList" name="tournamentList">
+                    <option selected disabled value="0">Select Tournament</option>
+                    {{#if upcomingTournaments}}
+                    {{#each upcomingTournaments}}
+                        <option id="eventSelection" name="{{this._id}}">{{this.eventName}}</option>
+                    {{/each}}
+                    {{/if}}                  
+                </select>
+            </div>
+
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <select class="selectionForm_N6" id="playerList" name="playerList">
+                    <option selected disabled value="0">Select Player</option>
+                    {{#if playerList}}
+                    {{#each playerList}}
+                     <option id="sportSelection" name="{{this.userId}}">{{this.userName}}</option>
+                    {{/each}}
+                    {{/if}}
+                </select> 
+            </div>
+            
+        </div>
+      
+    </div>
+    {{/if}}
+    
+</template>
+
+
+
+<template name="drawsSelectionForm">
+    {{#if Template.subscriptionsReady}}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N" id="selectionFormData" >
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="selectionForm_N2">Please Select Your Keys of Interest to Search:</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N3">
+           
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <p class="selectionForm_N4" id="filterByLabel"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Tournament:</p> 
+            </div>
+                       
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N3">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <select class="selectionForm_N6" id="tournamentList" name="tournamentList">
+                    <option selected disabled value="0">Select Tournament</option>
+                    {{#if upcomingTournaments}}
+                    {{#each upcomingTournaments}}
+                        <option id="eventSelection" name="{{this._id}}">{{this.eventName}}</option>
+                    {{/each}}
+                    {{/if}}                  
+                </select>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+</template>
+
+<template name="drawsEventLayout">
+    <div class="row" style="margin-top:40px !important">
+        <table class="table table-striped tableOFCSVHTML_New">
+            <thead style="">
+                <tr class="headerAnalytics2">
+                    <th class="pAnalytics2">Event Name</th>
+                    <th class="pAnalytics2">Status</th>
+                    <th class="pAnalytics2">Lock</th>
+                    <th class="pAnalytics2">Unlock</th>
+                    <th class="pAnalytics2">Download Draws</th>
+                </tr>
+            </thead>
+            <tbody id="selectTagop">
+                {{#if drawEvents}}
+                    {{#each drawEvents}}                    
+                        <tr class="headerAnalytics3" name="sdfsd">
+                            <td class="pAnalytics2">{{this.eventName}}</td>
+                            <td class="pAnalytics2">{{lockStatus this.drawsLock}}</td>
+                            <td class="pAnalytics2">
+                                <span id="lockEvent" name={{this._id}} style ="color:#FFA500;font-size: 18px;margin: 3px 0px 0px 0px;width:15%; transform: rotate(0deg);cursor: pointer" class="glyphicon glyphicon-lock">        
+                                </span>
+                            </td>
+                            <td class="pAnalytics2">
+                                <span id="unlockEvent" name={{this._id}} style ="color:#FFA500;font-size: 18px;margin: 3px 0px 0px 0px;width:15%; transform: rotate(0deg);cursor: pointer" class="">        
+                                    <i class="fa fa-unlock"></i>
+                                </span>
+                            </td>
+                            <td class="pAnalytics2">
+                                <span id="downloadDraws" name={{this._id}} style ="color:#FFA500;font-size: 18px;margin: 3px 0px 0px 0px;width:15%; transform: rotate(0deg);cursor: pointer" class="glyphicon glyphicon-download">        
+                                </span>
+                            </td>
+                        </tr>
+                    {{/each}}
+                {{/if}}
+            </tbody>
+        </table>
+    </div>
+</template>
+
+
+<template name="eventDrawsSelectionForm">
+    {{#if Template.subscriptionsReady}}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N" id="selectionFormData" >
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="selectionForm_N2">Please Select Your Keys of Interest to Search:</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N3">
+           
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <p class="selectionForm_N4" id="filterByLabel"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Tournament:</p> 
+            </div>
+             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <p class="selectionForm_N4" id="filterByLabel"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Event:</p> 
+            </div>
+                       
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N3">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <select class="selectionForm_N6" id="tournamentList" name="tournamentList">
+                    <option selected disabled value="0">Select Tournament</option>
+                    {{#if upcomingTournaments}}
+                    {{#each upcomingTournaments}}
+                        <option id="eventSelection" name="{{this._id}}">{{this.eventName}}</option>
+                    {{/each}}
+                    {{/if}}                  
+                </select>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <select class="selectionForm_N6" id="eventSelection" name="eventSelection">
+                    <option selected disabled value="0">Select Event</option>
+                    {{#if eventList}}
+                    {{#each eventList}}
+                        <option id="eventSelection1" name="{{this}}">{{this}}</option>
+                    {{/each}}
+                    {{/if}}                  
+                </select>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 selectionForm_N5">
+                <a href="#">
+                  <span class="glyphicon glyphicon-triangle-left ipGlyphBtn" id="decrRound" style='top:0px !important;font-size:26px !important;'></span>
+                </a> 
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 selectionForm_N5">
+                <a href="#">
+                  <span class="glyphicon glyphicon-triangle-right ipGlyphBtn" id="incrRound" style='top:0px !important;font-size:26px !important;'></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    <div id="drawsEntryContent"></div>
+
+</template>
+<template name="drawsEntryLayout">
+
+    {{#if drawsConfMatches}}
+    {{/if}}
+    <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne1" style="table-layout:fixed;">
+        
+    </table>
+    <div style="margin-top:40px"></div>
+
+    <div class="row" style="background-color:white !important;">
+       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="col-xs-3 col-sm-3 col-md-9 col-lg-9">
+
+          
+        </div>
+          <div class="col-xs-9 col-sm-9 col-md-3 col-lg-3">
+            <p class = "" style="font-size: 12px; color:black">
+              <span class="dot" style="background-color:#dfff80;"></span>              Bye &nbsp;
+
+              <span class="dot" style="background-color:#ffe680;color:black"></span>Walkover &nbsp;
+              <span class="dot" style="background-color:#EEEAEA;color:black"></span>Completed &nbsp;
+            </p>
+                
+            </div>
+        </div>
+     </div>
+
+    <div class="row" style="background-color:white !important;">
+
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" style="background-color:white !important;">
+      <div class ="row">
+        <p class="ipRoundsHeader" style="background-color: white;color:black;margin-top:10px;font-weight: bold !important">
+          <u style="text-decoration: none;border-bottom: 3px solid #FFA500;">{{leftRMatchName}}</u>
+        </p>
+      </div>
+      <div>
+
+        {{#each leftRMatches}}
+        <div class="row outer_top_score_input" id="PlayerA">
+          <div class="row" style={{matchSettingsA}}>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 match_number" data-anchor="match{{matchNumber}}" id="match{{matchNumber}}" > M{{matchNumber}} </div>
+            {{#if leftRoundNumber this}}
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 {{getStatusColorA}}"  id="PlayerAL" name="PlayerAL"  style="border-style: none !important"> 
+                <span style="padding:5px;color:#337ab7">{{playerANo}}</span>
+ 
+                {{playerA}}
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"> 
+                  <span class="glyphicon glyphicon-pencil" style="color:#FFA500; transform: rotate(0deg); cursor: pointer"  id="editPlayerA" name={{this}}>
+                  </span>
+                </div>
+            {{else}}
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 {{getStatusColorA}}"  id="PlayerAL" name="PlayerAL"  style="border-style: none !important">  
+                    <span style="padding:5px;color:#337ab7">{{playerANo}}</span>
+                    {{playerA}}
+
+                  
+                     
+                </div>
+
+            {{/if}}
+            
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" style={{matchSettingsAScore}}>
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="">
+               
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset1" style="padding: 1px !important">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} value="{{AS1}}" class="score_input" style="width:22px;{{AS1Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset2" style="padding: 1px !important">
+                <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}} value="{{AS2}}" style="width:22px;{{AS2Settings}}"  readonly/>
+              </div>
+             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset3" style="padding: 1px !important">
+                <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}} value="{{AS3}}" style="width:22px;{{AS3Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset4" style="padding: 1px !important">
+                <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}}  value="{{AS4}}" style="width:22px;{{AS4Settings}}" readonly/>
+              </div>
+             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset5" style="padding: 1px !important">
+                <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}}  value="{{AS5}}" style="width:22px;{{AS5Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset6" style="padding: 1px !important">
+                <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}}  value="{{AS6}}" style="width:22px;{{AS6Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ALset7" style="padding: 1px !important">
+                <input type="text" class="score_input" name="score" {{scoreDispType tourIdDraws}}  value="{{AS7}}" style="width:22px;{{AS7Settings}}" readonly/>
+              </div>
+              
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" id="">
+               
+              </div>
+              
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="">
+               
+              </div>
+            
+            </div>
+
+          </div>
+        </div>
+        <div class="separator_div"></div>
+        <div class="row outer_bottom_score_input" id="PlayerB">
+          <div class="row" style={{matchSettingsB}}>
+            
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 match_number" name={{playerB}}>
+              <span></span>
+            </div>
+            {{#if leftRoundNumber this}}
+                <div class=" col-xs-2 col-sm-2 col-md-2 col-lg-2  {{getStatusColorB}}"  id="PlayerBL"  style="border-style: none !important">
+                    <span style="padding:5px;color:#337ab7">{{playerBNo}}</span>
+                    {{playerB}}        
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                    <span class="glyphicon glyphicon-pencil" style="color:#FFA500;  transform: rotate(0deg); cursor: pointer"  id="editPlayerB"  name={{this}}></span>
+                </div>
+
+            {{else}}
+                <div class=" col-xs-3 col-sm-3 col-md-3 col-lg-3  {{getStatusColorB}}"  id="PlayerBL"  style="border-style: none !important">
+                     <span style="padding:5px;color:#337ab7">{{playerBNo}}</span>
+                     {{playerB}}
+
+                        
+                </div>
+            {{/if}}
+            
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" style={{matchSettingsBScore}}>
+
+              
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="">
+               
+              </div>
+              <div class="col-xs-1 col-sm-1  col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset1">
+                <input type="text"  name="score" {{scoreDispType tourIdDraws}}  value="{{BS1}}" class="score_input" style="width:22px;{{BS1Settings}}"  readonly />
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset2">
+                <input type="text"  name="score" {{scoreDispType tourIdDraws}}  value="{{BS2}}" class="score_input" style="width:22px;{{BS2Settings}}" readonly />
+              </div>
+              <div class="col-xs-1 col-sm-1  col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset3">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}}  value="{{BS3}}" class="score_input" style="width:22px;{{BS3Settings}}" readonly />
+              </div>
+              <div class="col-xs-1 col-sm-1  col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset4">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}}  value="{{BS4}}"  class="score_input" style="width:22px;{{BS4Settings}}"  readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset5">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}}  value="{{BS5}}" class="score_input" style="width:22px;{{BS5Settings}}"  readonly />
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset6">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}}  value="{{BS6}}" class="score_input" style="width:22px;{{BS6Settings}}" readonly />
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BLset7">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}}  value="{{BS7}}" class="score_input" style="width:22px;{{BS7Settings}}" readonly />
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" id="">
+               
+              </div>
+               <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="">
+               
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {{> blankRow1}}
+        {{> blankRow1}}
+        {{/each}}
+      </div>
+    </div>
+    <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 hidden-xs" style="background-color:white !important;">
+      <div class ="row">
+        <p class="ipRoundsHeader" style="background-color: white;color:black;margin-top:10px;font-weight: bold !important">
+          <u style="text-decoration: none;border-bottom: 3px solid #FFA500;">
+            {{centerRMatchName}}
+          </u>
+        </p>
+      </div>
+      <div >
+        {{#each centerRMatches}}
+        {{> blankRow1}}
+        {{> blankRow1}}
+        <div class="row outer_top_score_input" id="PlayerA">
+          <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 match_number" data-anchor="match{{matchNumber}}" id="match{{matchNumber}}" > M{{matchNumber}} </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 {{getStatusColorA}}"  id="PlayerAR" style="border-style: none !important">
+                <span style="padding:5px;color:#337ab7">{{playerANo}}</span>
+
+              {{playerA}}
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+
+               <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="">
+               
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset1">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"   value={{AS1}} style="width:22px;{{AS1Settings}}" readonly />
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset2">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"   value={{AS2}} style="width:22px;{{AS2Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset3">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"   value={{AS3}} style="width:22px;{{AS3Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset4">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"   value={{AS4}} style="width:22px;{{AS4Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset5">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"   value={{AS5}} style="width:22px;{{AS5Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset6">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"   value={{AS6}} style="width:22px;{{AS6Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset7">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"   value={{AS7}} style="width:22px;{{AS7Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" id="">
+               
+              </div>
+               <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="">
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="separator_div"></div>
+        <div class="row outer_bottom_score_input" id="PlayerB">
+          <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 match_number" name="{{playerA}}"><span></span></div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3  {{getStatusColorB}}" id="PlayerBR" readonly style="border-style: none !important">
+                <span style="padding:5px;color:#337ab7">{{playerBNo}}</span>
+
+              {{playerB}}
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+
+               <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="">
+               
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset1">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"    value={{BS1}} style="width:22px;{{BS1Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset2">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"   value={{BS2}} style="width:22px;{{BS2Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset3">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"  value={{BS3}} style="width:22px;{{BS3Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset4">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"  value={{BS4}} style="width:22px;{{BS4Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset5">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"  value={{BS5}} style="width:22px;{{BS5Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset6">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"  value={{BS6}} style="width:22px;{{BS6Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset7">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"  value={{BS7}} style="width:22px;{{BS7Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" id="">
+               
+              </div>
+               <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="">
+               
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {{> blankRow1}}
+        {{> blankRow1}}
+        {{> blankRow1}}
+        {{> blankRow1}}
+        {{/each}}
+      </div>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 hidden-xs" style="background-color:white !important;">
+        <div class ="row">
+           <p class="ipRoundsHeader" style="background-color: white;color:black;margin-top:10px;font-weight: bold !important"><u style="text-decoration: none;
+    border-bottom: 3px solid #FFA500;">{{rightRMatchName}}</u></p>
+      </div>
+      <div>
+        {{#each rightRMatches}}
+        {{> blankRow1}}
+        {{> blankRow1}}
+        {{> blankRow1}}
+        {{> blankRow1}}
+        {{> blankRow1}}
+        {{> blankRow1}}
+        <div class="row outer_top_score_input" id="PlayerA">
+          <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 match_number" data-anchor="match{{matchNumber}}" id="match{{matchNumber}}"> M{{matchNumber}} </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 {{getStatusColorA}}"  id="PlayerAR" style="border-style: none !important">
+                <span style="padding:5px;color:#337ab7">{{playerANo}}</span>
+
+                {{playerA}}
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+
+               <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="">
+               
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset1">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"   value={{AS1}} style="width:22px;{{AS1Settings}}" readonly />
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset2">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"   value={{AS2}} style="width:22px;{{AS2Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset3">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"   value={{AS3}} style="width:22px;{{AS3Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset4">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"   value={{AS4}} style="width:22px;{{AS4Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset5">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"   value={{AS5}} style="width:22px;{{AS5Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset6">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"   value={{AS6}} style="width:22px;{{AS6Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="ARset7">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"   value={{AS7}} style="width:22px;{{AS7Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" id="">
+               
+              </div>
+               <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="">
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="separator_div"></div>
+        <div class="row outer_bottom_score_input" id="PlayerB">
+          <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 match_number" name="{{playerA}}"><span></span></div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3  {{getStatusColorB}}" id="PlayerBR" readonly style="border-style: none !important">
+                <span style="padding:5px;color:#337ab7">{{playerBNo}}</span>
+
+              {{playerB}}
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+
+               <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="">
+               
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset1">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"    value={{BS1}} style="width:22px;{{BS1Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset2">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"   value={{BS2}} style="width:22px;{{BS2Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset3">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"  value={{BS3}} style="width:22px;{{BS3Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset4">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"  value={{BS4}} style="width:22px;{{BS4Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset5">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"  value={{BS5}} style="width:22px;{{BS5Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset6">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"  value={{BS6}} style="width:22px;{{BS6Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 ip_input_box_type_scores" id="BRset7">
+                <input type="text" name="score" {{scoreDispType tourIdDraws}} class="score_input"  value={{BS7}} style="width:22px;{{BS7Settings}}" readonly/>
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" id="">
+               
+              </div>
+               <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="">
+               
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {{> blankRow1}}
+        {{> blankRow1}}
+        {{> blankRow1}}
+        {{> blankRow1}}
+                {{> blankRow1}}
+                  {{> blankRow1}}
+  {{> blankRow1}}
+                  {{> blankRow1}}
+        {{/each}}
+      </div>
+    </div>
+    
+  </div>
+
+ 
+
+
+ </template>
+
+
+<template name="adminSubscribeToTournamemnt">
+	{{#if Template.subscriptionsReady}} 
+
+	{{#if tournamentSession}}
+    <form id="multipleSubscription">
+        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12 mainContent_myEvents" style="padding-left:15px !important;padding-right:15px !important;">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                <div class="mainTitle">
+                    {{#if Template.subscriptionsReady}} 
+                    {{#each lEvent}}
+                    <p class="title">{{NameSubString this.projectName}}:&nbsp;{{NameSubString this.eventName}}</p>
+                    {{/each}} {{else}}
+                    <p class="title">Tournament&nbsp;</p>
+                    {{/if}} {{#if Template.subscriptionsReady}}
+                    <!--{{#if checkSubHideStar lEventid}}
+                    <a href="" class="eventTournUpd" id="eventTournamentUpdates"><span class="glyphicon glyphicon-star"></span></a>
+                    {{/if}}-->
+                    {{#if checkSubHide lEventid}}
+                    <input type="submit" id="eventSubscribe" class="ip_button_LightGrey" style="order:1" value="Save" />
+                    <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="Cancel" /> {{else}} {{#if Template.subscriptionsReady}}
+                    <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="" /> {{else}}
+                    <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="" /> {{/if}} {{/if}} {{else}}
+                    <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="" /> {{/if}}
+                </div>
+            </div>
+            <div class="container col-md-12 col-xs-12 col-sm-12 col-lg-12 subscribeToAllMainDiv">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 subscribeToAllheaderMainDiv">
+                    <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 subscribeToAllheaderDiv" style="border-top-left-radius: 5px;">
+                        <p class="subscribeToAllheader">Event Name</p>
+                    </div>
+                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllheaderDiv">
+                        <p class="subscribeToAllheader">Starts On</p>
+                    </div>
+                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllheaderDiv">
+                        <p class="subscribeToAllheader">Ends On</p>
+                    </div>
+                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllheaderDiv" style="width:15%!important;">
+                        <p class="subscribeToAllheader">Entry Fee</p>
+                    </div>
+                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllheaderDiv " style="border-right:0px !important;border-top-right-radius: 5px;padding:0px !important;width:18.333%;!important;">
+                        <p class="subscribeToAllheader">Subscribe</p>
+                    </div>
+                    <!--/div-->
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 scrollableLisst" id="scrollableLisst">
+                    {{#each eventsDetails.[0].eventIds}}
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 subscribeToAllListMainDiv" name="mainDivForMail">
+                        <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 subscribeToAllListDiv" id="">
+                            <p class="subscribeToAllList" id="eventNameMail" 
+                            style="text-align:center;cursor:default !important;" >{{eventNameSingleSub this}}</p>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllListDiv" id="">
+                            <p class="subscribeToAllList" style="text-align:center;cursor:default !important;" id="eventStartDateMail">{{eventStartDateSingleSub this}}</p>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllListDiv">
+                            <p class="subscribeToAllList" style="text-align:center;cursor:default !important;" id="eventEndDateMail">{{eventEndDateSingleSub this}}</p>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllListDiv" style="width:15%!important;">
+                            <p class="subscribeToAllList" style="text-align:center;cursor:default !important;" id="eventPrizeMail">{{eventPrizeSingleSub this}}</p>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllListDiv checkSingleOrTeamSelectGlyph" name="checkBoxDivMulti" style="width: 18.333%;!important;border-right:1px solid black;text-align:center;" id="checkBoxSinglePlayerForFina">
+                            {{#if checkSubHide lEventid}} 
+                                {{#if dataOFBirthGenderPlayer}}
+                                    <div style="display:flex !important;">
+                                        <p style="margin: 0px !important;text-align: center;width: 100%;">
+                                        <input type="checkbox" name="{{this}}" id="checkTeamOrSingle" class="subscribeCheckBox validCheckBox{{this}}" {{subscribedOrNotMultipleAdmin this}} value="{{eventAbbNameSingleSub this}}">
+                                        <span class="{{teamEventOrSingleEvent this}}" style="font-size: 14px;color: green;cursor:pointer;margin-top: 3px;margin-left: 3px;" id="checkedOrNotPopup"></span> 
+                                        </p>
+                                    </div>
+                                    {{else}}
+                                    <div style="display:flex !important;">
+                                        <p style="margin: 0px !important;text-align: center;width: 100%;">
+                                        <input type="checkbox" name="{{this}}" id="checkTeamOrSingle" class="subscribeCheckBox validCheckBox{{this}}" {{subscribedOrNotMultipleAdmin this}} value="{{eventAbbNameSingleSub this}}" disabled>
+                                        <span class="{{teamEventOrSingleEvent this}}" style="font-size: 14px;color: green;margin-top: 3px;margin-left: 3px;" id="checkedOrNotPopup" disabled></span> 
+                                        </p>
+                                    </div>
+                                {{/if}} 
+                            {{else}}
+                                <input type="checkbox" name="{{this}}" id="checkTeamOrSingle" class="subscribeCheckBox" {{subscribedOrNotMultipleAdmin this}} value="{{eventAbbNameSingleSub this}}" disabled>
+                                <span class="{{teamEventOrSingleEvent this}}" style="font-size: 14px;color: green;cursor:pointer;margin-top: 3px;margin-left: 3px;" id="checkedOrNotPopup"></span> 
+                            {{/if}}
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:24px!important">
+                    <div class="checkAcceptTermsWithConfirm" style="margin-top:1%!important">
+                        {{#if checkSubHide lEventid}}
+                        <input value="" type="checkbox" name="checkAcceptboxTeam" id="checkAcceptboxTeam" class="checkboxAccept" style="margin-left:0px;
+                        margin-right:0px;margin-top: 4px;" /> {{else}}
+                        <input value="" type="checkbox" name="checkAcceptboxTeam" id="checkAcceptboxTeam" class="checkboxAccept" style="margin-left:0px;
+                        margin-right:0px;margin-top: 4px;" disabled/> {{/if}}
+                        <p class="downloadAcceptTitle" style="color:grey;margin-top: 3px!important;">Accept </p>
+                        <a class="downloadAcceptPdf" href="/createEvents.pdf" download target="_parent" style="margin-right: auto!important;margin-left: 1%!important;margin-top: 3px!important;"><span style="color:blue">Terms & Conditions</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;">
+                    <p id="sendingEmail" style="color:red;font-size:13px;margin:0;"></p>
+                </div>
+                {{#each lEvent}}
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;padding-top:10px;">
+                    <p id="dsf" style="color:red;font-size:13px;margin:0;">Entries closes on:{{this.eventSubscriptionLastDate}}</p>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        
+    
+
+    </form>
+    {{/if}}
+    {{/if}}
+	{{> errorPopup}}{{>sendingMailPopup}} {{>sendingMailPopup2}}{{> alreadySubscribed}}
+    <!--{{>teamMultiSubscribePopup}}-->
+</template>
+
+
+
+
+
+
+
+<template name="adminSubscribePopUp123">
+	{{#if Template.subscriptionsReady}} 
+
+	<div  class="modal fade" id="adminSubscribePopUp123" aria-hidden="true" role="dialog" data-backdrop="static">
+        <div id="subDomainCenter" class="modal-dialog subTeamSubsModal-sm" style="width: 601px !important;">
+            <div class="selectTeamSubsPopup" style="width: 601px !important;">
+                <div class="modal-content">
+                    <div class="modal-header selectSubDomainsHeader">
+                        <p class="modal-title" id="setEventNameHeader" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;text-align:center"></p>
+                    </div>
+                    <div class="modal-body subDomainModalBody">
+                        <div class="teamSubscribeMainTitle" style="height:18em;overflow:auto;margin-top:-1% !important;">
+                            <div class="checkMainTag">
+                                <div class="selectTeamSubscribeEvent" id="selectMainTag">
+                                    {{#if lTeams}}
+                                    <div class="subTeamSubscribeCheckBoxDiv" style="border:0px !important;">
+                                        {{#if checkSubHide lEventid}}
+                                        <select id="mainTag" style="width:100%;">
+                                            <option value="1" disabled selected>Select Team</option>
+                                            {{#each lTeams}}
+                                            <option value={{this._id}} {{checkTempBeforeSaveAdmin this._id}}>{{teamNameCheckSubString this._id}}</option>
+                                            {{/each}}
+                                        </select>
+                                        {{else}}
+                                        <select id="mainTag" style="width:100%;" disabled>
+                                            <option value="1" disabled selected>Select Team</option>
+                                            {{#each lTeams}}
+                                            <option value={{this._id}} {{checkTempBeforeSaveAdmin this._id}} disabled>{{teamNameCheckSubString this._id}}</option>
+                                            {{/each}}
+                                        </select>
+                                        {{/if}}
+                                    </div>
+                                    {{else}}
+                                    <div class="subTeamSubscribeCheckBoxDiv" style="border:0px !important;">
+                                        <select id="mainTag" style="width:100%;">
+                                            <option value="1" disabled selected>No Teams</option>
+                                        </select>
+                                    </div>
+                                    <div style="width: 100%; margin-top: 44px;"><p style="text-align: center;"><input style="font-size: 12px; border: 0px none; color: green; background: none repeat scroll 0px center transparent; text-decoration: underline;" value="Create a team and continue your subscription" id="createTeamForNoTeam" type="button"></p></div>
+                                    {{/if}}
+                                </div>
+                                <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+                                    {{#if selectedPlayerNameEdit}}
+                                    <thead style="">
+                                        <tr class="headeSubDiv2_entryFAca_backWhite">
+                                            <th class="pAnalytics2_entryFAca_backWhite" style="background: #505050!important;color:white;font-size:10px;">Sl No.</th>
+                                            <th class="pAnalytics2_entryFAca_backWhite" style="background: #505050 !important;color:white;font-size:10px;">Player Type</th>
+                                            <th class="pAnalytics2_entryFAca_backWhite" style="background: #505050 !important;color:white;font-size:10px;">Players</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    {{/if}}
+                                    <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                                        {{#if selectedPlayerNameEdit}}
+                                        {{#each playerCriteriasEdit}}
+                                        <tr class="headerAnalytics3" id="headerAnalytics3">
+                                            <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{getSlNoPlayerTeam this.playerNo}}{{mandatoryCriteriaEdit}}</td>
+                                            <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">
+                                                <p style="text-align: left;margin:0px !important;font-size:12px;">&nbsp;Gender:&nbsp;{{GenderCriteriaEdit}}</p>
+                                                <p style="text-align: left;margin:0px !important;font-size:12px;">&nbsp;Born:&nbsp;{{dobCriteriaEdit}}</p>
+                                                <p style="text-align: left;margin:0px !important;font-size:12px;">&nbsp;Player Location:&nbsp;{{locCriteriaEdit}}</p>
+                                                {{#if requiredAffiliation}}
+                                                    <p style="text-align: left;margin:0px !important;font-size:12px;">&nbsp;Affiliation Id:&nbsp;{{requiredAffiliation}}</p>
+                                                {{/if}}
+                                            </td>
+                                            <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">
+                                                 {{#each selectedPlayerNameEdit}}
+                                                 {{#if checkForThisPlayerNumber this.playerNumber ../playerNo}}
+                                                <div type="text" id="" class="addUSERSForTeam">
+                                                    <p class="userSelectedForTeamP" style="text-align: center;margin:0px !important;font-size:12px;color:{{CriteriaValidOrNot}};">&nbsp;&nbsp;{{fetchNameOnID this.playerId}}</p>
+                                                </div>
+                                                {{/if}}
+                                                {{/each}} 
+                                            </td>                                       
+                                        </tr>
+                                        {{/each}}
+                                        {{/if}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="selectTeamSubscribeContent">
+                            {{#if checkSubHide lEventid}}
+                            <div class="yesSubDomains">
+                                <button type="submit" id="yesButtonSubTeamEvent" class="ip_button_Popup_Black">OK</button>
+                            </div>
+                            {{/if}}
+                            <div class="noSelectTeam">
+                                <button type="button" id="noButtonSubTeamEvent" class="ip_button_Popup_Red">CANCEL</button>
+                            </div>
+                        </div>
+                        <div style="width: 100%; margin-top: 0px;"><p class="downloadAcceptTitle" style="color: black; text-align: right;">* Mandatory</p></div>
+                        {{#if validationMsg}}
+                            <p type="text" id="confirmDomProvideDetailsTeam" name="confirmDomProvideDetailsTeam" style="background-color:none; border:none; cursor:default; font-weight:normal; width:100%;font-size: 12px;color: red;" onfocus="this.blur()" readonly> <span style="font-size: 12px; border: 0px none; color: red; background: none repeat scroll 0px center transparent;">* Highlighted players does not match team criteria
+                                {{#if MandatoryValidationPlayers}}
+                                    and all mandatory players are required
+                                {{/if}}
+                            </span>
+                                <input style="font-size: 12px; border: 0px none; color: blue; background: none repeat scroll 0px center transparent; text-decoration: underline;" value="Edit team and continue your subscription" id="editTeamForNoTeam" type="button"><span style="font-size: 12px; border: 0px none; color: red; background: none repeat scroll 0px center transparent;">or</span><input style="font-size: 12px; border: 0px none; color: blue; background: none repeat scroll 0px center transparent; text-decoration: underline;" value="Create new team and continue your subscription" id="createTeamForNoTeam" type="button">
+                        </p>
+                        {{else}}
+                        {{#if MandatoryValidationPlayers}}
+                            <p type="text" id="confirmDomProvideDetailsTeam" name="confirmDomProvideDetailsTeam" style="background-color:none; border:none; cursor:default; font-weight:normal; width:100%;font-size: 12px;color: red;" onfocus="this.blur()" readonly> <span style="font-size: 12px; border: 0px none; color: red; background: none repeat scroll 0px center transparent;">
+                                All mandatory players are required
+                            </span>
+                            <input style="font-size: 12px; border: 0px none; color: blue; background: none repeat scroll 0px center transparent; text-decoration: underline;" value="Edit team and continue your subscription" id="editTeamForNoTeam" type="button"><span style="font-size: 12px; border: 0px none; color: red; background: none repeat scroll 0px center transparent;">or</span><input style="font-size: 12px; border: 0px none; color: blue; background: none repeat scroll 0px center transparent; text-decoration: underline;" value="Create new team and continue your subscription" id="createTeamForNoTeam" type="button">
+                        </p>
+                        {{else}}
+                            <p type="text" id="confirmDomProvideDetailsTeam" name="confirmDomProvideDetailsTeam" style="background-color:none; border:none; cursor:default; font-weight:normal; width:100%;font-size: 12px;color: red;" onfocus="this.blur()" readonly></p>
+                        {{/if}}
+                        {{/if}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</template>
+
+
+<template name="adminSubscribePopUp">
+    <div  class="modal" id="adminSubscribePopUp" aria-hidden="true" >
+      	<div class="modal-dialog subTeamSubsModal-sm">
+      		<div id="subDomainCenter" class="modal-dialog subTeamSubsModal-sm" style="width: 601px !important;">
+                <div class="modal-content">
+                    <div class="modal-header selectSubDomainsHeader">
+                        <p class="modal-title" id="setEventNameHeader" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;text-align:center"></p>
+                    </div>
+                    <div class="modal-body subDomainModalBody">
+                        <div class="teamSubscribeMainTitle" style="height:18em;overflow:auto;margin-top:-1% !important;">
+                            <div class="checkMainTag">
+                                <div class="selectTeamSubscribeEvent" id="selectMainTag">
+                                    {{#if lTeams}}
+                                    <div class="subTeamSubscribeCheckBoxDiv" style="border:0px !important;">
+                                        {{#if checkSubHide lEventid}}
+                                        <select id="mainTag" style="width:100%;">
+                                            <option value="1" disabled selected>Select Team</option>
+                                            {{#each lTeams}}
+                                            <option value={{this._id}} {{checkTempBeforeSaveAdmin this._id}}>{{teamNameCheckSubString this._id}}</option>
+                                            {{/each}}
+                                        </select>
+                                        {{else}}
+                                        <select id="mainTag" style="width:100%;" disabled>
+                                            <option value="1" disabled selected>Select Team</option>
+                                            {{#each lTeams}}
+                                            <option value={{this._id}} {{checkTempBeforeSaveAdmin this._id}} disabled>{{teamNameCheckSubString this._id}}</option>
+                                            {{/each}}
+                                        </select>
+                                        {{/if}}
+                                    </div>
+                                    {{else}}
+                                    <div class="subTeamSubscribeCheckBoxDiv" style="border:0px !important;">
+                                        <select id="mainTag" style="width:100%;">
+                                            <option value="1" disabled selected>No Teams</option>
+                                        </select>
+                                    </div>
+                                    <div style="width: 100%; margin-top: 44px;"><p style="text-align: center;"><input style="font-size: 12px; border: 0px none; color: green; background: none repeat scroll 0px center transparent; text-decoration: underline;" value="Create a team and continue your subscription" id="createTeamForNoTeam" type="button"></p></div>
+                                    {{/if}}
+                                </div>
+                                <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+                                    {{#if selectedPlayerNameEdit}}
+                                    <thead style="">
+                                        <tr class="headeSubDiv2_entryFAca_backWhite">
+                                            <th class="pAnalytics2_entryFAca_backWhite" style="background: #505050!important;color:white;font-size:10px;">Sl No.</th>
+                                            <th class="pAnalytics2_entryFAca_backWhite" style="background: #505050 !important;color:white;font-size:10px;">Player Type</th>
+                                            <th class="pAnalytics2_entryFAca_backWhite" style="background: #505050 !important;color:white;font-size:10px;">Players</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    {{/if}}
+                                    <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                                        {{#if selectedPlayerNameEdit}}
+                                        {{#each playerCriteriasEdit}}
+                                        <tr class="headerAnalytics3" id="headerAnalytics3">
+                                            <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{getSlNoPlayerTeam this.playerNo}}{{mandatoryCriteriaEdit}}</td>
+                                            <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">
+                                                <p style="text-align: left;margin:0px !important;font-size:12px;">&nbsp;Gender:&nbsp;{{GenderCriteriaEdit}}</p>
+                                                <p style="text-align: left;margin:0px !important;font-size:12px;">&nbsp;Born:&nbsp;{{dobCriteriaEdit}}</p>
+                                                <p style="text-align: left;margin:0px !important;font-size:12px;">&nbsp;Player Location:&nbsp;{{locCriteriaEdit}}</p>
+                                                {{#if requiredAffiliation}}
+                                                    <p style="text-align: left;margin:0px !important;font-size:12px;">&nbsp;Affiliation Id:&nbsp;{{requiredAffiliation}}</p>
+                                                {{/if}}
+                                            </td>
+                                            <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">
+                                                 {{#each selectedPlayerNameEdit}}
+                                                 {{#if checkForThisPlayerNumber this.playerNumber ../playerNo}}
+                                                <div type="text" id="" class="addUSERSForTeam">
+                                                    <p class="userSelectedForTeamP" style="text-align: center;margin:0px !important;font-size:12px;color:{{CriteriaValidOrNot}};">&nbsp;&nbsp;{{fetchNameOnID this.playerId}}</p>
+                                                </div>
+                                                {{/if}}
+                                                {{/each}} 
+                                            </td>                                       
+                                        </tr>
+                                        {{/each}}
+                                        {{/if}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="selectTeamSubscribeContent">
+                            {{#if checkSubHide lEventid}}
+                            <div class="yesSubDomains">
+                                <button type="submit" id="yesButtonSubTeamEvent" class="ip_button_Popup_Black">OK</button>
+                            </div>
+                            {{/if}}
+                            <div class="noSelectTeam">
+                                <button type="button" id="noButtonSubTeamEvent" class="ip_button_Popup_Red">CANCEL</button>
+                            </div>
+                        </div>
+                        <div style="width: 100%; margin-top: 0px;"><p class="downloadAcceptTitle" style="color: black; text-align: right;">* Mandatory</p></div>
+                        {{#if validationMsg}}
+                            <p type="text" id="confirmDomProvideDetailsTeam" name="confirmDomProvideDetailsTeam" style="background-color:none; border:none; cursor:default; font-weight:normal; width:100%;font-size: 12px;color: red;" onfocus="this.blur()" readonly> <span style="font-size: 12px; border: 0px none; color: red; background: none repeat scroll 0px center transparent;">* Highlighted players does not match team criteria
+                                {{#if MandatoryValidationPlayers}}
+                                    and all mandatory players are required
+                                {{/if}}
+                            </span>
+                                <input style="font-size: 12px; border: 0px none; color: blue; background: none repeat scroll 0px center transparent; text-decoration: underline;" value="Edit team and continue your subscription" id="editTeamForNoTeam" type="button"><span style="font-size: 12px; border: 0px none; color: red; background: none repeat scroll 0px center transparent;">or</span><input style="font-size: 12px; border: 0px none; color: blue; background: none repeat scroll 0px center transparent; text-decoration: underline;" value="Create new team and continue your subscription" id="createTeamForNoTeam" type="button">
+                        </p>
+                        {{else}}
+                        {{#if MandatoryValidationPlayers}}
+                            <p type="text" id="confirmDomProvideDetailsTeam" name="confirmDomProvideDetailsTeam" style="background-color:none; border:none; cursor:default; font-weight:normal; width:100%;font-size: 12px;color: red;" onfocus="this.blur()" readonly> <span style="font-size: 12px; border: 0px none; color: red; background: none repeat scroll 0px center transparent;">
+                                All mandatory players are required
+                            </span>
+                            <input style="font-size: 12px; border: 0px none; color: blue; background: none repeat scroll 0px center transparent; text-decoration: underline;" value="Edit team and continue your subscription" id="editTeamForNoTeam" type="button"><span style="font-size: 12px; border: 0px none; color: red; background: none repeat scroll 0px center transparent;">or</span><input style="font-size: 12px; border: 0px none; color: blue; background: none repeat scroll 0px center transparent; text-decoration: underline;" value="Create new team and continue your subscription" id="createTeamForNoTeam" type="button">
+                        </p>
+                        {{else}}
+                            <p type="text" id="confirmDomProvideDetailsTeam" name="confirmDomProvideDetailsTeam" style="background-color:none; border:none; cursor:default; font-weight:normal; width:100%;font-size: 12px;color: red;" onfocus="this.blur()" readonly></p>
+                        {{/if}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>     
+      </div>
+    </div>
+</template>
+
+
+<template name="setPlayerEntry">
+    <div  class="modal" id="setPlayerEntry" aria-hidden="true" >
+        <div class="modal-dialog subTeamSubsModal">
+            <div id="subDomainCenter" class="modal-dialog subTeamSubsModal" style="width: 601px !important;">
+                <div class="modal-content">
+                    <div class="modal-header selectSubDomainsHeader">
+                        <p class="modal-title" id="setEventNameHeader" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;text-align:center">
+                            {{tournamentName}} - {{eventName}}
+
+                        </p>
+                            
+                    </div>
+                    <div class="modal-body subDomainModalBody">
+                        <div class="" style="height:18em;overflow:auto;margin-top:-1% !important;">
+                            
+                            <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <label class="control-label customLabel">Round Number : 1</label>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <label class="control-label customLabel">Match Number : {{matchNumber}}</label>
+                                    
+                                </div>                          
+                            </div>
+                          
+
+                            <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                    <label class="control-label customLabel"> Choose bye</label>
+                                </div>
+                                <div class = "col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                    
+                                    <form action="">                                
+                                      <input type="radio" name="matchStatus" value="bye" id="matchStatus" class="adminUpload_radio">
+                                        <label  name="selectAssociation" class="adminUpload_label">Bye</label>
+                                      <input type="radio" name="matchStatus" value="nobye" id="matchStatus">
+                                      <label  name="selectAssociation" class="adminUpload_label">No Bye</label>
+                                    </form>
+                                </div>
+                            </div>
+                   
+                            <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                    <label class="control-label customLabel"> Set Player</label>
+                                </div>
+                                <div class = "col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                    {{#if fetchPlayerEntries}}
+                                    <div class="liveUpdatesGames">
+                                        <select id="entrySelection" style="width:100%;color:black" name="entrySelection" class="select2">
+                                                <option value="1" name="1" disabled selected>Select Player</option>
+                                                {{#each fetchPlayerEntries}}
+                                                <option name={{this.userId}} value={{this.userName}} >{{this.userName}}</option>
+                                                {{/each}}
+                                        </select>
+                                    </div>
+                                    {{/if}}
+                                </div>
+                            </div>
+                                    
+                                  
+                               
+                        </div>
+                        <div class="selectTeamSubscribeContent">
+                            <div class="yesSubDomains">
+                                <button type="submit" id="setEntry" class="ip_button_Popup_Black">OK</button>
+                            </div>
+                            <div class="noSelectTeam">
+                                <button type="button" id="noEntry" class="ip_button_Popup_Red">CANCEL</button>
+                            </div>
+                        </div>
+                     
+                       
+                    </div>
+                </div>
+            </div>     
+      </div>
+    </div>
+</template>
+
+
+
+<template name="manageTournamentFeatures">
+   
+    <div class="" style="padding: 0px 0px 0px 10px !important;">
+        <div class=''>
+            <p style="color:white;font-size:19px;">Admin API</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;">
+            <select id="adminSelectionType" style="font-size:12px;" >
+                <option selected disabled>Select Function</option>
+                <option value="tournamentNameChange" id="tournamentNameChange">Tournament Name Change</option>
+                <option value="tournamentSet" id="tournamentSetChange">Tournament Draw Match Set</option>
+ 
+
+            </select>
+        </div>
+        <div id="adminRenderOnFunction"></div>
+
+    </div>
+
+  <div id = "tournamentContent"></div>
+  <div id ="tournamentNameContent"></div>
+  <div id ="tournamentDrawMatchSetContent"></div>
+
+</template>
+
+
+<template name="bulkSubscription">
+    <div class="container" style="margin-top: 50px;background:white;">
+        <div class ="row mainContent_myEvents" style="height: auto !important">
+            <div class='row-same-height'>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                    <div class="mainTitle">
+                        <p class="title">Upload Player Subscription</p>
+                            <input type="button" id="cancelUploadPointsMenu" class="ip_button_LightGrey" value="Cancel" style="order:2"/>
+                             <input type="button" id="uploadSubscriptionBtn" class="ip_button_LightGrey" value="Save"   style="order:1"/>
+                    </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:2.1px !important">       
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 " style="padding:5px !important">
+                        <p class="adminUpload_label" id="sportsLabel" style="font-size:12px !important"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Tournament:</p>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="padding:5px !important" >
+                        <select class="" id="subTourSelection" name="subTourSelection" style="font-size:12px !important;height:2.5em !important">
+                            <option selected disabled value="0">Select Tournament</option>
+                            {{#if tourList}}
+                            {{#each tourList}}
+                                <option id="sportSelection" name="{{this._id}}">{{this.eventName}}</option>
+                            {{/each}}
+          
+                            {{/if}}
+                        </select> 
+                    </div>
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 " style="padding:5px !important">
+                        <p class="adminUpload_label" id="sportsLabel" style="font-size:12px !important"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Promo:</p>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding:5px !important" >
+                        <input type="text" placeholder="" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; border: 1px solid grey;border-radius: 5px;padding: 5px;" id="promo"/>
+                    </div>
+                   
+                </div>
+              
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding;0px !important;margin-top:2.1px !important" >
+                    <div style="padding:0px !important;" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <input style="font-size: 12px;" accept=".csv" name="uploadPlayersSubscription" type="file" id='${multipartFilePath}' onclick="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))" >
+                    </div>
+                   
+                </div>
+                <div  class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                    <p class="adminUpload_label" id="" style="font-size:12px !important"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">{{uploadStatus}}</span></p>
+                </div>
+
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                     <p class="adminUpload_label" id="" style="font-size:12px !important"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important;color:black !important">Upload Errors : </span></p>
+
+                    <div name="description" id="description" class="eventDescription_adminUpload" style="background:white !important;min-height:8em !important;max-height:8em !important">
+                        {{#if logsErrorEx}}
+                            <input class="adminUpload_button_error" id="downloadErrorLogs" value="Download Error logs" type="button"><br>
+                        {{/if}}
+                        {{#if logsErrorEx}}
+                            <span style="color:red;font-size:12px;">Cannot Upload, correct the following errors and try again</span><br>
+                        {{/if}}
+                        {{#if logsErrorNumber}}
+                            <span style="color:maroon;font-size:12px;">Number of Errors: {{logsErrorNumber}}</span>
+                            <br>
+                        {{/if}}
+                        {{#each logsError}}
+                            <span style="color:red;font-size:12px;">Line Number:&nbsp;{{this.line}}</span>
+                            <br>
+                            <span style="color:black;font-size:12px;">Error:&nbsp;{{this.message}}</span>
+                            <br>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                    <p class="adminUpload_label" id="" style="font-size:12px !important"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important;color:black !important">Upload Result : </span></p>
+
+                    <div name="description" id="description" class="eventDescription_adminUpload" style="background:white !important;min-height:8em !important;max-height:8em !important">
+                        {{#if dupPlayersLog}}
+                        <p> Duplicate Players : {{dupPlayersCount}}</p>
+                            <input class="adminUpload_button_error" id="downloadDupPlayers" value="Download Duplicate Players" type="button"><br>
+                        
+                        {{/if}}
+
+                        {{#if regPlayersLog}}
+                            <p> Registered Players : {{regPlayersCount}}</p>
+
+                            <input class="adminUpload_button_error" id="downloadRegPlayers" value="Download Registered Players" type="button"><br>
+                        {{/if}}
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="confirmInsertPlayerRender"></div>
+</template>
+
+
+
+
+
+
+
+<template name="tournamentNameLayout">
+
+    <div  class="modal" id="tournamentNameLayout" aria-hidden="true" >
+      <div class="modal-dialog tournamentNameLayout-lg">
+        <div class="modal-content">
+          <div class="modal-header headerClass">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title myModalLabel " style='text-align:center'>Modify Tournament Name</h4>
+         </div>
+
+         <div class="modal-body">
+
+            <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom: 10px !important">
+                <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <label class="control-label customLabel">Tournament</label>
+                </div>
+                <div class = "col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                    <div class="selectGreyBackground">
+                        <select id="tournamentNameList" style="width:100%;color:black" name="tournamentNameList" class="select2">
+                        {{#if tourList}}
+                        {{#each tourList}}
+                            <option id="eventSelection" name="{{this._id}}" style='color:black !important'>{{this.eventName}}</option>
+                        {{/each}}
+                        {{/if}}  
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+             <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: :10px !important">
+                <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <label class="control-label customLabel">Name</label>
+                </div>
+                <div class = "col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                    <input type="text" placeholder="enter name" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; border: 1px solid grey;border-radius: 5px;padding: 5px;" id="newTourName"/>
+                </div>
+            </div>
+  
+        </div>
+
+        <div class="modal-footer">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style='padding-bottom:4px;'>
+            <div class ="row">
+              <p id="impMsg" class='impMsg'></p><p id="infoMsg" class='impMsg'></p> 
+ 
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " >
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " >
+                </div>
+
+                <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 " style='text-align:center;' >
+                  <button type="button" class="ip_button_Popup_Black" id="saveTourName">Save</button>
+                  <button type="button" class="ip_button_Popup_Red" data-dismiss="modal" id="closeCreateDraw">Cancel</button>
+                </div>
+
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " > </div>               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+
+<template name="tournamentDrawMatchSetLayout">
+  
+
+    <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom: 10px !important">
+        <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <label class="control-label customLabel" style="color:white !important">Tournament</label>
+        </div>
+        <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="selectGreyBackground">
+                <select id="tourListSelection" style="width:100%;color:black" name="tourListSelection" class="select2">
+                    {{#if tourList}}
+                    <option id="tourSelection" style='color:black !important' disabled="true" selected="true">Select</option>
+                    {{#each tourList}}
+                        <option id="tourSelection" name="{{this._id}}" style='color:black !important'>{{this.eventName}}</option>
+                    {{/each}}
+                    {{/if}}  
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom: 10px !important">
+        <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <label class="control-label customLabel" style="color:white !important">Event</label>
+        </div>
+        <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="selectGreyBackground">
+                <select id="eventDrawList" style="width:100%;color:black" name="eventDrawList" class="select2">
+                     <option id="eventSelection" style='color:black !important' disabled="true" selected="true">Select</option>
+                    {{#if drawEvents}}
+                    {{#each drawEvents}}
+                        <option id="eventSelection" name="{{this}}" style='color:black !important'>{{this}}</option>
+                    {{/each}}
+                    {{/if}}  
+                </select>
+            </div>
+        </div>
+        {{#if settingsExist}}
+            <div class="row col-md-12 col-xs-12 col-lg-12 col-sm-12 " style='text-align:center;' >
+                <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9"></div>
+                <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <button type="button" class="ip_button_Popup_Black" id="saveMatchSet">Save</button>
+                   
+                </div>
+            </div>
+
+            <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h5 class="modal-title myModalLabel" id="myModalLabel" style='text-align:center'>Settings Configuration</h5>
+            </div>
+                      
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important">
+                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-left:15px !important;padding-right:15px !important;">
+                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important">
+                        <div class="row no-gutter">
+                            <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup1"  style="border-right:0px">
+                                <p class="tableHeadPopupPtagH">Round No.</p>
+                            </div>
+                            <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 tableHeadPopup1" style="border-right:0px">
+                                <p class="tableHeadPopupPtagH">Round Name</p>
+                            </div>
+                            <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup1" style="border-right:0px">
+                                <p class="tableHeadPopupPtagH">No.of Sets</p>
+                            </div>
+                            <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup1">
+                                <p class="tableHeadPopupPtagH">Min Score</p>
+                            </div>
+                            <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 tableHeadPopup1" style="border-left:0px">
+                                <p class="tableHeadPopupPtagH">Min Difference</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 scrollableDiv" style="padding:0px !important;min-height:3em;border: 1px solid;border-top: 0px;" id="scrollableDiv" >
+                        {{#each settingsExist}}
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important" >
+                                <div class="row no-gutter" id="test">
+                                    <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup"  style="border-left:0px;">
+                                        <input class="tableHeadPopupPtag roundNumVal" autocomplete="off" name="roundNumberPopup[{{this.roundNumber}}]" placeholder="No." id="roundNumberPopup[{{this.roundNumber}}]" value="{{this.roundNumber}}" readonly style="cursor:default!important;" onfocus="this.blur()" disabled="true">
+                                    </div>
+                                    <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 tableHeadPopup" style="border-right:0px;border-left:0px;" id="roundNamePopupDiv">
+                                        <input class="tableHeadPopupPtag roundNameVal" autocomplete="off" value="{{this.roundName}}" placeholder="Round Name" id="roundNamePopup[{{this.roundNumber}}]"   name="roundNamePopup[{{this.roundNumber}}]" disabled="true">
+                                    </div>
+                                    <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup" style="border-right:0px">
+                                        <input class="tableHeadPopupPtag" autocomplete="off" name="noofSetsPopup[{{this.roundNumber}}]" placeholder="No. of Sets" id="noofSetsPopup[{{this.roundNumber}}]" value="{{this.noofSets}}">
+                                    </div>
+                                    <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup" style="border-right:0px">
+                                        <input class="tableHeadPopupPtag" autocomplete="off" name="minPointsPopup[{{this.roundNumber}}]" placeholder="Min score" id="minPointsPopup[{{this.roundNumber}}]" value="{{this.minScores}}" disabled="true">
+                                    </div>
+                                    <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 tableHeadPopup" style="border-right:0px;">
+                                        <input class="tableHeadPopupPtag" autocomplete="off" name="minDifferencePopup[{{this.roundNumber}}]" id="minDifferencePopup[{{this.roundNumber}}]" placeholder="Min. Difference" value="{{this.minDifference}}" disabled="true">
+                                    </div>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height: 2em !important;">
+                <p style="font-size:12px;color:red;cursor:default;" id="editSettingsPopupError"></p>
+                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+            </div>
+        {{/if}}
+    </div>
+
+    
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

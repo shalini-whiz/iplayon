@@ -1,0 +1,113 @@
+<template name="subscribeToTournamemnt">
+    <form id="multipleSubscription">
+        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12 mainContent_myEvents" style="padding-left:15px !important;padding-right:15px !important;">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                <div class="mainTitle">
+                    {{#if Template.subscriptionsReady}} {{#each lEvent}}
+                    <p class="title">{{NameSubString this.projectName}}:&nbsp;{{NameSubString this.eventName}}</p>
+                    {{/each}} {{else}}
+                    <p class="title">Tournament&nbsp;</p>
+                    {{/if}} {{#if Template.subscriptionsReady}}
+                    <!--{{#if checkSubHideStar lEventid}}
+                    <a href="" class="eventTournUpd" id="eventTournamentUpdates"><span class="glyphicon glyphicon-star"></span></a>
+                    {{/if}}-->
+                    {{#if checkSubHide lEventid}}
+                    <!--<input type="button" id="eventPay" class="ip_button_LightGrey" style="order:1" value="Pay" />
+                -->
+                    <input type="submit" id="eventSubscribe" class="ip_button_LightGrey" style="order:1" value="Save" />
+                    <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="Cancel" /> {{else}} {{#if Template.subscriptionsReady}}
+                    <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="" /> {{else}}
+                    <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="" /> {{/if}} {{/if}} {{else}}
+                    <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="" /> {{/if}}
+                </div>
+            </div>
+            <div class="container col-md-12 col-xs-12 col-sm-12 col-lg-12 subscribeToAllMainDiv">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 subscribeToAllheaderMainDiv">
+                    <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 subscribeToAllheaderDiv" style="border-top-left-radius: 5px;">
+                        <p class="subscribeToAllheader">Event Name</p>
+                    </div>
+                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllheaderDiv">
+                        <p class="subscribeToAllheader">Starts On</p>
+                    </div>
+                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllheaderDiv">
+                        <p class="subscribeToAllheader">Ends On</p>
+                    </div>
+                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllheaderDiv" style="width:15%!important;">
+                        <p class="subscribeToAllheader">Entry Fee</p>
+                    </div>
+                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllheaderDiv " style="border-right:0px !important;border-top-right-radius: 5px;padding:0px !important;width:18.333%;!important;">
+                        <p class="subscribeToAllheader">Subscribe</p>
+                    </div>
+                    <!--/div-->
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 scrollableLisst" id="scrollableLisst">
+                    {{#each eventsDetails.[0].eventIds}}
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 subscribeToAllListMainDiv" name="mainDivForMail">
+                        <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 subscribeToAllListDiv" id="subscribeToAllListDivRoute">
+                            <p class="subscribeToAllList" id="eventNameMail">{{eventNameSingleSub this}}</p>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllListDiv" id="">
+                            <p class="subscribeToAllList" style="text-align:center;cursor:default !important;" id="eventStartDateMail">{{eventStartDateSingleSub this}}</p>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllListDiv">
+                            <p class="subscribeToAllList" style="text-align:center;cursor:default !important;" id="eventEndDateMail">{{eventEndDateSingleSub this}}</p>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllListDiv" style="width:15%!important;">
+                            <p class="subscribeToAllList" style="text-align:center;cursor:default !important;" id="eventPrizeMail">{{eventPrizeSingleSub this}}</p>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllListDiv checkSingleOrTeamSelectGlyph" name="checkBoxDivMulti" style="width: 18.333%;!important;border-right:1px solid black;text-align:center;" id="checkBoxSinglePlayerForFina">
+                            {{#if checkSubHide lEventid}} 
+                                {{#if dataOFBirthGenderPlayer}}
+                                    <div style="display:flex !important;">
+                                        <p style="margin: 0px !important;text-align: center;width: 100%;">
+                                        <input type="checkbox" name="{{this}}" id="checkTeamOrSingle" class="subscribeCheckBox validCheckBox{{this}}" {{subscribedOrNotMultiple this}} value="{{eventAbbNameSingleSub this}}">
+                                        <span class="{{teamEventOrSingleEvent this}}" style="font-size: 14px;color: green;cursor:pointer;margin-top: 3px;margin-left: 3px;" id="checkedOrNotPopup"></span> 
+                                        </p>
+                                    </div>
+                                    {{else}}
+                                    <div style="display:flex !important;">
+                                        <p style="margin: 0px !important;text-align: center;width: 100%;">
+                                        <input type="checkbox" name="{{this}}" id="checkTeamOrSingle" class="subscribeCheckBox validCheckBox{{this}}" {{subscribedOrNotMultiple this}} value="{{eventAbbNameSingleSub this}}" disabled>
+                                        <span class="{{teamEventOrSingleEvent this}}" style="font-size: 14px;color: green;margin-top: 3px;margin-left: 3px;" id="checkedOrNotPopup" disabled></span> 
+                                        </p>
+                                    </div>
+                                {{/if}} 
+                            {{else}}
+                                <input type="checkbox" name="{{this}}" id="checkTeamOrSingle" class="subscribeCheckBox" {{subscribedOrNotMultiple this}} value="{{eventAbbNameSingleSub this}}" disabled>
+                                <span class="{{teamEventOrSingleEvent this}}" style="font-size: 14px;color: green;cursor:pointer;margin-top: 3px;margin-left: 3px;" id="checkedOrNotPopup"></span> 
+                            {{/if}}
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:24px!important">
+                    <div class="checkAcceptTermsWithConfirm" style="margin-top:1%!important">
+                        {{#if checkSubHide lEventid}}
+                        <input value="" type="checkbox" name="checkAcceptboxTeam" id="checkAcceptboxTeam" class="checkboxAccept" style="margin-left:0px;
+                        margin-right:0px;margin-top: 4px;" /> {{else}}
+                        <input value="" type="checkbox" name="checkAcceptboxTeam" id="checkAcceptboxTeam" class="checkboxAccept" style="margin-left:0px;
+                        margin-right:0px;margin-top: 4px;" disabled/> {{/if}}
+                        <p class="downloadAcceptTitle" style="color:grey;margin-top: 3px!important;">Accept </p>
+                        <a class="downloadAcceptPdf" href="/createEvents.pdf" download target="_parent" style="margin-right: auto!important;margin-left: 1%!important;margin-top: 3px!important;"><span style="color:blue">Terms & Conditions</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;">
+                    <p id="sendingEmail" style="color:red;font-size:13px;margin:0;"></p>
+                </div>
+                {{#each lEvent}}
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;padding-top:10px;">
+                    <p id="dsf" style="color:red;font-size:13px;margin:0;">Entries closes on:{{this.eventSubscriptionLastDate}}</p>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{> errorPopup}}{{>sendingMailPopup}} {{>sendingMailPopup2}}{{> alreadySubscribed}}
+        <div id="renderTeamMultiSubs"></div>
+        <div id="renderPaymentWindow"></div>
+    </form>
+    <!--{{>teamMultiSubscribePopup}}-->
+</template>
+
+
+

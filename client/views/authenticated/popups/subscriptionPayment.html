@@ -1,0 +1,161 @@
+<!-- shalini codes starts here -->
+
+<template name="subscriptionPayment">
+     <div  class="modal" id="subscriptionPayment" aria-hidden="true" >
+      <div class="modal-dialog subscriptionPayment-lg">
+        <div class="modal-content">
+          <div class="modal-header headerClass">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title myModalLabel " style='text-align:center'>Subscription Payment&nbsp;&nbsp;
+              {{#if Template.subscriptionsReady}} 
+                {{#each lEvent}}
+                  {{NameSubString this.projectName}}:&nbsp;{{NameSubString this.eventName}}
+                {{/each}} 
+              {{else}}
+                Tournament&nbsp;
+              {{/if}} 
+
+
+           </h4>
+           
+            
+         </div>
+
+         <div class="modal-body">
+          <div class="container col-md-12 col-xs-12 col-sm-12 col-lg-12 subscribeToAllMainDiv">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 subscribeToAllheaderMainDiv">
+                    <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 subscribeToAllheaderDiv" style="border-top-left-radius: 5px;">
+                        <p class="subscribeToAllheader">Event Name</p>
+                    </div>
+                    <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 subscribeToAllheaderDiv" style="border-top-left-radius: 5px;">
+                        <p class="subscribeToAllheader">Event Fee</p>
+                    </div>
+                   
+                   
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 scrollableLisst" id="scrollableLisst">
+
+                    {{#each eventsDetails.[0].eventIds}}
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 subscribeToAllListMainDiv" name="mainDivForMail">
+                        <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 subscribeToAllListDiv" id="subscribeToAllListDivRoute">
+                            <p class="subscribeToAllList" id="eventNameMail">{{eventNameSingleSub this}}</p>
+                        </div>
+
+                         <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 subscribeToAllListDiv" id="subscribeToAllListDivRoute">
+                            <p class="subscribeToAllList" >{{eventPrizeSingleSub this}}</p>
+                        </div>
+                        
+                                  
+                    </div>
+                    {{/each}}
+                </div>
+              </div>
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:24px!important">
+                    <div class="checkAcceptTermsWithConfirm" style="margin-top:1%!important">
+                        {{#if checkSubHide lEventid}}
+                        <input value="" type="checkbox" name="checkAcceptboxTeam" id="checkAcceptboxTeam" class="checkboxAccept" style="margin-left:0px;
+                        margin-right:0px;margin-top: 4px;" /> {{else}}
+                        <input value="" type="checkbox" name="checkAcceptboxTeam" id="checkAcceptboxTeam" class="checkboxAccept" style="margin-left:0px;
+                        margin-right:0px;margin-top: 4px;" disabled/> {{/if}}
+                        <p class="downloadAcceptTitle" style="color:grey;margin-top: 3px!important;">Accept </p>
+                        <a class="downloadAcceptPdf" href="/createEvents.pdf" download target="_parent" style="margin-right: auto!important;margin-left: 1%!important;margin-top: 3px!important;"><span style="color:blue">Terms & Conditions</span>
+                        </a>
+                    </div>
+                </div>
+
+
+
+         
+        </div>
+
+        <div class="modal-footer">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style='padding-bottom:4px;'>
+            <div class ="row">
+              <p id="impMsg" class='impMsg'></p><p id="infoMsg" class='impMsg'></p> 
+ 
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " >
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " >
+                </div>
+
+                <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 " style='text-align:center;' >
+                  <button type="button" class="ip_button_Popup_Black" id="createDrawFlow2">Continue</button>
+                  <button type="button" class="ip_button_Popup_Red" data-dismiss="modal" id="closeCreateDraw">Cancel</button>
+                </div>
+
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " > </div>               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!-- shalini codes ends here -->
+
+
+<!--
+  <template name="subscriptionPayment">
+    <div id="subscriptionPayment">
+        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12 mainContent_myEvents" style="padding-left:15px !important;padding-right:15px !important;">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+
+                <div class="mainTitle">
+                    {{#if Template.subscriptionsReady}} 
+                    {{#each lEvent}}
+                    <p class="title">{{NameSubString this.projectName}}:&nbsp;{{NameSubString this.eventName}}</p>
+                    {{/each}} {{else}}
+                    <p class="title">Tournament&nbsp;</p>
+                    {{/if}} 
+
+                </div>
+            </div>
+            <div class="container col-md-12 col-xs-12 col-sm-12 col-lg-12 subscribeToAllMainDiv">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 subscribeToAllheaderMainDiv">
+                    <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 subscribeToAllheaderDiv" style="border-top-left-radius: 5px;">
+                        <p class="subscribeToAllheader">Event Name</p>
+                    </div>
+                    
+                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllheaderDiv" style="width:15%!important;">
+                        <p class="subscribeToAllheader">Entry Fee</p>
+                    </div>
+                   
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 scrollableLisst" id="scrollableLisst">
+
+                    {{#each eventsDetails.[0].eventIds}}
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 subscribeToAllListMainDiv" name="mainDivForMail">
+                        <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 subscribeToAllListDiv" id="subscribeToAllListDivRoute">
+                            <p class="subscribeToAllList" id="eventNameMail">{{eventNameSingleSub this}}</p>
+                        </div>
+                        
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 subscribeToAllListDiv" style="width:15%!important;">
+                            <p class="subscribeToAllList" style="text-align:center;cursor:default !important;" id="eventPrizeMail">{{eventPrizeSingleSub this}}</p>
+                        </div>
+                        
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:24px!important">
+                    <div class="checkAcceptTermsWithConfirm" style="margin-top:1%!important">
+                        {{#if checkSubHide lEventid}}
+                        <input value="" type="checkbox" name="checkAcceptboxTeam" id="checkAcceptboxTeam" class="checkboxAccept" style="margin-left:0px;
+                        margin-right:0px;margin-top: 4px;" /> {{else}}
+                        <input value="" type="checkbox" name="checkAcceptboxTeam" id="checkAcceptboxTeam" class="checkboxAccept" style="margin-left:0px;
+                        margin-right:0px;margin-top: 4px;" disabled/> {{/if}}
+                        <p class="downloadAcceptTitle" style="color:grey;margin-top: 3px!important;">Accept </p>
+                        <a class="downloadAcceptPdf" href="/createEvents.pdf" download target="_parent" style="margin-right: auto!important;margin-left: 1%!important;margin-top: 3px!important;"><span style="color:blue">Terms & Conditions</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;">
+                    <p id="sendingEmail" style="color:red;font-size:13px;margin:0;"></p>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</template>
+-->

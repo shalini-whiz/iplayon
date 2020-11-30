@@ -1,0 +1,203 @@
+<template name="adminUploadPlayersAssociation">
+	{{#if notAdmin}}
+	<div class=''>
+		<p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+	</div>
+	{{else}}
+	<div class="container" style="background:white;">
+	<div class=''>
+		<p style="color:black;font-size:19px;">Upload Players</p>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="display:flex;">
+			<input type="radio" id="selectAssociation" name="selectAcademyOrASS" class="adminUpload_radio" checked>
+			<label  name="selectAssociation" class="adminUpload_label">Upload to a state association</label>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="display:flex;">
+			<input type="radio" id="selectAcademy" name="selectAcademyOrASS" class="adminUpload_radio">
+			<label name="selectAcademy" class="adminUpload_label">Upload to a district association</label>
+		</div>
+	</div>
+	<div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="">
+			{{#if stateAssocChecked}}
+				<div class="col-xs-12 col-sm-9 col-md-12 col-lg-12" style="padding: 0px !important;">
+					<select id="selectAssociationSELECT" class="adminUpload_select">
+						<option disabled selected>Select State Association</option>
+						{{#each stateAssocChecked}}
+						<option value={{this.userId}}>{{this.userName}}({{getCityName}})</option>
+						{{/each}}
+					</select>
+				</div>
+			{{/if}}
+			{{#if selectAcadChecked}}
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;">
+					<select id="selectAcademySELECT" class="adminUpload_select">
+						<option disabled selected>Select district association</option>
+						{{#each selectAcadChecked}}
+						<option value={{this.userId}}>{{this.associationName}}({{this.city}})</option>
+						{{/each}}
+					</select>
+				</div>
+			{{/if}}
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 15px;;padding: 0px !important;">
+			{{#if selectAcadChecked}}
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-right: 0px !important;">
+					<p style="color:black;font-size:12px;margin-top:0px;">Last Inserted Affid Number:</p>
+				</div>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"  style="padding-left: 2px !important;">
+					<input type="text" readonly style="width: 69%;font-size: 11px;" value="{{selectedAcadLast}}">
+				</div>
+			{{/if}}
+			{{#if stateAssocChecked}}
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-right: 0px !important;">
+					<p style="color:black;font-size:12px;margin-top:0px;">Last Inserted Affid Number:</p>
+				</div>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"  style="padding-left: 2px !important;">
+					<input type="text" readonly style="width: 69%;font-size: 11px;" value="{{selectedAssocLast}}">
+				</div>
+			{{/if}}
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 5px;margin-bottom: 10px;padding: 0px !important;">
+			{{#if selectAcadChecked}}
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-right: 0px !important;">
+					<p style="color:black;font-size:12px;margin-top:0px;">State Association name/City:</p>
+				</div>
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding-left: 2px !important;">
+					<input type="text" readonly style="width:100%;font-size: 11px;" value="{{selectedAcadStateNAME}}">
+				</div>
+				<div class="col-xs-5 col-sm-5 col-md-2 col-lg-5" style="padding-left: 2px !important;">
+					<input type="text" readonly style="width:72%;font-size: 11px;" value="{{selectedAcadStateCITY}}">
+				</div>
+			{{/if}}
+		</div>
+		<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding;0px !important;">
+			{{#if selectAcadChecked}}
+			<div style="padding:0px !important;" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<input style="font-size: 12px;" accept=".csv" name="insertPlayersADMIN2" type="file" id='${multipartFilePath}'  onclick="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))" >
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px ! important;">
+				<input class="adminUpload_button" id="adminUpload_button21" value="Check Before Upload" type="button"> 
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px ! important;">
+				<input class="adminUpload_button" id="adminUpload_button2" value="Upload Players" type="button"> 
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 0px ! important; padding-bottom: 0px ! important; padding-right: 0px ! important; padding-left: 5px;">
+				<input class="adminUpload_button" id="adminDownloadCSV_button2" value="Download Players CSV" type="button"> 
+			</div>
+
+
+			{{/if}}
+			{{#if stateAssocChecked}}
+			<div style="padding:0px !important;" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<input style="font-size: 12px;" accept=".csv" name="insertPlayersADMIN1" type="file" id='${multipartFilePath}' onclick="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))" >
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px ! important;">
+				<input class="adminUpload_button" id="adminUpload_button11" value="Check Before Upload" type="button"> 
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px ! important;">
+				<input class="adminUpload_button" id="adminUpload_button1" value="Upload Players" type="button"> 
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 0px ! important; padding-bottom: 0px ! important; padding-right: 0px ! important; padding-left: 5px;">
+				<input class="adminUpload_button" id="adminDownloadCSV_button1" value="Download Players CSV" type="button"> 
+			</div>
+			
+			{{/if}}
+		</div>
+
+		
+		<!--div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+			{{#if selectAcadChecked}}
+			<div style="padding:0px !important;" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<input style="font-size: 12px;" accept=".csv" name="deletePlayersADMIN2" type="file" id='${multipartFilePath}'  onclick="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))" >
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px ! important;">
+				<input class="adminUpload_button" id="adminDelete_button2" value="Delete Players" type="button"> 
+			</div>
+			{{/if}}
+			{{#if stateAssocChecked}}
+			<div style="padding:0px !important;" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<input style="font-size: 12px;" accept=".csv" name="deletePlayersADMIN1" type="file" id='${multipartFilePath}'  onclick="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))" >
+			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px ! important;">
+				<input class="adminUpload_button" id="adminDelete_button1" value="Delete Players" type="button"> 
+			</div>
+			{{/if}}
+		</div-->
+		<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+			{{#if selectAcadChecked}}
+				<div style="padding:0px !important;" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+					<input class="adminUpload_button" id="checkPhoneMailRepeat11" value="Check Before Upload CSV" type="button"> 
+				</div>
+			{{/if}}
+			{{#if stateAssocChecked}}
+				<div style="padding:0px !important;" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+					<input class="adminUpload_button" id="checkPhoneMailRepeat" value="Check Before Upload CSV" type="button"> 
+				</div>
+			{{/if}}
+	    </div>
+
+		<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+			<div name="description" id="description" class="eventDescription_adminUpload" style="background:white !important;">
+			{{#if logsErrorEx}}
+				<input class="adminUpload_button_error" id="downloadErrorLogs" value="Download Error logs" type="button"><br>
+			{{/if}}
+			{{#if logsErrorEx}}
+				<span style="color:red;font-size:12px;">Cannot Upload, correct the following errors and try again</span>
+				<br>
+			{{/if}}
+			{{#if logsErrorNumber}}
+				<span style="color:maroon;font-size:12px;">Number of Errors: {{logsErrorNumber}}</span>
+				<br>
+			{{/if}}
+			{{#each logsError}}
+				<span style="color:red;font-size:12px;">Line Number:&nbsp;{{this.line}}</span>
+				<br>
+				<span style="color:black;font-size:12px;">Error:&nbsp;{{this.message}}</span>
+				<br>
+			{{/each}}
+			{{#if logSuccessBeforeUpload}}
+				<span style="color:red;font-size:12px;">No Errors, Click Upload Players Button..</span>
+			{{/if}}
+			{{#if numberOfPlayersInsertedFinally}}
+				<input class="adminUpload_button_error" id="adminInserted_2" value="Download Success log" type="button"><br>
+				{{#if stateAssocChecked}}
+					<span style="color:red;font-size:12px;">Type of upload selected: State Association</span><br>
+				{{else}}
+				{{#if selectAcadChecked}}
+					<span style="color:red;font-size:12px;">Type of upload selected: District Association</span><br>
+				{{/if}}
+				{{/if}}
+				<span style="color:red;font-size:12px;">Number of Players inserted:  {{numberOfPlayersInsertedFinally}}</span><br>
+				<span style="color:red;font-size:12px;">Number of Collection Updated: {{numberOfCollecUpdated}}</span><br>
+				<span style="color:red;font-size:12px;">Previous value of affiliation Id counter: {{previousInsertedCounter}}</span><br>				
+				{{#if stateAssocChecked}}
+					<span style="color:red;font-size:12px;">Current value of affiliation Id counter: {{selectedAssocLast}}</span>
+				{{else}}
+				{{#if selectAcadChecked}}
+					<span style="color:red;font-size:12px;">Current value of affiliation Id counter: {{selectedAcadLast}}</span>
+				{{/if}}
+				{{/if}}
+			{{/if}}
+			</div>
+		</div>
+	</div>
+	</div>
+	{{/if}}
+	<div id="confirmInsertPlayerRender"></div>
+</template>
+<!--
+	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding;0px !important;">
+			{{#if selectAcadChecked}}
+			<div style="padding:0px !important;" class="col-xs-3 col-sm-3 col-md-3 col-l33">
+				<input class="adminUpload_button" id="checkPhoneMailRepeat" value="Check Before Upload CSV" type="button"> 
+			</div>
+			{/if}}
+			{{#if stateAssocChecked}}
+			<div style="padding:0px !important;" class="col-xs-3 col-sm-3 col-md-3 col-l33">
+				<input class="adminUpload_button" id="checkPhoneMailRepeat" value="Check Before Upload CSV" type="button"> 
+			</div>
+			{{/if}}
+		</div>
+		-->

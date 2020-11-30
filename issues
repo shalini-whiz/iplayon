@@ -1,0 +1,23 @@
+2018-06-28 08:21:13+05:30
+amq66
+2018-06-28 08:21:13+05:30/app/bundle/programs/server/node_modules/fibers/future.js:313
+amq66
+2018-06-28 08:21:13+05:30	throw(ex);
+amq66
+2018-06-28 08:21:13+05:30	^
+amq66
+2018-06-28 08:21:13+05:30MongoError: not master
+amq66
+2018-06-28 08:21:13+05:30 at Function.MongoError.create (/app/bundle/programs/server/npm/node_modules/meteor/npm-mongo/node_modules/mongodb-core/lib/error.js:31:11)
+amq66
+2018-06-28 08:21:13+05:30 at queryCallback (/app/bundle/programs/server/npm/node_modules/meteor/npm-mongo/node_modules/mongodb-core/lib/cursor.js:212:36)
+amq66
+2018-06-28 08:21:13+05:30 at /app/bundle/programs/server/npm/node_modules/meteor/npm-mongo/node_modules/mongodb-core/lib/connection/pool.js:469:18
+amq66
+2018-06-28 08:21:13+05:30 at _combinedTickCallback (internal/process/next_tick.js:131:7)
+amq66
+2018-06-28 08:21:13+05:30 at process._tickDomainCallback (internal/process/next_tick.js:218:9)
+amq66
+2018-06-28 08:21:13+05:30Application exited with code: 1
+amq66
+2018-06-28 08:21:25+05:30The container has crashed. A new container will be started to replace it.

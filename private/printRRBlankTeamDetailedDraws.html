@@ -1,0 +1,549 @@
+{{{getDocType}}}
+<html lang="en">
+	<head>
+	    <style type="text/css">
+		    {{css}}
+	    </style>
+	</head>
+	<body>
+	    <div class="container">
+	    	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+	    		<img src="{{imageURL}}/logo.png"  style="width:90%;height:12%;float:left;margin:0px !important;margin-top:-3px !important;border:0"/>
+	    	</div>
+	    	<div class="col-md-8 col-xs-8 col-sm-8 col-lg-8" style="padding:0px!important;">
+		    	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+		            <p class="pclassPDFHeading" style="">Team Detailed Score Sheet</p>
+		        </div>
+		        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+		            <p class="pclassPDFHeading" style="">{{tournamentName_team}}</p>
+		        </div>
+		        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+		            <p class="pclassPDFHeading2" style="margin-top:0px;">held at <!--{{venueAddress_team}},-->{{domainName_team}}</p>
+		        </div>
+		        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+		            <p class="pclassPDFHeading2" style="margin-top:0px;">Event:{{eventName_team}},{{eventDate_team}}</p>
+		        </div>
+		       
+	    	</div>
+	    	{{#if get5sImage}}
+	    	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+	    		{{#if get5sImage.url}}
+	    		<img src="{{imageURL}}{{get5sImage.url}}" style="width:94%;height:14%;float:right;margin:0px !important;margin-top:-3px !important;border:0"/>
+	    		{{/if}}
+	    	</div>
+	    	{{/if}}
+	    </div>
+	    <div class="row">
+	    	<p><br><br></p>
+	    </div>
+	    <div class="row col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:10px !important;margin:10px;">
+	        <p style="font-size:16px;">{{findTheTeamNamedraw teamAIDMatch}} v/s {{findTheTeamNamedraw teamBIDMatch}}</p>
+	    </div>
+	    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top:0px !important;padding:0px !important;">
+		    <table class="table scoreSheet" id="tblOne  " style="width:100%;">
+			    <tbody class="">
+			        <!--match a vs x header-->
+			        <tr class="header" id="headerAnalytics3">
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Match Type</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Match: A Vs X</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">1</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">2</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">3</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">4</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">5</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">6</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">7</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Winner</p></td>
+			        </tr>
+
+			        <!--player A-->
+			        <tr class="data" id="headerAnalytics3">
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	
+			            </td>			                
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	{{#if findThePlayerName matchAVSXPlayerA}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{findThePlayerName matchAVSXPlayerA}}
+			            	</p>
+			            	{{else}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">&nbsp;
+			            	</p>
+			            	{{/if}}
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			               
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	
+			            </td>
+			        </tr>
+			        <!-- player x-->
+			        <tr class="data" id="headerAnalytics3">
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+
+			            </td>			                
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	{{#if findThePlayerName matchAVSXPlayerX}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{findThePlayerName matchAVSXPlayerX}}
+			            	</p>
+			            	{{else}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">&nbsp;
+			            	</p>
+			            	{{/if}}
+			            </td>
+			            <td class="" style="width:5%;">
+			               
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+
+			            </td>
+			        </tr>
+
+			        <!--match B vs Y-->
+			        <tr class="data" id="headerAnalytics3">
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Match Type</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Match: B Vs Y</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">1</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">2</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">3</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">4</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">5</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">6</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">7</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Winner</p></td>
+			        </tr>
+
+			        <!--player b-->
+			        <tr class="data" id="headerAnalytics3">
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	
+			            </td>			                
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	{{#if findThePlayerName matchBVSYPlayerB}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{findThePlayerName matchBVSYPlayerB}}
+			            	</p>
+			            	{{else}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">&nbsp;
+			            	</p>
+			            	{{/if}}
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			               
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			               
+			            </td>
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	
+			            </td>
+			        </tr>
+			        <!-- player y-->
+			        <tr class="data" id="headerAnalytics3">
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+
+			            </td>			                
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	{{#if findThePlayerName matchBVSYPlayerY}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{findThePlayerName matchBVSYPlayerY}}
+			            	</p>
+			            	{{else}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">&nbsp;
+			            	</p>
+			            	{{/if}}
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			               
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			               
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+
+			            </td>
+			        </tr>
+
+			        <!--doubles header-->
+			        <tr class="data" id="headerAnalytics3">
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Match Type</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Match: Doubles / C Vs Z</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">1</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">2</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">3</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">4</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">5</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">6</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">7</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Winner</p></td>
+			        </tr>
+
+			        <!--player d1 d2 team a-->
+			        <tr class="data" id="headerAnalytics3">
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	
+			            </td>			                
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	{{#if findThePlayerName matchdoublesA1}}
+				            	{{#if findThePlayerName matchdoublesA2}}
+				            		<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{findThePlayerName matchdoublesA1}},{{findThePlayerName matchdoublesA2}}
+				            	</p>
+				            	{{else}}
+					            	{{#if findThePlayerName matchdoublesA2}}
+					            		<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{findThePlayerName matchdoublesA2}}
+					            	</p>
+					            	{{else}}
+					            	{{#if findThePlayerName matchdoublesA1}}
+					            		<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{findThePlayerName matchdoublesA1}}
+					            	</p>
+					            	{{/if}}
+				            	{{/if}}
+			            	{{/if}}
+			            	{{else}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">&nbsp;
+			            	</p>
+			            	{{/if}}
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="border-spacing:0;padding:2px !important;">			            	
+			            	
+			            </td>
+			        </tr>
+
+			        <!--player d1 d2 team b-->
+			        <tr class="data" id="headerAnalytics3">
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+
+			            </td>			                
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	{{#if findThePlayerName matchdoublesB1}}
+				            	{{#if findThePlayerName matchdoublesB2}}
+				            		<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{findThePlayerName matchdoublesB1}},{{findThePlayerName matchdoublesB2}}
+				            	</p>
+				            	{{else}}
+					            	{{#if findThePlayerName matchdoublesB2}}
+					            		<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{findThePlayerName matchdoublesB2}}
+					            	</p>
+					            	{{else}}
+					            	{{#if findThePlayerName matchdoublesB1}}
+					            		<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{findThePlayerName matchdoublesB1}}
+					            	</p>
+					            	{{/if}}
+				            	{{/if}}
+			            	{{/if}}
+			            	{{else}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">&nbsp;
+			            	</p>
+			            	{{/if}}
+			            </td>
+			            <td class="" style="width:5%;">
+			               
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			               
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+
+			            </td>
+			        </tr>
+
+			        <!--match B vs X-->
+			        <tr class="data" id="headerAnalytics3">
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Match Type</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Match: B Vs X</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">1</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">2</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">3</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">4</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">5</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">6</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">7</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Winner</p></td>
+			        </tr>
+
+			        <!--player B-->
+			        <tr class="data" id="headerAnalytics3">
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	
+			            </td>			                
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	{{#if findThePlayerName matchBVSXPlayerB}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{findThePlayerName matchBVSXPlayerB}}
+			            	</p>
+			            	{{else}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">&nbsp;
+			            	</p>
+			            	{{/if}}
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			               
+			            </td>
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	
+			            </td>
+			        </tr>
+
+			        <!-- player x-->
+			        <tr class="data" id="headerAnalytics3">
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	
+			            </td>			                
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	{{#if findThePlayerName matchBVSXPlayerX}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{findThePlayerName matchBVSXPlayerX}}
+			            	</p>
+			            	{{else}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">&nbsp;
+			            	</p>
+			            	{{/if}}
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			               
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+
+			            </td>
+			        </tr>
+
+			        <!--match a vs y header-->
+			        <tr class="data" id="headerAnalytics3">
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Match Type</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Match: A Vs Y</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">1</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">2</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">3</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">4</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">5</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">6</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">7</p></td>
+			            <td class="" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Winner</p></td>
+			        </tr>
+
+			        <!--player A-->
+			        <tr class="data" id="headerAnalytics3">
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	
+			            </td>			                
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	{{#if findThePlayerName matchAVSYPlayerA}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{findThePlayerName matchAVSYPlayerA}}
+			            	</p>
+			            	{{else}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">&nbsp;
+			            	</p>
+			            	{{/if}}
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			               
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			               
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	
+			            </td>
+			        </tr>
+			        <!-- player Y-->
+			        <tr class="data" id="headerAnalytics3">
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+
+			            </td>			                
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+			            	{{#if findThePlayerName matchAVSYPlayerY}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{findThePlayerName matchAVSYPlayerY}}
+			            	</p>
+			            	{{else}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">&nbsp;
+			            	</p>
+			            	{{/if}}
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			               
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="width:5%;">
+			                
+			            </td>
+			            <td class="" style="border-spacing:0;padding:2px !important;">
+
+			            </td>
+			        </tr>
+			    </tbody>
+			</table>
+			
+   <div class="row col-md-12 col-xs-12 col-sm-12 col-lg-12">
+      <p><br></p>
+    </div>
+    <div class="row col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin: 10px !important">
+      <p style="font-size: 16px">Match Status : </p>
+    </div>
+    <div class="row col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin: 10px !important">
+      <p style="font-size: 16px">Winner : </p>
+    </div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,354 @@
+<!-- Template for confirm-->
+<!-- this template is included in other templates
+1. myEvents.html
+2. userProfileSettings.html
+-->
+<!--Used CSS Classes and CSS Links-->
+<!--
+1.FileName : confirm.css
+classes : confirmPopup, confirmPopupContent, yes, no, yesButton,
+noButton, confirmHeader
+2. FileName : sponsorUpload.css
+classes :  modal-dialog,
+ids     :  confirmCenter
+3. bootstrap : modal-content,  modal-header, modal-sm, modal ,fade
+-->
+<template name="modReg1">
+  <div class="modal" id="modReg1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1">
+          <p class="modal-title titeofregistemodal" style="">My Role
+          </p>
+        </div>
+        <div class="modal-body  modal-body-modReg1">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+            <div class="row">
+              <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:0px !important;padding-top:2px;">
+                <p class="labelWhoNew2">
+                  Who Am I?
+                </p>
+              </div>
+              <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding-left:6px !important;">
+                <div id="selectWhoDropDown" class="ddmenu">
+                  <p class="selectWho" id="selectWho">
+                    Select
+                    <span class="glyphicon glyphicon-triangle-bottom abndfSortChange" style="margin-top:-15px !important;">
+                    </span>
+                  </p>
+                  <ul id="scroll">
+                    <!--li role="presentation" id="li" value="Player">
+                      <a role="menuitem" tabindex="-1"
+                         id="Player" value="Player" href="#">Player
+                      </a>
+                    </li-->
+                    <li role="presentation" id="li" value="Umpire">
+                      <a role="menuitem" tabindex="-1" id="Umpire" value="Umpire" >Umpire
+                      </a>
+                    </li>
+                    <li role="presentation" id="li" value="Academy">
+                      <a role="menuitem" tabindex="-1" id="Academy" value="Academy" >Academy
+                      </a>
+                    </li>
+                    <li role="presentation" id="li" value="Coach">
+                      <a role="menuitem" tabindex="-1" id="Coach" value="Coach">Coach
+                      </a>
+                    </li>
+                    <li role="presentation" id="li" value="Association">
+                      <a role="menuitem" tabindex="-1" id="Association">Association
+                      </a>
+                    </li>
+                    <li role="presentation" id="li" value="Organiser">
+                      <a role="menuitem" tabindex="-1" id="Organiser" value="Organiser">Organiser
+                      </a>
+                    </li>
+                    <li role="presentation" id="li" value="Journalist">
+                      <a role="menuitem" tabindex="-1" id="Journalist" value="Journalist">Journalist
+                      </a>
+                    </li>
+                    <li role="presentation" id="li" value="Other">
+                      <a role="menuitem" tabindex="-1" id="Other">Other
+                      </a>
+                    </li>
+                    <!--<li role="presentation" id="li" value="School">
+                      <a role="menuitem" tabindex="-1" id="School">School
+                      </a>
+                    </li>-->
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+            <div class="row">
+              <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-right:0px !important;padding-bottom: 4px;">
+                <button type="button" class="btn btn-default ip_button_Register_Popup" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Cancel
+                </button>
+              </div>
+              <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-left:6px !important;padding-bottom: 4px;">
+                {{#if checkRole}}
+                <button type="button" class="btn btn-default ip_button_Register_Popup" id="next-modReg1" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;">Next
+                  <span class="glyphicon glyphicon-chevron-right">
+                  </span>
+                </button>
+                {{else}}
+                <button type="button" class="btn btn-default ip_button_Register_Popup" id="next-modReg1" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" disabled>Next
+                  <span class="glyphicon glyphicon-chevron-right">
+                  </span>
+                </button>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!-- Template for confirm-->
+<!-- this template is included in other templates
+1. myEvents.html
+2. userProfileSettings.html
+-->
+<!--Used CSS Classes and CSS Links-->
+<!--
+1.FileName : confirm.css
+classes : confirmPopup, confirmPopupContent, yes, no, yesButton,
+noButton, confirmHeader
+2. FileName : sponsorUpload.css
+classes :  modal-dialog,
+ids     :  confirmCenter
+3. bootstrap : modal-content,  modal-header, modal-sm, modal ,fade
+-->
+<template name="modReg5Association">
+  <div class="modal" id="modReg5Association" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1">
+          <p class="modal-title titeofregistemodal" style="">Select Association Type
+          </p>
+        </div>
+        <div class="modal-body  modal-body-modReg1">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+            <div class="row">
+              <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:0px !important;padding-top:2px;">
+                <p class="labelWhoNew2">
+                  Type
+                </p>
+              </div>
+              <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding-left:6px !important;">
+                <div id="selectWhoDropDown2" class="ddmenu">
+                  <p class="selectWho" id="selectWhoASS">
+                    Select
+                    <span class="glyphicon glyphicon-triangle-bottom abndfSortChange" style="margin-top:-15px;">
+                    </span>
+                  </p>              
+                  <ul id="scroll5">
+                    <!--li role="presentation" id="li2" value="National">
+                      <a role="menuitem" tabindex="-1"
+                         id="National" value="National" href="#">National
+                      </a>
+                    </li-->
+                    <li role="presentation" id="li2" value="State/Province/County">
+                      <a role="menuitem" tabindex="-1" id="State/Province/County" value="State/Province/County" >State/Province/County
+                      </a>
+                    </li>
+                    <li role="presentation" id="li2" value="District/City">
+                      <a role="menuitem" tabindex="-1" id="District/City" value="District/City" >District/City
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         <div class="modal-footer">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+            <div class="row">
+              <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-bottom: 4px;">
+                <button type="button" class="btn btn-default ip_button_Register_Popup" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Cancel
+                </button>
+              </div>
+              <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:6px !important;padding-bottom: 4px;padding-right: 0px !important;">
+                <button type="button" class="btn btn-default ip_button_Register_Popup" id="prev-modReg5Ass" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;">Previous
+                  <span class="glyphicon glyphicon-chevron-left">
+                  </span>
+                </button>
+              </div>
+              <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:6px !important;padding-bottom: 4px;">
+                {{#if checkInputAssociation}}
+                <button type="button" class="btn btn-default ip_button_Register_Popup" id="next-modReg5Ass" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" disabled>Next
+                  <span class="glyphicon glyphicon-chevron-right">
+                  </span>
+                </button>
+                {{else}}
+                <button type="button" class="btn btn-default ip_button_Register_Popup" id="next-modReg5Ass" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" >Next
+                  <span class="glyphicon glyphicon-chevron-right">
+                  </span>
+                </button>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="modReg5Academy">
+  <div class="modal" id="modReg5Academy" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1">
+          <p class="modal-title titeofregistemodal" style="">Association Name
+          </p>
+        </div>
+        <div class="modal-body  modal-body-modReg1">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+              <div class="row no-gutter" style="">
+                <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                  <input type="text" autocomplete="off"  placeholder="Association Name" id="mainTagAssociationName" value="" class="selectProjectsE" >
+                </div>
+                <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                    <div class="userProjectSearchDiv">
+                      <span class="glyphicon glyphicon-search userProjectSearch" style="font-size: 16px;margin-top: 2px;">
+                      </span>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagopAssociation">
+              {{#each lAssociations}}
+              {{#if lAssociations}} 
+              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name="{{this.associationName}}">
+                <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name="{{this.associationName}}">
+                  <label class="checkBoxDivLabel" name="checkAssociationName">
+                    {{this.associationName}}
+                  </label>
+                </div>
+                <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name="{{this.associationName}}">
+                  <input value={{this.associationId}} type="radio" name="checkAssociationName" id="{{this.associationId}}" class=""  style="cursor:pointer!important">
+                  <label name="checkAssociationName" for={{this.associationId}} class="checkBoxDivLabelCheck">
+                  </label>
+                </div>
+              </div>
+              {{/if}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+            <div class="row">
+              <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-bottom: 4px;">
+                <button type="button" class="btn btn-default ip_button_Register_Popup" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Cancel
+                </button>
+              </div>
+              <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:6px !important;padding-bottom: 4px;padding-right: 0px !important;">
+                <button type="button" class="btn btn-default ip_button_Register_Popup" id="prev-modReg5Ass" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;">Previous
+                  <span class="glyphicon glyphicon-chevron-left">
+                  </span>
+                </button>
+              </div>
+              <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:6px !important;padding-bottom: 4px;">
+                {{#if checkInputAssociationNameAc}}
+                <button type="button" class="btn btn-default ip_button_Register_Popup" id="next-modReg2Academy" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" >Next
+                  <span class="glyphicon glyphicon-chevron-right">
+                  </span>
+                </button>
+                {{else}}
+                <button type="button" class="btn btn-default ip_button_Register_Popup" id="next-modReg2Academy" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" disabled >Next
+                  <span class="glyphicon glyphicon-chevron-right">
+                  </span>
+                </button>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="modReg5ParentAssociation">
+  <div class="modal" id="modReg5ParentAssociation" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1">
+          <p class="modal-title titeofregistemodal" style="">State Association Name
+          </p>
+        </div>
+        <div class="modal-body  modal-body-modReg1">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+              <div class="row no-gutter" style="">
+                <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                  <input type="text" autocomplete="off"  placeholder="State Association Name" id="mainTagAssociationStateName" value="" class="selectProjectsE" >
+                </div>
+                <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                    <div class="userProjectSearchDiv">
+                      <span class="glyphicon glyphicon-search userProjectSearch" style="font-size: 16px;margin-top: 2px;">
+                      </span>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagopStateAssociation">
+              {{#each lAssociationsWithState}}
+              {{#if lAssociationsWithState}} 
+              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name="{{this.associationName}}">
+                <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name="{{this.associationName}}">
+                  <label class="checkBoxDivLabel" name="checkStateAssociationName">
+                    {{this.associationName}}
+                  </label>
+                </div>
+                <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name="{{this.associationName}}">
+                  <input value={{this.associationId}} type="radio" name="checkStateAssociationName" id="{{this.associationId}}" class=""  style="cursor:pointer!important">
+                  <label name="checkStateAssociationName" for={{this.associationId}} class="checkBoxDivLabelCheck">
+                  </label>
+                </div>
+              </div>
+              {{/if}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+            <div class="row">
+              <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-bottom: 4px;">
+                <button type="button" class="btn btn-default ip_button_Register_Popup" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Cancel
+                </button>
+              </div>
+              <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:6px !important;padding-bottom: 4px;padding-right: 0px !important;">
+                <button type="button" class="btn btn-default ip_button_Register_Popup" id="prev-modRegParent5Ass" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;">Previous
+                  <span class="glyphicon glyphicon-chevron-left">
+                  </span>
+                </button>
+              </div>
+              <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:6px !important;padding-bottom: 4px;">
+                {{#if checkInputAssociationParent}}
+                <button type="button" class="btn btn-default ip_button_Register_Popup" id="next-modRegParent5Ass" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" >Next
+                  <span class="glyphicon glyphicon-chevron-right">
+                  </span>
+                </button>
+                {{else}}
+                <button type="button" class="btn btn-default ip_button_Register_Popup" id="next-modRegParent5Ass" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" disabled>Next
+                  <span class="glyphicon glyphicon-chevron-right">
+                  </span>
+                </button>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

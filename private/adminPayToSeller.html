@@ -1,0 +1,159 @@
+<template name="AdminPayToSeller">
+	<body style="background: #ffffff; border: 1px solid #DDDDDD;" border="0" width="600" cellspacing="0" cellpadding="20">
+		<table border="0"  height="100%" width="100%" style="background: #ffffff; border: 1px solid #DDDDDD;">
+      		<tbody>              
+        		<tr width="100%"> 
+                	<td colspan="3"  align="center" width="100%" >
+        				<p style="font-size: 20px;"><b>Receipt</b></p>
+        			</td>			
+        		</tr>
+        		 <tr width="100%">
+                 	<td colspan="3">
+						<span style="float: left;padding:1%"> <img style="width:100px;height:100%;"  src={{this.imageURL}}/5s_logo.png></span>
+                    	<span style="float: center;">
+                    		<p>
+                    			<span style="border-bottom: 4px solid rgb(255, 165, 0) !important;width:100%;font-size: 22px;">
+                    				{{#if this.adminDetails}}
+                    					{{adminDetails.userName}}<br>
+        							{{/if}}                  
+        						</span>
+                    		</p>
+                    		<p>{{#if this.adminDetails}}
+        					{{#if adminDetails.address}}
+        						{{adminDetails.address}},
+        					{{/if}}
+        					{{#if adminDetails.city}}
+        						{{adminDetails.city}}
+        						{{#if adminDetails.pinCode}}
+        						 - {{adminDetails.pinCode}}
+        						{{/if}}
+        						,
+        					{{/if}}
+        					
+							{{#if adminDetails.stateName}}
+        						{{adminDetails.stateName}} 
+        					{{/if}}
+
+        					{{/if}}</p>
+                    	</span>
+                    </td>
+				</tr>
+
+        		
+                
+        		<tr style="border-bottom: 4px solid rgb(255, 165, 0) !important;">
+        			<td colspan="3" align="left" style="padding: 0px; font-size: 17px;">
+        				<b>Invoice No:</b> {{this._id}}
+        			</td>
+        		</tr>
+                <tr style="border-bottom: 4px solid rgb(255, 165, 0) !important;">
+        			<td width="50%" align="left" style="padding: 0px; font-size: 17px;">
+        				<b>Receipt No:</b> {{this.receiptNo}}
+        			</td>
+                    <td width="50%" align="right" style="padding: 0px; font-size: 17px;">
+        				<b>Date:</b> {{this.receiptDate}}
+        			</td>
+                  
+                     
+        		</tr>
+                <tr>
+                <td colspan="3" style="border-bottom: 18px solid rgb(255, 165, 0) !important;padding: 0px; font-size: 17px;"></td>
+                </tr>
+        		<tr>
+        			<td style="padding: 4px;width: 50%;">
+        				<p>To,<br>
+        					{{#if this.sellerDetails}}
+        					{{#if sellerDetails.userName}}
+						  		<span style="font-size: 16px;"><b>{{sellerDetails.userName}}</b></span><br>
+						  	{{/if}}
+						  	{{#if sellerDetails.address}}
+								{{sellerDetails.address}} <br>
+						  	{{/if}}
+						  	{{#if sellerDetails.city}}
+								{{sellerDetails.city}} 
+								{{#if sellerDetails.pinCode}}
+									- {{sellerDetails.pinCode}}
+								{{/if}}
+								<br>
+						  	{{/if}}
+						  	
+						  	{{#if sellerDetails.stateName}}
+								{{sellerDetails.stateName}} 
+								<br>
+						  	{{/if}}
+						  
+						{{/if}}
+						</p>
+        			</td>
+        			<td style="padding: 4px;width: 50%;">
+        				
+						<p>From,<br>
+        					<span style="font-size: 16px;"><b>5s Sporting Private Limited</b>
+        					</span>
+        					<br>
+        					{{#if this.adminDetails}}
+        					{{#if adminDetails.address}}
+        						{{adminDetails.address}} <br>
+        					{{/if}}
+        					{{#if adminDetails.city}}
+        						{{adminDetails.city}}
+        						{{#if adminDetails.pinCode}}
+        						 - {{adminDetails.pinCode}}
+        						{{/if}}
+        						<br>
+        					{{/if}}
+        					
+							{{#if adminDetails.stateName}}
+        						{{adminDetails.stateName}} <br>
+        					{{/if}}
+
+        					{{/if}}
+
+
+        				</p>
+
+
+        			</td>
+        		</tr>
+        		
+        		<tr></tr>
+       			<tr>
+		          	<td>
+		          		<p style="font-size: 16px;">
+		          			<b>Order Details</b>
+		          			<br>
+		          			<b>Order Id :</b>{{this._id}} 
+		          			<br /> 
+			        		<b>Order Date :</b>{{this.packageBought}} <br /> 
+			        		<b>Invoice Date :</b>{{this.invoiceDate}} 
+		          		</p>
+		          	</td>
+        		</tr>
+        		
+        		<tr>
+         			<td colspan="3">
+         				<div class="row col-md-12 col-xs-12 col-sm-12 col-lg-12" >
+    						
+			      			<p style="font-size:16px"><i>Received From {{this.adminName}} the sum of Rs.{{this.sellerAmount}}  on account of {{#if this.sellerDetails}} 		{{sellerDetails.userName}} {{/if}}
+			      			</i>
+			      			</p>
+	      				</div>
+     				</td>
+      			</tr>
+      			<tr>
+        			<div class="row col-md-12 col-xs-12 col-sm-12 col-lg-12" >
+					    <p><br /> </p>
+					    <p> Thank you </p>
+					    <p><b>{{this.adminName}}</b></p>
+  					</div>
+        		</tr>
+        	</tbody>
+        </table>
+    </body>
+    <div class="row col-md-12 col-xs-12 col-sm-12 col-lg-12" >
+		<p><br /></p>
+		<p style="text-align:right !important"> Powered by
+			<img style="width: 100px; height: 100%;" src="http://www.iplayon.in/logo.png" />
+		</p>
+  					</div>
+</template>

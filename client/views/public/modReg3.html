@@ -1,0 +1,147 @@
+<template name="modReg3">
+  <div class="modal" id="modReg3" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4 selecSporTRegNewHead" style="padding-left:4% !important;border-top-left-radius:5px;">
+                <p class="modal-title titeofregistemodalNotActive" style="">Contact Details</p>
+              </div>
+              <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4 contRegNEwHead" style="border-top-left-radius:0px !important;">
+                <p class="modal-title titeofregistemodal" >Select Sports</p>
+              </div>
+              <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4 selecPlaceRegNewHead">
+                <p class="modal-title titeofregistemodalNotActive" style="width:100px;">Select Places</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body  modal-body-modReg1">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:2px;height:103px!important;">
+                  <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                      <div class="row no-gutter" style="">
+                        {{#if checkInputAssociationSelectPD}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                           <div class="row no-gutter" style="">
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                              <input type="text" autocomplete="off"  placeholder="Sports" id="mainTagModReg3" value="" class="selectProjectsE" >
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                              <div class="userProjectSearchDiv">
+                                <span class="glyphicon glyphicon-search userProjectSearch" style="font-size: 16px;margin-top: 2px;">
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {{else}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                           <div class="row no-gutter" style="">
+                            <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                              <input type="text" autocomplete="off"  placeholder="Sports" id="mainTagModReg3" value="" class="selectProjectsE" >
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                              <div class="userProjectSearchDiv">
+                                <span class="glyphicon glyphicon-search userProjectSearch" style="font-size: 16px;margin-top: 2px;">
+                                </span>
+                              </div>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;margin-top:0px;height:26px;">
+                              <div class="userProjectSearchDiv" >
+                                <input type="checkbox" name="checkAll" id="checkAll" class="checkAllprojuser" checked>
+                              </div>
+                            </div>  
+                          </div>
+                        </div>
+                        {{/if}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagop">
+                          {{#if lProjectName}} 
+                          {{#if checkInputAssociationSelectPD}}
+                          {{#each lProjectName}}
+                            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.projectMainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.projectMainName}}>
+                              <label class="checkBoxDivLabel" name="checkProjectName">
+                                {{this.projectMainName}}
+                              </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.projectMainName}}>
+                              <input value={{this._id}} type="radio" name="checkProjectName" id="{{this._id}}" class=""  style="cursor:pointer!important">
+                              <label name="checkProjectName" for={{this._id}} class="checkBoxDivLabelCheck">
+                              </label>
+                            </div>
+                          </div>
+                          {{/each}}
+                          {{else}}
+                          {{#each lProjectName}}
+                          <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.projectMainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.projectMainName}}>
+                              <label class="checkBoxDivLabel" name="checkProjectName">
+                                {{this.projectMainName}}
+                              </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.projectMainName}}>
+                              <input value={{this._id}} type="checkbox" name="checkProjectName" id="{{this._id}}" class=""  style="cursor:pointer!important" checked>
+                              <label name="checkProjectName" for={{this._id}} class="checkBoxDivLabelCheck">
+                              </label>
+                            </div>
+                          </div>
+                          {{/each}}
+                          {{/if}}
+                          {{/if}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                  <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-bottom: 4px;">
+                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Cancel
+                    </button>
+                  </div>
+                  {{#if checkInputAssociationSelectPD}}
+                  <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:6px !important;padding-bottom: 4px;padding-right: 0px !important;">
+                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="previouswithAssoc-modReg3" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;">Previous
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                    </button>
+                  </div>
+                  {{#if checkInputAssociationProjectName}}
+                  <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:6px !important;padding-bottom: 4px;">
+                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="nextwithAssoc-modReg3" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" >Next
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                  </div>
+                  {{else}}
+                  <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:6px !important;padding-bottom: 4px;">
+                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="nextwithAssoc-modReg3" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" disabled>Next
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                  </div>                  
+                  {{/if}}
+                  {{else}}
+                  <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:6px !important;padding-bottom: 4px;padding-right: 0px !important;">
+                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="previous-modReg3" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;">Previous
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                    </button>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:6px !important;padding-bottom: 4px;">
+                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="next-modReg3" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" >Next
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                  </div>
+                  {{/if}}
+                 </div>
+              </div>
+          </div>
+
+        </div>
+    </div>
+  </div>
+</template>

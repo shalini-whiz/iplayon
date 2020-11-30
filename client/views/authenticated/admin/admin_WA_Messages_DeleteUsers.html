@@ -1,0 +1,129 @@
+<template name="workAssignmentContent">
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">Assignment ID</th>
+
+                            <th class="pAnalytics2">Sender</th>
+                            <th class="pAnalytics2">Sender Role</th>
+
+                            <th class="pAnalytics2">Receiver</th>
+                            <th class="pAnalytics2">Receiver Role</th>
+                            <th class="pAnalytics2">Assignment Count</th> 
+                            <th class="pAnalytics2">Delete</th>  
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each workAssignmentList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                           <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                           <td class="pAnalytics2">{{this._id}}
+                           </td>
+                           <td class="pAnalytics2">{{workAssUser this.senderId}}</td>
+                            <td class="pAnalytics2">{{this.senderRole}}</td>
+                            <td class="pAnalytics2">{{workAssUser this.receiverId}}</td>
+                            <td class="pAnalytics2">{{this.receiverRole}}</td>
+                            <td class="pAnalytics2">{{eachAssignmentCount this.messagesBox}}</td>
+                          
+                           <td class="pAnalytics2" id="selectedIdToEdit">
+                            <span class="glyphicon glyphicon-remove" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="deleteWA"></span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+<template name="messagesDataContent">
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">Message ID</th>
+
+                            <th class="pAnalytics2">Sender</th>
+                            <th class="pAnalytics2">Sender Role</th>
+
+                            <th class="pAnalytics2">Receiver</th>
+                            <th class="pAnalytics2">Receiver Role</th>
+                            <th class="pAnalytics2">Message Count</th> 
+                            <th class="pAnalytics2">Delete</th>  
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each messageDataList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                           <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                           <td class="pAnalytics2">{{this._id}}
+                           </td>
+                           <td class="pAnalytics2">{{workAssUser this.senderId}}</td>
+                            <td class="pAnalytics2">{{this.senderRole}}</td>
+                            <td class="pAnalytics2">{{workAssUser this.receiverId}}</td>
+                            <td class="pAnalytics2">{{this.receiverRole}}</td>
+                            <td class="pAnalytics2">{{eachMessageCount this.messagesBox}}</td>
+                          
+                           <td class="pAnalytics2" id="selectedIdToEdit">
+                            <span class="glyphicon glyphicon-remove" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="deleteCoachMessages"></span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+<template name="connectionDataContent">
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>                
+                            <th class="pAnalytics2">User ID</th>    
+                            <th class="pAnalytics2">User</th>                
+                            <th class="pAnalytics2">Delete</th>  
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each connectionDataList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                           <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                           <td class="pAnalytics2">{{this._id}}
+                           </td>
+                            <td class="pAnalytics2">{{this.userName}}</td>
+                                                 
+                           <td class="pAnalytics2" id="selectedIdToEdit">
+                            <span class="glyphicon glyphicon-remove" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="adminDeleteUser"></span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>

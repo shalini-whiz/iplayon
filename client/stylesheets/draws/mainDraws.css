@@ -1,0 +1,262 @@
+/* CSS declarations go here */
+/*DrawsPage: SlNo*/
+.col-container {
+    display: table;
+    width: 100%;
+}
+.col {
+    display: table-cell;
+    padding: 5px;
+}
+.wrapper {
+display: flex;    
+width:90%;
+height:100px;
+background-color:Gray;
+}
+
+
+.para_text {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 16px;     /* fallback */
+   max-height: 32px;      /* fallback */
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+   
+}
+
+.ip_input_box_type_slNo {
+  /*Start of debug
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  End of debug*/
+
+  padding: 5px 12px 5px 5px;
+  height: 30px;
+  color: #808B96;
+  background-color:#FFFAFA;
+  text-align: right;
+  vertical-align: text-middle; 
+  font-size: 12px;
+}
+/*DrawsPage: player name*/
+.ip_input_box_type_pName,
+.ip_input_box_type_pNameLost,
+.blank_row {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #F0F0F0; /*$85929E;*/
+  border-radius: 5px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  padding: 5px 12px 5px 5px;
+  height: 30px;
+  color: #000000; /*#808B96;*/
+  background-color:#FFFFFF; /*#FFFAFA;*/
+  text-align: left;
+  vertical-align: text-middle; 
+  font-size: 12px;
+}
+/* shalini code starts here */
+.ip_input_box_type_pNameWalkover_score {
+    background-color:#ffe680 !important;
+    border-radius: 5px !important;
+    border:1px solid !important;
+    border-color:#808B96 !important;
+    text-align: center !important;
+    font-size: 12px !important;
+    height:24px !important;
+    
+
+}
+.ip_input_box_type_pNameBye_score
+{
+    background-color:#DFFF80 !important;
+    border-radius: 5px !important;
+    border:1px solid !important;
+    border-color:#808B96 !important;
+    text-align: center !important;
+    font-size: 12px !important;
+        height:24px!important;
+
+}
+.ip_input_box_type_pNameLost_score {
+  color: #808B96 !important;
+  background-color:#EEEAEA !important;
+  border-radius: 5px !important;
+    border:1px solid !important;
+    border-color:#808B96 !important;
+    text-align: center !important;
+    font-size: 12px !important;
+        height:24px!important;
+}
+.ip_input_box_type_scores_input
+{
+
+  background-color:white ;
+  border-radius: 5px;
+    border:1px solid;
+    border-color:#808B96 !important;
+    height:24px;
+    text-align :center !important;
+ 
+}
+
+/* shalini code ends here */
+.match_number {
+  padding: 5px 2px 5px 2px;
+  text-align: right;
+  /*vertical-align: text-middle;*/
+  font-size: 10px;
+}
+
+/*DrawsPage: lost player name*/
+.ip_input_box_type_pNameLost {
+  color: #808B96;
+  background-color:#EEEAEA;
+}
+.blank_row {
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+  background-color:#FFFFFF;
+}
+/*DrawsPage: Scores/sets*/
+.ip_input_box_type_scores {
+  /*Start of debug
+  border-style: solid;
+  border-width: 1px;
+  border-color: balck;
+  border-radius:5px;
+  End of debug*/
+
+  padding: 5px 2px 5px 2px;
+  height: 30px;
+  color: #808B96;
+  background-color:#FFFAFA;
+  text-align: right;
+  vertical-align: text-middle; 
+  font-size: 12px;
+}
+
+.ipButton {
+  width:97%;
+  background: 0!important;
+  border: 0 !important;
+  outline: 0;
+  color: white;
+  font-size: 14px;
+  height: 100%;
+
+  /*border-style: solid;
+  border-width:2px;
+  border-color: white;
+  border-radius:5px;
+
+  background-color:#808080;*/
+}
+.ipButton:focus{
+  outline: 0 !important;
+}
+.ipGlyphBtn {
+  color:white;
+
+  /*font-size: 36px;*/
+  font-size: 30px;
+  padding-top: 0px;
+
+}
+.ipRoundsToolBar {
+  border: 1px solid white;
+  padding-top:10px;
+  padding-bottom:10px;
+  /*margin-top:-26px;*/
+  margin-top: 10px; /* shalini code */
+  margin-bottom:10px;
+  background:#B0B0B0;
+  border-radius: 5px;
+}
+/* shalini code */
+.ipRoundsHeader {
+  margin-top:80px;
+  text-align:center;
+  color:white;
+  font-size:14px;
+  background-color:black;
+  height:30px;
+  padding:5px;
+
+}
+/* shalini code */
+.confirmPopup {
+    width: 260px;    /*width of confirm popup */
+    margin-top: 100px;
+    border-radius: 5px;
+    border: 0.01px outset;
+    -moz-box-shadow: 0 0 10px #000;
+    -webkit-box-shadow: 0 0 10px;
+    box-shadow: 2px 2px 2px grey;
+}
+#confirmCenter {
+    transform: translate(0px, -124px);
+}
+/*confirm popup main content elements are displayed as flex*/
+.confirmPopupContent {
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    margin-bottom: -1%;
+    margin-top: -1%;
+}
+
+/* confirm popup header*/
+.confirmHeader {
+    background: #b30000;
+    color: white;
+    font-size: 12px;
+    text-align: left;
+    height: 2em;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 0px solid;
+    padding-top: 3px;
+    font-weight: normal;
+    padding-left: 3px;
+    background: black none repeat scroll 0% 0%;
+}
+
+/*DrawsPage: bye player name*/
+.ip_input_box_type_pNameBye {
+  color: black;
+  background-color: #dfff80;
+  height: 29px;
+  border-radius: 5px;
+  font-size: 12px;
+  padding-top: 5px;
+  padding-left: 7px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/*DrawsPage: Walkover player name*/
+.ip_input_box_type_pNameWalkover {
+  color: black;
+  background-color: #ffe680;
+  height: 29px;
+  border-radius: 5px;
+  font-size: 12px;
+  padding-top: 5px;
+  padding-left: 7px;
+  text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

@@ -1,0 +1,150 @@
+<!-- Template for upcoming events-->
+
+<!--Used CSS Classes and CSS Links-->
+<!--
+    1.FileName : myEvents.css
+            classes : mainContent_myEvents, titleName, myEventSort, firstDiv
+                      myEventsData, eventDate_myTdChild, eventName_myTdChild,
+                      eventPalce_myTdChild
+
+    2. FileName : userDropDown.css
+            classes : userProfileMenu,
+            ids     : userDropDown
+
+    3. FileName : createEvent.css
+            classes : mainTitle
+
+    4. FileName : pastEvents.css
+            classes : eventDataParent1, eventDataWrapper1, eventName_myTd_u, eventPlace_myTd_u,myEventsMainTitle
+                      eventDate_myTd_u, eventDate_myTdChild_red, eventName_myTdChild_red,
+                      eventPlace_myTdChild_red
+-->
+
+<!--Templates Included-->
+<!--
+    1. sideMenu
+-->
+<template name="myEntries">
+  <form id="eventCreation">
+    <div class="row mainContent_myEvents">
+      <div class="row-same-height">
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">{{> userProfileMenu}}</div>
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+          <div class="myEventsMainTitle">
+            <p class="titleName">My Entries</p>
+            <div class="myEventSort">
+              <div id="sortEventsDropDown" class="ddmenu">
+                <span class="glyphicon  glyphicon-triangle-bottom abndfSort"></span>
+                <ul>
+                  <li><a id="puEventsSortByProjectName" href="">Sort by Tournament</a></li>
+                  <li><a id="puEventsSortByPlaceName" href="">Sort by Place</a></li>
+                  <li><a id="puEventsSortByEventDate" href="">Sort by Date</a></li>
+                </ul>
+              </div>
+            </div>                 
+          </div>
+        </div>
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="height:16em;">
+          <div class="row no-gutter" style="height:16em;">
+            <div class="col-sm-9 col-md-9 col-xs-9 col-lg-9 form-group"  style="margin-top:3px;">
+              <div class="myEventsData" style="overflow:hidden;">
+                <div id="eventDataParent1" class="eventDataParent1" style="overflow-y:scroll;">
+                  {{#if Template.subscriptionsReady}}
+                    {{#each lUEvents}}
+                      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 fir">
+                        <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                          <div class="firr">
+                            <div class="accordion_head" id="accordinHead">
+                              <span class="glyphicon glyphicon-plus plusminus">  </span>
+                            </div>
+                            <div class="fir2">
+                              {{#if checkRead this._id}}
+                                <input type="button"  value={{eventNameSubString this.eventName}} id="viewEvent" name="viewEvent" class="eventName_myTdChild_red">
+                              {{else}} 
+                                {{#if checkEditRead this._id}}
+                                  <input type="button"  value={{eventNameSubString this.eventName}} id="viewEvent" name="viewEvent" class="eventName_myTdChild" style="color:#b30059!important">
+                                {{else}}
+                                  <input type="button" value={{eventNameSubString this.eventName}} id="viewEvent" name="viewEvent" class="eventName_myTdChild">
+                                {{/if}}
+                              {{/if}}
+                            </div>
+                          </div>                              
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                          <div class="fir3">
+                            {{#if checkRead this._id}}
+                              <input type="button"  value={{displayingDomainName this.domainId}} id="viewEvent" name="viewEvent" class="eventPlace_myTdChild_red" > 
+                            {{else}}
+                              {{#if checkEditRead this._id}}
+                                <input type="button" value={{displayingDomainName this.domainId}} id="viewEvent" name="viewEvent"  class="eventPlace_myTdChild" style="color:#b30059!important;">
+                              {{else}}
+                                <input type="button" value={{displayingDomainName this.domainId}} id="viewEvent" name="viewEvent" class="eventPlace_myTdChild" > 
+                              {{/if}} 
+                            {{/if}}
+                          </div>
+                        </div>
+                        <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+                          <div class="fir4">
+                            {{#if checkRead this._id}}
+                              <input type="button"  id="viewEvent" value={{upcomingformatDate this.eventStartDate1}}  name="eventDate_myTdChild" class="eventDateUp" style="color:maroon!important;"> 
+                            {{else}}
+                              {{#if checkEditRead this._id}}
+                                <input type="button" id="viewEvent" value={{pastformatDate this.eventStartDate1}}  name="eventDate_myTdChild" class="eventDateUp" style="color:#b30059!important;">
+                              {{else}}
+                                <input type="button" id="viewEvent" value={{pastformatDate this.eventStartDate1}}  name="eventDate_myTdChild" class="eventDateUp"> 
+                              {{/if}} 
+                            {{/if}}
+                          </div>
+                        </div>
+                        <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+                          <div class="fir5">
+                            {{#if checkRead this._id}}
+                              <input type="button"   id="viewEvent" value={{upcomingformatDate this.eventEndDate1}}  name="eventDate_myTdChild" class="eventDateUp" style="color:maroon!important;"> 
+                            {{else}}
+                              {{#if checkEditRead this._id}}
+                                <input type="button"   id="viewEvent" value={{pastformatDate this.eventEndDate1}}  name="eventDate_myTdChild" class="eventDateUp" style="color:#b30059!important;">
+                              {{else}}
+                                <input type="button"   id="viewEvent" value={{pastformatDate this.eventEndDate1}}  name="eventDate_myTdChild" class="eventDateUp"> 
+                              {{/if}} 
+                            {{/if}}
+                            <span class="glyphicon glyphicon-ok" id="viewEvent" style="color: green;margin-top: 9px;margin-left: 2px;cursor:pointer;margin-right:2px;"></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="chekck" style="display:none">
+                        <div class="accordion_body">
+                          {{#if  this._id}}
+                            {{#each this.eventsUnderTournament}}
+                              {{#if checkSubscribedEvent_Entries this}}
+                                {{#if checkViewReadTour this}}
+                                  <div class="eventNameUnTourDiv"><a id="viewEventT"  name="{{this}}" class="eventNameUnTourn"  style="color:maroon!important;">{{checkSubscribedEvent_Entries this}}</a></div>
+                                {{else}}
+                                  {{#if checkEditRead this}}
+                                    <div class="eventNameUnTourDiv"><a id="viewEventT"  name="{{this}}" class="eventNameUnTourn"  style="color:#b30059!important;">{{checkSubscribedEvent_Entries this}}</a></div>
+                                  {{else}}
+                                    <div class="eventNameUnTourDiv"><a id="viewEventT"  name="{{this}}" class="eventNameUnTourn">{{checkSubscribedEvent_Entries this}}</a></div>
+                                  {{/if}}
+                                {{/if}}
+                              {{/if}}
+                            {{/each}}
+                          {{/if}}                              
+                        </div>
+                      </div>
+                    {{/each}}
+                  {{else}}
+                    {{> loaderForUPCOM}}
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 form-group" style="margin-top:3px;">
+              {{> sideMenu}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+    {{> confirmModalRedirect}}
+  </form>
+</template>
+

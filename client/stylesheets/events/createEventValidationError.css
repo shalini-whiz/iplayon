@@ -1,0 +1,137 @@
+.errorPopup{
+	border-radius: 5px;
+  	border: 0px solid;
+ 	-moz-box-shadow:0 0 10px #000; 
+	-webkit-box-shadow:0 0 10px;
+	box-shadow: 2px 2px 2px grey;
+
+ }
+ .errorPopupContent{
+	width: 100%;
+	display: flex;
+	position: relative;
+	font-size: 11.3px;
+	margin-left: -2%;
+}
+
+.errorHeader{
+	background: #b30000;
+	color: white;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+  	border: 0px solid;
+  	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	padding: 0;
+}
+
+.errorClose {
+    line-height: 22px;
+    position: absolute;
+    right: -10px;
+    text-align: center;
+    top: -10px;
+    width: 22px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    background: grey none repeat scroll 0% 0%;
+    color: white;
+    outline: 0;
+}
+
+.errorImage{
+	width: 18px;
+	height: 18px;
+	margin-left: -3%;
+	margin-right: 1%;
+	margin-top: 0%;
+}
+
+#errorHeader{
+	font-size: 11.67px;
+	font-weight: bold
+}
+
+#eventName.error, #prize.error, #projectName.error, #domainNameTour.error, #domainName.error, #rulesAndReg.error, #closureDate.error,
+#startDate.error, #endDate.error, #description.error, #prizeTitleIdName.error,#prizeUpload.error{
+	color:#ff1a1a;
+	font-weight: normal;
+}
+
+#eventName-error, #prize-error, #projectName-error, #domainNameTour-error, #domainName-error, #rulesAndReg-error, #closureDate-error,
+#startDate-error, #endDate-error, #description-error, #sponsor1-error, #prizeTitleIdName-error,#prizeUpload-error,#addPlayersMandatory-error{
+   pointer-events: none;
+   font-weight: normal;
+  }
+#sponsorLogo-error{
+	display: none !important;
+}
+
+#addEventProvideDetails-error{
+	pointer-events: none;
+   font-weight: normal;
+}
+#checkAcceptbox-error{
+	pointer-events: none;
+   font-weight: normal;
+}
+
+#checkAcceptboxTeam-error{
+	pointer-events: none;
+   font-weight: normal;
+}
+#teamNameCreate-error {
+   pointer-events: none;
+   font-weight: normal;
+  }
+#teamNameCreate.error{
+	color:#ff1a1a;
+	font-weight: normal;
+}
+#addPlayersMandatory-error,#addPlayersMandatoryEdit-error {
+   pointer-events: none;
+   font-weight: normal;
+  }
+#selectSport-error{
+   pointer-events: none;
+   font-weight: normal;
+  }
+#entityName-error{
+   pointer-events: none;
+   font-weight: normal;
+  }
+#iplayonHashtoken-error{
+   pointer-events: none;
+   font-weight: normal;
+  }
+#checkDomain-error{
+   pointer-events: none;
+   font-weight: normal;
+  }
+#iplayonSendToHashTags-error{
+   pointer-events: none;
+   font-weight: normal;
+  }
+
+#selectSport.error{
+	color:#ff1a1a;
+	font-weight: normal;
+}
+
+#entityName.error{
+	color:#ff1a1a;
+	font-weight: normal;
+}
+
+#iplayonHashtoken.error{
+	color:#ff1a1a;
+	font-weight: normal;
+}
+
+#iplayonSendToHashTags.error{
+	color:#ff1a1a;
+	font-weight: normal;
+}

@@ -1,0 +1,269 @@
+<template name="tournSchedulerEdit">
+   {{#if notAdmin}}
+   <div class=''>
+      <p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+   </div>
+   {{else}}
+   <div class="container" style="background:#333; height:auto;">
+      <div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+         <div class="row-same-height">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+               <div class="mainTitle">
+                  <p class="title">
+                     Tournament Scheduler Update (Upcoming Tournaments)
+                  </p>
+               </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;
+               ">
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <select class="" style="width: 100%;height: 100%;margin:0px;" id="tournamentList">
+                     <option selected disabled>Select Tournaments</option>
+                     {{#each tournamentList}}
+                     <option value = {{this._id}}>{{this.eventName}}</option>
+                     {{/each}}
+                  </select>
+               </div>
+               {{#if Template.subscriptionsReady}}
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <select class="" style="width: 100%;height: 100%;margin:0px;" id="tournamentListDate">
+                     <option selected disabled>Select Date</option>
+                     {{#each listDates}}
+                     <option value = {{this}}>{{this}}</option>
+                     {{/each}}
+                  </select>
+               </div>
+               {{/if}}
+            </div>
+            {{#if Template.subscriptionsReady}}
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;margin-bottom: 15px;margin-left: 30px;margin-right: 30px;padding-right: 30px;
+               ">
+               {{#if selectedTorun}}
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;" name="userSelectedForTeamP"> Tournament Name : {{selectedTorun.eventName}}</p>
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;" name="userSelectedForTeamP"> Start Date : {{selectedTorun.eventStartDate}}</p>
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;" name="userSelectedForTeamP"> End Date : {{selectedTorun.eventEndDate}}</p>
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;" name="userSelectedForTeamP"> Entry Ends On : {{selectedTorun.eventSubscriptionLastDate}}</p>
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;" name="userSelectedForTeamP"> Venue  : {{selectedTorun.domainName}}</p>
+               {{/if}}
+            </div>
+            
+            <div style="margin-top: 10px; width: 100%; padding-left: 50px;" class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+               <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="height: 100%;
+                  padding:0px !important;">
+               <button id="addNewSession">Add New Session</button>
+               </div>
+               <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="height: 100%;padding:0px !important;
+                  ">
+               <button id="ViewAddedSession">View Added Sessions</button>
+               </div>
+            </div>
+
+            {{#if showSessionSelectBox}}
+            <div style="margin-top: 10px; width: 100%; padding-left: 50px;" class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+               <!--select class="" style="width: 25%;height: 100%;margin:0px;" id="selectSessionBox">
+                  <option selected disabled>Select Session</option>
+                  {{#each sessionSelectBox}}
+                  <option value = "{{this}}">Session {{this}}</option>
+                  {{/each}}
+               </select>
+               <br-->
+               <br>
+               {{#if showEventsCategories}}
+               <select class="" style="width: 25%;height: 100%;margin:0px;" id="viewCategories">
+                  <option selected disabled>Select Events</option>
+                  {{#each eventsList}}
+                  <option value = "{{this._id}}">{{this.eventName}}</option>
+                  {{/each}}
+               </select>
+               {{/if}}
+            </div>
+            {{/if}}
+
+            {{#if ViewAddedSessionDEttable}}
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-left: 30px;
+                     margin-top: 10px;margin-bottom: 15px;padding:0px !imortant;
+                  ">
+                  <button id="closeSession">close</button>
+                  <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="width:100%">
+                     <thead style="">
+                     <tr class="headeSubDiv2_entryFAca_backWhite">
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">session no .</th>     
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">date</th>    
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">start time</th>   
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">end time</th>     
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">event name</th>   
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;"># tables</th>      
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Rounds Selected</th> 
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Duration</th> 
+                     </tr>
+                     </thead>
+                     <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                        {{#each ViewAddedSessionDEttable}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" order={{@index}}>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px">{{this.sessionNumber}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px">{{this.selectedDate}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px">{{this.starttimesession}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px">{{this.endtimesession}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px">{{this.eventName}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px">{{this.noOfTables}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px">{{this.roundsSelected}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px">{{this.duration}}</td>
+                        </tr>
+                        {{/each}}
+                     </tbody>
+                  </table>
+               </div>
+            {{/if}}
+
+            {{#if showEventsView}}
+            <div style="margin-top: 10px; width: 100%;" class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;margin-left: 30px;" name="userSelectedForTeamP">Session starts - ends</p>
+               <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="    margin-left: 30px;">
+                  <thead style="">
+                     <tr class="headeSubDiv2_entryFAca_backWhite">
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">start time</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">end time</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">duration of each match</th>
+                     </tr>
+                  </thead>
+                  <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                     <tr class="headerAnalytics3" id="headerAnalytics3">
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="startTime" placeholder = "HH:MM:SS AM/PM" value = "11:00:00 AM"></td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="endTime"  placeholder = "HH:MM:SS AM/PM" value = "11:30:00 AM"></td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="durationOfEachMatch"  placeholder = "Minutes" value="20"></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;width:100%;
+               ">
+               {{#if selectedTorun}}
+                  {{#each selectedEventListDATA}}
+                  <p style="color: white;font-size: 12px;margin-top: 10px !important;text-decoration: underline;margin-left: 30px;cursor:pointer !important;">{{this.eventName}} ( {{this.num}} subscribers)&nbsp;&nbsp;
+                     <br>
+                  <span id="showDETEvespan">  Players uploaded to draws: 
+                  {{this.count}}
+                  </span>
+                  </p>
+                  <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="    margin-left: 30px;">
+                     <thead style="">
+                     <tr class="headeSubDiv2_entryFAca_backWhite">
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Enter comma separated table numbers</th>                      
+                     </tr>
+                     </thead>
+                     <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                        <tr class="headerAnalytics3" id="headerAnalytics3" order={{@index}}>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="commasepartedTablNos" placeholder="eg: 1,2,3,4" value=""></td>
+                        </tr>
+                     </tbody>
+                  </table>
+
+                  <p style="color: white;font-size: 12px;margin-top: 10px !important;text-decoration: underline;margin-left: 30px;cursor:pointer !important;">Select Rounds
+                  </p>
+
+                  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-left: 30px;
+                     margin-top: 10px;margin-bottom: 15px;padding:0px !imortant;
+                  ">
+                  <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="width:100%">
+                  <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                     {{#each getMaxEventPartsCountro}}
+                     {{#each this.rounds}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" order={{@index}}>
+                           
+                           {{#if checkNotRound this ../rouVal}}
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px" ordersss={{@index}}><input type="checkbox" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="selectEventNEW{{../../_id}}{{this}}" eventID={{../../eventName}} ordersss={{@index}} eventABB = {{../../abbName}} idEve = {{../../_id}} proj = {{../../projectType}}>
+                              <br>
+                              {{this}}
+                              <br>
+                              <p style="color:green !important;font-size: 12px;margin-top: 10px !important;text-decoration: underline;cursor:pointer !important;" id="showSchedDet{{../../_id}}" eventID={{../../eventName}} idEve = {{../../_id}}>
+                                 View Details
+                              </p>
+                              {{#if unassigendMatchDetails}}
+                              {{#each unassigendMatchDetails}}
+                                 <p style="word-break: break-all"> match numbers : {{this.m}}</p>
+                                 <p style="word-break: break-all"> remaining match nos : {{this.u}}</p>
+                              {{/each}}
+                              <p style="color:green !important;font-size: 12px;margin-top: 10px !important;text-decoration: ">
+                                 Scheduled Matches
+                              </p>
+                              {{#each scheduledDetailsForthisRound}}
+                                 {{#each this.e}}
+                                    <p style="word-break: break-all">Match : {{this.match}}  Table : {{this.table}}  Date : {{this.dateOfEvent}} Start Time : {{this.time}}</p>
+                                    <br>
+                                 {{/each}}
+                              {{/each}}
+                              {{/if}}
+                           </td>
+                           {{/if}}
+                           
+                        </tr>
+                        {{/each}}
+                     {{/each}}
+                  </tbody>
+                  </table>
+                  </div>
+                  {{/each}}
+               {{/if}}
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;width:100%;
+               ">
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;padding-bottom:20px;
+                  ">
+                  <button id="generateScheduleForTour">Generate</button>
+               </div>
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;padding-bottom:20px;
+                  ">
+                  <button id="generateTestScheduleForTour">Check for empty tables or unassigned match nos or unassigned duration </button>
+               </div>
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;padding-bottom:20px;
+                  ">
+                  <button id="deleteScheduleForeve">Delete this event</button>
+               </div>
+               <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="height: 100%;padding-bottom:20px;
+                  ">
+                  <button id="deleteScheduleForTour">Delete complete tourn</button>
+               </div>
+            </div>
+            {{/if}}
+            {{/if}}
+         </div>
+      </div>
+   </div>
+   {{> savingSchedulePopup}}
+   {{/if}}
+</template>
+
+<template name="savingSchedulePopup">
+<!-- main div of confirm pop up-->
+  <div class="modal" id="savingSchedulePopup">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains yes and no buttons
+-->
+
+      <div id="confirmCenter" class="modal-dialog alreadySubPopup-sm" style="transform: translate(0px, -76px);!important">
+        <div class="alreadySubPopup">
+        <div class="modal-content">
+        <div class="modal-header alreadySubHeader">
+              <p class="modal-title" id="alreadySubscribedText">Saving data</p>
+            </div>
+             <div class="modal-body">
+              <div class="confirmPopupContent">
+                <div class="alreadySubyes">
+                  <p>Please Wait..</p>
+              </div>
+            </div>
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>

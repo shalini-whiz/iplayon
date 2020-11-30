@@ -1,0 +1,158 @@
+{{{getDocType}}}
+<html lang="en">
+	<head>
+	    <style type="text/css">
+		    {{css}}
+	    </style>
+	</head>
+	<body>
+	    <div class="container">
+	    	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+	    		<img src="{{imageURL}}/logo.png"  style="width:90%;height:12%;float:left;margin:0px !important;margin-top:-3px !important;border:0"/>
+	    	</div>
+	    	<div class="col-md-8 col-xs-8 col-sm-8 col-lg-8" style="padding:0px!important;">
+		    	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+		            <p class="pclassPDFHeading" style="">Team Detailed Score Sheet</p>
+		        </div>
+		        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+		            <p class="pclassPDFHeading" style="">{{tournamentName_team}}</p>
+		        </div>
+		        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+		            <p class="pclassPDFHeading2" style="margin-top:0px;">held at {{domainName_team}}</p>
+		        </div>
+		        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+		            <p class="pclassPDFHeading2" style="margin-top:0px;">Event:{{eventName_team}},{{eventDate_team}}</p>
+		        </div>
+		       
+	    	</div>
+	    	{{#if get5sImage}}
+	    	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+	    		{{#if get5sImage.url}}
+	    		<img src="{{imageURL}}{{get5sImage.url}}" style="width:94%;height:14%;float:right;margin:0px !important;margin-top:-3px !important;border:0"/>
+	    		{{/if}}
+	    	</div>
+	    	{{/if}}
+	    </div>
+	    <div class="row">
+	    	<p><br></p>
+	    </div>
+	    <div class="row col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:10px !important;margin:10px;">
+	        <p style="font-size:16px;">{{findTheTeamNamedraw teamA}} v/s {{findTheTeamNamedraw teamB}}</p>
+	    </div>
+	    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top:0px !important;padding:0px !important;">
+		    <table class="table scoreSheet" id="tblOne  " style="width:100%;">
+			    <tbody class="">
+			        <thead class="">
+						<tr class="headerAnalytics3" id="headerAnalytics3">
+						    <td class="headerDetScoreTeam" style="text-align: center;"></td>
+						    <td class="headerDetScoreTeam" style="text-align: center;">Match Type</td>
+						    <td class="headerDetScoreTeam" style="text-align: center;">Names</td>
+						    <td class="headerDetScoreTeam" style="text-align: center;">1</td>
+						    <td class="headerDetScoreTeam" style="text-align: center;">2</td>
+						    <td class="headerDetScoreTeam" style="text-align: center;">3</td>
+						    <td class="headerDetScoreTeam" style="text-align: center;">4</td>
+						    <td class="headerDetScoreTeam" style="text-align: center;">5</td>
+						    <td class="headerDetScoreTeam" style="text-align: center;">6</td>
+						    <td class="headerDetScoreTeam" style="text-align: center;">7</td>
+						   	<td class="headerDetScoreTeam" style="text-align: center;">Winner</td>
+						</tr>
+					</thead>
+					<tbody id="comMathDetails"> 
+						{{#each formatInfo}}
+						<tr class="headerAnalytics3" id={{this.type}} name={{this.no}} >
+							<td class="matchRowDEtScore" rowspan="2" style='vertical-align : middle;text-align:center;'  >{{this.displayLabel}}</td>
+							<td class="matchRowDEtScore" style="" rowspan="2" ></td>
+							<td class="matchRowDEtScore" style="">
+								{{#if eventType this.type}}
+								    <p style="text-align:left;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{setPlayerName this.detailScore 'playerA'}}
+			            			</p>           		
+								{{else}}
+								    <p style="text-align:left;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{setPlayerName this.detailScore 'playerA'}}
+			            			</p>  
+			            			 <p style="text-align:left;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{setPlayerName this.detailScore 'playerB'}}
+			            			</p>          		
+								                		
+								{{/if}}
+							</td>
+							<td class="" style="width:5%;">
+			               
+			            	</td>
+							<td class="" style="width:5%;">
+			               
+			            	</td>
+							<td class="" style="width:5%;">
+			               
+			            	</td>
+							<td class="" style="width:5%;">
+			               
+			            	</td>
+							<td class="" style="width:5%;">
+			               
+			            	</td>
+							<td class="" style="width:5%;">
+			               
+			            	</td>
+							<td class="" style="width:5%;" >
+			               
+			            	</td>	             
+							<td class="matchRowDEtScore" style="" rowspan="2" >		
+								          										     		
+								                		
+							</td>
+						</tr>
+
+						<tr class="headerAnalytics3" id={{this.type}} name={{this.no}}>
+							<td class="matchRowDEtScore" style="">
+								{{#if eventType this.type}}
+								    <p style="text-align:left;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{setPlayerName this.detailScore 'playerX'}}
+			            			</p>           		
+								{{else}}
+								    <p style="text-align:left;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{setPlayerName this.detailScore 'playerX'}}
+			            			</p>  
+			            			 <p style="text-align:left;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">{{setPlayerName this.detailScore 'playerY'}}
+			            			</p>          		
+								                		
+								{{/if}}
+							</td>
+							<td class="" style="width:5%;">
+			               
+			            	</td>
+							<td class="" style="width:5%;">
+			               
+			            	</td>
+							<td class="" style="width:5%;">
+			               
+			            	</td>
+							<td class="" style="width:5%;">
+			               
+			            	</td>
+							<td class="" style="width:5%;">
+			               
+			            	</td>
+							<td class="" style="width:5%;">
+			               
+			            	</td>
+							<td class="" style="width:5%;">
+			               
+			            	</td>	             
+							
+						</tr>	        
+
+						{{/each}}
+					</tbody>
+			       
+			    </tbody>
+			</table>
+			
+   <div class="row col-md-12 col-xs-12 col-sm-12 col-lg-12">
+      <p><br></p>
+    </div>
+    <div class="row col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin: 10px !important">
+      <p style="font-size: 16px">Match Status : </p>
+    </div>
+    <div class="row col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin: 10px !important">
+      <p style="font-size: 16px">Winner : </p>
+    </div>
+		</div>
+	</body>
+</html>

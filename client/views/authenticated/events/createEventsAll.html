@@ -1,0 +1,564 @@
+<!-- Template to create events-->
+
+<template name="createEventsAll">
+    <form id="eventCreation">
+        <!--Main div of the template uses class name mainContent *CSSLink* : createEvent.css-->
+        <div class="row mainContent_myEvents" style = "height: 22em;">
+            <div class="row-same-height">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:2px!important;padding-right:0px!important;margin-top: 0px;height: 0px;">
+                    <div class="row no-gutter col-md-12 col-xs-12 col-sm-12 col-lg-12" style="height: auto;">
+                        <div class="checkAcceptTerms" style="padding-left: 1px !important;height: auto;">
+                            <p class="downloadAcceptTitle" style="margin-top: 7px;margin-left: 0px;color: rgb(88, 88, 88);display: flex;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;color: red;">**Payment Option and Selected Event Categories Cannot be Changed Once Tournament Announced
+                            </p>
+                        </div>
+                    </div>
+                                    
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                  <div class="mainTitle">
+                    <p class="title">
+                        Create Tournament
+                    </p>
+                    <!--span class="glyphicon glyphicon-check logoutNewCss" id="noOfSubscribersSPAN" style="order: 1;color: #FFF;margin-left:6px;margin-top: 11px;font-size: 12px;"></span-->
+                    <input type="button" id="cancel" class="ip_button_LightGrey" value="Cancel" style="order:2"/>
+                    <input type="submit" id="save" class="ip_button_LightGrey" value="Save"   style="order:1"/>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 "><!--0.4%-->
+                    <div class="row no-gutter" style="">
+                        <div class="gamesParent">
+                            <div class="games">
+                                <select id="projectName" name="projectName" >
+                                    <option selected disabled style="display:none;" value="">
+                                        Sports
+                                    </option>
+                                    {{#each lProjectName}}
+                                    <option value="{{this._id}}" id="{{this.projectMainName}}">
+                                        {{this.projectMainName}}
+                                    </option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                    <input type="text" name="eventName" id="eventName" autocomplete="off" placeholder="Provide Tournament Title Here" class="eventTitle">
+                </div>
+                </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top:2.1px;">
+                    <div class="row no-gutter" style="">
+                        <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+                            <div class="row no-gutter" style="">
+                               <div class="datesParent1">
+                                    <input name="closureDate" id="closureDate" autocomplete="off" class=" datetimepicker input-group-addon closureDate" placeholder="Entry Closes On" type="text" />
+                                    <span id="clearClosureDate" class="glyphicon glyphicon-remove-circle clearDateTimeBoot" style="font-size:14px!important;"></span>
+                                </div>
+                                <!-- <div class='datesParent1'>
+                                    <div class='input-group date' style="display:flex !important;" id='closureDate'>
+                                        <input type='text' style="cursor:default!important;"  class="closureDate" id='closureDate' placeholder="Entry Closes On"/>
+                                        <span class="datetimepicker input-group-addon" style="background:0; border:0;">
+                                            <span class="glyphicon glyphicon-calendar newCalenderGlyphicon"></span>
+                                        </span>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 " style="padding-left:3px;">
+                            <div class="row no-gutter" style="">
+                                <div class="datesParent2">
+                                    <input name="startDate" id="startDate" autocomplete="off"  class="datetimepicker input-group-addon startDate" placeholder="Event Starts On" type="text" />
+                                    <span id="clearStartDate" class="glyphicon glyphicon-remove-circle clearDateTimeBoot" style="font-size:14px!important;"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="padding-left:3px;">
+                            <div class="row no-gutter" style="">
+                                <div class="datesParent3">
+                                    <input name="endDate" id="endDate" autocomplete="off" class="datetimepicker input-group-addon endDate" placeholder="Event Ends On" type="text" />
+                                    <span id="clearEndDate" class="glyphicon glyphicon-remove-circle clearDateTimeBoot" style="font-size:14px!important;"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="padding-left:3px;">
+                            <div class="row no-gutter" style="">
+                                <div class="addEvents" id="addEventsForTourn">
+                                    <button class="addEventsButton" id="addEvB">
+                                         <span class="glyphicon glyphicon-plus plusAddEvent"></span>Events
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="height: 10.6em; margin-top:2.1px;">
+                    <div class="row no-gutter" style="">
+                        <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="height: 10.6em;">
+                            <div class="row no-gutter" style="">
+                                <div id="sponsor" class="sponsor">
+                                    <p class="sponsorHeader" id="sponH">
+                                        Sponsored by:
+                                    </p>
+                                    <button id="sponsor1" name="sponsor" class="handImageChange"><span class="glyphicon glyphicon-hand-up"></span></button>
+                                    <p class="sponsorHeaderDetailsfinal" id="sponH1">
+                                        Upload Logo, Pdf & Web Link
+                                    </p>
+                                    <img src="" class="sponImg" id="sponImg" /> 
+                                     <p class="sponsorHoverText ">Sponsored by</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9" style="height: 10.6em;">
+                            <div class="row no-gutter" style="height: 10.6em;">
+                                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:2px!important; padding-right:0px!important;">
+                                    <div class="row no-gutter" style="">
+                                        <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11 venueSelectPaddingChange">
+                                            <div class="row no-gutter form-group" style="">
+                                                <select id="domainName" name="domainName" class="form-group">
+                                                    <option selected disabled style="display:none;" value="">
+                                                        Venue
+                                                    </option>
+                                                    {{#each lDomainName}}
+                                                    <option value="{{this._id}}" id="{{this.domainName}}">
+                                                        {{this.domainName}}
+                                                    </option>
+                                                    {{/each}}
+                                                </select>
+                                                </div>
+                                           </div>
+                                        <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="background:#b0b0b0; border-top-right-radius: 5px;border-bottom-right-radius: 5px;">
+                                            <div class="createGoogleDivchanged">
+                                                <button id="googlePopup" class="createGoogleMap" style="cursor: pointer;">
+                                                    <span class="glyphicon glyphicon-map-marker"></span>
+                                                </button>       
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:2px!important; padding-right:0px!important;margin-top:2.1px;">
+                                    <div class="row no-gutter" style="">
+                                        <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11">
+                                            <div class="row no-gutter" style="">
+                                                <div class="rulesParentChange">
+                                                    <!--<p id="rules" class="rules">
+                                                        Rules & Regulations
+                                                    </p>
+                                                    <input type="file" id="rulesAndReg" name="rulesAndReg" accept="application/pdf" class="rulesChild">-->
+                                                    <div class="rulesPdfContentDiv">
+                                                        <div class="file-upload-cont-rules">
+                                                            <input id="rulesAndReg" accept="application/pdf" class="rulesEditPdf" name="rulesAndReg" type="file" />
+                                                        </div>
+                                                        <div class="overlayRulesAndRegPdfChange">
+                                                            <!--<input class="overlayPrizePdf" id="prizePdfName" readonly placeholder="Prize Details PDF Filename" />-->
+                                                            <p id="rules" class="rulesLabel">
+                                                               Rules & Regulations
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="background:grey; border-top-right-radius: 5px;border-bottom-right-radius: 5px;padding-top: 5px !important;padding-left: 2%;">
+                                            <div class="row no-gutter" style="">
+                                                <a  id="clearRulesPdf" class="sponsorLabelClear" style="margin-left:5px!important;margin-top:1px!important;"><span class="glyphicon glyphicon-remove-circle" style="font-size:14px!important;padding-right:35%!important;padding-right:16%!important;"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:2px!important; padding-right:0px!important;margin-top:2.1px;">
+                                    <div class="row no-gutter" style="">
+                                        <div class="description">
+                                            <textarea name="description" placeholder="Event Description[max 60 words]" rows="5" cols="80" type="text" id="description" class="eventDescription"></textarea>
+                                        </div>
+                                    </div>
+                                </div-->
+
+                                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:2px!important; padding-right:0px!important; margin-top:2.1px;">
+                                    <div class="row no-gutter">
+                                        <div class="description" style="height: 40px;">
+                                            <textarea name="description" placeholder="Event Description[max 60 words]" rows="5" cols="80" type="text" id="description" class="eventDescription"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:2px!important; padding-right:0px!important;margin-top:33.1px;">
+                                    <div class="row no-gutter col-md-4 col-xs-4 col-sm-4 col-lg-4" style="">
+                                        <div class="checkAcceptTerms">
+                                            <input value=""  type="checkbox" name="checkAcceptbox" id="checkAcceptbox" class="checkboxAccept" />
+                                           <p class="downloadAcceptTitle" style="color:grey">Accept </p>
+                                            <a class="downloadAcceptPdf" href="/createEvents.pdf" download target="_parent">Terms & Conditions
+                                           </a>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutter col-md-6 col-xs-6 col-sm-6 col-lg-6" style="">
+                                        <div class="checkAcceptTerms">
+                                            <input value=""  type="checkbox" name="checkAcceptbox" id="checkAcceptboxTweett" class="checkboxAccept" checked/>
+                                            <p class="downloadAcceptTitle" style="margin-top: 0px; margin-left: 0px; color: rgb(88, 88, 88);"><span style="color: rgb(0, 172, 237); font-size: 14px ! important; margin-top: 3px; cursor: default; margin-left: 5px;" class="fa fa-twitter" aria-hidden="true">Auto Tweet</span></p>
+                                        </div>
+                                    </div>
+                                </div-->
+
+                                <!--payment options-->
+                                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:2px!important;padding-right:0px!important;margin-top: 7.1px;height: 0px;">
+                                    <div class="row no-gutter col-md-2 col-xs-3 col-sm-3 col-lg-2" style="height: 19px;">
+                                        <div class="checkAcceptTerms" style="padding-left: 1px !important;">
+                                           <p class="downloadAcceptTitle" style="margin-top: 4px;margin-left: 0px;color: rgb(88, 88, 88);display: flex;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Payment Type : </p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row no-gutter col-md-2 col-xs-3 col-sm-3 col-lg-2" style="height: 19px;">
+                                        <div class="checkAcceptTerms" style="padding-left: 1px !important;">
+                                            <p class="downloadAcceptTitle" style="margin-top: 1px;margin-left: 0px;color: rgb(88, 88, 88);display: flex;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+                                              <input value="" name="checkAcceptbox" id="radioButtonMandatory" class="checkboxAccept"  style="order: 1;margin-top: 4px;margin-left: 1px;" type="radio">
+                                              <span style="color: rgb(0, 172, 237); font-size: 14px ! important; margin-top: 1px; cursor: default; margin-left: 5px;order: 2;" class="" aria-hidden="true">Mandatory</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutter col-md-2 col-xs-3 col-sm-3 col-lg-2" style="height: 19px;">
+                                        <div class="checkAcceptTerms" style="padding-left: 1px !important;">
+                                            <p class="downloadAcceptTitle" style="margin-top: 1px;margin-left: 0px;color: rgb(88, 88, 88);display: flex;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+                                              <input value="" name="checkAcceptbox" id="radioButtonOptional" class="checkboxAccept"  style="order: 1;margin-top: 4px;margin-left: 1px;" type="radio">
+                                              <span style="color: rgb(0, 172, 237); font-size: 14px ! important; margin-top: 1px; cursor: default; margin-left: 5px;order: 2;" class="" aria-hidden="true">Optional</span>
+                                            </p>
+                                        </div>
+                                    </div><div class="row no-gutter col-md-2 col-xs-3 col-sm-3 col-lg-2" style="height: 19px;">
+                                        <div class="checkAcceptTerms" style="padding-left: 1px !important;">
+                                            <p class="downloadAcceptTitle" style="margin-top: 1px;margin-left: 0px;color: rgb(88, 88, 88);display: flex;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+                                              <input value="" name="checkAcceptbox" id="radioButtonNone" class="checkboxAccept" checked="" style="order: 1;margin-top: 4px;margin-left: 1px;" type="radio">
+                                              <span style="color: rgb(0, 172, 237); font-size: 14px ! important; margin-top: 1px; cursor: default; margin-left: 5px;order: 2;" class="" aria-hidden="true">None</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:2px!important;padding-right:0px!important;margin-top: 27.1px;height: 0px;">
+                                    <div class="row no-gutter col-md-4 col-xs-4 col-sm-4 col-lg-4" style="height: 19px;">
+                                        <div class="checkAcceptTerms" style="padding-left: 1px !important;">
+                                            
+                                           <p class="downloadAcceptTitle" style="margin-top: 1px;margin-left: 0px;color: rgb(88, 88, 88);display: flex;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+                                            <input value="" type="checkbox" name="checkAcceptbox" id="checkAcceptbox" class="checkboxAccept" style="order: 1;">
+                                             
+                                            <span style="color: rgb(0, 172, 237); font-size: 14px ! important; margin-top: 1px; cursor: default; margin-left: 5px;order: 2;" class="" aria-hidden="true">Accept<a class="downloadAcceptPdf" href="/createEvents.pdf" download="" target="_parent">Terms &amp; Conditions
+                                           </a></span></p>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutter col-md-6 col-xs-6 col-sm-6 col-lg-6" style="height: 19px;">
+                                        <div class="checkAcceptTerms" style="padding-left: 1px !important;">
+                                            
+                                            <p class="downloadAcceptTitle" style="margin-top: 0px; margin-left: 0px; color: rgb(88, 88, 88);margin-top: 2px;margin-left: 0px;color: rgb(88, 88, 88);display: flex;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 100%;"><input value="" name="checkAcceptbox" id="checkAcceptboxTweett" class="checkboxAccept" checked="" style="order: 1;margin-top: 4px;margin-left: 1px;" type="checkbox"><span style="color: rgb(0, 172, 237); font-size: 14px ! important; margin-top: 4px; cursor: default; margin-left: 5px;order: 2;" class="fa fa-twitter" aria-hidden="true">Auto Tweet</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <input type="text" id="addEventProvideDetails" name="addEventProvideDetails" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>
+        </div>
+        {{> errorPopup}}
+        {{> sponsorUpload}} {{> confirm}} {{> selectSubDomains}} {{> prizeDetailstemp}} {{> mailOrHyperLinkOnSubscribe}}
+        {{> addEventsPopup}}{{> alreadySubscribed}} {{> whoConSubscribe}} 
+        {{> noOfSubscribers}} {{> savingDataPopupNew}}
+        <div id="renderHowMAny"></div>
+        <div id="dobFilterRender"></div>
+<div id="content"></div>
+<!--<div id="content1"></div>-->
+    </form>
+</template>
+
+<template name="sponsorUpload">
+    <form id="sponsorDetails" >
+        <div class="modal fade" id="uploadModal">
+        <div id="sponsorUploadCenter" class="modal-dialog subdoModal-sm">
+            <div class="sponsorUploadsPopup">
+            <div class="modal-content">
+                <div class="modal-header sponsorUploadsHeader">
+                    <p class="modal-title" id="sponsorUploadsHeader">Sponsored By</p>
+                </div>
+                 <div class="modal-body sponsorUploadsBody">
+            <div class="sponsorUploadsMainTitle">
+                    <div class="sponsorLogoMainDiv">
+                        <div class="sponsorLogoContentDiv">
+                                <div class="file-upload-cont">
+                                    <input id="sponsorLogo" name="sponsorLogo" class="sponsorLogo" accept="image/*" type="file" />
+                                </div>
+                                <div class="sponPdfWhole">
+                                    <!--<input type="image" name="sponsorLogo" src="" class="my-button" alt="browse">--><span name="sponsorLogo" class="glyphicon glyphicon-picture my-button"></span>
+                                </div>
+                                <div class="overlayDiv">
+                                    <p id="sponsorLogoName" class="sponsorLabel">
+                                        Sponsor's Logo Filename
+                                    </p>
+                                     <a  id="clearSponsorLogo" class="sponsorLabelClear" type="button">X</a>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="sponsorPdfMainDiv">
+                        <div class="sponsorPdfContentDiv">
+                            <div class="file-upload-cont1">
+                                <input id="sponsorPdf" accept="application/pdf" class="sponsorPdf" name="sponsorPdf" type="file" />
+                            </div>
+                            <div class="sponPdfWhole">
+                                <img src="/adobe-reader.png" class="my-button1" alt="browse">
+                            </div>
+                            <div class="overLay1Div">
+                                <p id="sponsorPdfName" class="sponsorLabel">
+                                    Sponsor's PDF Filename
+                                </p>
+                               <a  id="clearSponsorPdf" class="sponsorLabelClear" type="button">X</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sponsorMailMainDiv">
+                        <div class="sponsorMailContentDiv">
+                            <div class="file-upload-cont2">
+                               
+                            </div>
+                                <span name="sponsorLogo" class="glyphicon glyphicon-envelope my-button2"></span>
+                            <div class="overlay2Div">
+                                <input type="text"  placeholder="Sponsor's URL" id="sponsorMailIdName" name="sponsorMailId" class="sponsorLabelInput" autocomplete="off">
+                               <a  id="clearSponsorURL" class="sponsorLabelClear" type="button">X</a>
+                                <!--<input class="overlay2"  type="text" placeholder="Sponsor's URL" />-->
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" id="provideDetails" name="provideDetails" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>
+            </div>
+                    <div class="sponsorUploadsContent">
+                        <div class="yesSponsorUploads">
+                            <button type="submit" id="sponsorUpload" class="ip_button_Popup_Black">OK</button>
+                        </div>
+                        <div class="noSponsorUploads">
+                            <button type="button" id="sponsorCanceled" class="ip_button_Popup_Red">CANCEL</button>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </form>
+</template>
+<!-- Template for selectSubDomainsPopUp-->
+<!-- this template is included in other templates
+    1. myEvents.html
+-->
+
+<!--Used CSS Classes and CSS Links-->
+<!--
+    1.FileName : confirm.css
+            classes : confirmPopup, confirmPopupContent, yes, no, ip_button_Popup_Red,
+                      ip_button_Popup_Black, confirmHeader, userDeleteOnlyRadioButton,
+                      userDeleteRadioDiv, userDeleteRadioDivLabelCheck,
+                      userDeleteBRadioButtons
+
+    2. FileName : sponsorUpload.css
+            classes :  modal-dialog,
+            ids     :  confirmCenter
+
+    3. bootstrap : modal-content,  modal-header, modal-sm, modal ,fade
+-->
+<template name="selectSubDomains">
+<form id="selectSubDomainsFormId">
+<!-- main div of selectSubDomainsPopUp pop up-->
+    <div class="modal fade" id="selectSubDomainsPopUp">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains two radio buttons
+        one is deleteOnly and delete and black list
+        and yes and no buttons
+-->
+        <div id="subDomainCenter" class="modal-dialog subdoModal-sm">
+            <div class="selectSubDomainsPopup">
+            <div class="modal-content">
+                <div class="modal-header selectSubDomainsHeader">
+                    <p class="modal-title" id="selectSubDomainsHeader">Select Event Tags</p>
+                </div>
+                 <div class="modal-body subDomainModalBody">
+            <div class="subDomainMainTitle">
+                <div class="checkMainTag">
+                    <input type="text" id="mainTag1" value="Main Tag" class="selectSubDomainsName" disabled>
+                    <div class="selectSubTagsEvent" id="selectMainTag">
+                        {{#if lSubDomain1Name}}
+                        <div class="subDomainCheckBoxDiv">
+                            <label class="subDomainCheckBoxDivLabel" name="mainTag">
+                                None
+                            </label>
+                            <input value="None" type="radio" name="mainTag" id="noneSubDomain1" class="" checked/>
+                            <label name="mainTag" for="noneSubDomain1" class="subDomainCheckBoxDivLabelCheck">
+                            </label>
+                        </div>
+                        {{/if}}
+                       {{#if lSubDomain1Name}} {{#each lSubDomain1Name}}
+                        <div class="subDomainCheckBoxDiv">
+                            <label class="subDomainCheckBoxDivLabel" name="mainTag">
+                                {{this.subDomain1Name}}
+                            </label>
+                            <input value="{{this.subDomain1Name}}" type="radio" name="mainTag" id="{{this._id}}" class="" />
+                            <label name="mainTag" for="{{this._id}}" class="subDomainCheckBoxDivLabelCheck">
+                            </label>
+                        </div>
+                        {{/each}}
+                        {{else}}
+                        <div class="subDomainCheckBoxDivEmpty">
+                            No Tags
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="checkSecondaryTag">
+                    <input type="text" id="mainTag1" value="Secondary Tag" class="selectSubDomainsName" disabled>
+                    <div class="selectSubTagsEvent" id="selectSecTag">
+                        {{#if lSubDomain2Name}}
+                        <div class="subDomainCheckBoxDiv">
+                            <label class="subDomainCheckBoxDivLabel" name="secondaryTag">
+                              None
+                            </label>
+                            <input value="None" id="noneSubDomain2"  type="radio" name="secondaryTag" checked />
+                            <label for="noneSubDomain2" name="secondaryTag" class="subDomainCheckBoxDivLabelCheck">
+                            </label>
+                        </div>
+                        {{/if}}
+                        {{#if lSubDomain2Name}} {{#each lSubDomain2Name}}
+                        <div class="subDomainCheckBoxDiv">
+                            <label class="subDomainCheckBoxDivLabel" name="secondaryTag">
+                              {{this.subDomain2Name}}
+                            </label>
+                            <input value="{{this.subDomain2Name}}" id="{{this._id}}"  type="radio" name="secondaryTag"  />
+                            <label for="{{this._id}}" name="secondaryTag" class="subDomainCheckBoxDivLabelCheck">
+                            </label>
+                        </div>
+                        {{/each}}
+                        {{else}}
+                        <div class="subDomainCheckBoxDivEmpty">
+                            No Tags
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+                    <div class="selectSubDomainsContent">
+                        <div class="yesSubDomains">
+                            <button type="submit" id="yesButtonSubDomains" class="yesButtonSubDomains">OK</button>
+                        </div>
+                        <div class="noSubDomains">
+                            <button type="button" id="noButtonSubDomains" class="noButtonSubDomains">CANCEL</button>
+                        </div>
+                        <div class="buySubDomains">
+                            <button type="button" id="buyButtonSubDomains" class="buyButtonSubDomains">$ BUY</button>
+                        </div>
+                    </div>
+                    <input type="text" id="subDomProvideDetails" name="subDomProvideDetails" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>
+                 </div>
+            </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+</template>
+
+<template name="prizeDetailstemp">
+    <form id="prizeDetailsUploadFormID">
+        <div class="modal fade" id="prizeUploadModal">
+        <div id="sponsorUploadCenter" class="modal-dialog subdoModal-sm">
+            <div class="sponsorUploadsPopup">
+            <div class="modal-content">
+                <div class="modal-header sponsorUploadsHeader">
+                    <p class="modal-title" id="sponsorUploadsHeader">Prize Details</p>
+                </div>
+                 <div class="modal-body sponsorUploadsBody">
+            <div class="prizeUploadsMainTitle">
+                    <div class="sponsorLogoMainDiv">
+                        <div class="sponsorLogoContentDiv">
+                                <div class="file-upload-cont">
+                                    
+                                </div>
+                                <a href="">
+                                    <img name="prizeTitleImg" src="/1459612236_BT_dollar.png" class="my-button-prizeTitle">
+                                </a>
+                                <div class="overlayPrizeTitle">
+                                <input class="sponsorLabelInput" id="prizeTitleIdName" name="prizeTitleId" type="text" placeholder="Entry Fee" />
+                                <a  id="clearPrizeTitle" class="sponsorLabelClear">X</a>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="sponsorPdfMainDiv">
+                        <div class="sponsorPdfContentDiv">
+                            <div class="file-upload-cont-prize">
+                                <input id="prizePdf" accept="application/pdf" class="prizePdf" name="prizePdf" type="file" />
+                            </div>
+                                <img src="/adobe-reader.png" class="my-button-prizePdf" alt="browse">
+                            <div class="overlayPrizePdf">
+                                <!--<input class="overlayPrizePdf" id="prizePdfName" readonly placeholder="Prize Details PDF Filename" />-->
+                                <p id="prizePdfName" class="sponsorLabel">
+                                   Prize Details PDF Filename
+                                </p>
+                                <a  id="clearPrizePdf" class="sponsorLabelClear">X</a>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" id="providePrizeDetails" name="providePrizeDetails" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>
+                </div>
+                    <div class="sponsorUploadsContent">
+                        <div class="yesSponsorUploads">
+                            <button type="submit" id="prizeUploadYes" class="yesButtonSubDomains">OK</button>
+                        </div>
+                        <div class="noSponsorUploads">
+                            <button type="button" id="prizeUploadCanceled" class="noButtonSubDomains">CANCEL</button>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </form>
+</template>
+
+<template name="googleDetailsVenue">
+        <div class="modal fade" id="googleDetailsVenue">
+        <div id="googleUploadCenter" class="modal-dialog googleMapModal-sm">
+            <div class="googleMapModalPopup">
+            <div class="modal-content">
+                <div class="modal-header sponsorUploadsHeader">
+                    <p class="modal-title" id="sponsorUploadsHeader">Drag the pin to set the venue or type address</p>
+                </div>
+                 <div class="modal-body googleUploadsBody">
+            <div class="googleMapMainTitle">
+                    <div class="googleMapMainDiv">
+                        <div class="googleMapContentDiv ">
+                            <div class="gooSer">
+                                <input id="pac-input" class="controls" type="text" placeholder="Address" value="">
+                                <button class="clearGooSe" id="clearGooSe" type="button" >
+                                <span class="glyphicon glyphicon-search">
+                                  </span>
+                              </button>
+                                <!--<input class="clearGooSe" id="clearGooSes" type="button" value="$">-->
+                            </div>
+                           <div id="map">  </div>
+                          
+                        </div>
+                    </div>
+                </div>
+                    <div class="googleUploadsContent">
+                        <div class="yesSponsorUploads">
+                            <button type="submit" id="googleVenueYes" class="ip_button_Popup_Black">OK</button>
+                        </div>
+                        <div class="noSponsorUploads">
+                            <button type="button" id="googleVenueCanceled" class="ip_button_Popup_Red">CANCEL</button>
+                        </div>
+                    </div>
+                 </div>
+                                  <input id="pac-input-view1"  readonly type="text" 
+                    style="background-color:none; border:none; cursor:default font-weight:normal;" onfocus="this.blur()" >
+            </div>
+            </div>
+        </div>
+        </div>
+</template>

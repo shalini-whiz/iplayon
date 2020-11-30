@@ -1,0 +1,73 @@
+<template name="teamSubscribePopup">
+<!-- main div of selectSubDomainsPopUp pop up-->
+    <div class="modal" id="teamSubscribePopupQ">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains two radio buttons
+        one is deleteOnly and delete and black list
+        and yes and no buttons
+-->
+        <div id="subDomainCenter" class="modal-dialog subTeamSubsModal-sm">
+            <div class="selectTeamSubsPopup">
+            <div class="modal-content">
+                <div class="modal-header selectSubDomainsHeader">
+                    <p class="modal-title" id="setEventNameHeader" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"></p>
+                </div>
+                 <div class="modal-body subDomainModalBody">
+            <div class="teamSubscribeMainTitle" style="height:11em;overflow:auto;">
+                <div class="checkMainTag">
+                    <input type="text" id="mainTag1" value="Select Team" class="selectSubDomainsName" disabled>
+                    <div class="selectTeamSubscribeEvent" id="selectMainTag">
+                       {{#if lTeams}} {{#each lTeams}}
+                        <div class="subTeamSubscribeCheckBoxDiv">
+                            {{#if checkBlackTeam this._id}}
+                            <label class="subTeamSubscribeCheckBoxDivLabelBlack" name="mainTag2">
+                                {{teamNameCheckSubString this._id}}
+                            </label>
+                            {{else}}
+                            <label class="subTeamSubscribeCheckBoxDivLabel"  name="mainTag">
+                                {{teamNameCheckSubString this._id}}
+                            </label>
+                            <input value="{{this._id}}" type="radio" name="mainTag" id="{{this._id}}" class="" />
+                            <label name="mainTag" for="{{this._id}}" class="subDomainCheckBoxDivLabelCheck">
+                            </label>
+                            {{/if}}
+                        </div>
+                        {{/each}}
+                        <!--{{else}}
+                        <div class="subTeamSubscribeCheckBoxDivEmpty">
+                            No Teams
+                        </div>-->
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="checkAcceptTermsWithConfirm" style="margin-top:1%!important">
+                    <input value=""  type="checkbox" name="checkAcceptboxTeam" id="checkAcceptboxTeam" class="checkboxAccept" style="margin-left: auto;
+                        margin-right: 1%;margin-top: 4px;"/>
+                       <p class="downloadAcceptTitle" style="color:grey">Accept </p>
+                    <a class="downloadAcceptPdf" href="/createEvents.pdf" download target="_parent" style="margin-right: auto!important;margin-left: 1%!important;margin-top: 2px!important;">
+                         <!--<span style="color:maroon">Accept</span>--><span style="color:blue">Terms & Conditions</span>
+                        <!--<span style="color:maroon!important; height: 2.2em!important;font-size:14px!important;margin-top: 2%;
+                                margin-left: 8%;" class="glyphicon glyphicon-download">
+                    </span>--></a>
+            </div>
+       
+            <div class="selectTeamSubscribeContent">
+                <div class="yesSubDomains">
+                     <button type="submit" id="yesButtonSubTeamEvent" class="ip_button_Popup_Black">OK</button>
+                </div>
+                <div class="noSelectTeam">
+                    <button type="button" id="noButtonSubTeamEvent" class="ip_button_Popup_Red">CANCEL</button>
+               </div>
+            </div>
+             
+            <input type="text" id="confirmDomProvideDetailsTeam" name="confirmDomProvideDetailsTeam" style="background-color:none; border:none; cursor:default; font-weight:normal; width:100%;" onfocus="this.blur()" readonly>
+             </div>
+    </div>
+</div>
+</div>
+</div>
+</template>

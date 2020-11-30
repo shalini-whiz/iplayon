@@ -1,0 +1,43 @@
+<template name="academyFinancialEntryTemplate">
+
+    <body style="background: #FAFAFA; color: #333333;">
+        <center>
+            <table border="0" cellpadding="20" cellspacing="0" height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+                <tbody>
+                    <tr>
+                        <td> <b>Hi {{myName}},</b>
+                            <p style="font-size:13px;">{{message}}:"{{tournament}}"</p>
+                            <br/>
+                            <p style="font-size:13px;">Academy Details:</p>
+                            <p style="font-size:13px;">Name:{{playerName}}/-</p>
+                            <p style="font-size:13px;">Phone:{{playerPhone}}/-</p>
+                            <table style="width:100%;border: 1px solid black; border-
+                         collapse: collapse;">
+                                <tr>
+                                    {{#if eventName}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Event Name:</td>
+                                    {{#each eventName}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:black;">{{this}}</td>
+                                    {{/each}} {{/if}}
+                                </tr>
+                                <tr>
+                                    {{#if prize}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Entry Fee:</td>
+                                    {{#each prize}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:black;">{{this}}</td>
+                                    {{/each}} {{/if}}
+                                </tr>
+
+                            </table>
+                            <p style="font-size:13px;">Entry fee total: Rs. {{total}}/-</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>--
+                            <br />iPlayOn</td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </body>
+</template>

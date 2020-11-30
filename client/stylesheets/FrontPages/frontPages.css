@@ -1,0 +1,577 @@
+.tournHEADRow{
+	font-size: 12px;
+	text-align: center;
+	cursor: pointer;
+	margin: 0px !important;
+	white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+	white-space: -webkit-pre-wrap; /*Chrome & Safari */ 
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	white-space: pre-wrap;       /* css-3 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+	word-break: break-all;
+	white-space: normal;
+}	
+
+.divHeadRowIPlayon{
+	position: relative; 
+	width: 86%; 
+	padding: 0px ! important;
+}
+
+.divHeadUL{
+	margin-top: 15px;
+}
+
+.liUpcoming{
+	font-size: 12px;
+}
+
+.spanUpcoming{
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.tournHEAD{
+	font-size: 12px;
+	text-align: center;
+	font-weight: bold;
+}
+
+#calenderTEST .fc-body{
+	max-height: 250px !important;
+	overflow: auto !important;
+}
+#calenderTEST a.fc-more {
+	font-size: 12px !important;
+}
+
+#calenderTEST .fc-day-grid-event > .fc-content {
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer !important;
+}
+
+.grad1 {
+	background: #fff !important;
+	/*background: #fff !important;
+    background: -webkit-linear-gradient(#fff	,#fff, black)!important; 
+    background: -o-linear-gradient(#fff	,#787878, black)!important; 
+    background: -moz-linear-gradient(#fff	,#787878, black)!important; 
+    background: linear-gradient(#fff	,#787878, black)!important; */
+    padding:0px !important;
+    overflow: auto !important;
+}
+
+
+.grad2{
+	background: #fff;
+	padding:0px !important;
+}
+
+.grad3{
+	background: #333 !important;
+}
+
+.firstDivIplayon{
+	padding: 0px !important;	
+}
+
+.navbar-brandIplayon {
+    float: left;
+    padding: 0px;
+    font-size: 18px;
+    line-height: 15px;
+    height: 100px;
+}
+
+.divMainIplayon{
+	position: absolute; 
+	bottom: 0px; 
+	padding-right: 0px; 
+	padding-left: 0px; 
+	width: 100% ! important; 
+	/*background: none repeat scroll 0% 0% #282828; */
+	/*background: #005E99;*/
+	background: #0091D2;
+	height: 31px; 
+	padding-bottom: 5px ! important; 
+	padding-top: 5px;
+}
+
+.divPaddingZero{
+	padding: 0px ! important;
+}
+
+.divPaddingForCalendar{
+	padding-right: 2px !important;
+}
+
+.divMain2IPlayon{
+	padding: 0px 5px 0px 0px ! important;
+	padding-top: 1px !important;
+	padding-bottom: 1px !important;
+}
+
+.signInButtonIPlayon{
+	font-size: 13px ! important; 
+	width: 100%; 
+	/*background: none repeat scroll 0% 0% rgb(102, 173, 255); */
+	background: #003f66;
+	border: 0px none ! important; 
+	color: white; 
+	/*color: black;*/
+	border-radius: 2px; 
+	font-weight: normal;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+ 	white-space: nowrap;
+}
+
+.loginButtonIPlayon{
+	font-size: 13px ! important; 
+	width: 100%; 
+	border: 0px none ! important; 
+	color: white; 
+	/*color: black; */
+	border-radius: 2px; 
+	font-weight: normal; 
+	background: none repeat scroll 0% 0% rgb(255, 171, 26);
+	overflow: hidden;
+  	text-overflow: ellipsis;
+ 	white-space: nowrap;
+}
+
+.divSecondMainIplayon{
+	margin-top:0px;
+	height: 59vh;
+	min-height: 37em;
+}
+
+.divThirdMainIplayon{
+	margin-top: 8px;
+	height: auto;
+	min-height: 11em;
+	/*border: 1px solid #585858;*/
+	box-shadow: 0px 0px 10px 0px #a0a0a0;
+	border-radius: 5px !important;
+	border: 1px solid #0091D2;
+	margin-bottom: 5px;
+}
+
+.divResultsUpcomingIplayon{
+	height: 59vh;
+	min-height: 37em !important;
+}
+
+.divCalendarIplayon{
+	height: 59vh;
+	min-height: 37em !important;
+	margin-top: 5px !important;
+}
+
+.divResults2UpcomingIplayon{
+	padding-right: 7px !important;	
+	height: 59vh;
+	min-height: 37em;
+}
+
+.divUpcomingIplayon{
+    height: 28.4vh;
+    min-height: 17.8em;
+    background: none repeat scroll 0% 0% transparent;
+    margin-top:5px;    
+    border-radius: 5px;
+    border: 1px solid #F7981D;
+    box-shadow: 0px 0px 10px 0px #a0a0a0;
+}
+
+.divResultIplayon{	
+	height: 28.4vh;
+	min-height: 17.8em;
+	background: none repeat scroll 0% 0% transparent;
+	margin-top: 7px;
+	border-radius: 5px;
+	margin-bottom: 2px;
+	border: 1px solid #F7981D;
+	box-shadow: 0px 0px 10px 0px #A0A0A0;
+}
+
+#parentCalendar .fc-day-grid-container.fc-scroller {
+	height: auto!important;
+	overflow-y: auto;
+}
+
+#parentCalendar .fc-basic-view tbody .fc-row {
+   	/*min-height: 8.16vh!important;*/    
+    height: 8.15vh !important;
+    min-height: 5.18em !important;
+}
+
+#parentCalendar .fc-widget-header .fc-sun{
+	/*background: #ff8080 !important;*/
+	background: none repeat scroll 0% 0% #0091D2 !important;
+	color: #FFF;
+	font-size: 2.27vh;
+	font-weight: normal;
+}
+
+#parentCalendar .fc-widget-header .fc-mon{
+	/*background: #ffbf80 !important;*/
+	background: none repeat scroll 0% 0% #0091D2 !important;
+	color: #FFF;
+	font-size: 2.27vh;
+	font-weight: normal;
+}
+
+#parentCalendar .fc-widget-header .fc-tue{
+	/*background: #ffeb99 !important;*/
+	background: none repeat scroll 0% 0% #0091D2 !important;
+	color: #FFF;
+	font-size: 2.27vh;
+	font-weight: normal;
+}
+
+#parentCalendar .fc-widget-header .fc-wed{
+	/*background: #99ffcc !important;*/
+	background: none repeat scroll 0% 0% #0091D2 !important;
+	color: #FFF;
+	font-size: 2.27vh;
+	font-weight: normal;
+}
+
+#parentCalendar .fc-widget-header .fc-thu{
+	/*background: #00bfff !important;*/
+	background: none repeat scroll 0% 0% #0091D2 !important;
+	color: #FFF;
+	font-size: 2.27vh;
+	font-weight: normal;
+}
+
+#parentCalendar .fc-widget-header .fc-sat{
+	/*background: #ecb3ff !important;*/
+	background: none repeat scroll 0% 0% #0091D2 !important;
+	color: #FFF;
+	font-size: 2.27vh;
+	font-weight: normal;
+}
+
+#parentCalendar .fc-widget-header .fc-fri{
+	/*background: #99b3ff !important;*/
+	background: none repeat scroll 0% 0% #0091D2 !important;
+	color: #FFF;
+	font-size: 2.27vh;
+	font-weight: normal;
+}
+
+.navBARIPlayonHome{
+	background: none repeat scroll 0% 0% transparent ! important; 
+	right: 5% !important; 
+	height: auto ! important; 	
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+	left: 5% !important;
+	border:0px !important;
+}
+
+#parentCalendar .fc-toolbar .fc-right {
+    float: right !important;
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    padding-top: 1.1vh !important;
+}
+
+#parentCalendar .fc-today-button{
+	background: none repeat scroll 0% 0% #FFAB1A !important;
+	color: black !important;
+}
+
+#parentCalendar .fc-prev-button{
+	background: none repeat scroll 0% 0% #0091D2;
+	color: white;
+}
+
+#parentCalendar .fc-next-button{
+	background: none repeat scroll 0% 0% #0091D2;
+	color: white;
+}
+#parentCalendar .fc-toolbar h2{
+	font-size: 3vh !important;
+	text-overflow: ellipsis !important;
+	white-space: nowrap !important;
+	overflow: hidden;
+	width: 100%;
+	padding-top: 1.1vh;
+	padding-left: 5px;
+}
+
+#parentCalendar .fc-ltr .fc-basic-view .fc-day-number {
+    text-align: right !important;
+    font-size: 1em !important;
+    color: black;
+}
+
+#parentCalendar td.fc-today{
+	color: blue !important;
+	font-weight: bold;
+}
+
+#parentCalendar .fc-unthemed .fc-today {
+	background: none !important; 
+}
+
+#parentCalendar .fc-content h4{
+	font-size: 1.5em !important;
+	font-weight: bold;
+	color: #004f80 !important;
+	text-overflow: ellipsis !important ;
+	overflow: hidden !important;
+	white-space: nowrap !important;
+	cursor: pointer !important;
+	margin:0px !important;
+	border-bottom: 1px solid #000;
+}
+
+#parentCalendar .fc-more-cell{
+	overflow: hidden;
+}
+
+#parentCalendar a.fc-more {
+    margin: 1px 3px;
+	cursor: pointer;
+	text-decoration: none;
+	color: #00F;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 100%;
+	font-size: 2vh !important;
+}
+
+#parentCalendar .fc-event-container a{
+	border: 0px none !important;
+}
+
+#parentCalendar .fc-toolbar .fc-left{
+	width: 40%;
+	text-align: left;
+}
+
+#parentCalendar .fc-body .fc-widget-content{
+	height: 18vh !important;
+	overflow-y: auto !important;
+}
+
+.divTournDetailsIplayon{
+	/*height: 36.25em;
+	margin-top: 2px;*/
+	margin-top: 2px;
+	padding-left: 0px !important;
+	padding-top: 5px !important;
+	height: 58.1vh;
+	min-height: 36.25em;
+	box-shadow: 0px 0px 10px 0px #A0A0A0;
+	border-radius: 5px !important;
+	border: 1px solid #0091D2;
+}
+
+.tournDetPTagIplayon{
+    font-size: 17px !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    overflow: hidden;
+    width: 100%;
+    margin: 0px;
+	padding: 0px;
+	color: black;
+}
+
+.backGlyphiconIplayon{
+	color: #0091D2;
+	margin-left: 0px;
+	margin-top: 0px;
+	font-size: 15px;
+	width: 100%;
+	cursor: pointer !important;
+	margin-right: 2px;
+}
+
+.divToShowTournDetIplayon{
+	/*border: 1px solid #FFF;
+	margin-top: 7px;*/
+	border: 1px solid #FFF;
+	margin-top: 3px;
+	height: 46vh;
+	min-height: 32em;
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+	overflow-y: auto;
+}
+
+#parentCalendar .fc-unthemed .fc-popover, .fc-unthemed .fc-row, .fc-unthemed hr, .fc-unthemed tbody, .fc-unthemed td, .fc-unthemed th, .fc-unthemed thead {
+    border-color: #787878 !important;
+}
+
+.divCalenderWrapperIp{
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+	padding-top: 0px !important;
+	margin-top: 3px;	
+	height: 58vh !important;
+	min-height: 36em !important;
+	border-radius: 5px !important;
+}
+
+#parentCalendar  .fc-toolbar {
+    text-align: center;
+    margin-bottom: 0.64vh;
+}
+
+.keyResultH2{
+	font-size: 14px !important;
+	text-overflow: ellipsis !important;
+	white-space: nowrap !important;
+	overflow: hidden;
+	width: 100%;
+	padding-top: 5px;
+	padding-left: 5px;
+	margin: 0px;
+	padding-bottom: 4px;
+	border-style: solid none;
+	border-color: #0091D2 -moz-use-text-color;
+	-moz-border-top-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	border-image: none;
+	background: none repeat scroll 0% 0% #F7981D;
+	border-width: 0px;
+	color: #FFF;
+	text-align: center !important;
+}
+
+.keyResultHR{
+	margin: 5px 7px 0px 6px;
+	border-color: #A8A8A8;
+	display: none;
+}
+
+#allTournIplayon:nth-child(even) {
+	background: #d0d0d0  !important;
+	color: black;
+}
+
+#allTournIplayon:nth-child(odd) {
+	background: #0091D2 !important;
+	color: white;
+}
+
+.tableIplayonTourn{
+	margin: 0px !important;
+	width: 100%;
+	/*border: 1px solid #585858;*/
+}
+
+.tableIplayonTournTd{
+	cursor: pointer !important;
+	padding: 5px !important;
+}
+
+#allTournIplayon:nth-child(even) td {
+	/*border-right: 1px solid #585858;*/
+	border-right: 1px solid white;
+}
+
+#allTournIplayon:nth-child(odd) td{
+	/*border-right: 1px solid #585858;
+	border-top: 1px solid #585858;
+	border-bottom: 1px solid #585858;*/
+	border-right: 1px solid white;
+}
+
+.logoutFrontPageIp{
+	font-size: 20px; 
+	color: maroon; 
+	font-weight: normal; 
+	margin: 0px 0px 0px; 
+	text-align: center ! important;
+	top: 0% !important;
+	left: 0% !important;
+	position: relative !important; 
+}
+
+.logoutFrontPageButtonIp{
+	margin: 0px 0px 0px 0px;
+	background: none repeat scroll 0px center transparent;
+	border: 1px solid #800000;
+	height: 31px;
+}
+
+.logoutGlyphButton{
+
+}
+
+.logScreenUpcomGlypButton{
+	order: 1;
+	margin-left: 0px;
+	margin-right: 1.5px;
+}
+
+.loggedInUserNAmeIP{
+	order: 3;
+	margin-left: 6px;
+	margin-right: 6px;
+	height: 31px;
+	padding: 2px;
+}
+
+.loggedInUserNameIPPTag{
+	font-size: 12px;
+	color: white;
+	top: 0px;
+	position: relative;
+	bottom: 0px;
+	font-weight: bold;
+	text-align: center !important;
+	cursor: default;
+	text-overflow: ellipsis !important;
+	white-space: nowrap !important;
+	overflow: hidden;
+}
+
+.divForAboutIplayon{
+	margin: 0px !important;
+	padding-top: 5px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	width: 100%;
+	padding-left: 5px !important;
+}
+
+.divAboutIplayonP1{
+	color: #0091D2;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px !important;
+	margin: 0px !important;
+	width: 100%;
+	padding-right: 3px !important;
+}
+
+.divSponsorsIPlayon{
+	padding-right: 0px !important;
+	padding-left: 0px !important;
+	width: 100% !important;
+	height: 31px;
+	padding-bottom: 5px !important;
+	padding-top: 5px !important;
+}
+
+#parentCalendar .fc-more-popover .fc-event-container{
+	height: 15vh !important;
+	overflow: auto !important;
+}

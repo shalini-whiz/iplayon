@@ -1,0 +1,176 @@
+<template name="tournSchedulerPastEvents">
+   {{#if notAdmin}}
+   <div class=''>
+      <p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+   </div>
+   {{else}}
+   <div class="container" style="background:#333; height:auto;">
+      <div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+         <div class="row-same-height">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+               <div class="mainTitle">
+                  <p class="title">
+                     Tournament Scheduler Create (Past Tournaments)
+                  </p>
+               </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;
+               ">
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <select class="" style="width: 100%;height: 100%;margin:0px;" id="tournamentList">
+                     <option selected disabled>Select Tournaments</option>
+                     {{#each tournamentList}}
+                     <option value = {{this._id}}>{{this.eventName}}</option>
+                     {{/each}}
+                  </select>
+               </div>
+               {{#if Template.subscriptionsReady}}
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                  ">
+                  <select class="" style="width: 100%;height: 100%;margin:0px;" id="tournamentListDate">
+                     <option selected disabled>Select Date</option>
+                     {{#each listDates}}
+                     <option value = {{this}}>{{this}}</option>
+                     {{/each}}
+                  </select>
+               </div>
+               {{/if}}
+            </div>
+            {{#if Template.subscriptionsReady}}
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;margin-bottom: 15px;margin-left: 30px;margin-right: 30px;padding-right: 30px;
+               ">
+               {{#if selectedTorun}}
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;" name="userSelectedForTeamP"> Tournament Name : {{selectedTorun.eventName}}</p>
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;" name="userSelectedForTeamP"> Start Date : {{selectedTorun.eventStartDate}}</p>
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;" name="userSelectedForTeamP"> End Date : {{selectedTorun.eventEndDate}}</p>
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;" name="userSelectedForTeamP"> Entry Ends On : {{selectedTorun.eventSubscriptionLastDate}}</p>
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;" name="userSelectedForTeamP"> Venue  : {{selectedTorun.domainName}}</p>
+               {{/if}}
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;width:100%;
+               ">
+               <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="    margin-left: 30px;">
+                  <thead style="">
+                     <tr class="headeSubDiv2_entryFAca_backWhite">
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Start time</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">End time</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Break 1 start time</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Break 1 end time</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Break 2 start time</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Break 2 end time</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;"># of Tables</th>
+                     </tr>
+                  </thead>
+                  <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                     <tr class="headerAnalytics3" id="headerAnalytics3">
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="startTime" placeholder = "HH:MM:SS AM/PM" value="11:00:00 AM"></td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="endTime"  placeholder = "HH:MM:SS AM/PM" value="11:00:00 PM"></td>
+                         <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="break1startTime" placeholder = "HH:MM:SS AM/PM"  value="12:00:00 PM"></td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="break1endTime"  placeholder = "HH:MM:SS AM/PM" value="1:00:00 PM"></td>
+                         <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="break2startTime" placeholder = "HH:MM:SS AM/PM" value="2:00:00 PM"></td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="break2endTime" placeholder = "HH:MM:SS AM/PM" value="3:00:00 PM"></td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="noofTables" placeholder = "number of tables" value="3"></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;width:100%;
+               ">
+               <p style="width: 100%;height: 100%;margin: 0px;padding: 0px;color:white;margin-left: 30px;" name="userSelectedForTeamP">Enter Duration for Rounds</p>
+               <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="    margin-left: 30px;">
+                  <thead style="">
+                     <tr class="headeSubDiv2_entryFAca_backWhite">
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">R512</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">R256</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">R128</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">R64</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">R32</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">PQF</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">QF</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">SF</th>
+                        <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Finals</th>
+                     </tr>
+                  </thead>
+                  <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                     <tr class="headerAnalytics3" id="headerAnalytics3">
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="R512Time" placeholder="Minutes" value="30"></td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="R256Time" placeholder="Minutes" value="30"></td>
+                         <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="R128Time" placeholder="Minutes" value="30"></td>
+                         <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="R64Time" placeholder="Minutes" value="30"></td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="R32Time" placeholder="Minutes" value="30"></td>
+                         <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="PQFTime" placeholder="Minutes" value="30"></td>
+                         <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="QFTime" placeholder="Minutes" value="30"></td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="SFTime" placeholder="Minutes" value="30"></td>
+                        <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;padding:0px"><input type="text" style="width:100%;height:38px;margin:0;border:0px;font-size: 15px;text-align: center;" id="FinalsTime" placeholder="Minutes" value="30"></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;width:100%;
+               ">
+               {{#if selectedTorun}}
+               {{#each eventsList}}
+               <p style="color: white;font-size: 12px;margin-top: 10px !important;text-decoration: underline;margin-left: 30px;">{{this.eventName}} ( {{this.num}} subscribers)
+               </p>
+               <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="    margin-left: 30px;">
+                  <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                     <tr class="headerAnalytics3" id="headerAnalytics3">
+                        {{#each getMaxEventPartsCountro}}
+                        {{#each this.rounds}}
+                        {{#if checkNotRound this ../rouVal}}
+                        <td class="pAnalytics2_entryFAca2_backWhite" style-="background: transparent !important;" >
+                           {{#if matchNumbersFound ../../eventName this ../../_id}}
+                           <input type="checkbox" name="checkEvents" style="cursor:pointer !important;" value="" eventId={{../../_id}} eventName={{../../eventName}} id="selectEventName{{../../_id}}{{this}}" roundName = {{this}}><br>
+                           <p style="color:black;font-size:12px;">{{this}}</p>
+                           {{else}}
+                           <p style="color:white;font-size:12px;">{{this}}</p><br>
+                              <p style="color:black;font-size:12px;">This event is selected on other date</p>
+                           {{/if}}
+                        </td>
+                        {{/if}}
+                        {{/each}}
+                        {{/each}}
+                     </tr>
+                     <tr>
+                        {{#each getMaxEventPartsCountro}}
+                        {{#each this.rounds}}
+                        {{#if checkNotRound this ../rouVal}}
+                        <td class="pAnalytics2_entryFAca2_backWhite" style-="background: transparent !important;" eventId={{../../_id}} eventName={{../../eventName}}>
+                           {{#if matchNumbersFound ../../eventName this}}
+                           <select id="getOrdersOfEvent{{../../_id}}{{this}}" roundName={{this}} eventId = {{../../_id}} disabled>
+                              <option selected disabled value="Select Order">Select Order</option>
+                              {{#each getOrdersCount}}
+                              <option event={{../../../eventName}} order={{changeToSlNum @index}}>{{changeToSlNum @index}}</option>
+                              {{/each}}
+                           </select>
+                           {{/if}}
+                        </td>
+                        {{/if}}
+                        {{/each}}
+                        {{/each}}
+                     </tr>
+                  </tbody>
+               </table>
+               {{/each}}
+               {{/if}}
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+               margin-top: 10px;width:100%;
+               ">
+               <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;padding-bottom:20px;
+                  ">
+                  <button id="generateScheduleForTour">Generate</button>
+               </div>
+            </div>
+            {{/if}}
+         </div>
+      </div>
+   </div>
+   {{/if}}
+</template>

@@ -1,0 +1,115 @@
+<!-- Template to create events-->
+
+<template name="pastUpdates">
+    <form id="eventCreation">
+        <div class="row mainContent_myEvents">
+            <div class="row-same-height">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                  <div class="mainTitle">
+                    <p class="title" style="order:1">
+                        Past Event Updates
+                    </p>
+                    <input type="button" id="cancel" class="ip_button_LightGrey" value="Done" style="order:2" />
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important; height:28px !important;margin-top:2.1px;">
+                    <div class="row no-gutter" style="">
+                        <div class="col-md-5 col-xs-5 col-sm-5 col-lg-5" style="padding-left:15px!important;">
+                            <div class="row no-gutter" style="">
+                                <div class="liveUpdatesGames2">
+                                    <select id="liveUpEventName2" name="liveUpEventName2" class="select2" style="color:white!imporatnt;">
+                                        <option selected disabled style="display:none;" value="">
+                                            Select Tournament
+                                        </option>
+                                        {{#each lEvents2}}
+                                        <option value="{{this._id}}" id="{{this.eventName}}">
+                                            {{this.eventName}}
+                                        </option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="padding-right:2px!important;">
+                            <div class="row no-gutter" style="">
+                                <div class="liveUpdatesGames">
+                                    <select id="liveUpEventName" name="liveUpEventName" class="select2" style="color:white!imporatnt;">
+                                        <option selected disabled style="display:none;" value="">
+                                            Select Event
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-left:15px!important;">
+                            <div class="row no-gutter" style="">
+                                <div class="liveUpdatesGames">
+                                    <select id="drawConfiguration" name="drawConfiguration" class="select2" style="color:white!imporatnt;">
+                                        <option selected disabled style="display:none;" value="">
+                                            Select 
+                                        </option>
+                                        <option value="Knock Out">Knock Out</option>
+                                        <option value="Round Robin">
+                                            Round Robin</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:15px!important;padding-left:3px !important;">
+                            <div class="row no-gutter" style="">
+                                <div class="liveUpdatesScores" id="liveUpdatesScoresOpen">
+                                    <p class="glyphiconScoresLiveWeb">scores</p>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:15px !important;padding-left:15px !important;margin-top:2px;">
+                    <div class="row no-gutter" style="">
+                        <div class="sendLive">
+                            <div class="textLiveEventOrg">
+                                <textarea name="description" placeholder="Live Update From Event Creator, Game Started Now" rows="5" cols="80" type="text" id="liveDescriptionText" class="liveWritEventDescription"></textarea>
+                            </div>
+                            <div class="sendLiveButtonDiv">
+                                <input type="button" id="sendLiveButton" class="sendLiveButton" value="Send">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:15px !important;padding-left:15px !important;margin-top:2px;">
+                    <div class="row no-gutter" style="">
+                        <div class="viewLiveUpdate">
+                            {{#if liveUpdates}}{{#each liveUpdates}}
+                             <div class="textLiveEventOrg2">
+                                <!--p class="liveUpdateTimePTag">{{this.liveUpdateTime}}</p>
+                                <textarea name="description" placeholder="Live Update From Event Creator, Game Started Now" rows="5" cols="80" type="text" id="liveDescriptiont" class="liveEventDescription" readonly>{{this.liveUpdateMessage}}</textarea-->
+                               <p class="liveUpdateTimePTag">{{this.liveUpdateTime}}</p>
+                                <p class ="wordwrap"> {{this.liveUpdateMessage}} </p>
+                                <!--p class="liveUpdateTimePTag_data" id="liveDescriptiont">{{this.liveUpdateMessage}}</p-->
+                            </div>
+                            {{/each}}{{else}}
+                            <div class="textLiveEventOrg3">
+                               <p class="liveUpdateTimePTag3"> No Live Updates For the above Event</p>
+                            </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="livContent"></div>
+        <div id="content"></div>
+    </form>
+</template>
+
+<template name="pastUpdatesEventName2Template">
+                        <option selected disabled  style="display:none;" value=" ">
+                            Select Event
+                        </option>
+                        {{#each lEvents}}
+                        <option value="{{this.eventSubId}}" id="{{this.eventName}}">
+                            {{this.eventName}}
+                        </option>
+                        {{/each}}
+</template>

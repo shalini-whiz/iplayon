@@ -1,0 +1,125 @@
+  {{{getDocType}}}
+<html lang="en">
+<head>
+    <style type="text/css">
+      {{css}}
+    </style>
+</head>
+<body>
+  <div class="container">
+        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+          <img src="{{imageURL}}/logo.png"  style="width:90%;height:12%;float:left;margin:0px !important;margin-top:-3px !important;border:0"/>
+        </div>
+        <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8" style="padding:0px!important;">
+          <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading" style="">Score Sheet</p>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:auto!important;">
+                <p class="pclassPDFHeading" style="">{{tournamentName}} - {{eventName}}</p>
+            </div>
+       
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading2" style="margin-top:0px;">held at 
+                  {{domainName}}
+                </p>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading2" style="margin-top:0px;">{{tourStartDate}} - {{tourEndDate}}</p>
+            </div>
+           
+        </div>
+        {{#if get5sImage}}
+        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+          {{#if get5sImage.url}}
+          <img src="{{imageURL}}{{get5sImage.url}}" style="width:94%;height:14%;float:right;margin:0px !important;margin-top:-3px !important;border:0"/>
+          {{/if}}
+        </div>
+        {{/if}}
+  </div>
+  <div class="container">
+    <div class="row col-md-12 col-xs-12 col-sm-12 col-lg-12">
+      <p><br><br></p>
+    </div>
+
+
+  {{#if fetchDetailScore}}
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">   
+      <table class="table scoreSheet" id="tblOne" style="width:100%;table-layout:fixed;">
+        <tbody class="">
+          <tr class="headerAnalytics3" id="headerAnalytics3">
+            <td class="headerDetScoreTeam" style="width:20%;text-align:center">{{groupName}}</td>
+            <td class="headerDetScoreTeam" style="text-align:center">set1</td>
+            <td class="headerDetScoreTeam" style="text-align:center;">set2</td>
+            <td class="headerDetScoreTeam" style="text-align:center;">set3</td>
+            <td class="headerDetScoreTeam" style="text-align:center;">set4</td>
+            <td class="headerDetScoreTeam" style="text-align:center;">set5</td>
+            <td class="headerDetScoreTeam" style="text-align:center;">set6</td>
+            <td class="headerDetScoreTeam" style="text-align:center;">set7</td>                        
+        </tr>
+        <tr class="headerAnalytics3" id="headerAnalytics3">                   
+                           
+          <td class="robin_td" style="border-spacing:0;padding:2px !important;width: 20% !important" > <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:16px;">{{displayPlayerName fetchDetailScore.playersID.playerAId}}</p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">
+              </p>
+            </td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;"></p> </td>
+                            
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;"></p></td>
+                            
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;"></p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;"></p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;"></p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;"></p></td>
+                                               
+          </tr>
+
+          <tr class="headerAnalytics3" id="headerAnalytics3">
+                               
+            <td class="robin_td" style="border-spacing:0;padding:2px !important;width: 20% !important"> <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:16px;">{{displayPlayerName fetchDetailScore.playersID.playerBId}}</p></td>
+                         
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;"></p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;"></p></td>
+                            
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;"></p></td>
+                            
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;"></p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;"></p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;"></p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;"></p></td>
+                            
+                            
+
+                                           
+          </tr>                 
+        </tbody>
+      </table>
+     
+     
+    
+    </div>
+  {{/if}}
+
+   <div class="row col-md-12 col-xs-12 col-sm-12 col-lg-12">
+      <p><br></p>
+    </div>
+    <div class="row col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin: 10px !important">
+      <p style="font-size: 16px">Match Status : </p>
+    </div>
+    <div class="row col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin: 10px !important">
+      <p style="font-size: 16px">Winner : </p>
+    </div>
+  </div>
+
+</body>
+</html>

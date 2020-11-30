@@ -1,0 +1,80 @@
+<template name="addEventsPopup">
+<!-- main div of selectSubDomainsPopUp pop up-->
+    <div class="modal" id="addEventsPopup" aria-hidden="true">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains two radio buttons
+        one is deleteOnly and delete and black list
+        and yes and no buttons
+-->
+        <div id="subDomainCenter" class="modal-dialog eventAddTourModal-sm">
+            <div class="eventAddTourPopup">
+            <div class="modal-content">
+                <div class="selectevenaddHeader">
+                    <p class="modal-title" style="width:95%!important;" id="setEventNameHeader">Add Events</p>
+                    <!--<button class="closePopp" id="closeAddEve"><span class="glyphicon glyphicon-remove"></span></button>-->
+                </div>
+
+                 <div class="modal-body subDomainModalBody">
+            <div class="teamSubscribeMainTitle">
+              <!--{{#each lEventsUnderTourn}}
+                <div class="checkDivEventForTourn">
+                  <label>{{this.projectName}}</label>
+                </div>
+              {{/each}}-->
+              <div class="selectEventToAdd" id="selectEventstoAdd">
+                       {{#if lEventsUnderTourn}}
+
+                        <!--div class="eventAddTourCheckBoxDiv_NEW_title">
+                            <div class="eveTournStart" id="" style="border: 0px none !important;"><input  type="text" readonly id="" class="datePickPopup" value="event name" style="width: 202px;text-align: center;margin-top: -4px;cursor:default;" onclick="this.blur()" ></div>
+                            <div class="eveTournStart" id="" style="border-left: 1px solid rgb(255, 255, 255) !important;"><input  type="text" readonly id="" class="datePickPopup" value="starts on" style="text-align: center !important;"></div>
+                            <div class="eveTournEnd" style="border-left: 1px solid rgb(255, 255, 255) !important;"><input  type="text" readonly id="" class="datePickPopup" value="ends on" style="text-align: center !important;">
+                            </div>
+                            <div class="eveTournEnd" style="border-left: 1px solid rgb(255, 255, 255) !important;"><input type="text" id="" name="" autocomplete="off" class="datePickPopup" value="entry fee" style="text-align: center !important;">
+                            </div>
+                        </div-->
+                       {{#each lEventsUnderTourn}}
+                        <div class="eventAddTourCheckBoxDiv">
+                            <input value="{{this.projectName}}"  type="checkbox" name="mainTag" id="{{this._id}}" class="checkboxevents" style="width: 90px;"/>
+                            <label class="checkboxeventsCheckBoxDivLabel" id="{{this._id}}" name="mainTag">
+                              <p class="checkPEvent" id="{{this.projectType}}">{{this.projectName}}</p>
+                            </label>
+                            <label name="mainTag" id="here" for="{{this._id}}" class="subDomainCheckBoxDivLabelCheck">
+                            </label>
+                            <div class="eveTournStart" id="eveDiv"><input  type="text" readonly id="startDateAddEve" class="datepicker datePickPopup" placeholder="starts on"></div>
+                            <div class="eveTournEnd"><input  type="text" readonly id="startEndAddEve" class="datepicker datePickPopup" placeholder="ends on">
+                            </div>
+                            <div class="eveTournEnd"><input type="text" id="addEentryFee" name="addEentryFee" autocomplete="off" class="datePickPopup" placeholder="entry fee" value = "1">
+                            </div>
+                        </div>
+                        
+                        {{/each}}
+                        {{else}}
+                        <div class="setemptyeventaddDivEmpty">
+                            <p class="setemptyeventadd">Select a Sport, Set Entry Closes On, Event Starts On and Event Ends On</p>
+                        </div>
+                        {{/if}}
+                    </div>
+            </div>
+       
+            <div class="setemptyeventaddDivContentOk">
+                    <div class="sponsorUploadsContentAddEvents">
+                        <div class="yesSponsorUploads">
+                            <button type="submit" id="yesAddEvents" class="ip_button_Popup_Black">OK</button>
+                        </div>
+                        <div class="noSponsorUploads">
+                            <button type="button" id="noAddEvents" class="ip_button_Popup_Red">CANCEL</button>
+                        </div>
+                    </div>
+            </div>
+            <p style="font-size:12px;color:red;">**MAKE SURE OF SELECTED EVENTS AND EVENT FEE, its not editable after saved</p>
+            <input type="text" id="eveDomProvideDetails" name="eveDomProvideDetails" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>
+             </div>
+    </div>
+</div>
+</div>
+</div>
+
+</template>

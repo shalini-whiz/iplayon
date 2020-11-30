@@ -1,0 +1,230 @@
+<!-- Template for login, meteor login and meteor register-->
+<!--
+@Author: Vinayashree
+@Author: Alekhya 
+ -->
+
+<!--Used CSS Classes and CSS Links-->
+<!--
+    1.FileName : 
+            classes : 
+
+    2. FileName : 
+            classes : 
+            ids     :  
+
+    3. bootstrap : 
+-->
+<!-- main Template of login which includes sub templates loginPage and already subscribed -->
+<template name="login"> {{>loginPage}} {{>alreadySubscribed}}
+</template>
+
+<!-- loginPage template includes sub templates meteorLogin and register -->
+<template name="loginPageOld">
+<div class="mainContentLoginCss">
+	<div class="loginTitle">
+		<p class="titleLoginCss">Login</p>
+	</div>
+	<div class="aboutIplayOn">
+		<div id="innerDivAboutIplayOn" class="innerDivAboutIplayOn" style="float:left">
+			<div class="iplayOnDescription">
+				<p>
+					<span class="about">About</span><br>IPlayOn
+				</p>
+			</div>
+		</div>
+		<div class="loginButtons">
+			<div class="iplayOnLogin">
+				<!-- Facebook Log-in -->
+				<!--<div class="social-wrap a">
+					<a class="btn btn-block btn-social btn-facebook"> <span
+						class="fa fa-facebook"></span>
+						<p class="fbText">Sign in with Facebook</p>
+					</a>
+				</div>-->
+				<!-- Google Log-in -->
+				<div class="googleLogin">
+					<a class="btn btn-block btn-social btn-google"> <span
+						class="fa fa-google-plus"></span>
+						<p class="gText">Sign in with Google</p>
+					</a>
+				</div>
+				<!-- Display of "or" and a line on it -->
+				<div class="or">
+					<p class="orText">OR</p>
+				</div>
+				<!-- Meteor Log-in -->
+				{{>meteorLogin}}
+			</div>
+		</div>
+	</div>
+	<!--{{>register}}-->
+</div>
+</template>
+<template name="loginPage">
+<!--  
+    {{>meteorLogin}}
+  
+
+    {{>register}}
+    -->
+    {{#if active}}
+      {{> meteorLogin}}
+    {{else}}
+      {{> registerPage1}}
+    {{/if}}
+  
+
+
+<!--  <input type="email" name="email" id="userNamesSignUp"
+							placeholder="Email Id" />  <input
+							type="password" name="password" id="password"
+							placeholder="Password" />-->
+
+</template>
+
+
+<!-- register page template for meteor register-->
+<template name="registerOld">
+<form id="application-signup" style="display:none">
+	<div class="mainContentLoginCss">
+		<div class="loginTitle">
+			<p class="titleLoginCss">Register</p>
+		</div>
+		<div class="aboutIplayOn">
+			<div id="innerDivAboutIplayOn" class="innerDivAboutIplayOn">
+				<div class="iplayOnDescription">
+					<p>
+						<span class="about">About</span><br>IPlayOn
+					</p>
+				</div>
+			</div>
+			<div class="loginButtons">
+				<div class="iplayOnLogin">
+					<!-- Register Heading -->
+					<div class="registerHeading">
+						<p>Sign Up</p>
+					</div>
+
+					<!-- Meteor Log-in -->
+					<div class="meteorLogin">
+						<input type="email" name="email" id="userNamesSignUp" autocomplete="off"
+							placeholder="Email Id" /> <!--  <i
+							class="glyphicon glyphicon-user glyphicon-userSignup"></i>--> <input
+							type="password" name="password" id="password"
+							placeholder="Password" /><!--   <i
+							class="glyphicon glyphicon-lock glyphicon-lockSignup"></i>-->
+					</div>
+					<div class="loginButton">
+						<input type="submit" id="loginButton" value="Sign Up">
+					</div>
+					<div class="registerText">
+						<p>
+							Already have an account? <span class="redFont" id="redFont">Log
+								In</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+</template>
+
+<!-- meteorLogin page template for meteor meteor login -->
+<template name="meteorLogin">
+<div style="flex: 1;-webkit-flex: 1;-ms-flex: 1;cursor:default;">
+<div id="innerDivAboutIplayOn" class="innerDivAboutIplayOn" style="order: 1;display:inline;">
+			<div class="iplayOnDescription">
+				<p style="margin-top:23%">
+					<span class="about">IPlayOn</span><br>
+				</p>
+			</div>
+		</div>
+<div class="loginButtons" style="order: 2;height:35.2em;width:49%">
+<p id="emailIdForget"></p>
+<p style="color:rgb(179,0,0)" class="loginHeading">Login</p>
+<form id="application-login">
+	<div class="meteorLogin">
+		<input type="text" name="emailAddress" id="userName"
+			placeholder="Email Id" autocomplete="off" /> <!--  <i class="glyphicon glyphicon-user"></i>--> <input
+			type="password" name="password" id="password" placeholder="Password" />
+		<!--<i class="glyphicon glyphicon-lock"></i>-->
+	</div>
+	<div class="loginAndForgotText">
+	  <div class="loginButton">
+		<input type="submit" id="loginButton" value="Login">
+	  </div>
+	  <div class="forgotText" id="forgotText">
+	    <p style="cursor:pointer">Forgot Password?</p>
+	  </div>
+	  
+	</div>
+	<div class="registerText">
+		<p>
+			New to IplayOn? <span class="redFont">Register</span>
+		</p>
+	</div>
+</form>
+</div>
+{{> confirmOk}}
+</div>
+</template>
+
+<template name="register">
+<div style="flex: 1;-webkit-flex: 1;-ms-flex: 1;">
+<div id="innerDivAboutIplayOn" class="innerDivAboutIplayOn" style="order: 1;display:inline;">
+			<div class="iplayOnDescription" style="cursor: default;">
+				<p style="margin-top:23%">
+					<span class="about">IPlayOn</span><br>
+				</p>
+			</div>
+		</div>
+<div class="loginButtons" style="order: 2;height:35.2em;width:49%">
+<p style="color:rgb(179,0,0);margin-left:33%;" class="loginHeading">Register</p>
+<form id="application-signup">
+	<div class="meteorLogin">
+		<input type="text" name="emailAddress" id="userName"
+			placeholder="Email Id" autocomplete="off" /> <!--  <i class="glyphicon glyphicon-user"></i>--> <input
+			type="password" name="password" id="password" placeholder="Password" />
+			<input type="password" name="retypePassword" id="retypePassword" placeholder="Retype your Password" />
+
+		<!--<i class="glyphicon glyphicon-lock"></i>-->
+	</div>
+	<div class="loginButton">
+		<input type="submit" id="loginButton" value="Register">
+	</div>
+	<div class="registerText">
+		<p>
+			Already have an account? <span class="redFontRegister">Login</span>
+		</p>
+	</div>
+</form>
+</div>
+</div>
+</template>
+
+<template name="registerOld1">
+<form id="application-signup"  >
+    <p style="color:rgb(179,0,0);" class="loginHeading" >Register</p>
+	<div class="meteorLogin">
+		<input type="text" name="emailAddress" id="userName"
+			placeholder="Email Id" autocomplete="off"/> <!--  <i class="glyphicon glyphicon-user"></i>--> <input
+			type="password" name="password" id="password" placeholder="Password" />
+		<!--<i class="glyphicon glyphicon-lock"></i>-->
+	</div>
+	<div class="loginButton">
+		<input type="submit" id="loginButton" value="Register">
+	</div>
+	<div class="registerText">
+		<p>
+			Already have an account? <span class="redFontRegister">Login</span>
+		</p>
+	</div>
+</form>
+</template>
+
+<!-- changeLoginId page template invoked for changing login id (Gmail or faceBook) -->
+<template name="changeLoginId"> {{>loginPage}}
+{{>alreadySubscribed}} </template>
+

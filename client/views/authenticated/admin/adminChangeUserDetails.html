@@ -1,0 +1,108 @@
+<template name="adminChangeUserDetails"> 
+	{{#if notAdmin}}
+   <div class=''>
+      <p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+   </div>
+   {{else}}
+   <p style="color:orange;font-size:12px;">Change User Details</p>
+	<div class="container" style="background:#333; height:auto;">
+		<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">Enter UserId:</p>
+            </div>
+            <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                <input   type="text" placeholder="Enter UserId " autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="userId"/>
+            </div>
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+            	<button id="showUserDetails">Display</button>
+            </div>
+        </div>
+        {{#if userDetailsRed}}
+            {{#each userDetailsName}}
+            	{{#if checkTagType this.tagType}}
+            	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+		            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+		                <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">{{this.placeholer}}</p>
+		            </div>
+		            <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+		            	{{#if checkDOB this.tagId}}
+		            	<input   type="text" placeholder={{this.placeholer}} autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="{{this.tagId}}" value={{checkDOB this.tagId}}>
+		            	{{else}}
+		                <input   type="text" placeholder={{this.placeholer}} autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="{{this.tagId}}" value={{userDetailsDataRed this.tagId}}>
+		            	{{/if}}
+		            </div>
+        		</div>
+            	{{/if}}
+            {{/each}}
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+            	<button id="saveDetails">saveDetails</button>
+            </div>
+        {{/if}}
+	</div>
+	{{/if}}
+</template>
+
+<template name="getUserDetailsForGivenEmailOrPhone">
+    {{#if notAdmin}}
+    <div class=''>
+        <p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+    </div>
+    {{else}}
+    
+    <div class="container" style="background:#333; height:auto;">
+        <p style="color:orange;font-size:12px;">Get User Details</p>
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">Enter Email or phone:</p>
+            </div>
+            <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                <input type="text" placeholder="Enter UserId " autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="emailOrPhone" />
+            </div>
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                <button id="showUserDetails">Display</button>
+            </div>
+        </div>
+        {{#if userDetailsRedKeys}} 
+        {{#each userDetailsRedKeys}}
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
+                <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">{{this}}:</p>
+            </div>
+            {{#if userDetailsRedValues this}}
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
+                {{#if checkDOB this}}
+                <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;" name="userSelectedForTeamP">{{checkDOB this}}</p>
+                {{else}}
+                <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;" name="userSelectedForTeamP">{{userDetailsRedValues this}}</p>
+                {{/if}}
+            </div>
+            {{/if}}
+        </div>
+        {{/each}} 
+        {{/if}}
+    </div>
+
+
+     <div class="container" style="background:#333; height:auto;">
+        <p style="color:orange;font-size:12px;">Enable or Disable Users for Iplayon login</p>
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">Enter Email:</p>
+            </div>
+            <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                <input type="text" placeholder="Enter email " autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="emailOrPhoneForEnable" />
+            </div>
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                <button id="enableUser">Enable</button>
+            </div>
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                <button id="disableUser">Disable</button>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</template>

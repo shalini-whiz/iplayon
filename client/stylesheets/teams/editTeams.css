@@ -1,0 +1,495 @@
+.dropdownSelectedDomains{
+	margin-top: 0%;
+	z-index: 10;
+	height:34px;
+	order:2;
+	/**background:grey;**/
+    border-radius: 5px;
+    border: 0px solid;
+	color:white;
+}
+
+.sponImg{
+	cursor:default;
+}
+
+/*.valid{
+	color:rgb(176,176,176);
+}*/
+
+.dropdownSelectedDomains dt a{
+	display:block;
+   /** min-height: 25px;
+    line-height: 24px;**/
+    overflow: hidden;
+    border:0;
+    /** width is given in pixel because of 
+        adding the domains 
+        is increasing the height
+        if percentage is given **/
+/**	width:346px;**/
+    width:100%;	
+	border-radius: 5px;
+	height:34px;
+	background: rgb(128, 128, 128) url(/arrow.gif) no-repeat 98% 50%;
+	padding-top: 0.75em;
+	padding-left: 0.35em;
+	font-weight:normal;
+    cursor:pointer;
+}
+
+.dropdownSelectedDomains dt a span, .multiSel span {
+    cursor:pointer;
+    display:inline;
+   
+}
+
+.dropdownSelectedDomains ::-webkit-scrollbar { 
+    display: none; 
+}
+
+.dropdownSelectedDomains input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  /** To Place the check-boxes to the right end **/
+  position: absolute;
+  left:93%;
+  display:inline;
+  
+  
+  /** To customise the outline of the checkbox **/
+  /**outline:0.25px black;**/
+}
+
+.dropdownSelectedDomains dd ul {
+    background: white;
+    border:0;
+    color:black;
+    display:none;
+    padding-left:0%;
+    position:absolute;
+    top:2px;
+    /** width is given in pixel because of 
+        adding the domains 
+        is increasing the height
+        if percentage is given **/
+	width:99.5%;
+    list-style:none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 0.5px solid black;
+    max-height:5.7em !important;
+    z-index:1;
+    
+}
+
+.dropdownSelectedDomains span.value {
+    display:none;
+}
+
+.dropdownSelectedDomains dd ul li a {
+    display:block;
+}
+
+.dropdownSelectedDomains dd ul li{
+	padding: 3px 0px 3px 3px;
+	/**width:115%;**/
+	border-bottom: 0.5px solid black;
+}
+
+.dropdownSelectedDomains dd ul li a:hover {
+    background-color:#fff;
+}
+
+.dropdownSelectedDomains dd, .dropdownSelectedDomains dt {
+    margin:0px;
+    padding:0px;
+}
+
+.dropdownSelectedDomains ul {
+    margin: -1px 0 0 0;
+}
+
+.dropdownSelectedDomains dd {
+    position:relative;
+}
+
+.dropdownSelectedDomains a, 
+.dropdownSelectedDomains a:visited {
+    color:#fff;
+    text-decoration:none;
+    outline:none;
+    font-size: 12px;
+}
+
+.sport{
+			height:3em;
+			border-radius: 5px;
+		  	border: 0px solid;
+		  	color:white;
+		  	width: 27.5%;
+		  	font-size: 12px;
+		    background: rgb(128,128,128);
+		    outline: 0;
+		    overflow: hidden;
+		    margin-top:1%;
+		    -moz-appearance:button;
+		    padding-left:2%;
+            margin-right:0%;
+            float:left;
+            padding-top:1.5%;
+            margin-bottom:0.5%;
+		 }
+		 
+.sponsoredByEditTeam{
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+    display: flex;
+	margin-top: 1.065%;
+    -moz-border-radius: 5px;
+	border-radius: 5px;
+    height: 10em;
+    clear:both;
+    width:100%;
+}
+.rulesAndRegEditTeam{
+	order:2;
+	width:70%;
+	/*min-width:69%;*/
+	/*max-width:69%;*/
+	position: relative; 
+	/**	height: 10em;**/
+    float:left;
+    /**z-index:-1;**/
+    margin-top:1%;
+}
+.addedUsersEditTeam{
+	order:2;
+	display:inline;
+	width:72%;
+}
+#searchUserEditTeam{
+	display:block;
+    height:34px;
+    background: #B0B0B0;
+    border-radius: 5px;
+    border: 0px solid;
+    cursor: pointer;
+    margin-top:0%;
+    width:100% !important;
+}
+#searchUserEditTeam.form-control{
+	/**background-color:rgb(176,176,176) !important; 
+	width:291.5%;**/
+}
+#searchUserEditTeam.tt-input{
+	background-color:rgb(176,176,176) !important; 
+	width:291.5%;
+}
+
+.tt-hint{
+	background-color:transparent !important; 
+}
+#rulesAndRegEditTeam.form-control{
+	/**display:block;**/
+	height:3.125em;
+}
+.teamTitle::-webkit-input-placeholder, .prize::-webkit-input-placeholder,
+		.closureDate::-webkit-input-placeholder, .startDate::-webkit-input-placeholder,
+		.endDate::-webkit-input-placeholder, .eventDescription::-webkit-input-placeholder,
+		#searchUserEditTeam::-webkit-input-placeholder,#teamName::-webkit-input-placeholder
+		{
+		   color: white;
+		   font-size:13px;
+		}
+		
+		.teamTitle:-moz-placeholder, .prize:-moz-placeholder,
+		.closureDate:-moz-placeholder, .startDate:-moz-placeholder
+		.endDate:-moz-placeholder .eventDescription:-moz-placeholder,
+		#searchUserEditTeam::-moz-placeholder,#teamName::-moz-placeholder
+		{ /* Firefox 18- */
+		   color: white;  
+		   font-size:13px;
+		}
+		
+		.teamTitle::-moz-placeholder, .prize::-moz-placeholder,
+		.closureDate::-moz-placeholder, .startDate::-moz-placeholder
+		.endDate::-moz-placeholder .eventDescription::-moz-placeholder, 
+		#searchUserEditTeam::-moz-placeholder,#teamName::-moz-placeholder
+		{  /* Firefox 19+ */
+		   color: white;  
+		}
+		
+		.teamTitle:-ms-input-placeholder , .prize:-ms-input-placeholder ,
+		.closureDate:-ms-input-placeholder , .startDate:-ms-input-placeholder 
+		.endDate:-ms-input-placeholder  .eventDescription::-ms-input-placeholder,
+		#searchUserEditTeam:-ms-input-placeholder,#teamName:-ms-input-placeholder {  
+		   color: white;  
+		   font-size:13px;
+		}
+		
+.selectSubDomainsEditTeam{
+	order: 2;
+    width: 6.5%;
+    margin-top: 1.5%;
+    outline: 0;
+    cursor: pointer;	
+}
+   
+.selectSubDomainsEditTeamManager{
+    order: 2;
+    width: 6%;
+    margin-top: 1%;
+    outline: 0;
+    cursor: pointer;	
+}   
+   
+.deleteIconEditTeam{
+	/**padding-left: 35%;**/
+			/**padding-top: 2%;
+		    padding-bottom:2%;**/
+			display:block;
+			outline: 0;
+			background: no-repeat url(x-red.png) 0 0;
+			background-size: 100% 77%, 5% auto;
+			background-position:35% 108%;
+			width:4%;
+			height: 1.5em;
+	 		/**border: #00ffff;**/
+            border-style: none;
+            border-width: 2px;
+            margin-left:1px;
+            margin-top:0.7%;
+	       /**   line-height: 50px;**/
+	       float:right;
+}
+
+.deleteIconEditTeamResign{
+	/**padding-left: 35%;**/
+			/**padding-top: 2%;
+		    padding-bottom:2%;**/
+			display:block;
+			outline: 0;
+			background: no-repeat url(x-red.png) 0 0;
+			background-size: 100% 77%, 5% auto;
+			background-position:35% 108%;
+			width: 5%;
+			height: 1.5em;
+	 		/**border: #00ffff;**/
+            border-style: none;
+            border-width: 2px;
+            margin-left:1px;
+            margin-top:0.7%;
+	       /**   line-height: 50px;**/
+	       float:right;
+}
+
+.deleteIconEditTeamManager{
+	/**padding-left: 35%;**/
+			/**padding-top: 2%;
+		    padding-bottom:2%;**/
+			display:block;
+			outline: 0;
+			background: no-repeat url(aTeR8p88c.png) 0 0;
+			background-size: 100% 100%, 5% auto;
+			background-position:35% 108%;
+			width:4%;
+            cursor:default;
+
+			height: 1.3em;
+	 		/**border: #00ffff;**/
+            border-style: none;
+            border-width: 2px;
+            margin-left:1px;
+            margin-top:2%;
+	       /**   line-height: 50px;**/
+	       float:right;
+	
+}
+
+.eyeIconEditTeam{
+	/**padding-left: 35%;**/
+			padding-top: 5%;
+			display:inline;
+			outline: 0;
+			background: no-repeat url(eye-icon.png) 0 0;
+			background-size: 27px 16px, 22px auto;
+			width: 7%;
+			height: 10px;
+	 		/**border: #00ffff;**/
+            border-style: none;
+            border-width: 2px;
+            margin-top:2.5%;
+           /** margin-right:5px;**/
+            float:left;
+            clear:both;
+            margin-left:1.25%;
+            cursor:default !important;
+}
+       
+.saveButtonEditTeam{
+           margin-left:0.5%;
+		   order: 3;
+		   width:15%;
+		   /*min-width:15%;*/
+		   margin-top: 3%;
+		   margin-bottom: 3%;
+		   background-color:grey;
+		   color:white;
+		   border:2px solid;
+		   border-radius:8px;
+		   font-size: 12px;
+           margin-right: 0.2%;
+           outline: 0;
+           cursor: pointer;	
+}
+
+.cancelButtonEditTeam{
+                   margin-left: 0.5%;
+    margin-right: 0.2%;
+    order: 4;
+    width: 15%;
+    /*min-width:15%;*/
+    height: 2.9em;
+    margin-bottom: auto;
+    margin-top: auto;
+    background-color: grey;
+    color: white;
+    border: 2px solid;
+    border-radius: 8px;
+    font-size: 12px;
+    outline: 0;
+    cursor: pointer;
+}
+
+.sportandSuggestUser{
+	margin-top:-0.3%;
+}
+
+.domainEditTeam{
+	width:100%;
+	cursor: pointer;
+}
+
+.userEditTeam{
+	/** Altering padding-top alters the height of the background**/ 
+	   padding-top: 2%;
+	   padding-bottom:2%;
+	   padding-left:0%;
+	   margin-left:1%;
+	   order:2;
+	   background-color: #808080;
+	   display: -webkit-box;
+	   display: -moz-box;
+	   display: -ms-flexbox;
+       display: inline;
+	 /**  margin-top: 0.1%;**/
+	   margin-right: 5px;
+	   border-radius: 5px;
+	   border: 0px solid;
+	   /**height:1em;**/
+	   width:77%;
+	   color:white;
+	   font-size: 12px;
+	   float:left;
+	   margin-bottom:2px;
+	   height: 34px;
+	   
+}
+
+.gamesSelectForEditTeam{
+			width: 98%;
+			border-radius: 5px;
+			border: 0px solid;
+			color:white;
+			border: none;
+		    box-shadow: none;
+		    background-color: transparent;
+		    background-image: none;
+		    -webkit-appearance: none;
+		    -moz-appearance: none;
+		    appearance: none;
+		    overflow: hidden;
+		    outline: 0;
+		    cursor:default;
+		    margin-top: 5px;
+			margin-left: 4px;
+}
+
+.editTeamChangeManager{
+	 padding:0%; 
+           background:none repeat scroll 0% 0% black;
+           border-top-left-radius:5px;
+           border-top-right-radius:5px;
+           padding-left:4%;
+           height:2.7em;
+           padding-top:2.5%;
+}
+
+
+
+#okChangeManager{
+	     width:40%;
+		  border-radius:7px;
+		  border: 1.5px solid;
+		  border-color:black;
+		  margin-top:-5%;
+		  height:2.5em;
+		  padding-top:2%;
+		  margin-right:5%;
+}
+
+#cancelChangeManager{
+		     width:40%;
+		  border-radius:7px;
+		  margin-top:-5%;
+		  height:2.5em;
+		  padding-top:2%;
+		  margin-right:8%;
+		  background:linear-gradient(to right, rgb(179, 0, 0), rgb(255, 102, 102)) repeat scroll 0% 0% transparent;;
+		  margin-left:-5%;
+}
+
+.gamesParentEditTeams {
+    order: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 2px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 34px;
+    outline: 0;
+}
+
+.userEditTeamView{
+	/** Altering padding-top alters the height of the background**/ 
+	   padding-top: 2%;
+	   padding-bottom:2%;
+	   padding-left:0%;
+	   margin-left:2%;
+	   order:2;
+	   background-color: #808080;
+	   display: -webkit-box;
+	   display: -moz-box;
+	   display: -ms-flexbox;
+       display: inline;
+	 /**  margin-top: 0.1%;**/
+	   margin-right: 5px;
+	   border-radius: 5px;
+	   border: 0px solid;
+	   /**height:1em;**/
+	   width:96%;
+	   color:white;
+	   font-size: 12px;
+	   float:left;
+	   margin-bottom:2px;
+	   height: 34px;
+	   
+}

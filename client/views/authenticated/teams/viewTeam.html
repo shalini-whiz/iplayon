@@ -1,0 +1,110 @@
+<template name="viewTeam">
+    <form id="eventCreation">
+        <div class="row mainContent_myEvents">
+            <div class="row-same-height">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                    <div class="mainTitle">
+                        {{#if viewTeamInfo}}
+                            <p class="title">View Team : {{viewTeamInfo.teamName}}</p>
+                        {{else}}
+                            <p class="title">View Team : </p>
+                        {{/if}}
+                        <input type="button" id="viewTeamCancel" class="ip_button_LightGrey" style="order:2" value="Done" />                      
+                    </div>        
+                </div>
+
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 " style="margin-top:1px;">
+                    <div class="row no-gutter" style="cursor:pointer !important;">
+                        <div class="gamesParent">
+                            {{#if viewTeamInfo}}
+                                <div class="games">
+                                    <input type="text" name="teamType" id="teamType" autocomplete="off" placeholder="" class="eventTitle" value={{viewTeamInfo.teamFormatName}} style='text-align:center !important' readonly>
+                                </div>
+                                <input type="text" name="teamNameCreate" id="teamNameCreate" autocomplete="off"  class="eventTitle" value={{viewTeamInfo.teamName}} style='text-align:center !important' readonly>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:15px !important;padding-left:15px !important; margin-top: 2px;">
+                  <div class="row" style="">
+                    <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1 team">
+                      <p class="title" style="color:black !important;text-align:center;">
+                        Owners
+                      </p>        
+                    </div>
+                    <div class="col-md-5 col-xs-5 col-sm-5 col-lg-5 team">
+                      <input type="text" name="eventName" id="teamOwners" placeholder="Team Owner" class="teamTitle" style="height: auto !important" value={{viewTeamInfo.teamOwners}} readonly>
+                    </div>
+                    <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1 team">
+                      <p class="title" style="color:black !important;text-align:center;">
+                        Coach
+                      </p>        
+                    </div>
+                    <div class="col-md-5 col-xs-5 col-sm-5 col-lg-5 team">
+                      <input type="text" name="eventName" id="teamCoach" placeholder="Team Coach" class="teamTitle" style="height: auto !important" value={{viewTeamInfo.teamCoach}} readonly>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 " style="padding-right:0px !important;padding-left:0px !important;height: 29px!important;">
+                    <div class="row no-gutter" style="">
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 " style="margin-top:-2px; padding-right:0px !important;padding-left:15px !important;" >
+                            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left: 0px !important;">
+                                <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+                                    <thead style="">
+                                        <tr class="headeSubDiv2_entryFAca_backWhite">
+                                            <th class="pAnalytics2_entryFAca_backWhite" style="background: #505050 !important;color:white;width: 55px;">Sl No.</th>
+                                            <th class="pAnalytics2_entryFAca_backWhite" style="background: #505050 !important;color:white;width: 296px!important;">Player Type</th>  
+                                            <th class="pAnalytics2_entryFAca_backWhite" style="background: #505050 !important;color:white;width: 474px!important;">Player Name</th>                 
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 " style="padding-right:0px !important;padding-left:0px !important;">
+                    <div class="row no-gutter" style="">
+                        <div id = "scrollableLisstPLAYER_View" class="col-md-12 col-xs-12 col-sm-12 col-lg-12 " style="margin-top:-4px; padding-right:0px !important;padding-left:15px !important;">
+                            <div class="row no-gutter" style="">
+                                <div   class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left: 0px !important;">
+                                    <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+                                        <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                                            {{#each playerCriterias}}
+                                                <tr class="headerAnalytics3" id="headerAnalytics3">
+                                                    <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;width: 55px;">{{this.indexNumber}}{{mandatoryCriteria}}&nbsp;</td>
+                                                    <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;width: 296px!important;color:{{mandatoryColor}}">
+                                                        <p style="text-align: left;margin:0px !important;font-size:12px;">Gender :&nbsp;{{GenderCriteria}}</p>
+                                                        {{#if dobCriteria}}
+                                                        <p style="text-align: left;margin:0px !important;font-size:12px;">Born :&nbsp;{{dobCriteria}}</p>
+                                                        {{else}}
+                                                        <p style="text-align: left;margin:0px !important;font-size:12px;">Born :&nbsp;any</p>
+                                                        {{/if}}
+                                                        <p style="text-align: left;margin:0px !important;font-size:12px;">Player Location :&nbsp;{{locCriteria}}</p>
+                                                    </td>
+                                                    <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;width: 474px!important;">   
+                                                        <div type="text"  id="" class="addUSERSForTeam">
+                                                            <p class="userSelectedForTeamP" name="userSelectedForTeamP" style='cursor:pointer !important'>&nbsp;&nbsp;{{this.playerName}}</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:10px !important;">
+                    <p class="impMsg" style='color:black !important'> *  Mandatory</p>                        
+                </div>        
+
+            </div>
+        </div>   
+       <div id="content"></div>
+       <div id="displayPlayerProfile"></div>
+
+    </form>
+</template>

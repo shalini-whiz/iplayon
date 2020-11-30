@@ -1,0 +1,126 @@
+ .headerAnalytics{
+ 	padding: 0px;
+	background: #585858 none repeat scroll 0% 0%;
+	color: orange;
+ 	border-top: 1px solid white;
+ 	border-left: 1px solid white;
+ 	border-bottom: 1px solid white;
+ 	padding-top: 3px;
+ }
+.headerAnalytics_RANK{
+	padding: 0px;
+	background: 0 none repeat scroll 0% 0%;
+	color: white;
+ 	border-top: 1px solid white;
+ 	border-left: 1px solid white;
+ 	border-bottom: 1px solid white;
+ 	padding-top: 3px;
+}
+ .pAnalytics{
+ 	font-size: 12px;
+ 	text-align: center;
+ 	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+ }
+
+ .headerAnalytics2{
+	background: transparent none repeat scroll 0px center;
+	border-left: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	padding: 0px;
+	color: orange;
+ }
+ .headerAnalytics_ANA{
+	background: transparent none repeat scroll 0px center;
+	border-left: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	padding: 0px;
+	color: white;
+ }
+ .pAnalytics2{
+	font-size: 12px;
+	text-align: center;
+	border: 1px solid white;
+	background: transparent none repeat scroll 0px center !important;
+ }
+
+  .headerAnalytics3{
+	padding: 3px 0px 0px;
+	background: transparent none repeat scroll 0px center !important;
+	color: #FFF;
+	border-left: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+ }
+
+ .sendReciept{
+	width: 100%;
+	color: white;
+	border: 0px none;
+	height: 42%;
+	font-size: 12px;
+	background: #3b5998;
+	border: 1px solid;
+ }
+.containerOfHTML{
+	padding-left: 6px !important;
+	padding-right: 6px !important;
+	width: 100% !important;
+	height: inherit;
+}
+
+.tableOFCSVHTML{
+	margin-top: 6px;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+.charactersSize{
+	color:maroon !important;
+}
+
+.charactersSize2{
+	color: grey;
+}
+
+.axis {
+	  font: 10px sans-serif;
+	}
+
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
+
+	.pAnalytics2_Draws{
+	font-size: 12px;
+	text-align: center;
+	border: 1px solid white;
+	background: #5BC0DE;
+	color: white;
+ }
+
+ .pAnalytics2_Draws_tbody{
+	font-size: 12px;
+	text-align: center;
+	border: 1px solid #5BC0DE;
+	background: #fff;
+	color: black;
+ }
+
+  #circleIcon {
+      width: 50px;
+      height: 50px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      border-radius: 25px;
+    }
+    .dot {
+    height: 15px;
+    width: 15px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}

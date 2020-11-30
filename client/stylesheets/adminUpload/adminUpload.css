@@ -1,0 +1,42 @@
+.adminUpload_label{
+	font-size: 16px;
+	color:black;
+	font-weight: normal;
+	margin-left: 4px;
+}
+
+.adminUpload_radio{
+	cursor: pointer;
+}
+
+.adminUpload_select{
+	font-size: 12px;
+	width: 86%;
+}
+
+.adminUpload_button{
+	font-size: 12px;
+	color: #FFF;
+	background: #3B5998 none repeat scroll 0% 0%;
+	border: 0px none;
+	border-radius: 5px;
+	height: 24px;
+	width: 100%;
+}
+.adminUpload_button_error{
+	font-size: 12px;
+	color: #FFF;
+	background: #3B5998 none repeat scroll 0% 0%;
+	border: 0px none;
+	border-radius: 5px;
+	height: 24px;
+}
+
+.eventDescription_adminUpload{
+	background: white;
+	min-height: 14em;
+	max-height: 14em;
+	overflow: auto;
+	border:1px solid black;
+	border-radius:5px; 
+}

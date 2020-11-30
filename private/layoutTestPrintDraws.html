@@ -1,0 +1,711 @@
+{{{getDocType_team}}}
+<html lang="en">
+<head>
+    <style type="text/css">
+	    {{css}}
+    </style>
+</head>
+<body>
+	<div class="container">
+			<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+	    		<img src="{{imageURL}}/logo.png"  style="width:54%;height:8%;float:left;margin:0px !important;margin-top:-3px !important;border:0"/>
+	    	</div>
+	    	<div class="col-md-8 col-xs-8 col-sm-8 col-lg-8" style="padding:0px!important;">
+				<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+			  		<p class="pclassPDFHeading" style="">{{tournamentName_team}}</p>
+			  	</div>
+			  	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+			  		<p class="pclassPDFHeading2" style="margin-top:0px;">held at <!--{{venueAddress_team}},-->{{domainName_team}}</p>
+			  	</div>
+			  	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+			  		<p class="pclassPDFHeading2" style="margin-top:0px;">Event:{{eventName_team}},{{eventDate_team}}</p>
+			  	</div>
+			  	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="height:22px!important;">
+			  	 	<p class="pclassPDFHeading23" style="">{{roundNumberTop1_team}}</p>
+				</div>
+			</div>
+			{{#if get5sImage}}
+			<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+	    		{{#if get5sImage.url}}
+	    		<img src="{{imageURL}}{{get5sImage.url}}" style="width:55%;height:9%;float:right;margin:0px !important;margin-top:-3px !important;border:0"/>
+	    		{{/if}}
+	    	</div>
+	    	{{/if}}
+	</div>
+	<div class="container">
+  		<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;">
+	  	 	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 widthOFDIVSet">
+	  	 		<!--div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+					<p class="pclassPDFH" >I RD</p>
+				</div-->
+	  	 		<!--1-->
+					{{#each matchRecordsLeft_team}}
+						{{#if checkNmOnly_team this.roundNumber 1}}
+						{{#if checkLeftMatch_team this.roundNumber}}
+							{{#if checkHeaderFIRST_team}}
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDFH" >I RD</p>
+							</div>
+							{{/if}}
+							{{#if checkStatusByePlayerB_team}}
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv">
+								{{#if checkWhoByeA_team}}
+								<p class="pclassPDF"><span style="font-weight:bold;">{{matchNumber}}.</span>&nbsp;{{toUserName_team teamsID.teamAId}}&nbsp;{{toclubName_team teamsID.teamAId}}</p>
+								{{else}}
+								<p class="pclassPDF"><span style="font-weight:bold;">{{matchNumber}}</span>&nbsp;{{toUserName_team propogateTeamID}}&nbsp;{{toclubName_team propogateTeamID}}</p>
+								{{/if}}
+							</div>
+							{{else}}
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							{{/if}}
+							{{#if checkStatusByePlayerA_team}}
+							{{#if checkWhoByeB_team}}
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv2">
+								<p class="pclassPDF" >{{toUserName_team teamsID.teamBId}}&nbsp;{{toclubName_team teamsID.teamBId}}</p>
+							</div>
+							{{else}}
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv">
+								<p class="pclassPDF"><span style="font-weight:bold;">{{matchNumber}}.</span>&nbsp;{{toUserName_team propogateTeamID}}&nbsp;{{toclubName_team propogateTeamID}}</p>
+							</div>
+							{{/if}}
+							{{else}}
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							{{/if}}
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							{{removelastemptyDiv_team}}
+							{{#if checkToEmptyRowsDown_team this.matchNumber this.nextMatchNumber}}
+								<div class="container">
+									<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:30px!important;">
+								  		<p class="pclassPDFHeading" style="text-align:right;">REFEREE</p>
+								  	</div>
+								  	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+										<p class="pclassPDF">&nbsp;</p>
+									</div>
+								  	{{#if extraPage_team}}
+									<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+								  		<p class="pclassPDFHeading" style="">{{tournamentName_team}}</p>
+								  	</div>
+								  	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+								  		<p class="pclassPDFHeading2" style="margin-top:0px;">held at {{venueAddress_team}},{{domainName_team}}</p>
+								  	</div>
+								  	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+								  		<p class="pclassPDFHeading2" style="margin-top:0px;">Event:{{eventName_team}},{{eventDate_team}}</p>
+								  	</div>
+								  	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="height:22px!important;">
+								  	 	<p class="pclassPDFHeading23">{{roundNumberTop1_team}}</p>
+									</div>
+									<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 headerDIVPADDIng" style="padding:0px !important;">
+										<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 headerDIVPADDIng" style="padding:0px !important;">
+											<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3" style="padding:0px !important;">
+												<p class="pclassPDFH2" style="margin-right:75px !important;">I RD</p>
+											</div>
+										</div>
+										<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 headerDIVPADDIng" style="padding:0px !important;">
+											<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3" style="padding:0px !important;">
+												<p class="pclassPDFH2" style="margin-left:63px !important;">II RD</p>
+											</div>
+										</div>
+										<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 headerDIVPADDIng" style="padding:0px !important;">
+											<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3" style="padding:0px !important;"> 
+												<p class="pclassPDFH2" style="margin-left:128px !important;">III RD</p>
+											</div>
+										</div>
+										<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 headerDIVPADDIng" style="padding:0px !important;">
+											<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3" style="padding:0px !important;">
+												<p class="pclassPDFH2" style="margin-left:125px !important;">IV RD</p>
+											</div>
+										</div>
+										<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 headerDIVPADDIng" style="padding:0px !important;">
+											<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3" style="padding:0px !important;">
+												<p class="pclassPDFH2" style="margin-left:130px !important;">V RD</p>
+											</div>
+										</div>
+										<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 headerDIVPADDIng">
+											<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+												<p class="pclassPDFH2">&nbsp;</p>
+											</div>
+										</div>
+									</div>
+									{{/if}}
+								</div>
+								
+							{{/if}}
+						{{/if}}
+						{{/if}}
+					{{/each}}
+	  	 	</div>
+	 		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 widthOFDIVSet">
+	  	 		<!--2-->
+	  	 		{{#each matchRecordsLeft_team}}
+					{{#if checkRightMatch_team this.roundNumber}}
+					{{#if checkNmOnly_team this.roundNumber 2}}
+						{{#if checkHeaderFirstSec_team}}
+						  	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDFH" >II RD</p>
+							</div>
+						{{/if}}
+						<!--2-->
+						<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+							<p class="pclassPDF" >&nbsp;</p>
+						</div>
+						<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+							<p class="pclassPDF">&nbsp;</p>
+						</div>
+						<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv">
+							<p class="pclassPDF"><span style="font-weight:bold;">{{matchNumber}}.</span>&nbsp;{{toUserName_team teamsID.teamAId}}&nbsp;{{toclubName_team teamsID.teamAId}}</p>
+						</div>
+						<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv2">
+							<p class="pclassPDF" >{{toUserName_team teamsID.teamBId}}&nbsp;{{toclubName_team teamsID.teamBId}}</p>
+						</div>
+						<!--4-->
+						<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+							<p class="pclassPDF" >&nbsp;
+								{{#if scores}}
+								{{validateScore scores}}
+							{{/if}}</p>
+						</div>
+						<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+							<p class="pclassPDF">&nbsp;</p>
+						</div>
+						<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+							<p class="pclassPDF" >&nbsp;</p>
+						</div>
+						<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+							<p class="pclassPDF">&nbsp;</p>
+						</div>
+						{{#if checkToEmptyRowsDownPlusone_team this.matchNumber this.nextMatchNumber}}
+							{{#if removelastemptyDivHelper_team this.matchNumber this.nextMatchNumber}}
+							<!--10-->
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							{{/if}}
+						{{/if}}
+					{{/if}}
+					{{/if}}
+				{{/each}}
+	  	 	</div>
+	  	 	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 widthOFDIVSet">
+	  	 		<!--3-->
+	  	 		{{#each matchRecordsLeft_team}}
+				{{#if checkNmOnly_team this.roundNumber 3}}
+				{{#if checkLeftMatch_team this.roundNumber}}
+					{{#if checkHeaderSecThird_team}}
+					  	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+							<p class="pclassPDFH" >III RD</p>
+						</div>
+					{{/if}}
+					<!--6-->
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>			
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>		
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv">
+						<p class="pclassPDF"><span style="font-weight:bold;">{{matchNumber}}.</span>&nbsp;{{toUserName_team teamsID.teamAId}}&nbsp;{{toclubName_team teamsID.teamAId}}</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv2">
+						<p class="pclassPDF" >{{toUserName_team teamsID.teamBId}}&nbsp;{{toclubName_team teamsID.teamBId}}</p>
+					</div>
+					<!--8-->
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;;{{#if scores}}
+								{{validateScore scores}}
+							{{/if}}</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>			
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>
+					{{#if checkToEmptyRowsDownPlustwo_team this.matchNumber this.nextMatchNumber}}
+					<!--10-->
+							{{#if removelastemptyDivHelper2_team this.matchNumber this.nextMatchNumber}}
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							{{/if}}
+					{{/if}}
+				{{/if}}
+				{{/if}}
+				{{/each}}
+	  	 	</div>
+	  	 	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 widthOFDIVSet">
+	  	 		<!--4-->
+				{{#each matchRecordsLeft_team}}
+				{{#if checkNmOnly_team this.roundNumber 4}}
+				{{#if checkRightMatch_team this.roundNumber}}
+					{{#if checkHeaderThirFou_team}}
+					  	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+							<p class="pclassPDFH" >IV RD</p>
+						</div>
+					{{/if}}
+					<!--14-->
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>			
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>			
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv">
+						<p class="pclassPDF"><span style="font-weight:bold;">{{matchNumber}}.</span>&nbsp;{{toUserName_team teamsID.teamAId}}&nbsp;{{toclubName_team teamsID.teamAId}}</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv2">
+						<p class="pclassPDF" >{{toUserName_team teamsID.teamBId}}&nbsp;{{toclubName_team teamsID.teamBId}}</p>
+					</div>
+					<!--16-->
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;{{#if scores}}
+								{{validateScore scores}}
+							{{/if}}</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>			
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>			
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>
+					{{#if checkToEmptyRowsDownPlusthree_team this.matchNumber this.nextMatchNumber}}
+						<!--10-->
+						{{#if removelastemptyDivHelper3_team this.matchNumber this.nextMatchNumber}}
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							{{/if}}
+					{{/if}}
+				{{/if}}
+				{{/if}}
+				{{/each}}
+	  	 	</div>
+	  	 	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 widthOFDIVSet">
+	  	 		<!--5-->
+	  	 		{{#each matchRecordsLeft_team}}
+				{{#if checkNmOnly_team this.roundNumber 5}}
+				{{#if checkLeftMatch_team this.roundNumber}}
+					{{#if checkHeaderFourFiv_team}}
+					  	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+							<p class="pclassPDFH">V RD</p>
+						</div>
+					{{/if}}
+					<!--30-->
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>			
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>			
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>			
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>			
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv">
+						<p class="pclassPDF"><span style="font-weight:bold;">{{matchNumber}}.</span>&nbsp;{{toUserName_team teamsID.teamAId}}&nbsp;{{toclubName_team teamsID.teamAId}}</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv2">
+						<p class="pclassPDF" >{{toUserName_team teamsID.teamBId}}&nbsp;{{toclubName_team teamsID.teamBId}}</p>
+					</div>
+					<!--32-->
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;{{#if scores}}
+								{{validateScore scores}}
+							{{/if}}</p>
+					</div>			
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>			
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>			
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>			
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>			
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>	
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF">&nbsp;</p>
+					</div>
+					<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+						<p class="pclassPDF" >&nbsp;</p>
+					</div>
+					{{#if checkToEmptyRowsDownPlusFour_team this.matchNumber this.nextMatchNumber}}
+						<!--10-->
+							{{#if removelastemptyDivHelper4_team this.matchNumber this.nextMatchNumber}}
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF" >&nbsp;</p>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 borderClassDiv3">
+								<p class="pclassPDF">&nbsp;</p>
+							</div>
+							{{/if}}
+					{{/if}}
+				{{/if}}
+				{{/if}}
+				{{/each}}
+	  	 	</div>
+  		</div>
+  	</div>
+</body>
+</html>
+

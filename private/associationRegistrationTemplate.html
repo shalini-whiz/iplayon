@@ -1,0 +1,61 @@
+<template name="sendRegisterationEmailToAssociation">
+				<body style="background: #FAFAFA; color: #333333;">
+					    <center>
+					        <table border="0" cellpadding="20" cellspacing="0" height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+					            <tbody>
+					                <tr style="border-bottom: 4px solid rgb(255, 165, 0) !important;">
+									    <td style="border-bottom: 18px solid rgb(255, 165, 0) !important;padding: 4px;width: 0%;">
+									        <!--img style="width:100px;height:100%;"  src="http://www.iplayon.in/logo.png"-->
+									    </td>
+									    <td style="border-bottom: 18px solid rgb(255, 165, 0) !important; padding: 0px; font-size: 17px;">Welcome</td>
+									</tr>
+									{{#if type}}
+									<tr>
+										<td style="padding: 8px;">
+											{{#if affiliatedTo}}
+												You are affiliated to {{affiliatedTo}}
+											{{/if}}
+										</td>
+									</tr>
+
+									{{else}}
+										<tr>
+										 	<td style="font-size: 22px; color: blueviolet; padding: 6px;">Thanks for Registering</td>
+									    </tr>
+									    <tr>
+										<td style="padding: 8px;">Your are registered as an association:{{academyName}}
+											{{#if affiliatedTo}}
+												and affiliated to  {{affiliatedTo}}
+											{{/if}}
+										</td>
+									</tr>
+
+									{{/if}}
+									
+									
+									<tr style="">
+										<td style="padding: 8px; font-size: 12px; color: green!important;">As an association
+											<ul>
+											<li style="font-size: 12px; color: goldenrod!important; padding-top: 5px;">Announce and promote your event digitally to the world.
+											</li>
+											<li style="font-size: 12px; color: goldenrod!important; padding-top: 5px;">Conduct closed-group or open events.</li>
+											<li style="font-size: 12px; color: goldenrod!important; padding-top: 5px;">Manage the event using automated, process driven software platform for registration
+											. </li>
+											<li style="font-size: 12px; color: goldenrod!important; padding-top: 5px;">Many more..</li>
+											</ul>
+										</td>
+									</tr>
+									<tr>
+										<td style="padding:12px">
+											<div style="">
+												<p href="" style="background: rgb(52, 142, 218) none repeat scroll 0% 0%; border: 0px none; height: 29px; border-radius: 3px;color: white;
+												text-decoration: none;padding: 8px" class="btn btn-default">Login in to your account to start using these features</p>
+											</div>
+										</td>
+									</tr>
+
+					            </tbody>
+					        </table>
+					    </center>
+				</body>
+			</template>

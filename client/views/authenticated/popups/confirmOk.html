@@ -1,0 +1,133 @@
+<!-- Template for confirm-->
+<!-- this template is included in other templates
+    1. myEvents.html
+    2. userProfileSettings.html
+-->
+
+<!--Used CSS Classes and CSS Links-->
+<!--
+    1.FileName : confirm.css
+            classes : confirmPopup, confirmPopupContent, yes, no, yesButton,
+                      noButton, confirmHeader
+
+    2. FileName : sponsorUpload.css
+            classes :  modal-dialog,
+            ids     :  confirmCenter
+
+    3. bootstrap : modal-content,  modal-header, modal-sm, modal ,fade
+-->
+<template name="confirmOk">
+<!-- main div of confirm pop up-->
+  <div class="modal fade" id="confirmModalOk">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains yes and no buttons
+     background:linear-gradient(to right, rgb(0, 0, 0), rgb(104, 104, 104)) repeat scroll 0% 0% transparent;margin-left:47%;
+-->
+
+      <div id="confirmCenter" class="modal-dialog modal-sm">
+        <div class="confirmPopup">
+        <div class="modal-content">
+        <div class="modal-header confirmHeader">
+              <p class="modal-title" id="conFirmHeaderOk"></p>
+            </div>
+             <div class="modal-body">
+                             <p id = "infoMsg"></p>
+
+              <div class="confirmPopupContent">
+              
+              <div class="no" style="margin-left: auto!important;">
+                    <button type="button" id="noButton" class="ip_button_Popup_Black" style=""  data-dismiss="modal" >OK</button>
+              </div>
+            </div>
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>
+
+
+<template name="confirmOkDelete">
+<!-- main div of confirm pop up-->
+  <div class="modal fade" id="confirmOkDelete">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains yes and no buttons
+     background:linear-gradient(to right, rgb(0, 0, 0), rgb(104, 104, 104)) repeat scroll 0% 0% transparent;margin-left:47%;
+-->
+
+      <div id="confirmCenter" class="modal-dialog modal-sm" style="width:300px !important;">
+        <div class="confirmPopup" style="width:300px !important;">
+        <div class="modal-content">
+        <div class="modal-header confirmHeader">
+              <p class="modal-title" id="conFirmHeaderOk"></p>
+            </div>
+             <div class="modal-body">
+              <div class="confirmPopupContent">
+              
+              <div class="no" style="margin-left: auto!important;">
+                    <button type="button" id="noButton" class="ip_button_Popup_Black" style=""  data-dismiss="modal" >OK</button>
+              </div>
+            </div>
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>
+
+
+
+
+<template name="confirmOkCancel">
+  <div class="modal fade" id="confirmOkCancel">
+      <div id="confirmOkCancel" class="modal-dialog modal-sm" style="width:300px !important;">
+        <div class="confirmPopup" style="width:300px !important;">
+        <div class="modal-content">
+        <div class="modal-header confirmHeader">
+              <p class="modal-title" id="conFirmHeaderOk"></p>
+            </div>
+             <div class="modal-body">
+              <div class="confirmPopupContent">
+              
+              <div class="no" style="margin-left: auto!important;">
+                    <button type="button" id="continueButton" class="ip_button_Popup_Black" style=""  >OK</button>
+                    <button type="button" id="cancelButton" class="ip_button_Popup_Black" style=""  data-dismiss="modal" >Cancel</button>
+              </div>
+            </div>
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>
+
+
+<template name="confirmInfo">
+  <div class="modal fade" id="confirmModalOk">
+      <div id="confirmCenter" class="modal-dialog modal-sm">
+        <div class="confirmPopup">
+        <div class="modal-content">
+        <div class="modal-header confirmHeader">
+              <p class="modal-title" id="conFirmHeaderOk"></p>
+            </div>
+             <div class="modal-body">
+                <p id = "infoMsg"></p>
+
+              <div class="confirmPopupContent">
+              
+              <div class="no" style="margin-left: auto!important;">
+                    <button type="button" id="noButton" class="ip_button_Popup_Black" style=""  data-dismiss="modal" >OK</button>
+              </div>
+            </div>
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>

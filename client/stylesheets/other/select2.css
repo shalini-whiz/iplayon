@@ -1,0 +1,177 @@
+/*css for bootstrap select 2 (select box) used in createEvents, editEvents
+templates */
+
+/*css for select2 is opened*/
+.select2-dropdown.select2-dropdown--below{
+        width:116px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        border: 0px;
+     }
+     /*css for select2 domain is opened*/
+#domainName.select2-dropdown.select2-dropdown--below{
+        width:322px !important;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        height: 119px !important;
+        border: 0px;
+     }
+#domainName + .select2-container--default .select2-results > .select2-results__options {
+    overflow-y: auto;
+    max-height: 78px !important;
+    border-right: 1px solid;
+    border-left: 1px solid !important;
+}
+
+/*css for select2 is not opened*/
+ #projectName + .select2-container--default .select2-selection--single{
+      background: #B0B0B0;
+      height: 10% !important;
+      width: 110px;
+      font-size: 12px;
+      position: relative;
+      border: 0px;
+  }
+
+ #tournamentName + .select2-container--default .select2-selection--single{
+      background: #B0B0B0;
+      height: 10% !important;
+      width: 387px;
+      font-size: 12px;
+      position: relative;
+      border: 0px;
+  }
+ /*css for select2 is opened*/
+ #viewEventSubscribers + .select2-container--default .select2-selection--single, #domainName + .select2-container--default .select2-selection--single{
+      background: #b0b0b0;
+      height: 34px;
+      font-size: 12px;
+      position: relative;
+      border: 0px;
+      border-top-right-radius: 0px !important;
+      border-bottom-right-radius: 0px;
+      padding-top: 2px;
+  }
+ #editDomainName + .select2-container--default .select2-selection--single{
+      background: grey;
+      height: 34px;
+      /*width: 322px;*/
+      font-size: 12px;
+      position: relative;
+      border: 0px;
+      border-top-right-radius: 0px !important;
+      border-bottom-right-radius: 0px;
+      padding-top: 2px;
+  }
+ /*css for select2 arrow*/
+#projectName + .select2-container--default .select2-selection--single .select2-selection__arrow {
+      background: #B0B0B0 url(/arrow.gif) no-repeat 90% 50%;
+      border: 0px;
+      font-size: 12px;
+      position: absolute;
+      outline: 0;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+
+#tournamentName + .select2-container--default .select2-selection--single .select2-selection__arrow {
+      background: #B0B0B0 url(/arrow.gif) no-repeat 90% 50%;
+      border: 0px;
+      font-size: 12px;
+      position: absolute;
+      outline: 0;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+  /*css for select2 arrow*/
+#viewEventSubscribers + .select2-container--default .select2-selection--single .select2-selection__arrow, #domainName + .select2-container--default .select2-selection--single .select2-selection__arrow{
+      background: #b0b0b0 url(/arrow.gif) no-repeat 90% 50%;
+      border: 0px;
+      font-size: 12px;
+      position: absolute;
+      outline: 0;
+      top: 2px;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  #editDomainName + .select2-container--default .select2-selection--single .select2-selection__arrow {
+      background: grey url(/arrow.gif) no-repeat 90% 50%;
+      border: 0px;
+      font-size: 12px;
+      position: absolute;
+      outline: 0;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+   /*css for select2 drop hover*/
+  .select2-drop:hover {
+  background-color:red;
+    color: white;
+  }
+
+  .select2-container--default .select2-selection--single .select2-selection__rendered{
+      color: #E0E0E0 ;
+      }
+
+  select.error ul.select2-choices {
+    border-color: rgb(185, 74, 72) !important;
+  }
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+     background-color: rgb(176, 176, 176);
+     color: white; 
+}
+.select2-container.req_place .select2-default .select2-chosen {
+      color:red !important;
+  }
+
+
+.select2-container--default .select2-results > .select2-results__options {
+    overflow-y: auto;
+    border-right: 1px solid;
+    border-left: 1px solid !important;
+    border-bottom: 1px solid !important;
+    max-height:94px;
+}
+
+#liveUpEventName + .select2-dropdown.select2-dropdown--below{
+        /*width:137px !important;*/
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        height: 152px;
+        border: 0px;
+     }
+
+#liveUpEventName + .select2-container--default .select2-selection--single .select2-selection__arrow {
+      background: #B0B0B0 url(/arrow.gif) no-repeat 90% 50%;
+      border: 0px;
+      font-size: 12px;
+      position: absolute;
+      outline: 0;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+#liveUpEventName2 + .select2-dropdown.select2-dropdown--below{
+     /*   width:137px !important;*/
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        height: 152px;
+        border: 0px;
+     }
+
+#liveUpEventName2 + .select2-container--default .select2-selection--single .select2-selection__arrow {
+      background: #B0B0B0 url(/arrow.gif) no-repeat 90% 50%;
+      border: 0px;
+      font-size: 12px;
+      position: absolute;
+      outline: 0;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+ #liveUpEventName + .select2-container--default .select2-selection--single .select2-selection__rendered{
+      color: #fff ;
+      }
+ #liveUpEventName2 + .select2-container--default .select2-selection--single .select2-selection__rendered{
+      color: #fff ;
+      }
+.select2-search--dropdown {
+    display: block;
+    padding: 4px;
+    border-right: 1px solid;
+    border-left: 1px solid !important;
+}

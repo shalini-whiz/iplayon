@@ -1,0 +1,331 @@
+<!-- player list container -->
+<template name="statisticsList">
+    <div style="background:#333;height:auto;" class="container">
+       
+        <div class="row navigationBar navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <span style="" class="websiteHeader">iPlayOn</span>
+                    </div>
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <button class="ip_button_DarkGrey">Player List</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class = "row">{{>selectionForm1}}</div>
+        <div id="listID">{{> playerListTemplate}}</div>
+        <div id = "statPlayerInfoPopUp"></div>
+        <div id = "academyProfilePopUp"></div>
+        <div id = "associationProfilePopUp"></div>
+
+    </div>
+</template>
+
+<template name="searchTemplate">
+    <div class="">
+        <div id="id1" style="float:left; width:20%; display: flex;  background: black none repeat scroll 0% 0%; border: 1px solid white;  padding: 5px 7px 5px 15px;margin-top:5px !important">
+            <input style="width: 300px; font-size: 12px; background: transparent none repeat scroll 0px center; border: 0px none; color: orange;" value="" placeholder="search" type="text" id="searchByID">
+            
+        </div>
+        {{#if checkWhichButtonClicked}}
+        <div id="id2" name="checkNEW" style="float:left;margin-left:50px !important;display: flex;  background: black none repeat scroll 0% 0%; border: 1px solid white;  padding: 5px 7px 5px 15px;margin-top:5px !important">
+            <input style="width: 300px; font-size: 12px; background: transparent none repeat scroll 0px center; border: 0px none; color: orange;" value="" placeholder="search by id" type="text" id="searchByAfilID">
+            <span style="font-size:14px!important;padding-right:10px !important" class="glyphicon glyphicon-remove-circle clearInputFiled" id="clearInputField"></span>
+            <input type="button" class="selectionForm_N7" id="searchByAfilIDBtn" value="Display" style="width: 57px;height:20px;">
+
+        </div>
+        {{/if}}
+        <div id="id3" style="text-align:right;">
+            <a href="#">
+                <span class="glyphicon glyphicon-triangle-left ipGlyphBtn" id="previousPage" style="font-size:26px !important;top:5px !important;visibility:hidden !important"></span>
+            </a>
+            <a href="#">
+                <span class="glyphicon glyphicon-triangle-right ipGlyphBtn" id="nextPage" style="font-size:26px !important;top:5px !important;visibility:hidden !important"></span>
+            </a>
+        </div>
+        <!--<div style="display: flex; margin-top: 170px ! important; background: black none repeat scroll 0% 0%; border: 1px solid white; width: 250px; padding: 5px 7px 5px 15px;" class="">
+            <input style="width: 300px; font-size: 12px; background: transparent none repeat scroll 0px center; border: 0px none; color: orange;" value="" placeholder="search" type="text" id="searchByID">
+           <span class="glyphicon glyphicon-search searchAca_New"></span>
+        </div>
+        <div style="float:right;" class="">
+        <a href="#">
+                  <span class="glyphicon glyphicon-triangle-left ipGlyphBtn" id="previousPage" style="top:0px !important;font-size:26px !important;"></span>
+                </a>
+        <a href="#">
+                  <span class="glyphicon glyphicon-triangle-right ipGlyphBtn" id="nextPage" style="top:0px !important;font-size:26px !important;"></span>
+                </a>
+        </div>
+    -->
+    </div>
+</template>
+
+
+
+
+
+
+
+<template name="loader">
+  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+  <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+    <animateTransform attributeType="xml"
+      attributeName="transform"
+      type="rotate"
+      from="0 25 25"
+      to="360 25 25"
+      dur="0.6s"
+      repeatCount="indefinite"/>
+    </path>
+  </svg>
+</template>
+
+
+
+<template name="selectionForm1">
+    {{#if Template.subscriptionsReady}}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N" id="selectionFormData" style="">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="selectionForm_N2">Please Select Your Keys of Interest to Search:</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N3">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+               <p class="selectionForm_N4" id="sportsLabel"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Sports:</p>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <p class="selectionForm_N4" id="filterByLabel"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Filter By:</p> 
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 selectionForm_N5">
+                 <p class="selectionForm_N4" id="filterDataLabel">
+                    {{#if checkrole}}
+                        <span class="impMsg" style="font-size:14px !important;font-weight:bold !important"></span>
+                    {{else}}
+                       {{#if associationName}}
+                            <span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Association:
+                                <!--{{#if regionName}}
+                                    <span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Region:
+                                {{/if}}-->
+                       
+                        {{/if}}
+                        {{#if academyName}}
+<span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Institution/Academy:
+                        {{/if}}
+                    {{/if}}
+
+                </p> 
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5" id="genderLabel" >
+                 <p class="selectionForm_N4" id="filteredLabel6">Gender:</p> 
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5" id="approvalLabel" >
+                 <p class="selectionForm_N4" id="filteredLabel6">Approval:</p> 
+            </div>
+           
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N3">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <select class="selectionForm_N6" id="sportList" name="sportList">
+                    <option selected disabled value="0">Select Sports</option>
+                        {{#if checkrole}}
+                            {{#if sports}}
+                            {{#each sports}}
+                                <option id="sportSelection" name="{{this._id}}">{{this.projectMainName}}</option>
+                            {{/each}}
+                            {{/if}}
+
+
+                        {{else}}
+                            {{#if sports}}
+                            {{#each sports}}
+                                <option id="sportSelection" name="{{this._id}}" {{selectedSportSTAT this._id}}>{{this.projectMainName}}</option>
+                            {{/each}}
+                            {{/if}}
+                        {{/if}}
+                </select> 
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <select class="selectionForm_N6" id="filterByList" name="filterByList">
+                    <option selected disabled value="0">Select Filter</option>
+                    {{#if checkrole}}
+                        <option id="filterBy" name="Association">Association</option>
+                        <option id="filterBy" name="Institution/Academy">Institution/Academy</option>
+                        <!--<option id="" name="Region">Region</option>-->
+                    {{else}}
+                        <option id="filterBy" name="Association" {{selectedAss}}>Association</option>
+                        <option id="filterBy" name="Institution/Academy" {{selectedAcademy}}>Institution/Academy</option>
+
+                        <!--<option id="" name="Region" {{selectedRegion}}>Region</option>-->
+                    {{/if}}
+
+                </select>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 selectionForm_N5">
+                <select class="selectionForm_N6" id="filterData" name="filterDataList">
+                    <option selected disabled value="0">Select</option>
+                    {{#if checkrole}}
+
+
+
+                    {{else}}
+
+                        {{#each afilAssociation}}
+                            <option id="sportSelection" name="{{this.userId}}" selected>{{this.associationName}}</option>
+                        {{/each}}
+                        {{#if afilAssociation}}
+                            {{#each otherAssociation}}
+                                <option id="sportSelection" name="{{this.userId}}" >{{this.associationName}}</option>
+                            {{/each}}
+                        {{/if}}
+                        {{#each userAcademy}}
+                            <option id="sportSelection" name="{{this.userId}}" selected>{{this.clubName}}</option>
+                        {{/each}}
+                        {{#if userAcademy}}
+                            {{#each otherAcademy}}
+                                <option id="sportSelection" name="{{this.userId}}">{{this.clubName}}</option>
+                            {{/each}}
+                        {{/if}}
+                        <!--{{#each userRegion}}
+                            <option id="sportSelection" name="{{this._id}}" selected>{{this.domainName}}</option>
+                        {{/each}}  
+                        {{#if userRegion}}
+                            {{#each otherRegion}}
+                                <option id="sportSelection" name="{{this._id}}">{{this.domainName}}</option>
+
+                            {{/each}}
+                        {{/if}}--> 
+                    {{/if}}               
+                </select>
+            </div>
+
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5" id="genderMenu" style=''>
+               <select class="selectionForm_N6" id="FilterSelect6" name="genderList">
+                    <option selected disabled>Select Gender</option>
+                    <option id="genderSelection" name="Male">Male</option>
+                    <option id="genderSelection" name="Female">Female</option>
+                    <option id="genderSelection" name="All">All</option>
+                </select>
+            </div>
+
+            
+             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5" id="approvalMenu" style=''>
+               <select class="selectionForm_N6" id="FilterSelect6" name="approvalList">
+                    <option selected disabled>Approval Status</option>
+                    <option id="genderSelection" name="Approved">Approved</option>
+                    <option id="genderSelection" name="Pending">Pending</option>
+                    <option id="genderSelection" name="All">All</option>
+                </select>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 selectionForm_N5" >
+                 <input type="button" class="selectionForm_N7" id="show"  value="Show"> 
+            </div>
+        </div>
+      
+    </div>
+    {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+
+<template name="playerListTemplate">
+   
+    <div class="row" style="display: flex; margin-top: 10px; border: 1px solid white; width: 400px; height: 27px;">
+        <input style="width: 300px; font-size: 12px; background: transparent none repeat scroll 0px center; border: 0px none; color: orange;" value="" placeholder="search by name" type="text" id="searchByAfilID_NEWPAGE">
+        <span style="font-size:14px!important;padding-right:10px !important" class="glyphicon glyphicon-remove-circle clearInputFiled" id="clearInputField_NEWPAGE"></span>
+        <input type="button" class="selectionForm_N7" id="searchByAfilIDBtn_NEWPAGE" value="Display" style="width: 31%;height:25px;">
+    </div>
+
+    <div class ="row" style="display: flex; margin-top: 10px;">
+        <a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 1; height: 30px;pointer-events:{{prevPageClass}};" href="{{prevPage}}" id="prevPage" >previous</a>
+        <a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 1; margin-left: 5px; height: 30px;pointer-events:{{nextPageClass}};" href="{{nextPage}}" id="nextPage" >next</a>
+
+        
+    </div>
+    <div class="row" style="margin-top:10px !important">
+        <span style="color:white !important;" id="playersCount" class="selectionForm_N4">Number of Players : {{numberOfPlayers}}</span>
+    </div>
+
+
+    <div style="margin-top:0px">
+    <div class="row" >
+        <table class="table table-striped tableOFCSVHTML_New">
+            <thead style="">
+               <tr class="headerAnalytics2">
+                    <th class="pAnalytics2">No</th>
+                    <th class="pAnalytics2">Name</th>
+                    <th class="pAnalytics2">Academy</th>
+                    <th class="pAnalytics2">Association</th>
+                    <th class="pAnalytics2">City</th>
+                    <th class="pAnalytics2">State</th>
+                   {{#if approveUser1A}}
+                    <th class="pAnalytics2">
+                        <div style="width: 100%;">
+                            <span id="approveCountSpan" style="background: yellowgreen none repeat scroll 0% 0%; font-size: 15px; border-radius: 9px; text-align: left; margin-left: 50%;; color: black;">{{approvalCount}}</span>
+                        </div>
+                        Approve                 
+                    </th>
+                    {{else}}
+
+                    {{/if}}
+                </tr>
+            </thead>
+            <tbody id="selectTagop">
+                    
+                {{#if playersWithCheck}}
+
+                {{#each playersWithCheck}}
+                <tr class="headerAnalytics3" name={{this}}>
+                    <td class="pAnalytics2">{{this.slNo}}</td>
+                    <td class="pAnalytics2" name={{this.userName}}>
+                        <a href="#" id="playerInfoBtn" name="{{this.userId}}">{{this.userName}}</a>
+                    </td>
+                    <td class="pAnalytics2" name={{this.clubName}}>
+                        <a href="#" id="playerAcademyBtn" name="{{this.academyId}}">{{this.clubName}}</a>
+                    </td>
+                    <td class="pAnalytics2" name={{getPlayerAssociation this.associationId}}>
+                        <a href="#" id="playerAssociationBtn" name="{{this.associationId}}">{{getPlayerAssociation this.associationId}}</a>
+                    </td>
+                    <td class="pAnalytics2" name={{this.city}}>{{this.city}}</td>
+                    <td class="pAnalytics2" name={{this.state}}>{{getPlayerState_Ana this.state}}</td>
+                    {{#if approveUser1A}}
+                    <td class="pAnalytics2">
+                        {{#if approveUser2A this._id}}
+                        {{#if approvedOrNot_AcademyChange this._id}}
+                            <input type="button" value="approved" class="sendReciept" style="height: 22px;margin-top: 5px;width: 76%;margin-left: 9px;background: orange none repeat scroll 0% 0%;color: black;border: 1px solid white;" id="" disabled>
+                        {{else}}
+                            <input type="button" value="approve" class="sendReciept" style="height: 22px;margin-top: 5px;width:76%;margin-left: 9px;" id="approveAffId2">
+                        {{/if}}
+                        {{else}}
+                        &nbsp;
+                        {{/if}}
+                    </td>
+                    {{/if}}
+                </tr>
+                {{/each}}
+
+                {{else}}
+                    {{#if pageload}}
+                    <tr class="headerAnalytics3">
+                        <td class="pAnalytics2" colspan="7">No Records Found</td>
+                    </tr>
+                    {{else}}
+                    <tr class="headerAnalytics3">
+                        <td class="pAnalytics2" colspan="7"></td>
+                    </tr>
+                    {{/if}}
+                {{/if}}
+               
+            </tbody>
+        </table>
+        <div id="confirmPasswordRenderAna2"></div>
+    </div>
+   
+</div>
+</template>
+
+

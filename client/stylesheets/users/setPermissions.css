@@ -1,0 +1,34 @@
+.tableHeadPopper{
+	background: black !important;
+	color: white !important;
+	font-size: 13px !important;
+	height: 22px !important;
+	padding-top: 2px;
+}
+.modal-content-modRegPers{
+	width: 508px !important;
+	left: 50%;
+	transform:translateX(-50%);
+}
+
+.ptagPerSettP{
+	margin: 0px;
+	border: 0px none;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	cursor: default;
+}
+
+.tableHeadPopper2{
+	background: white !important;
+	color: black !important;
+	font-size: 13px !important;
+	padding-top: 2px;
+	height: 30px !important;
+}
+
+.selectPerMiSet{
+	width: 100%;
+	height: 100%;
+}

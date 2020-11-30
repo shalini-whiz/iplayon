@@ -1,0 +1,63 @@
+<template name="noOfSubscribers">
+	<div class="modal" id="noOfSubscribers" aria-hidden="true">
+        <div id="subDomainCenter" class="modal-dialog eventAddTourModal-sm">
+            <div class="eventAddTourPopup">
+	            <div class="modal-content">
+	                <div class="selectevenaddHeader">
+	                    <p class="modal-title" style="width:95%!important;" id="setEventNameHeader">Number Of Subscribers</p>
+	                </div>
+
+	                <div class="modal-body subDomainModalBody">
+	                	<div id="renderselectedEventsCategories">
+	                		{{> selectedEventsSUB_Number}}
+	                	</div>
+	           			<p type="text" id="eveDomProvideDetails_SUBNUM" name="eveDomProvideDetails_SUBNUM" style="background-color:none; border:none; cursor:default font-weight:normal;color:red;font-size:12px;" onfocus="this.blur()" readonly></p>
+	             	</div>
+	            </div>
+        	</div>
+    	</div>
+	</div>
+</template>
+
+<template name="selectedEventsSUB_Number">
+    <form id="selectedEventsSUB_NumberForm" onkeypress="return event.keyCode != 13;">
+        <div class="">
+            {{#if lTourns_Sports_NUM}}
+            <div class="" style="height: 12em;overflow: auto;" id="">
+                <table class="table table-striped tableOFCSVHTML_SetDOB" id="tableSetNUM">
+                    <thead style="">
+                        <tr class="headerAnalytics2_SetDOB">
+                            <th class="pAnalytics2_SetDOB">event name</th>
+                            <th class="pAnalytics2_SetDOB">No. of Subscribers</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each lTourns_Sports_NUM}} {{#each this.projectSubName}} {{#if checkWithinSelectedEvents_NUM}}
+                        <tr class="headerAnalytics2_SetDOB" id="{{../_id}}">
+                            <td class="pAnalytics2_SetDOB">{{this.projectName}}</td>
+                            <td class="pAnalytics2_SetDOB" id="subscriberNoForEvent">
+                                <input type="text" placeholder="unlimited" class="setDOB_Input" name="subscriberNoForEvent{{this._id}}{{../_id}}" id="{{this._id}}" autocomplete="off" value="unlimited">
+                            </td>
+                        </tr>
+                        {{/if}} {{/each}} {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            {{/if}}
+
+        </div>
+        <div class="setemptyeventaddDivContentOk">
+            <div class="sponsorUploadsContentAddEvents">
+                <div class="yesSponsorUploads" style="margin-left: 25% !important;">
+                    <button type="button" id="prevFromSUB" class="ip_button_Popup_Black">Prev</button>
+                </div>
+                <div class="yesSponsorUploads" style="margin-left: 8px !important;">
+                    <button type="submit" id="nextFormSUB" class="ip_button_Popup_Black">Next</button>
+                </div>
+                <div class="noSponsorUploads">
+                    <button type="button" id="cancelFromSUB" class="ip_button_Popup_Red">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</template>

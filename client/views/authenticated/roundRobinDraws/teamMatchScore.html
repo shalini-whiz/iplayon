@@ -1,0 +1,237 @@
+
+
+<template name="teamMatchScore">
+
+        <div class="modal" id="teamMatchScore" aria-hidden="true">
+            <div id="subDomainCenter" class="modal-dialog eventAddTourModal-sm" style="width:970px !important;">
+                <div class="eventAddTourPopup" style="width:970px !important;">
+                    <div class="modal-content" style="  position: relative;display:table;overflow-y: auto;width:100%;">
+                        <div class="modal-header loginHeaderIplayon" style="background-color: #000;">
+                            <p class="modal-title loginHeadeIplayonPTag" style="">Team Detailed Scores
+                            </p>
+                            <span style="margin: -6px 0px 0px; font-size: 22px; color: white; cursor: pointer;" id="closeTeamDetailScoreRR">x</span>
+                        </div>
+                        <div class="modal-body subDomainModalBody" style="padding:15px !important;min-height:5em;padding: 15px !important;min-height: 5em;height: 25em;overflow-y: auto;">
+                        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;font-size:12px;">
+                        		<p>{{fetchTeamNameA}} v/s {{fetchTeamNameB}}</p>
+                        	</div>
+                      	
+                       
+                        		{{#if formatInfo}}                       			
+                        			<table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+						        		<thead class="">
+						        			<tr class="headerAnalytics3" id="headerAnalytics3">
+						        				<td class="headerDetScoreTeam" style="">Match</td>
+						            			<td class="headerDetScoreTeam" style="">Match Type</td>
+						               			<td class="headerDetScoreTeam" style="">Names</td>
+						                		<td class="headerDetScoreTeam" style="">1</td>
+						                		<td class="headerDetScoreTeam" style="">2</td>
+						                		<td class="headerDetScoreTeam" style="">3</td>
+						                		<td class="headerDetScoreTeam" style="">4</td>
+						                		<td class="headerDetScoreTeam" style="">5</td>
+						                		<td class="headerDetScoreTeam" style="">6</td>
+						                		<td class="headerDetScoreTeam" style="">7</td>
+						                		<td class="headerDetScoreTeam">Winner</td>
+						            		</tr>
+						            	</thead>
+						        		<tbody id="comMathDetails"> 
+						        			{{#each formatInfo}}
+
+								            <tr class="headerAnalytics3" id={{this.type}} name={{this.no}}>
+								            	<td class="matchRowDEtScore">{{this.displayLabel}}</td>
+								            	<td class="matchRowDEtScore" style="">		
+								                	<select style="font-size:12px;width:95%;" id="match{{this.no}}Status" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}" name="match{{this.no}}Status">
+								                		<option name="notPlayed" selected="{{setMatchStatus this.detailScore 'notPlayed'}}">Not Played</option>
+								                		<option name="bye" selected="{{setMatchStatus this.detailScore 'bye'}}">Bye</option>
+								                		<option name="walkover" selected="{{setMatchStatus this.detailScore 'walkover'}}">Walkover</option>
+								                		<option name="completed" selected="{{setMatchStatus this.detailScore 'completed'}}">Completed</option>
+								                	</select>
+								                </td>
+								                <td class="matchRowDEtScore" style="">
+								                {{#if teamAPlayers}}
+								                	{{#if eventType this.type}}
+								                		<select style="font-size:12px;width:95%;" id="matchplayerA{{@index}}" name="match{{this.no}}playerA">
+								                			<option value="1" selected=true disabled name="1" >Select Player of TeamA</option>
+								                			{{#each teamAPlayers}}
+								                			<option value="{{this.userName}}" name="{{this.userId}}" selected="{{setMatchPlayer
+								                			 'playerA'
+								                			 ../detailScore this.userId ..}}">{{this.userName}}</option>
+								               				{{/each}}
+								                		</select>
+								                	{{else}}
+								                		<select style="font-size:12px;width:95%;" id="matchplayerA{{@index}}" name="match{{this.no}}playerA">
+								                			<option value="1" selected=true  disabled name="1">Select Player1 of TeamA</option>
+								                			{{#each teamAPlayers}}
+								                			<option value="{{this.userName}}" name="{{this.userId}}" selected="{{setMatchPlayer
+								                			 'playerA'
+								                			 ../detailScore this.userId ..}}">{{this.userName}}</option>
+								               				{{/each}}
+								                		</select>
+								                		<select style="font-size:12px;width:95%;" id="matchplayerB{{@index}}" name="match{{this.no}}playerB">
+								                			<option value="1" selected=true disabled name="1">Select Player2 of TeamA</option>
+								                			{{#each teamAPlayers}}
+								                			<option value="{{this.userName}}" name="{{this.userId}}" selected="{{setMatchPlayer
+								                			 'playerB'
+								                			 ../detailScore this.userId ..}}">{{this.userName}}</option>
+								               				{{/each}}
+								                		</select>
+
+								                	{{/if}}
+
+								            	{{/if}}
+								            	</td>
+								                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{detailScore.setScoresA.[0]}}" id="matchScoreA1{{this.no}}" name="match{{this.no}}ScoreA1"></td>
+								                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{detailScore.setScoresA.[1]}}" id="matchScoreA2{{this.no}}" name="match{{this.no}}ScoreA2"></td>
+								                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{detailScore.setScoresA.[2]}}" id="matchScoreA3{{this.no}}" name="match{{this.no}}ScoreA3"></td>
+								                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{detailScore.setScoresA.[3]}}" id="matchScoreA4{{this.no}}" name="match{{this.no}}ScoreA4"></td>
+								                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{detailScore.setScoresA.[4]}}" id="matchScoreA5{{this.no}}" name="match{{this.no}}ScoreA5"></td>
+								                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{detailScore.setScoresA.[5]}}" id="matchScoreA6{{this.no}}" name="match{{this.no}}ScoreA6"></td>
+								                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{detailScore.setScoresA.[6]}}" id="matchScoreA7{{this.no}}" name="match{{this.no}}ScoreA7"></td>
+								                <td class="matchRowDEtScore" style="">		
+								                	<select style="font-size:12px;width:95%;" id="match{{this.no}}Winner" name="match{{this.no}}Winner" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+								                		<option value="1" selected id="1" name="1" >Select Winner</option>
+
+								                		<!--{{#if winnerExists this.detailScore this.type}}
+								                			{{#each winnerExists this.detailScore this.type}}
+									                			<option value="{{this.userName}}" name="{{this.userId}}" id={{this.teamID}} selected="{{setWinner ../detailScore ../type this.userId}}">{{this.userName}}</option>
+
+									                		{{/each}}
+
+
+								                		{{else}}-->
+									                		{{#each winnerList this.no this.type}}
+									                			<option value="{{this.userName}}" name="{{this.userId}}" id={{this.teamID}} selected="{{setWinner ../detailScore ../type this.userId}}">{{this.userName}} </option>
+
+									                		{{/each}}
+								                		<!--{{/if}}-->
+								                	</select>
+								                </td>
+								            </tr>
+
+								            <tr class="headerAnalytics3" id={{this.type}} name={{this.no}}>
+								            	<td class="matchRowDEtScore" style="">		
+								                </td>
+								            	<td class="matchRowDEtScore" style="">		
+								                </td>
+								                <td class="matchRowDEtScore" style="">
+								                	{{#if teamBPlayers}}
+								                		{{#if eventType this.type}}
+											                <select style="font-size:12px;width:95%;" id="matchplayerX{{@index}}" name="match{{this.no}}playerX">
+											                	<option value="1" selected=true disabled 
+											                	name="1">Select Player of TeamB</option>
+											                	{{#each teamBPlayers}}
+											                		<option value="{{this.userName}}" name="{{this.userId}}" selected="{{setMatchPlayer
+								                			 'playerX'
+								                			 ../detailScore this.userId ..}}">{{this.userName}}</option>
+											               		{{/each}}
+											                </select>
+											            {{else}}
+		 													<select style="font-size:12px;width:95%;" id="matchplayerX{{@index}}" name="match{{this.no}}playerX">
+											                	<option value="1" selected=true  disabled name="1">Select Player1 of TeamB</option>
+											                	{{#each teamBPlayers}}
+											                		<option value="{{this.userName}}" name="{{this.userId}}" selected="{{setMatchPlayer
+								                			 'playerX'
+								                			 ../detailScore this.userId ..}}">{{this.userName}}</option>
+											               		{{/each}}
+											                </select>
+											                <select style="font-size:12px;width:95%;" id="matchplayerY{{@index}}" name="match{{this.no}}playerY">
+											                	<option value="1" selected=true disabled name="1">Select Player2 of TeamB</option>
+											                	{{#each teamBPlayers}}
+											                		<option value="{{this.userName}}" name="{{this.userId}}" selected="{{setMatchPlayer
+								                			 'playerY'
+								                			 ../detailScore this.userId ..}}">{{this.userName}}</option>
+											               		{{/each}}
+											                </select>
+									            		{{/if}}
+									            	{{/if}}
+								            	</td>
+								                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{detailScore.setScoresB.[0]}}" id="matchScoreB1{{this.no}}" name="match{{this.no}}ScoreB1"></td>
+								                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{detailScore.setScoresB.[1]}}" id="matchScoreB2{{this.no}}" name="match{{this.no}}ScoreB2"></td>
+								                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{detailScore.setScoresB.[2]}}" id="matchScoreB3{{this.no}}" name="match{{this.no}}ScoreB3"></td>
+								                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{detailScore.setScoresB.[3]}}" id="matchScoreB4{{this.no}}" name="match{{this.no}}ScoreB4"></td>
+								                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{detailScore.setScoresB.[4]}}" id="matchScoreB5{{this.no}}" name="match{{this.no}}ScoreB5"></td>
+								                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{detailScore.setScoresB.[5]}}" id="matchScoreB6{{this.no}}" name="match{{this.no}}ScoreB6"></td>
+								                <td class="matchRowDEtScore" style="width:5%;"><input autocomplete="off" readonly="{{readonlyForViewers}}" type="text" placeholder="0" style="font-size:12px;width:100%;text-align:center;" value="{{detailScore.setScoresB.[6]}}" id="matchScoreB7{{this.no}}" name="match{{this.no}}ScoreB7"></td>
+								                <td class="matchRowDEtScore" style="">		
+								                </td>
+								            </tr>
+
+						            		{{/each}}
+						        		</tbody>
+						        	</table>
+						        	
+                        		{{/if}}
+
+                        	
+                        	   <!--ultimate winner-->
+						    <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+						        <tbody class="">
+						            <tr class="headerAnalytics3" id="headerAnalytics3">
+						            	<td class="headerDetScoreTeamU" style="">Ultimate Winner</td>
+						            	<td class="headerDetScoreTeamW" style="">
+						                	<select style="font-size:12px;width:95%;" id="TeamMatchType" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+						                		<option value="1" selected=true>Select Match Type</option>
+						                		<option value="notPlayed" selected="{{setTeamMatchType 'notPlayed'}}">Not Played</option>
+						                		<option value="bye" selected="{{setTeamMatchType 'bye'}}">Bye</option>
+						                		<option value="walkover" selected="{{setTeamMatchType 'walkover'}}">Walkover</option>
+						                		<option value="completed" selected="{{setTeamMatchType 'completed'}}">Completed</option>
+						                	</select>
+						                </td>
+						                <td class="headerDetScoreTeamW" style="">
+						                	<select style="font-size:12px;width:95%;" id="TeamWinnerId" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+						                		<option value="1" id="1" selected=true>Select Winning Team</option>
+						                		<option value="{{teamAIDMatch}}" id="TeamA" selected="{{setFinalWinner teamAIDMatch}}">{{fetchTeamNameA}}</option>
+						                		<option value="{{teamBIDMatch}}" id="TeamB" selected="{{setFinalWinner teamBIDMatch}}">{{fetchTeamNameB}}</option>
+						                	</select>
+						                </td>
+						            </tr>
+						        </tbody>
+						    </table>
+						    
+
+                        </div>
+                        <div class="modal-footer">
+                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height:auto !important;">
+                                <p style="font-size:12px;color:red;cursor:default;text-align: left;" id="TeamSpecErrorShow"></p>
+                                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+                            </div>
+                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-right:0px !important;padding-bottom: 4px;">
+                                <div class="row">
+                                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 ">
+                                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 ">
+                                        </div>
+                                        <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 " style='text-align:center;'>
+                                        	{{#if checkOnlyEventOrganizer}}
+                                        	<!--{{#if upcomingTournamentDraw}}-->
+                                            <button type="submit" class="ip_button_Popup_Black" id="saveRRTeamMatchDetails" style="">Set
+                                            </button>
+                                            
+                                            <!--{{else}}
+                                            	<button type="button" class="ip_button_Popup_Black" id="cancelTeamSpecForm" >Ok
+                                            	</button>
+
+                                            {{/if}}
+                                        -->
+                                            <button type="button" class="ip_button_Popup_Black" id="printRRDetailScore" >Print
+                                            </button>
+                                            <button type="button" class="ip_button_Popup_Black" id="printRRBlankDetailScore" >Blank
+                                            </button>  
+                                            <button type="button" class="ip_button_Popup_Red" id="cancelRRMatchDetails" >Cancel
+                                            </button>                              
+                                            {{else}}
+                                            <button type="button" class="ip_button_Popup_Black" id="cancelRRMatchDetails" >Ok
+                                            </button>
+                                            {{/if}}
+                                        </div>
+                                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</template>

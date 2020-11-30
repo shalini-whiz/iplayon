@@ -1,0 +1,110 @@
+<template name="teams34Format">
+    <!-- main div of selectSubDomainsPopUp pop up-->
+    <div class="modal" id="teams34Format">
+        <div id="subDomainCenter" class="modal-dialog subTeamSubsModal-sm" style="width: 601px !important;">
+            <div class="selectTeamSubsPopup" style="width: 601px !important;">
+                <div class="modal-content">
+                    <div class="modal-header selectSubDomainsHeader">
+                        <p class="modal-title" id="setEventNameHeader" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;text-align:center">
+                           3rd and 4th teams format
+                        </p>
+                    </div>
+                    <div class="modal-body subDomainModalBody" style="max-height: 50vh;overflow: auto;">
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-bottom:4px;">
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;padding-top:10px!important;">
+                                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding:0px!important;height:30px;">
+                                    {{#if statusString}}
+                                    <p style="font-size:12px;width:100%;">&nbsp;{{statusString}}</p>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            
+
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;padding-top:10px!important;">
+                                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding:0px!important;height:30px;display:flex;">
+                                    {{#if fetchLosersTeamId}}
+                                        {{#if winnerTeamA}}
+                                            <span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                                        {{/if}}
+                                        <p style="font-size:12px;width:100%;">&nbsp;{{fetchLosersTeamId.team1Name}}</p>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;padding-top:10px!important;">
+                            </div>
+                            <br>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;padding-top:10px!important;">
+                                <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+                                    <tbody class="">
+                                    {{#each dataForScoresA}}
+                                        <td class="matchRowDEtScore" style="width:5%;"><p style="font-size:12px;width:100%;text-align:center;" >{{this}}</p>
+                                        </td>
+                                    {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;padding-top:10px!important;">
+                                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding:0px!important;height:30px;display:flex;">
+                                    
+                                    {{#if fetchLosersTeamId}}
+                                    <p style="font-size:12px;width:100%;">
+                                        {{#if winnerTeamB}}
+                                        <span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                                        {{/if}}
+                                        &nbsp;{{fetchLosersTeamId.team2Name}}
+                                    </p>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;padding-top:10px!important;">
+                            </div>
+                            <br>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;padding-top:10px!important;">
+                                <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+                                    <tbody class="">
+                                    {{#each dataForScoresB}}
+                                        <td class="matchRowDEtScore" style="width:5%;"><p style="font-size:12px;width:100%;text-align:center;" >{{this}}</p>
+                                        </td>
+                                    {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px important!;padding: 0px !important;" id="insertNewRow">
+
+                            </div>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;padding-top:10px!important;">
+                            </div>
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;padding-top: 5px !important;">
+                                <input style="width:50%;font-size:12px;" value="Set Detailed Scores" type="button" id="setDetailedScores">
+                            </div>
+                            <div class="modal-footer">
+                                <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style='padding-bottom:4px;'>
+                                    <div class="row">
+                                        <p id="errorMsg" class='impMsg'></p>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " style="padding: 0px !important;">
+                                            <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 ">
+                                            </div>
+
+                                            <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 ">
+                                                <button type="button" class="ip_button_Popup_Red"  id="closeTeamFormatCreate">Close</button>
+                                            </div>
+
+                                            <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 "> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="renderKnockOutForm"></div>
+    <div id="renderbyeWalkOverTeamsOth"></div>
+    <div id="renderMoreScTeamsOth"></div>
+</template>

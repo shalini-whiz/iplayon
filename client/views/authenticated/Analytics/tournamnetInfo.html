@@ -1,0 +1,97 @@
+<!-- player profile -->
+<template name="tournamentInfo">
+    <form id="assoc-addNewPlayer2">
+        <div class="modal" id="tournamentInfo" role="dialog" data-backdrop="static">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content modal-content-modReg_ViewPlayer">
+                    <div class="modal-header  modal-header-modRegAcademy" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+                            <div class="row" style="margin:0 !important;">
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 titleDivRegNewAca">
+                                    <p class="modal-title titleRegisterNewAca" id="academyLoginIDCon" style="color:white;">Tournament Details</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body  modal-body-modReg1_ViewPlayer" style="min-height:20em !important;">
+                        {{#if tournamentInfoPlayerAnalytics}}
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12 cont_ViwPlayer">
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Name:
+                                    </p>
+                                </div>
+                                <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10 viewPlayerInfoDiv2" style="">
+                                    <p  id="playerEmailAddress"     placeholder="Email Address" name="playerEmailAddress" class="viewPlayerInfoP1">{{tournamentInfoPlayerAnalytics.eventName}}</p>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Organizer:
+                                    </p>
+                                </div>
+                                <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10 viewPlayerInfoDiv2" style="">
+                                    <p  id="playerEmailAddress"     placeholder="Email Address" name="playerEmailAddress" class="viewPlayerInfoP1">{{tournamentInfoPlayerAnalytics.orgaNizerName}}</p>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Entry Closed On:
+                                    </p>
+                                </div>
+                                <div class="col-md-10  col-xs-10  col-lg-10  col-sm-10 viewPlayerInfoDiv2" style="">
+                                    <p  id="playerNameContact"     placeholder="Player Name" name="playerNameContact"  class="viewPlayerInfoP1">{{tournamentInfoPlayerAnalytics.eventSubscriptionLastDate}}</p>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2" >
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                         Start Date:
+                                    </p>
+                                </div>
+                                <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9 viewPlayerInfoDiv2" >
+                                    <p    name="guardianName" id="guardianName" placeholder="Guardian Name"  class="viewPlayerInfoP1">{{tournamentInfoPlayerAnalytics.eventStartDate}}</p>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2" >
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                         End Date:
+                                    </p>
+                                </div>
+                                <div class="col-md-10  col-xs-10  col-lg-10  col-sm-10  viewPlayerInfoDiv2">
+                                    <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1">{{tournamentInfoPlayerAnalytics.eventEndDate}}</p>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Venue:
+                                    </p>
+                                </div>
+                                <div class="col-md-10  col-xs-10  col-lg-10  col-sm1010 viewPlayerInfoDiv2">
+                                    <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1">{{tournamentInfoPlayerAnalytics.venue}}</p>
+                                </div>
+                            </div>                            
+                        </div>
+                        {{/if}}
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-right:15px !important;padding-bottom: 4px;">
+                                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="cancelRegNewPlayer2"  style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;font-size:12px;">close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</template>

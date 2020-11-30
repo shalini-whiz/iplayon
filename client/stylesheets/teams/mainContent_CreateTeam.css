@@ -1,0 +1,1066 @@
+/**
+    CSS FOR Create-Team Page:
+        1.MARGINS:
+          margin-top:4.5px
+          margin-top:6.25px(sponsoredBy class)
+          
+        2.FONTS:
+          title:15px(For create team header)    
+          cancelButton:12px
+          saveButton:12px
+          teamTitle:12px
+          
+       3.PADDING:
+         padding-left:4.1px(createTeamMainTitle,teamTitle)
+         
+       4.WIDTH:
+       
+ **/		
+		
+		
+		
+		
+		.mainContentCreateTeam{
+			background:white;
+			padding-right: 4%;
+		    padding-left: 4%;
+		    font-family: Arial, Helvetica, sans-serif;	
+		    font-size:15px;
+		   	margin-bottom: 0.5%;
+		   	margin-top:0.5%;
+		   	height:22em;
+		   	min-height:22em;
+            outline: 0;
+            padding-top: 5%;
+            padding-bottom: 5%;
+            border-width: 3px 3px 1.5px 1.5px;
+            border-style: solid;
+            border-color: grey;
+            border-radius:5px;
+		}
+		
+		
+
+	
+      .createTeamMainTitle{
+		 	display: -webkit-box;
+		 	display: -moz-box;
+		 	display: -ms-flexbox;
+		 	display: flex;
+		 	background: #b30000;
+		 	-moz-border-radius: 5px;
+		 	border-radius: 5px;
+		 	height:2.46em;
+		 	padding-left:0.6%;
+            box-shadow: 1px 1px -1px #888888;
+            outline: 0;
+            cursor:default;
+		}
+
+		
+
+        .saveButtonCreateTeam{
+		   margin-left:0.5%;
+		   order: 3;
+		   width:15%;
+		   /*min-width:15%;*/
+		   margin-top: 3%;
+		   margin-bottom: 3%;
+		   background-color:grey;
+		   color:white;
+		   border:2px solid;
+		   border-radius:8px;
+		   font-size: 12px;
+           margin-right: 0.2%;
+           outline: 0;
+           cursor: pointer;
+		 }
+
+        .cancelButtonCreateTeam{
+		   margin-left: 0.5%;
+		   margin-right: 0.2%;
+		   margin-top: 3%;
+		   width:15%;
+		   /*min-width:15%;*/
+		   order: 4;    
+		   margin-bottom: 3%;
+		   background-color:grey;
+		   color:white;
+		   border:2px solid;
+		   border-radius:8px;
+		   font-size: 12px;
+           outline: 0;
+           cursor: pointer;
+		}
+
+		
+		.gamesCreateTeam{
+			height:34px;
+            background: grey;
+			border-radius: 5px;
+		  	border: 0px solid;
+		  	color:white;
+		  	width: 100%;
+		  	font-size: 12px;
+		    background: grey url(/arrow.gif) no-repeat 98% 50%;
+		    outline: 0;
+		    overflow: hidden;
+		    margin-top:0%;
+		    padding-left:0%;
+		    margin-left:0%;
+		    padding-top: 0 !important;
+		    margin-right: 0 !important;
+		 }
+		 
+		 .select2-selection.select2-selection--single{
+		   background:none;
+		 }
+		 
+		 #venue+input[type="checkbox"]:checked + label:after {
+           content: '✔';
+           display: inline-block;
+           font-size: 1.6em;
+         }
+         
+		 .gamesSelectForTeam option{
+	       font-size:15px;
+	       color:black;
+	       background: white;
+		 }
+		 
+         /** To hide the drop-down icon**/ 
+         .gamesCreateTeam select {
+           -moz-appearance: none;
+           text-indent: 0.01px;
+           text-overflow: '';
+         }
+         
+         .createTeam{
+           padding:0%; 
+           background:none repeat scroll 0% 0% black;
+           border-top-left-radius:5px;
+           border-top-right-radius:5px;
+           padding-left:4%;
+           height:2.7em;
+           padding-top:2.5%;
+           cursor:default;
+         }
+         
+         .tt-menu{
+           cursor:default;
+         }
+         
+         
+         
+		 .gamesSelectForTeam{
+			width: 100%;
+			border-radius: 5px;
+			border: 0px solid;
+			color:white;
+			border: none;
+		    box-shadow: none;
+		    background-color: transparent;
+		    background-image: none;
+		    -webkit-appearance: none;
+		    -moz-appearance: none;
+		    appearance: none;
+		    overflow: hidden;
+		    outline: 0;
+		    order:1;
+
+		  }
+
+
+		  
+		 
+
+
+	/**.games .gamesSelect:focus {
+	    outline: 0;
+	}**/
+	
+	/** So that the selected project's colour isn't black(which is by default)**/
+	.gamesSelectForTeam.valid{
+	  color:white;
+	}
+
+
+    .teamTitle{
+			order:1;
+			background-color:#B0B0B0;;
+			display: -webkit-box;
+			display: -moz-box;
+			display: -ms-flexbox;
+			display: flex;
+			/**margin-top: 4.5px;**/
+			border-radius: 5px;
+			border: 0px solid;
+			padding-top:0.5%;
+			padding-bottom:0.5%; 
+			height:34px;
+			width:100%;
+			color:white;
+			font-size: 12px;
+			padding-left: 1%;
+            outline: 0;
+		}
+
+		.projectAndDomain{
+			order:1;
+			display: -webkit-box;
+			display: -moz-box;
+			display: -ms-flexbox;
+			display: flex;
+			/**margin-top:4.5px;**/
+			margin-top:0.5%;
+		 	-moz-border-radius: 5px;
+		  	border-radius: 5px;
+		  	height:2.4em;
+		  	outline: 0;
+		}
+
+	
+		
+		 
+		
+		  
+
+
+
+	
+	
+	
+		
+	
+
+		.sponsoredByCreateTeam{
+			display: -webkit-box;
+			display: -moz-box;
+			display: -ms-flexbox;
+			display: flex;
+			margin-top: 1.065%;
+		 	-moz-border-radius: 5px;
+		  	border-radius: 5px;
+		  	height: 10em;
+		}
+
+        .sponsorCreateTeam{
+			order:1;
+            margin-right: -1.65%;
+			background: none;
+			border-radius: 5px;
+		  	border: 1px solid #B0B0B0;
+		  	color:black;
+		  	width:150%;
+		  /*	min-height: 10em;*/
+		  /*	min-width:30%;*/
+		  	cursor: default;
+		  	outline: 0;
+		  	overflow: hidden;
+		  	height: 9.8em;
+		  	float:left;
+		}
+		
+		.slimScrollBar{
+		width:4px !important;
+		}
+				
+		.rulesAndRegCreateTeam{
+			order:2;
+			width:400%;
+			/*min-width:69%;*/
+			/*max-width:69%;*/
+			position: relative; 
+		/**	height: 10em;**/
+		    float:left;
+		    /**z-index:-1;**/
+			
+		}
+		
+		#searchUser{
+		  			display:block;
+                    width: 100%;
+                    height:34px;
+                    background: #B0B0B0;
+                    border-radius: 5px;
+                    border: 0px solid;
+                    cursor: pointer;
+                    margin-top:0%;
+                    cursor:auto !important;
+		}
+		.searchResults{
+		  width:97%;
+		  padding-left:1%;
+		  border: 2px solid grey;
+		  border-radius:2px;
+		}
+
+
+
+		
+		 
+		 #teamName{
+		   color: white;
+		/**   font-weight: bold;**/
+		 }
+
+
+		
+		#searchUser::-webkit-input-placeholder
+		{
+		    color: #e6e6e6;
+		   font-size:13px;
+		  /** opacity:1;**/
+		}
+		#teamName::-webkit-input-placeholder{
+		  color: #f2f2f2;
+		   font-size:13px;
+		}
+
+		#searchUser::-moz-placeholder
+		{ /* Firefox 18- */
+		   color: #e6e6e6;  
+		   font-size:13px;
+		 /**  opacity:1;**/
+		}
+		
+		#teamName::-moz-placeholder{
+		  color: #f2f2f2;
+		   font-size:13px;
+		}
+
+		#searchUser::-moz-placeholder
+		{  /* Firefox 19+ */
+		     color: #e6e6e6;  
+		/**   opacity:1;**/
+		}
+
+		#searchUser:-ms-input-placeholder{  
+		  color: #e6e6e6;  
+		   font-size:13px;
+		  /** opacity:1;**/
+		}
+		#teamName::-ms-input-placeholder{
+		  color: #f2f2f2;
+		   font-size:13px;
+		}
+		
+
+		
+		
+		.eyeIcon{
+			/**padding-left: 35%;**/
+			padding-top: 5%;
+			display:inline;
+			outline: 0;
+			background: no-repeat url(eye-icon.png) 0 0;
+			background-size: 98% 88%, 5% auto;
+			width: 7%;
+			height: 1em;
+	 		/**border: #00ffff;**/
+            border-style: none;
+            border-width: 2px;
+            margin-top:2.5%;
+           /** margin-right:5px;**/
+            float:left;
+            clear:both;
+            margin-left:4%;
+            cursor:default !important;
+		}
+	
+		.modal-footer{
+		  padding:0%;
+		  border-top:none;
+		}
+		
+		
+		/**.modal-body label{
+		  font-weight: normal;
+		  font-size: 13px;
+		}**/
+		
+		.okButton, .okButton:hover ,.okButton:focus,.okButton:click{
+		  width:40%;
+		  color:white;
+		  background-color:black;
+		  border-radius: 8px;
+		  margin-right: 25%;
+		  display:inline;
+		  border-color:black;
+		}
+		.okButton:focus{
+		  background-color:black;
+		  border-color:black;
+		}
+		.okButton:click{
+		  background-color:black;
+		  border-color:black;
+		}
+		#ok{
+		  width:40%;
+		  margin-right:30%;
+		  border-radius:7px;
+		  border: 1.5px solid;
+		  border-color:black;
+		  margin-top:-2%;
+		  height:2.5em;
+		  padding-top:2%;
+		}
+		
+		.okButton{
+		  background-color:black;
+		  border-color:black;
+		  font-size:12px;
+		  font-weight:normal;
+		  background-image :    -moz-linear-gradient(#8c8c8c,black,#8c8c8c);
+          background-image :     -ms-linear-gradient(#8c8c8c,black,#8c8c8c);
+          background-image :      -o-linear-gradient(#8c8c8c,black,#8c8c8c);
+          background-image : -webkit-linear-gradient(#8c8c8c,black,#8c8c8c);
+          background-image :         linear-gradient(#8c8c8c,black,#8c8c8c);
+		}
+		.okButton:hover{
+		  background-color:black;
+		}
+		.bold{
+		  font-weight:bold;
+		}
+		.mobileNumber{
+		  position:relative;
+		  color:white;
+		  margin-left:28%;
+		}
+		.sponsorHeaderDetails1CreateTeam {
+		    margin-bottom:0%;
+		    font-size: 1.7vh;
+		    width: 100%;
+		    padding-left: 18%;
+		    margin-top: 0.005%;
+		    cursor: pointer;
+		    outline: 0;
+		}
+		.sponsorHeaderDetailsCreateTeam {
+		    margin-bottom:0%;
+		    font-size: 1.7vh;
+		    width: 100%;
+		    padding-left: 18%;
+		    cursor: pointer;
+		    outline: 0;
+		}
+		
+.dropdown a,.popupContent a {
+    color:#e6e6e6;
+}
+
+.dropdown{
+	margin-top: 0%;
+	z-index: 10;
+	order: 2;
+	border-radius: 5px;
+	border: 0px solid;
+	color: #FFF;
+	margin-left: -3%;
+	height: 34px;
+		
+}
+
+.popupCreateTeam{
+	margin-left:23%;
+}
+
+
+
+.dropdown dd, .dropdown dt {
+    margin:0px;
+    padding:0px;
+}
+
+
+
+.dropdown ul {
+    margin: -1px 0 0 0;
+}
+
+
+
+.dropdown dd {
+    position:relative;
+}
+
+
+
+
+.dropdown a, 
+.dropdown a:visited {
+    color:#e6e6e6;
+    text-decoration:none;
+    outline:none;
+    font-size: 12px;
+}
+
+
+
+
+.dropdown dt a {
+    display:block;
+   /** min-height: 25px;
+    line-height: 24px;**/
+    overflow: hidden;
+    border:0;
+    /** width is given in pixel because of 
+        adding the domains 
+        is increasing the height
+        if percentage is given **/
+/**	width:346px;**/
+
+	border-radius: 5px;
+	height:3em;
+	background: rgb(128, 128, 128) url(/arrow.gif) no-repeat 98% 50%;
+	padding-top: 0.75em;
+	padding-left: 0.35em;
+	font-weight:normal;
+	margin-left:3%;
+	height: 34px;
+	cursor:pointer !important;
+}
+
+
+
+
+.hida{
+	    padding-bottom: 1em;
+        padding-left:1.4%;
+}
+
+
+.dropdown dt a span, .multiSel span {
+    cursor:pointer;
+    display:inline;
+   
+}
+
+
+
+
+
+.multiSel{
+	padding-top: 0px !important;
+	padding-left: 2px !important;
+	padding-right: 30px !important;
+	margin: 0px !important;
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+}
+
+
+
+
+/** To hide the scroll bar **/
+.dropdown ::-webkit-scrollbar { 
+    display: none; 
+}
+
+
+.dropdown input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  /** To Place the check-boxes to the right end **/
+  position: absolute;
+  left:92%;
+  display:inline;
+	content: '✔';
+           display: inline-block;
+           font-size: 1.6em;
+  
+  
+  /** To customise the outline of the checkbox **/
+  /**outline:0.25px black;**/
+}
+
+.mutliSelect input[type="checkbox"]:focus {
+    outline:black solid 2px;
+    display:normal;
+	content: '✔';
+           display: inline-block;
+           font-size: 1.6em;
+}
+
+.mutliSelect input[type="checkbox"] {
+	display:normal;
+	content: '✔';
+           display: inline-block;
+           font-size: 1.6em;
+}
+#mainTag input[type="checkbox"]{
+	transform:scale(1);
+	position:absolute;
+	left:88%;
+}
+
+#secondaryTag input[type="checkbox"]{
+	transform:scale(1);
+	position:absolute;
+	left:88%;
+}
+#sportName+.select2-container--default .select2-selection--single .select2-selection__arrow {
+	background: none ;
+	color:grey;
+}
+
+#sportName+.select2-container--default .select2-selection--single {
+	border:none;
+	cursor:default;
+}
+
+#sportName+.select2-container--default .select2-selection--single .select2-selection__arrow {
+	display:none;
+}
+.dropdown dd ul {
+    background: white;
+    border:0;
+    color:black;
+    display:none;
+    padding-left:0%;
+    position:absolute;
+    top:1px;
+    /** width is given in pixel because of 
+        adding the domains 
+        is increasing the height
+        if percentage is given **/
+	left: 15px;
+	width: 96.5%;
+    list-style:none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 0.5px solid black;
+    max-height:9.5em !important;
+
+}
+#select2-sportName-results{
+	cursor:default;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected]
+{
+	cursor:default;
+}
+
+
+
+.dropdown span.value {
+    display:none;
+}
+
+
+.dropdown span{
+    width:729%;
+}
+
+
+
+
+.dropdown dd ul li a {
+    display:block;
+}
+
+
+
+
+.dropdown dd ul li{
+	padding: 3px 0px 3px 3px;
+	/**width:115%;**/
+	border-bottom: 0.5px solid black;
+}
+
+
+
+
+.dropdown dd ul li a:hover {
+    background-color:#fff;
+}
+
+#secondaryTag{
+	position:relative;
+	top:40%;
+	right:90%;
+	
+}
+
+
+/* basic typeahead styles For Suggestions*/
+
+.typeahead,
+.tt-query,
+.tt-hint {
+  width: 396px;
+  padding: 8px 12px;
+  line-height: 30px;
+  border: 2px solid #ccc;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  outline: none;
+}
+
+.typeahead {
+  background-color: #fff;
+}
+
+.tt-input:-moz-placeholder{
+	color:black;
+	
+}
+
+.typeahead:focus {
+ /** border: 2px solid #0097cf;**/
+}
+
+.tt-query {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+  display:none !important;
+  color: white;
+}
+
+.tt-menu {
+  width: 129.5%;
+  margin: 4px 0;
+  padding: 8px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          margin-left:0% !important;
+          cursor:default !important;
+}
+
+.tt-suggestion {
+  padding: 3px 20px;
+  font-size: 11px;
+  line-height: 10px;
+}
+
+.tt-suggestion:hover {
+  cursor: pointer;
+  color: #fff;
+  /**background-color: #0097cf;**/
+}
+
+.tt-suggestion.tt-cursor {
+  color: #fff;
+  /**background-color: #0097cf;**/
+
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
+
+.addIcon{
+	font-size:12px;
+	color:#383838  ;
+    cursor:pointer;	
+}
+
+.tt-suggestion{
+	padding-left: 6px;
+	margin-bottom:8px;
+	overflow:auto;
+}
+
+.tt-suggestion :hover{
+	padding-left: 6px;
+	margin-bottom:8px;
+	overflow:auto;
+	color:green;
+}
+.iconPhone{
+	position:relative;
+	padding:0px;
+	height:28px;
+	text-align:center;
+	border:2px solid black;
+	margin-left:4%;
+	margin-top:-1%;
+}
+.iconPhoneNone{
+		position:relative;
+	padding:0px;
+	height:28px;
+	text-align:center;
+	border:2px solid black;
+	margin-left:6%;
+	display:none;
+}
+.modal-titleWithoutMobile{
+	height:2em;
+}
+.{
+    background: #b30000;
+    color: white;
+    font-size: 13px;
+    text-align: left;
+    height: 2em;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 0px solid;
+    padding-top: 3px;
+    padding-left: 3px;
+    font-weight: bold;
+    background: black none repeat scroll 0% 0%;
+}
+.iconBusy{
+	
+	padding:0px;
+	height:1.2em;
+	text-align:center;
+	background-size:26px 18px, 18px auto;	
+	margin-top:1%;
+}
+
+.iconAvailable{
+	padding:0px;
+	height:1.2em;
+	text-align:center;
+	background-size:26px 18px, 18px auto;	
+	margin-top:1%;
+}
+#onlineText{
+	margin-left:2%;
+	font-size:13px;
+	font-weight:normal !important;
+}
+
+#onlineAvailableText{
+	margin-left:2%;
+	font-size:14px;
+}
+
+.addedUsers::-webkit-scrollbar-track{
+border:1px gray solid;
+border-radius:10px;
+-webkit-box-shadow:0 0 6px gray inset;
+} 
+
+.addedUsers::-webkit-scrollbar-thumb{
+background-color:#B03C3F;
+border-radius:10px;
+}
+.addedUsers::-webkit-scrollbar-thumb:hover{
+background-color:#BF4649;
+border:1px solid #333333;
+}
+.addedUsers::-webkit-scrollbar-thumb:active{
+background-color:#A6393D;
+border:1px solid #333333;
+} 
+.tt-open{
+	margin-left:2.3%;
+}
+/*.form-control{
+	                width:208%;
+		  			height:3em;
+		  			background-color: #B0B0B0 !important;
+		  			display: -webkit-box;
+			        display: -moz-box;
+			        display: -ms-flexbox;
+			        display: flex;
+			        border-radius: 5px;
+			        border: 0px solid;
+			        color:white;
+			        font-size: 12px;
+			        padding-left: 6px;
+			       margin-left: 7%;
+	
+}*/
+
+
+/** To assign white colour to input place holder's text **/
+/* do not group these rules */
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  /**color: %white;**/
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+ /** color: white;**/
+}
+
+.twitter-typeahead .tt-hint {
+   /** padding: 8px 12px;**/
+   /** line-height: 1.428571429;**/
+    color:white;
+    
+}
+
+.twitter-typeahead{
+	width:75%;
+	margin-left:3%;
+}
+
+
+		
+.user{
+	   /** Altering padding-top alters the height of the background**/ 
+	   padding-top: 2%;
+	   padding-bottom:2%;
+	   padding-left:0%;
+	   margin-left:1%;
+	   order:2;
+	   background-color: #B0B0B0;
+	   display: -webkit-box;
+	   display: -moz-box;
+	   display: -ms-flexbox;
+       display: inline;
+	 /**  margin-top: 0.1%;**/
+	   margin-right: 5px;
+	   border-radius: 5px;
+	   border: 0px solid;
+	   /**height:1em;**/
+	   width:80%;
+	   color:white;
+	   font-size: 12px;
+	   float:left;
+	   margin-bottom:2px;
+	   cursor:default;
+	   height: 34px;
+}
+
+#userDropDownCreateTeam {
+    display: block;
+    padding: 12px;
+    width: 27%;
+    margin: 0 auto;
+    margin-top: -8px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+    background: url("/single-man-icon.png") no-repeat 0%;
+    background-size: 30px;
+    background-height: 16px;
+    background-position: 93% 0%;
+    font-size: 12px;
+    color: #656565;
+    font-weight: normal;
+    -webkit-transition: all 0.15s linear;
+    -moz-transition: all 0.15s linear;
+    -ms-transition: all 0.15s linear;
+    -o-transition: all 0.15s linear;
+    transition: all 0.15s linear;
+    margin-right: -1%;
+}
+#userDropDownCreateTeam:hover {} #userDropDownCreateTeam.open {
+    background: url("/single-man-icon.png") no-repeat 0%;
+    background-size: 30px;
+    background-height: 16px;
+    background-position: 93% 0%;
+    color: #fff;
+    z-index: 1;
+    width: 27%;
+}
+#userDropDownCreateTeam ul {
+    position: absolute;
+    top: 100%;
+    left: 41%;
+    /* move content -4px because of container left border */
+    
+    width: 54%;
+    padding: 0px 0px;
+    display: none;
+    background: #fff;
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    list-style-type: none;
+}
+#userDropDownCreateTeam ul li {
+    font-size: 12px;
+    border-bottom: 1px solid black;
+}
+#userDropDownCreateTeam ul li a {
+    text-decoration: none;
+    display: block;
+    color: grey;
+    padding: 7px 15px;
+    border-bottom: 1px solid black;
+}
+#userDropDownCreateTeam ul li a:hover {
+    color: #fff;
+    background: #D0D0D0;
+}
+
+.deleteIcon{
+	/**padding-left: 35%;**/
+			/**padding-top: 2%;
+		    padding-bottom:2%;**/
+			outline: 0;
+			background: no-repeat url(x-red.png) 0 0;
+			background-size: 74% 44%, 5% auto;
+			background-position:49% 52%;
+			/**width: 6%;
+			height: 2.8em;**/
+	 		/**border: #00ffff;**/
+            border-style: none;
+            border-width: 2px;
+            margin-left:1px;
+            margin-bottom:-2.5%;
+            width:6%;
+           /** margin-top:1%;**/
+	       /**   line-height: 50px;**/
+}
+
+.addedUsers{
+overflow:auto;
+margin: 0px 0px 10px;
+height:7.5em !important;
+margin-top:2px;
+}
+
+#addedUsers{
+  margin-top:0%
+}
+
+    
+
+/**.select2-container--default .select2-selection--single .select2-selection__rendered {
+    height: 3em;
+    width: 100%;
+}
+.select2-container{
+	    width: 100%;
+	
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: rgb(128, 128, 128);
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 4px 4px 4px 4px;
+}
+.select2-dropdown.select2-dropdown--below {
+    width: 26% !important;
+}**/
+
+.domain{
+	width: 100%;
+	height: 34px;
+	padding-left: 3px;
+}
+
+#select2-sportName-container{
+	padding-top:1%;
+}
+
+/**.gamesSelectForTeam option{
+	font-size:30px;
+}**/

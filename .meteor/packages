@@ -1,0 +1,108 @@
+
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+meteor-base@1.3.0             # Packages every Meteor app needs to have
+mobile-experience@1.0.5       # Packages for a great mobile UX
+mongo@1.4.2                   # The database Meteor supports right now
+blaze-html-templates@1.0.4 # Compile .html files into Meteor Blaze views
+reactive-var@1.0.11            # Reactive variable for tracker
+tracker@1.1.3                 # Meteor's client-side reactive programming library
+
+standard-minifiers-css   # CSS minifier run for production mode
+standard-minifier-js  # JS minifier run for production mode
+es5-shim@4.7.0                # ECMAScript 5 compatibility for older browsers
+ecmascript@0.10.6              # Enable ECMAScript2015+ syntax in app code
+shell-server@0.3.1            # Server-side component of the `meteor shell` command
+
+session
+accounts-base
+accounts-facebook
+accounts-oauth
+accounts-password
+accounts-ui
+aldeed:simple-schema
+mrt:chosen-package
+natestrauser:select2
+reactive-dict
+random
+meteorhacks:npm
+npm-container
+nemo64:bootstrap
+meteorhacks:ssr
+fongandrew:find-and-modify
+miktam:api-password
+tmeasday:publish-counts
+rgnevashev:moment-timezone
+jackyqiu:meteor-jquery-nicescroll
+tmeasday:paginated-subscription
+simple:reactive-method
+rochal:slimscroll
+tanis:bootstrap-social
+fortawesome:fontawesome
+email
+dburles:google-maps
+copleykj:jquery-autosize
+gwendall:session-json
+mikowals:batch-insert
+joshowens:timezone-picker
+mdg:geolocation
+mrt:jquery-resize
+mrt:moment-timezone
+cfs:storage-adapter
+fermuch:pickadate
+mrt:moment
+robincwillis:multiple-select
+emdagon:bootstrap-multiselect
+cfs:gridfs
+cfs:filesystem
+cfs:standard-packages
+check
+fourseven:scss
+http
+iron:router
+pascoual:pdfjs
+harrison:papa-parse
+themeteorchef:bert
+ecwyne:mathjs
+handlebars
+matb33:bootstrap-navbar
+u2622:persistent-session
+mizzao:bootboxjs
+momentjs:moment
+meteorhacks:aggregate
+semantic:ui
+fgm:streams
+juliancwirko:twitter-text
+accounts-google
+ongoworks:pdf
+sergeyt:d3
+perak:c3
+gquemart:meteor-reactive-fullcalendar
+meteor
+templating
+mrt:jquery-ui
+jcbernack:reactive-aggregate
+matb33:collection-hooks
+jquery
+notorii:autoform-datetimepicker
+oauth2
+service-configuration
+standard-app-packages
+themeteorchef:jquery-validation
+tsega:bootstrap3-datetimepicker
+underscore
+jeremy:geocomplete
+sergeyt:typeahead
+less
+aldeed:template-extension
+aldeed:collection2
+matteodem:server-session
+meteorhacks:async
+percolate:synced-cron
+npm-bcrypt
+deanius:promise
+khamoud:linkedin-api
+twbs:bootstrap

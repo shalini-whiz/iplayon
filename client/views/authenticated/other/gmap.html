@@ -1,0 +1,19 @@
+
+<template name="gmap"> 
+<title>ski finder</title>
+<div id="map"> {{> googleMap name="map" options=mapOptions}} </div>
+<div id="text"></div>
+
+</template>  
+<template name="venue">
+	<select id="venue">
+		<option value="" selected disabled style="display:none;">select venue</option>
+		<option value="101 Ganesh Temple Road, Agrahara, Ramachandra Agrahara, Mysuru, Karnataka">101 Ganesh Temple Road, Agrahara, Ramachandra Agrahara, Mysuru, Karnataka</option>
+		<option value="Basavangudi gandhi bazara bengaluru">Basavangudi gandhi bazara bengaluru</option>
+		<option value="Australia">Australia</option>
+		<option value="National College Grounds Basavangudi">National College Grounds Basavangudi</option>
+		<option value="mysore">mysore</option>
+		<option value="ahmedabad">ahmedabad</option>
+	</select>
+
+</template>

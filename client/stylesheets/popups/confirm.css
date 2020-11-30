@@ -1,0 +1,264 @@
+/** css for confirm popup template*/
+
+/*confirm popup main container
+*/
+.confirmPopup {
+    width: 260px;    /*width of confirm popup */
+    margin-top: 191px!important;
+    border-radius: 5px;
+    border: 0.01px outset;
+    -moz-box-shadow: 0 0 10px #000;
+    -webkit-box-shadow: 0 0 10px;
+    box-shadow: 2px 2px 2px grey;
+}
+#confirmCenter {
+    transform: translate(0px, -124px);
+}
+/*confirm popup main content elements are displayed as flex*/
+.confirmPopupContent {
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    margin-bottom: -1%;
+    margin-top: -1%;
+}
+
+/* confirm popup header*/
+.confirmHeader {
+    background: #b30000;
+    color: white;
+    font-size: 12px;
+    text-align: left;
+    height: 2em;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 0px solid;
+    padding-top: 3px;
+    font-weight: normal;
+    padding-left: 3px;
+    background: black none repeat scroll 0% 0%;
+}
+
+/*confirm popup body contains yes button*/
+.yesButton {
+    background: -webkit-linear-gradient(left, #000000, #686868);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #000000, #686868);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #000000, #686868);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #000000, #686868);
+    /* Standard syntax (must be last) */
+    border-radius: 5px;
+    border: 0px solid;
+    height: 24px;
+    width: 75px;
+    right: 1%;
+    left: 20%;
+    color: white;
+    -moz-box-shadow: 0 0 10px #000;
+    -webkit-box-shadow: 0 0 10px;
+    box-shadow: 1px 1px 2px grey;
+    font-size: 12px;
+}
+
+/*confirm popup body contains no button*/
+.noButton {
+    background: -webkit-linear-gradient(left, #b30000, #ff6666);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #b30000, #ff6666);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #b30000, #ff6666);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #b30000, #ff6666);
+    /*safari**/
+    border-radius: 5px;
+    border: 0px solid;
+    height: 24px;
+    width: 75px;
+    right: 1%;
+    left: 20%;
+    color: white;
+    -moz-box-shadow: 0 0 10px #000;
+    -webkit-box-shadow: 0 0 10px;
+    box-shadow: 1px 1px 2px grey;
+    font-size: 12px;
+}
+
+/*confirm popup body contains yes div which includes yes
+button*/
+.yes {
+    margin-left: auto;
+    margin-right: 1%;
+}
+
+/*confirm popup body contains no div which includes no
+button*/
+.no {
+    margin-left: 1%;
+    margin-right: auto;
+}
+
+/*-- confirm popup body to delete subsrciber or delete and black the subscriber--*/
+
+/*user delete only radio button div
+content is displayed as flex*/
+.userDeleteOnlyRadioButton {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    height: 2em;
+    outline: 0;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    font-size: 12px;
+    font-weight: normal;
+    width: 100%;
+}
+
+/*not used*/
+.userDeleteOnly {
+    font-size: 12px;
+    font-weight: normal;
+    border-top: 1px solid black;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+/*.delAndBlackLabel {
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 0px;
+    display: inline;
+    width: 10px;
+} */
+/*.userDeleteAndBlack {
+    padding-left: 4%;
+    padding-right: 4%;
+}
+.delAndBlackRadio {
+    padding-top: 0px;
+    display: block;
+}  */
+
+/*div element of div .userDeleteOnlyRadioButton*/
+.userDeleteRadioDiv {
+    font-size: 12px;
+    font-weight: normal;
+    height: 2em;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding-left: 2px;
+}
+
+/*css class for radio button label
+not used*/
+.userDeleteRadioDivLabel {
+    font-weight: normal;
+    width: 91%;
+    box-sizing: border-box;
+    margin-top: 2%;
+}
+
+/*css class for radio button label*/
+.userDeleteRadioDivLabelCheck {
+    display: inline-block;
+    font-weight: normal;
+    width: -1%;
+    margin-top: 2px;
+}
+
+/*radio button inside userDeleteRadioDiv*/
+.userDeleteRadioDiv input[type=radio] {
+    display: none;
+    cursor: pointer;
+}
+
+/*radio button  and radio button label before check
+inside userDeleteRadioDiv*/
+.userDeleteRadioDiv input[type=radio] + .userDeleteRadioDivLabelCheck:before {
+    content: "\25CB";     /*set to round uni code*/
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 8px;
+    background-color: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 2.5em;
+    line-height: 14px;
+}
+
+/*radio button  and radio button label after check
+inside userDeleteRadioDiv*/
+.userDeleteRadioDiv input[type=radio]:checked + .userDeleteRadioDivLabelCheck:before {
+    content: "o";     /*set to round*/
+    color: white;
+    background-color: black;
+    font-size: 1.6em;
+    text-align: center;
+    line-height: 15px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 25px;
+    border: 0px solid black;
+    cursor: pointer;
+}
+
+/*div for delete and black list*/
+.userDeleteBRadioButtons{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    height: 2em;
+    outline: 0;
+    border: 1px solid black;
+    font-size: 12px;
+    font-weight: normal;
+    width: 100%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+.confirmWithAcceptModalBody{
+    position: relative;
+    padding: 13px!important;
+    height: 9em!important;
+}
+
+.confirmPopupContentWithAcceptTerms {
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    margin-bottom: -1%;
+    margin-top: 10%;
+}
+
+.checkAcceptTermsWithConfirm {
+    width: 100%;
+    overflow: hidden;
+    height: 2.3em;
+    float: left;
+    padding-left: 0.5%;
+    display: flex;
+    margin-top: 5%;
+}
+
+.checkAcceptDiv{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}

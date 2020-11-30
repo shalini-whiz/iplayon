@@ -1,0 +1,314 @@
+<template name="movePlayersAcrossClub">
+	{{#if notAdmin}}
+	<div class=''>
+		<p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+	</div>
+	{{else}}
+		<div class="container" style="background:white;margin-top:5px;">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 5px;border-radius: 5px;background:none repeat scroll 0% 0%;padding: 0px 0px 0px 5px;height:65em;border:1px solid black;">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;">
+					<label  name="selectAssociation" class="adminUpload_label">Move player from clubA to clubB</label>
+					<select id="selectAssoc_Move" class="adminUpload_select">
+						<option disabled selected value="1">Select State Association</option>
+						{{#each stateAssocChecked}}
+						<option value={{this._id}}>{{this.clubName}}({{this.city}})</option>
+						{{/each}}
+					</select>
+				</div>
+				{{#if selectAcadOfState}}
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;margin-top: 5px;padding: 0px;">
+					{{#if selectAcadOfState}}
+					<select id="selectAcad_Move" class="adminUpload_select">
+						<option disabled selected value="1">Select Academy</option>
+						{{#each selectAcadOfState}}
+						<option value={{this._id}}>{{this.clubName}}({{this.city}})</option>
+						{{/each}}
+					</select>
+					{{/if}}
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: flex;margin-top: 5px;padding: 0px;">
+					<div class="col-md-9 col-xs-9 col-lg-9 col-sm-9 divClass2_MNM" style="margin-left: 0px !important;height: 26px;padding: 0px !important;">
+			           	<input type="text" id="searchUserManage_P" class="searchAcaInput" placeholder="Search and select players to move" autocomplete="off">
+			            {{#if searchResultsOfMNM_P}}
+		                <div class="searchResults" style="left: 0px;z-index: 100;display: block;position: absolute;background: #dfe3ee none repeat scroll 0% 0%;width: 100%;border: 0px solid maroon;min-height:20px;max-height:60px;overflow-y:auto;">
+			                {{#each searchResultsOfMNM_P}}
+			                    <div id="{{this._id}}" class="addIcon" name="addAcademyMNM_P" value="{{this.userName}}">
+			                        <p  id="{{this._id}}" name="userName" value="{{this.userName}}">{{this.userName}}</p>
+			                    </div>
+			                {{/each}}
+		                </div>
+		                {{/if}}
+			        </div>
+			        <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 divClass1_MNM" style="padding-right:0px !important;padding-top:2px;padding-left:12px;background: #595959 none repeat scroll 0% 0%;height: 26px;cursor:pointer;width: 2.333% !important;"  id="addSearchedPLayers">
+			        	<span class="glyphicon glyphicon-search searchAca" style=""></span>
+			        </div>
+				</div>
+				{{#if movedLogs}}
+				<div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px !important;">
+					<p style="font-size: 12px; font-weight: bold; margin: 5px 0px 0px;"> List of players updated</p>
+		        	<p style="font-size: 12px; font-weight: bold; margin: 5px 0px 0px;"> Updated players count: {{updatedPlayerCount}}</p>
+		        	<input class="adminUpload_button" id="adminMovedLog" value="Download Log" type="button" style="width:115px;"> 
+		        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 addedAcademyMainDiv" style="height: 28em !important;">
+		        		{{#each movedLogs}}
+		        			<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 addedAcademyDiv" >
+				        		<div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 addedAcademyName" style="width: 5%;border-top-right-radius: 0px;border-top-left-radius: 5px;padding-left: 4px !important;padding-top: 2px;background: maroon none repeat scroll 0% 0% !important;">
+				        		</div>
+								<div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 addedAcademyName" style="margin-right:2px;background: maroon none repeat scroll 0% 0%;;">
+				        			<p style="font-size: 12px;margin-left: 7px;font-weight: 600;">{{this.userName}}</p>
+				        		</div>
+				        	</div>
+				        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 addedAcademyDiv" style="border: 1px solid grey;margin-left: 7px;border-radius: 0px 5px 5px;margin-top: 0px;">
+				        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">_id:</span>{{this._id}}</p>
+				        	</div>
+				        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        		<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">affiliationId:</span>{{this.affiliationId}}</p>
+				        	</div>
+				        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12playerDetailscontent_admin" style="padding:0px !important;">
+				        		<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Guardian:</span>{{this.guardianName}}</p>
+				        	</div>
+				        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        		<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Address:</span>{{this.address}}</p>
+				        	</div>
+				        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        		<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">City:</span>{{this.city}}</p>
+				        	</div>
+				        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        		<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">State:</span>{{getPlayerState this.state}}-{{this.pinCode}}</p>
+				        	</div>
+				        	{{#if this.parentAssociationId}}
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        			<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin" style="margin: 0px;">
+				        				<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">parentAssociationId:</span>{{this.parentAssociationId}}</p>
+				        			</div>
+				        		</div>
+				        	{{/if}}
+				        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin" style="margin: 0px;">
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">associationId:</span>{{this.associationId}}</p>
+				        		</div>
+				        	</div>
+				        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        			<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin" style="margin: 0px;">
+				        				<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Email:</span>{{getPlayerEmail_P this._id}}</p>
+				        			</div>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        			<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin" style="margin: 0px;">
+				        				<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Phone:</span>{{this.phoneNumber}}</p>
+				        			</div>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        			<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin" style="margin: 0px;">
+				        				<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Academy :</span>{{this.clubName}}</p>
+				        			</div>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        			<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin" style="margin: 0px;">
+				        				<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">clubNameId:</span>{{this.clubNameId}}</p>
+				        			</div>
+				        		</div>
+				        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin" style="margin: 0px;">
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">statusOfUser:</span>{{this.statusOfUser}}</p>
+				        		</div>
+				        	</div>
+				        	</div>
+		        		{{/each}}
+		        	</div>
+				</div>
+				{{/if}}
+				{{#if addedAcademyArray_P}}
+		        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px !important;">
+		        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 addedAcademyMainDiv" style="height: 35em !important;margin-top: 11px;">
+		        		{{#each addedAcademyArray_P}}
+				        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 addedAcademyDiv" >
+				        		<div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 addedAcademyName" style="width: 5%;border-top-right-radius: 0px;border-top-left-radius: 5px;padding-left: 4px !important;padding-top: 2px;">
+				        			<input type="checkbox" id="checkedPlayers" style="cursor:pointer;" name={{this._id}}>
+				        		</div>
+								<div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 addedAcademyName" style="margin-right:2px;">
+				        			<p style="font-size: 12px;margin-left: 7px;font-weight: 600;">{{this.userName}}</p>
+				        		</div>
+				        	</div>
+				        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 addedAcademyDiv" style="border: 1px solid grey;margin-left: 7px;border-radius: 0px 5px 5px;margin-top: 0px;">
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">_id:</span>{{this._id}}</p>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">affiliationId:</span>{{this.affiliationId}}</p>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Guardian:</span>{{this.guardianName}}</p>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Address:</span>{{this.address}}</p>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">City:</span>{{this.city}}</p>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        			<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">State:</span>{{getPlayerState this.state}}-{{this.pinCode}}</p>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        			<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin" style="margin: 0px;">
+				        				<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Email:</span>{{getPlayerEmail_P this._id}}</p>
+				        			</div>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        			<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin" style="margin: 0px;">
+				        				<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Phone:</span>{{this.phoneNumber}}</p>
+				        			</div>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        			<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin" style="margin: 0px;">
+				        				<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">Academy :</span>{{this.clubName}}</p>
+				        			</div>
+				        		</div>
+				        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin">
+				        			<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 playerDetailscontent_admin" style="margin: 0px;">
+				        				<p class="playerDetailsPtag"><span style="color:grey;margin-right: 3px;">clubNameId:</span>{{this.clubNameId}}</p>
+				        			</div>
+				        		</div>
+				        	</div>
+			        	{{/each}}
+		        	</div>
+		        	{{#if MoveSelectedClub_P}}
+						<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height:22px;">
+							<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 deleteConfirmationAcademy">
+								{{#if MoveSelectedClub_P}}
+									<p id="deleteConfirm2" class="yesDeleteP">You're about to move ({{MoveSelectedClub_P}}) PLAYERS?</p>
+								{{/if}}
+							</div>
+						</div>
+					{{/if}}
+					{{#if MoveSelectedClub_P}}
+					{{#if selectAcadOfState}}
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;">
+						<select id="selectAssoc_Move_2" class="adminUpload_select">
+							<option disabled selected value="1">Select State Association to move</option>
+							{{#each selectAssocOfState_ToMOVE}}
+							<option value={{this._id}}>{{this.clubName}}({{this.city}})</option>
+							{{/each}}
+						</select>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;margin-top: 5px;padding: 0px;">
+						{{#if selectAcadOfState_TOMOVE}}
+						<select id="selectAcad_Move_2" class="adminUpload_select">
+							<option disabled selected value="1">Select Academy to move</option>
+							{{#each selectAcadOfState_TOMOVE}}
+							<option value={{this._id}}>{{this.clubName}}({{this.city}})</option>
+							{{/each}}
+						</select>
+						{{/if}}
+					</div>	
+					{{/if}}
+					{{#if selectAcadOfState_TOMOVE}}
+						<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-top: 0px ! important; padding-bottom: 0px ! important; padding-right: 0px ! important; padding-left: 5px;margin-top: 5px;">
+							<input class="adminUpload_button" id="moveSelectedPlayers" value="Move Players" type="button"> 
+						</div>
+					{{/if}}
+					{{/if}}
+				</div>		
+				{{/if}}
+				{{/if}}
+			</div>
+		</div>
+	{{/if}}
+	<div id="confirmPasswordMovePlayerAdminRen"></div>
+	{{> confirmMovePlayersAdmin}}
+</template>
+
+
+<template name="updateADDCity">
+	{{#if notAdmin}}
+	<div class=''>
+		<p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+	</div>
+	{{else}}
+		<div class="container" style="background:white;margin-top:5px;">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 5px;border-radius: 5px;background:none repeat scroll 0% 0%;padding: 0px 0px 0px 5px;height:50em;border:1px solid black;overflow:auto;">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;">
+					<label  name="selectAssociation" class="adminUpload_label">Update City,State,Country,Pincode of null</label>
+					<br>
+					<!-- userDetailsTTUsed
+ input class="adminUpload_button" id="tournamentIdValue" placeholder="tournament id" type="text" style="width: 50%;margin-bottom:10px;background:none;border:1px solid black;color:black;">
+					<br-->
+					<input class="adminUpload_button" id="userDetailsTTUp" value="Update userDetailsTT ()" type="button" style="width: 20%;">
+					<!--{{countOfNullUsers}}-->
+					<br>
+					<br>
+					<input class="adminUpload_button" id="associationDetailsUp" value="Update associationDetails ()" type="button" style="width: 20%;">
+					<!--{{countOfNullAssociation}}-->
+					<br>
+					<br>
+					<input class="adminUpload_button" id="academyDetailsUp" value="Update academyDetails ()" type="button" style="width: 20%;">
+					<!--{{countOfNullAca}}-->
+					<br>
+					<br>
+					<input class="adminUpload_button" id="otherDetailsUp" value="Update otherDetails ()" type="button" style="width: 20%;">
+					<!--{{countOfNullOtherUser}}-->
+					<br>
+					<br>
+					<input class="adminUpload_button" id="tournamentEventsUpdate" value="Update tournament events" type="button" style="width: 20%;">
+					<p> JSON VALUE: {{tournamentEventsValue}}</p>
+					<br>
+					<br>
+					<input class="adminUpload_button" id="eventsFeeSettingsUpdate" value="Update events fee settings" type="button" style="width: 20%;">
+					{{#each eventFeeSettingsValue}}
+					<p> Each JSON VALUE: {{stringifyTemplate this}}</p>
+					<br>
+					<br>
+					{{/each}}
+					<br>
+					<br>
+					<input class="adminUpload_button" id="updateCustomCollection" value="Update custom collection" type="button" style="width: 20%;">
+					{{#each customCollectionValue}}
+					<p> Each JSON VALUE: {{stringifyTemplate this}}</p>
+					<br>
+					<br>
+					{{/each}}
+					<input class="adminUpload_button" id="updateAutoTweetTags" value="Update auto tweet msgs collection" type="button" style="width: 20%;">
+					{{#each autoTweetMessages}}
+					<p> Each JSON VALUE: {{stringifyTemplate this}}</p>
+					<br>
+					<br>
+					{{/each}}
+					<input class="adminUpload_button" id="insertBARChartColor" value="insert bar chart color" type="button" style="width: 20%;">
+					{{#each barChartColors}}
+					<p> Each JSON VALUE: {{stringifyTemplate this}}</p>
+					<br>
+					<br>
+					{{/each}}
+					<input class="adminUpload_button" id="insertSchoolDetailsFind" value="insert school events" type="button" style="width: 20%;">
+					{{#each insertSchoolDetails}}
+					<p> Each JSON VALUE: {{stringifyTemplate this}}</p>
+					<br>
+					<br>
+					{{/each}}
+					<input class="adminUpload_button" id="calenderEventsCreateId" value="insert calender events" type="button" style="width: 20%;">
+					<p> length of upcoming events: {{lengthOfEvents}}</p>
+					<br>
+					<br>
+					<p> length of upcoming events: {{lengthOfPastEvents}}</p>
+					<br>
+					<br>
+					<p> length of calender events: {{lengthOfcalenderEvents}}</p>
+					<br>
+					<br>
+					<input class="adminUpload_button" id="deleteAllRecords" value="delete one past tournament" type="button" style="width: 20%;">
+					<br>
+					<br>
+					<input type="text" style="font-size:12px;" placeholder="Tournament Id" id="tID">
+					<br>
+					<input type="text" style="font-size:12px;" placeholder="start date(2017 Jun 09)" id="tSD">
+					<br>
+					<input type="text" style="font-size:12px;" placeholder="end date(2017 Jun 09)" id="tED">
+					<br>
+					<input type="text" style="font-size:12px;" placeholder="entry last date(2017 Jun 09)" id="tLD">
+					<br>
+					<input class="adminUpload_button" id="moveToUpcomingEvent" value="Move To Upcomig event" type="button" style="width: 20%;">
+				</div>
+			</div>
+		</div>
+	{{/if}}
+</template>

@@ -1,0 +1,122 @@
+<head>
+	<title>IPlayOn</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+	<!--link rel="stylesheet" href="css/style.css"type="text/css"/-->
+	<!--script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script-->
+</head>
+
+<body style="background-color:#333;overflow: auto;">
+	<!--script src="jquery.backstretch.js"></script>
+	<script>
+    $.backstretch(["/bg.jpg"]);
+  </script-->
+</body>
+
+<template name="layoutDefault">
+    <div class="container {{backgroundForSequence}}">
+	  	{{#if actualLoadedTemplate}}
+	  	{{> yield}}
+	  	{{else}}
+	    <div class="row layoutRow">
+	      <div class="row-same-height">
+          <div class="hidden-xs col-sm-2 col-md-2 col-lg-2 left_add newlayoutleft">
+              <img src="/left-add.jpg">
+          </div>
+          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 newlayoutmiddle">
+            <div class="row">
+            	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="logo_holder"> <img src="/logo.png" /> </div>
+                <!--div class="addSpaceTopNew"> <img src="/top.jpg" class="img-responsive addSpaceImageelem"> </div-->
+           		</div>
+           		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                {{>yield}}
+            	</div>
+            	<div class="col-xs-12 col-sm-12 col-sm-12 col-lg-12 newlayoutbottom">
+              	<!--img src="/bottom.jpg" class="img-responsive addSpaceImageelem"-->
+								<div class="mainn_div">
+									{{#if dynamicEvents}}
+									{{#each dynamicEvents}}
+										{{#if this.type}}
+										{{#each layoutDefaultifUpcoming}}
+											<h1 class="bottom_h1"><span>{{this.title1b}}</span></h1>
+										{{/each}}
+										{{else}}
+										{{#each layoutDefaultifUpcoming}}
+											<h1 class="bottom_h1"><span>{{this.title1a}}</span></h1>
+										{{/each}}
+										{{/if}}
+										<h2 class="bottom_h2">{{this.eventName}}</h2>
+										<p class="last_p">{{this.eventStartDate}} to {{this.eventEndDate}}</p>
+									{{/each}}
+
+									{{else}}
+									{{#each layoutDefaultifNoUpcoming}}
+										<h1 class="bottom_h1"><span>{{this.title1}}</span></h1>
+										<h2 class="bottom_h2">{{this.title2}}</h2>
+										<p class="last_p">{{this.title3}}</p>
+									{{/each}}
+									{{/if}}
+								</div>
+								<div>
+									<div class="mainn_div">
+										<p class="footer_p">Powered by Infinite Angles. Support line <a class="footer_mail" href="mailto:ia@arra.ooo">ia@arra.ooo</a></p>
+									</div>
+								</div>
+            	</div>
+            </div>
+          </div>
+          <div class="hidden-xs col-sm-2 col-md-2 col-lg-2 left_add col-height newlayoutright">
+            <a href="mailto:ia@arra.ooo"> <img src="/announcement.jpg"> </a>
+          </div>
+		  	</div>
+		  </div>
+		  {{/if}}
+    </div>
+</template>
+
+
+<!--template name="layoutDefault">
+<div class="container">
+ 	{{#if actualLoadedTemplate}}
+     {{> yield}}
+  {{else}}
+    <div class="row layoutRow">
+			<div class="row headder">
+		      		<div class="mainn_div">
+					<div class="logo_holder">
+						<img src="/logo.png" />
+					</div>
+					<div class="social_holder">
+						<a href="#" class="twitter"></a>
+						<a href="#" class="in"></a>
+						<a href="#" class="fb"></a>
+						<p class="hdp">Follow Us on</p>
+					</div>
+				</div>
+			</div>
+			<div class="row mainn_div">
+				<div class="left_add hidden-xs hidden-sm col-lg-3 col-md-3">
+					<img src="/left-add.png" />
+				</div>
+				<div class="center_div col-xs-12 col-sm-12 col-lg-6 col-md-6">
+		                    {{>yield}}
+				</div>
+				<div class="left_add  hidden-xs hidden-sm col-lg-3 col-md-3">
+					<a href="mailto:ia@arra.ooo"><img src="/announcement.jpg" /></a>
+				</div>
+			</div>
+			<div class="mainn_div hidden-xs hidden-sm">
+				<h1 class="bottom_h1"><span>Upcoming Tournaments</span></h1>
+				<h2 class="bottom_h2">1st State Ranking Table Tennis Tournament of 2016</h2>
+				<p class="last_p">Starts 2nd June 2016</p>
+			</div>
+			<div>
+				<div class="mainn_div hidden-xs hidden-sm">
+					<p class="footer_p">Powered by Infinite Angles. Support line <a class="footer_mail" href="mailto:ia@arra.ooo">ia@arra.ooo</a></p>
+				</div>
+			</div>
+			</div>
+    {{/if}}
+	</div>
+</template-->

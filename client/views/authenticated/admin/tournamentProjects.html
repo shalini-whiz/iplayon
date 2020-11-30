@@ -1,0 +1,241 @@
+<template name="tournamentProjects">
+   {{#if notAdmin}}
+   <div class=''>
+      <p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+   </div>
+   {{else}}
+   <div class="container" style="background:#333; height:auto;">
+      <div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+         <div class="row-same-height">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                  <div class="mainTitle">
+                     <p class="title">
+                        Add Project
+                     </p>
+                  </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                     ">
+                     <p class="title"> Enter Project Name : </p>
+                  </div>
+                   <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     <input type="text" placeholder="Project Name" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="projectName"/>
+                  </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="height: 100%;
+                     ">
+                     <input type="button" id="saveTourn" class="ip_button_LightGrey" style="order:1" value="Save">
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="height: 100%;
+                     ">
+                     <input type="button" id="updateMainProject" class="ip_button_LightGrey" style="order:1;width: auto;" value="update">
+                  </div>
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                     ">
+                     <input type="button" id="updateMeteorUsers" class="ip_button_LightGrey" style="order:1;width: auto;" value="1">
+                  </div>
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                     ">
+                     <input type="button" id="userStatusUpdate" class="ip_button_LightGrey" style="order:1;width: auto;" value="2">
+                  </div>
+                  
+            </div>
+            {{#if checkstateprovince}}
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="height: 100%;
+                     ">
+                     <input type="button" id="stateProvince" class="ip_button_LightGrey" style="order:1" value="stateProvince">
+                  </div>
+            </div>
+            {{/if}}
+            {{#if checkUserStatusNull}}
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                     <input type="button" id="userStatusset" class="ip_button_LightGrey" style="order:1" value="setUserStatus">
+            </div>
+            {{/if}}
+            {{#if checkUserTTNOtNull}}
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                     <input type="button" id="userStatunset" class="ip_button_LightGrey" style="order:1" value="setUserTTNull">
+            </div>
+            {{/if}}
+         </div>
+      </div>
+
+      <div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+         <div class="row-same-height">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                  <div class="mainTitle">
+                     <p class="title">
+                        Add Admin Sports
+                     </p>
+                  </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                     ">
+                     <p class="title"> Enter Project Name : </p>
+                  </div>
+                   <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     <input type="text" placeholder="Project Name" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="projectNameAdmin"/>
+                  </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                     ">
+                     <p class="title"> Enter DB Name : </p>
+                  </div>
+                   <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     <input type="text" placeholder="db Name" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="dbNameAdmin"/>
+                  </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;">
+               <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="height: 100%;">
+                  <input type="button" id="saveAdminProject" class="ip_button_LightGrey" style="order:1" value="Save">
+               </div>
+               <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4" style="height: 100%;">
+                  <input type="button" id="updateAdminProject" class="ip_button_LightGrey" style="order:1;width: auto;" value="update">
+               </div>
+            </div>
+
+            <!-- admin int "userDetailsTT", "userDetailsBT", "associationDetails", "academyDetails", "schoolDetails", "schoolPlayers", "otherUsers" -->
+
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;">
+               <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="height: 100%;">
+                  <input type="button" id="whole" class="ip_button_LightGrey" style="order:1" value="whole">
+               </div>
+               <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="height: 100%;">
+                  <input type="button" id="userDetailsTT" class="ip_button_LightGrey" style="order:1;width: auto;" value="userDetailsTT">
+               </div>
+            </div>
+
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;">
+               <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="height: 100%;">
+                  <input type="button" id="academyDetails" class="ip_button_LightGrey" style="order:1" value="academyDetails">
+               </div>
+               <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="height: 100%;">
+                  <input type="button" id="associationDetails" class="ip_button_LightGrey" style="order:1;width: auto;" value="associationDetails">
+               </div>
+            </div>
+
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;">
+               <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="height: 100%;">
+                  <input type="button" id="schoolDetails" class="ip_button_LightGrey" style="order:1" value="schoolDetails">
+               </div>
+               <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="height: 100%;">
+                  <input type="button" id="schoolPlayers" class="ip_button_LightGrey" style="order:1;width: auto;" value="schoolPlayers">
+               </div>
+            </div>
+
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;">
+               <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="height: 100%;">
+                  <input type="button" id="otherUsers" class="ip_button_LightGrey" style="order:1" value="otherUsers">
+               </div>
+            </div>
+
+         </div>
+      </div>
+
+      <div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+         <div class="row-same-height">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                  <div class="mainTitle">
+                     <p class="title">
+                        Add live links
+                     </p>
+                  </div>
+                  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                     <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                     ">
+                        <p class="title"> Enter tournament Id : </p>
+                     </div>
+                     <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                        <input type="text" placeholder="tournament Id" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="liveTournamentId"/>
+                     </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                     <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                     ">
+                        <p class="title"> Enter comma separated live links : </p>
+                     </div>
+                     <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                        <textarea type="text" placeholder="live Links" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="liveLinks"></textarea>
+                     </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                     <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                        <input type="button" value="save links" id="saveLiveLinks"/>
+                     </div>
+                  </div>
+
+                  {{#if checkWithoutStateAssocID}}
+                     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                     margin-top: 10px;
+                     ">
+                        <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                           <input type="button" value="update eves ( {{checkWithoutStateAssocID}} )" id="updateStateAssocIdEve"/>
+                        </div>
+                     </div>
+                  {{/if}}
+                  
+
+
+            </div>
+         </div>
+      </div>
+
+      <div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+         <div class="row-same-height">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                  <div class="mainTitle">
+                     <p class="title">
+                        Update School Details and tourn details
+                     </p>
+                  </div>
+                  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                     <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                        <input type="button" value="update tournaments" id="updateTourTypedsf"/>
+                     </div>
+                  </div>
+                  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                     <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                        <input type="button" value="update school teams tournament Id" id="updateSchoolDetails"/>
+                     </div>
+                  </div>
+            </div>
+         </div>
+      </div>
+
+   </div>
+   {{/if}}
+</template>

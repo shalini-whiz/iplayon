@@ -1,0 +1,96 @@
+<template name="viewMyService">
+  <div class="modal" id="viewMyService" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                {{#if viewPackInDetail}}
+                    {{viewPackInDetail.title}}
+
+                {{/if}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+             {{#if viewPackInDetail}}
+              
+            
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Plan Type:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    <p class="pAnalytics2">{{viewPackInDetail.planType}}
+                    </p>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                     <p class="labelWhoNewChangePas"  >Category:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                   <p class="pAnalytics2">{{viewPackInDetail.category}}</p>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                     <p class="labelWhoNewChangePas"  >Amount:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    <p class="pAnalytics2">{{viewPackInDetail.amount}}</p>
+                  </div>
+               </div>
+              
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                     <p class="labelWhoNewChangePas"  >validityDays:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    <p class="pAnalytics2"> {{viewPackInDetail.validityDays}}</p>
+                  </div>
+               </div>
+
+                
+                {{#each viewPackInDetail.features}}
+                    <div class="row">
+                        <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                            <p class="labelWhoNewChangePas"  >{{this.key}}</p>
+                        </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                          <p class="pAnalytics2"> {{this.value}}  </p>
+                        </div>
+                     </div>
+                  {{/each}}
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:2px;">
+                     <p class="labelWhoNewChangePas"  >Pack Description:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                     <textarea  type="text" placeholder="Article Description" autocomplete="off" spellcheck="off"  i style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #000;border: 1px solid grey;border-radius: 5px;padding: 5px;" rows="5" cols="80" id="descOfArticle" >{{viewPackInDetail.articleDesc}}</textarea>
+                  </div>
+               </div>
+                {{/if}}
+
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row" style="text-align: center;">
+                  
+                    <button type="button" class="ip_button_Popup_Black" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; height:2.2em!important;">OK
+                    </button>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</template>

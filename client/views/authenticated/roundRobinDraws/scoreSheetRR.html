@@ -1,0 +1,94 @@
+    <!-- shalini codes starts here -->
+
+    <template name="scoreSheetRR">
+     <div  class="modal" id="scoreSheetRR" aria-hidden="true" >
+      <div class="modal-dialog scoreSheetRR-lg">
+        <div class="modal-content">
+          <div class="modal-header headerClass">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title myModalLabel " style='text-align:center'>Score Sheet PDF</h4>
+         </div>
+
+         <div class="modal-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label class="control-label col-sm-3 customLabel">Event</label>
+              <div class="col-sm-9">
+                <div id ="ipSelectEveDropDown">
+                  {{#if selectedSportOrNot}} 
+                    {{#each scoreSheetEvents}}
+                      {{#if selectedSportFromLive this}}
+                        <select id="selectWho" class="form-control customDropDown" name="scoresheetEventList">
+                           <option id="scoresheet_event" selected disabled>--select--</option>
+                          <option id="scoresheet_event">{{this}}</option>
+                          {{#each scoreSheetEvents}}
+                              {{#if selectedEventSC this}}
+
+                              {{else}}
+                            <option id="scoresheet_event">{{this}}</option>
+                            {{/if}}
+                          {{/each}}
+                        </select>
+                      {{/if}}     
+                    {{/each}}
+                  {{else}} 
+                    <select id="selectWhich" class="form-control customDropDown" name="scoresheetEventList">
+                      <option id="scoresheet_event" selected disabled>--select--</option>
+                      {{#each scoreSheetEvents}}
+                        <option id="scoresheet_event">{{this}}</option>
+                      {{/each}}
+                    </select>
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-3 customLabel">Group Number</label>
+              <div class="col-sm-9">
+                <div id ="ipSelectEveDropDown">               
+                  <select id="groupNo" class="form-control customDropDown" name="groupNo">
+                    <option id="scoresheet_event" selected disabled>--select--</option>
+                    {{#each groupNoList}}
+                      <option id="scoresheet_event">{{this}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+              </div>
+            </div>
+            {{#if progressBar}}
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%;background-color:#337ab7 !important">
+                <span class="">Please wait</span>
+              </div>
+            </div>
+            {{/if}}
+          
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style='padding-bottom:4px;'>
+            <div class ="row">
+              <p id="impMsg" class='impMsg'></p> 
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " >
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " >
+                </div>
+
+                <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 " style='text-align:center;' >
+                  <button type="button" class="ip_button_Popup_Black" id="blankSheet">Blank</button>
+                  <button type="button" class="ip_button_Popup_Black" id="generatePDF">Generate</button>
+                  <button type="button" class="ip_button_Popup_Red" data-dismiss="modal">Cancel</button>
+                </div>
+
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " > </div>               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!-- shalini codes ends here -->

@@ -1,0 +1,1260 @@
+<!-- Template for users profile settings-->
+<!--Used CSS Classes and CSS Links-->
+<!--
+1.FileName : userProfileSettings.css
+classes : userProfileMainContent,userTeamList,userTeamListIcon,userName,
+userPhoneNum,userProfileSaveButton,userCancelButton,
+userProfileMainTitle2,changeLoginId,iAmAway,fromDate,toDate,
+bList,selectProjects,selectTag3,checkBoxDivLabel
+checkBoxDivLabelCheck,checkBoxDiv,userProfileSubDomain,
+subDomainArea,checkDomains,checkProject,userProfileMainTitle3
+ids    : blackList,awayFromDate,awayToDate
+2. bootstraps : datetimepicker, glyphicon glyphicon-star,input-group-addon
+btn btn-default btn-xs
+3. FileName   : userBlackList.css
+classes : blackListOfUsers, blackSubscriberName,whiteSubscribers_img
+ids    : blackListDropDown
+4. FileName   : userTeamList.css
+classes : teamsOfUser, teamsOfUserName, 
+ids    : teamsDropDown
+5. FileName    : (validation errors) userProfileSettingsValidationError.css
+ids : userName.error,userPhoneNum.error, awayFromDate.error,
+checkSports-error,checkDomain-error,checkAwayFrom-error,checkSubDomain2-error, userName-error,userPhoneNum-error,awayFromDate-error,awayToDate-error,subDomain1Area-error,subDomain2Area-error
+-->
+<!--Templates Included-->
+<!--
+1. errorPopup
+2. confirm
+-->
+<template name="userProfileSettings">
+    <form id="userProfileSettings" onkeypress="return event.keyCode != 13;">
+        <div class="row mainContent_myEvents">
+            <div class="row-same-height">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:12px;">
+                    <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8" style="padding-right:0px !important;padding-left:3px !important;">
+                        <div class="row no-gutter" style="">
+                            <div class="userProfileMainTitle">
+                                <div class="userTeamList">
+                                    <div id="teamsDropDown" class="ddmenu">
+                                        <span class="glyphicon glyphicon-user userTeamListIcon">
+                                        </span>
+                                        <ul id="teamsOfUser" class="teamsOfUser">
+                                            <div id="profileMenus"></div>
+                                            {{#if roleOther}}
+                                            <li id="otherRole" style="border-bottom:1px solid black;">
+                                                <p class="teamsOfUserName" id="">&nbsp;Role:{{otherRole}}
+                                                </p>
+                                            </li>
+
+                                            <li id="otherChangePassword" style="border-bottom:1px solid black;">
+                                                <p class="teamsOfUserName" id="">&nbsp; Change Password
+                                                </p>
+                                            </li>
+
+                                            {{#if checkCoachRole}}
+                                                <li id="accDetails" style="border-bottom:1px solid black;">
+                                                    <p class="teamsOfUserName" id="">&nbsp; Account Details
+                                                    </p>
+                                                </li>
+                                                <li id="serviceDetails" style="border-bottom:1px solid black;">
+                                                    <p class="teamsOfUserName" id="">&nbsp; Services
+                                                    </p>
+                                                </li>
+
+                                            {{/if}}
+
+
+                                            {{/if}}
+
+                                            <!-- {{#if allowmanagePlayers}}
+                      <li id="manageAcaPla" style="border-bottom:1px solid black;">
+                        <p class="teamsOfUserName" id="">&nbsp;Manage Players
+                        </p>
+                      </li>
+                      {{/if}}
+                      {{#if allowmanageacademy}}
+                      <li id="manageACASD" style="border-bottom:1px solid black;">
+                        <p class="teamsOfUserName" id="">&nbsp;Manage Academies
+                        </p>
+                      </li>
+                      <li id="manageACASD2" style="border-bottom:1px solid black;">
+                        <p class="teamsOfUserName" id="">&nbsp;Manage Academies2
+                        </p>
+                      </li>
+                      {{/if}}-->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:3px !important;">
+                        <div class="row no-gutter" style="">
+                            <input type="submit" id="save2" class="ip_button_Maroon" value="Save" />
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:3px !important;">
+                        <div class="row no-gutter" style="">
+                            <input type="button" id="userCancelButton" class="ip_button_Maroon" value="Cancel" />
+                        </div>
+                    </div>
+                </div>
+                <div id="profileHolder"></div>
+
+            </div>
+        </div>
+    </form>
+    {{>confirm}} {{> errorPopup}}
+    {{> confirmNEWToRenew}}
+    <div id="changePassRender_p"></div>
+    <div id="renderManagePlayers"></div>
+    <div id="acc_details_content"></div>
+    <div id="national_identity_content"></div>
+
+</template>
+
+
+<!-- Player Profile -->
+<template name="playerProfile">
+    <!--{{#if Template.subscriptionsReady}}-->
+
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:3px;">
+
+        {{#if lPlayerProfile}}
+        <div class="row no-gutter" style="">
+
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Name</p>
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:0px !important;">
+                <input type="text" name="playerName" id="playerName" placeholder="Name" class="emailAddressUserProf" value="{{lPlayerProfile.userName}}" {{affiliatedTo lPlayerProfile.userId}} style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Guardian Name</p>
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:0px !important;">
+                <input type="text" name="guardianName" id="guardianName" placeholder="Guardian Name" class="emailAddressUserProf" value="{{lPlayerProfile.guardianName}}" {{affiliatedTo lPlayerProfile.userId}} style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+
+            {{#if lPlayerProfile.gender}}
+            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="padding-right:5px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Email ID <span style="color:black !important">{{lPlayerProfile.emailAddress}} </span>
+                </p>
+            </div>
+
+            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Affiliation ID<span style='color:black !important'>{{lPlayerProfile.affiliationId}}</span>
+                </p>
+            </div>
+
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;display:none">
+                <input type="text" name="playerGender" id="playerGender" class="emailAddressUserProf" value="{{lPlayerProfile.gender}}" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+
+            </div>
+
+            {{else}}
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Email ID <span style="color:black !important">{{lPlayerProfile.emailAddress}} </span>
+                </p>
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Affiliation ID<span style='color:black !important'>{{lPlayerProfile.affiliationId}}</span>
+                </p>
+            </div>
+
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <select class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;" name="playerGender" id="playerGender">
+                    <option disabled="" selected="">Gender</option>
+                    <option name="Male">Male</option>
+                    <option name="Female">Female</option>
+                    <option name="other">Other</option>
+                </select>
+            </div>
+
+            {{/if}}
+
+
+        </div>
+
+        <div class="row no-gutter" style="">
+
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">DOB</p>
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:0px !important;">
+                {{#if lPlayerProfile.dateOfBirth}}
+                <input type="text" name="dateOfBirthDate" id="dateOfBirthDate" placeholder="DD MMM YYYY" class="clubNameUserProf" value="{{upcomingformatDate lPlayerProfile.dateOfBirth}}" autocomplete="off" {{affiliatedTo lPlayerProfile.userId}}> {{else}}
+                <input type="text" name="dateOfBirthDate" id="dateOfBirthDate" placeholder="DD MMM YYYY" class="clubNameUserProf" value="" autocomplete="off" {{affiliatedTo lPlayerProfile.userId}}> {{/if}}
+            </div>
+
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Phone No</p>
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:0px !important;">
+                <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" class="emailAddressUserProf" value="{{lPlayerProfile.phoneNumber}}" {{affiliatedTo lPlayerProfile.userId}} style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">National Affiliation ID
+                    <!--<span style='color:black !important'>{{lPlayerProfile.nationalAffiliationId}}</span>-->
+                </p>
+            </div>
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:0px !important;">
+                <input type="text" name="nationalAffiliationId" id="nationalAffiliationId" placeholder="National Affiliation ID" class="emailAddressUserProf" value="{{lPlayerProfile.nationalAffiliationId}}" {{affiliatedTo lPlayerProfile.userId}} style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <a href="" id="modifyPlayerDetails" style='float:right !important' name={{affiliatedTo lPlayerProfile.userId}}>Edit Address</a>
+
+            </div>
+
+
+
+        </div>
+
+
+        {{/if}}
+
+    </div>
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:2px;height:103px!important;">
+        <div class="row no-gutter" style="">
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                                <input type="text" autocomplete="off" placeholder="Sports" id="mainTag" value="" class="selectProjectsE">
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    <span class="glyphicon glyphicon-search userProjectSearch">
+                        </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagop">
+                        {{#if Template.subscriptionsReady}} {{#if lProjectName}} {{#each lProjectName}} {{#if checkPlayerProjectName this._id}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.projectMainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <label class="checkBoxDivLabel" name="checkProjectName">
+                                    {{this.projectMainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <input value={{this._id}} type="radio" name="checkProjectName" id="{{this._id}}" class="" checked style="cursor:pointer!important" onclick="{{checkRoleForProjectsAndPlaces}}" readonly disabled>
+                                <label name="checkProjectName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+
+                        {{else}}
+                        <!-- checkPlayerProjectName else-->
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.projectMainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <label class="checkBoxDivLabel" name="checkProjectName">
+                                    {{this.projectMainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <input value={{this._id}} type="radio" name="checkProjectName" id="{{this._id}}" class="" style="cursor:pointer!important" onclick="{{checkRoleForProjectsAndPlaces}}" >
+                                <label name="checkProjectName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{/if}}
+                        <!-- end of checkPlayerProjectName -->
+                        {{/each}}
+                        <!-- end of lProjectName  each-->
+                        {{/if}}
+                        <!-- end of lProjectName  if-->
+                        {{/if}}
+                        <!-- end of template subscriptions  if-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:3px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                                <input type="text" autocomplete="off" placeholder="Place" id="mainTag1" value="" class="selectProjectsE">
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    <span class="glyphicon glyphicon-search userProjectSearch">
+                        </span>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;margin-top:0px;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    {{#if Template.subscriptionsReady}} {{#if checkalldomainsPlayer lPlayer}}
+                                    <input type="checkbox" name="checkAllPlaces" id="checkAllPlaces" class="checkAllprojuser" checked>{{else}}
+                                    <input type="checkbox" name="checkAllPlaces" id="checkAllPlaces" class="checkAllprojuser"> {{/if}} {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagod2">
+                        {{#if Template.subscriptionsReady}} {{#if lDomainName}} {{#each lDomainName}} {{#if checkPlayerDomainName this._id}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.domainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.domainName}}>
+                                <label class="checkBoxDivLabel" name="checkDomainName">
+                                    {{this.domainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.domainName}}>
+                                <input value={{this._id}} type="checkbox" name="checkDomainName" id="{{this._id}}" class="" checked {{checkPlayerAssocheckedDom this._id}} style="cursor:pointer!important">
+                                <label name="checkDomainName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{else}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.domainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.domainName}}>
+                                <label class="checkBoxDivLabel" name="checkDomainName">
+                                    {{this.domainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.domainName}}>
+                                <input value={{this._id}} type="checkbox" name="checkDomainName" id="{{this._id}}" class="" style="cursor:pointer!important">
+                                <label name="checkDomainName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{/if}} {{/each}} {{/if}} {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    {{> event_sub_tag}}
+    <div id="playerProfileAddressPopUp"></div>
+    <!--{{/if}}-->
+</template>
+
+<template name="playerProfileMenus">
+    <li id="playerRole" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Role : Player </p>
+    </li>
+    <li id="playerRole" style="border-bottom:1px solid black;">
+        <p class="" id="" style='color:black'>&nbsp;{{playerAffiliatedTo}}</p>
+    </li>
+
+    <!--{{#if rolePlayerChangePassword}}-->
+    <li id="playerChangePassword" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Change Password </p>
+    </li>
+    <!--{{/if}}-->
+
+</template>
+
+
+<!-- state association profile settings -->
+<template name="associationProfileSettings">
+
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:3px;">
+
+        {{#if lStateAssociationProfile}}
+        <div class="row no-gutter" style="">
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Association Name*</p>
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:0px !important;">
+                <input type="text" name="associationName" id="associationName" placeholder="Name" class="emailAddressUserProf" value="{{lStateAssociationProfile.associationName}}" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Contact Person</p>
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:0px !important;">
+                <input type="text" name="associationContactPerson" id="associationContactPerson" placeholder="Guardian Name" class="emailAddressUserProf" value="{{lStateAssociationProfile.contactPerson}}" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Email ID:<span style='color:black !important'>{{lStateAssociationProfile.emailAddress}} </span>
+                </p>
+            </div>
+
+
+
+        </div>
+
+        <div class="row no-gutter" style="">
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Phone No</p>
+            </div>
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:0px !important;">
+                <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" class="emailAddressUserProf" value="{{lStateAssociationProfile.phoneNumber}}" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Date of Inc</p>
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:0px !important;">
+                {{#if lStateAssociationProfile.dateOfInc}}
+                <input type="text" name="awayFromDate" id="awayFromDate" placeholder="DD MMM YYYY" class="clubNameUserProf" value="{{upcomingformatDate lStateAssociationProfile.dateOfInc}}" autocomplete="off" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;"> {{else}}
+                <input type="text" name="awayFromDate" id="awayFromDate" placeholder="DD MMM YYYY" class="clubNameUserProf" value="" autocomplete="off" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;"> {{/if}}
+            </div>
+
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Abbrevation</p>
+            </div>
+
+
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:5px !important;padding-left:0px !important;">
+                <input type="text" name="abbrevationAssociation" id="abbrevationAssociation" placeholder="Abbrevation" class="clubNameUserProf" value="{{lStateAssociationProfile.abbrevationAssociation}}" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:10px !important;padding-left:0px !important;">
+                <a href="" id="modifyAssociationDetails" style='float:right !important'>Edit Address</a>
+            </div>
+
+
+        </div>
+
+
+        {{/if}}
+
+    </div>
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:2px;height:103px!important;">
+        <div class="row no-gutter" style="">
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                                <input type="text" autocomplete="off" placeholder="Sports" id="mainTag" value="" class="selectProjectsE">
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    <span class="glyphicon glyphicon-search userProjectSearch">
+                        </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagop">
+                        {{#if Template.subscriptionsReady}} {{#if lProjectName}} {{#each lProjectName}} {{#if checkAssociationProjectName this._id}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.projectMainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <label class="checkBoxDivLabel" name="checkProjectName">
+                                    {{this.projectMainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <input value={{this._id}} type="radio" name="checkProjectName" id="{{this._id}}" class="" checked style="cursor:pointer!important" onclick="{{checkRoleForProjectsAndPlaces}}" readonly disabled>
+                                <label name="checkProjectName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+
+                        {{else}}
+                        <!-- checkPlayerProjectName else-->
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.projectMainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <label class="checkBoxDivLabel" name="checkProjectName">
+                                    {{this.projectMainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <input value={{this._id}} type="radio" name="checkProjectName" id="{{this._id}}" class="" style="cursor:pointer!important" onclick="{{checkRoleForProjectsAndPlaces}}" readonly disabled>
+                                <label name="checkProjectName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{/if}}
+                        <!-- end of checkPlayerProjectName -->
+                        {{/each}}
+                        <!-- end of lProjectName  each-->
+                        {{/if}}
+                        <!-- end of lProjectName  if-->
+                        {{/if}}
+                        <!-- end of template subscriptions  if-->
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:3px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                                <input type="text" autocomplete="off" placeholder="Place" id="mainTag1" value="" class="selectProjectsE">
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    <span class="glyphicon glyphicon-search userProjectSearch">
+                        </span>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;margin-top:0px;height:26px;">
+                                <div class="userProjectSearchDiv">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagod2">
+                        {{#if Template.subscriptionsReady}} {{#if lDomainName}} {{#each lDomainName}} {{#if checkAssociationDomainName this._id}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.domainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.domainName}}>
+                                <label class="checkBoxDivLabel" name="checkDomainName">
+                                    {{this.domainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.domainName}}>
+                                <input value={{this._id}} type="radio" name="checkDomainName" id="{{this._id}}" class="" checked {{checkAssocheckedDom this._id}} style="cursor:pointer!important" readonly disabled>
+                                <label name="checkDomainName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{else}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.domainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.domainName}}>
+                                <label class="checkBoxDivLabel" name="checkDomainName">
+                                    {{this.domainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.domainName}}>
+                                <input value={{this._id}} type="radio" name="checkDomainName" id="{{this._id}}" class="" style="cursor:pointer!important" readonly disabled>
+                                <label name="checkDomainName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{/if}} {{/each}} {{/if}} {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> event_sub_tag}}
+    <div id="associationProfileAddressPopUp"></div>
+
+</template>
+
+<template name="associationProfileMenus">
+    <li id="stateAssRole" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Role : State Association </p>
+    </li>
+    <li id="stateAssChangePassword" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Change Password </p>
+    </li>
+    <li id="stateAssManagePlayers" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Manage Players </p>
+    </li>
+    <li id="stateAssManageAcademy" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Manage Academy </p>
+    </li>
+    <li id="stateAssManageDA" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Manage DA </p>
+    </li>
+    <li id="stateAssPermisssions" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Association Permissions </p>
+    </li>
+    <li id="stateAssManageAffID" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Manage Affiliation ID </p>
+    </li>
+    <li id="stateAssRenewPlayers" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Renew All Players</p>
+    </li>
+    
+</template>
+
+
+
+
+<!-- district association profile settings -->
+<template name="districtAssociationProfile">
+
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:3px;">
+
+        {{#if lDistrictAssociationProfile}}
+        <div class="row no-gutter" style="">
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Association Name</p>
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:0px !important;">
+                <input type="text" name="associationName" id="associationName" placeholder="Name" class="emailAddressUserProf" value="{{lDistrictAssociationProfile.associationName}}" {{districtAffiliatedTo lDistrictAssProfile.userId}} style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Contact Person</p>
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:3px !important;">
+                <input type="text" name="associationContactPerson" id="associationContactPerson" placeholder="Guardian Name" class="emailAddressUserProf" value="{{lDistrictAssociationProfile.contactPerson}}" {{districtAffiliatedTo lDistrictAssProfile.userId}} style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+
+            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Email ID <span style='color:black !important'>{{lDistrictAssociationProfile.emailAddress}}</span>
+                </p>
+            </div>
+
+
+
+
+        </div>
+
+        <div class="row no-gutter" style="">
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Phone No</p>
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:0px !important;">
+                <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" class="emailAddressUserProf" value="{{lDistrictAssociationProfile.phoneNumber}}" {{districtAffiliatedTo lDistrictAssProfile.userId}} style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Date of Inc</p>
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:0px !important;">
+
+                {{#if lDistrictAssociationProfile.dateOfInc}}
+                <input type="text" name="awayFromDate" id="awayFromDate" placeholder="DD MMM YYYY" class="clubNameUserProf" value="{{upcomingformatDate lDistrictAssociationProfile.dateOfInc}}" autocomplete="off" {{districtAffiliatedTo lDistrictAssProfile.userId}} style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;"> {{else}}
+                <input type="text" name="awayFromDate" id="awayFromDate" placeholder="DD MMM YYYY" class="clubNameUserProf" value="" autocomplete="off" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;" {{districtAffiliatedTo lDistrictAssProfile.userId}}> {{/if}}
+            </div>
+
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Abbrevation</p>
+            </div>
+
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:5px !important;padding-left:0px !important;">
+                <input type="text" name="abbrevationAssociation" id="abbrevationAssociation" placeholder="Abbrevation" class="clubNameUserProf" value="{{lDistrictAssociationProfile.abbrevationAssociation}}" {{districtAffiliatedTo lDistrictAssProfile.userId}} style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+            <div style="padding-right:10px !important; padding-left:0px !important;" class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                <a id="modifyAssociationDetails" href="" style='float:right !important' name={{districtAffiliatedTo lDistrictAssProfile.userId}}>Edit Address</a>
+            </div>
+            <!--<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="padding-right:0px !important;padding-left:3px !important;width:30%!important;">
+          <input type="text" name="abbrevationAssociation" id="abbrevationAssociation" placeholder="Affiliated Association" class="clubNameUserProf"  value="{{getAssociationName lDistrictAssociationProfile.parentAssociationId}} " readonly >
+        </div>-->
+
+        </div>
+
+
+        {{/if}}
+
+    </div>
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:2px;height:103px!important;">
+        <div class="row no-gutter" style="">
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                                <input type="text" autocomplete="off" placeholder="Sports" id="mainTag" value="" class="selectProjectsE">
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    <span class="glyphicon glyphicon-search userProjectSearch">
+                        </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagop">
+                        {{#if Template.subscriptionsReady}} {{#if lProjectName_dA}} {{#each lProjectName_dA}} {{#if checkAssociationProjectName this._id}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.projectMainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <label class="checkBoxDivLabel" name="checkProjectName">
+                                    {{this.projectMainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <input value={{this._id}} type="radio" name="checkProjectName" id="{{this._id}}" class="" checked style="cursor:pointer!important" onclick="{{checkRoleForProjectsAndPlaces}}" readonly disabled>
+                                <label name="checkProjectName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+
+                        {{else}}
+                        <!-- checkPlayerProjectName else-->
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.projectMainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <label class="checkBoxDivLabel" name="checkProjectName">
+                                    {{this.projectMainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.projectMainName}}>
+                                {{#if checkAffiliatedTo_dA}}
+                                <input value={{this._id}} type="radio" name="checkProjectName" id="{{this._id}}" class="" style="cursor:pointer!important" onclick="{{checkRoleForProjectsAndPlaces}}"> {{else}}
+                                <input value={{this._id}} type="radio" name="checkProjectName" id="{{this._id}}" class="" style="cursor:pointer!important" onclick="{{checkRoleForProjectsAndPlaces}}" readonly disabled> {{/if}}
+                                <label name="checkProjectName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{/if}}
+                        <!-- end of checkPlayerProjectName -->
+
+                        {{/each}}
+                        <!-- end of lProjectName  each-->
+                        {{/if}}
+                        <!-- end of lProjectName  if-->
+                        {{/if}}
+                        <!-- end of template subscriptions  if-->
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:3px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                                <input type="text" autocomplete="off" placeholder="Place" id="mainTag1" value="" class="selectProjectsE">
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    <span class="glyphicon glyphicon-search userProjectSearch">
+                        </span>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;margin-top:0px;height:26px;">
+                                <div class="userProjectSearchDiv">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagod2">
+                        {{#if Template.subscriptionsReady}} {{#if lDomainName_dA}} {{#each lDomainName_dA}} {{#if checkAssociationDomainName this._id}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.domainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.domainName}}>
+                                <label class="checkBoxDivLabel" name="checkDomainName">
+                                    {{this.domainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.domainName}}>
+                                <input value={{this._id}} type="radio" name="checkDomainName" id="{{this._id}}" class="" checked {{checkAssocheckedDom this._id}} style="cursor:pointer!important" readonly disabled>
+                                <label name="checkDomainName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{else}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.domainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.domainName}}>
+                                <label class="checkBoxDivLabel" name="checkDomainName">
+                                    {{this.domainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.domainName}}>
+                                {{#if checkAffiliatedTo_dA}}
+                                <input value={{this._id}} type="radio" name="checkDomainName" id="{{this._id}}" class="" style="cursor:pointer!important"> {{else}}
+                                <input value={{this._id}} type="radio" name="checkDomainName" id="{{this._id}}" class="" style="cursor:pointer!important" readonly disabled> {{/if}}
+                                <label name="checkDomainName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{/if}} {{/each}} {{/if}} {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> event_sub_tag}}
+    <div id="associationProfileAddressPopUp"></div>
+</template>
+
+<template name="districtAssociationProfileMenus">
+    <li id="districtAssRole" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Role : District Association </p>
+    </li>
+    <li id="districtAssRole" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;{{dAAffiliatedTo}}</p>
+    </li>
+    <!--{{#if roleDistrictChangePassword}}-->
+
+    <li id="districtAssChangePassword" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Change Password </p>
+    </li>
+    <!--{{/if}}-->
+
+    <!--{{#if roleDistrictMenuAccess}}-->
+    <li id="districtAssManagePlayers" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Manage Players </p>
+    </li>
+    <li id="districtAssManageAcademy" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Manage Academy </p>
+    </li>
+    <!--{{/if}}-->
+</template>
+
+<!-- academyProfileSettings -->
+<template name="academyProfileSettings">
+
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:3px;">
+
+        {{#if lAcademyProfile}}
+        <div class="row no-gutter" style="">
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Name*:</p>
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-left:0px !important;padding-right:5px !important">
+                <input type="text" name="clubName" id="clubName" placeholder="Name" class="emailAddressUserProf" value="{{lAcademyProfile.clubName}}" {{academyAffiliatedTo lAcademyProfile.userId}} style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Contact Person:</p>
+            </div>
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:3px !important;">
+                <input type="text" name="academyContactPerson" id="academyContactPerson" placeholder="Guardian Name" class="emailAddressUserProf" value="{{lAcademyProfile.contactPerson}}" {{academyAffiliatedTo lAcademyProfile.userId}} style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Email ID:<span style='color:balck'>{{lAcademyProfile.emailAddress}}</span>
+                </p>
+            </div>
+
+
+        </div>
+
+        <div class="row no-gutter" style="">
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Phone No:</p>
+            </div>
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:3px !important;">
+                <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" class="emailAddressUserProf" value="{{lAcademyProfile.phoneNumber}}" {{academyAffiliatedTo lAcademyProfile.userId}} style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+            <div class="co2-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Date Of Inc:</p>
+            </div>
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:3px !important;">
+                {{#if lAcademyProfile.dateOfInc}}
+                <input type="text" name="awayFromDate" id="awayFromDate" placeholder="DD MMM YYYY" class="clubNameUserProf" value="{{upcomingformatDate lAcademyProfile.dateOfInc}}" autocomplete="off" {{academyAffiliatedTo lAcademyProfile.userId}} style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;"> {{else}}
+                <input type="text" name="awayFromDate" id="awayFromDate" placeholder="DD MMM YYYY" class="clubNameUserProf" autocomplete="off" {{academyAffiliatedTo lAcademyProfile.userId}} style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;"> {{/if}}
+            </div>
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Abbreviation:</p>
+            </div>
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:3px !important;">
+                <input type="text" name="abbrevationAcademy" id="abbrevationAcademy" placeholder="Abbrevation" class="clubNameUserProf" value="{{lAcademyProfile.abbrevationAcademy}}" {{academyAffiliatedTo lAcademyProfile.userId}} style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <a href="" id="modifyAcademyDetails" style='float:right !important' name={{academyAffiliatedTo lAcademyProfile.userId}}>Edit Address</a>
+
+            </div>
+            <!--<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="padding-right:0px !important;padding-left:0px !important;">
+          <p class="labelWhoNew2">Affiliated Association: {{getAssociationName lAcademyProfile.associationId}}</p>        
+        </div>-->
+
+
+        </div>
+
+
+        {{/if}}
+
+    </div>
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:2px;height:103px!important;">
+        <div class="row no-gutter" style="">
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                                <input type="text" autocomplete="off" placeholder="Sports" id="mainTag" value="" class="selectProjectsE">
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    <span class="glyphicon glyphicon-search userProjectSearch">
+                        </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagop">
+                        {{#if Template.subscriptionsReady}} {{#if lProjectName}} {{#each lProjectName}} {{#if checkAcademyProjectName this._id}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.projectMainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <label class="checkBoxDivLabel" name="checkProjectName">
+                                    {{this.projectMainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <input value={{this._id}} type="radio" name="checkProjectName" id="{{this._id}}" class="" checked style="cursor:pointer!important" onclick="{{checkRoleForProjectsAndPlaces}}" readonly disabled>
+                                <label name="checkProjectName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+
+                        {{else}}
+                        <!-- checkPlayerProjectName else-->
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.projectMainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <label class="checkBoxDivLabel" name="checkProjectName">
+                                    {{this.projectMainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.projectMainName}}>
+                                {{#if checkAffiliatedTo_aca}}
+                                <input value={{this._id}} type="radio" name="checkProjectName" id="{{this._id}}" class="" style="cursor:pointer!important" onclick="{{checkRoleForProjectsAndPlaces}}"> {{else}}
+                                <input value={{this._id}} type="radio" name="checkProjectName" id="{{this._id}}" class="" style="cursor:pointer!important" onclick="{{checkRoleForProjectsAndPlaces}}" readonly disabled> {{/if}}
+                                <label name="checkProjectName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{/if}}
+                        <!-- end of checkPlayerProjectName -->
+                        {{/each}}
+                        <!-- end of lProjectName  each-->
+                        {{/if}}
+                        <!-- end of lProjectName  if-->
+                        {{/if}}
+                        <!-- end of template subscriptions  if-->
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:3px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                                <input type="text" autocomplete="off" placeholder="Place" id="mainTag1" value="" class="selectProjectsE">
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    <span class="glyphicon glyphicon-search userProjectSearch">
+                        </span>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;margin-top:0px;height:26px;">
+                                <div class="userProjectSearchDiv">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagod2">
+                        {{#if Template.subscriptionsReady}} {{#if lDomainName}} {{#each lDomainName}} {{#if checkAcademyDomainName this._id}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.domainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.domainName}}>
+                                <label class="checkBoxDivLabel" name="checkDomainName">
+                                    {{this.domainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.domainName}}>
+                                <input value={{this._id}} type="radio" name="checkDomainName" id="{{this._id}}" class="" checked {{checkAssocheckedDom this._id}} style="cursor:pointer!important" readonly disabled>
+                                <label name="checkDomainName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{else}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.domainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.domainName}}>
+                                <label class="checkBoxDivLabel" name="checkDomainName">
+                                    {{this.domainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.domainName}}>
+                                {{#if checkAffiliatedTo_aca}}
+                                <input value={{this._id}} type="radio" name="checkDomainName" id="{{this._id}}" class="" style="cursor:pointer!important"> {{else}}
+                                <input value={{this._id}} type="radio" name="checkDomainName" id="{{this._id}}" class="" style="cursor:pointer!important" readonly disabled> {{/if}}
+                                <label name="checkDomainName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{/if}} {{/each}} {{/if}} {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--sub domains-->
+
+    {{> event_sub_tag}}
+
+    <div id="academyProfileAddressPopUp"></div>
+
+
+</template>
+
+<template name="academyProfileMenus">
+    <li id="acaRole" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Role : Academy </p>
+    </li>
+    <li id="acaRole" style="border-bottom:1px solid black;">
+        <p class="" id="" style='color:black'>&nbsp;{{acaAffiliatedTo}}</p>
+    </li>
+
+    <!--{{#if roleAcademyChangePassword}}-->
+    <li id="acaChangePassword" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Change Password </p>
+    </li>
+    <!--{{/if}}-->
+    <!--{{#if roleAcademyMenuAccess}}-->
+    <li id="acaManagePlayers" style="border-bottom:1px solid black;">
+        <p class="teamsOfUserName" id="">&nbsp;Manage Players </p>
+    </li>
+    <!--{{/if}}-->
+</template>
+<!--- others profile settings -->
+<template name="generalProfileSettings">
+
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:3px;">
+
+        {{#if lGeneralProfile}}
+        <div class="row no-gutter" style="">
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Name </p>
+            </div>
+
+            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="padding-right:5px !important;padding-left:0px !important;">
+                <input type="text" name="name" id="name" placeholder="Name" class="emailAddressUserProf" value="{{lGeneralProfile.userName}}" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Guardian Name </p>
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:0px !important;">
+                <input type="text" name="guardianName" id="guardianName" placeholder="Guardian Name" class="emailAddressUserProf" value="{{lGeneralProfile.guardianName}}" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+
+            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Email ID : <span style='color:black !important'>{{lGeneralProfile.emailAddress}} </span>
+                </p>
+            </div>
+
+
+
+
+
+        </div>
+
+        <div class="row no-gutter" style="">
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">Phone No </p>
+            </div>
+            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="padding-right:5px !important;padding-left:0px !important;">
+                <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" class="emailAddressUserProf" value="{{lGeneralProfile.phoneNumber}}" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;">
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <p class="labelWhoNew2">DOB </p>
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:5px !important;padding-left:0px !important;">
+                {{#if lGeneralProfile.dateOfBirth}}
+                <input type="text" name="dateOfBirthDate" id="dateOfBirthDate" placeholder="DD MMM YYYY" class="clubNameUserProf" value="{{upcomingformatDate lGeneralProfile.dateOfBirth}}" autocomplete="off" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;"> {{else}}
+                <input type="text" name="dateOfBirthDate" id="dateOfBirthDate" placeholder="DD MMM YYYY" class="clubNameUserProf" value="" autocomplete="off" style="text-align:left;padding-left:2%;height:2.5em;margin-bottom:0.25%;font-size:12px;"> {{/if}}
+            </div>
+
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="padding-right:0px !important;padding-left:0px !important;">
+                <a href="" id="modifyOtherUserDetails" style='float:right !important'>Address</a>
+                
+            </div>
+
+            {{#if checkOtherCoachRole}}
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;">
+                
+                     <a href="" id="modifyExpertise" style='float:right !important' name={{affiliatedTo lPlayerProfile.userId}}>Expertise</a>
+            </div>
+            {{/if}}
+
+
+        </div>
+
+
+
+        {{/if}}
+
+    </div>
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:2px;height:103px!important;">
+        <div class="row no-gutter" style="">
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                                <input type="text" autocomplete="off" placeholder="Sports" id="mainTag" value="" class="selectProjectsE">
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    <span class="glyphicon glyphicon-search userProjectSearch">
+                        </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagop">
+                        {{#if Template.subscriptionsReady}} {{#if lProjectName}} {{#each lProjectName}} {{#if checkOtherUserProjectName this._id}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.projectMainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <label class="checkBoxDivLabel" name="checkProjectName">
+                                    {{this.projectMainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <input value={{this._id}} type="checkbox" name="checkProjectName" id="{{this._id}}" class="" checked style="cursor:pointer!important" onclick="{{checkRoleForProjectsAndPlaces}}">
+                                <label name="checkProjectName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+
+                        {{else}}
+                        <!-- checkPlayerProjectName else-->
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.projectMainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <label class="checkBoxDivLabel" name="checkProjectName">
+                                    {{this.projectMainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.projectMainName}}>
+                                <input value={{this._id}} type="checkbox" name="checkProjectName" id="{{this._id}}" class="" style="cursor:pointer!important" onclick="{{checkRoleForProjectsAndPlaces}}">
+                                <label name="checkProjectName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{/if}}
+                        <!-- end of checkPlayerProjectName -->
+                        {{/each}}
+                        <!-- end of lProjectName  each-->
+                        {{/if}}
+                        <!-- end of lProjectName  if-->
+                        {{/if}}
+                        <!-- end of template subscriptions  if-->
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:3px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                                <input type="text" autocomplete="off" placeholder="Place" id="mainTag1" value="" class="selectProjectsE">
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    <span class="glyphicon glyphicon-search userProjectSearch">
+                        </span>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;margin-top:0px;height:26px;">
+                                <div class="userProjectSearchDiv">
+                                    {{#if Template.subscriptionsReady}} {{#if checkalldomainsOtherUsers lOtherUser}}
+                                    <input type="checkbox" name="checkAllPlaces" id="checkAllPlaces" class="checkAllprojuser" checked>{{else}}
+                                    <input type="checkbox" name="checkAllPlaces" id="checkAllPlaces" class="checkAllprojuser"> {{/if}} {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagod2">
+                        {{#if Template.subscriptionsReady}} {{#if lDomainName}} {{#each lDomainName}} {{#if checkOtherUserDomainName this._id}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.domainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.domainName}}>
+                                <label class="checkBoxDivLabel" name="checkDomainName">
+                                    {{this.domainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.domainName}}>
+                                <input value={{this._id}} type="checkbox" name="checkDomainName" id="{{this._id}}" class="" checked {{checkAssocheckedDom this._id}} style="cursor:pointer!important">
+                                <label name="checkDomainName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{else}}
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.domainName}}>
+                            <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.domainName}}>
+                                <label class="checkBoxDivLabel" name="checkDomainName">
+                                    {{this.domainName}}
+                                </label>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.domainName}}>
+                                <input value={{this._id}} type="checkbox" name="checkDomainName" id="{{this._id}}" class="" style="cursor:pointer!important">
+                                <label name="checkDomainName" for={{this._id}} class="checkBoxDivLabelCheck">
+                                </label>
+                            </div>
+                        </div>
+                        {{/if}} {{/each}} {{/if}} {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> event_sub_tag}}
+    <input type="text" id="checkSports" name="checkSports" style="background-color:none; border:none; height:0px; width:0px;  cursor:default; font-weight:normal" onfocus="this.blur()" readonly>
+    <input type="text" id="checkDomain" name="checkDomain" style="background-color:none; border:none; height:0px; width:0px;  cursor:default; font-weight:normal" onfocus="this.blur()" readonly>
+    <div id="otherUserProfileAddressPopUp"></div>
+    <div id="otherUserExpertisePopUp"></div>
+
+</template>
+
+
+<template name="event_sub_tag">
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;margin-top:2px;">
+        <div class="row no-gutter" style="">
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                                <input type="text" readonly autocomplete="off" placeholder="Event Tag" id="mainTag3" value="" class="selectProjectsE2">
+                            </div>
+                            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;height:60px; font-size: 12px;margin-top:0px;">
+                                <textarea placeholder="Provide comma separated event sub-tags Max(200 characters).." rows="15" cols="50" name="subDomain1Area" class="subDomainArea" id="subDomain1Area" style="resize: none;height:60px; font-size: 12px;" onfocus="this.blur()" readonly>{{#each checkSubDomain1Name lSubDomain2Name}}{{this}}{{/each}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px !important;padding-left:3px !important;margin-top:0px;border-top-right-radius: 5px;border-top-left-radius: 5px;">
+                <div class="row no-gutter" style="">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                        <div class="row no-gutter" style="">
+                            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                                <input type="text" readonly autocomplete="off" placeholder="Sub-Tag" id="mainTag3" value="" class="selectProjectsE2">
+                            </div>
+                            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;height:60px; font-size: 12px;margin-top:0px;">
+                                <textarea placeholder="Provide comma separated event sub-tags Max(200 characters).." rows="15" cols="50" name="subDomain2Area" class="subDomainArea" id="subDomain2Area" style="resize: none;height:60px; font-size: 12px;" onfocus="this.blur()" readonly>{{#each checkSubDomain1Name lSubDomain2Name}}{{this}}{{/each}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

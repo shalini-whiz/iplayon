@@ -1,0 +1,406 @@
+<template name="myFinance">
+	<div style="background:#333;height:auto;" class="container">
+        <div id="filterSelectionForm">
+        </div>
+    </div>
+
+	<div class="container" style="background:#333; height:auto;">
+		<div class="row navigationBar navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <span style="" class="websiteHeader">iPlayOn</span>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                        <button type="button" class="ip_button_DarkGrey" id="myServiceBtn"> My Services</button>
+                    </div>
+                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                     	<button type="button" class="ip_button_DarkGrey" id="approvedServiceBtn">Approved/Rejected/Waiting Services</button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                    	<button type="button" class="ip_button_DarkGrey" id="pendingServiceBtn">Pending Services</button>
+                    </div>
+                   <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                        <button type="button" class="ip_button_DarkGrey" id="financeTransactionBtn">Finance Transactions</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>	
+       
+	</div>
+	{{> errorPopup}}
+	{{> sendingMailPopup3}}
+    <div id = "myServiceDiv"></div>
+    <div id = "createMyPackDiv"></div>
+    <div id = "viewMyServiceDiv"></div>
+    <div id = "editMyServiceDiv"></div>
+
+	<div id = "approvedServicesDiv"></div>
+	<div id = "pendingServicesDiv"></div>
+    <div id = "financeTransactionDiv"></div>
+
+	<div id="confirmInsertPlayerRender"></div>
+	<div id = "confirmDeleteTF"></div>
+	<div id = "createStrokeDiv"></div>
+	<div id = "mailerDiv"></div>
+</template>
+
+
+<template name="myPackageSelectionForm">
+    {{#if Template.subscriptionsReady}}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N" id="selectionFormData" style="">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="selectionForm_N2">Please Select Your Keys of Interest to Search:</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N3">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+               <p class="selectionForm_N4" id="sportsLabel"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Buyer:</p>
+            </div>
+           
+             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5" id="approvalLabel" >
+                 <p class="selectionForm_N4" id="filteredLabel6"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Package:</p> 
+            </div>
+
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                 <p class="selectionForm_N4" id="filterDataLabel">&nbsp;
+                  <span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>From Date(Paid On):
+
+                </p> 
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5" >
+                 <p class="selectionForm_N4" id="filteredLabel2"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>End Date(Paid On):</p> 
+            </div>
+           
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 selectionForm_N5" >
+                 <p class="selectionForm_N4">&nbsp;</p> 
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N3">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+            	<select class="selectionForm_N6" id="buyerList" name="buyerList">
+                    <option selected disabled>Select Buyer</option>
+                    {{#if my_buyerList}}
+                    {{#each my_buyerList}}
+                        <option id="eventSelection" name="{{this.userId}}">{{displayNameOfUser this.userId}}</option>
+                    {{/each}}
+                    <option id="eventSelection" name="All">All</option>
+                    {{/if}}
+                </select>
+                
+            </div>
+           
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <select class="selectionForm_N6" id="packageList" name="packageList">
+                    <option selected disabled>Select Package</option>
+                    {{#if my_packList}}
+                    {{#each my_packList}}
+                        <option id="eventSelection" name="{{this.packId}}">{{getPackName this.packId}}</option>
+                    {{/each}}
+                    <option id="eventSelection" name="All">All</option>
+                    {{/if}}
+                </select>
+            </div>
+
+           
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 " id="eventsMenu" style='' >
+            	<input type="text" name="fromDate" id="fromDate" placeholder="DD MMM YYYY" style="text-align:left; padding-left:2%; height:2.5em; margin-bottom:0.25%; font-size:12px;" class="emailAddressUserProf" value="" autocomplete="off"/> 
+                
+            </div>
+             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5" style=''>
+              <input type="text" name="endDate" id="endDate" placeholder="DD MMM YYYY" style="text-align:left; padding-left:2%; height:2.5em; margin-bottom:0.25%; font-size:12px;" class="emailAddressUserProf" value="" autocomplete="off"/>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 selectionForm_N5" >
+                
+            </div>
+        </div>
+      
+    </div>
+    {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+<template name="myServices">
+    {{#if Template.subscriptionsReady}}
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<!--<link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet"/>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js">
+    </script>-->
+
+   
+
+
+  <div class ="row">
+    <a  style="margin-top:50px !important;float:right !important;margin-right:15px !important;font-size:15px !important" id="createPack"  value="Create Pack">
+    Create Pack
+    </a>
+
+   
+  </div>
+    
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New" id="example">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2" id="titleHeader">Title</th>
+                            <th class="pAnalytics2">Category</th>
+                            <th class="pAnalytics2">Plan Type</th>
+                            <th class="pAnalytics2">Amount</th>
+                            <th class="pAnalytics2">Validity</th>
+
+                           <th class="pAnalytics2">description</th>
+                           <th class="pAnalytics2">View</th>
+                           <th class="pAnalytics2">Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each myServicePack}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                           <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                           <td class="pAnalytics2">{{this.title}}</td>
+                            <td class="pAnalytics2">{{this.category}}</td>
+                            <td class="pAnalytics2">{{this.planType}}</td>
+                            <td class="pAnalytics2">{{this.amount}}</td>
+                            <td class="pAnalytics2">{{this.validityDays}}</td>
+
+
+                           <td class="pAnalytics2" style="overflow: hidden;width:auto;height:auto;">{{this.articleDesc}}</td>
+                           <td class="pAnalytics2">
+                            <span class="glyphicon glyphicon-eye-open" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer"  id="viewPack"></span></td>
+                           <td class="pAnalytics2" id="selectedIdToEdit">
+                            <span class="glyphicon glyphicon-pencil" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="editPack"></span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                         
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+    {{else}}
+        {{> loader}}
+    {{/if}} 
+</template>
+
+
+
+
+
+
+
+
+<template name="myApprovedServices">
+    {{#if Template.subscriptionsReady}}
+
+	 	<div class = "row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:40px !important">
+	        		      
+	        </div>
+    	</div>
+    	<div class="row">
+        	<table class="table table-striped tableOFCSVHTML_New">
+            	<thead style="">
+                	<tr class="headerAnalytics2">
+                		<th class="pAnalytics2">Sl.No</th>
+	                    <th class="pAnalytics2">Buyer</th>
+	                    <th class="pAnalytics2">Seller</th>
+	                    <th class="pAnalytics2">Package Name</th>
+                        <th class ="pAnalytics2">Features</th>
+	                    <th class="pAnalytics2">Amount</th>
+	                    <th class="pAnalytics2">Paid Date</th>
+	                    <th class="pAnalytics2">Plan Starts On</th>
+	                    <th class="pAnalytics2">Plan Ends On</th>
+	                    <th class="pAnalytics2">Admin Transaction</th>
+                        <th class="pAnalytics2">Seller Status</th>
+                         <th class="pAnalytics2">Acknowledge</th>
+
+                	</tr>
+                </thead>
+                <tbody id="selectTagop">
+                	{{#if approvedPackageList}}
+                	{{#each approvedPackageList}}               		
+                		<tr class="headerAnalytics3" name="sdfsd">
+                			<td class="pAnalytics2">{{this.slNo}}</td>
+                    		<td class="pAnalytics2" style="">{{displayNameOfUser this.userId}}</td>
+                    		<td class="pAnalytics2">{{displayNameOfUser this.packPayToUserId}}</td>
+                    		<td class="pAnalytics2">{{getPackName this.packId}}</td>
+                            <td class="pAnalytics2">
+                                {{#if this.features}}
+                                    {{#each this.features}}
+                                        {{this.key}} : {{this.value}}
+                                        <br>
+                                    {{/each}}
+                                {{/if}}
+                            </td>
+                    		<td class="pAnalytics2">{{this.amount}}</td>
+                    		<td class="pAnalytics2">{{formatDateWithTime this.paidDate}}</td>
+                    		<td class="pAnalytics2">{{formatDateWithTime this.planStartsOn}}</td>
+                    		<td class="pAnalytics2">{{formatDateWithTime this.planEndsOn}}</td>       		
+                    		<td class="pAnalytics2">{{this.adminTransaction}}
+                    		</td> 
+                            <td class="pAnalytics2">{{displayFinanceStatus this.acknowledgeStatus}}
+                            </td>
+                            {{#if checkFinanceStatus this.acknowledgeStatus}} 
+                                <td class="pAnalytics2">
+                                    <input type="button" value="Accept" class="sendReciept"  id="ackService1" style="width:auto !important">&nbsp;&nbsp;   
+                                    <input type="button" value="Reject" class="sendReciept"  id="rejService1" style="width:auto !important">
+                                    &nbsp;&nbsp;
+                                </td>
+                            {{else}}
+                                <td class="pAnalytics2"></td>                                              
+                            {{/if}} 
+
+                    	</tr>
+                    {{/each}}
+                    {{/if}}
+                </tbody>
+            </table>
+        </div>
+        {{else}}
+        {{> loader}}
+    {{/if}}
+    <div id="raiseInvoiceContent"></div>
+</template>
+
+
+<template name="myPendingServices">
+    {{#if Template.subscriptionsReady}}
+
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:40px !important">
+                          
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-striped tableOFCSVHTML_New">
+                <thead style="">
+                    <tr class="headerAnalytics2">
+                        <th class="pAnalytics2">Sl.No</th>
+                        <th class="pAnalytics2">Buyer</th>
+                        <th class="pAnalytics2">Seller</th>
+                        <th class="pAnalytics2">Package Name</th>
+                        <th class="pAnalytics2">Amount</th>
+                        <th class="pAnalytics2">Paid Date</th>
+                        <th class="pAnalytics2">Plan Starts On</th>
+                        <th class="pAnalytics2">Plan Ends On</th>
+                        <th class="pAnalytics2">Acknowledge</th>
+                    </tr>
+                </thead>
+                <tbody id="selectTagop">
+                    {{#if pendingPackageList}}
+                    {{#each pendingPackageList}}                       
+                        <tr class="headerAnalytics3" name="sdfsd">
+                            <td class="pAnalytics2">{{this.slNo}}</td>
+                            <td class="pAnalytics2" style=" max-width: 50px;overflow: hidden;">{{displayNameOfUser this.userId}}</td>
+                            <td class="pAnalytics2">{{displayNameOfUser this.packPayToUserId}}</td>
+                            <td class="pAnalytics2">{{getPackName this.packId}}</td>
+                            <td class="pAnalytics2">{{this.amount}}</td>
+                            <td class="pAnalytics2">{{formatDateWithTime this.paidDate}}</td>
+                            <td class="pAnalytics2">{{formatDateWithTime this.planStartsOn}}</td>
+                            <td class="pAnalytics2">{{formatDateWithTime this.planEndsOn}}</td>
+                            <td class="pAnalytics2">
+                                <input type="button" value="Accept" class="sendReciept"  id="ackService" style="width:auto !important">&nbsp;&nbsp;   
+                                <input type="button" value="Reject" class="sendReciept"  id="rejService" style="width:auto !important">
+                                &nbsp;&nbsp; 
+                                <input type="button" value="On Hold" class="sendReciept"  id="holdService" style="width:auto !important">            
+                                </td>
+                                                         
+                        </tr>
+                    {{/each}}
+                    {{/if}}
+                </tbody>
+            </table>
+        </div>
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+<!--
+<template name="raiseInvoice">
+  <div class="modal" id="raiseInvoiceModal">
+      <div id="confirmCenter" class="modal-dialog modal-sm">
+        <div class="confirmPopup">
+        <div class="modal-content">
+        <div class="modal-header confirmHeader">
+              <p class="modal-title" id="conFirmHeader">Invoice Generation</p>
+            </div>
+             <div class="modal-body">
+               <p id = "infoMsg" class="selectionForm_N4" style="color:#000000 !important;font-size:12px">
+                {{invoiceMsg}}
+               </p>
+              <div class="confirmPopupContent">
+                <div class="yes">
+                  <button type="button" id="yesButton" class="ip_button_Popup_Black">OK</button>
+              </div>
+              <div class="no">
+                    <button type="button" id="noButton" class="ip_button_Popup_Red">CANCEL</button>
+              </div>
+            </div>
+
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>
+
+-->
+
+<template name="myAdminTransaction">
+    {{#if Template.subscriptionsReady}}
+
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:40px !important">
+                          
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-striped tableOFCSVHTML_New">
+                <thead style="">
+                    <tr class="headerAnalytics2">
+                        <th class="pAnalytics2">Sl.No</th>
+                        <th class="pAnalytics2">Buyer</th>
+                        <th class="pAnalytics2">Seller</th>
+                        <th class="pAnalytics2">Package Name</th>
+                        <th class="pAnalytics2">Amount</th>
+                        <th class="pAnalytics2">Paid Date</th>
+                        <th class="pAnalytics2">Plan Starts On</th>
+                        <th class="pAnalytics2">Plan Ends On</th>
+                        <th class="pAnalytics2">Admin Transaction</th>
+                    </tr>
+                </thead>
+                <tbody id="selectTagop">
+                    {{#if financePackageList}}
+                    {{#each financePackageList}}                       
+                        <tr class="headerAnalytics3" name="sdfsd">
+                            <td class="pAnalytics2">{{this.slNo}}</td>
+                            <td class="pAnalytics2" style=" max-width: 50px;overflow: hidden;">{{displayNameOfUser this.userId}}</td>
+                            <td class="pAnalytics2">{{displayNameOfUser this.packPayToUserId}}</td>
+                            <td class="pAnalytics2">{{getPackName this.packId}}</td>
+                            <td class="pAnalytics2">{{this.amount}}</td>
+                            <td class="pAnalytics2">{{formatDateWithTime this.paidDate}}</td>
+                            <td class="pAnalytics2">{{formatDateWithTime this.planStartsOn}}</td>
+                            <td class="pAnalytics2">{{formatDateWithTime this.planEndsOn}}</td>             
+                            <td class="pAnalytics2">{{this.adminTransaction}}
+                            </td>           
+                        </tr>
+                    {{/each}}
+                    {{/if}}
+                </tbody>
+            </table>
+        </div>
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+

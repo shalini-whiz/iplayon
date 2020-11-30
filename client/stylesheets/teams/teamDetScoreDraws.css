@@ -1,0 +1,39 @@
+.headerDetScoreTeam{
+	border-right: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	border-top: 1px solid #FFF;
+	background: none repeat scroll 0% 0% #808080;
+	color: white !important;
+	font-size: 12px;
+	text-align: center;
+}
+
+.matchRowDEtScore{
+	background: none repeat scroll 0% 0% #E0E0E0 !important;
+	border-right: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	border-top: 1px solid #FFF;
+	color: black;
+	text-align: center;
+	font-size: 12px;
+}
+
+.headerDetScoreTeamU{
+	border-right: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	border-top: 1px solid #FFF;
+	background: none repeat scroll 0% 0% #d0d0d0;
+	color: black !important;
+	font-weight: bold;
+	font-size: 12px;
+	text-align: center;
+}
+.headerDetScoreTeamW{
+	border-right: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	border-top: 1px solid #FFF;
+	background: none repeat scroll 0% 0% #d0d0d0;
+	color: black !important;
+	font-size: 12px;
+	text-align: center;
+}

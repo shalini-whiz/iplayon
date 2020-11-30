@@ -1,0 +1,66 @@
+{{{getDocType}}}
+<html lang="en">
+<head>
+    <style type="text/css">
+	    {{css}}
+    </style>
+</head>
+<body>
+
+	<template name="sellerAcknowledgeTemplate">
+		<body style="background: #ffffff; border: 1px solid #DDDDDD;" border="0" width="600" cellspacing="0" cellpadding="20">
+			<table border="0"  height="100%" width="100%" style="background: #ffffff; border: 1px solid #DDDDDD;">
+		        <tbody>
+		           <tr style="border-bottom: 4px solid rgb(255, 165, 0) !important;">
+						<td style="border-bottom: 18px solid rgb(255, 165, 0) !important;padding: 4px;width: 67%;">
+						    <img style="width:100px;height:100%;"  src={{this.imageURL}}/5s_logo.png>
+						</td>
+						<td style="border-bottom: 18px solid rgb(255, 165, 0) !important; padding: 0px; font-size: 17px;">{{this.packageName}}</td>
+					</tr>
+					<tr>
+						<td style="font-size: 22px;padding: 6px;">
+							{{#if typeOf typeOfAck "accept"}}
+
+								{{this.sellerName}} has acknowledged {{this.packageName}}
+							{{/if}}
+
+							{{#if typeOf typeOfAck "reject"}}
+								{{this.sellerName}} has rejected {{this.packageName}}
+							{{/if}}
+
+							{{#if typeOf typeOfAck "onHold"}}
+								{{this.sellerName}} has kept on hold the package {{this.packageName}}
+							{{/if}}
+
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<p>
+								Package : {{this.packageName}}<br>
+								Buyer : {{this.buyerName}}<br>
+								Package Amount : {{this.packageAmount}}<br>
+								Package Bought On : {{this.packageBought}}
+							</p>
+						</td>
+					</tr>
+					
+					<tr>
+						<td><p>Thank you<br>
+							{{this.sellerName}}
+						</p></td>
+					</tr>
+		        </tbody>
+		    </table>
+		</body>
+		<div class="row col-md-12 col-xs-12 col-sm-12 col-lg-12" >
+			<p><br /></p>
+			<p style="text-align:right !important"> Powered by
+				<img style="width: 100px; height: 100%;" src="http://www.iplayon.in/logo.png" />
+			</p>
+	  	</div>
+	</template>
+
+
+</body>
+</html>

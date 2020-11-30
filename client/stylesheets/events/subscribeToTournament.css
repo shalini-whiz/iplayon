@@ -1,0 +1,80 @@
+.subscribeToAllheader{
+	text-align: center;
+	font-size: 11.5px;
+	cursor: default;
+}
+
+.subscribeToAllheaderDiv{
+	color: white;
+	background: rgb(84, 84, 84) none repeat scroll 0% 0%;
+	height: 26px !important;
+	border-right: 1px solid white !important;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.subscribeToAllheaderMainDiv{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	height: 26px !important;
+}
+
+.subscribeToAllMainDiv{
+	margin-top: 3px;
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+}
+.subscribeToAllListMainDiv{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	height: 26px !important;
+}
+
+.subscribeToAllListDiv{
+	color: rgb(84, 84, 84);
+	/*background: white  none repeat scroll 0% 0%;*/
+	height: 26px !important;
+	border-left: 1px solid !important;
+	border-bottom:1px solid black;
+	padding-left: 0px!important;
+	padding-right: 0px!important;
+
+}
+.scrollableLisst{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	overflow: hidden;
+	height:10.4em !important;
+	background: #f2f2f2;
+}
+.subscribeToAllList{
+	font-size: 12px;
+	width: 100%;
+	cursor: pointer;
+	text-align: center;
+}
+.subscribeToAllListTeam{
+	font-size: 12px;
+	width: 100%;
+	cursor: pointer;
+	color: green;
+	text-align: center;
+}
+
+.teamGlyphiconOrNotNo{
+	border-right:1px solid black!important;
+	padding-left: 21px !important;
+	padding-right: 19px !important;
+}
+.teamGlyphiconOrNotYes{
+	border-right:1px solid black!important;
+	padding-left: 15px !important;
+	padding-right: 8px !important;
+	display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.subscribeCheckBox{
+	cursor: pointer;
+}

@@ -1,0 +1,94 @@
+<template name="editaddEventsPopup">
+<!-- main div of selectSubDomainsPopUp pop up-->
+    <div class="modal" id="editaddEventsPopup" aria-hidden="true">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains two radio buttons
+        one is deleteOnly and delete and black list
+        and yes and no buttons
+-->
+        <div id="subDomainCenter" class="modal-dialog eventAddTourModal-sm">
+            <div class="eventAddTourPopup">
+            <div class="modal-content">
+                <div class="selectevenaddHeader">
+                    <p class="modal-title" style="width:95%!important;" id="setEventNameHeader">Add Events</p>
+                    <!--<button class="closePopp" id="closeAddEve"><span class="glyphicon glyphicon-remove"></span></button>-->
+                </div>
+
+                 <div class="modal-body subDomainModalBody">
+            <div class="teamSubscribeMainTitle">
+              <!--{{#each lEventsUnderTourn}}
+                <div class="checkDivEventForTourn">
+                  <label>{{this.projectName}}</label>
+                </div>
+              {{/each}}-->
+              <div class="selectEventToAdd" id="selectEventstoAdd">
+                       <!-- {{#if lSubDomain1Name}}
+                        <div class="subDomainCheckBoxDiv">
+                            <label class="subDomainCheckBoxDivLabel" name="mainTag">
+                                None
+                            </label>
+                            <input value="None" type="radio" name="mainTag" id="noneSubDomain1" class="" checked/>
+                            <label name="mainTag" for="noneSubDomain1" class="subDomainCheckBoxDivLabelCheck">
+                            </label>
+                        </div>
+                        {{/if}}-->
+                       {{#if lEventsUnderTourn}} 
+                       {{#each lEventsUnderTourn}}
+                       {{#if checkaddEveChecked this._id}}
+                        <div class="eventAddTourCheckBoxDiv">
+                            {{#if checkaddEveChecked this._id}}
+                            <input value="{{this.projectName}}"  type="checkbox" name="mainTag" id="{{this._id}}" class="checkboxevents" style="width: 90px;" checked disabled/>
+                            <label class="checkboxeventsCheckBoxDivLabel" id="{{this._id}}" name="mainTag">
+                              <p class="checkPEvent"  id="{{this.projectType}}">{{this.projectName}}</p>
+                            </label>
+                            <label name="mainTag" id="here" for="{{this._id}}" class="subDomainCheckBoxDivLabelCheck">
+                            </label>
+                            <div class="eveTournStart"><input  type="text" readonly id="startDateAddEve" class="datepicker datePickPopup" value="{{checkaddEveCheckedStart this._id}}" placeholder="starts on"></div>
+                            <div class="eveTournEnd"><input  type="text" readonly id="startEndAddEve" class="datepicker datePickPopup" value="{{checkaddEveCheckedEnd this._id}}" placeholder="ends on">
+                            </div>
+                            <div class="eveTournEnd"><input type="text"  autocomplete="off" id="" class="datePickPopup" placeholder="entry fee" value="{{checkaddEveCheckedFee this._id}}" readonly>
+                            </div>
+                            {{else}}
+                            <!--input value="{{this.projectName}}"  type="checkbox" name="mainTag" id="{{this._id}}" class="checkboxevents" style="width:90px;" disabled/>
+                            <label class="checkboxeventsCheckBoxDivLabel" id="{{this._id}}" name="mainTag">
+                              <p class="checkPEvent">{{this.projectName}}</p>
+                            </label>
+                            <label name="mainTag" id="here" for="{{this._id}}" class="subDomainCheckBoxDivLabelCheck">
+                            </label>
+                            <div class="eveTournStart"><input  type="text" readonly id="startDateAddEve" class="datepicker datePickPopup" placeholder="starts on" value="{{lEventStartDate}}"></div>
+                            <div class="eveTournEnd"><input  type="text" readonly id="startEndAddEve" value="{{lEventEndDate}}" class="datepicker datePickPopup" placeholder="ends on">
+                            </div>
+                            <div class="eveTournEnd"><input type="text" readonly  id="addEentryFee" class="datePickPopup" autocomplete="off" placeholder="entry fee">
+                            </div-->
+                            {{/if}}
+                        </div>
+                        {{/if}}
+                        {{/each}}
+                        {{else}}
+                        <div class="setemptyeventaddDivEmpty">
+                            <p class="setemptyeventadd">Select a Sport, Set Entry Closes On, Event Starts On and Event Ends On</p>
+                        </div>
+                        {{/if}}
+                    </div>
+            </div>
+       
+            <div class="setemptyeventaddDivContentOk">
+                    <div class="sponsorUploadsContentAddEvents">
+                        <div class="yesSponsorUploads">
+                            <button type="submit" id="yesAddEvents" class="ip_button_Popup_Black">OK</button>
+                        </div>
+                        <div class="noSponsorUploads">
+                            <button type="button" id="noAddEvents" class="ip_button_Popup_Red">CANCEL</button>
+                        </div>
+                    </div>
+            </div>
+            <input type="text" id="eveDomProvideDetails" name="eveDomProvideDetails" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>
+             </div>
+    </div>
+</div>
+</div>
+</div>
+</template>

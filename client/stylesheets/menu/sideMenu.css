@@ -1,0 +1,307 @@
+/*div for upcoming events which incude a button for upcoming events*/
+.upcomingParent {
+    width: 100%;
+    border-radius: 8px;
+    border: 0px solid;
+    color: white;
+    float: left;
+}
+
+/*css for button upcoming events*/
+.upcomingChild {
+    width: 100%;
+    background: -webkit-linear-gradient(left, #888888, #505050);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #888888, #505050);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #888888, #505050);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #888888, #505050);
+    border-radius: 5px;
+    border: 0px solid;
+    height: 32px;
+    color: white;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px #888888;
+    cursor: pointer;
+}
+
+
+/*div for past events which incude a button for past events*/
+.pastParent {
+    width: 100%;
+    border-radius: 8px;
+    border: 0px solid;
+    color: white;
+    float: left;
+    margin-top: 3px;
+}
+
+/*css for button past events*/
+.pastChild {
+    width: 100%;
+    background: -webkit-linear-gradient(left, #888888, #505050);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #888888, #505050);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #888888, #505050);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #888888, #505050);
+    border-radius: 5px;
+    border: 0px solid;
+    height: 32px;
+    color: white;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px #888888;
+    cursor: pointer;
+}
+
+/*div for my teams which incude a button for my teams*/
+.myTeamsParent {
+    width: 100%;
+    border-radius: 8px;
+    border: 0px solid;
+    color: white;
+    float: left;
+     margin-top: 3px;
+}
+
+/*css for button my teams*/
+.myTeamsChild {
+    width: 100%;
+    background: -webkit-linear-gradient(left, #888888, #505050);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #888888, #505050);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #888888, #505050);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #888888, #505050);
+    border-radius: 5px;
+    border: 0px solid;
+    height: 32px;
+    color: white;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px #888888;
+    cursor: pointer;
+}
+
+/*div for my events which incude a button for my events*/
+.myEventsParent {
+    width: 100%;
+    border-radius: 8px;
+    border: 0px solid;
+    color: white;
+    float: left;
+     margin-top: 3px;
+}
+
+/*css for button my events*/
+.myEventsChild {
+    width: 100%;
+    background: -webkit-linear-gradient(left, #888888, #505050);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #888888, #505050);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #888888, #505050);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #888888, #505050);
+    border-radius: 5px;
+    border: 0px solid;
+    height: 32px;
+    color: white;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px #888888;
+    cursor: pointer;
+}
+
+/*css for button  my events is clicked*/
+.myEventsChildActive {
+    width: 100%;
+    border-radius: 5px;
+    border: 0px solid;
+    height: 32px;
+    color: white;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px #888888;
+    background: -webkit-linear-gradient(#bfbfbf, #f2f2f2);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#bfbfbf, #f2f2f2);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#bfbfbf, #f2f2f2);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#bfbfbf, #f2f2f2);
+    color: black;
+    cursor: pointer;
+}
+
+/*div for my entries which incude a button for my entries*/
+.myEntriesParent {
+    width: 100%;
+    border-radius: 8px;
+    border: 0px solid;
+    color: white;
+    float: left;
+     margin-top: 3px;
+}
+/*css for button my entries*/
+.myEntriesChild {
+    width: 100%;
+    background: -webkit-linear-gradient(left, #888888, #505050);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #888888, #505050);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #888888, #505050);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #888888, #505050);
+    border-radius: 5px;
+    border: 0px solid;
+    height: 32px;
+    color: white;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px #888888;
+    cursor: pointer;
+}
+
+/*css for button my entries clicked*/
+.myEntriesChildActive {
+    width: 100%;
+    border-radius: 5px;
+    border: 0px solid;
+    height:32px;
+    color: white;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px #888888;
+    background: -webkit-linear-gradient(#bfbfbf, #f2f2f2);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#bfbfbf, #f2f2f2);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#bfbfbf, #f2f2f2);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#bfbfbf, #f2f2f2);
+    color: black;
+    cursor: pointer;
+}
+
+/*css for button past events clicked*/
+.pastEventsChildActive {
+    width: 100%;
+    border-radius: 5px;
+    border: 0px solid;
+    height: 32px;
+    color: white;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px #888888;
+    background: -webkit-linear-gradient(#bfbfbf, #f2f2f2);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#bfbfbf, #f2f2f2);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#bfbfbf, #f2f2f2);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#bfbfbf, #f2f2f2);
+    color: black;
+    cursor: pointer;
+}
+
+/*css for button upcoming events clicked*/
+.upcomingEventsChildActive {
+    width: 100%;
+    border-radius: 5px;
+    border: 0px solid;
+    height: 32px;
+    color: white;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px #888888;
+    background: -webkit-linear-gradient(#bfbfbf, #f2f2f2);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#bfbfbf, #f2f2f2);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#bfbfbf, #f2f2f2);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#bfbfbf, #f2f2f2);
+    color: black;
+    cursor: pointer;
+}
+
+
+/*div for create teams which incude a button to create teams*/
+.teamsParent {
+    width: 100%;
+    border-radius: 8px;
+    border: 0px solid;
+    color: white;
+    float: left;
+     margin-top: 3px;
+}
+
+/*css for button create teams*/
+.teamsChild {
+    width: 100%;
+    background: -webkit-linear-gradient(left, #888888, #505050);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #888888, #505050);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #888888, #505050);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #888888, #505050);
+    border-radius: 5px;
+    border: 0px solid;
+    height: 32px;
+    color: white;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px #888888;
+    cursor: pointer;
+}
+
+/*div for create events which incude a button to create events*/
+.eventsParent {
+    width: 100%;
+    border-radius: 8px;
+    border: 0px solid;
+    color: white;
+    float: left;
+     margin-top: 3px;
+}
+
+/*css for button create events*/
+.eventsChild {
+    width: 100%;
+    background: -webkit-linear-gradient(left, #888888, #505050);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #888888, #505050);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #888888, #505050);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #888888, #505050);
+    border-radius: 5px;
+    border: 0px solid;
+    height: 32px;
+    color: white;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px #888888;
+    cursor: pointer;
+}
+
+
+

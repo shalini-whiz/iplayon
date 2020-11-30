@@ -1,0 +1,62 @@
+<template name="manageAffId">
+	<form id="application-affiliationIdSet">
+		<div class="modal" id="manageAffId" role="dialog" data-backdrop="static">
+		    <div class="modal-dialog modal-sm">
+		      <div class="modal-content modalManage_AFFID">
+		        <div class="modal-header  modal-header-modRegAcademy" style="padding: 0px 0px;">
+		        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 headerDivAcaAct" style="padding:0px;height: 100%;">
+			        	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px;height: 100%;">
+			          		<p class="modal-title titeofregistemodalA" style="text-align: center;margin-top: 3px;color: #FFF !important;" id="addACademies">Manage Affiliation Id
+			          		</p>
+			          	</div>
+					</div>
+		        </div>
+		        <div class="modal-body  modal-body-modReg1" style="min-height:18em;">
+		         	<div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+			            <div class="row">
+			            	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 mainSelectDiv_AFFID">
+			            		<p class="pTagFirst_AFFID">Select type of first 3 charcters of affiliation Id:</p>
+			            	</div>
+			            	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 mainSelectDiv_AFFID">
+			            		<select class="selectTagFirst_AFFID" id="selectAFFIDType" name="selectAFFIDType" {{setDisbaledSave_AFFID}}>
+			            			<option disabled selected>Select</option>
+			            			<option value="DA" {{selectedTypeOnce "DA"}}>Dist. Association abrev. name</option>
+			            			<option value="SA" {{selectedTypeOnce "SA"}}>State Association abrev. name</option>
+			            			<option value="fixed" {{selectedTypeOnce "fixed"}} >Fixed Characters</option>
+			            		</select>
+			            	</div>
+			            </div>
+        			    {{first3CharIfFixed}}
+			            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px !important;margin-top:5px;display:none;" id="showFixedType">
+							<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 mainSelectDiv_AFFID" style="padding: 0px !important;">
+			            		<p class="pTagFirst_AFFID">Enter 3 characters for fixed type</p>
+			            	</div>
+			            	<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 mainSelectDiv_AFFID" style="padding: 0px !important;">
+			            		<input type="text" placeholder="3 char." class="inputFirst_AFFID" id="firsTFixedAFID" name="firsTFixedAFID" {{setDisbaledSave_AFFID}} {{setReadonlySave_AFFID}}>
+			            	</div>		            	
+			            </div>
+			        </div>
+			       
+					<div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+						<p id="setForErrors2" style="font-size:12px;color:red;"></p>
+					</div>
+			    </div>
+		        <div class="modal-footer">
+		          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+		            <div class="row">
+		              <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-right:0px !important;padding-bottom: 4px;">
+		                <button type="button" class="btn btn-default ip_button_Register_Popup" id="cancelAffIDType" data-dismiss="modal" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Cancel
+		                </button>
+		              </div>
+		              <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-left:6px !important;padding-bottom: 4px;">
+		                	<button type="submit" class="btn btn-default ip_button_Register_Popup" id="savcAffIDType"  style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" {{setDisbaledSave_AFFID}}>Save
+		                	</button>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+	 	</div>
+ </form>
+</template>

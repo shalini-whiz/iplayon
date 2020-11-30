@@ -1,0 +1,221 @@
+<!-- Teamplate to Edit Team -->
+
+<template name="editTeams">
+  <form id="teamCreation">
+        <div class="row mainContent_myEvents">
+          <div class="row-same-height">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+              <div class="mainTitle">
+                {{#each lEvent}}
+                <p class="title">
+                 Edit Team:{{this.teamName}}
+                </p>
+                {{/each}}
+                <input type="button" id="cancel" class="ip_button_LightGrey" style="order:2" value="Cancel" />
+                <input type="submit" id="save" class="ip_button_LightGrey" style="order:1" value="Save" />
+              </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:15px !important;padding-left:15px !important; margin-top: 2px;cursor:default !important;">
+            <!--0.4%-->
+                <div class="row no-gutter" style="">
+                  <div class="team">
+                    {{#each lEvent}}
+                    <input type="text" name="eventName" onfocus="this.blur()" value="{{this.teamName}}" readonly id="teamName" placeholder="Team Name" class="teamTitle" style="cursor:default !important;">
+                    {{/each}}
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 "  style="padding-right:0px !important;padding-left:0px !important;">
+          <!--0.4%-->
+                <div class="row no-gutter" style="">
+                  <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3"  style="padding-right:0px !important;padding-left:15px !important;">
+                    <div class="gamesParentEditTeams">
+                      <div class="games">
+                        {{#each lEvent}}
+                          <input type="text" id="sportName" onfocus="this.blur()" name="projectName" value={{this.projectName}} class="gamesSelectForEditTeam" readonly>
+                        {{/each}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9"  style="padding-right:15px !important;padding-left:1px !important;margin-top:2px;cursor:pointer!important;">
+                  <div class="domainEditTeam">
+                    <dl class="dropdownSelectedDomains"> 
+                      <dt>
+                        <a href="#" id="venuesSelected">
+                          {{#each lEvent}}
+                           <!--   <span class="hida">{{this.venues}}</span>   -->
+                          {{/each}}
+                          <p class="multiSel" id="domain" >
+                            {{#each lVenues}}
+                                <span title="{{this}}" id="venuesSelected">{{this}},</span>   
+                            {{/each}}
+                          </p> 
+                        </a>
+                      </dt>
+                      <dd>
+                        <div class="mutliSelect">
+                          <ul id="venue" >
+                            <!-- For each Domain name Provide a checkbox  -->
+                            {{#each lDomainName}}
+                              <li id="venuesSelected">
+                                <!--  & nbsp; is used for the space between check box and Venue -->
+                                <!-- If the Venue is already a part of venues in team then check,otherwise leave it uncheked -->
+                                {{#if checkVenue this.domainName}}
+                                  {{this.domainName}} <input id="venuesSelected" type="checkbox" value={{this.domainName}} name="domainName" checked="checked" />  
+                                {{else}}
+                                  {{this.domainName}} <input id="venuesSelected" type="checkbox" value={{this.domainName}} name="domainName"/>  
+                                {{/if}} 
+                              </li>
+                            {{/each}}
+                          </ul>
+                        </div>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+                </div>
+              </div>
+              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="height: 10.6em; margin-top:2px; padding-right:0px !important;padding-left:15px !important;">
+                <div class="row no-gutter" style="">
+                  <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="height: 10.6em;padding-right:0px !important;padding-left:0px !important;">
+                    <div class="row no-gutter" style="">
+                      <div id="sponsor" class="sponsor">
+                        <img src="/6.jpg" class="sponImg" id="sponImg"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-9 col-xs-9 col-sm-9 col-lg-9" style="height: 10.6em;">
+                    <div class="row no-gutter" style="height: 10.6em;padding-left: 2px !important;">
+                      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:0px!important; padding-right:15px!important;">
+                          <input id="searchUserEditTeam" class="form-control typeahead {{searchResults}}" name="team" type="text" placeholder="Type Name" autocomplete="off" spellcheck="off" data-sets="domains" style="background-color:#808080;cursor: auto!important;"   />
+                          {{#if searchResults}}
+                            <div class="searchResults" style="left: 0px; z-index: 100; display: block; position: absolute;background:white;width:97%;">
+                            {{#each searchResults}}
+                              <div id="{{this._id}}" class="addIcon">
+                                <h12  style="cursor:pointer!important" id="{{this._id}}" value="{{this.userName}}">{{this.userName}}</h12>
+                              </div>
+                            {{/each}}
+                           </div>
+                          {{/if}}
+                        <div class="addedUsersEditTeam addedUsers" style="height:88% !important">
+                           <div type="text"  class="scrollAdd" id="addedUsers"  style="height:8em; margin-top:2px!important;">
+                         {{#each lTeamMember}}
+                            <!-- Eye-Icon,that when clicked upon displays "I-am-away-from details" -->
+                            <!--<input type="button" class="eyeIconEditTeam" id="{{this._id}}deleteeye"/>-->
+                            <span style ="color:#770000;font-size: 22px;top:0%;margin-top:2%;padding-top:0%; transform: rotate(0deg);cursor: pointer;background :none" class="glyphicon glyphicon-eye-open eyeIconEditTeam" id="{{this._id}}deleteeye"></span>
+                            <!-- User-Name -->
+                            {{#if checkManager this._id}}
+                              <h12 class="userEditTeam" id="{{this._id}}deleteuser" style="color:white;background:url(/star_shadow_trans.png) no-repeat scroll 98% 50% #B0B0B0;
+                               background-size: 9% 77%, 5% auto;height: 34px;">&nbsp;&nbsp;{{this.userName}}</h12>
+                            {{else}}
+                              <h12 class="userEditTeam" id="{{this._id}}deleteuser" style="color:white;">&nbsp;&nbsp;{{this.userName}}</h12>
+                            {{/if}}
+                            <!-- If that particular user is the manager of the team then,display yellow star -->
+                            {{#if checkManager this._id}}
+                             <!-- <img src="/star_shadow.png" id="{{this._id}}deleteStar" class="selectSubDomainsEditTeamManager" />-->
+                              <!--  <span id="{{this._id}}deleteStar" class="selectSubDomainsEditTeam" style="font-size:200%;color:YELLOW;">&bigstar;</span>-->
+                            <!-- If that particular user is not the manager of the team then,display grey star -->
+                            {{else}}
+                              <!--  <img src="/star-xxl.png" id="{{this._id}}deleteStar" class="selectSubDomainsEditTeam" />-->
+                             <!-- <span class="selectSubDomainsEditTeam" id="{{this._id}}deleteStar" style="font-size:200%;color:#b3b3b3;">&star;</span>-->
+                             <!-- <img src="/star-xxl.png" id="{{this._id}}deleteStar" class="selectSubDomainsEditTeam" />-->
+                            {{/if}}
+                            <!-- Delete Cross -->
+                            {{#if checkManager this._id}}
+                              <!--  <<input type="button" class="deleteIconEditTeamManager" id="{{this._id}}delete"/>-->
+                              <span style ="color: grey; font-size: 22px; transform: rotate(0deg);  background: none repeat scroll 0% 0% transparent; margin-top: 1.5%;margin-right:7%" class="glyphicon glyphicon-remove deleteIconEditTeamManager"  id="{{this._id}}delete"></span>                 
+                              
+                            {{else}}
+                              <!--  <input type="button" class="deleteIconEditTeam" id="{{this._id}}delete"/>-->
+                              <span style ="color: rgb(119, 0, 0); font-size: 22px; transform: rotate(0deg); cursor: pointer; background: none repeat scroll 0% 0% transparent; margin-top: 0.5%;margin-right:7%" class="glyphicon glyphicon-remove deleteIconEditTeam"  id="{{this._id}}delete"></span>                 
+                            {{/if}}
+                         {{/each}}
+                         {{#each lTeamMemberResigned}}
+                            
+
+                         {{/each}}
+                         </div>
+                       </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      {{> aboutTeam}}
+      {{> userOnlineStatus}}
+      {{>changeManager}}
+      <!-- Pop-up to confirm the delete -->
+      {{>confirm}}
+      {{> confirmOk}}{{>errorPopup}}
+  </form>
+</template>
+  
+<!-- Teamplate to Change the Manager of the team -->
+<template name="changeManager">
+  <div class="modal fade" id="animalsModalChangeManager">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header editTeamChangeManager">
+        </div>
+        <div class="modal-body">
+          <img  src="/cropped-Letter-O-icon.png" class="iconBusy" alt="Phone">
+          <label for="name" id="onlineText"> I am away from <span class="bold">{{ iAmAwayFrom }}</span> to <span class="bold">{{ iAmAwayTo }}</span></label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="okButton okButtonChangeManager" id="okChangeManager">OK</button>
+          <button type="button" class="okButton cancelButtonChangeManager" id="cancelChangeManager">CANCEL</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- Teamplate to Display User-Name Predictions -->
+<!--<template name="team">
+  <div id={{_id}}>
+    <h12 class="addIcon" id={{_id}} value={{userName}}>{{userName}}</h12>
+  </div>
+</template>-->
+
+<!-- Teamplate to Upload Team details -->
+<!--<template name="aboutTeam">
+  <form id="sponsorDetails">
+    <div class="modal fade" id="uploadModal">
+      <div class="modal-dialog modal-sm1">
+        <div class="modal-content1">
+          <div class="popup">
+            <div class="modal-body">
+               <a href="" id="popupClose" class="sponsorPopupClose">X</a>
+               <div class="popupContent">
+                 <div class="file-upload-cont">
+                   <input id="sponsorLogo" name="sponsorLogo" class="sponsorLogo" accept="image/*" type="file"/>
+                 </div>
+                 <a href=""><img name="sponsorLogo" src="/icon-camera-128.png" class="my-button" alt="browse"></a>
+                 <div>
+                   <input class="overlay" id="sponsorLogoName" name="sponsorLogoName" readonly placeholder="{{logoFileName}}"/>
+                 </div>
+                 <div class="file-upload-cont1">
+                   <input id="sponsorPdf" accept="application/pdf"  class="sponsorPdf" name="sponsorPdf" type="file"/>
+                 </div>
+                 <img  src="/1448383215_hard-drive-upload_red.ico" class="my-button1" alt="browse">
+                 <div>
+                   <input class="overlay1" id="sponsorPdfName" readonly placeholder="{{logoPdfName}}"/>
+                 </div>
+               
+                 <div>
+                   <button type="submit" class="upload" id="sponsorUpload">Upload</button>
+                 </div>
+                 <div>
+                   <button type="button" class="cancel" id="sponsorCanceled" >Cancel</button>
+                 </div>
+                 <div id="errorClass" class="errorClass"></div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </form>
+ </template>-->

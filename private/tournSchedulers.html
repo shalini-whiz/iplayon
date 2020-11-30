@@ -1,0 +1,145 @@
+
+
+{{{getDocType}}}
+<html lang="en">
+   <head>
+      <style type="text/css">
+         {{css}}
+      </style>
+   </head>
+   <body>
+      <div class="container">
+         <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+            <img src="{{imageURL}}/logo.png"  style="width:90%;height:12%;float:left;margin:0px !important;margin-top:-3px !important;border:0"/>
+         </div>
+         <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8" style="padding:0px!important;">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+               <p class="pclassPDFHeading" style="">Tournament Schedule</p>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+               <p class="pclassPDFHeading" style="">{{tournamentName_team}}</p>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+               <p class="pclassPDFHeading2" style="margin-top:0px;">held at <!--{{venueAddress_team}},-->{{domainName_team}}</p>
+            </div>
+            {{#if eventName_team}}
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+               <p class="pclassPDFHeading2" style="margin-top:0px;">{{eventDate_team}}</p>
+            </div>
+            {{else}}
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+               <p class="pclassPDFHeading2" style="margin-top:0px;">{{eventDate_team}}</p>
+            </div>
+            {{/if}}
+         </div>
+         {{#if get5sImage}}
+         <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+            {{#if get5sImage.url}}
+            <img src="{{imageURL}}{{get5sImage.url}}" style="width:94%;height:14%;float:right;margin:0px !important;margin-top:-3px !important;border:0"/>
+            {{/if}}
+         </div>
+         {{/if}}
+      </div>
+      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+         margin-top: 10px;width:100%;
+         ">
+         <table style="width:100%;border-spacing: 0;margin-top:5px;" id="tblOne" class="table table-fixed table-striped ">
+            <thead style="border: 1px solid white;">
+               <tr style="border-spacing: 0;" class="">
+                  <th style="border-spacing: 0;font-size:15px!important;;width:100px;" class="AnalyticsTable_PlayerSeq">&nbsp;&nbsp;Event&nbsp;&nbsp;</th>
+                  <th style="border-spacing: 0;font-size:15px!important;width:120px!important;" class="AnalyticsTable_PlayerSeq">&nbsp;&nbsp;Date&nbsp;&nbsp;</th>
+                  <th style="border-spacing: 0;font-size:15px!important;" class="AnalyticsTable_PlayerSeq">&nbsp;&nbsp;Match&nbsp;&nbsp;</th>
+                  <th style="border-spacing: 0;font-size:15px!important;width:120px;" class="AnalyticsTable_PlayerSeq">&nbsp;&nbsp;Start &nbsp;&nbsp;</th>
+                  <th style="border-spacing: 0;font-size:15px!important;" class="AnalyticsTable_PlayerSeq">&nbsp;&nbsp;Round&nbsp;&nbsp;</th>
+                  <th style="border-spacing: 0;font-size:15px!important;" class="AnalyticsTable_PlayerSeq">&nbsp;&nbsp;Table&nbsp;&nbsp;</th>
+                  <th style="border-spacing: 0;font-size:15px!important;width:120px;" class="AnalyticsTable_PlayerSeq">&nbsp;&nbsp;A&nbsp;&nbsp;</th>
+                  <th style="border-spacing: 0;font-size:15px!important;" class="AnalyticsTable_PlayerSeq">&nbsp;&nbsp;B&nbsp;&nbsp;</th>
+                  <th style="border-spacing: 0;font-size:15px!important;width:100px;" class="AnalyticsTable_PlayerSeq">&nbsp;&nbsp;Result&nbsp;&nbsp;</th>
+               </tr>
+               <div style="height:8px;"><br><br><br>
+                  <br><br><br>
+                  <br><br><br></div>
+            </thead>
+            <tfoot style="border: 1px solid white;">
+              <tr style="border-spacing: 0;border: 0px solid white;">
+                <td style="border-spacing: 0;border: 0px solid white!important;font-size:10px;"></td>
+                <td style="border-spacing: 0;border: 0px solid white!important;font-size:10px;"></td>
+                <td style="border-spacing: 0;border: 0px solid white!important;font-size:10px;"></td>
+                <td style="border-spacing: 0;border: 0px solid white!important;font-size:10px;"></td>
+                <td style="border-spacing: 0;border: 0px solid white!important;font-size:10px;"></td>
+                <td style="border-spacing: 0;border: 0px solid white!important;font-size:10px;"></td>
+                <td style="border-spacing: 0;border: 0px solid white!important;font-size:10px;"></td>
+                <td style="border-spacing: 0;border: 0px solid white!important;font-size:10px;text-align:right;">Powered by </td>
+                <td style="border-spacing: 0;border: 0px solid white!important;font-size:10px;;text-align:left"> &nbsp;IplayOn</td>
+              </tr>
+            </tfoot>
+            <tbody class="" style="border-spacing: 0;">
+               {{#each editData}}
+               <tr class="" id="allStrokesTable" style="border-spacing: 0;">
+                  <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;font-size:13px!important;">
+                     <br>
+                     <p style="width:100%;margin-top:5px;margin-bottom:5px;">&nbsp; {{eventAbb}} &nbsp;</p>
+                  </td>
+                  <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;font-size:13px!important;">
+                     <br>
+                     <p style="width:100%;margin-top:5px;margin-bottom:5px;">&nbsp; {{this.sc.dateOfEvent}} &nbsp;</p>
+                  </td>
+                  <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;font-size:13px!important;">
+                     <br>
+                     <p style="width:100%;margin-top:5px;margin-bottom:5px;">&nbsp; {{this.sc.match}} &nbsp;</p>
+                  </td>
+                  <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;font-size:13px!important;">
+                     <br>
+                     <p style="width:100%;margin-top:5px;margin-bottom:5px;">&nbsp;
+                        {{checkzeroTime}}&nbsp;</p>
+                  </td>
+                  <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;font-size:13px!important;">
+                     <br>
+                     <p style="width:100%;margin-top:5px;margin-bottom:5px;">&nbsp; {{this.sc.round}} &nbsp;</p>
+                  </td>
+                  <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;font-size:13px!important;">
+                     <br>
+                     <p style="width:100%;margin-top:5px;margin-bottom:5px;">&nbsp;{{checkzeroTable}}&nbsp;</p>
+                  </td>
+                  {{#each matchCollectionData2}}
+                  <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;font-size:13px!important;">
+                     <br>
+                     <p style="width:100%;margin-top:5px;margin-bottom:5px;">&nbsp;
+                        {{findDetailsUsersSchedule this.playerA}}
+                        {{#if playerWinners this.status this.playerA this.playerB this.winnerId}}
+                           <span>
+                              <img src="{{imageURL}}/if_trophy_45539.png"  style="width:20px;height:20px;border:0"/>
+                           </span>
+                        {{/if}}
+                        &nbsp;
+                     </p>
+                  </td>
+                  <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;font-size:13px!important;">
+                     <br>
+                     <p style="width:100%;margin-top:5px;margin-bottom:5px;">&nbsp;
+                        {{findDetailsUsersSchedule this.playerB}}
+                        {{#if playerWinners this.status this.playerB this.playerA this.winnerId}}
+                           <span>
+                              <img src="{{imageURL}}/if_trophy_45539.png"  style="width:20px;height:20px;border:0"/>
+                           </span>
+                        {{/if}}
+                        &nbsp;
+                     </p>
+                  </td>
+                  <td class="AnalyticsTableRow_PlayerSeq" style="background:{{backgroundDiv rowIndex}} !important;border-spacing: 0;font-size:13px!important;">
+                     <br>
+                     <p style="width:100%;margin-top:5px;margin-bottom:5px;">&nbsp;
+                        {{scoresOfMatch this.scoresA this.scoresB this.status this.playerA this.playerB this.winnerId}}
+                     </p>
+                  </td>
+                  {{/each}}
+               </tr>
+               {{/each}}
+            </tbody>
+         </table>
+      </div>
+
+
+   </body>
+</html>
+

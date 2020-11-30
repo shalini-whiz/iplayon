@@ -1,0 +1,294 @@
+#projectNameMyEntries{
+	width:100%;
+	padding-left:0.5%;
+}
+
+#domainNameMyEntries{
+	width:100%;
+}
+
+.eventName_myTdChild_team{
+	            width:100%;
+				background:#00cacc;
+				border-radius: 5px;
+			  	border: 0px solid;
+			  	height:2.9em;
+			  	color:black;
+			  	float: left;
+			  	font-size:11px;
+			  	cursor: pointer;
+			  	text-align:center;			  	
+}
+.eventPlace_myTdChild_team{
+	            width:100%;
+				background:#00cacc;
+				border-radius: 5px;
+			  	border: 0px solid;
+			  	height:2.9em;
+			  	color:black;
+			  	float: left;
+			  	font-size:11px;
+			  	cursor: pointer;
+			  	text-align:center;	
+}
+
+.eventName_myTdChild_teamManager{
+	            width:100%;
+				background:#ffcc99;
+				border-radius: 5px;
+			  	border: 0px solid;
+			  	height:2.9em;
+			  	color:black;
+			  	float: left;
+			  	font-size:11px;
+			  	cursor: pointer;
+			  	text-align:center;
+}
+
+.eventPlace_myTdChild_teamManager{
+	            width:100%;
+				background:#ffcc99;
+				border-radius: 5px;
+			  	border: 0px solid;
+			  	height:2.9em;
+			  	color:black;
+			  	float: left;
+			  	font-size:11px;
+			  	cursor: pointer;
+			  	text-align:center;	
+}
+
+.myEntriesChildActive{
+	width:100%;
+	border-radius: 5px;
+	border: 0px solid;
+	height:2.5em;
+    color:white;
+    float: left;
+	font-size:12px;
+	font-weight: bold;
+	box-shadow: 1px 1px 2px #888888;
+	background: -webkit-linear-gradient(#bfbfbf, #f2f2f2); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#bfbfbf, #f2f2f2); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#bfbfbf, #f2f2f2); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#bfbfbf, #f2f2f2);
+    color: black;
+	cursor: pointer;
+}
+
+.confirmHeaderMyEntires{
+	background: #b30000;
+	color: white;
+	font-size: 13px;
+	text-align: left;
+	height: 3.5em;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+  	border: 0px solid;
+  	padding-top: 8px;
+	font-weight: bold;
+	background: black none repeat scroll 0% 0%;
+}
+.yesButtonTeam{
+	background: -webkit-linear-gradient(left, #000000, #686868);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #000000, #686868);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #000000, #686868);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #000000, #686868);
+    /* Standard syntax (must be last) */
+    border-radius: 5px;
+    border: 0px solid;
+    height: 24px;
+    width: 75px;
+    right: 1%;
+    left: 20%;
+    color: white;
+    -moz-box-shadow: 0 0 10px #000;
+    -webkit-box-shadow: 0 0 10px;
+    box-shadow: 1px 1px 2px grey;
+    font-size: 12px;
+}
+
+.yesButtonTeamManager{
+   background: -webkit-linear-gradient(left, #000000, #686868);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #000000, #686868);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #000000, #686868);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #000000, #686868);
+    /* Standard syntax (must be last) */
+    border-radius: 5px;
+    border: 0px solid;
+    height: 24px;
+    width: 75px;
+    right: 1%;
+    left: 20%;
+    color: white;
+    -moz-box-shadow: 0 0 10px #000;
+    -webkit-box-shadow: 0 0 10px;
+    box-shadow: 1px 1px 2px grey;
+    font-size: 12px;
+	
+}
+
+.eventName_myTdChild_red{
+	width:100%;
+	background:#B0B0B0;
+	border-radius: 5px;
+    border: 0px solid;
+	height:2.9em;
+	color:maroon;
+	float: left;
+    font-size:11px;
+	cursor: pointer;
+}
+
+.eventName_myTdChild_teamManager_red{
+	            width:100%;
+				background:#ffcc99;
+				border-radius: 5px;
+			  	border: 0px solid;
+			  	height:2.9em;
+			  	color:maroon;
+			  	float: left;
+			  	font-size:11px;
+			  	cursor: pointer;
+			  	text-align:center;	
+}
+
+.eventName_myTdChild_team_red{
+		        width:100%;
+				background:#00cacc;
+				border-radius: 5px;
+			  	border: 0px solid;
+			  	height:2.9em;
+			  	color:maroon;
+			  	float: left;
+			  	font-size:11px;
+			  	cursor: pointer;
+			  	text-align:center;
+	
+}
+.eventPlace_myTdChild_red{
+	            width:100%;
+				background:#B0B0B0;
+				border-radius: 5px;
+			  	border: 0px solid;
+			  	height:2.9em;
+			  	color:maroon;
+			  	float: left;
+			  	font-size:11px;
+			  	cursor: pointer;
+}
+.eventPlace_myTdChild_teamManager_red{
+		        width:100%;
+				background:#ffcc99;
+				border-radius: 5px;
+			  	border: 0px solid;
+			  	height:2.9em;
+			  	color:maroon;
+			  	float: left;
+			  	font-size:11px;
+			  	cursor: pointer;
+			  	text-align:center;	
+}
+.eventPlace_myTdChild_team_red{
+		        width:100%;
+				background:#00cacc;
+				border-radius: 5px;
+			  	border: 0px solid;
+			  	height:2.9em;
+			  	color:maroon;
+			  	float: left;
+			  	font-size:11px;
+			  	cursor: pointer;
+			  	text-align:center;	
+}
+.eventDate_myTdChild_red{
+	            width:100%;
+			  	background:#B0B0B0;
+				border-radius: 5px;
+			  	border: 0px solid;
+			  	height:2.9em;
+			  	color:maroon;
+			  	float: left;
+			  	font-size:11px;
+			  	cursor: default;		
+			  	text-align: center;
+}
+.eventName_myTdChild_teamManager_red{
+		        width:100%;
+				background:#ffcc99;
+				border-radius: 5px;
+			  	border: 0px solid;
+			  	height:2.9em;
+			  	color:maroon;
+			  	float: left;
+			  	font-size:11px;
+			  	cursor: pointer;
+			  	text-align:center;
+}
+.eventName_myTdChild_team_red{
+		        width:100%;
+				background:#00cacc;
+				border-radius: 5px;
+			  	border: 0px solid;
+			  	height:2.9em;
+			  	color:maroon;
+			  	float: left;
+			  	font-size:11px;
+			  	cursor: pointer;
+			  	text-align:center;
+}
+
+
+#moreNavPopover_eventName_myTdChild_teamManager_red.open,#moreNavPopover_eventName_myTdChild_teamManager.open,#moreNavPopover_eventName_myTdChild_team_red.open,#moreNavPopover_eventName_myTdChild_team.open,.popover.open {
+	position:relative;
+    background-size: 30px;
+    background-height: 16px;
+    background-position: 93% 0%;
+    color: #fff;
+    z-index: 1;
+    /*width: 169%;*/
+    display:block;
+    /*margin-top:15%;*/
+    margin-left:6%;
+}
+
+/* css of unordered list of userDropDown
+*/
+#moreNavPopover_eventName_myTdChild_teamManager_red ul,#moreNavPopover_eventName_myTdChild_teamManager ul,#moreNavPopover_eventName_myTdChild_team_red ul,#moreNavPopover_eventName_myTdChild_team ul,.popover ul {
+    position:relative;
+    top: 100%;
+    left: 41%;
+    /* move content -4px because of container left border */
+    width: 54%;
+    padding: 0px 0px;
+    display: none;
+    background: none;
+    margin-top: 28px;
+    list-style-type: none;
+}
+
+/* css of li of unordered list of userDropDown
+*/
+#moreNavPopover_eventName_myTdChild_teamManager_red ul li,#moreNavPopover_eventName_myTdChild_teamManager ul li,#moreNavPopover_eventName_myTdChild_team_red ul li,#moreNavPopover_eventName_myTdChild_team ul li,.popover ul li {
+    font-size: 12px;
+    width:207%;
+    padding:5%;
+    background: rgb(176,176,176);
+    border:1px solid #999999;
+}
+
+#moreNavPopover_eventName_myTdChild_teamManager_red ul li a,#moreNavPopover_eventName_myTdChild_teamManager ul li a,#moreNavPopover_eventName_myTdChild_team_red li a,#moreNavPopover_eventName_myTdChild_team li a,.popover li a{
+    color:white;
+}
+
+.popover{
+	box-shadow:none;
+	border:none;
+	background:none;
+}

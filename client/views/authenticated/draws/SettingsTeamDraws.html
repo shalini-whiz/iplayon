@@ -1,0 +1,225 @@
+<template name="SettingsTeamDraws">
+    <form id="application-SettingsTeamDraws">
+        <div class="modal" id="SettingsTeamDraws" aria-hidden="true">
+            <div id="subDomainCenter" class="modal-dialog eventAddTourModal-sm" style="width:400px !important;">
+                <div class="eventAddTourPopup" style="width:400px !important;">
+                    <div class="modal-content">
+                        <div class="modal-header loginHeaderIplayon" style="background-color: #000;">
+                            <p class="modal-title loginHeadeIplayonPTag" style="">Team settings and scores
+                            </p>
+                            <span style="margin: -6px 0px 0px; font-size: 22px; color: white; cursor: pointer;" id="closeTeamPopupIplayonMain">x</span>
+                        </div>
+                        <div class="modal-body subDomainModalBody" style="padding:15px !important;min-height:5em;">
+                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important">
+                                <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding:0px !important">
+                                    <p href="" style="font-size:15px;text-decoration:underline;cursor:pointer;text-align:center;margin:0px;color:green;" id="viewTeamSpecification">Team Specifications</p>
+                                </div>
+                                <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding:0px !important">
+                                    <p href="" style="font-size:15px;text-decoration:underline;cursor:pointer;text-align:center;margin:0px;color:green;" id="viewDetailedScore">Detailed Scores</p>
+                                </div>
+                            </div>
+                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height:1.5em !important;">
+                                <p style="font-size:12px;color:red;cursor:default;" id="editSettingsPopupError"></p>
+                                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</template>
+
+<template name="teamSpecFormModal">
+    <form id="application-teamSpecFormModal">
+        <div class="modal" id="teamSpecFormModal" aria-hidden="true">
+            <div id="subDomainCenter" class="modal-dialog eventAddTourModal-sm" style="width:400px !important;">
+                <div class="eventAddTourPopup" style="width:400px !important;">
+                    <div class="modal-content" style="  position: relative;display:table;overflow-y: auto;width:100%;">
+                        <!--div class="modal-header headerClass">
+                            <h5 class="modal-title myModalLabel" id="myModalLabel">Team Specifications</h5>
+                        </div-->
+                        <div class="modal-header loginHeaderIplayon" style="background-color: #000;">
+                            <p class="modal-title loginHeadeIplayonPTag" style="">Team Specifications
+                            </p>
+                            <span style="margin: -6px 0px 0px; font-size: 22px; color: white; cursor: pointer;" id="closeTeamPopupIplayon">x</span>
+                        </div>
+                        <div class="modal-body subDomainModalBody" style="padding:15px !important;min-height:5em;padding: 15px !important;min-height: 5em;height: 25em;overflow-y: auto;">
+                            <!--team A-->
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important">
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important">
+                                    <p href="" style="font-size:15px;margin:0px;color:green;" id="viewTeamSpecification">Team A: {{getTeamNames.teamA}}</p>
+                                </div>
+                                <!--player A-->
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;padding-top: 5px !important;">
+                                    <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding:0px !important;padding-right:5px !important;">
+                                        <label style="font-size:12px;margin:0px;color:black;">Player A:</label>
+                                    </div>
+                                    <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding:0px !important;padding-left:5px;">
+                                        <select style="font-size:12px;margin:0px;color:black;width:100%" id="teamAPlayerA" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+                                            <option value="1" selected>Select Player</option>
+                                            {{#each getTeamPlayersListTeamA teamIDA}}
+                                            <option value="{{this.userId}}" selected={{checkSavedSpecPlayerATeamA}}>{{this.userName}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--player B-->
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;padding-top: 5px !important;">
+                                    <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding:0px !important;padding-right:5px !important;" >
+                                        <label style="font-size:12px;margin:0px;color:black;">Player B:</label>
+                                    </div>
+                                    <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding:0px !important;padding-left:5px;">
+                                        <select style="font-size:12px;margin:0px;color:black;width:100%" id="teamAPlayerB" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+                                            <option value="1" selected>Select Player</option>
+                                            {{#each getTeamPlayersListTeamA teamIDA}}
+                                            <option value="{{this.userId}}" selected={{checkSavedSpecPlayerBTeamA}}>{{this.userName}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--doub1 -->
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;padding-top: 5px !important;">
+                                    <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding:0px !important;padding-right:5px !important;">
+                                        <label style="font-size:12px;margin:0px;color:black;">Doubles-1:</label>
+                                    </div>
+                                    <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding:0px !important;padding-left:5px;">
+                                        <select style="font-size:12px;margin:0px;color:black;width:100%" id="teamAPlayerADoub" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+                                            <option value="1" selected>Select Player</option>
+                                            {{#each getTeamPlayersListTeamA teamIDA}}
+                                            <option value="{{this.userId}}" selected={{checkSavedSpecPlayerATeamADoubles}}>{{this.userName}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--doub2 -->
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;padding-top: 5px !important;">
+                                    <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding:0px !important;padding-right:5px !important;">
+                                        <label style="font-size:12px;margin:0px;color:black;">Doubles-2:</label>
+                                    </div>
+                                    <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding:0px !important;padding-left:5px;">
+                                        <select style="font-size:12px;margin:0px;color:black;width:100%" id="teamAPlayerBDoub" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+                                            <option value="1" selected>Select Player</option>
+                                            {{#each getTeamPlayersListTeamA teamIDA}}
+                                            <option value="{{this.userId}}" selected={{checkSavedSpecPlayerBTeamADoubles}}>{{this.userName}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--team B-->
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;margin-top:5px;">
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important">
+                                    <p href="" style="font-size:15px;margin:0px;color:green;" id="viewTeamSpecification">Team B: {{getTeamNames.teamB}}</p>
+                                </div>
+                                <!--player A-->
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;padding-top: 5px !important;">
+                                    <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding:0px !important;padding-right:5px !important;">
+                                        <label style="font-size:12px;margin:0px;color:black;">Player X:</label>
+                                    </div>
+                                    <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding:0px !important;padding-left:5px;">
+                                        <select style="font-size:12px;margin:0px;color:black;width:100%" id="teamBPlayerA" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+                                            <option value="1" selected>Select Player</option>
+                                            {{#each getTeamPlayersListTeamB teamIDB}}
+                                            <option value="{{this.userId}}" selected={{checkSavedSpecPlayerATeamB}}>{{this.userName}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--player B-->
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;padding-top: 5px !important;">
+                                    <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding:0px !important;padding-right:5px !important;">
+                                        <label style="font-size:12px;margin:0px;color:black;">Player Y:</label>
+                                    </div>
+                                    <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding:0px !important;padding-left:5px;">
+                                        <select style="font-size:12px;margin:0px;color:black;width:100%" id="teamBPlayerB" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+                                            <option value="1" selected>Select Player</option>
+                                            {{#each getTeamPlayersListTeamB teamIDB}}
+                                            <option value="{{this.userId}}" selected={{checkSavedSpecPlayerBTeamB}}>{{this.userName}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--doub1 -->
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;padding-top: 5px !important;">
+                                    <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding:0px !important;padding-right:5px !important;">
+                                        <label style="font-size:12px;margin:0px;color:black;">Doubles-1:</label>
+                                    </div>
+                                    <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding:0px !important;padding-left:5px;">
+                                        <select style="font-size:12px;margin:0px;color:black;width:100%" id="teamBPlayerADoub" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+                                            <option value="1" selected>Select Player</option >
+                                            {{#each getTeamPlayersListTeamB teamIDB}}
+                                            <option value="{{this.userId}}" selected={{checkSavedSpecPlayerATeamBDoubles}}>{{this.userName}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--doub2 -->
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;padding-top: 5px !important;">
+                                    <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding:0px !important;padding-right:5px !important;">
+                                        <label style="font-size:12px;margin:0px;color:black;">Doubles-2:</label>
+                                    </div>
+                                    <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding:0px !important;padding-left:5px;">
+                                        <select style="font-size:12px;margin:0px;color:black;width:100%" id="teamBPlayerBDoub" readonly="{{readonlyForViewers}}" disabled="{{readonlyForViewers}}">
+                                            <option value="1" selected>Select Player</option>
+                                            {{#each getTeamPlayersListTeamB teamIDB}}
+                                            <option value="{{this.userId}}" selected={{checkSavedSpecPlayerBTeamBDoubles}}>{{this.userName}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height:auto !important;">
+                                <p style="font-size:12px;color:red;cursor:default;text-align: left;" id="TeamSpecErrorShow"></p>
+                                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+                            </div>
+                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-right:0px !important;padding-bottom: 4px;">
+                                <div class="row">
+                                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 ">
+                                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 ">
+                                        </div>
+                                        <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 " style='text-align:center;'>
+                                            {{#if checkOnlyEventOrganizer}}
+                                                {{#if checkLockStatusSet lockStatus}}
+                                                    <button type="submit" class="ip_button_Popup_Black" id="saveTeamSpecForm" style="">Set
+                                                    </button>
+
+                                                    <button type="button" class="ip_button_Popup_Red" id="cancelTeamSpecForm" >Cancel
+                                                    </button>
+                           
+                                                {{else}}
+                                                   <button type="button" class="ip_button_Popup_Red" id="cancelTeamSpecForm" >Ok
+                                                </button>
+                         
+                                                {{/if}}
+
+                                                
+                                                
+                                                {{else}}
+                                                <button type="button" class="ip_button_Popup_Red" id="cancelTeamSpecForm" >Ok
+                                                </button>
+                                            {{/if}}
+                                        </div>
+                                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--div class="row no-gutter col-md-6 col-xs-6 col-sm-6 col-lg-6" style="">
+                                <div class="checkAcceptTerms" style="height: 2.4em !important;">
+                                    <input value="" name="checkAcceptbox" id="checkAcceptboxTweett" class="checkboxAccept" checked="" type="checkbox">
+                                    <p class="downloadAcceptTitle" style="margin-top: 0px; margin-left: 0px; color: rgb(88, 88, 88);"><span style="color: rgb(0, 172, 237); font-size: 14px ! important; margin-top: 3px; cursor: default; margin-left: 5px;" class="fa fa-twitter" aria-hidden="true">Auto Tweet</span>
+                                    </p>
+                                </div>
+                            </div-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</template>

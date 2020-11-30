@@ -1,0 +1,215 @@
+<template name="playerAnalyticsRectChart">
+    <div style="background:#fff !important;height:auto;padding:0px !important;" class="container">
+        <div class="row navigationBar navbar-fixed-top" style="border:0px !important;border-radius:0px !important;margin:0px;background: none repeat scroll 0% 0% {{backGroundColor}} !important;height:{{heightOfNavBar}}">
+            <div class="">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 0px !important;height: 37px !important;background: none repeat scroll 0% 0% #0297DB !important;">
+                    <!--div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">                       
+                    </div-->
+                    <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1" style="text-align:left;padding:5px;">
+                        <span style="font-size: 23px !important;font-weight: bold !important;color:white!important;" class="websiteHeader">iPlayOn</span>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="text-align:left;font-size: 14px !important;">
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding:0px !important;width: 2% !important;">
+                            <span class="websiteHeader" style="font-size: 16px ! important; margin-top: 14px ! important; font-weight: bold; color: white;">|</span>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding:0px !important;">
+                            <span class="websiteHeader" style="font-size: 13px ! important; margin-top: 18px ! important; color: white; margin-left: 4px;">
+                            Draws Analysis</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px; height: 60px; background: none repeat scroll 0% 0% #EC971F;">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 playerAnalyticsSubDiv">
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 playerAnalyticsSubDiv">
+                            <p class="playerAnalyticsPtag">Select Event</p>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+                            <p class="playerAnalyticsPtag">Select Player1</p>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+                            <p class="playerAnalyticsPtag">Select Player2</p>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 playerAnalyticsSubDiv">
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 playerAnalyticsSubDiv">
+                            <select class="playerAnalyticsSelectBox" id="selectEventPlayerAnalytics">
+                                <option selected disaled>Select Event</option>
+                                {{#each sportsDetails}} {{#if checkForSingleEvents this.projectType}}
+                                <option value={{this.projectName}}>{{this.projectName}}</option>
+                                {{/if}} {{/each}}
+                            </select>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+                            <!--{{#if selectedPlayer1Display}}
+                            {{#each selectedPlayer1Display}}
+                            <input type="text" placeholder="Type Player1 Name" class="playerAnalyticsInputBox" id="searchUser1ForPA" value="{{this.userName}}"> 
+                            {{/each}}
+                            {{else}}-->
+                            <input type="text" placeholder="Type Player1 Name" class="playerAnalyticsInputBox" id="searchUser1ForPA">
+                            <!--{{/if}}-->
+                            {{#if player1SearchResults}}
+                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 searchResultsPlayerAnalytics">
+                                <div style="left: 0px; z-index: 100; display: block; position: absolute;background: none repeat scroll 0% 0% #585F58 !important;;width: 100%; border: 1px solid black;" class="searchResults">
+                                    {{#each player1SearchResults}}
+                                    <div id="{{this.userId}}" class="addIcon" name="player1Focused" value="{{this.userName}}" style="color:white !important;">
+                                        <p id="{{this.userId}}" name="userName" value="{{this.userName}}" style="text-align: left;margin:0px !important;font-size:12px;">{{this.userName}}</p>
+                                    </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                            {{/if}}
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+                            <!--{{#if selectedPlayer2Display}}
+                            {{#each selectedPlayer2Display}}
+                            <input type="text" placeholder="Type Player2 Name" class="playerAnalyticsInputBox" id="searchUser2ForPA" value={{this.userName}}>
+                            {{/each}}
+                            {{else}}-->
+                            <input type="text" placeholder="Type Player2 Name" class="playerAnalyticsInputBox" id="searchUser2ForPA">
+                            <!--{{/if}}-->
+                            {{#if player2SearchResults}}
+                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 searchResultsPlayerAnalytics">
+                                <div style="left: 0px; z-index: 100; display: block; position: absolute;background: none repeat scroll 0% 0% #585F58 !important;;width: 100%; border: 1px solid black;" class="searchResults">
+                                    {{#each player2SearchResults}}
+                                    <div id="{{this.userId}}" class="addIcon" name="player2Focused" value="{{this.userName}}" style="color:white !important;">
+                                        <p id="{{this.userId}}" name="userName" value="{{this.userName}}" style="text-align: left;margin:0px !important;font-size:12px;">{{this.userName}}</p>
+                                    </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                            {{/if}}
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 playerAnalyticsSubDiv">
+                            <input type="button" value="Show by Table Format" class="playerAnalyticsInputBox playerAnalyticsShowButton" id="showTournaments">
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 playerAnalyticsSubDiv">
+                            <input type="button" value="Show by Graph" class="playerAnalyticsInputBox playerAnalyticsShowButton" id="renderBARChartfetch">
+                        </div>
+                    </div>
+                    <!--div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 playerAnalyticsSubDiv">
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+
+                        </div>
+                        
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv" style="padding: 0px !important;">
+                            {{#each selectedPlayer1Display}}
+                            <p type="text" placeholder="Type Player1 Name" class="playerAnalyticsPtag selectedPlayerAnalyticsPtag" style="color: mediumaquamarine !important;padding: 0px !important;">{{this.userName}}</p>
+                            {{/each}}
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv" style="padding: 0px !important;">
+                            {{#each selectedPlayer2Display}}
+                                <p type="text" placeholder="Type Player1 Name" class="playerAnalyticsPtag selectedPlayerAnalyticsPtag" style="color: mediumaquamarine !important;padding: 0px !important;">{{this.userName}}</p>
+                            {{/each}}
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 playerAnalyticsSubDiv">
+                            
+                        </div>
+                    </div-->
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 107px ! important;" class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+            </div>
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="margin-right: 0px; width: 3%;" id="">
+                {{#if selectedPlayer1Display}}
+                {{#each selectedPlayer1Display}}
+                    <span class="glyphicon glyphicon-user" style="text-align: center;margin-top: 8px;font-size: 16px;cursor:pointer;" id="playerDetailsPlayerA"></span>
+                {{/each}}
+                {{else}}
+                    <span class="glyphicon glyphicon-user" style="text-align: center;margin-top: 8px;font-size: 16px;cursor:default;" id="playerDetailsPlayerA"></span>
+                {{/if}}
+            </div>
+            {{#if selectedPlayer1Display}}
+            {{#each selectedPlayer1Display}}
+            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="background: {{playerACOLOR}}; margin-right: 3px;">
+                <p style="text-align: center; font-size: 11px;margin-top: 8px; color:{{playerAFontColor}};" id="vsPlayer1">{{this.userName}}</p>
+            </div>
+            {{/each}}
+            {{else}}
+            <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3" style="background:{{playerACOLOR}}; margin-right: 3px;">
+                <p style="text-align: center; font-size: 11px;margin-top: 8px; color:{{playerAFontColor}};" id="vsPlayer1">Player1</p>
+            </div>
+            {{/if}}
+
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="margin-right: 0px; width: 3%;" id="">
+                <p style="text-align: center;margin-top: 8px;font-size: 10px;">V/s</p>
+            </div>
+            {{#if selectedPlayer2Display}}
+            {{#each selectedPlayer2Display}}
+            <div style="background: {{playerBCOLOR}}; margin-left: 3px;" class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+                <p style="text-align: center; margin-top: 8px;font-size: 11px; color:{{playerBFontColor}};">{{this.userName}}</p>
+            </div>
+            {{/each}}
+            {{else}}
+            <div style="background:{{playerBCOLOR}}; margin-left: 3px;" class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+                <p style="text-align: center; margin-top: 8px;font-size: 11px; color:{{playerBFontColor}}">Player2</p>
+            </div>
+            {{/if}}
+            <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="margin-right: 0px; width: 3%;" id="vsPlayer2">
+                {{#if selectedPlayer2Display}}
+                {{#each selectedPlayer2Display}}
+                <span class="glyphicon glyphicon-user" style="text-align: center;margin-top: 8px;font-size: 16px;cursor:pointer;" id="playerDetailsPlayerA"></span>
+                {{/each}}
+                {{else}}
+                    <span class="glyphicon glyphicon-user" style="text-align: center;margin-top: 8px;font-size: 16px;cursor:default;" id="playerDetailsPlayerA"></span>
+                {{/if}}
+            </div>
+            <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+            </div>
+        </div>
+        {{#if pastEventsDetails}}
+        <div style="margin-top: 138px;">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left: 16px ! important;padding-bottom: 4px ! important;">
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="width: 7% ! important; border: 1px solid black; padding-left: 13px ! important; padding-right: 13px ! important;">
+                    <a id="eventSubscribePrev"  style="font-size: 16px; color: black; padding: 2px; text-align: center; order: 1; height: 30px;pointer-events:{{prevPageClass}};" href="{{prevPage}}">previous</a>
+                </div>
+                <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="border: 1px solid black; width: 7% ! important; padding-left: 20px ! important; padding-right: 20px ! important; margin-left: 4px;">
+                    <a id="eventSubscribeNext"  style="font-size: 16px; color: black; padding: 2px; text-align: center; order: 2; margin-left: 5px; height: 30px;pointer-events:{{nextPageClass}};" href="{{nextPage}}">next</a>
+                </div>
+            </div>
+            <div class="row" style="margin-top:0px !important;padding-left:30px !important;padding-right:30px !important;">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2_Draws" stye>No.</th>
+                            <th class="pAnalytics2_Draws">Tournament Name</th>
+                            <th class="pAnalytics2_Draws">Tournament Start Date</th>
+                            <th class="pAnalytics2_Draws">Round Name</th>
+                        </tr>
+                    </thead>
+                    <tbody id="selectTagop">
+                        {{#if pastEventsDetails}} {{#each pastEventsDetails}}
+                        <tr class="headerAnalytics3" name={{this}}>
+                            <td class="pAnalytics2_Draws_tbody">{{getSLNUMB @index}}</td>
+                            <td class="pAnalytics2_Draws_tbody" name={{this.tournamentId}}>
+                                <a href="#" id="tournamentInfoBTN" name="{{this.tournamentId}}" style="text-decoration:underline;">{{tournamnetNAMe}}</a>
+                            </td>
+                            <td class="pAnalytics2_Draws_tbody">
+                                <p id="{{this.tournamentId}}" name="" value="{{this.tournamentId}}" style="text-align: center;margin:0px !important;font-size:12px;color:black;">{{tournamentStartDate}}</p>
+                            </td>
+                            <td class="pAnalytics2_Draws_tbody">
+                                <p id="{{this.tournamentId}}" name="" value="{{this.tournamentId}}" style="text-align: center;margin:0px !important;font-size:12pxcolor:black;;">{{roundNames}}</p>
+                            </td>
+                        </tr>
+                        {{/each}} {{/if}}
+                    </tbody>
+                </table>
+                <div id="renderTournaMentInfo"></div>
+            </div>
+        </div>        
+        {{/if}}
+        {{> confirm}} {{> confirmOkDelete}}
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left:20px ! important;padding-bottom: 4px ! important;padding-right:20px !important;overflow: auto;">
+            <div id="renderBARChart"></div>
+        </div>
+        <div id="displayPlayerProfile"></div>
+    </div>
+    <!--button id="fetch" value="show" style="margin-top:100px;">show</button!-->
+</template>
+<template name="sd">
+    {{> c3 myChartData}}
+</template>
+

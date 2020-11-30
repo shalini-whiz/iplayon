@@ -1,0 +1,19 @@
+<template name="DELETSChool">
+	{{#if notAdmin}}
+		<div class=''>
+			<p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+		</div>
+	{{else}}
+		<div class="container" style="background:white;">
+			<div class = "row" style='padding:10px !important'>
+				
+				<select id="SelectSchool" style="font-size:12px;">
+					{{#each getSchoolLIST}}
+					<option value="{{this.userId}}">{{this.schoolName}}</option>
+					{{/each}}
+				</select>				
+				<input type="button" id="deleteSchool" value="Delete School" style="font-size:12px;">
+			</div>
+		</div>
+	{{/if}}
+</template>

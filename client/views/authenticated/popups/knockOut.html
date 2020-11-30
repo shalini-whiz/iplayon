@@ -1,0 +1,66 @@
+  <!-- shalini codes starts here -->
+
+  <template name="knockOut">
+   <div  class="modal" id="knockOut" aria-hidden="true" >
+    <div class="modal-dialog createDraw-lg">
+      <div class="modal-content">
+        <div class="modal-header headerClass">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title myModalLabel" style='text-align:center'>Knock Out Configuration</h4>
+       </div>
+
+       <div class="modal-body">
+        <h5 class="modal-title" style='text-align:center;padding:5px;'>{{currentEventName}}</h5>
+
+        <form class="form-horizontal" role="form">
+
+          <div class="form-group">
+            <label class="control-label col-sm-3 customLabel" >Type</label>
+            <div class="col-sm-9"> 
+              <select id="knockOutDropDown" class="form-control customDropDown" name='knockOutList'>
+                <option id="knockout_select" selected disabled>--select--</option>
+                <option id="knockout_select">Readymade</option>
+                <option id="knockout_select">Seeding</option>
+                <!--option id="knockout_select">Random</option-->
+              </select> 
+              
+            </div>
+          </div>
+          <div class="form-group" >
+            <label class="control-label col-sm-3 customLabel" for="uploadFileLabel">Upload File:</label>
+            <div class="col-sm-9 customDropDown" id= 'uploadConfigurationFile'> 
+              <input type="file" class="ip_button" value = 'Upload File' id='${multipartFilePath}' name='playersListFiles'  onclick="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))"  /> 
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style='padding-bottom:4px;'>
+          <div class ="row">
+            <p id="impMsg" class='impMsg'></p> 
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " >
+              <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " >
+              </div>
+
+              <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 " >
+                <button type="button" class="ip_button_Popup_Black" id="previousCreateDraw">Previous</button>
+                <button type="button" class="ip_button_Popup_Black" id="createDrawSettings">Continue</button>
+                <button type="button" class="ip_button_Popup_Red" data-dismiss="modal" id="closeKnockOut">Cancel</button>
+              </div>
+
+              <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " > </div>               
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</template>
+<!-- shalini codes ends here -->

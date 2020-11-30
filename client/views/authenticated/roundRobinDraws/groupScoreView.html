@@ -1,0 +1,62 @@
+ <template name="groupScoreView">
+     <div  class="modal" id="groupScoreView" aria-hidden="true" >
+      <div class="modal-dialog groupScoreView-lg">
+        <div class="modal-content">
+          <div class="modal-header headerClass">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title myModalLabel " style='text-align:center'>GroupWise Score Sheet</h4>
+         </div>
+
+         <div class="modal-body">
+          <form class="form-horizontal" role="form">
+           
+
+            <div class="form-group">
+             
+              <div class="col-sm-12"> 
+                <form action="">                                
+                  <input type="radio" name="scoreSheetType" value="scoresheet" id="scoreSheetType" class="adminUpload_radio" checked>
+                  <label  name="selectAssociation" class="adminUpload_label">ScoreSheet</label>
+                  <br>
+                  <input type="radio" name="scoreSheetType" value="blank" id="scoreSheetType">
+                  <label name="selectAssociation" class="adminUpload_label">Blank</label>
+                </form>            
+              </div>
+            </div>
+               {{#if progressBar}}
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%;background-color:#337ab7 !important">
+                <span class="">Please wait</span>
+              </div>
+            </div>
+            {{/if}}
+             
+            
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style='padding-bottom:4px;'>
+            <div class ="row">
+              <p id="impMsg" class='impMsg'></p> 
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " >
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " >
+                </div>
+
+                <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 " style='text-align:center;' >
+                  <button type="button" class="ip_button_Popup_Black" id="printGroupScore">Print</button>
+                  <button type="button" class="ip_button_Popup_Red" data-dismiss="modal">Cancel</button>
+                </div>
+
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " > </div>               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!-- shalini codes ends here -->

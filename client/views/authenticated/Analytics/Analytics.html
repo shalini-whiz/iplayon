@@ -1,0 +1,157 @@
+<template name="Analytics">
+            {{> searchTemplate}}
+        {{#if Template.subscriptionsReady}}
+    <div class="row">
+        <table class="table table-striped tableOFCSVHTML_New" style='' >
+            <thead style="">
+                <tr class="headerAnalytics2">
+                    <th class="pAnalytics2">No</th>
+                    <th class="pAnalytics2">Name</th>
+                    <th class="pAnalytics2">Academy</th>
+                    <th class="pAnalytics2">City</th>
+                    <th class="pAnalytics2">State</th>
+                    {{#if approveUser1A}}
+                    <th class="pAnalytics2">
+                        <div style="width: 100%;">
+                            {{#if idsCountToApprove2}}
+                            <span style="background: yellowgreen none repeat scroll 0% 0%; font-size: 15px; border-radius: 9px; text-align: left; margin-left: 50%; border: 1px solid white; color: black;">&nbsp;{{idsCountToApprove2}}&nbsp;</span>
+                            {{/if}}
+                        </div>
+                        Approve                 
+                    </th>
+                    {{/if}}
+                </tr>
+            </thead>
+             <tbody id="selectTagop">
+                {{#if userDetailsANA}}
+                {{#each userDetailsANA}}
+                <tr class="headerAnalytics3" name="sdfsd"> 
+                    <td class="pAnalytics2" >{{this.slNo}}</td>
+                    <td class="pAnalytics2" name={{this.userName}}>
+                      <a href="#" id="playerInfoBtn" name = "{{this.userId}}">{{this.userName}}</a>
+                    </td>
+                    <td class="pAnalytics2" name={{this.clubName}}>{{this.clubName}}</td>
+                    <td class="pAnalytics2" name={{this.city}}>{{this.city}}</td>                
+                    <td class="pAnalytics2" name={{getPlayerState_Ana this.state}}>{{getPlayerState_Ana this.state}}</td>
+                    {{#if approveUser1A}}
+                <td class="pAnalytics2">
+                    {{#if approveUser2A}}
+                    {{#if approvedOrNot_AcademyChange this.userId}}
+                        <input type="button" value="approved" class="sendReciept" style="height: 22px;margin-top: 5px;width: 76%;margin-left: 9px;background: orange none repeat scroll 0% 0%;color: black;border: 1px solid white;" id="" disabled>
+                    {{else}}
+                        <input type="button" value="approve" class="sendReciept" style="height: 22px;margin-top: 5px;width:76%;margin-left: 9px;" id="approveAffId">
+                    {{/if}}
+                    {{else}}
+                    &nbsp;
+                    {{/if}}
+                    </td>
+                    {{/if}}
+                </tr>
+                {{/each}}
+                {{else}}
+                {{#if info}}
+                <tr class="headerAnalytics3">
+                    <td class="pAnalytics2" colspan="7">{{info}}</td>
+                </tr>
+                {{/if}}
+                {{/if}}
+             </tbody>
+        </table>
+    </div>
+    {{else}}
+        {{#if info}}
+            <table class="table table-striped tableOFCSVHTML_New" style='' >
+                <tbody id="">
+                    <tr class="headerAnalytics3">
+                        <td class="pAnalytics2" colspan="7">{{info}}</td>
+                    </tr>
+                </tbody>
+            </table>    
+        {{/if}}
+    {{/if}}
+	<div id="confirmPasswordRenderAna"></div>
+</template>
+
+<template name="selectionAnalyticsForm">
+	<div class="row navigationBar navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                    <span style="" class="websiteHeader">iPlayOn</span>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                    <button type="button" class="ip_button_White" id="playerListAnalBtn">Player List</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N" id="selectionFormData" style="">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="selectionForm_N2">Please Select Your Keys of Interest to Search:</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N3">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+               <p class="selectionForm_N4" id="sportsLabel">Sports:</p> 
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 selectionForm_N5">
+                <p class="selectionForm_N4" id="filterByLabel">Filter By:</p> 
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 selectionForm_N5">
+                 <p class="selectionForm_N4" id="filterDataLabel">Select Association:</p> 
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 selectionForm_N5" >
+                 <p class="selectionForm_N4" id="filteredLabel2">Select Gender</p> 
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 selectionForm_N5" >
+                 <p class="selectionForm_N4">&nbsp;</p> 
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N3">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <select class="selectionForm_N6" id="sportListt" name="sportList">
+                    <option selected disabled>Select Sports</option>
+                    {{#each sports}}
+                     <option id="sportSelection" name="{{this._id}}">{{this.projectMainName}}</option>
+                    {{/each}}
+                   
+                </select> 
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 selectionForm_N5">
+                <select class="selectionForm_N6" id="filterByList" name="filterByList">
+                    <option  disabled>Select Filter</option>
+                    <option id="filterBy" name="Region">Region</option>
+                    <option id="filterBy" name="Association" selected>Association</option>
+                    <option id="filterBy" name="Institution/Academy">Institution/Academy</option>
+                </select>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 selectionForm_N5">
+                <select class="selectionForm_N6" id="filterData" name="filterDataList">
+                    {{#each afilAssociation}}
+                     <option id="sportSelection" name="{{this.userId}}" selected>{{this.clubName}}</option>
+                    {{/each}}
+                    {{#if otherAssociation}}
+                    {{#each otherAssociation}}
+                     <option id="sportSelection" name="{{this.userId}}" selected>{{this.clubName}}</option>
+                    {{/each}}
+                    {{/if}}
+
+                </select>
+            </div>
+
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 selectionForm_N5" id="genderMenu" style=''>
+                <select class="selectionForm_N6" id="FilterSelect4" name="genderList">
+                    <option selected disabled>Select Gender</option>
+                    <option id="genderSelection" name="Male">Male</option>
+                    <option id="genderSelection" name="Female">Female</option>
+                    
+                </select>
+            </div>
+
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 selectionForm_N5" >
+                 <input type="button" class="selectionForm_N7" id="show"  value="Show"> 
+            </div>
+        </div>
+    </div>
+</template>

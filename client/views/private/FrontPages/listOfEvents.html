@@ -1,0 +1,41 @@
+<template name="listOfEvents">
+    <div class="modal" id="listOfEvents" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-sm" style="width:470px !important;">
+            <div class="modal-content modalMANage">
+                <a href="" id="errorPopupClose" class="errorClose" style="background: #505050 none repeat scroll 0% 0% !important;color: white !important;outline: 0;z-index: 1 !important;">X</a>
+                <div class="modal-header  modal-header-modRegAcademy" style="padding: 0px 0px;">
+                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 headerDivAcaAct" style="padding:0px;height: 100%;">
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px;height: 100%;border-right: 1px solid white;">
+                            <p class="modal-title titeofregistemodalA" style="text-align: center;margin-top: 3px;color: #FFF !important;" id="addACademies">List of Tournaments on {{getSelectedDATE}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body  modal-body-modReg1" style="min-height: 22em;background: white;">   
+                <div class="" style="padding:0px;height: 21em;overflow-y:auto; ">
+                    <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+                        <thead style="">
+                            <tr class="headeSubDiv2_entryFAca_backWhite">
+                                <th class="pAnalytics2_entryFAca_backWhite" style="background: #fff !important;">Event Name</th>
+                                <th class="pAnalytics2_entryFAca_backWhite" style="background: #fff !important;">Entry Closure Date</th>
+                                <th class="pAnalytics2_entryFAca_backWhite" style="background: #fff !important;">End Date</th>
+                                <th class="pAnalytics2_entryFAca_backWhite" style="background: #fff !important;">State</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                            {{#each fetchEventsForSelectedDate}}
+                            <tr class="headerAnalytics3" id="headerAnalytics3">
+                                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #fff !important;cursor:pointer !important;" id="goToEventToSubscribe"><p class="tournHEADRow">{{this.eventName}}</p></td>
+                                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #fff !important;cursor:pointer !important;" id="goToEventToSubscribe"><p class="tournHEADRow">{{this.eventSubscriptionLastDate}}</p></td>
+                                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #fff !important;cursor:pointer !important;" id="goToEventToSubscribe"><p class="tournHEADRow">{{this.eventEndDate}}</p></td>
+                                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #fff !important;cursor:pointer !important;" id="goToEventToSubscribe"><p class="tournHEADRow">{{this.domainName}}</p></td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

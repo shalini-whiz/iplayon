@@ -1,0 +1,49 @@
+/*css for when there are validation errors of user profile settings
+template*/
+
+/*set error color for userName, userPhoneNum, awayFromDate*/
+#userName.error,
+#userPhoneNum.error,
+#awayFromDate.error , 
+#emailAddressUserProf.error,
+#nationalAffiliationId.error
+#clubName.error{
+    color: #ff1a1a;
+    font-weight: normal;
+}
+
+/*set error font of checkSports, checkDomain, checkAwayFrom, checkSubDomain2
+in error popup*/
+#checkSports-error,
+#checkDomain-error,
+#checkAwayFrom-error,
+#nationalAffiliationId-error
+#checkSubDomain2-error {
+    font-weight: normal;
+}
+
+/*set error font and pinter events of userName, userPhoneNum, awayFromDate, awayToDate
+ sbDomain1Area, subDomain2Area
+in error popup*/
+#userName-error,
+#userPhoneNum-error,
+#awayFromDate-error,
+#awayToDate-error,
+#subDomain1Area-error,
+#subDomain2Area-error,
+#emailAddressUserProf-error,
+#nationalAffiliationId-error,
+#clubName-error {
+    pointer-events: none;
+    font-weight: normal;
+}
+
+/*set error font and pointer events of awayFromDate*/
+#awayFromDate-error {
+    pointer-events: none;
+    font-weight: normal;
+}
+
+.emailAddressUserProf .error{
+	 color: #ff1a1a;
+}

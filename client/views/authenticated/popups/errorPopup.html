@@ -1,0 +1,63 @@
+<!-- Template for errorPopUp-->
+<!-- this template is included in other templates
+    1. createEvents.html
+    2. userProfileSettings.html
+    3. editEvents.html
+-->
+
+<!--Used CSS Classes and CSS Links-->
+<!--
+    1.FileName : createEventsValidationError.css
+            classes : errorPopup, errorPopupContent, errorHeader, errorClose,
+                      errorImage
+            ids     : errorHeader, (some ids created when there are errors)
+                      #eventName.error, #prize.error, #projectName.error,
+                      #domainName.error, #rulesAndReg.error, #closureDate.error,
+                      #startDate.error, #endDate.error, #description.error,
+                      #eventName-error, #prize-error, #projectName-error, #domainName-error, #rulesAndReg-error, #closureDate-error,
+                      #startDate-error, #endDate-error, #description-error, #sponsor1-error
+
+    2. FileName : sponsorUpload.css
+            classes :  modal-dialog,
+            ids     :  confirmCenter
+
+    3.  FileName : userProfileSettingsValidationErrors.css
+            ids     :  (some ids created when there are errors) #userName.error, #userPhoneNum.error, #awayFromDate.error
+                       #checkSports-error, #checkDomain-error, #checkAwayFrom-error, #checkSubDomain2-error
+                       #userName-error, #userPhoneNum-error, #awayFromDate-error, #awayToDate-error, #subDomain1Area-error, #subDomain2Area-error
+
+    4. bootstrap : modal-content,  modal-header, modal-sm, modal ,fade
+-->
+<template name="errorPopup">
+<!-- main div of error pop up-->
+  <div class="modal fade" id="errorPopup">
+
+<!-- div is the center of the popup contains
+     1. header div which contains an image and p tag.
+     2. body contains error popup content  and errorpopup container
+       which are filled with ul and li tags
+       when there are errors shown by javascript validator
+-->
+      <div class="modal-dialog modal-sm">
+        <div class="errorPopup">
+          <div class="modal-content">
+            <a href="" id="errorPopupClose" class="errorClose">X</a>
+          <div class="modal-header errorHeader" style="padding-top: 2%;
+            padding-left: 5%; padding-right: 2%;">
+            <span class="glyphicon glyphicon-exclamation-sign errorImage" src="/error.png" style="font-size: 14px;"></span>
+                <p class="modal-title" id="errorHeader">Please correct the following errors and try again</p>
+              </div>
+              <div class="modal-body" style="padding: 5px 15px;">
+                <div class="errorPopupContent">
+              <div class="errorPopupContent">
+                <div id="errorContainer">
+                    <ul> </ul>
+                </div>      
+                </div>
+                </div>
+          </div>
+        </div>    
+      </div>
+         </div>
+    </div>
+</template>

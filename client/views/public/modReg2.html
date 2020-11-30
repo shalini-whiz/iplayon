@@ -1,0 +1,486 @@
+<template name="modReg2">
+  <div class="modal" id="modReg2" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHead" style="border-top-right-radius: 5px;">
+                <p class="modal-title titeofregistemodal" style="">Contact Details</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body  modal-body-modReg1">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                   {{#if checkRoleAcademy}}
+                      <div class="row" style="padding-top:5px">
+                        <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right: 0px !important;padding-top: 2px;padding-left: 30px !important;">
+                            <p class="labelWhoNew2">
+                              Academy Name*:
+                            </p>
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-left: 6px !important;padding-right: 0px;">
+                              <input type="text" autocomplete="off" name="clubName" id="clubName" placeholder="Academy Name" class="clubNameUserProf" style="text-align:left;padding-left:2%;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:12px;">
+                        </div>
+                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-left: 2px !important;padding-right: 32px !important;">
+                              <input type="text" autocomplete="off" name="abbrevationclubName" id="abbrevationclubName" placeholder="abbrv." class="clubNameUserProf" style="text-align:left;padding-left:2%;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:12px;">
+                        </div>
+                      </div>
+                      {{/if}}
+                      {{#if checkRoleClub}}
+                      <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:0px !important;padding-top:2px;">
+                          <p class="labelWhoNew2">
+                            Name*:
+                          </p>
+                      </div>
+                      {{/if}}
+                      {{#if checkRoleClub}}
+                       <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding-left:30px !important;">
+                          <input type="text" autocomplete="off" id="userNamemodReg2" value="{{this.userName}}" maxlength="60" placeholder="Name" name="userName" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                        </div>
+                       {{/if}}
+                      {{#if checkRoleAcademy}}
+
+                      {{/if}}
+
+                  </div>
+                    {{#if checkRoleAcademy}}
+                      <div class="row" style="padding-top:5px">
+                        <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+                            <p class="labelWhoNew2">
+                              Name*:
+                            </p>
+                        </div>
+                         <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-right:15px !important;padding-top:2px;padding-left:0px !important;">
+                          <input type="text" id="userNameContactmodReg2"  maxlength="60" autocomplete="off" placeholder="Academy Contact Person Name" name="userNameContact" class="userNameContact" style="color:black;text-align:left;padding-left:2%;height:2em;width:100%;display:block;;font-size:13px;">
+                        </div>
+                      </div>
+                      {{else}}
+                      <div class="row" style="padding-top:5px">
+                        <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+                            <p class="labelWhoNew2">
+                              Guardian Name:
+                            </p>
+                        </div>
+                        <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-left:2px !important;">
+                              <input type="text" autocomplete="off" name="guardianName" id="guardianName" placeholder="Guardian Name" class="clubNameUserProf" style="text-align:left;padding-left:2%;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:12px;">
+                        </div>
+                      </div>
+                      {{/if}}
+                       {{#if checkRoleClub}}
+                  <div class="row" style="padding-top:5px">
+                      {{#if checkRoleClub}}
+                      <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:0px !important;padding-top:2px;">
+                          <p class="labelWhoNew2">
+                            DOB/Gender*:
+                          </p>
+                      </div>
+                      {{/if}}
+                      {{#if checkRoleClub}}
+                      <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding-left:30px !important;padding-right:15px !important;">
+                        <div style="display:flex;width:100%"> 
+                          <select id="days" style="font-size:11px;order:3;cursor: pointer;margin-right:2px;width:23%;">
+                            <option selected disabled>DD</option>
+                          </select>
+                          <select id="months" style="font-size:11px;font-size:11px;order:2;cursor: pointer;margin-right:2px;width:25%;">
+                            <option selected disabled>MM</option>
+                          </select>
+                          <select id="years" style="font-size:11px;order:1;cursor: pointer;margin-right:2px;width:31%;">
+                            <option selected disabled>YYYY</option>
+                          </select>
+                          <select id="gender" style="font-size:11px;order:4;height:2.5em;cursor: pointer;width:37%;" name="gender">
+                                <option disabled selected>Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="other">other</option>
+                            </select>
+                        </div>
+                      </div>
+                     {{/if}} 
+                      </div>
+                      {{else}}
+                        <div class="row" style="padding-top:5px">
+                        <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+                            <p class="labelWhoNew2">
+                              Date of Inc.:
+                            </p>
+                        </div>
+                        <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-left:2px !important;">
+                            <div style="display:flex;width:100%"> 
+                            <select id="days_I2" style="font-size:11px;order:3;cursor: pointer;width:36%;">
+                              <option selected disabled value="DD">DD</option>
+                              {{#each setDays_2}}
+                              <option value="{{this}}">{{this}}</option>
+                              {{/each}}
+                            </select>
+                            <select id="months_I2" style="font-size:11px;font-size:11px;order:2;cursor: pointer;margin-right:2px;width:36%;">
+                              <option selected disabled vlaue="MM">MM</option>
+                              {{#each setMonths_2}}
+                              <option value="{{this}}">{{this}}</option>
+                              {{/each}}
+                            </select>
+                            <select id="years_I2" style="font-size:11px;order:1;cursor: pointer;margin-right:2px;width:36%;">
+                              <option selected disabled value="DD">YYYY</option>
+                              {{#each setYears_2}}
+                              <option value="{{this}}">{{this}}</option>
+                              {{/each}}
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      {{/if}}
+                     <div class="row" style="margin-top: 5px;">
+                      <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:15px !important;padding-top:2px;">
+                       
+                          <p class="labelWhoNew2">
+                            Address:
+                          </p>
+                      </div> 
+                      <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding-left: 30px!important;">
+                        <input type="text" id="address" autocomplete="off"   placeholder="Address" name="address" class="address" style="color:black;text-align:left;padding-left:2%;height:2em;width:100%;display:block;;font-size:13px;">
+                        </div>
+                      </div>
+                   
+                      <div class="row" style="padding-top:5px">
+                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:1px !important;padding-top:2px;">
+                            <p class="labelWhoNew2">
+                              Country*:
+                            </p>
+                        </div>
+                        <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding-left:30px !important;padding-right:15px!important;">
+                              <select id="country" name="country" style="width: 100%;height: 2em;font-size: 12px;">
+                                <option selected disabled>India</option>
+                              </select>
+                        </div>
+                      </div>
+                      <div class="row" style="padding-top:5px">
+                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:15px !important;padding-top:2px;">
+                            <p class="labelWhoNew2">
+                              State*:
+                            </p>
+                        </div>
+                        <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding-left:30px !important;">
+                              <select id="state2" name="state2" style="width: 100%;height: 2em;font-size: 12px;">
+                                <option selected disabled value="State">State</option>
+                                  {{#each stateList_2}}
+                                  <option value="{{this.stateId}}">{{this.stateName}}</option>
+                                  {{/each}}
+                              </select>
+                        </div>
+                      </div>
+                      <div class="row" style="padding-top:5px">
+                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:0px !important;padding-top:2px;">
+                            <p class="labelWhoNew2">
+                              City/Pincode*:
+                            </p>
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-left:30px !important;padding-right:0px!important;">
+                              <input type="text" id="city" autocomplete="off"     placeholder="City" name="city" class="city" style="color:black;text-align:left;padding-left:3%;height:2em;width:100%;display:inline-block;font-size:12px;float:left">
+                        </div>
+                        <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:1px !important;">
+                              <input type="text" id="pinCode" autocomplete="off" maxlength="6"  placeholder="Pincode" name="pincode" class="city" style="color:black;text-align:left;padding-left:5%;height:2em;width:100%;display:block;font-size:12px;">
+                        </div>
+                      </div>
+                      <div class="row" style="padding-top:5px">
+                        <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+                            <p class="labelWhoNew2">
+                              Phone Number*:
+                            </p>
+                        </div>
+                        <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-left:1px !important;">
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-left:0px !important;padding-right:0px !important;">
+                              <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="padding-left:0px !important;padding-right:0px !important;">
+                                <p style="font-size:12px;color:black;margin:0;margin-top:2px;padding:0;">+91</p>
+                              </div>
+                              <div class="col-md-11 col-xs-11 col-lg-11 col-sm-11" style="padding-left:2px !important;padding-right:0px !important;">
+                                 <input type="text" autocomplete="off" maxlength="10" name="mobileNumber" id="mobileNumber" placeholder="Mobile Number" class="clubNameUserProf" style="text-align:left;padding-left:2%;height:2em;width100%;display:block;font-size:12px;">
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                       {{#if checkRoleOtherThanAssoc}}
+                      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px; padding-top:8px;">
+                        <div class="checkAcceptTermsWithConfirm" style="margin-top:1%!important">
+                            <input value=""  type="checkbox" name="checkAcceptboxTeam" id="terms2" class="checkboxAccept" style="margin-left: auto; margin-right: 1%;margin-top: 4px;"/>
+                             <p class="downloadAcceptTitle" style="color:grey">Accept </p>
+                            <a class="downloadAcceptPdf" href="/createEvents.pdf" download target="_parent" style="margin-right: auto!important;margin-left: 1%!important;margin-top: 2px!important;">
+                            <span style="color:blue">Terms & Conditions</span>
+                            </a>
+                        </div>
+                      </div>
+                      {{/if}}
+                      <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12 " style="margin-top:10px;">
+                         <div class="row">
+                          <p id="setForOthersAssociation" style="font-size: 12px;color: red;margin-left: 4px;"></p>
+                         </div>
+                      </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                  <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-bottom: 4px;">
+                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Cancel
+                    </button>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:6px !important;padding-bottom: 4px;padding-right: 0px !important;">
+                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="previous-modReg2" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;">Previous
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                    </button>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:6px !important;padding-bottom: 4px;">
+                    {{#if checkInput}}
+                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="next-modReg2" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" disabled>Register
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                    {{else}}
+                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="next-modReg2" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" >Register
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                    {{/if}}
+                  </div>
+                 </div>
+              </div>
+          </div>
+
+        </div>
+    </div>
+  </div>
+</template>
+
+
+<template name="modReg2Association">
+  <div class="modal" id="modReg2Association" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+             {{#if whichAssociation}}
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4 contRegNEwHead">
+                <p class="modal-title titeofregistemodal" style="">Contact Details</p>
+              </div>
+              <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4 selecSporTRegNewHead">
+                <p class="modal-title titeofregistemodalNotActive" style="width:84px;">Select Sports</p>
+              </div>
+              <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4 selecPlaceRegNewHead">
+                <p class="modal-title titeofregistemodalNotActive" style="width:100px;">Select Places</p>
+              </div>
+            </div>
+            {{else}}
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHead">
+                <p class="modal-title titeofregistemodal" style="">Contact Details</p>
+              </div>
+            </div>
+            {{/if}}
+          </div>
+        </div>
+
+          <div class="modal-body  modal-body-modReg1">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class="row" style="padding-top:5px">
+                    <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+                        <p class="labelWhoNew2">
+                            Assoc. Name*:
+                        </p>
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-left:2px !important;padding-right:0px;">
+                              <input type="text" autocomplete="off" name="clubName" id="associationName" placeholder="Association Name" class="clubNameUserProf" style="text-align:left;padding-left:2%;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:12px;">
+                        </div>
+                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-left:3px !important;">
+                              <input type="text" autocomplete="off" name="assocAbbName" id="assocAbbName" placeholder="abbrv." class="clubNameUserProf" style="text-align:left;padding-left:2%;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:12px;">
+                        </div>
+                  </div>
+                 <div class="row">
+                      <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:0px !important;padding-top:2px;">
+                          <p class="labelWhoNew2">
+                            Name*:
+                          </p>
+                      </div>
+                      <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding-right:15px !important;padding-top:2px;padding-left:30px;">
+                        <input type="text" id="userNameContactmodReg2"  maxlength="60" autocomplete="off" placeholder="Association Contact Person Name" name="userNameContact" class="userNameContact" style="color:black;text-align:left;padding-left:2%;height:2em;width:100%;display:block;;font-size:13px;">
+                      </div>
+                  </div>
+                  <div class="row" style="padding-top:5px">
+                      <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:0px !important;padding-top:2px;">
+                          <p class="labelWhoNew2">
+                            Address:
+                          </p>
+                      </div>
+                      <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding-right:15px !important;padding-left:30px;">
+                        <input type="text" id="address_I" autocomplete="off"   placeholder="Address" name="address" class="address" style="color:black;text-align:left;padding-left:2%;height:2em;width:100%;display:block;;font-size:13px;">
+                        </div>
+                     </div>
+                      <div class="row" style="padding-top:5px">
+                        <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+                            <p class="labelWhoNew2">
+                              Date of Inc.:
+                            </p>
+                        </div>
+                        <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-left:2px !important;">
+                            <div style="display:flex;width:100%"> 
+                            <select id="days_I" style="font-size:11px;order:3;cursor: pointer;width:36%;">
+                              <option selected disabled value="DD">DD</option>
+                              {{#each setDays}}
+                              <option value="{{this}}">{{this}}</option>
+                              {{/each}}
+                            </select>
+                            <select id="months_I" style="font-size:11px;font-size:11px;order:2;cursor: pointer;margin-right:2px;width:36%;">
+                              <option selected disabled vlaue="MM">MM</option>
+                              {{#each setMonths}}
+                              <option value="{{this}}">{{this}}</option>
+                              {{/each}}
+                            </select>
+                            <select id="years_I" style="font-size:11px;order:1;cursor: pointer;margin-right:2px;width:36%;">
+                              <option selected disabled value="DD">YYYY</option>
+                              {{#each setYears}}
+                              <option value="{{this}}">{{this}}</option>
+                              {{/each}}
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row" style="padding-top:5px">
+                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:1px !important;padding-top:2px;">
+                            <p class="labelWhoNew2">
+                              Country*:
+                            </p>
+                        </div>
+                        <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding-left:30px !important;padding-right:15px!important;">
+                              <select id="country" name="country" style="width: 100%;height: 2em;font-size: 12px;">
+                                <option selected disabled>India</option>
+                              </select>
+                        </div>
+                      </div>
+                      <div class="row" style="padding-top:5px">
+                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:15px !important;padding-top:2px;">
+                            <p class="labelWhoNew2">
+                              State*:
+                            </p>
+                        </div>
+                        <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding-left:30px !important;">
+                              <select id="state" name="state" style="width: 100%;height: 2em;font-size: 12px;">
+                                <option selected disabled>State</option>
+                                  {{#each stateList}}
+                                  <option value="{{this.stateId}}">{{this.stateName}}</option>
+                                  {{/each}}
+                              </select>
+                        </div>
+                      </div>
+                      <div class="row" style="padding-top:5px">
+                        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:0px !important;padding-top:2px;">
+                            <p class="labelWhoNew2">
+                              City/Pincode*:
+                            </p>
+                        </div>
+                        <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-left:30px !important;padding-right:0px!important;">
+                              <input type="text" id="city_I" autocomplete="off"     placeholder="City" name="city" class="city" style="color:black;text-align:left;padding-left:3%;height:2em;width:100%;display:inline-block;font-size:12px;float:left">
+                        </div>
+                        <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:1px !important;">
+                              <input type="text" id="pinCode_I" autocomplete="off" maxlength="6"  placeholder="Pincode" name="pincode" class="city" style="color:black;text-align:left;padding-left:5%;height:2em;width:100%;display:block;font-size:12px;">
+                        </div>
+                      </div>
+                      <div class="row" style="padding-top:5px">
+                        <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+                            <p class="labelWhoNew2">
+                              Phone Number*:
+                            </p>
+                        </div>
+                        <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-left:1px !important;">
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-left:0px !important;padding-right:0px !important;">
+                              <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="padding-left:0px !important;padding-right:0px !important;">
+                                <p style="font-size:12px;color:black;margin:0;margin-top:2px;padding:0;">+91</p>
+                              </div>
+                              <div class="col-md-11 col-xs-11 col-lg-11 col-sm-11" style="padding-left:2px !important;padding-right:0px !important;">
+                                 <input type="text" autocomplete="off" maxlength="10" name="mobileNumber" id="mobileNumber" placeholder="Mobile Number" class="clubNameUserProf" style="text-align:left;padding-left:2%;height:2em;width100%;display:block;font-size:12px;">
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="row" style="padding-top:5px;margin-bottom:10px;">
+                        <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+                            <p class="labelWhoNew2">
+                              Website:
+                            </p>
+                        </div>
+                        <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-left:1px !important;">
+                            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-left:0px !important;padding-right:0px !important;">
+                              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-left:2px !important;padding-right:0px !important;">
+                                 <input type="text" autocomplete="off" name="websiteAssoc" id="websiteAssoc" placeholder="Website Address" class="clubNameUserProf" style="text-align:left;padding-left:2%;height:2em;width100%;display:block;font-size:12px;">
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                       {{#if whichAssociation}}
+                      {{else}}
+                      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px;padding-top: 0px;
+                        padding-bottom: 3px;">
+                        <div class="checkAcceptTermsWithConfirm" style="margin-top:1%!important">
+                            <input value=""  type="checkbox" name="checkAcceptboxTeam" id="termsDistrict" class="checkboxAccept" style="margin-left: auto; margin-right: 1%;margin-top: 4px;"/>
+                             <p class="downloadAcceptTitle" style="color:grey">Accept </p>
+                            <a class="downloadAcceptPdf" href="/createEvents.pdf" download target="_parent" style="margin-right: auto!important;margin-left: 1%!important;margin-top: 2px!important;">
+                            <span style="color:blue">Terms & Conditions</span>
+                            </a>
+                        </div>
+                      </div>
+                      {{/if}}
+                      <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12 " style="margin-top:10px;">
+                         <div class="row">
+                          <p id="setForOthersAssociation2" style="font-size: 12px;color: red;margin-left: 4px;"></p>
+                         </div>
+                      </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                  <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-bottom: 4px;">
+                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Cancel
+                    </button>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:6px !important;padding-bottom: 4px;padding-right: 0px !important;">
+                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="previous-modReg6Assoc" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;">Previous
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                    </button>
+                  </div>
+                  {{#if whichAssociation}}
+                  <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:6px !important;padding-bottom: 4px;">
+                     {{#if checkInput}}
+                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="next-modReg2" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" disabled>Next
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                    {{else}}
+                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="next-modReg2" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" >Next
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                    {{/if}}
+                  </div>
+                  {{else}}
+                  <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-left:6px !important;padding-bottom: 4px;">
+                    {{#if checkInput}}
+                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="next-modReg4" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" disabled>Register
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                    {{else}}
+                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="next-modReg4" data-dismiss="modal" style="order:2;margin:0px;padding:0px;width:100%!important; height:2.2em!important;" >Register
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                    {{/if}}
+                  </div>
+                  {{/if}}
+                 </div>
+              </div>
+          </div>
+
+        </div>
+    </div>
+  </div>
+</template>
+
+
+
+

@@ -1,0 +1,46 @@
+<template name="removePackFeature">
+	{{#if notAdmin}}
+    <div class=''>
+      <p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+    </div>
+    {{else}}
+    <div class="container" style="background:#333; height:auto;">
+    <div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+         <div class="row-same-height">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                  <div class="mainTitle">
+                     <p class="title">
+                        Remove Pack Feature
+                     </p>
+                     <input type="button" id="cancel" class="ip_button_LightGrey" style="order:2" value="Cancel">
+                     
+                  </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">Created Pack Features:</p>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                  	<select class="" style="width: 100%;height: 100%;margin:0px;" id="packTypes">
+                  		{{#each fetchInsertedPackFeatureTypes}}
+                        <option selected disabled>Select</option>
+                        <option value = {{this}}>{{this}}</option>
+                        {{/each}}
+                     </select>
+                
+                  </div>
+               </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                      <input type="button" id="removePackType" class="ip_button_LightGrey" style="order:2" value="remove">
+                  </div>
+               </div>
+        </div>
+    </div>
+    </div>
+    {{/if}}
+</template>

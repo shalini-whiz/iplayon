@@ -1,0 +1,576 @@
+.sponsorUploadsPopup {
+    width: 414px;    /*width of confirm popup */
+    margin-top: 100px;
+    border-radius: 5px;
+    border: 0.01px outset;
+    -moz-box-shadow: 0 0 10px #000;
+    -webkit-box-shadow: 0 0 10px;
+    box-shadow: 2px 2px 2px grey;
+}
+
+/* confirm popup header*/
+.sponsorUploadsHeader {
+    background: #b30000;
+    color: white;
+    font-size: 13px;
+    text-align: left;
+    height: 2em;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 0px solid;
+    padding-top: 3px;
+    padding-left: 3px;
+    font-weight: bold;
+    background: black none repeat scroll 0% 0%;
+}
+
+.sponsorLabelClear {
+    border: 0px none;
+    background: transparent none repeat scroll 0% 0%;
+    order: 2;
+    color: maroon;
+    font-size: 13px;
+    font-weight: normal;
+    margin-top: 0%;
+    cursor: pointer;
+}
+.sponsorLabelClear:hover{
+    background: none;
+    color: maroon;
+    cursor: pointer;
+}
+.sponsorUploadsBody{
+    width:100%;
+    padding: 8px 17px 9px;
+}
+
+/**class for user profile main titile 3 div
+   all the contents are displayed in flex
+   format
+*/
+.sponsorUploadsMainTitle {
+    order: 1;
+    margin-top: 1%;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 10.1em;
+    outline: 0;
+    padding-top: 3px;
+}
+
+/*confirm popup main content elements are displayed as flex*/
+.sponsorUploadsContent {
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    height: 5em;
+    padding-top: 3%;
+
+}
+/*confirm popup body contains yes div which includes yes
+button*/
+.yesSponsorUploads {
+    margin-left: auto;
+    margin-right: 0%;
+}
+
+/*confirm popup body contains no div which includes no
+button*/
+.noSponsorUploads {
+    margin-left: 1.5%;
+    margin-right: auto;
+}
+#sponsorUploadCenter{
+    transform: translate(0px, -74px);
+}
+
+
+/*user delete only radio button div
+content is displayed as flex*/
+.sponsorLogoMainDiv {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    height: 2.5em;
+    outline: 0;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+/*div element of div .userDeleteOnlyRadioButton*/
+.sponsorLogoContentDiv {
+    font-size: 12px;
+    font-weight: normal;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 2.5em;
+}
+
+.file-upload-cont {
+    position: relative;
+    width: 360px;
+    height: 24px;
+    top: 10%;
+    cursor: pointer;
+    left: 0%;
+}
+
+.sponsorLogo {
+    opacity: 0;
+    position: relative;
+    z-index: 100;
+    height: 28px;
+    cursor: pointer;
+    width: 100%;
+}
+.sponsorLogoFileName{
+    order:1;
+    color: black;
+    font-size: 12px;
+}
+.my-button {
+    position: absolute !important;
+    padding: 0px;
+    text-align: center;
+    z-index: 1;
+    top: 11%;
+    font-size: 27px;
+    color: orange;
+    width: 32px;
+}
+ .overlay {
+    position: absolute;
+    cursor: pointer;
+    right: 0%;
+    width: 83%;
+    top: 12%;
+    left: 13.3%;
+    border: 1px solid #000;
+    padding-left: 1%;
+    height: 2em;
+    opacity: 0;
+    -moz-opacity: 0;
+    filter: progid: DXImageTransform.Microsoft.Alpha(opacity=0)
+}
+ .overlayDiv {
+    position: absolute;
+    cursor: pointer;
+    right: 0%;
+    width: 83%;
+    top: 12%;
+    left: 13.3%;
+    border: 1px solid #000;
+    padding-left: 1%;
+    height: 2em;
+    padding-top: 0.6%;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-inline-flex;
+}
+.sponsorPdf {
+    opacity: 0;
+    position: relative;
+    z-index: 100;
+    width: 36px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.sponsorPdfContentDiv {
+    font-size: 12px;
+    font-weight: normal;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 2.5em;
+    width: 360px;
+}
+.sponsorPdfMainDiv {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    height: 2.5em;
+    outline: 0;
+    font-size: 12px;
+    font-weight: normal;
+    width: 100%;
+}
+
+.file-upload-cont1 {
+    position: relative;
+    top: 18%;
+    width: 27px;
+    height: 23px;
+    background: #000 none repeat scroll 0% 0%;
+    border: 1px solid #F00;
+    left: 1%;
+}
+.my-button1 {
+    position: absolute;
+    text-align: center;
+    top: 27%;
+    z-index: 1;
+    width: 35px;
+    height: 20px;
+    padding: 0px 6px;
+}
+
+.overlay1 {
+    position: absolute;
+    top: -4%;
+    border: 1px solid #000;
+    cursor: pointer;
+    width:100%;
+    left: 0%;
+    padding-left: 0%;
+    height: 2em;
+    opacity: 0;
+    -moz-opacity: 0;
+    filter: progid: DXImageTransform.Microsoft.Alpha(opacity=0)
+}
+
+.sponsorLabel {
+    width: 96%;
+    padding-top: 0%;
+    color: grey;
+    font-size: 12px;
+    padding-left: 0%;
+    margin:0;
+    overflow: hidden;
+}
+.sponsorLabelInput {
+    width: 96%;
+    padding-top: 0%;
+    color: black;
+    font-size: 12px;
+    padding-left: 0%;
+    margin:0;
+    border: 0;
+
+}
+.overLay1Div{
+    position: absolute;
+    top: 32%;
+    border: 1px solid #000;
+    cursor: pointer;
+    width: 83%;
+    left: 13.3%;
+    padding-left: 1%;
+    padding-top: 0.6%;
+    height: 2em;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.sponsorPdf {
+    opacity: 0;
+    position: relative;
+    z-index: 100;
+    width: 360px;
+    height: 24px;
+    cursor: pointer;
+}
+.sponPdfWhole{
+    width: 382px;
+}
+.sponsorMailContentDiv {
+    font-size: 12px;
+    font-weight: normal;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 2.5em;
+}
+.sponsorMailMainDiv {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    height: 2.5em;
+    outline: 0;
+    font-size: 12px;
+    font-weight: normal;
+    width: 100%;
+}
+
+.file-upload-cont2 {
+    position: relative;
+    top: 22%;
+    width: 32px;
+    height: 24px;
+    /*border: 1px solid orange;*/
+}
+.my-button2 {
+    position: absolute !important;
+    text-align: center;
+    top: 52%;
+    z-index: 1;
+    width: 32px;
+    height: 15px;
+    padding: 0px 4px;
+    font-size: 26px;
+    color: orange;
+    cursor: default;
+}
+
+.overlay2Div {
+    position: absolute;
+    top: 51.5%;
+    border: 1px solid black;
+    width: 83%;
+    left: 13.3%;
+    padding-left: 1%;
+    padding-top: 0.6%;
+    height: 2em;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.sponsorMail {
+    opacity: 0;
+    position: relative;
+    z-index: 100;
+    width: 36px;
+    height: 24px;
+    cursor: default;
+}
+#sponsorMailIdName-error{
+    display: none !important;
+}
+#sponsorPdfName-error{
+    display: none !important;
+}
+#sponsorLogoName-error{
+    display: none !important;
+}
+#provideDetails-error {
+    color: red;
+    padding-right: 27%;
+    padding-left: 27%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5%;
+    font-size: 12px;
+}
+
+  .popup {
+    background: #f2f2f2;
+    height: 24em;
+    width: 400px;
+    min-width: 400px;
+    border-radius: 6px;
+    border: 5px solid #686868;
+    -moz-box-shadow: 2px 2px 2px #686868;
+    -webkit-box-shadow: 2px 2px 2px #686868;
+    box-shadow: 2px 2px 2px #686868;
+}
+.modal {
+    text-align: center;
+}
+@media screen and (min-width: 768px) {
+    .modal:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+    }
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+.modal-content1 {
+    width: 418px;
+    font-size: 12px;
+}
+.modal-sm1 {
+    width: 418px;
+}
+.sponsorPopupClose {
+    background: #b30000;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -18px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    outline: 0;
+}
+.popupContent {
+    height: 18.5em;
+    width: 93%;
+    margin-top: 9%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: 5%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+}
+
+.sponsorUrl {
+    position: absolute;
+    left: 9%;
+    right: 1%;
+    top: 40%;
+    width: 80%;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid grey;
+}
+.sponsorMailId {
+    position: absolute;
+    left: 9%;
+    right: 1%;
+    top: 54%;
+    width: 80%;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid grey;
+}
+.upload {
+    background: grey;
+    border-radius: 8px;
+    border: 2px solid;
+    position: absolute;
+    left: 20%;
+    height: 28px;
+    right: 1%;
+    top: 68%;
+    width: 28%;
+    color: white;
+}
+.cancel {
+    background: grey;
+    border-radius: 8px;
+    border: 2px solid;
+    position: absolute;
+    height: 28px;
+    left: 50%;
+    right: 1%;
+    top: 68%;
+    color: white;
+    width: 28%;
+}
+.sponsorUrlLogo {
+    width: 30px;
+    heigth: 20px;
+}
+.sponImg {
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+}
+#sponsorLogo-error {
+    position: absolute;
+    right: 9px;
+    top: -14px;
+    width: 286px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 11px;
+    color: #e60000;
+    font-weight: normal;
+}
+#sponsorPdf-error {
+    position: absolute;
+    right: 13px;
+    top: -16px;
+    width: 286px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 11px;
+    color: #e60000;
+    font-weight: normal;
+}
+#sponsorUrl-error {
+    position: absolute;
+    right: 22px;
+    /* top:95px;*/
+    
+    top: 74px;
+    width: 286px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 11px;
+    color: #e60000;
+    font-weight: normal;
+}
+#sponsorMailId-error {
+    position: absolute;
+    right: 22px;
+    /* top:132px;*/
+    
+    top: 108px;
+    width: 286px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 10px;
+    color: #e60000;
+    font-weight: normal;
+}
+.errorClass {
+    position: absolute;
+    left: 30px;
+    right: 24px;
+    top: 16px;
+    width: 284px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 12px;
+    color: #e60000;
+    /*background: red;*/
+    
+    font-weight: normal;
+}
+
+.sponsorLabelDownload:hover{
+    background:none;
+    color: black;
+}
+
+.sponsorLabelDownload {
+    width: 100%;
+    padding-top: 0%;
+    color: grey;
+    font-size: 12px;
+    padding-left: 0%;
+    margin:0;
+    overflow: hidden;
+}
+
+.sponsorLabelDownload:focus {
+    color: white;
+    text-decoration: none;
+}

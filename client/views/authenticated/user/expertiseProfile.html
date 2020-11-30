@@ -1,0 +1,167 @@
+<template name="profileExpertise">
+  <div class="modal" id="profileExpertise" role="dialog" data-backdrop="static">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height:34px !important;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;height:34px !important;">
+            <div class="row" style="margin:0 !important;height:34px !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHead" style="border-top-right-radius: 5px;height:34px !important;">
+                <p class="modal-title titeofregistemodal" style="text-align: center;margin-top:5px;">Modfiy Profile</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body  modal-body-modReg1" style="min-height: 13.3em!important;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+            <div class="row no-gutter col-md-12 col-xs-12 col-sm-12 col-lg-12">
+              <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="margin-top: 5px;">
+                 <p class="labelWhoNew2">Expertise:</p>
+              </div>
+               <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="margin-top: 5px;">
+                 <p class="labelWhoNew2">Languages:</p>
+              </div>
+            </div>
+            <div class="row no-gutter col-md-12 col-xs-12 col-sm-12 col-lg-12">
+              
+              <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding:5px;">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+
+                  <div class="row no-gutter" style="">
+                    <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                      <input type="text" autocomplete="off" placeholder="Expertise" id="mainTagExp" value="" class="selectProjectsE">
+                    </div>
+                    <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                      <div class="userProjectSearchDiv">
+                        <span class="glyphicon glyphicon-search userProjectSearch">
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;margin-top:0px;height:26px;">
+                      <div class="userProjectSearchDiv">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagopExp">
+                  {{#if Template.subscriptionsReady}} 
+                  {{#if expertiseList}} 
+                  {{#each expertiseList}} 
+                  {{#if checkExpertiseExist this._id}}
+                  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.expertise}}>
+                    <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.expertise}}>
+                      <label class="checkBoxDivLabel" name="checkExpName">
+                        {{this.expertise}}
+                      </label>
+                    </div>
+                    <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.expertise}}>
+                      <input value={{this._id}} type="checkbox" name="checkExpName" id="{{this._id}}" class="" checked style="cursor:pointer!important" onclick="{{checkRoleForProjectsAndPlaces}}">
+                        <label name="checkExpName" for={{this._id}} class="checkBoxDivLabelCheck">
+                        </label>
+                    </div>
+                  </div>
+                  {{else}}
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.expertise}}>
+                      <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.expertise}}>
+                        <label class="checkBoxDivLabel" name="checkExpName">
+                          {{this.expertise}}
+                        </label>
+                      </div>
+                      <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.expertise}}>
+                        <input value={{this._id}} type="checkbox" name="checkExpName" id="{{this._id}}" class="" style="cursor:pointer!important" onclick="{{checkRoleForProjectsAndPlaces}}">
+                        <label name="checkExpName" for={{this._id}} class="checkBoxDivLabelCheck">
+                        </label>
+                      </div>
+                    </div>
+                  {{/if}} 
+                  {{/each}} 
+                  {{/if}} 
+                  {{/if}}
+                  </div>
+              </div>
+             
+              <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding:5px;">
+              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer">
+                <div class="row no-gutter" style="">
+                  <div class="col-md-10 col-xs-10 col-sm-10 col-lg-10" style="padding-right:0px !important;padding-left:0px !important;height:26px;margin-top:0px;">
+                    <input type="text" autocomplete="off" placeholder="Languages" id="mainTagLang" value="" class="selectProjectsE">
+                  </div>
+                  <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:0px !important;margin-top:0px;border-right: 1px solid white;height:26px;">
+                    <div class="userProjectSearchDiv">
+                      <span class="glyphicon glyphicon-search userProjectSearch">
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;margin-top:0px;height:26px;">
+                    <div class="userProjectSearchDiv">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 setSearchUSer2" id="selectTagopLang">
+                {{#if Template.subscriptionsReady}} 
+                {{#if languageList}} 
+                {{#each languageList}} 
+                {{#if checkLanguageExist this._id}}
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.language}}>
+                  <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.language}}>
+                    <label class="checkBoxDivLabel" name="checkLangName">
+                      {{this.language}}
+                    </label>
+                  </div>
+                  <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.language}}>
+                    <input value={{this._id}} type="checkbox" name="checkLangName" id="{{this._id}}" class="" checked style="cursor:pointer!important" >
+                      <label name="checkLangName" for={{this._id}} class="checkBoxDivLabelCheck">
+                      </label>
+                  </div>
+                </div>
+                {{else}}
+                  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 checkboxdivuserprofile" style="padding-right:0px !important;padding-left:0px !important;height:25px !important;" name={{this.language}}>
+                    <div class="col-md-11 col-xs-11 col-sm-11 col-lg-11" style="padding-right:0px !important;padding-left:3px !important;height:25px !important;" name={{this.language}}>
+                      <label class="checkBoxDivLabel" name="checkLangName">
+                        {{this.language}}
+                      </label>
+                    </div>
+                    <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1" style="padding-right:0px !important;padding-left:5px !important;height:25px !important;" name={{this.language}}>
+                      <input value={{this._id}} type="checkbox" name="checkLangName" id="{{this._id}}" class="" style="cursor:pointer!important" onclick="{{checkRoleForProjectsAndPlaces}}">
+                      <label name="checkLangName" for={{this._id}} class="checkBoxDivLabelCheck">
+                      </label>
+                    </div>
+                  </div>
+                {{/if}} 
+                {{/each}} 
+                {{/if}} 
+                {{/if}}
+                </div>
+              </div>
+
+
+            </div>
+         
+         
+
+            
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="row no-gutter">
+              <div class="row" style="margin-top: 8px;">
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-left: 11px!important;">
+                </div>
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-left: 17px!important;">
+                   <button type="button" class="ip_button_Popup_Black" id="updateExpertise">Save</button>
+                </div>
+                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2" style="padding-left: 13px!important;">
+                   <button type="button" class="ip_button_Popup_Red" data-dismiss="modal" id="close">Cancel</button>
+                </div>
+              </div>
+            </div>
+            <div class="row" id="errorDiv_EditAddress">
+              <div class="row" style="margin-top: 8px;">
+               <p id="impMsg" class='impMsg'></p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

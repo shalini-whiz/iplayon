@@ -1,0 +1,172 @@
+{{{getDocType}}}
+<html lang="en">
+	<head>
+	    <style type="text/css">
+		    {{css}}
+	    </style>
+	</head>
+	<body>
+	    <div class="container">
+	    	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+	    		<img src="{{imageURL}}/logo.png"  style="width:90%;height:12%;float:left;margin:0px !important;margin-top:-3px !important;border:0"/>
+	    	</div>
+	    	<div class="col-md-8 col-xs-8 col-sm-8 col-lg-8" style="padding:0px!important;">
+		    	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+		            <p class="pclassPDFHeading" style="">Team Detailed Score Sheet</p>
+		        </div>
+		        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+		            <p class="pclassPDFHeading" style="">{{tournamentName_team}}</p>
+		        </div>
+		        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+		            <p class="pclassPDFHeading2" style="margin-top:0px;">held at <!--{{venueAddress_team}},-->{{domainName_team}}</p>
+		        </div>
+		        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+		            <p class="pclassPDFHeading2" style="margin-top:0px;">Event:{{eventName_team}},{{eventDate_team}}</p>
+		        </div>
+		       <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+		            <p class="pclassPDFHeading2" style="margin-top:0px;">Match:{{matchNumber}},Round:{{roundNumber}}</p>
+		        </div>
+	    	</div>
+	    	{{#if get5sImage}}
+	    	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+	    		{{#if get5sImage.url}}
+	    		<img src="{{imageURL}}{{get5sImage.url}}" style="width:94%;height:14%;float:right;margin:0px !important;margin-top:-3px !important;border:0"/>
+	    		{{/if}}
+	    	</div>
+	    	{{/if}}
+	    </div>
+	    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;font-size:13px;">
+	        <p style="margin:0px;">{{teamANameGet}} v/s {{teamBNameGet}}</p>
+	    </div>
+	    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top:0px !important;padding:0px !important;">
+		    <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="width:100%;">
+			    <tbody class="">
+			        {{#each specificationsGet}}
+			        <tr class="headerAnalytics3" id="headerAnalytics3">
+			            <td class="headerDetScoreTeam" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Match Type</p></td>
+			            <td class="headerDetScoreTeam" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">{{this.displayLabel}}</p></td>
+			            {{#each setScoresTeamTemp}}
+			            <td class="headerDetScoreTeam" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">{{this}}</p></td>
+			            {{/each}}
+			            <td class="headerDetScoreTeam" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Winner</p></td>
+			        </tr>
+
+			        
+			         <tr class="headerAnalytics3" id="headerAnalytics3">
+			            <td class="matchRowDEtScore" style="border-spacing:0;padding:2px !important;">
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{typeDisp this.matchType}}
+			            	</p>
+			            </td>	
+			            {{#if checktype this.matchProjectType}}
+			            	<td class="matchRowDEtScore" style="border-spacing:0;padding:2px !important;">
+			            		<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">
+			            			{{#if this.playerAName}}
+			            				{{this.playerAName}}
+			            			{{else}}
+			            			&nbsp;
+			            			{{/if}}
+			            		</p>
+			            	</td>
+			            {{else}}
+			            	<td class="matchRowDEtScore" style="border-spacing:0;padding:2px !important;">
+			            		<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">
+			            			{{#if this.playerA1Name}}
+			            			{{#if this.playerA2Name}}	
+			            				{{this.playerA1Name}}, {{this.playerA2Name}}
+			            			{{/if}}
+			            			{{else}}
+			            				&nbsp;
+			            			{{/if}}
+			            		</p>
+			            	</td>
+			            {{/if}}
+
+			            {{#each setScoresTeamTemp}}
+			            <td class="matchRowDEtScore" style="border-spacing:0;padding:2px !important;">
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">
+			            		{{setScoresAGet @index ../setScoresA}}
+			            	</p>
+			            </td>
+			            {{/each}}
+			            <td class="matchRowDEtScore" style="border-spacing:0;padding:2px !important;">
+			            	<p style="text-align:center;margin:0px;margin-top:2px;">
+			            	{{#if checktype this.matchProjectType}}
+			            		{{getWinnerNameA this.winnerIdPlayer this.playerAId this.playerBId this.matchProjectType}}
+			            	{{else}}
+			            		{{getWinnerNameA this.winnerD1PlayerId this.playerA1Id this.playerB1Id this.matchProjectType}}
+			            	{{/if}}
+			            	</p>
+			            </td>
+			        </tr>
+
+			        <tr class="headerAnalytics3" id="headerAnalytics3">
+			            <td class="matchRowDEtScore" style="border-spacing:0;padding:2px !important;">
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">&nbsp;
+			            	</p>
+			            </td>	
+			            {{#if checktype this.matchProjectType}}
+			            	<td class="matchRowDEtScore" style="border-spacing:0;padding:2px !important;">
+			            		<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">
+			            			{{#if this.playerBName}}
+			            				{{this.playerBName}}
+			            			{{else}}
+			            			&nbsp;
+			            			{{/if}}
+			            		</p>
+			            	</td>
+			            {{else}}
+			            	<td class="matchRowDEtScore" style="border-spacing:0;padding:2px !important;">
+			            		<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">
+			            			{{#if this.playerB1Name}}
+			            			{{#if this.playerB2Name}}	
+			            				{{this.playerB1Name}}, {{this.playerB2Name}}
+			            			{{/if}}
+			            			{{else}}
+			            				&nbsp;
+			            			{{/if}}
+			            		</p>
+			            	</td>
+			            {{/if}}
+
+			            {{#each setScoresTeamTemp}}
+			            <td class="matchRowDEtScore" style="border-spacing:0;padding:2px !important;">
+			            	<p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">
+			            		{{setScoresAGet @index ../setScoresB}}
+			            	</p>
+			            </td>
+			            {{/each}}
+			            <td class="matchRowDEtScore" style="border-spacing:0;padding:2px !important;">
+			            	<p style="text-align:center;margin:0px;margin-top:2px;">
+			            	&nbsp;
+			            	</p>
+			            </td>
+			        </tr>				                
+			        {{/each}}
+
+			    </tbody>
+			</table>
+			<!--ultimate winner-->
+			<table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="width:100%;margin-top:10px;">
+			    <tbody class="">
+			        <tr class="headerAnalytics3" id="headerAnalytics3">
+			            <td class="headerDetScoreTeamFinal" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;">Ultimate Winning Team</p></td>
+			            <td class="headerDetScoreTeamFinal" style="border-spacing:0;padding:2px !important;">
+			            	{{#if findteamStatusType}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;">Match Type:{{typeDisp findteamStatusType}}</p>
+			            	{{else}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;">Not Played</p>
+			            	{{/if}}
+			            </td>
+			            <td class="headerDetScoreTeamFinal" style="border-spacing:0;padding:2px !important;">
+			            	{{#if findTheTeamNamedraw }}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;">{{findTheTeamNamedraw}}</p>
+			            	{{else}}
+			            	<p style="text-align:center;margin:0px;margin-top:2px;">&nbsp;</p>
+			            	{{/if}}
+			            </td>		            
+			        </tr>
+			    </tbody>
+			</table>
+		</div>
+	</body>
+</html>

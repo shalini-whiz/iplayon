@@ -1,0 +1,128 @@
+  {{{getDocType}}}
+<html lang="en">
+<head>
+    <style type="text/css">
+      {{css}}
+    </style>
+</head>
+<body>
+  <div class="container">
+        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+         <img src="{{imageURL}}/{{logoImg}}"  style="width:100%;float:right;margin:0px !important;margin-top:-3px !important;border:0;margin-bottom: :10px !important;" />
+        </div>
+        <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8" style="padding:0px!important;">
+          <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading" style="">Score Sheet</p>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:auto!important;">
+                <p class="pclassPDFHeading" style="">{{tournamentName}} - {{eventName}}</p>
+            </div>
+       
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading2" style="margin-top:0px;">held at 
+                  {{domainName}}
+                </p>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading2" style="margin-top:0px;">{{tourStartDate}} - {{tourEndDate}}</p>
+            </div>
+           
+        </div>
+        {{#if get5sImage}}
+        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+          {{#if get5sImage.url}}
+          <img src="{{imageURL}}{{get5sImage.url}}" style="width:94%;height:14%;float:right;margin:0px !important;margin-top:-3px !important;border:0"/>
+          {{/if}}
+        </div>
+        {{/if}}
+  </div>
+  <div class="container">
+ <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;font-size:13px;margin: 15px !important">
+  {{#if groupName}}
+          <p style="margin:0px;">{{groupName}} </p>
+          {{/if}}
+      </div>
+
+  {{#if fetchDetailScore}}
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">   
+      <table class="able table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="width:100%;table-layout:fixed;">
+        <tbody class="">
+          <tr class="headerAnalytics3" id="headerAnalytics3">
+            <td class="headerDetScoreTeam" style=""></td>
+            <td class="headerDetScoreTeam" style="">set 1</td>
+            <td class="headerDetScoreTeam" style="">set 2</td>
+            <td class="headerDetScoreTeam" style="">set 3</td>
+            <td class="headerDetScoreTeam" style="">set 4</td>
+            <td class="headerDetScoreTeam" style="">set 5</td>
+            <td class="headerDetScoreTeam" style="">set 6</td>
+            <td class="headerDetScoreTeam" style="">set 7</td>                        
+        </tr>
+        <tr class="headerAnalytics3" id="headerAnalytics3">                   
+                           
+          <td class="robin_td" style="border-spacing:0;padding:2px !important;width: 20% !important" > <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{displayPlayerName fetchDetailScore.playersID.playerAId}}</p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{fetchDetailScore.scores.setScoresA.[0]}}
+              </p>
+            </td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{fetchDetailScore.scores.setScoresA.[1]}}</p> </td>
+                            
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{fetchDetailScore.scores.setScoresA.[2]}}</p></td>
+                            
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{fetchDetailScore.scores.setScoresA.[3]}} </p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{fetchDetailScore.scores.setScoresA.[4]}}</p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{fetchDetailScore.scores.setScoresA.[5]}}</p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{fetchDetailScore.scores.setScoresA.[6]}}</p></td>
+                                               
+          </tr>
+
+          <tr class="headerAnalytics3" id="headerAnalytics3">
+                               
+            <td class="robin_td" style="border-spacing:0;padding:2px !important;width: 20% !important"> <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{displayPlayerName fetchDetailScore.playersID.playerBId}}</p></td>
+                         
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{fetchDetailScore.scores.setScoresB.[0]}}</p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{fetchDetailScore.scores.setScoresB.[1]}}</p></td>
+                            
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{fetchDetailScore.scores.setScoresB.[2]}}</p></td>
+                            
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{fetchDetailScore.scores.setScoresB.[3]}}</p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{fetchDetailScore.scores.setScoresB.[4]}}</p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{fetchDetailScore.scores.setScoresB.[5]}}</p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{fetchDetailScore.scores.setScoresB.[6]}}</p></td>
+                            
+                            
+
+                                           
+          </tr>                 
+        </tbody>
+      </table>
+      <div class="row">
+        {{#if fetchDetailScore.status}}
+          <p style="text-align:left;margin:15px;margin-top:2px;">Match Type: {{fetchDetailScore.status}}</p>
+        {{else}}
+          <p style="text-align:left;margin:15px;margin-top:2px;">Match Type: Not Played</p>
+        {{/if}}
+      </div>
+      <div class="row">
+        {{#if fetchDetailScore.winnerID}}
+          <p style="text-align:left;margin:15px;margin-top:2px;">Winner: {{displayPlayerName fetchDetailScore.winnerID}}</p>
+        {{else}}
+          <p style="text-align:left;margin:15px;margin-top:2px;">Winner: &nbsp;</p>
+        {{/if}}
+      </div>
+    
+    </div>
+  {{/if}}
+  </div>
+
+</body>
+</html>

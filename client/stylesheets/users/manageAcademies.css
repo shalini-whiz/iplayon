@@ -1,0 +1,265 @@
+.modalMANage{
+	width: 476px !important;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.searchAca{
+	font-size: 14px;
+	margin-left: 3px;
+	cursor: pointer;
+	color: white;
+}
+
+.searchAcaInput{
+	width: 101%;
+	height: 100%;
+	font-size: 12px;
+	border: 1px solid black;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.addAcaInput{
+	background: transparent none repeat scroll 0px center;
+	border: 0px none;
+	font-size: 12px;
+	margin-left:4px;
+}
+.divClass1_MNM{
+	padding-top: 6px !important;
+	padding-left: 0px !important;
+	width: 4.333% !important;
+	border-radius: 0px 5px 5px 0px;
+}
+
+.divClass2_MNM{
+	margin-left: 7px !important;
+	height: 26px !important;
+	padding: 0px !important;
+	width: 69% !important;
+}
+.divClass3_MNM{
+	padding-left: 2px !important;
+	padding-right: 0px !important;
+	width: 23% !important;
+	margin-left: 5px;
+}
+
+.divClass4_MNM{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	height: 26px;
+	background: #595959 none repeat scroll 0% 0%;
+	color: white;
+	border-radius: 5px;
+}
+
+.divClass5_MNM{
+	padding-left: 6px !important;
+	padding-right: 0px !important;
+	padding-top: 5px;
+}
+
+.divClass6_MNM{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	padding-top: 4px;
+}
+
+.addedAcademyDiv{
+	padding-left: 7px !important;
+	padding-right: 0px;
+	border-radius: 0px;
+	margin-top: 3px;
+}
+
+.addedAcademyName{
+	font-size: 12px;
+	height: 27px;
+	margin-top: 0px;
+	color: #FFF;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	font-weight: bold;
+	background: #595959 none repeat scroll 0% 0%;
+	border-radius: 0px 5px 0px 0px;
+}
+
+.addedAcademyNameDelete{
+	padding-right: 0px !important;
+	padding-left: 8px !important;
+	padding-top: 4px;
+}
+.addedAcademyDelete{
+	font-size: 17px;
+    color: maroon;
+    cursor: pointer;
+}
+
+.addedAcademyMainDiv{
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 17em;
+	margin-top: 3px;
+	padding-right: 11px !important;
+	padding-left: 0px !important;
+}
+
+.yesDeleteP{
+	font-size: 12px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 18px;
+	color: #F00;
+	text-align: center;
+	width: 100%;
+}
+.yesDeleteP2{
+	font-size: 12px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #F00;
+	text-align: center;
+	width: 100%;
+}
+.yesDeleteBut{
+	order:2;
+	font-size: 12px; 
+	margin-left: 0px;
+	background: rgb(59, 89, 152) none repeat scroll 0% 0%;
+	color: white;
+	border-radius: 5px;
+	width: 46px;
+	height: 20px;
+}
+.noDeleteBut{
+	order:3;
+	font-size: 12px; 
+	margin-left: 5px;
+	background: rgb(59, 89, 152) none repeat scroll 0% 0%;
+	color: white;
+	border-radius: 5px;
+	width: 46px;
+	height: 20px;
+}
+.deleteConfirmationAcademy{
+	display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: flex;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.yesDeletePQ{
+	font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 14px;
+    color: red;
+    order:2;
+}
+
+.titeofregistemodalA{
+	font-size: 14px;
+	cursor: pointer;
+	text-align: center;
+	margin-top: 3px;
+}
+
+.divViewAcaMain{
+	max-height: 18em;
+	overflow-y: auto;
+	overflow-x:hidden;
+	border-radius: 5px;
+	padding: 0px;
+	padding-right: 15px !important;
+	margin-top: 4px;
+}
+
+.divViewAca1{
+	padding-right: 0px !important;
+	padding-top: 2px;
+	padding-left: 10px;
+	border-bottom: 1px solid grey;
+}
+
+.divViewAca2{
+	height: 28px;
+	padding: 4px 0px 0px 15px;
+	border-bottom: 1px solid grey;
+}
+
+.ptagOfAddedAc{
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.titleRegisterNewAca{
+	font-size: 14px;
+	cursor: default;
+	margin-top: 3px;
+	text-align: center;
+}
+
+.titleDivRegNewAca{
+	padding-right: 0px !important;
+	padding-bottom: 0px !important;
+	background: #800000 none repeat scroll 0% 0%;
+	height: 3.4em;
+	padding-left: 0px !important;
+}
+
+.titleDivRegNewAca2{
+	padding-right: 0px !important;
+	padding-bottom: 0px !important;
+	background: white none repeat scroll 0% 0%;
+	height: 3.4em;
+	padding-left: 0px !important;
+	border-bottom: 1px solid gainsboro;
+}
+.modal-header-modRegAcademy{
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	height: 3.4em;
+	background: 0;
+}
+
+.headerDivAcaAct{
+	background: #800000 none repeat scroll 0% 0%;
+	color: white;
+}
+
+.headerDivAcaDeAct{
+	background: white none repeat scroll 0% 0%;
+	color: maroon;
+}
+
+.playerDetailscontent{
+	padding: 0px !important;
+	border-radius: 0px;
+	margin-top: 3px;
+}
+
+.playerDetailsPtag{
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0px !important;
+	white-space: pre-wrap;
+	width: 100%;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.playerDetailscontent_admin{
+	padding: 0px !important;
+	border-radius: 0px;
+	margin-top: 3px;
+}

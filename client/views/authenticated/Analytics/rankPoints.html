@@ -1,0 +1,147 @@
+<template name="rankPoints">
+    {{#if Template.subscriptionsReady}}
+     <div class="row">
+        <p  style="font-size:15px !important;color:white;text-align: center;" id="" >
+            Rank Points
+        </p>
+    </div>
+    <div class="row">
+        <a  style="margin-top:50px !important;float:right !important;margin-right:15px !important;font-size:15px !important" id="addCarriedPoints" >
+            Add Carried Points
+        </a>
+    </div>
+    <div class="row">
+        <table class="table table-striped tableOFCSVHTML_New">
+            <thead style="">
+                <tr class="headerAnalytics2">
+                    <th class="pAnalytics2">No</th>
+                    <th class="pAnalytics2">Year</th>
+                    <th class="pAnalytics2">Edit</th>
+                </tr>
+            </thead>
+            <tbody id="selectTagop">
+                {{#if carriedPointsData}}
+                {{#each carriedPointsData}}
+                <tr class="headerAnalytics3">
+                    <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                    <td class="pAnalytics2">{{this.year}}</td>
+                    <td class="pAnalytics2"> <span class="glyphicon glyphicon-pencil" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer"  id="editCarriedPoints"></span></td>
+                </tr>
+                {{/each}}
+                {{/if}}    
+            </tbody>
+        </table>
+    </div>
+    {{else}}
+        {{> loader}}
+    {{/if}}
+    <div id="addCarriedPointsContent"></div>
+</template>
+
+
+
+
+<template name="addCarriedPointsModal">
+  <div class="modal" id="addCarriedPointsModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                    {{#if alreadyExists}}
+                        Modify Carried Points
+                    {{else}}
+                        Create Carried Points
+                    {{/if}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">            
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Year*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if alreadyExists}}
+                        <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="yearSelection">
+                               <option selected disabled >Choose Year</option>
+
+                        {{#each yearList}}                                           
+                                    <option value={{this}} >{{this}} </option>
+                        {{/each}}
+                            </select>
+
+                    {{else}}
+                        {{#if yearList}}
+                            <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="yearSelection">
+                               <option selected disabled >Choose Year</option>
+
+                            {{#each yearList}}                                           
+                                    <option value={{this}} >{{this}} </option>
+                            {{/each}}
+                            </select>
+
+                        {{/if}}
+                    {{/if}}
+
+                       
+                  </div>
+               </div> 
+               {{#if yearBasedTour}}
+                <div class="" id="" style="max-height:300px !important;overflow:scroll;">
+
+                <table class="table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" style="max-height:300px;">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2"></th>
+                            <th class="pAnalytics2" style="width: 60%">Tournament</th>
+                            <th class="pAnalytics2">Start Date</th>
+                            <th class="pAnalytics2">End Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="selectTagop">
+                    {{#each yearBasedTour}}
+                        <tr class="headerAnalytics3">
+                            <td class="pAnalytics2"><input value="{{this._id}}"  type="checkbox" name="tourSelection" id="{{this._id}}" class="checkboxevents" style="width: 90px;" {{checkYear this.year this._id}}/></td>
+                            <td class="pAnalytics2" style="color:black !important;width: 60% !important;text-align: left">{{this.eventName}}</td>
+                            <td class="pAnalytics2" style="color:black !important">{{formatDate this.startDate}}</td>
+                            <td class="pAnalytics2" style="color:black !important">{{formatDate this.endDate}}</td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+               {{/if}}
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class ="row">
+                  <p id="expertiseImpMsg" class='impMsg'></p>
+
+                </div>
+                 <div class="row" style="text-align: center;">
+                    {{#if alreadyExists}}
+                        <button type="button" class="ip_button_Popup_Black" id="modifyCarriedPoints"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                        </button>
+                    {{else}}
+                        <button type="button" class="ip_button_Popup_Black" id="saveCarriedPoints"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                        </button>
+
+                    {{/if}}
+                    <button type="button" class="ip_button_Popup_Red" id="cancelCarriedPoints" data-dismiss="modal" style="order:2;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</template>

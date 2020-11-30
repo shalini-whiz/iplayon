@@ -1,0 +1,65 @@
+#sportTeam{
+	cursor:default;
+}
+
+#venueTeam{
+	width:100%;
+}
+.myTeamsChildActive{
+	width:100%;
+	border-radius: 5px;
+	border: 0px solid;
+	height:2.5em;
+    color:white;
+    float: left;
+	font-size:12px;
+	font-weight: bold;
+	box-shadow: 1px 1px 2px #888888;
+	background: -webkit-linear-gradient(#bfbfbf, #f2f2f2); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#bfbfbf, #f2f2f2); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#bfbfbf, #f2f2f2); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#bfbfbf, #f2f2f2);
+    color: black;
+	cursor: pointer;
+}
+
+
+
+#deleteIcon{
+		width:9%;
+}
+
+.eventEdit_myTd_member{
+	 order: 4;
+    width: 9%;
+    height: 2.36em;
+    padding-right: 0%;
+    padding-left: 0%;
+    box-sizing: border-box;
+}
+
+.eventEdit_my_member{
+    transform: rotate(6deg);
+    width: 93%;
+    height: 2.1em;
+    box-sizing: border-box;
+    margin-left:9%;
+    margin-top:12%;
+    cursor:default;
+}
+
+.glyphicon-forwardMyTeams{
+	position:relative;
+	margin-left:90%;
+}
+
+.glyphicon-forward{
+	/**margin-top:3%;**/
+    margin-left:90%;
+    top:-70%;
+	
+}
+
+.defaultCursor{
+	cursor:default !important;
+}

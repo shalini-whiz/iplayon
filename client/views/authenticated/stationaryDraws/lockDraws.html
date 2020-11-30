@@ -1,0 +1,137 @@
+<template name="drawsToLock">
+   <div class="modal" id="drawsToLock" aria-hidden="true">
+      <div id="subDomainCenter" class="modal-dialog" style="width:400px !important" >
+         <div class="eventAddTourPopup" style="width:451px !important">
+            <div class="modal-content">
+               <div class="modal-header headerClass">
+                  <h5 class="modal-title myModalLabel" id="myModalLabel" style='text-align:center;'>{{tournamentName}} Draws</h5>
+               </div>
+
+               <div class="modal-body subDomainModalBody" style="padding:15px !important;height:14em;">
+                  <h5 class="modal-title" id="myModalLabel" style='text-align:center;padding:5px;'></h5>
+                  <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important">
+                     <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;height:14em;overflow:auto;padding-left:15px !important;padding-right:15px !important;">
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important">
+                           <div class="row no-gutter">
+                              <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5 tableHeadPopup1"  style="border-right:0px">
+                                 <p class="tableHeadPopupPtagH">Event Name</p>
+                              </div>
+                              <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5 tableHeadPopup1" style="border-right:1px solid black">
+                                 <p class="tableHeadPopupPtagH">Status</p>
+                              </div>
+                              <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup1" style="border-right:1px solid black">
+                                 <p class="tableHeadPopupPtagH"></p>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 scrollableDiv" style="padding:0px !important;min-height:3em;border: 1px solid;border-top: 0px;" id="scrollableDiv2" >
+                           {{#each tournamentDraws}}
+                              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important" >
+                                 <div class="row no-gutter" id="test">
+                                    <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5 tableHeadPopup"  style="border-left:0px;">
+                                       <p class="tableHeadPopupPtag" autocomplete="off" name="" placeholder="No." id="" >{{this.eventName}}</p>
+                                    </div>
+                                    <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5 tableHeadPopup"  style="border-left:0px;">
+                                       <p class="tableHeadPopupPtag" autocomplete="off" name="" placeholder="No." id="" >
+                                          {{#if this.drawsLock}}
+                                             {{lockStatus this.drawsLock}}
+                                          {{else}}
+                                             Pending
+                                          {{/if}}
+                                       </p>
+                                    </div>
+                                    <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup" style="border-right:0px;">
+                                       {{#if checkLockStatus this.drawsLock}}   
+                                          <span id="lockDraw" style="color:#007700; font-size: 14px; margin:1px 0px 0px 1px; width:15%; transform: rotate(0deg); cursor: pointer" class="glyphicon glyphicon-lock"></span>
+                                       {{else}}
+                                          <p class="tableHeadPopupPtag" autocomplete="off" name="" id="" placeholder="" value=""></p>
+                                       {{/if}}                                     
+                                    </div>
+                                 </div>
+                              </div>
+                           {{/each}}
+                        </div>
+                     </div>
+                  </div>
+                  <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height: 2em !important;">
+                     <p style="font-size:12px;color:red;cursor:default;" id="editSettingsPopupError"></p>
+                     <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+                  </div>
+               </div>
+
+               <div class="modal-footer">
+                  <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-bottom:4px;">
+                     <div class="">
+                        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " style="padding: 0px !important;">
+                           <div style="font-size: 17px;padding: 0px !important;text-align: center;" class="col-md-4 col-xs-4 col-lg-4 col-sm-4 ">
+                           </div>
+                                                                                                     
+                           <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding: 0px !important;padding-right: 15px !important;"> 
+                              <button type="button" class="ip_button_Popup_Red" id="cancelLock" style="margin-left:3px;width:  100% !important;">Cancel</button>
+                           </div>
+                           <div style="font-size: 17px;padding: 0px !important;text-align: center;" class="col-md-4 col-xs-4 col-lg-4 col-sm-4 ">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>                 
+            </div>
+         </div>
+      </div>
+   </div>
+</template>
+
+
+
+<template name="confirmPasswordForDrawsLock">
+  <form id="application-confirmPasswordForDrawsLock">
+  <div class="modal" id="confirmPasswordForDrawsLock" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm" style="transform: translate(0px, 0px)!important;">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style=""><span class="glyphicon glyphicon-lock" style="color:white;margin-right: 6px;margin-left: -7px !important;margin-top: 3px;"></span>Confirm Password To Lock {{eventName}} Draws</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body  modal-body-modReg1" style="min-height: 3.4em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                      <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;padding-left: 47px;">
+                          <p class="labelWhoNewChangePas">
+                            Password:
+                          </p>
+                      </div>
+                       <div class="col-md-7 col-xs-7 col-lg-7 col-sm-7" style="padding-left:0px !important;">
+                          <input type="password" autocomplete="off" id="oldPassword" value="" maxlength="60" placeholder="enter your password" name="oldPassword" class="userName" style="text-align:left;height:2em;margin-bottom:0.25%;width:100%;display:block;font-size:13px;padding-left:2%;">
+                        </div>
+                  </div>
+              </div>
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <p style="font-size:12px;color:red;cursor:default;" id="changePasswordError"></p>
+                <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                 <div class="row">
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-right:0px !important;padding-bottom: 4px;">
+                    <input type="submit" class="ip_button_Popup_Black" id="changePasswordSubmit" style="order:2;margin:0px;padding:0px; height:2.2em!important;margin-right:0px;" value="Ok">
+                  </div>
+                  <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="padding-left:0px !important;padding-bottom: 4px;padding-right: 111px;">
+                    <button type="button" class="ip_button_Popup_Red" id="cancelLockPassword" style="order:1;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                  </div>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+ </form>
+</template>

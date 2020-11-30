@@ -1,0 +1,31 @@
+{
+  "name": "iPlayon",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.55",
+    "autosize": "^3.0.20",
+    "bcrypt": "^2.0.1",
+    "body-parser": "^1.15.0",
+    "crypto-js": "^3.1.9-1",
+    "es6-promise": "^4.1.0",
+    "fb": "^2.0.0",
+    "fbgraph": "^1.4.4",
+    "fitbit-node": "^2.1.0",
+    "js-sha512": "^0.7.1",
+    "length-stream": "^0.1.1",
+    "noble": "^1.9.1",
+    "node-gcm": "^0.14.10",
+    "node-instagram": "^4.1.0",
+    "node-linkedin": "^0.5.6",
+    "node-phantom": "^0.2.5",
+    "phantom": "^2.1.21",
+    "system": "^1.0.6",
+    "titleize": "^1.0.1",
+    "twit": "^2.2.5",
+    "twitter": "^1.7.0",
+    "underscore.string": "^3.3.5"
+  }
+}

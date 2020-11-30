@@ -1,0 +1,120 @@
+.userViewTeamManager{
+          /** Altering padding-top alters the height of the background**/ 
+	   padding-top: 2%;
+	   padding-bottom:2%;
+	   padding-left:0%;
+	   margin-left:1%;
+	   order:2;
+	   background-color: #B0B0B0;
+	   display: -webkit-box;
+	   display: -moz-box;
+	   display: -ms-flexbox;
+       display: inline;
+	 /**  margin-top: 0.1%;**/
+	   margin-right: 5px;
+	   border-radius: 5px;
+	   border: 0px solid;
+	   /**height:1em;**/
+	   width:96%;
+	   color:white;
+	   font-size: 12px;
+	   float:left;
+	   margin-bottom:0.5%;
+	   background:url("/star_shadow_trans.png") no-repeat scroll 98% 50% #B0B0B0;
+	   background-size: 9% 77%, 5% auto;
+	   cursor:pointer;
+	   
+	   
+}
+
+.viewRulesParent1ViewTeams{
+	
+}
+
+.viewRulesParent1ViewTeams {
+    width: 100%;
+    /*min-width:100%;*/
+    
+    height: 2.9em;
+    background: white url(/hard-drive-download_red.ico) no-repeat;
+    background-position: right bottom;
+    background-size: 33px 27px;
+    /**border-radius: 5px;
+    border-radius: 5px;**/
+    border: 1px solid black;
+    color: rgb(51, 51, 51);
+    float: center;
+    font-size: 12px;
+    padding-left: 1%;
+    padding-top: 2%;
+    display: block;
+    margin: 0 auto;
+    text-decoration: none !important;
+    margin-top: 0.7%;
+}
+#mainTagViewTeams{
+	width:50%;
+}
+
+.subDomainCheckBoxDivViewTeams input[type="radio"]{
+	display:inline-block;
+}
+.viewRulesParent1ViewTeams:hover{
+    background: white url(/hard-drive-download_red.ico) no-repeat;
+    background-position: right bottom;
+    background-size: 33px 27px;
+        color: rgb(51, 51, 51);
+    
+}
+
+#yesButtonSubDomainsViewTeams{
+	margin-left:5%;
+	margin-top:8%;
+}
+.yesSubDomainsViewTeams{
+	margin-left:29%;
+	margin-top:8%;	
+}
+
+.noSubDomainsViewTeams{
+		margin-top:8%;	
+}
+
+#noButtonSubDomainsViewTeams{
+		margin-top:8%;	
+		margin-left:2%;
+}
+
+.dropdownSelectedDomainsViewTeams dt a{
+	background: no-repeat scroll 98% 50% rgb(128, 128, 128)
+}
+
+.dropdownSelectedDomainsViewTeams dt a span{
+	   cursor:default;
+}
+
+.userViewTeam{
+	/** Altering padding-top alters the height of the background**/ 
+	   padding-top: 2%;
+	   padding-bottom:2%;
+	   padding-left:0%;
+	   margin-left:1%;
+	   order:2;
+	   background-color: #B0B0B0;
+	   display: -webkit-box;
+	   display: -moz-box;
+	   display: -ms-flexbox;
+       display: inline;
+	 /**  margin-top: 0.1%;**/
+	   margin-right: 5px;
+	   border-radius: 5px;
+	   border: 0px solid;
+	   /**height:1em;**/
+	   width:96%;
+	   color:white;
+	   font-size: 12px;
+	   float:left;
+	   margin-bottom:0.5%;
+	   cursor:default;
+	   
+}

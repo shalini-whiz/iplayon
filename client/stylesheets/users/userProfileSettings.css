@@ -1,0 +1,770 @@
+/*css for userProfileSettings Template*/
+
+/*css class for user profile main content div
+  height of the div is 22em
+*/
+.userProfileMainContent {
+    background: white;
+    padding-right: 2%;
+    padding-left: 2%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-bottom: 0.5%;
+    margin-top: 0.5%;
+    height: 22em;
+    min-height: 22em;
+    outline: 0;
+    padding-top: 2%;
+    border-width: 3px 3px 1.5px 1.5px;
+    border-style: solid;
+    border-color: grey;
+    border-radius:5px;
+}
+
+
+/**class for user profile main titile div
+   all the contents are displayed in flex
+   format
+*/
+.userProfileMainTitle {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: #fff;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    outline: 0;
+    height: 32px;
+}
+
+/* userName is a text input box inside the div userProfileMainTitle
+   this is order 2 of flex
+*/
+.userName {
+    color: black;
+    font-weight: normal;
+    font-size: 12px;
+    outline: 0;
+    border: 1px solid grey;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    height: 33px;
+    order:2;
+}
+
+/* userPhoneNum is a text input box inside the div userProfileMainTitle
+   this is order 3 of flex
+*/
+.userPhoneNum {
+    color: black;
+    font-weight: normal;
+    font-size: 12px;
+    outline: 0;
+    border: 1px solid grey;
+    border-radius: 5px;
+    text-align: center;
+    width:100%;
+    height: 33px;
+}
+
+/* userTeamList is a menu list
+  inside the div userProfileMainTitle
+   this is order 1 of flex
+*/
+.userTeamList {
+    -moz-box-ordinal-group: 1;
+    order: 1;
+    border: 1px solid maroon;
+    border-radius: 24px;
+    margin-right: 3px;
+}
+
+/* userTeamListIcon Image css*/
+.userTeamListIcon {
+    width: 18px;
+    margin: 5px 3px 0px 5px;
+    cursor: pointer;
+    height: 14px;
+    cursor: pointer;
+    height: 14px;
+    font-size: 16px;
+    color: maroon;
+}
+
+/* userProfileSaveButton is the class of user
+  profile save button.
+  this is the order 4 of userProfileMainTitle
+  div
+*/
+.userProfileSaveButton {
+    width: 100%;
+    /*min-width:15%;*/
+    order: 4;
+    margin-bottom: 0%;
+    background-color: #b30000;
+    color: white;
+    border: 0px solid;
+    border-radius: 5px;
+    font-size: 12px;
+    outline: 0;
+    cursor: pointer;
+    font-weight: bold;
+    height: 33px;
+}
+
+/* userProfileCancelButton is the class of user
+  profile cancel button.
+  this is the order 4 of userProfileMainTitle
+  div
+*/
+.userCancelButton {
+    width: 100%;
+    height: 33px;
+    /*min-width:15%;*/
+    order: 4;
+    margin-bottom: 0%;
+    background-color: #b30000;
+    color: white;
+    border: 0px solid;
+    border-radius: 5px;
+    font-size: 12px;
+    outline: 0;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/**class for user profile main titile 2 div
+   all the contents are displayed in flex
+   format
+*/
+.userProfileMainTitle2 {
+    order: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 1%;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 2em;
+    outline: 0;
+}
+
+/* changeLoginId is a button
+   inside the div userProfileMainTitle2
+   this is order 1 of flex
+*/
+.changeLoginId {
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    margin-bottom: 0%;
+    background-color: grey;
+    color: white;
+    border: 0px solid;
+    border-radius: 5px;
+    font-size: 12px;
+    outline: 0;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 0.6%;
+    width: 24%;
+    box-sizing: border-box;
+}
+
+
+/* iAmAway is a disabled text input box
+   inside the div userProfileMainTitle2
+   this is order 2 of flex
+*/
+.iAmAway {
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    order: 2;
+    margin-bottom: 0%;
+    background-color: #D0D0D0;
+    color: black;
+    border: 0px solid;
+    border-radius: 5px;
+    font-size: 12px;
+    outline: 0;
+    font-weight: normal;
+    margin-right: 0.6%;
+    width: 55%;
+    box-sizing: border-box;
+}
+
+/* fromDate is a text input box inside
+  the div userProfileMainTitle2
+   this is order 3 of flex
+*/
+.fromDate {
+    -webkit-box-ordinal-group: 3;
+    -moz-box-ordinal-group: 3;
+    -ms-flex-order: 3;
+    order: 3;
+    color: black;
+    font-weight: normal;
+    font-size: 12px;
+    outline: 0;
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 33px;
+    text-align: center;
+    cursor: pointer !important;
+}
+
+/* toDate is a text input box inside
+  the div userProfileMainTitle2
+   this is order 4 of flex
+*/
+.toDate {
+    -webkit-box-ordinal-group: 4;
+    -moz-box-ordinal-group: 4;
+    -ms-flex-order: 4;
+    order: 4;
+    color: black;
+    font-weight: normal;
+    font-size: 12px;
+    outline: 0;
+    margin-right: 0.8%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* bList is a div inside
+  the div userProfileMainTitle2
+   this is order 5 of flex
+   type of display is flex for
+   the contents inside this div
+*/
+.bList {
+    /*min-width:15%;*/
+    /* background: rgb(152, 152, 152) url(/blackstar.png) no-repeat scroll 109% 16% / 24px auto;*/
+    -webkit-box-ordinal-group: 5;
+    -moz-box-ordinal-group: 5;
+    -ms-flex-order: 5;
+    order: 5;
+    margin-bottom: 0%;
+    color: white;
+    border: 0px solid;
+    border-radius: 5px;
+    font-size: 12px;
+    outline: 0;
+    cursor: pointer;
+    font-weight: bold;
+    display: inline-block;
+    width: 60%;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    outline: none;
+}
+
+/* blackList is a button inside
+  the div bList
+*/
+.blackList {
+    margin-top: 8%;
+    margin-left: 2%;
+    margin-right: -6%;
+    font-size: 11.9px;
+    flex: 1 1 200px;
+}
+
+/* not needed*/
+input.button_add {
+    padding-left: 16px;
+    height: 16px;
+    border: 1px solid;
+    border-radius: 5px;
+    background: #989898 url(/blackstar.png) no-repeat 10px center;
+    cursor: pointer;
+    outline: none;
+}
+
+/*change the default btn bootstrap
+  for the id #blackLsit
+*/
+#blackList .btn-xs,
+.btn-group-xs > .btn {
+    order: 1;
+    display: inline-block;
+    font-weight: bold;
+    padding: 1px 0px;
+    padding-top: 6px;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background: rgb(152, 152, 152) none repeat scroll 0% 0%;
+    background-color: #989898;
+    background-image: none;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: auto auto;
+    border-radius: 5px;
+    border: 0px solid #d8d8d8;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/*change the default .glyphicon (star) bootstrap
+  for the id #blackLsit
+*/
+#blackList .glyphicon {
+    order: 2;
+    position: relative;
+    top: 1px;
+    left: 3px;
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    color: black;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/*change the default css styles for twitter
+ bootstrap date time picker for id awayFromDate and awayToDate
+*/
+#awayFromDate.input-group-addon:not(:first-child):not(:last-child),
+#awayFromDate.input-group-btn:not(:first-child):not(:last-child),
+.input-group .form-control:not(:first-child):not(:last-child),
+#awayToDate.input-group-addon:not(:first-child):not(:last-child),
+#awayToDate.input-group-btn:not(:first-child):not(:last-child),
+.input-group .form-control:not(:first-child):not(:last-child) {
+    border-radius: 5px;
+}
+#awayFromDate.input-group-addon,
+#awayToDate.input-group-addon {
+    text-align: center;
+    background-color: #fff;
+}
+
+/**class for user profile main titile 3 div
+   all the contents are displayed in flex
+   format
+*/
+.userProfileMainTitle3 {
+    order: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 1%;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 7.1em;
+    outline: 0;
+}
+
+/* checkProjects is a div inside
+  the div userProfileMainTitle3
+   this is order 1 of flex
+*/
+.checkProjects {
+    order: 1;
+    color: black;
+    margin-right: 0.8%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* checkDomains is a div inside
+  the div userProfileMainTitle3
+   this is order 2 of flex
+*/
+.checkDomains {
+    order: 2;
+    color: black;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* selectProjects is a disabled input
+   text field
+*/
+.selectProjects {
+    width: 100%;
+    background: #989898;
+    border: 1px solid #989898;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    height: 2em;
+    text-align: center;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    box-sizing: border-box;
+    cursor: default;
+}
+.selectProjectsE {
+    width:100%;
+    border-radius: 0px;
+    font-size: 13px;
+    font-weight: bold;
+    height: 2em;
+    text-align: center;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    box-sizing: border-box;
+    border: 1px solid grey;
+    border-radius: 5px 0px 0px 0px;
+    border-bottom: 0px;
+    border-top: 0px;
+    border-right: 0px;
+    color: white;
+    background: #989898 none repeat scroll 0% 0%;
+}
+.checkAllProjectsMain{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+  /*  border-bottom: 1px solid black;*/
+    border-right: 1px solid grey;
+    border-top: 1px solid grey;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    background: #989898 none repeat scroll 0% 0%;
+    width: 100%;
+    /*border: 1px solid rgb(176, 176, 176);
+    border-radius: 5px 5px 0px 0px;*/
+}
+/* selectDomains is a disabled input
+   text field
+*/
+.selectDomains {
+    width: 100%;
+    background: #989898;
+    border: 1px solid #989898;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    height: 2em;
+    text-align: center;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    box-sizing: border-box;
+    cursor: default;
+}
+.selectDomainsE {
+    width: 92%;
+    background: #989898;
+    border: 1px solid #989898;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    height: 2em;
+    text-align: center;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    box-sizing: border-box;
+    cursor: default;
+}
+/*div for check boxes to select sports and places*/
+.checkBoxDiv {
+    border: 1px solid black;
+    border-top: 0;
+    font-size: 12px;
+    font-weight: normal;
+    height: 2.24em;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding-left: 4px;
+}
+.selectTag3 {
+    padding-left: 0%;
+    padding-right: 0%;
+    width: 50%;
+    height: 100px;
+    overflow-y: scroll;
+    box-sizing: border-box;
+}
+/*label for check box labels
+ which contains names of sports or places
+ to select sports and places*/
+.checkBoxDivLabel {
+    font-weight: normal;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 2%;
+}
+
+/*label for check box labels
+ which contains check boxes
+ to select sports and places*/
+.checkBoxDivLabelCheck {
+    display: inline-block;
+    font-weight: bold;
+    width: 7%;
+    margin-top: 2px;
+}
+
+/* styling the check box of userProfileSettings
+*/
+.checkBoxDiv input[type=checkbox] {
+    /*display: none;*/
+    cursor: pointer;
+}
+
+/* check box before checked
+*/
+.checkBoxDiv input[type=checkbox] + .checkBoxDivLabelCheck:before {
+    /*content: "";*/
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    vertical-align: middle;
+    margin-right: 8px;
+    margin-bottom: 4%;
+    margin-left: 8%;
+    border-radius: 0px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+/* check box after checked*/
+.checkBoxDiv input[type=checkbox]:checked + .checkBoxDivLabelCheck:before {
+    /*content: "\25A1";*/
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    width: 18px;
+    height: 18.5px;
+    border-radius: 0px;
+    text-align: center;
+    margin-left: 0%;
+    margin-top: 0%;
+    line-height: 15px;
+    text-shadow: 15px 15px 16px white;
+    cursor: pointer;
+}
+
+/* userProfileSubDomain is a div to enter
+   event-tags and event sub-tags
+*/
+.userProfileSubDomain {
+    border: 1px solid black;
+    border-top: 0;
+    font-size: 12px;
+    font-weight: normal;
+    height: 6.7em;
+    overflow: hidden;
+    padding-left: 4px;
+    box-sizing: border-box;
+    width: 100%
+}
+
+/* class for textarea of event-tags and
+   event sub-tags
+*/
+.subDomainArea {
+    font-weight: normal;
+    width: 100%;
+     box-sizing: border-box;
+    border: 1px solid black;
+    width: 100%;
+
+}
+
+/*fdhssss*/
+/*@media screen and (min-width:1360px) {
+.userTeamListIcon {
+   width: 18px;
+    margin: 7px 7px 0px 5px;
+    cursor: pointer;
+    height: 14px;
+    width: 18px;
+margin: 5px 3px 0px 5px;
+cursor: pointer;
+height: 14px;
+font-size: 16px;
+color: maroon;
+}
+}*/
+
+
+/*new changes bangalore release*/
+.emailAddressUserProf{
+    order: 2;
+    color: #000;
+    font-weight: normal;
+    font-size: 12px;
+    outline: 0px none;
+    margin-right: 0.8%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    height: 33px;
+}
+
+.clubNameUserProf{
+     order: 3;
+    color: #000;
+    font-weight: normal;
+    font-size: 12px;
+    outline: 0px none;
+    margin-right: 0%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    height: 33px;
+}
+
+.checkboxdivuserprofile{
+    border-top: 1px solid black;
+    /*border-top: 0;*/
+    font-size: 12px;
+    font-weight: normal;
+    height: 2.24em;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding-left: 4px;
+}
+
+.checkBoxDivProjName{
+    width: 95%;
+    font-size: 12px;
+    font-weight: normal;
+}
+.tableprojNameUser{
+    border: 1px solid black;
+    border-top: 0px !important;
+    height: 5.3em;
+}
+
+.userProjectSearch{
+    color: white;
+
+}
+.userProjectSearchDiv{
+    border-top: 0px solid grey;
+    /*border-right: 1px solid white;*/
+    padding-top: 2px;
+    /*padding-left: 2px;*/
+    padding-right: 0px;
+    /*border-top-right-radius: 5px;*/
+}
+.checkAllprojuser{
+    border-top: 1px solid grey;
+    border-right: 1px solid grey;
+    cursor: pointer;
+    /*padding-top: 2px;*/
+}
+
+.checkBoxDivLabelchange {
+    font-weight: normal;
+    width: 91%;
+    box-sizing: border-box;
+    margin-top: 2%;
+}
+
+/*label for check box labels
+ which contains check boxes
+ to select sports and places*/
+.checkBoxDivLabelCheckchange {
+    display: inline-block;
+    font-weight: bold;
+    width: 7%;
+    margin-top: 2px;
+}
+
+.setSearchUSer{
+    padding-right:0px !important;
+    padding-left:0px !important;
+    margin-top:0px !important;
+    height:26px!important;
+    background:#989898 !important;
+    height: 26px!important;
+    border-top-left-radius: 5px!important;
+    border-top-right-radius: 5px!important;
+}
+.setSearchUSer2{
+    padding-right:0px !important;
+    padding-left:0px !important;
+    margin-top:0px;
+    height: 76px !important;
+    border: 1px solid black;
+    border-top: 0px !important;
+}
+.selectProjectsE2 {
+    width:100%;
+    border-radius: 0px;
+    font-size: 13px;
+    font-weight: bold;
+    height: 2em;
+    text-align: center;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    box-sizing: border-box;
+    border: 1px solid grey;
+    border-radius: 5px;
+    border-bottom: 0px;
+    border-top: 0px;
+    border-right: 0px;
+    color: white;
+    background: #989898 none repeat scroll 0% 0%;
+}
+.changePasswordUserP{
+    font-size: 11px;
+    height:100%;
+    background: transparent none repeat scroll 0px center;
+    border: 1px solid maroon;
+    border-radius: 5px;
+    color: rgb(80, 80, 80);
+    width: 100%;
+}
+
+.labelWhoNewChangePas{
+    font-size: 12px;
+    color: #800000;
+    width: 100%;
+    margin: 0 !important;
+}
+
+.contRegNEwHeadchangePass{
+    padding-top: 3px !important;
+    padding-right: 0px !important;
+    padding-bottom: 0px !important;
+    background: black none repeat scroll 0% 0%;
+    border-top-left-radius: 5px;
+    height: 3.4em;
+}
+
+.associationList{
+    width: 100%;
+    height:33px;
+    font-size: 12px;
+}

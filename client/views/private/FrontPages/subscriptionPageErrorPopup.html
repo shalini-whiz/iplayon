@@ -1,0 +1,29 @@
+<template name="subscriptionPageErrorPopup">
+	<form id="application-subscriptionPageErrorPopup">
+		<div class="modal" id="subscriptionPageErrorPopup" role="dialog" data-backdrop="static">
+			<div class="modal-dialog modal-sm" style="width:400px !important;">
+				<div class="modal-content modal-content-modIplayon" style="width:400px !important;">
+					<div class="modal-header loginHeaderIplayon" style="">
+          				<p class="modal-title loginHeadeIplayonPTag" style="">Cannot Subscribe!
+          				</p>
+        			</div>
+        			<div class="modal-body  modal-body-modIplayon" style="" id="modalBodyTwitter">
+        				{{#if tournamentNAmeToSubscribeErr}}
+        				<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px;">
+        					<p id="" style="margin:0px;font-size:14px;text-align:left;color:maroon;">Subscription to {{tournamentNAmeToSubscribeErr}}</p>
+        				</div>
+        				{{/if}}
+		        		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px;">
+		        			<p id="" style="margin:0px;font-size:13px;text-align:center;">{{ReasonToCannotSubscribe}}</p>
+		        		</div>        				
+        				<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 divForLoginSignIplayon">   					
+        					<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 divPaddingZero" style="padding:15px !important;">
+        						<input type="button" class="signInButtonIPlayon popupLogin" style="" id="subErrorOk" value="OK">
+        					</div>
+        				</div>       				
+        			</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</template>

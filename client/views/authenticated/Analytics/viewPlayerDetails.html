@@ -1,0 +1,511 @@
+<!-- player profile -->
+<template name="statPlayerInfo">
+    <form id="assoc-addNewPlayer2">
+        <div class="modal" id="statPlayerInfo" role="dialog" data-backdrop="static">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content modal-content-modReg_ViewPlayer">
+                    <div class="modal-header  modal-header-modRegAcademy" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+                            <div class="row" style="margin:0 !important;">
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 titleDivRegNewAca">
+                                    <p class="modal-title titleRegisterNewAca" id="academyLoginIDCon" style="color:white;">Player Profile</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body  modal-body-modReg1_ViewPlayer">
+                        {{#if statPlayerInfo}}
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12 cont_ViwPlayer">
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        National Id:
+                                    </p>
+                                </div>
+                                <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10 viewPlayerInfoDiv2" style="">
+                                    {{#if statPlayerInfo.nationalAffiliationId}}
+                                    <p  id="playerEmailAddress"     placeholder="Email Address" name="playerEmailAddress" class="viewPlayerInfoP1">{{statPlayerInfo.nationalAffiliationId}}</p>
+                                    {{else}}
+                                    <p  id="playerEmailAddress"    placeholder="Email Address" name="playerEmailAddress" class="viewPlayerInfoP1">-</p>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Id:
+                                    </p>
+                                </div>
+                                <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10 viewPlayerInfoDiv2" style="">
+                                    {{#if statPlayerInfo.affiliationId}}
+                                        <p  id="playerEmailAddress"     placeholder="Email Address" name="playerEmailAddress" class="viewPlayerInfoP1">{{statPlayerInfo.affiliationId}}</p>
+                                    {{else}}
+                                        <p  id="playerEmailAddress"     placeholder="Email Address" name="playerEmailAddress" class="viewPlayerInfoP1"></p>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Name:
+                                    </p>
+                                </div>
+                                <div class="col-md-10  col-xs-10  col-lg-10  col-sm-10 viewPlayerInfoDiv2" style="">
+                                    {{#if statPlayerInfo.userName}}
+                                        <p  id="playerNameContact"     placeholder="Player Name" name="playerNameContact"  class="viewPlayerInfoP1">{{statPlayerInfo.userName}}</p>
+                                    {{else}}
+                                        <p  id="playerNameContact"     placeholder="Player Name" name="playerNameContact"  class="viewPlayerInfoP1"></p>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Email ID:
+                                    </p>
+                                </div>
+                                <div class="col-md-10  col-xs-10  col-lg-10  col-sm-10 viewPlayerInfoDiv2" style="">
+                                    {{#if statPlayerInfo.emailAddress}}
+                                        <p  id="playerNameContact"     placeholder="Player Name" name="playerNameContact"  class="viewPlayerInfoP1">{{statPlayerInfo.emailAddress}}</p>
+                                    {{else}}
+                                        <p  id="playerNameContact"     placeholder="Player Name" name="playerNameContact"  class="viewPlayerInfoP1"></p>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2" >
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Guardian:
+                                    </p>
+                                </div>
+                                <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9 viewPlayerInfoDiv2" >
+                                    {{#if statPlayerInfo.guardianName}}
+                                        <p name="guardianName" id="guardianName" placeholder="Guardian Name"  class="viewPlayerInfoP1">{{statPlayerInfo.guardianName}}</p>
+                                    {{else}}
+                                        <p name="guardianName" id="guardianName" placeholder="Guardian Name"  class="viewPlayerInfoP1"></p>
+
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2" >
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        DOB:
+                                    </p>
+                                </div>
+                                <div class="col-md-10  col-xs-10  col-lg-10  col-sm-10  viewPlayerInfoDiv2">
+                                    {{#if statPlayerInfo.dateOfBirth}}
+                                        <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1">{{upcomingformatDate statPlayerInfo.dateOfBirth}}</p>
+                                    {{else}}
+                                        <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1"></p>
+
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2" >
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Gender:
+                                    </p>
+                                </div>
+                                <div class="col-md-10  col-xs-10  col-lg-10  col-sm-10  viewPlayerInfoDiv2">
+                                    {{#if statPlayerInfo.gender}}
+                                        <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1">{{ statPlayerInfo.gender}}</p>
+                                    {{else}}
+                                        <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1"></p>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Address:
+                                    </p>
+                                </div>
+                                <div class="col-md-10  col-xs-10  col-lg-10  col-sm1010 viewPlayerInfoDiv2">
+                                    {{#if statPlayerInfo.address}}
+                                        <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1">{{statPlayerInfo.address}}</p>
+                                    {{else}}
+                                        <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1"></p>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        City:
+                                    </p>
+                                </div>
+                                <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10 viewPlayerInfoDiv2">
+                                    {{#if statPlayerInfo.city}}
+                                        <p id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1">{{statPlayerInfo.city}}</p>
+                                    {{else}}
+                                        <p id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1"></p>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2" >
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        State:
+                                    </p>
+                                </div>
+                                <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10 viewPlayerInfoDiv2">
+                                    {{#if statPlayerInfo.state}}
+                                        <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1">{{getPlayerState_Ana statPlayerInfo.state}}</p>
+                                    {{else}}
+                                        <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1"></p>
+                                    {{/if}}
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2" >
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Phone:
+                                    </p>
+                                </div>
+                                <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10" style="padding-left:1px !important;">
+                                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-left:0px !important;padding-right:0px !important;">
+                                        <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="padding-left:15px !important;padding-right:0px !important;">
+                                            <p style="font-size:12px;color: darkcyan;;margin:0;margin-top:3px;padding:0;">+91</p>
+                                        </div>
+                                        <div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 viewPlayerInfoDiv2" style="padding-left:4px !important;">
+                                            {{#if statPlayerInfo.phoneNumber}}
+                                                <p maxlength="10" name="playermobileNumber" id="playermobileNumber" placeholder="Mobile Number"  class="viewPlayerInfoP1">{{statPlayerInfo.phoneNumber}}</p>
+                                            {{else}}
+                                                <p maxlength="10" name="playermobileNumber" id="playermobileNumber" placeholder="Mobile Number"  class="viewPlayerInfoP1"></p>
+                                            {{/if}}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px;padding-bottom:5px;">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Status:
+                                    </p>
+                                </div>
+                                <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10 viewPlayerInfoDiv2" style="">
+                                    {{#if statPlayerInfo.statusOfUser}}
+                                        <p  id="playerEmailAddress"  placeholder="Email Address" name="playerEmailAddress" class="viewPlayerInfoP1">{{statPlayerInfo.statusOfUser}}</p>
+                                    {{else}}
+                                        <p  id="playerEmailAddress"  placeholder="Email Address" name="playerEmailAddress" class="viewPlayerInfoP1"></p>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-right:15px !important;padding-bottom: 4px;">
+                                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="cancelRegNewPlayer2"  style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;font-size:12px;">close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</template>
+
+
+<!-- Academy Profile -->
+<template name="academyProfile">
+    <form id="assoc-addNewPlayer2">
+        <div class="modal" id="academyProfile" role="dialog" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content modal-content-modReg_ViewPlayer">
+                    <div class="modal-header" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+                            <div class="row" style="margin:0 !important;">
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 titleDivRegNewAca">
+                                    <p class="modal-title titleRegisterNewAca" id="academyLoginIDCon" style="color:white;">Academy Profile</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body">
+                        {{#if academyProfile}}
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12 cont_ViwPlayer">
+                            
+                            
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Name:
+                                    </p>
+                                </div>
+                                <div class="col-md-10  col-xs-10  col-lg-10  col-sm-10 viewPlayerInfoDiv2" style="">
+                                    <p  id="playerNameContact"     placeholder="Player Name" name="playerNameContact"  class="viewPlayerInfoP1">{{academyProfile.clubName}}</p>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2" >
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Email ID:
+                                    </p>
+                                </div>
+                                <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9 viewPlayerInfoDiv2" >
+                                    <p    name="guardianName" id="guardianName" placeholder="Guardian Name"  class="viewPlayerInfoP1">{{academyProfile.emailAddress}}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Address:
+                                    </p>
+                                </div>
+                                <div class="col-md-10  col-xs-10  col-lg-10  col-sm1010 viewPlayerInfoDiv2">
+                                    <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1">{{academyProfile.address}}</p>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        City:
+                                    </p>
+                                </div>
+                                <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10 viewPlayerInfoDiv2">
+                                    <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1">{{academyProfile.city}}</p>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2" >
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        State:
+                                    </p>
+                                </div>
+                                <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10 viewPlayerInfoDiv2">
+                                    <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1">{{getPlayerState_viewPlayer academyProfile.state}}</p>
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2" >
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Phone:
+                                    </p>
+                                </div>
+                                <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10" style="padding-left:1px !important;">
+                                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-left:0px !important;padding-right:0px !important;">
+                                        <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="padding-left:15px !important;padding-right:0px !important;">
+                                            <p style="font-size:12px;color: darkcyan;;margin:0;margin-top:3px;padding:0;">+91</p>
+                                        </div>
+                                        <div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 viewPlayerInfoDiv2" style="padding-left:4px !important;">
+                                            <p    maxlength="10" name="playermobileNumber" id="playermobileNumber" placeholder="Mobile Number"  class="viewPlayerInfoP1">{{academyProfile.phoneNumber}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        {{/if}}
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-right:15px !important;padding-bottom: 4px;">
+                                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="cancelRegNewPlayer2"  style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;font-size:12px;">close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</template>
+
+<!-- Association Profile -->
+<template name="associationProfile">
+    <form id="assoc-addNewPlayer2">
+        <div class="modal" id="associationProfile" role="dialog" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content modal-content-modReg_ViewPlayer">
+                    <div class="modal-header" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+                            <div class="row" style="margin:0 !important;">
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 titleDivRegNewAca">
+                                    <p class="modal-title titleRegisterNewAca" id="academyLoginIDCon" style="color:white;">Association Profile</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body">
+                        {{#if associationProfile}}
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12 cont_ViwPlayer">
+                            
+                            
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Name:
+                                    </p>
+                                </div>
+                                <div class="col-md-10  col-xs-10  col-lg-10  col-sm-10 viewPlayerInfoDiv2" style="">
+                                    <p  id="playerNameContact"     placeholder="Player Name" name="playerNameContact"  class="viewPlayerInfoP1">{{associationProfile.associationName}}</p>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2" >
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Email ID:
+                                    </p>
+                                </div>
+                                <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9 viewPlayerInfoDiv2" >
+                                    <p    name="guardianName" id="guardianName" placeholder="Guardian Name"  class="viewPlayerInfoP1">{{associationProfile.emailAddress}}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Address:
+                                    </p>
+                                </div>
+                                <div class="col-md-10  col-xs-10  col-lg-10  col-sm1010 viewPlayerInfoDiv2">
+                                    <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1">{{associationProfile.address}}</p>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        City:
+                                    </p>
+                                </div>
+                                <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10 viewPlayerInfoDiv2">
+                                    <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1">{{associationProfile.city}}</p>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2" >
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        State:
+                                    </p>
+                                </div>
+                                <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10 viewPlayerInfoDiv2">
+                                    <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1">{{getPlayerState_viewPlayer associationProfile.state}}</p>
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2" >
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Phone:
+                                    </p>
+                                </div>
+                                <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10" style="padding-left:1px !important;">
+                                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-left:0px !important;padding-right:0px !important;">
+                                        <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="padding-left:15px !important;padding-right:0px !important;">
+                                            <p style="font-size:12px;color: darkcyan;;margin:0;margin-top:3px;padding:0;">+91</p>
+                                        </div>
+                                        <div class="col-md-11 col-xs-11 col-lg-11 col-sm-11 viewPlayerInfoDiv2" style="padding-left:4px !important;">
+                                            <p    maxlength="10" name="playermobileNumber" id="playermobileNumber" placeholder="Mobile Number"  class="viewPlayerInfoP1">{{associationProfile.phoneNumber}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        {{/if}}
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-right:15px !important;padding-bottom: 4px;">
+                                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="cancelRegNewPlayer2"  style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;font-size:12px;">close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</template>
+
+
+<!-- Tournament Profile -->
+<template name="tournamentProfile">
+    <form id="assoc-addNewPlayer2">
+        <div class="modal" id="tournamentProfile" role="dialog" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content modal-content-modReg_ViewPlayer">
+                    <div class="modal-header" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+                            <div class="row" style="margin:0 !important;">
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 titleDivRegNewAca">
+                                    <p class="modal-title titleRegisterNewAca" id="academyLoginIDCon" style="color:white;">Tournament Profile</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body">
+                        {{#if tournamentProfile}}
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12 cont_ViwPlayer">
+                            
+                            
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Name:
+                                    </p>
+                                </div>
+                                <div class="col-md-10  col-xs-10  col-lg-10  col-sm-10 viewPlayerInfoDiv2" style="">
+                                    <p  id="playerNameContact"     placeholder="Player Name" name="playerNameContact"  class="viewPlayerInfoP1">{{tournamentProfile.eventName}}</p>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top:5px">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2" >
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        Start Date:
+                                    </p>
+                                </div>
+                                <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9 viewPlayerInfoDiv2" >
+                                    <p    name="guardianName" id="guardianName" placeholder="Guardian Name"  class="viewPlayerInfoP1">{{tournamentProfile.eventStartDate}}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 viewPlayerInfoDiv2">
+                                    <p class="labelWhoNew2_ViewPlayer">
+                                        End Date:
+                                    </p>
+                                </div>
+                                <div class="col-md-10  col-xs-10  col-lg-10  col-sm1010 viewPlayerInfoDiv2">
+                                    <p  id="address"   placeholder="Address" name="address" class="viewPlayerInfoP1">{{tournamentProfile.eventEndDate}}</p>
+                                </div>
+                            </div>
+                        
+                           
+                        </div>
+                        {{/if}}
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-right:15px !important;padding-bottom: 4px;">
+                                    <button type="button" class="btn btn-default ip_button_Register_Popup" id="cancelRegNewPlayer2"  style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;font-size:12px;">close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</template>

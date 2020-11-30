@@ -1,0 +1,2555 @@
+<template name="adminCustomAPI">
+	{{#if notAdmin}}
+	<div class=''>
+		<p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+	</div>
+	{{else}}
+		<div class="" style="padding: 0px 0px 0px 10px !important;">
+			<div class=''>
+				<p style="color:white;font-size:19px;">Admin API</p>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px !important;">
+				<select id="adminSelectionType" style="font-size:12px;">
+					<option selected disabled>Select Function</option>
+          <option value ="tourFinance">Tournament Finance</option>
+          <option value="teamPoints">Team Points</option>
+          <option value="teamSchedule">Team Schedule </option>
+          <option value="eventSchedule">Event Schedule</option>
+          <option value="regValidity">Registration Validity</option>
+          <option value="expertise">Expertise</option>
+          <option value="liveLinks">Live Links</option>
+					<option value="expertise">Expertise</option>
+					<option value="languages">Languages</option>
+					<option value="certification">Certification</option>
+          <option value="manageApiUsers">Manage Api Users</option>option>
+          <option value="manageLinkedInToken">Manage LinkedIn Access Token
+          </option>
+					<option value="customData">View Custom Data</option>	
+					<option value="addAccountType">Add Account Type</option>
+					<option value="removeAccountType">Remove Account Type</option>		
+					<option value="addNI">Add National Identity</option>
+					<option value="removeNI">Remove National Identity</option>	
+          <option value="workAss">Work Assignments</option>
+          <option value="messageAction">Messages</option> 
+          <option value="connectionUsersAction">Connection Users</option>
+          <option value="removePoints">Remove Player Points</option>  
+          <option value="viewRROrder">View RR Order Of Player</option>
+           <option value="viewSchoolDetails">School Details</option>
+           <option value="viewFitBitUsers">FitBit Users</option>
+
+				</select>
+			</div>
+			<div id="adminRenderOnFunction"></div>
+
+		</div>
+	{{/if}}
+
+  <div id = "liveLinkModalContent"></div>
+  <div id = "viewliveLinkModalContent"></div>
+  <div id = "removeliveLinkModalContent"></div>
+  <div id = "fitBitUserModalContent"></div>
+  <div id = "teamScheduleModalContent"></div>
+  <div id = "eventScheduleModalContent"></div>
+  <div id ="teamPointsModalContent"></div>
+  <div id="regValidityModalContent"></div>
+	<div id="expertiseModalContent"></div>
+	<div id="languageModalContent"></div>
+	<div id="certificationModalContent"></div>
+  <div id="managerApiUsersModalContent"></div>
+  <div id="managerLinkedInModalContent" style="display:none">
+     <button type="button" class="ip_button_Popup_Black" id="linkedInAccessToken"  style="width:auto !important;margin:5px;padding:5px; height:2.2em!important;">LinkedIn Access Token
+                      </button>
+  </div>
+  <div id="linkedInModalContent">
+  </div>
+
+	<div id="customDataModalContent"></div>
+	<div id="addAccountTypeModalContent"></div>
+  <div id="workAssignmentModalContent"></div>
+  <div id="messagesModalContent"></div>
+  <div id="orderOfPlayModalContent"></div>
+  <div id="displayPlayerProfile"></div>
+
+</template>
+
+<template name="tourFinanceContent">
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">Tournament</th>
+                            <th class="pAnalytics2">Status</th>     
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each tourFinanceList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                          <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                          <td class="pAnalytics2">{{fetchTour this._id}}</td>
+                          <td class="pAnalytics2">
+                            <button type="button" class="ip_button_Popup_Black" style="order:1;margin:0px;padding:0px; height:2.2em!important;" id="setTourFinance">Set Paid
+                            </button>
+                          </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+<!------------------------------------------------>
+
+<template name="teamScheduleContent">
+  <div class ="row">
+    <a  style="margin-top:50px !important;float:right !important;margin-right:15px !important;font-size:15px !important" id="addTourTeamSchedule" >
+        Add Team Schedule
+    </a>
+  </div>
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">Tournament</th>
+                            <th class="pAnalytics2">Date</th>
+                            <th class="pAnalytics2">Time</th>
+                            <th class="pAnalytics2">Team A</th>
+                            <th class="pAnalytics2">Team B</th> 
+                            <th class="pAnalytics2">Table No</th>
+                            <th class="pAnalytics2">Edit</th>   
+                            <th class="pAnalytics2">Delete</th>   
+  
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each teamScheduleList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                          <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                          <td class="pAnalytics2">{{fetchTour this.tournamentId}}</td>
+                          <td class="pAnalytics2">{{formatDate this.scheduleDate}}</td>
+                          <td class="pAnalytics2">{{this.startTime}} - {{this.endTime}}</td>
+                          <td class="pAnalytics2">{{fetchTeam this.teamAId}}</td>
+                          <td class="pAnalytics2">{{fetchTeam this.teamBId}}</td>
+                          <td class="pAnalytics2">{{this.tableNo}}</td>
+                         
+                          <td class="pAnalytics2">
+                            <span class="glyphicon glyphicon-pencil" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer"  id="editTourTeamSchedule"></span></td>
+                           <td class="pAnalytics2" id="selectedIdToEdit">
+                            <span class="glyphicon glyphicon-remove" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="delTourTeamSchedule"></span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+<template name="createTeamScheduleModal">
+  <div class="modal" id="createTeamScheduleModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                  {{#if teamScheduleExist}}
+              Modify Team Schedule
+            {{else}}
+              Create Team Schedule
+            {{/if}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Tournament*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if teamScheduleExist}}
+                      <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="tournamentId" disabled="true">
+                        {{#each tourList}}    
+                          <option value={{this._id}} {{setTour this._id}}>{{this.eventName}}</option>
+                        {{/each}}       
+                       </select> 
+                    {{else}}
+                       <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="tournamentId">
+                        {{#each tourList}}    
+                          <option value={{this._id}} >{{this.eventName}}</option>
+                        {{/each}}       
+                       </select>             
+                    {{/if}}
+                  </div>
+               </div> 
+              <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Date*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if teamScheduleExist}}
+                      <input   type="text" placeholder="DD MMM YYYY" autocomplete="off" spellcheck="off" class="userName" id="scheduleDate" value={{formatDate teamScheduleExist.scheduleDate}}>
+                    {{else}}
+                      <input   type="text" placeholder="DD MMM YYYY" autocomplete="off" spellcheck="off" class="userName" id="scheduleDate" >
+
+                    {{/if}}
+                  </div>
+               </div> 
+
+              <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Team A*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">          
+                      <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="teamAId">
+                        {{#each teamList}}    
+                          <option value={{this._id}} {{setTeam this._id 'teamA'}} >{{this.teamName}}</option>
+                        {{/each}}       
+                       </select>             
+                  </div>
+               </div> 
+
+                 <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Team B*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                     <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="teamBId">
+                        {{#each teamList}}    
+                          <option value={{this._id}} {{setTeam this._id 'teamB'}} >{{this.teamName}}</option>
+                        {{/each}}       
+                       </select>  
+                  </div>
+               </div>
+
+
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Start Time*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if teamScheduleExist}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="startTime" value={{teamScheduleExist.startTime}}>
+                    {{else}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="startTime" >
+
+                    {{/if}}
+                  </div>
+               </div> 
+
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >End Time*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if teamScheduleExist}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="endTime" value={{teamScheduleExist.endTime}}>
+                    {{else}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="endTime" >
+
+                    {{/if}}
+                  </div>
+               </div>
+
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Table No*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if teamScheduleExist}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="tableNo" value={{teamScheduleExist.tableNo}}>
+                    {{else}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="tableNo" >
+
+                    {{/if}}
+                  </div>
+               </div>
+               
+              
+                 
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class ="row">
+                  <p id="teamScheduleImpMsg" class='impMsg'></p>
+
+                </div>
+                 <div class="row" style="text-align: center;">
+                  {{#if teamScheduleExist}}
+                    <button type="button" class="ip_button_Popup_Black" id="modifyTeamSchedule"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                  {{else}}
+                     <button type="button" class="ip_button_Popup_Black" id="createTeamSchedule"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                  {{/if}}
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:2;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                 </div>
+              </div>
+          </div>
+
+          
+        </div>
+    </div>
+  </div>
+</template>
+
+
+<!------------------------------------------------>
+
+
+<template name="eventScheduleContent">
+  <div class ="row">
+    <a  style="margin-top:50px !important;float:right !important;margin-right:15px !important;font-size:15px !important" id="addEventSchedule" >
+        Add Event Schedule
+    </a>
+  </div>
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">Tournament</th>
+                            <th class="pAnalytics2">Event</th>
+                            <th class="pAnalytics2">Date</th>
+                            <th class="pAnalytics2">Time</th>
+                            <th class="pAnalytics2">Round No</th>
+                            <th class="pAnalytics2">Edit</th>   
+                            <th class="pAnalytics2">Delete</th>   
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each eventScheduleList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                          <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                          <td class="pAnalytics2">{{fetchTour this.tournamentId}}</td>
+                          <td class="pAnalytics2">{{this.eventName}}</td>
+                          <td class="pAnalytics2">{{formatDate this.scheduleDate}}</td>
+                          <td class="pAnalytics2">{{this.startTime}} - {{this.endTime}}</td>        
+                          <td class="pAnalytics2">{{this.roundNo}}</td>
+                         
+                          <td class="pAnalytics2">
+                            <span class="glyphicon glyphicon-pencil" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer"  id="editEventSchedule"></span></td>
+                           <td class="pAnalytics2" id="selectedIdToEdit">
+                            <span class="glyphicon glyphicon-remove" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="delEventSchedule"></span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+
+<template name="createEventScheduleModal">
+  <div class="modal" id="createEventScheduleModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                  {{#if eventScheduleExist}}
+              Modify Event Schedule
+            {{else}}
+              Create Event Schedule
+            {{/if}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Tournament*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if eventScheduleExist}}
+                      <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="tournamentId" disabled="true">
+                        {{#each tourList}}    
+                          <option value={{this._id}} {{setTour this._id}}>{{this.eventName}}</option>
+                        {{/each}}       
+                       </select> 
+                    {{else}}
+                       <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="tournamentId">
+                          <option>--select--</option>
+                        {{#each tourList}}    
+                          <option value={{this._id}} >{{this.eventName}}</option>
+                        {{/each}}       
+                       </select>             
+                    {{/if}}
+                  </div>
+               </div> 
+
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Event*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if eventScheduleExist}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="eventName" value={{eventScheduleExist.eventName}} disabled="true">
+                    {{else}}
+                      <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="eventName">
+                        {{#each eventList}}    
+                          <option value={{this.eventName}} >{{this.eventName}}</option>
+                        {{/each}}       
+                       </select> 
+                    {{/if}}
+                  </div>
+               </div> 
+
+              <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Date*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if eventScheduleExist}}
+                      <input   type="text" placeholder="DD MMM YYYY" autocomplete="off" spellcheck="off" class="userName" id="scheduleDate" value={{formatDate eventScheduleExist.scheduleDate}}>
+                    {{else}}
+                      <input   type="text" placeholder="DD MMM YYYY" autocomplete="off" spellcheck="off" class="userName" id="scheduleDate" >
+
+                    {{/if}}
+                  </div>
+               </div> 
+
+            
+
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Start Time*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if eventScheduleExist}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="startTime" value={{eventScheduleExist.startTime}}>
+                    {{else}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="startTime" >
+
+                    {{/if}}
+                  </div>
+               </div> 
+
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >End Time*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if eventScheduleExist}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="endTime" value={{eventScheduleExist.endTime}}>
+                    {{else}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="endTime" >
+
+                    {{/if}}
+                  </div>
+               </div>
+
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Round No*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if eventScheduleExist}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="roundNo" value={{eventScheduleExist.roundNo}}>
+                    {{else}}
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="roundNo" >
+
+                    {{/if}}
+                  </div>
+               </div>
+               
+              
+                 
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class ="row">
+                  <p id="eventScheduleImpMsg" class='impMsg'></p>
+
+                </div>
+                 <div class="row" style="text-align: center;">
+                  {{#if eventScheduleExist}}
+                    <button type="button" class="ip_button_Popup_Black" id="modifyEventSchedule"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                  {{else}}
+                     <button type="button" class="ip_button_Popup_Black" id="createEventSchedule"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                  {{/if}}
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:2;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                 </div>
+              </div>
+          </div>
+
+          
+        </div>
+    </div>
+  </div>
+</template>
+
+
+
+
+<!-------------------------------------------------->
+
+<template name="teamPointsContent">
+  <div class ="row">
+    <a  style="margin-top:50px !important;float:right !important;margin-right:15px !important;font-size:15px !important" id="addTeamPoints" >
+        Add Team Points
+    </a>
+  </div>
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">Tournament</th>
+                            <th class="pAnalytics2">Team</th>
+                            <th class="pAnalytics2">Year</th>
+                            <th class="pAnalytics2">Played</th>
+                            <th class="pAnalytics2">Won</th>
+                            <th class="pAnalytics2">Loss</th>
+                            <th class="pAnalytics2">Points</th> 
+                            <th class="pAnalytics2">Edit</th>   
+                            <th class="pAnalytics2">Delete</th>   
+  
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each teamPointList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                           <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                            <td class="pAnalytics2">{{fetchTour this.tournamentId}}</td>
+                           <td class="pAnalytics2">{{fetchTeam this.teamId}}</td>
+                           <td class="pAnalytics2">{{this.year}}</td>
+                           <td class="pAnalytics2">{{this.played}}</td>
+                           <td class="pAnalytics2">{{this.won}}</td>
+                           <td class="pAnalytics2">{{this.loss}}</td>
+                           <td class="pAnalytics2">{{this.points}}</td>
+                            <td class="pAnalytics2">
+                            <span class="glyphicon glyphicon-pencil" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer"  id="editTeamPoints"></span></td>
+                           <td class="pAnalytics2" id="selectedIdToEdit">
+                            <span class="glyphicon glyphicon-remove" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="delTeamPoints"></span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+<template name="createTeamPointsModal">
+  <div class="modal" id="createTeamPointsModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                  {{#if teamPointExist}}
+              Modify Team Points
+            {{else}}
+              Create Team Points
+            {{/if}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Tournament*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if teamPointExist}}
+                      <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="tournamentId" disabled="true">
+                        {{#each tourList}}    
+                          <option value={{this._id}} {{setTour this._id}} >{{this.eventName}}</option>
+                        {{/each}}       
+                       </select> 
+                    {{else}}
+                       <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="tournamentId">
+                        {{#each tourList}}    
+                          <option value={{this._id}} >{{this.eventName}}</option>
+                        {{/each}}       
+                       </select>             
+                    {{/if}}
+                  </div>
+               </div>
+              <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Team*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if teamPointExist}}
+                      <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="teamName">
+                        {{#each teamList}}    
+                          <option value={{this._id}} >{{this.teamName}}</option>
+                        {{/each}}       
+                       </select> 
+                    {{else}}
+                       <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="teamName">
+                        {{#each teamList}}    
+                          <option value={{this._id}} >{{this.teamName}}</option>
+                        {{/each}}       
+                       </select>             
+                    {{/if}}
+                  </div>
+               </div> 
+
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Year*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if teamPointExist}}
+                      <input   type="text" placeholder="year" autocomplete="off" spellcheck="off" class="userName" id="pointsYear" value={{teamPointExist.year}}>
+                    {{else}}
+                      <input   type="text" placeholder="year" autocomplete="off" spellcheck="off" class="userName" id="pointsYear" >
+
+                    {{/if}}
+                  </div>
+               </div> 
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Played*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if teamPointExist}}
+                      <input   type="text" placeholder="played" autocomplete="off" spellcheck="off" class="userName" id="matchPlayed" value={{teamPointExist.played}}>
+                    {{else}}
+                      <input   type="text" placeholder="played" autocomplete="off" spellcheck="off" class="userName" id="matchPlayed" >
+
+                    {{/if}}
+                  </div>
+               </div>
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Won*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if teamPointExist}}
+                      <input   type="text" placeholder="won" autocomplete="off" spellcheck="off" class="userName" id="matchWon" value={{teamPointExist.won}}>
+                    {{else}}
+                      <input   type="text" placeholder="won" autocomplete="off" spellcheck="off" class="userName" id="matchWon" >
+
+                    {{/if}}
+                  </div>
+               </div>
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Loss*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if teamPointExist}}
+                      <input   type="text" placeholder="loss" autocomplete="off" spellcheck="off" class="userName" id="matchLoss" value={{teamPointExist.loss}}>
+                    {{else}}
+                      <input   type="text" placeholder="loss" autocomplete="off" spellcheck="off" class="userName" id="matchLoss" >
+
+                    {{/if}}
+                  </div>
+               </div>
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Points*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if teamPointExist}}
+                      <input   type="text" placeholder="points" autocomplete="off" spellcheck="off" class="userName" id="matchPoints" value={{teamPointExist.points}}>
+                    {{else}}
+                      <input   type="text" placeholder="points" autocomplete="off" spellcheck="off" class="userName" id="matchPoints" >
+
+                    {{/if}}
+                  </div>
+               </div> 
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class ="row">
+                  <p id="teamPointsImpMsg" class='impMsg'></p>
+
+                </div>
+                 <div class="row" style="text-align: center;">
+                  {{#if teamPointExist}}
+                    <button type="button" class="ip_button_Popup_Black" id="modifyTeamPoint"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                  {{else}}
+                     <button type="button" class="ip_button_Popup_Black" id="createTeamPoint"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                  {{/if}}
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:2;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                 </div>
+              </div>
+          </div>
+
+          
+        </div>
+    </div>
+  </div>
+</template>
+
+
+
+<template name="regValidityContent">
+  <div class ="row">
+    <a  style="margin-top:50px !important;float:right !important;margin-right:15px !important;font-size:15px !important" id="addRegValidity" >
+        Add Registration Validity
+    </a>
+  </div>
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">User Id</th>
+                            <th class="pAnalytics2">Year</th>
+                            <th class="pAnalytics2">Validity</th>
+                            <th class="pAnalytics2">Status</th>
+                            <th class="pAnalytics2">Edit</th>
+                            <th class="pAnalytics2">Delete</th>   
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each regValidList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                           <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                           <td class="pAnalytics2">{{fetchAssoc this.userId}}</td>
+                           <td class="pAnalytics2">{{this.year}}</td>
+                           <td class="pAnalytics2">{{formatDate this.validity}}</td>
+                           <td class="pAnalytics2">{{this.status}}</td>
+
+                            <td class="pAnalytics2">
+                            <span class="glyphicon glyphicon-pencil" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer"  id="editRegValid"></span></td>
+                           <td class="pAnalytics2" id="selectedIdToEdit">
+                            <span class="glyphicon glyphicon-remove" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="delRegValid"></span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+<template name="createRegValidModal">
+  <div class="modal" id="createRegValidModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                  {{#if regValidExist}}
+              Modify Registration Validity
+            {{else}}
+              Create Registration Validity
+            {{/if}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              
+              <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >User*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if regValidExist}}
+                      <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="assocUser">
+                        {{#each assocList}}    
+                          <option value={{this.userId}} >{{this.associationName}}</option>
+                        {{/each}}       
+                       </select> 
+                    {{else}}
+                       <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="assocUser">
+                        {{#each assocList}}    
+                          <option value={{this.userId}} >{{this.associationName}}</option>
+                        {{/each}}       
+                       </select>             
+                    {{/if}}
+                  </div>
+               </div> 
+
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Year*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if regValidExist}}
+                      <input   type="text" placeholder="year" autocomplete="off" spellcheck="off" class="userName" id="validYear" value={{regValidExist.year}}>
+                    {{else}}
+                      <input   type="text" placeholder="year" autocomplete="off" spellcheck="off" class="userName" id="validYear" >
+
+                    {{/if}}
+                  </div>
+               </div> 
+
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Validity*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if regValidExist}}
+                      <input   type="text"  autocomplete="off" spellcheck="off" class="userName" id="validity" value={{formatDate regValidExist.validity}} placeholder="DD MMM YYYY">
+                    {{else}}
+                      <input   type="text"  autocomplete="off" spellcheck="off" class="userName" id="validity"  placeholder="DD MMM YYYY">
+
+                    {{/if}}
+                  </div>
+               </div>  
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class ="row">
+                  <p id="regValidImpMsg" class='impMsg'></p>
+
+                </div>
+                 <div class="row" style="text-align: center;">
+                  {{#if regValidExist}}
+                    <button type="button" class="ip_button_Popup_Black" id="modifyRegValid"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                  {{else}}
+                     <button type="button" class="ip_button_Popup_Black" id="createRegValid"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                  {{/if}}
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:2;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                 </div>
+              </div>
+          </div>
+
+          
+        </div>
+    </div>
+  </div>
+</template>
+
+<!-- ---------------------------------------- -->
+
+<template name="liveLinkContent">
+  <div class ="row">
+    <a  style="margin-top:50px !important;float:right !important;margin-right:15px !important;font-size:15px !important" id="addLink" >
+
+        Add Link
+    </a>
+  </div>
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">Tournament Id</th>
+                            <th class="pAnalytics2">Tournament</th>
+                            <th class="pAnalytics2">View</th>
+                            <th class="pAnalytics2">Delete</th>   
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each livelinkList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                           <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                           <td class="pAnalytics2">{{this.tournamentId}}</td>
+                           <td class="pAnalytics2">{{fetchTourName this.tournamentId}}</td>
+                            <td class="pAnalytics2">
+                            <span class="glyphicon glyphicon-eye-open" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer"  id="viewLink"></span></td>
+                           
+                           <td class="pAnalytics2" id="selectedIdToEdit">
+                            <span class="glyphicon glyphicon-remove" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="deleteLink"></span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+<template name="addLinkModal">
+  <div class="modal" id="addLinkModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                  {{#if tourExists}}
+              Modify Link
+            {{else}}
+              Create Link
+            {{/if}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              
+              <div class="row">
+                <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                  <p class="labelWhoNewChangePas"  >Tournament *:</p>
+                </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if tourExists}}
+                       <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="sportType">
+                        {{#each tourList}}    
+                          <option value={{tourExists.tournamentId}} >{{fetchTourName tourExists.tournamentId}}</option>
+                        {{/each}}       
+                     </select>
+
+
+
+                    {{else}}
+
+                      <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="sportType">
+                        <option selected disabled>Select Tournament</option> 
+                        {{#each tourList}}    
+                          <option value={{this._id}} >{{this.eventName}} </option>
+                        {{/each}}       
+                     </select>
+
+                    {{/if}}
+                  </div>
+               </div>  
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Existing links*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                  </div>
+                </div>
+
+                {{#if fetchLiveLinks}}
+
+                <div class="row">
+                 <div style="height: 200px !important;overflow-y:scroll;">
+
+                  <table class="table table-striped tableOFCSVHTML_New">   
+                    <thead style="">
+                      <tr class="headerAnalytics2">
+                        <th class="pAnalytics2">Sl No.</th>
+                        <th class="pAnalytics2">Title</th>
+                        <th class="pAnalytics2">Link</th>
+                        <th class="pAnalytics2">Date</th>
+                        <th class="pAnalytics2">Description</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  {{#each fetchLiveLinks}}
+                    <tr class="headerAnalytics3" id="headerAnalytics3" style="color:black">
+                      <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                      <td class="pAnalytics2">{{this.title}}</td>
+                      <td class="pAnalytics2">{{this.link}}</td>
+                      <td class="pAnalytics2">{{this.linkDate}}</td>
+                      <td class="pAnalytics2">{{this.description}}</td>
+                    </tr>
+                  {{/each}}
+                  </tbody>
+                  </table> 
+                  </div> 
+                </div>
+                {{/if}} 
+
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                    <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                      <p type="text" class="labelWhoNewChangePas" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">Link Title * :</p>
+                    </div>
+                    <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+                      <input type="text" placeholder="enter link title" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; border: 1px solid grey;border-radius: 5px;padding: 5px;" id="linkTitle"/>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                    <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                      <p type="text" class="labelWhoNewChangePas" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">New Link *:</p>
+                    </div>
+                    <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+                      <input type="text" placeholder="enter new link" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; border: 1px solid grey;border-radius: 5px;padding: 5px;" id="newLink"/>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                    <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                      <p type="text" class="labelWhoNewChangePas" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">Link Date *:</p>
+                    </div>
+                    <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+                      <input type="text" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; border: 1px solid grey;border-radius: 5px;padding: 5px;" id="linkDate"  name="linkDate" placeholder="DD MMM YYYY" />
+
+                    </div>
+                </div>    
+
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                    <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                      <p type="text" class="labelWhoNewChangePas" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">Link Description *:</p>
+                    </div>
+                    <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
+                        <textarea type="text" placeholder="link Description" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; border: 1px solid grey;border-radius: 5px;padding: 5px;" id="linkDesc"></textarea>
+                    </div>
+                  
+
+                </div>      
+
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class ="row">
+                  <p id="expertiseImpMsg" class='impMsg'></p>
+
+                </div>
+                 <div class="row" style="text-align: center;">
+                  {{#if tourExists}}
+                    <button type="button" class="ip_button_Popup_Black" id="modifyExpertise"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                  {{else}}
+                     <button type="button" class="ip_button_Popup_Black" id="addLink"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                  {{/if}}
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:2;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</template>
+
+<template name="viewLinkModal">
+  <div class="modal" id="viewLinkModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                  View Link        
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              
+              <div class="row">
+                <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                  <p class="labelWhoNewChangePas"  >Tournament*:</p>
+                </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+
+                     <input type="text" disabled placeholder="enter new link" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; border: 1px solid grey;border-radius: 5px;padding: 5px;" id="removeTourID" 
+                     value = {{fetchTourName tourExists.tournamentId}} name={{tourExists.tournamentId}}/>
+
+                  </div>
+               </div>  
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Existing links*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                  </div>
+                </div>
+
+                {{#if fetchLiveLinks}}
+                <div class="row">
+                                   <div style="height: 200px !important;overflow-y:scroll;">
+
+                  <table class="table table-striped tableOFCSVHTML_New">   
+                    <thead style="">
+                      <tr class="headerAnalytics2">
+                        <th class="pAnalytics2">Sl No.</th>
+                        <th class="pAnalytics2">Title</th>
+                        <th class="pAnalytics2">Link</th>
+                        <th class="pAnalytics2">Date</th>
+                        <th class="pAnalytics2">Description</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  {{#each fetchLiveLinks}}
+                    <tr class="headerAnalytics3" id="headerAnalytics3" style="color:black">
+                      <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                      <td class="pAnalytics2">{{this.title}}</td>
+                      <td class="pAnalytics2">{{this.link}}</td>
+                      <td class="pAnalytics2">{{this.linkDate}}</td>
+                      <td class="pAnalytics2">{{this.description}}</td>
+
+                    </tr>
+                  {{/each}}
+                  </tbody>
+                  </table>  
+                </div>
+                </div>
+                {{/if}}    
+         
+
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class ="row">
+                  <p id="expertiseImpMsg" class='impMsg'></p>
+
+                </div>
+                 <div class="row" style="text-align: center;">
+                    <button type="button" class="ip_button_Popup_Black" data-dismiss="modal" id=""  style="order:1;margin:0px;padding:0px; height:2.2em!important;">OK
+                      </button>
+                 
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:2;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</template>
+<template name="removeLinkModal">
+  <div class="modal" id="removeLinkModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                  Modify Link        
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              
+              <div class="row">
+                <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                  <p class="labelWhoNewChangePas"  >Tournament*:</p>
+                </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+
+                     <input type="text" disabled placeholder="enter new link" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; border: 1px solid grey;border-radius: 5px;padding: 5px;" id="removeTourID" 
+                     value = {{fetchTourName tourExists.tournamentId}} name={{tourExists.tournamentId}}/>
+
+                  </div>
+               </div>  
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Existing links*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                  </div>
+                </div>
+
+                {{#if fetchLiveLinks}}
+                <div class="row">
+                  <table class="table table-striped tableOFCSVHTML_New">   
+                    <thead style="">
+                      <tr class="headerAnalytics2">
+                        <th class="pAnalytics2">Sl No.</th>
+                        <th class="pAnalytics2">Link</th>
+                        <th class="pAnalytics2">Date</th>
+                        <th class="pAnalytics2">Delete</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  {{#each fetchLiveLinks}}
+                    <tr class="headerAnalytics3" id="headerAnalytics3" style="color:black">
+                      <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                      <td class="pAnalytics2">{{this.link}}</td>
+                      <td class="pAnalytics2">{{this.linkDate}}</td>
+                      <td class="pAnalytics2">
+                         <span class="glyphicon glyphicon-remove" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="deleteLinkData"></span>
+                       </td>
+                    </tr>
+                  {{/each}}
+                  </tbody>
+                  </table>  
+                </div>
+                {{/if}}    
+         
+
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class ="row">
+                  <p id="expertiseImpMsg" class='impMsg'></p>
+
+                </div>
+                 <div class="row" style="text-align: center;">
+                    <button type="button" class="ip_button_Popup_Black" data-dismiss="modal" id=""  style="order:1;margin:0px;padding:0px; height:2.2em!important;">OK
+                      </button>
+                 
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:2;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</template>
+
+
+<!--------- admin expertise templates ------> 
+
+<template name="expertiseContent">
+  <div class ="row">
+    <a  style="margin-top:50px !important;float:right !important;margin-right:15px !important;font-size:15px !important" id="createExpertise" >
+
+    		Create Expertise
+    </a>
+  </div>
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">Expertise</th>
+                            <th class="pAnalytics2">Edit</th>
+                            <th class="pAnalytics2">Delete</th>   
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each expertiseList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                           <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                           <td class="pAnalytics2">{{this.expertise}}</td>
+                            
+                           <td class="pAnalytics2">
+                            <span class="glyphicon glyphicon-pencil" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer"  id="editExpertise"></span></td>
+                           <td class="pAnalytics2" id="selectedIdToEdit">
+                            <span class="glyphicon glyphicon-remove" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="deleteExpertise"></span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+<template name="createExpertiseModal">
+  <div class="modal" id="createExpertiseModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                	{{#if expertiseExist}}
+			    		Modify Expertise
+			    	{{else}}
+			    		Create Expertise
+			    	{{/if}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Expertise*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                  	{{#if expertiseExist}}
+
+                    	<input   type="text" placeholder="expertise" autocomplete="off" spellcheck="off" class="userName" id="expertiseName" value={{expertiseExist.expertise}}>
+                    {{else}}
+                    	<input   type="text" placeholder="expertise" autocomplete="off" spellcheck="off" class="userName" id="expertiseName" >
+
+                    {{/if}}
+                  </div>
+               </div>  
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class ="row">
+                  <p id="expertiseImpMsg" class='impMsg'></p>
+
+                </div>
+                 <div class="row" style="text-align: center;">
+                 	{{#if expertiseExist}}
+                 		<button type="button" class="ip_button_Popup_Black" id="modifyExpertise"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+	                    </button>
+                 	{{else}}
+	                   <button type="button" class="ip_button_Popup_Black" id="createExpertise"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+	                    </button>
+	                {{/if}}
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:2;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</template>
+
+
+<!--------- admin language templates ------> 
+
+<template name="languageContent">
+  <div class ="row">
+    <a  style="margin-top:50px !important;float:right !important;margin-right:15px !important;font-size:15px !important" id="createLanguage" >
+
+    		Add Language
+    </a>
+  </div>
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">Language</th>
+                            <th class="pAnalytics2">Edit</th>
+                            <th class="pAnalytics2">Delete</th>   
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each languageList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                           <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                           <td class="pAnalytics2">{{this.language}}</td>
+                            
+                           <td class="pAnalytics2">
+                            <span class="glyphicon glyphicon-pencil" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer"  id="editLanguage"></span></td>
+                           <td class="pAnalytics2" id="selectedIdToEdit">
+                            <span class="glyphicon glyphicon-remove" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="deleteLanguage"></span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+<template name="languageActionModal">
+  <div class="modal" id="languageActionModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                	{{#if languageExist}}
+			    		Modify Language
+			    	{{else}}
+			    		Create Language
+			    	{{/if}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Language*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                  	{{#if languageExist}}
+
+                    	<input   type="text" placeholder="language" autocomplete="off" spellcheck="off" class="userName" id="languageName" value={{languageExist.language}}>
+                    {{else}}
+                    	<input   type="text" placeholder="language" autocomplete="off" spellcheck="off" class="userName" id="languageName" >
+
+                    {{/if}}
+                  </div>
+               </div>  
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class ="row">
+                  <p id="languageImpMsg" class='impMsg'></p>
+
+                </div>
+                 <div class="row" style="text-align: center;">
+                 	{{#if languageExist}}
+                 		<button type="button" class="ip_button_Popup_Black" id="modifyLanguage"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+	                    </button>
+                 	{{else}}
+	                   <button type="button" class="ip_button_Popup_Black" id="createLanguage"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+	                    </button>
+	                {{/if}}
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:2;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</template>
+
+
+<!--------- admin certification templates ------> 
+
+<template name="certificationContent">
+  <div class ="row">
+    <a  style="margin-top:50px !important;float:right !important;margin-right:15px !important;font-size:15px !important" id="createCertification" >
+
+    		Add Certification
+    </a>
+  </div>
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">
+                            	Sport</th>
+                            <th class="pAnalytics2">Certification</th>
+                            <th class="pAnalytics2">Edit</th>
+                            <th class="pAnalytics2">Delete</th>   
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each certificationList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                           <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                            <td class="pAnalytics2">{{getSportName this.sportId}}</td>
+                           <td class="pAnalytics2">{{this.certification}}</td>
+                            
+                           <td class="pAnalytics2">
+                            <span class="glyphicon glyphicon-pencil" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer"  id="editCertification"></span></td>
+                           <td class="pAnalytics2" id="selectedIdToEdit">
+                            <span class="glyphicon glyphicon-remove" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="deleteCertification"></span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+<template name="certificationActionModal">
+  <div class="modal" id="certificationActionModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                	{{#if certificationExist}}
+			    		Modify Certification
+			    	{{else}}
+			    		Create Certification
+			    	{{/if}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Sport*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+					<select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="sportType">
+						<option selected disabled>Select Sport</option>	
+						{{#each sportList}}
+							{{#if certificationExist}}
+                            	<option value={{this._id}} {{checkSportSelection certificationExist.sportId this._id}}>{{this.projectMainName}} 
+                            	</option>
+                            {{else}}
+								<option value={{this._id}} >{{this.projectMainName}} 
+								</option>
+                            {{/if}}
+                        {{/each}}       
+                     </select>
+                    	
+
+                  </div>
+               </div>
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Certification*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                  	{{#if certificationExist}}
+
+                    	<input  type="text" placeholder="certification" autocomplete="off" spellcheck="off" class="userName" id="certificationName" value={{certificationExist.certification}}>
+                    {{else}}
+                    	<input   type="text" placeholder="certification" autocomplete="off" spellcheck="off" class="userName" id="certificationName" >
+
+                    {{/if}}
+                  </div>
+               </div>  
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class ="row">
+                  <p id="certificationImpMsg" class='impMsg'></p>
+
+                </div>
+                 <div class="row" style="text-align: center;">
+                 	{{#if certificationExist}}
+                 		<button type="button" class="ip_button_Popup_Black" id="modifyCertification"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+	                    </button>
+                 	{{else}}
+	                   <button type="button" class="ip_button_Popup_Black" id="createCertification"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+	                    </button>
+	                {{/if}}
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:2;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</template>
+
+
+<template name="manageUsersContent">
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">User</th>
+                            <th class="pAnalytics2">Api UserName</th>
+                            <th class="pAnalytics2">Api Key</th>
+                            <th class="pAnalytics2">Source</th>
+                            <th class="pAnalytics2">Edit</th>
+                            <th class="pAnalytics2">Delete</th>   
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each apiUsersList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                            <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                            <td class="pAnalytics2">{{getUserName_Admin this.userId}}</td>
+                            <td class="pAnalytics2">{{this.apiUser}}</td>
+                            <td class="pAnalytics2">{{this.apiKey}}</td>
+                            <td class="pAnalytics2">{{this.source}}</td>
+
+                           <td class="pAnalytics2">
+                            <span class="glyphicon glyphicon-pencil" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer"  id="editApiUser"></span></td>
+                           <td class="pAnalytics2" id="selectedIdToEdit">
+                            <span class="glyphicon glyphicon-remove" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="deleteApiUser"></span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+<template name="editApiUserModal">
+  {{#if apiUserExist}}
+  <div class="modal" id="editApiUserModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                  Modify API User Info
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              
+              <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas">User :</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="" value={{getUserName_Admin apiUserExist.userId}} disabled="">              
+                  </div>
+               </div>
+
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas">API User :</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="" value={{apiUserExist.apiUser}} disabled="">              
+                  </div>
+               </div>
+
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas">API Key :</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="" value={{apiUserExist.apiKey}} disabled="">              
+                  </div>
+               </div>
+
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas">API Source :</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="" value={{apiUserExist.source}} disabled="">              
+                  </div>
+               </div>
+
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas">Source Image :</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                      <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="siteImg" value={{apiUserExist.siteImg}}>              
+                  </div>
+               </div>
+
+
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas">FB Page Token *:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                      <input   type="text" placeholder="pageToken" autocomplete="off" spellcheck="off" class="userName" id="pageToken" value={{apiUserExist.pageToken}}>              
+                  </div>
+               </div> 
+
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas">LinkedIn  Company ID *:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                      <input   type="text" placeholder="Company ID" autocomplete="off" spellcheck="off" class="userName" id="linkedInCompanyId" value={{apiUserExist.companyId}}>              
+                  </div>
+                </div> 
+                <!--
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas">LinkedIn  Token *:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                      <input   type="text" placeholder="linkedInToken" autocomplete="off" spellcheck="off" class="userName" id="linkedInAccessToken" value={{apiUserExist.accessToken}}>              
+                  </div>
+                </div> 
+                -->
+
+               
+
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas">Twitter consumer_key *:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                      <input   type="text" placeholder="consumer_key" autocomplete="off" spellcheck="off" class="userName" id="twitConsumer_key" value={{apiUserExist.tweetKeys.consumer_key}}>              
+                  </div>
+               </div> 
+
+
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas">Twitter consumer_secret *:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                      <input   type="text" placeholder="consumer_secret" autocomplete="off" spellcheck="off" class="userName" id="twitConsumer_secret" value={{apiUserExist.tweetKeys.consumer_secret}}>              
+                  </div>
+               </div> 
+
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas">Twitter access_token_key *:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                      <input   type="text" placeholder="access_token_key" autocomplete="off" spellcheck="off" class="userName" id="twitAccess_token_key" value={{apiUserExist.tweetKeys.access_token_key}}>              
+                  </div>
+               </div> 
+
+
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas">Twitter access_token_secret *:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                      <input   type="text" placeholder="access_token_secret" autocomplete="off" spellcheck="off" class="userName" id="twitAccess_token_secret" value={{apiUserExist.tweetKeys.access_token_secret}}>              
+                  </div>
+               </div>   
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class ="row">
+                  <p id="apiUserImpMsg" class='impMsg'></p>
+
+                </div>
+                 <div class="row" style="text-align: center;">
+                    <button type="button" class="ip_button_Popup_Black" id="modifyAPIInfo"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                  
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:2;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  {{/if}}
+</template>
+
+
+<template name="editLinkedInTokenModal">
+  <div class="modal" id="editLinkedInTokenModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                  Modify LinkedIn Access Token
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              
+              <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas">Access Token :</p>
+                  </div>
+                  {{#if dataExists}}
+                    <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                        <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="linkedInTokenVal" value={{dataExists.customValue}} >              
+                    </div>
+                  {{else}}
+                    <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                        <input   type="text" placeholder="" autocomplete="off" spellcheck="off" class="userName" id="linkedInTokenVal" value="" >              
+                    </div>
+                  {{/if}}
+               </div> 
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class ="row">
+                  <p id="apiUserImpMsg" class='impMsg'></p>
+
+                </div>
+                 <div class="row" style="text-align: center;">
+                    <button type="button" class="ip_button_Popup_Black" id="updateLinkedInKeys"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                  
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:2;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</template>
+
+
+<!---- admin custom data templates ------>
+<template name="customDataContent">
+  <div class ="row">
+  </div>
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">
+                            	Type</th>
+                            <th class="pAnalytics2">Custom Data</th>
+                            <th class="pAnalytics2">Custom Key Data</th>
+                             
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each customDataList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                           <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                         
+                           <td class="pAnalytics2">{{this.type}}</td>
+                            <td class="pAnalytics2">{{this.customData}}
+                            	
+                            </td>
+                             <td class="pAnalytics2">
+                             	{{#if this.customKeyData}}
+                             	{{#each this.customKeyData}}
+                             		{{this.country}} - 
+                             		{{#each this.valueSet}}
+                             			{{this.key}},
+                             		{{/each}}
+                             	{{/each}}
+                             	{{/if}}
+                             </td>
+                           
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+
+
+<!-- admin account type -->
+
+<template name="addAccountTypeModalContent">
+    {{#if Template.subscriptionsReady}}
+  	<div class="container" style="background:#333; height:auto;">
+    	<div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+         	<div class="row-same-height">
+            	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                  	<div class="mainTitle">
+                     	<p class="title">
+                        	Create New Account Type
+                     	</p>
+                     <input type="button" id="cancel" class="ip_button_LightGrey" style="order:2" value="Cancel">
+                     <input type="button" id="saveAccountType" class="ip_button_LightGrey" style="order:1" value="Save">
+                  </div>
+            	</div>
+            	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                  	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     	<p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">Created Account Type:</p>
+                  	</div>
+                 	<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     	<textarea  type="text" placeholder="Pack Feature Description" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" rows="5" cols="80" id="descOfArticle" disabled>	{{fetchAccountType}}
+                     	</textarea>
+                  	</div>
+               	</div>
+            	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                  	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     	<p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">Add New Account Type:</p>
+                  	</div>
+                  	<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     	<input type="text" placeholder="enter account type" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="accountType"/>
+                  	</div>
+               	</div>
+        	</div>
+    	</div>
+    </div>
+   	{{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+<template name="removeAccountTypeModalContent">
+    {{#if Template.subscriptionsReady}}
+  	<div class="container" style="background:#333; height:auto;">
+    	<div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+         	<div class="row-same-height">
+            	
+            	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                  	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     	<p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">Choose Account Type:</p>
+                  	</div>
+                 	<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     	<select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="accountTypeSelection">
+                     		<option selected disabled>Select Account Type
+                     		</option>
+						{{#each fetchAccountType}}       
+							<option value={{this}} >{{this}} 
+							</option>
+                        {{/each}}       
+                     </select>
+                  	</div>
+                  	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                  		<input type="button" id="removeAccountType" class="ip_button_LightGrey" style="width:auto !important" value="Remove">
+                  	</div>
+               	</div>
+            	
+        	</div>
+    	</div>
+    </div>
+   	{{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+<!-- admin national identitu -->
+
+<template name="addNIModalContent">
+    {{#if Template.subscriptionsReady}}
+  	<div class="container" style="background:#333; height:auto;">
+    	<div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+         	<div class="row-same-height">
+            	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                  	<div class="mainTitle">
+                     	<p class="title">
+                        	Create New National Identity
+                     	</p>
+                     <input type="button" id="cancel" class="ip_button_LightGrey" style="order:2" value="Cancel">
+                     <input type="button" id="saveNA" class="ip_button_LightGrey" style="order:1" value="Save">
+                  </div>
+            	</div>
+            	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                  	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     	<p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">Choose Country:</p>
+                  	</div>
+                 	<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                 		<select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="countrySelection">
+                     		<option selected disabled>Country
+                     		</option>
+							{{#each fetchCountry}}       
+							<option value={{this.countryName}} {{setCountry this.countryName}}>{{this.countryName}} 
+							</option>
+                        {{/each}}       
+                     </select>
+                     	
+                  	</div>
+               	</div>
+            	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                  	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     	<p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">Created National Identity:</p>
+                  	</div>
+                 	<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     	<textarea  type="text" placeholder="Pack Feature Description" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" rows="5" cols="80" id="descOfArticle" disabled>	
+                     		{{#each fetchNI}}
+                     			{{this.key}}
+                     		{{/each}}
+                     	</textarea>
+                  	</div>
+               	</div>
+            	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                  	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     	<p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">Add New National Identity:</p>
+                  	</div>
+                  	<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     	<input type="text" placeholder="enter account type" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="nationalIdentity"/>
+                  	</div>
+               	</div>
+               	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                  	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     	<p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP"> Mandatory:</p>
+                  	</div>
+                 	<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                 		<select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="mandatorySelection">
+                     		
+							<option value="yes" >yes
+							</option>
+							<option value="no" >no
+							</option>
+                     </select>
+                     	
+                  	</div>
+               	</div>
+        	</div>
+    	</div>
+    </div>
+   	{{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+
+<template name="removeNIModalContent">
+    {{#if Template.subscriptionsReady}}
+  	<div class="container" style="background:#333; height:auto;">
+    	<div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+         	<div class="row-same-height">
+            	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                  	<div class="mainTitle">
+                     	<p class="title">
+                        	Remove National Identity
+                     	</p>
+                     
+                  </div>
+            	</div>
+            	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                  	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     	<p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">Choose Country:</p>
+                  	</div>
+                 	<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                 		<select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="countrySelection">
+                     		<option selected disabled>Country
+                     		</option>
+							{{#each fetchCountry}}       
+							<option value={{this.countryName}} {{setCountry this.countryName}}>{{this.countryName}} 
+							</option>
+                        {{/each}}       
+                     </select>
+                     	
+                  	</div>
+               	</div>
+            	<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                  	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     	<p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP"> National Identity:</p>
+                  	</div>
+                 	<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     	
+                     	<select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="identitySelection">
+                     		<option selected disabled>National Identity
+                     		</option>
+							{{#each fetchNI}}       
+							<option value={{this.key}}>{{this.key}} 
+							</option>
+                        {{/each}}       
+                     </select>
+
+                     		
+                  	</div>
+                  	<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                  		<input type="button" id="removeNA" class="ip_button_LightGrey" style="width:auto !important" value="Remove">
+                  	</div>
+               	</div>
+            	
+        	</div>
+    	</div>
+    </div>
+   	{{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+<template name="removePointsModalContent">
+    {{#if Template.subscriptionsReady}}
+    <div class="container" style="background:#333; height:auto;">
+      <div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+          <div class="row-same-height">
+              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                    <div class="mainTitle">
+                      <p class="title">
+                          Remove Player Points
+                      </p>
+                     
+                  </div>
+              </div>
+              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                      <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">Choose Organizer:</p>
+                    </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                    <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="organizerSelection" name="organizerSelection">
+                        <option selected disabled>Organizer
+                        </option>
+              {{#each fetchOrganizers}}       
+              <option value={{this.userName}} name={{this.userId}}>{{this.userName}} 
+              </option>
+                        {{/each}}       
+                     </select>
+                      
+                    </div>
+                </div>
+              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                      <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP"> Choose Event:</p>
+                    </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                      
+                      <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="eventSelection">
+                        <option selected disabled>Event
+                        </option>
+              {{#each fetchEvent}}       
+              <option value={{this}}>{{this}} 
+              </option>
+                        {{/each}}       
+                     </select>
+
+                        
+                    </div>
+                    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                      <input type="button" id="removePoints" class="ip_button_LightGrey" style="width:auto !important" value="Remove">
+                    </div>
+                </div>
+              
+          </div>
+      </div>
+    </div>
+    {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+
+
+<template name="RROrderContent">
+  <div class ="row">
+    <a  style="margin-top:50px !important;float:right !important;margin-right:15px !important;font-size:15px !important" id="addRROrder" >
+
+        Create RR Order Of Play
+    </a>
+  </div>
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">Group Size</th>
+                            <th class="pAnalytics2">Index Set</th>
+                            <th class="pAnalytics2">Order Of Player</th>
+                            <th class="pAnalytics2">Edit</th>
+                            <th class="pAnalytics2">Delete</th>   
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each orderRRList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                           <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                           <td class="pAnalytics2">{{this.keySet}}</td>
+                          <td class="pAnalytics2">{{this.indexSet}}</td>
+
+                           <td class="pAnalytics2">{{this.valueSet}}</td>
+                           <td class="pAnalytics2">
+                            <span class="glyphicon glyphicon-pencil" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer"  id="editRROrder"></span></td>
+                           <td class="pAnalytics2" id="selectedIdToEdit">
+                            <span class="glyphicon glyphicon-remove" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="deleteRROrder"></span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+<template name="createRROrderModal">
+  <div class="modal" id="createRROrderModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                  {{#if playerOrderExist}}
+                    Modify Order Of Play
+                  {{else}}
+                    Create Order Of Play
+                  {{/if}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Group Size*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">   
+                    {{#if playerOrderExist}}
+                       <input   type="text" placeholder="group size" autocomplete="off" spellcheck="off" class="userName" id="groupSize" value={{playerOrderExist.keySet}}>
+                    {{else}}
+                      <input   type="text" placeholder="group size" autocomplete="off" spellcheck="off" class="userName" id="groupSize">
+                    {{/if}}                
+                      
+
+                  </div>
+               </div> 
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Index Set*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">   
+                    {{#if playerOrderExist}}
+                       <input   type="text" placeholder="index set" autocomplete="off" spellcheck="off" class="userName" id="indexSet" value={{playerOrderExist.indexSet}}>
+                    {{else}}
+                      <input   type="text" placeholder="index set" autocomplete="off" spellcheck="off" class="userName" id="indexSet">
+                    {{/if}}                
+                      
+
+                  </div>
+               </div> 
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Order Of Play*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">     
+
+                    {{#if playerOrderExist}}
+                       <input   type="text" placeholder="order of play" autocomplete="off" spellcheck="off" class="userName" id="playOrder" value={{playerOrderExist.valueSet}}>
+                    {{else}}
+                      <input   type="text" placeholder="order of play" autocomplete="off" spellcheck="off" class="userName" id="playOrder" >
+                    {{/if}}        
+
+                      
+
+                  </div>
+               </div>  
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class ="row">
+                  <p id="matchOrderImpMsg" class='impMsg'></p>
+
+                </div>
+                 <div class="row" style="text-align: center;">
+                    {{#if playerOrderExist}}
+                      <button type="button" class="ip_button_Popup_Black" id="modifyRROrder"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                    {{else}}
+
+                     <button type="button" class="ip_button_Popup_Black" id="createRROrder"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                      {{/if}}
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:2;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</template>
+
+
+<template name="schoolDetailContent">
+  <div class ="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class ="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      <select  class="valid" aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="domainSelection" name="domainSelection">
+        <option selected disabled>Select Domain</option> 
+        {{#each domainList}}
+          <option value={{this._id}} name={{this.domainName}}>{{this.domainName}} </option>             
+        {{/each}}       
+      </select>
+    </div>
+    <div class ="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+    </div>
+
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 playerAnalyticsSubDiv">
+        <input type="button" value="Download" class="playerAnalyticsInputBox playerAnalyticsShowButton" id="adminSchoolDownload">
+    </div>
+  </div>
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">School Name</th>
+                            <th class="pAnalytics2">Email ID</th>
+                            <th class="pAnalytics2">Abbrevation</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each schoolList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                           <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                           <td class="pAnalytics2">{{this.schoolName}}</td>
+                           <td class="pAnalytics2">{{this.emailAddress}}</td>
+                           <td class="pAnalytics2">{{this.abbrevation}}</td>
+                         </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+
+<template name="fitBitUserContent">
+  <div class ="row">
+    <a  style="margin-top:50px !important;float:right !important;margin-right:15px !important;font-size:15px !important" id="createFitBitUser" >
+        Create Fitbit User
+    </a>
+  </div>
+    {{#if Template.subscriptionsReady}}
+        <div class = "row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:10px !important">
+                <table class="table table-striped tableOFCSVHTML_New">
+                    <thead style="">
+                        <tr class="headerAnalytics2">
+                            <th class="pAnalytics2">Sl No.</th>
+                            <th class="pAnalytics2">App User ID</th>
+                            <th class="pAnalytics2">User</th>
+                            <th class="pAnalytics2">Edit</th>
+                            <th class="pAnalytics2">Delete</th>   
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {{#each fitBitList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="">
+                           <td class="pAnalytics2">{{getSLNUMBARticles @index}}</td>
+                           <td class="pAnalytics2">{{this.appUserID}}</td>
+                            <td class="pAnalytics2" id="viewFitBitUserProfile" style='cursor:pointer !important'>{{fetchPlayer this.userId}}</td>
+
+                              <td class="pAnalytics2">
+                            <span class="glyphicon glyphicon-pencil" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer"  id="editFitBitUser"></span></td>
+                           <td class="pAnalytics2" id="selectedIdToEdit">
+                            <span class="glyphicon glyphicon-remove" style="color:#FFA500; font-size: 18px; margin: 3px 0px 0px 0px; width:15%; transform: rotate(0deg); cursor: pointer" id="remFitBitUser"></span>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>                 
+            </div>
+        </div>
+       
+        {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+<template name="createFitBitModal">
+  <div class="modal" id="createFitBitModal" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            <div class="row" style="margin:0 !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHeadchangePass" style="border-top-right-radius:5px;">
+                <p class="modal-title titeofregistemodal" style="">
+                  {{#if fitBitExist}}
+              Modify FitBit User 
+            {{else}}
+              Create FitBit User
+            {{/if}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="modal-body" style="min-height: 13em!important;">
+            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              
+                <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >App User ID*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">
+                    {{#if fitBitExist}}
+                      <input   type="text" placeholder="appuserID" autocomplete="off" spellcheck="off" class="userName" id="appuserID" value={{fitBitExist.appUserID}} readonly="true">
+                    {{else}}
+                      <input   type="text" placeholder="appuserID" autocomplete="off" spellcheck="off" class="userName" id="appuserID" >
+
+                    {{/if}}
+                  </div>
+               </div>  
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >User*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7"> 
+                    <div class="liveUpdatesGames">
+                      <select  aria-invalid="false" style="width: 100%; height: 2em; font-size: 12px;"  id="fbUser" class="select2">
+                        <option selected disabled>Select User</option> 
+                        {{#each userList}}
+                        <option value={{this._id}} {{userSelection fitBitExist._id this.userId}}>{{this.userName}} 
+                        </option>
+                            
+                        {{/each}}       
+                     </select>    
+                     </div>    
+                  </div>
+               </div>
+              
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Access Token*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7">  
+                    {{#if fitBitExist}}
+                      <input   type="text" placeholder="Access Token" autocomplete="off" spellcheck="off" class="userName" id="fBAccessToken" value={{fitBitExist.accessToken}} readonly="true">
+                      
+                      {{else}}
+                      <input   type="text" placeholder="Access Token" autocomplete="off" spellcheck="off" class="userName" id="fBAccessToken" >
+                      {{/if}}
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5" style="padding-right:0px !important;padding-top:10px;">
+                     <p class="labelWhoNewChangePas"  >Refresh Token*:</p>
+                  </div>
+                  <div class="col-md-7 col-xs-7 col-sm-7 col-lg-7"> 
+                    {{#if fitBitExist}}
+                      
+                    <input   type="text" placeholder="Refresh Token" autocomplete="off" spellcheck="off" class="userName" id="fBRefreshToken" value={{fitBitExist.refreshToken}} readonly="true">
+                    {{else}}
+
+                    <input   type="text" placeholder="Refresh Token" autocomplete="off" spellcheck="off" class="userName" id="fBRefreshToken" >
+                    {{/if}}
+
+                  </div>
+               </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                <div class ="row">
+                  <p id="fitBitMsg" class='impMsg'></p>
+
+                </div>
+                 <div class="row" style="text-align: center;">
+                  {{#if fitBitExist}}
+                    <button type="button" class="ip_button_Popup_Black" id="modifyFitBit"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                  {{else}}
+                     <button type="button" class="ip_button_Popup_Black" id="createFitBit"  style="order:1;margin:0px;padding:0px; height:2.2em!important;">Save
+                      </button>
+                  {{/if}}
+                    <button type="button" class="ip_button_Popup_Red" id="cancel" data-dismiss="modal" style="order:2;margin:0px;padding:0px; height:2.2em!important;">Cancel
+                    </button>
+                 </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</template>

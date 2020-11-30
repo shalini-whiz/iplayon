@@ -1,0 +1,105 @@
+    <template name="editPointsDraws">
+        <form id="application-editPointsDraws">
+            <div class="modal" id="editPointsDraws" aria-hidden="true">
+                <div id="subDomainCenter" class="modal-dialog" style="width:400px !important" >
+                    <div class="eventAddTourPopup" style="width:451px !important">
+                        <div class="modal-content">
+                            <!-- shalini codes starts here -->
+
+                            <div class="modal-header headerClass">
+                                <h5 class="modal-title myModalLabel" id="myModalLabel" style='text-align:center;'>Points Configuration</h5>
+                            </div>
+                            <!-- shalini codes ends here -->
+
+                            <div class="modal-body subDomainModalBody" style="padding:15px !important;height:14em;">
+                                <!-- shalini codes starts here -->
+                                <h5 class="modal-title" id="myModalLabel" style='text-align:center;padding:5px;'>{{eventNamePopup}}</h5>
+                                <!-- shalini codes ends here -->
+
+                                <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important">
+                                <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important;height:14em;overflow:auto;padding-left:15px !important;padding-right:15px !important;">
+                                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important">
+                                        <div class="row no-gutter">
+                                            <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 tableHeadPopup1"  style="border-right:0px">
+                                                <p class="tableHeadPopupPtagH">Round Name</p>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 tableHeadPopup1" style="border-right:1px solid black">
+                                               <p class="tableHeadPopupPtagH">Points</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 scrollableDiv" style="padding:0px !important;min-height:3em;border: 1px solid;border-top: 0px;" id="scrollableDiv2" >
+                                    {{#each roundNumberPopup}}{{#if this}}
+                                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px !important" >
+                                        <div class="row no-gutter" id="test">
+                                            <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 tableHeadPopup"  style="border-left:0px;display:none;">
+                                                <input class="tableHeadPopupPtag roundNumVal" autocomplete="off" name="roundNumberPopup[{{this.roundNumber}}]" placeholder="No." id="roundNumberPopup[{{this.roundNumber}}]" value="{{this.roundNumber}}" readonly style="cursor:default!important;" onfocus="this.blur()">
+                                            </div>
+                                            <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 tableHeadPopup"  style="border-left:0px;border-right:0px;">
+                                                <input class="tableHeadPopupPtag roundNameVal" autocomplete="off" value="{{this.roundName}}" placeholder="Round Name" id="roundNamePopup[{{this.roundNumber}}]"   name="roundNamePopup[{{this.roundNumber}}]" readonly style="cursor:default!important;" onfocus="this.blur()">
+                                            </div>
+                                            <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 tableHeadPopup" style="border-right:0px;">
+                                                <input class="tableHeadPopupPtag" autocomplete="off" name="pointsPopup[{{this.roundNumber}}]" id="pointsPopup[{{this.roundNumber}}]" placeholder="Points" value="{{this.points}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/if}}{{/each}}
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height: 2em !important;">
+                                    <p style="font-size:12px;color:red;cursor:default;" id="editSettingsPopupError"></p>
+                                    <p style="font-size:12px;color:green;cursor:default;" id="changePasswordSucc"></p>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-bottom:4px;">
+                                <div class="">
+                                    <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " style="padding: 0px !important;">
+                                    <div style="font-size: 17px;padding: 0px !important;text-align: center;" class="col-md-1 col-xs-1 col-lg-1 col-sm-1 ">
+                                    </div>
+                                    <div style="font-size: 17px;padding: 0px !important;text-align: right;" class="col-md-1 col-xs-1 col-lg-1 col-sm-1 ">
+                                        {{#if seedingShow}}
+                                        <span class="glyphicon glyphicon-file" style="font-size: 19px;cursor:pointer!important;" id="downloadforSeeding"></span>
+                                        {{else}}
+                                        <span class="glyphicon glyphicon-file" style="font-size: 19px;display:none;"></span>
+                                        {{/if}}
+                                    </div>
+                                    
+                                    <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " style="padding: 0px !important;">
+                                        <button type="button" class="ip_button_Popup_Black" id="previousSettingsDraw" style="width: 98% !important;margin-left: 3px;">Previous</button>
+                                    </div>
+                                    <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding: 0px !important;">
+                                        <button type="submit" class="ip_button_Popup_Black" id="saveEditSettingsDraws" style="width: 98% !important;margin-left: 3px;">Continue</button>
+                                    </div>
+                                    <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding: 0px !important;padding-right: 15px !important;"> 
+                                        <button type="button" class="ip_button_Popup_Red" id="cancelEditSettingsDraws" style="margin-left:3px;width:  100% !important;">Cancel</button>
+                                    </div>
+                                    <div style="font-size: 17px;padding: 0px !important;text-align: center;" class="col-md-1 col-xs-1 col-lg-1 col-sm-1 ">
+                                    </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                                    <div class="row no-gutter col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right: 10px ! important; padding-bottom: 10px ! important; padding-left: 10px ! important; padding-top: 10px;">
+                                            <div style="height: 1.8em;" class="checkAcceptTerms">
+                                                <input style="margin: 1px;" value="" name="checkAcceptbox" id="checkAcceptboxTweett" class="checkboxAccept" checked="" type="checkbox">
+                                               <p class="downloadAcceptTitle" style="margin-top: 0px; margin-left: 0px; color: rgb(88, 88, 88);"><span style="color: rgb(0, 172, 237); font-size: 16px ! important; margin-top: -1px; cursor: default; margin-left: 5px;" class="fa fa-twitter" aria-hidden="true" id="">Auto Tweet</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                            <!-- shalini code ends here -->
+
+
+                            <!--<input type="text" id="test" name="test" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>
+                            <input type="text" id="test1" name="test1" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>
+                            <input type="text" id="test2" name="test2" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>
+                            <input type="text" id="test3" name="test3" style="background-color:none; border:none; cursor:default font-weight:normal" onfocus="this.blur()" readonly>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </template>

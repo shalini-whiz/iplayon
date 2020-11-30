@@ -1,0 +1,111 @@
+<template name="viewAdminArticles">
+   {{#if notAdmin}}
+   <div class=''>
+      <p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+   </div>
+   {{else}}
+   <div class="container" style="background:#333; height:auto;">
+      <form id="articleCreation" onkeypress="return event.keyCode != 13;">
+         <div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+            <div class="row-same-height">
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                  <div class="mainTitle">
+                     <p class="title">
+                        View and Edit Articles / Packs
+                     </p>
+                     <input type="button" id="CancelView" class="ip_button_LightGrey" style="order:1" value="cancel">
+                  </div>
+               </div>
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     {{#if clickEdit2}}
+                     <select class="" style="width: 100%;height: 100%;margin: 0px;padding: 0px;" id="publisherRole" disabled={{clickEdit2}}>
+                        <option>Select Publisher Role</option>
+                        {{#each typeOfPublisher}}
+                        <option >{{this}}</option>
+                        {{/each}}
+                     </select>
+                     {{else}}
+                     <select class="" style="width: 100%;height: 100%;margin: 0px;padding: 0px;" id="publisherRole" disabled={{clickEdit}}>
+                        <option>Select Publisher Role</option>
+                        {{#each typeOfPublisher}}
+                        <option >{{this}}</option>
+                        {{/each}}
+                     </select>
+                     {{/if}}
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     {{#if clickEdit}}
+                     <input id=""  name="searchUserForTeam" type="text" placeholder="Type Team Player's name" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background:#fff none repeat scroll 0px center; color: #000;border: 1px solid grey;border-radius: 5px;padding: 5px;" disabled=true/>
+                     {{else}}
+                     {{#if clickEdit2}}
+                     <input id=""  name="searchUserForTeam" type="text" placeholder="Type Team Player's name" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background:#fff none repeat scroll 0px center; color: #000;border: 1px solid grey;border-radius: 5px;padding: 5px;" disabled=true/>
+                     {{else}}
+                     <input id="searchUserForTeam"  name="searchUserForTeam" type="text" placeholder="Search publisher's name" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background:#fff none repeat scroll 0px center; color: #000;border: 1px solid grey;border-radius: 5px;padding: 5px;" />
+                     {{/if}}
+                     {{/if}}
+                     {{#if searchResultsForTeams}}
+                     <div style="float: left; padding: 0px ! important; background: none repeat scroll 0% 0% #E0E0E0; border: 1px solid white; margin-top: 1px ! important;border:0px" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div style="left: 0px; z-index: 100; display: block; position: absolute; background: #fff !important;width: 100%; border: 1px solid black;" class="searchResults">
+                           {{#each searchResultsForTeams}}
+                           <div id="{{this.userId}}" class="addIcon" name="addAcademyMNM_P" value="{{this.userName}}">
+                              <p  id="{{this.userId}}" name="userName" value="{{this.userName}}"  style="text-align: left;margin:0px !important;font-size:12px;">{{this.userName}}</p>
+                           </div>
+                           {{/each}}
+                        </div>
+                     </div>
+                     {{/if}}
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     {{#if selectedPlayerName}}
+                     {{#each selectedPlayerName}}
+                     <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;cursor:pointer!important;" name="userSelectedForTeamP">{{this.userName}}</p>
+                     {{/each}}
+                     {{/if}}
+                  </div>
+               </div>
+               {{#if selectedPlayerName}}
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  {{#if clickEdit}}
+                  {{> EditAdminArticles}}
+                  {{else}}
+                  {{#if clickEdit2}}
+                  {{> EditAdminPacks}}
+                  {{else}}
+                  <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+                     <thead style="">
+                        <tr class="headeSubDiv2_entryFAca_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">
+                           <th class="pAnalytics2_entryFAca_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">Sl No.</th>
+                           <th class="pAnalytics2_entryFAca_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">title</th>
+                           <th class="pAnalytics2_entryFAca_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">description</th>
+                           <th class="pAnalytics2_entryFAca_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">type</th>
+                           <th class="pAnalytics2_entryFAca_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">click to edit</th>
+                        </tr>
+                     </thead>
+                     <tbody class="tableOFCSVHTML_entryFAcatableBody" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;">
+                        {{#each articlesForSelectedUserId}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;">
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background: transparent none repeat scroll 0px center !important;color:white;">{{getSLNUMBARticles @index}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background:transparent none black scroll 0px center !important;border:1px solid black;color:white;">{{this.title}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">{{this.articleDesc}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">{{this.type}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;cursor:pointer!important;color:white;" id="selectedIdToEdit">Edit</td>
+                        </tr>
+                        {{/each}}
+                     </tbody>
+                  </table>
+                  {{/if}}
+                  {{/if}}
+               </div>
+               {{/if}}
+            </div>
+         </div>
+      </form>
+      <div id="displayPlayerProfile"></div>
+   </div>
+   {{/if}}
+</template>

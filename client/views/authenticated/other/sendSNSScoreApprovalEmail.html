@@ -1,0 +1,65 @@
+<template name="sendSNSScoreApprovalEmail">
+	<body style="background: #FAFAFA; color: #333333;">
+    <center>
+        <table border="0" cellpadding="20" cellspacing="0" max-height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+            <tbody>
+                <tr>
+                    <td> <b>Hi {{userName}},</b>
+                        <p style="font-size:13px;">{{message}}</p>
+                        <p style="font-size:13px;color:#348EDA;">Event Name:{{eventName}}</p>
+                        <p style="font-size:13px;color:#348EDA;">Tournament Name:{{tournName}}</p>
+                        <p style="font-size:15px;color:#3b5998;margin-top:8px;">Scores:</p>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:flex;margin-top:2px;">
+							<div  style="width:65%;background:#004D00;max-height:35px;"><p style="width:100%;text-align:center;font-size:15px;color:white;margin-top:8px;white-space: nowrap;
+							overflow: hidden;
+							text-overflow: ellipsis;">{{mainPlayerName}}</p></div>
+
+							<div style="width:22px;background:#00B300;margin-left:4px;max-height:35px;"><p style="color:white;font-size:12px;text-align:center;width:100%;">{{scoresPlayerA.[0]}}</p></div>
+
+							<div style="width:22px;background:#00B300;margin-left:4px;max-height:35px;"><p style="color:white;font-size:12px;text-align:center;width:100%;">{{scoresPlayerA.[1]}}</p></div>
+
+							<div style="width:22px;background:#00B300;margin-left:4px;max-height:35px;"><p style="color:white;font-size:12px;text-align:center;width:100%;">{{scoresPlayerA.[2]}}</p></div>
+
+							<div style="width:22px;background:#00B300;margin-left:4px;max-height:35px;"><p style="color:white;font-size:12px;text-align:center;width:100%;">{{scoresPlayerA.[3]}}</p></div>
+
+							<div style="width:22px;background:#00B300;margin-left:4px;max-height:35px;"><p style="color:white;font-size:12px;text-align:center;width:100%;">{{scoresPlayerA.[4]}}</p></div>
+
+							<div style="width:22px;background:#00B300;margin-left:4px;max-height:35px;"><p style="color:white;font-size:12px;text-align:center;width:100%;">{{scoresPlayerA.[5]}}</p></div>
+
+							<div style="width:22px;background:#00B300;margin-left:4px;max-height:35px;"><p style="color:white;font-size:12px;text-align:center;width:100%;">{{scoresPlayerA.[6]}}</p></div>
+						</div>
+						 <div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:4px;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:flex;">
+							<div  style="width:65%;background:#004D00;max-height:35px;"><p style="width:100%;text-align:center;font-size:15px;color:white;margin-top:8px;white-space: nowrap;
+							overflow: hidden;
+							text-overflow: ellipsis;">{{userName}}</p></div>
+
+							<div style="width:22px;background:#00B300;margin-left:4px;max-height:35px;"><p style="color:white;font-size:12px;text-align:center;width:100%;">{{scoresPlayerB.[0]}}</p></div>
+
+							<div style="width:22px;background:#00B300;margin-left:4px;max-height:35px;"><p style="color:white;font-size:12px;text-align:center;width:100%;">{{scoresPlayerB.[1]}}</p></div>
+
+							<div style="width:22px;background:#00B300;margin-left:4px;max-height:35px;"><p style="color:white;font-size:12px;text-align:center;width:100%;">{{scoresPlayerB.[2]}}</p></div>
+
+							<div style="width:22px;background:#00B300;margin-left:4px;max-height:35px;"><p style="color:white;font-size:12px;text-align:center;width:100%;">{{scoresPlayerB.[3]}}</p></div>
+
+							<div style="width:22px;background:#00B300;margin-left:4px;max-height:35px;"><p style="color:white;font-size:12px;text-align:center;width:100%;">{{scoresPlayerB.[4]}}</p></div>
+
+							<div style="width:22px;background:#00B300;margin-left:4px;max-height:35px;"><p style="color:white;font-size:12px;text-align:center;width:100%;">{{scoresPlayerB.[5]}}</p></div>
+
+							<div style="width:22px;background:#00B300;margin-left:4px;max-height:35px;"><p style="color:white;font-size:12px;text-align:center;width:100%;">{{scoresPlayerB.[6]}}</p></div>
+						</div>
+						<p style="font-size:13px;margin-top:8px;">Please click the link below if you agree or disagree to update the above score on iPlayOn.</p>
+						<div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style=" display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:flex;margin-top:4px;padding-left:15px;padding-right:15px;">
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 " style="background:#3b5998;width:50px;padding-left:20px;padding-right:8px;padding-top:5px;padding-bottom:5px;margin-right:5px;"><a href="{{href}}" style="color:white;text-decoration:none;">Agree</a></div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 " style="background:#348EDA;width:50px;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;"><a href="{{href}}" style="color:white;text-decoration:none;">Disagree</a></div>
+						</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>--
+                        <br />iPlayOn</td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+</body>
+</template>

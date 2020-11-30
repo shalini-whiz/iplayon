@@ -1,0 +1,167 @@
+<template name="entryFromAcademy">
+	<div style="background:#333;height:auto;" class="container" id="container">
+		<form>
+			<div class="">
+				<div class="" style="margin-top: 6px;">
+		            <div class="mainTitle" style="height: 100% !important;margin-top: 0!important;">
+		                {{#if Template.subscriptionsReady}}
+		                    {{#each eventList}}
+		                        <p class="title" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Subscription To {{this.projectName}}:&nbsp;{{this.eventName}}</p>
+		                    {{/each}}
+		                    {{else}}
+		                        <p class="title">Tournament&nbsp;</p>
+		                    {{/if}}
+		                    {{#if Template.subscriptionsReady}}
+		                    {{#if checkSubHide lEventid 1}}
+		                        <input type="submit"  id="subscribeAndSendEmail" class="ip_button_LightGrey" style="order:1" value="Save and exit" />
+		                        <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="Cancel and exit" />
+		                    {{else}}
+		                    {{#if Template.subscriptionsReady}}
+		                    <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="" />
+		                    {{else}}
+		                    <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="" />
+		                    {{/if}}
+		                    {{/if}}
+		                    {{else}}
+		                        <input type="button" id="eventSubscribeCancel" class="ip_button_LightGrey" style="order:2" value="" />
+		                {{/if}}
+		            </div>                
+			    </div>
+		        <div class="">
+		        	<p class="title" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Entry Last Date : {{eventListLastDate}} </p>
+					<div style="display: flex; margin-top: 5px;">
+						{{#if checkSubHide lEventid 1}}
+		        		<a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 1; height: 30px;pointer-events:{{prevPageClass}};" href="{{prevPage}}"   id="eventSubscribePrev">previous</a>
+						<a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 2; margin-left: 5px; height: 30px;pointer-events:{{nextPageClass}};" href="{{nextPage}}"  id="eventSubscribeNext" >next</a>
+						<a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 3; margin-left: 5px; height: 30px;;" href="#"  id="eventSubscribeOnlySave" >save</a>
+						{{else}}
+						<a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 1; height: 30px;pointer-events:{{prevPageClass}};" href="{{prevPage}}"   id="eventSubscribePrevPast">previous</a>
+						<a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 2; margin-left: 5px; height: 30px;pointer-events:{{nextPageClass}};" href="{{nextPage}}"  id="eventSubscribeNextPast" >next</a>
+						<!--a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 3; margin-left: 5px; height: 30px;;" href="#"  id="" >done</a-->
+						{{/if}}
+					</div>
+						{{#if Template.subscriptionsReady}}
+						{{#if playersWithCheck}}
+					    <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+					        <thead style="">
+					        	<tr class="headeSubDiv2_entryFAca_backWhite">
+					               	<th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Sl No.</th>
+					               	<th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Player Name</th>
+					               	<th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Gender</th>
+					           		<th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">DOB</th>
+					            	{{#each eventIdsSettings}}
+						               <th class="pAnalytics2_entryFAca_backWhite" id="viewEvent2" style="cursor:pointer;color: white;">{{this}}
+						               	<p >Fee:{{eventFeesSendMAIL this}}/-</p>
+						               </th>
+						            {{/each}}
+						            <th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Total</th>
+						            {{#if assocAcademyHead}}
+					               	<th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Academy</th>
+					               	{{else}}
+					               	<th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Academy/Association</th>
+					               	{{/if}}
+					               	<th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Affiliation Id</th>
+					               	<th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Email</th>
+					               	<th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Phone Number</th>
+					               	<th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Guardian Name</th>
+					               	<th class="pAnalytics2_entryFAca_backWhite" style="background: #e0e0e0 !important;">Address</th>
+					            </tr>
+					        </thead>
+
+					        <tbody class="tableOFCSVHTML_entryFAcatableBody">
+					        	{{#each playersWithCheck}}
+					            <tr class="headerAnalytics3" id="headerAnalytics3">
+					                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{getSLNUMB @index}}</td>
+					                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{this.userName}}</td>
+					                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{this.gender}}</td>
+					                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{upcomingformatDate this.dateOfBirth}}</td>
+					                {{#each playerEntries}}
+					                	<td class="pAnalytics2_entryFAca2_backWhite" >
+					                		{{#if checkGenderToSub @index ../gender ../userId ..}}
+					                			<input type="checkbox" name="checkEvents" style="cursor:pointer !important;" value="{{eventABBNAME @index}}" checked="{{subscribedOrNot this @index ../userId}}" player={{../userId}} eventName="{{eventABBNAME @index}}" id="{{../userId}}" det = "{{..}}"><br>
+					                			<p style="color:black;font-size:12px;">{{eventABBNAME @index}}</p>
+					                		{{else}}
+					                			<input type="checkbox" name="checkEvents" style="cursor:disabled !important;" value="{{eventABBNAME @index}}" checked="{{subscribedOrNot this}}" disabled="disabled" player={{../userId}} eventName="{{eventABBNAME @index}}" id="{{../userId}}"  ><br>
+					                			<p style="color:black;font-size:12px;">{{eventABBNAME @index}}</p>
+					                		{{/if}}
+					                	</td>
+					                {{/each}}
+					                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">
+					                	<!--input type=button value="compute total" class="" style="color: #e0e0e0;height: 42%;font-size: 12px;background: #3B5998 none repeat scroll 0% 0%;border: 1px solid;" id="computeTot">
+					                	<br-->
+					                	<p id="totalFees{{this.userId}}">{{computeTotasd}}</p>
+					                </td>
+					                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{clubORAssoc this.userId}}</td>
+					                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">
+					                	{{#if this.affiliationId}}
+					                	{{this.affiliationId}}
+					                	{{else}}
+					                	&nbsp;
+					                	{{/if}}
+					                </td>
+					                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{this.emailAddress}}</td>
+					                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{this.phoneNumber}}</td>
+					                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{this.guardianName}}</td>
+					                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;">{{this.address}}</td>
+					            </tr>
+					            {{/each}}
+					       </tbody>
+					    </table>
+					    {{else}}
+					    <p style="color: white; font-size: 12px;">No Records Found</p>
+					    {{/if}}
+					    {{/if}}
+					    <div id="confirmPasswordRender"></div>
+					    {{> sendingMailPopup2}}{{> alreadySubscribed_entryFromAca}}
+					    {{> savingDataPopupNew}}
+					</div>
+		        </div>
+		</form>
+	</div>
+</template>
+
+<!--div class="">
+	    <table class="table table-striped tableOFCSVHTML">
+	        <thead style="">
+	        	<tr class="headerAnalytics2">
+	               <th class="pAnalytics2">No</th>
+	               <th class="pAnalytics2">Name</th>
+	               <th class="pAnalytics2">Academy Name</th>
+	               <th class="pAnalytics2">Email</th>
+	               <th class="pAnalytics2">Phone</th>
+	               <th class="pAnalytics2">DOB(dd/mmm/yyyy)</th>
+	               {{#each HTMLViewOFFeeData.[0].eventNames}}
+	               <th class="pAnalytics2">{{this}}</th>
+	               {{/each}}
+	               <th class="pAnalytics2">Total</th>
+	               <th class="pAnalytics2">Receipt</th>
+	               <th class="pAnalytics2">Dues</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	        	{{#each HTMLViewOFFeeData}}
+	            <tr class="headerAnalytics3">
+	                <td class="pAnalytics2">{{this.slNoD}}</td>
+	                <td class="pAnalytics2">{{this.userNameD}}</td>
+	                <td class="pAnalytics2">{{this.academyNameD}}</td>
+	                <td class="pAnalytics2">{{this.emailAddressD}}</td>
+	                <td class="pAnalytics2">{{this.phoneNumberD}}</td>
+	                <td class="pAnalytics2">{{this.dobD}}</td>
+	                {{#each this.eventNames}}
+	                <td class="pAnalytics2">{{getValueFee this ../userIdD}}</td>
+	                {{/each}}
+	                <td class="pAnalytics2">{{this.totalD}}/-</td>
+	                <td class="pAnalytics2"><input type=button value="{{checkReceiptSent this.userIdD}}" class="sendReciept" id="sendRec"></td>
+	                <td class="pAnalytics2">
+	                	{{#each eventListsFees}}
+	                	<input type=button value="{{sums}}/-" style="color: #FFF;height: 42%;font-size: 12px;background: #3B5998 none repeat scroll 0% 0%;border: 1px solid;" id="dueId">
+	                	{{/each}}
+	                </td>
+	            </tr>
+	            {{/each}}
+	       </tbody>
+	    </table>
+	    <div id="confirmPasswordRender"></div>
+	    <div id="duesOfTournaRender"></div>
+	    {{> sendingMailPopup2}}
+	</div-->

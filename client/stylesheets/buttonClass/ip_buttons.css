@@ -1,0 +1,89 @@
+.ip_button_DarkGrey{
+	width: 100%;
+	background: transparent linear-gradient(to right, #888, #505050) repeat scroll 0% 0%;
+	border-radius: 5px;
+	border: 0px solid;
+	height: 32px;
+	color: #FFF;
+	float: left;
+	font-size: 12px;
+	font-weight: bold;
+	box-shadow: 1px 1px 2px #888;
+	cursor: pointer;
+}
+
+
+
+.ip_button_White{
+	width: 100%;
+	border-radius: 5px;
+	border: 0px solid;
+	height: 32px;
+	float: left;
+	font-size: 12px;
+	font-weight: bold;
+	box-shadow: 1px 1px 2px #888;
+	background: transparent linear-gradient(#BFBFBF, #F2F2F2) repeat scroll 0% 0%;
+	color: #000;
+	cursor: pointer;
+}
+
+.ip_button_LightGrey{
+	margin: auto 0.2% auto 0.5%;
+	width: 15%;
+	height: 2.9em;
+	background-color: #808080;
+	color: #FFF;
+	border: 2px solid;
+	border-radius: 8px;
+	font-size: 12px;
+	outline: 0px none;
+	cursor: pointer;
+}
+
+.ip_button_Popup_Black{
+	background: transparent linear-gradient(to right, #000, #686868) repeat scroll 0% 0%;
+	border-radius: 5px;
+	border: 0px solid;
+	height: 24px;
+	width: 75px;
+	right: 1%;
+	left: 20%;
+	color: #FFF;
+	box-shadow: 1px 1px 2px #808080;
+	font-size: 12px;
+}
+.ip_button_Popup_Red{
+	background: transparent linear-gradient(to right, #B30000, #F66) repeat scroll 0% 0%;
+	border-radius: 5px;
+	border: 0px solid;
+	height: 24px;
+	width: 75px;
+	right: 1%;
+	left: 20%;
+	color: #FFF;
+	box-shadow: 1px 1px 2px #808080;
+	font-size: 12px;
+}
+
+.ip_button_Register_Popup{
+	background-color:rgb(204,204,204);
+	color:rgb(89,89,89)!important;
+	height:2.6em;
+	border-radius:0px;
+	font-weight:normal !important;
+}
+
+.ip_button_Maroon{
+	width: 100%;
+    margin-bottom: 0%;
+    background-color: #b30000;
+    color: white;
+    border: 0px solid;
+    border-radius: 5px;
+    font-size: 12px;
+    outline: 0;
+    cursor: pointer;
+    font-weight: bold;
+    height: 33px;
+}

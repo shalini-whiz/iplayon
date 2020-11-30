@@ -1,0 +1,266 @@
+<template name="articlesMainMenu">
+   {{#if notAdmin}}
+   <div class=''>
+      <p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+   </div>
+   {{else}}
+   <div class="container" style="background:#333; height:auto;">
+      <div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+         <div class="row-same-height">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                  <div class="mainTitle">
+                     <p class="title">
+                        Create Article/Packs or Update
+                     </p>
+                  </div>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                     ">
+                     <select class="" style="width: 100%;height: 100%;margin:0px;" id="featureArticles">
+                        <option selected disabled>Select</option>
+                        <option value = "1">Create Articles/Packs</option>
+                        <option value = "2">Update Articles</option>
+                        <option value = "3">Update Packs</option>
+                        <option value = "4">Insert/Update Pack Types</option>
+                        <option value = "5">Remove Pack Types</option>
+                        <option value = "6">Insert/Update Pack Categories</option>
+                        <option value = "7">Remove Categories</option>
+                        <option value = "8">Add Pack Features</option>
+                        <option value = "9">Remove Pack Features</option>
+                        <option value = "10">Approve Articles</option>
+                     </select>
+                  </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   {{/if}}
+</template>
+
+<template name="createAdminArticles">
+   {{#if notAdmin}}
+   <div class=''>
+      <p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+   </div>
+   {{else}}
+   <div class="container" style="background:#333; height:auto;">
+      <form id="articleCreation" onkeypress="return event.keyCode != 13;">
+         <div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+            <div class="row-same-height">
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                  <div class="mainTitle">
+                     <p class="title">
+                        Create Article/Packs
+                     </p>
+                     <input type="button" id="cancel" class="ip_button_LightGrey" style="order:2" value="Cancel">
+                     <input type="button" id="save" class="ip_button_LightGrey" style="order:1" value="Save">
+                  </div>
+               </div>
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" style="height: 100%;
+                     ">
+                     <select class="" style="width: 100%;height: 100%;margin:0px;" id="featureType">
+                        <option selected disabled>Select Feature</option>
+                        {{#each typeOfFeature}}
+                        <option value={{this}}>{{this}}</option>
+                        {{/each}}
+                     </select>
+                  </div>
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     <select class="" style="width: 100%;height: 100%;margin: 0px;padding: 0px;" id="publisherRole">
+                        <option>Select Publisher Role</option>
+                        {{#each typeOfPublisher}}
+                        <option >{{this}}</option>
+                        {{/each}}
+                     </select>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     <input id="searchUserForTeam"  name="searchUserForTeam" type="text" placeholder="Search publisher's name" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background:#fff none repeat scroll 0px center; color: #000;border: 1px solid grey;border-radius: 5px;padding: 5px;"/>
+                     {{#if searchResultsForTeams}}
+                     <div style="float: left; padding: 0px ! important; background: none repeat scroll 0% 0% #E0E0E0; border: 1px solid white; margin-top: 1px ! important;border:0px" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div style="left: 0px; z-index: 100; display: block; position: absolute; background: #fff !important;width: 100%; border: 1px solid black;" class="searchResults">
+                           {{#each searchResultsForTeams}}
+                           <div id="{{this.userId}}" class="addIcon" name="addAcademyMNM_P" value="{{this.userName}}">
+                              <p  id="{{this.userId}}" name="userName" value="{{this.userName}}"  style="text-align: left;margin:0px !important;font-size:12px;">{{this.userName}}</p>
+                           </div>
+                           {{/each}}
+                        </div>
+                     </div>
+                     {{/if}}
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     {{#if selectedPlayerName}}
+                        {{#each selectedPlayerName}}
+                         <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;cursor:pointer!important;" name="userSelectedForTeamP">{{this.userName}}</p>
+                        {{/each}}
+                     {{/if}}
+                  </div>
+               </div>
+               {{#if selectedFeature}}
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" name="userSelectedForTeamP">Title of Article:</p>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     <input   type="text" placeholder="Title of Article" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="titleOfArticle"/>
+                       
+                  </div>
+               </div>
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" >Description:</p>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     <textarea  type="text" placeholder="Article Description" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" rows="5" cols="80" id="descOfArticle"></textarea>
+                  </div>
+               </div>
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" >Category:</p>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                    <select class="" style="width: 100%;height: 100%;margin:0px;" id="typeOfCategory">
+                        <option selected disabled value="0">Select Category Type</option>
+                        {{#each typeOfCategory}}
+                        <option value={{this}}>{{this}}</option>
+                        {{/each}}
+                     </select>
+                  </div>
+               </div>
+               {{/if}}
+               {{#if selectedFeature2}}
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" >Title of Pack</p>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     <input   type="text" placeholder="Title of Pack" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="titleOfArticle"/>
+                  </div>
+               </div>
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" >Pack Description:</p>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     <textarea  type="text" placeholder="Article Description" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" rows="5" cols="80" id="descOfArticle"></textarea>
+                  </div>
+               </div>
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" >Plan Type:</p>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                    <select class="" style="width: 100%;height: 100%;margin:0px;" id="palnType">
+                        <option selected disabled>Select Plan Type</option>
+                        {{#each typeOfPlan}}
+                        <option value={{this}}>{{this}}</option>
+                        {{/each}}
+                     </select>
+                  </div>
+               </div>
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" >Category:</p>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                    <select class="" style="width: 100%;height: 100%;margin:0px;" id="typeOfCategory">
+                        <option selected disabled value="0">Select Category Type</option>
+                        {{#each typeOfCategory}}
+                        <option value={{this}}>{{this}}</option>
+                        {{/each}}
+                     </select>
+                  </div>
+               </div>
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" >Amount:</p>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                    <input   type="text" placeholder="Amount of Pack" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="AmountOfPack"/>
+                  </div>
+               </div>
+               <!--
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" >messageLimit:</p>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                    <input   type="text" placeholder="messageLimit in terms of count" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="messageLimit"/>
+                  </div>
+               </div>
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" >videoMinutesLimit:</p>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                    <input   type="text" placeholder="videoMinutesLimit in terms of minutes" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="videoMinutesLimit"/>
+                  </div>
+               </div>
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" >videoAnalysisLimit:</p>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                    <input   type="text" placeholder="videoAnalysisLimit in terms of minutes" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="videoAnalysisLimit"/>
+                  </div>
+               </div>
+            -->
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                     <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" >validityDays:</p>
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                    <input   type="text" placeholder="validityDays" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;" id="validityDays"/>
+                  </div>
+               </div>
+
+
+               {{#if packageFeatureList}}
+                  {{#each packageFeatureList}}
+                     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="margin-top: 10px;">
+                        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                           <p type="text" class="title" style="width: 100%;height: 100%;margin: 0px;padding: 0px;text-decoration: underline;" >{{this}}</p>
+                        </div>
+                        <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                           <input type="text" id="featureLimit"
+                           name={{this}} placeholder="" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #fff;border: 1px solid grey;border-radius: 5px;padding: 5px;"  />
+                        </div>
+                     </div>
+                  {{/each}}
+               {{/if}}
+
+               {{/if}}
+            </div>
+         </div>
+      </form>
+       <div id="displayPlayerProfile"></div>
+   </div>
+   {{/if}}
+</template>

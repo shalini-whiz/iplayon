@@ -1,0 +1,608 @@
+<template name="sendSubscriptionEmail">
+
+    <body style="background: #FAFAFA; color: #333333;">
+        <center>
+            <table border="0" cellpadding="20" cellspacing="0" height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+                <tbody>
+                    <tr>
+                        <td> <b>Hi {{organizerName}},</b>
+                            <p style="font-size:13px;">{{message}}:"{{tournament}}"
+                                <br/>
+                                <br/>
+                                <span style="font-weight:bold;font-size:13px;">Subscriber Details</span>
+                                <br/> Name:{{userName}}
+                                <br/> DOB:{{dateOfBirth}}
+                                <br/> Role:{{role}}
+                                <br/>
+                            </p>
+                            <table style="width:100%;border: 1px solid black; border-collapse: collapse;">
+                                <tr>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Event Name</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Starts On</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Ends On</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Entry Fee</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Subscription</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Team</th>
+                                </tr>
+                                {{#each eventNames}}
+                                <tr>
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{this.eventName}}</td>
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{this.eventStartDate}}</td>
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{this.eventEndDate}}</td>
+                                    <td style="border: 1px solid black; border-collapse: collapse;text-align: left;color:{{this.color}};">{{this.prize}}</td>
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{this.subscription}}</td>
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{getTeamNamesForMail this._id this.sub}}</td>
+                                </tr>
+                                {{/each}}
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Regards,
+                            <br />{{userName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </body>
+</template>
+
+<template name="sendSubscribedEmail">
+    <!--div class="container col-md-12 col-xs-12 col-sm-12 col-lg-12">
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px!important;">
+            <p style="font-size:15px;">Hi,</p>
+            <p style="font-size:13px;">Please accept my subscription</p>
+            <p style="font-size:13px;">Name:{{userName}}</p>
+            <p style="font-size:13px;">DOB:{{dateOfBirth}}</p>
+            <p style="font-size:13px;"></p>
+            <p style="font-size:13px;">Event Names:{{eventName}}</p>
+        </div>
+    </div-->
+
+    <body style="background: #FAFAFA; color: #333333;">
+        <center>
+            <table border="0" cellpadding="20" cellspacing="0" height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+                <tbody>
+                    <tr>
+                        <td> <b>Hi {{myName}},</b>
+                            <p style="font-size:13px;">{{message}}:"{{tournament}}"</p>
+                            <br/>
+                            <table style="width:100%;border: 1px solid black; border-collapse: collapse;">
+                                <tr>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Event Name</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Starts On</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Ends On</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Entry Fee</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Subscription</th>
+                                    <!--th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Team Name</th-->
+                                </tr>
+                                {{#each eventNames}}
+                                <tr>
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{this.eventName}}</td>
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{this.eventStartDate}}</td>
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{this.eventEndDate}}</td>
+                                    {{#if this.sub}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;text-align: left;color:{{this.color}};">{{this.prize}}</td>
+                                    {{else}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;text-align: left;color:{{this.color}};">0</td>
+                                    {{/if}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{this.subscription}}</td>
+                                    <!--td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{getTeamNamesForMail this._id this.sub}}</td-->
+                                </tr>
+                                {{/each}}
+                            </table>
+                            <p style="font-size:13px;">Entry fee total: Rs. {{totalEntryFee}}/-</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>--
+                            <br />iPlayOn</td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </body>
+</template>
+
+<template name="sendRequestSubscriptionEmail">
+
+    <body style="background: #FAFAFA; color: #333333;">
+        <center>
+            <table border="0" cellpadding="20" cellspacing="0" height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+                <tbody>
+                    <tr>
+                        <td> <b>Hi {{organizerName}},</b>
+                            <p style="font-size:13px;">{{message}}:"{{tournament}}"
+                                <br/>
+                                <br/>
+                                <span style="font-weight:bold;font-size:13px;">Subscriber Details</span>
+                                <br/> Name:{{userName}}
+                                <br/> DOB:{{dateOfBirth}}
+                                <br/> Role:{{role}}
+                                <br/>
+                            </p>
+                            <table style="width:100%;border: 1px solid black; border-collapse: collapse;">
+                                <tr>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Event Name</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Starts On</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Ends On</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Entry Fee</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Subscription</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Team</th>
+                                </tr>
+                                {{#each eventNames}}
+                                <tr>
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{this.eventName}}</td>
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{this.eventStartDate}}</td>
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{this.eventEndDate}}</td>
+                                    <td style="border: 1px solid black; border-collapse: collapse;text-align: left;color:{{this.color}};">{{this.prize}}</td>
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{this.subs}}</td>
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{getTeamNamesForMail this._id this.sub}}</td>
+                                </tr>
+                                {{/each}}
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Regards,
+                            <br />{{userName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </body>
+</template>
+
+<template name="sendReceiptOfSubscription">
+
+    <body style="background: #FAFAFA; color: #333333;">
+        <center>
+            <table border="0" cellpadding="20" cellspacing="0" height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+                <tbody>
+                    <tr>
+                        <td> <b>Hi {{myName}},</b>
+                            <p style="font-size:13px;">{{message}}:"{{tournament}}"</p>
+                            <br/>
+                            <table style="width:100%;border: 1px solid black; border-collapse: collapse;">
+                                <tr>
+                                    {{#if eventName}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Event Name:</td>
+                                    {{#each eventName}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:black;">{{this}}</td>
+                                    {{/each}} {{/if}}
+                                </tr>
+
+                                <tr>
+                                    {{#if prize}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Entry Fee:</td>
+                                    {{#each prize}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:black;">{{this}}</td>
+                                    {{/each}} {{/if}}
+                                </tr>
+
+                            </table>
+                            <p style="font-size:13px;">Entry fee total: Rs. {{total}}/-</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        {{#each teamDetails}}
+                        <td><b>TeamEvent : {{this.teamEvent}}</b>
+                            <p style="font-size:13px;">Team Name: {{this.teamName}}</p>
+                            <p style="font-size:13px;">Team Manager: {{this.teamManager}}</p>
+                            <p style="font-size:13px;">Team Members: {{#each this.teamMemberList}} {{this}}&nbsp; {{/each}}
+                            </p>
+                        </td>
+                        {{/each}}
+                    </tr>
+                    <tr>
+                        <td>--
+                            <br />iPlayOn</td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </body>
+</template>
+
+<template name="sendReceiptOfSubscriptionForOnlyClub">
+
+    <body style="background: #FAFAFA; color: #333333;">
+        <center>
+            <table border="0" cellpadding="20" cellspacing="0" height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+                <tbody>
+                    <tr>
+                        <td> <b>Hi {{myName}},</b>
+                            <p style="font-size:13px;">{{message}}:"{{tournament}}"</p>
+                            <br/>
+                            <p style="font-size:13px;">Player Details:</p>
+                            <p style="font-size:13px;">Name:{{playerName}}/-</p>
+                            <p style="font-size:13px;">Phone:{{playerPhone}}/-</p>
+                            <table style="width:100%;border: 1px solid black; border-
+                         collapse: collapse;">
+                                <tr>
+                                    {{#if eventName}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Event Name:</td>
+                                    {{#each eventName}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:black;">{{this}}</td>
+                                    {{/each}} {{/if}}
+                                </tr>
+                                <tr>
+                                    {{#if prize}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Entry Fee:</td>
+                                    {{#each prize}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:black;">{{this}}</td>
+                                    {{/each}} {{/if}}
+                                </tr>
+
+                            </table>
+                            <p style="font-size:13px;">Entry fee total: Rs. {{total}}/-</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        {{#each teamDetails}}
+                        <td><b>TeamEvent : {{this.teamEvent}}</b>
+                            <p style="font-size:13px;">Team Name: {{this.teamName}}</p>
+                            <p style="font-size:13px;">Team Manager: {{this.teamManager}}</p>
+                            <p style="font-size:13px;">Team Members: {{#each this.teamMemberList}} {{this}}&nbsp; {{/each}}
+                            </p>
+                        </td>
+                        {{/each}}
+                    </tr>
+
+                    <tr>
+                        <td>--
+                            <br />iPlayOn</td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </body>
+</template>
+
+<template name="sendSubscriptionEmailFromClubEntry">
+
+    <body style="background: #FAFAFA; color: #333333;">
+        <center>
+            <table border="0" cellpadding="20" cellspacing="0" height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+                <tbody>
+                    <tr>
+                        <td> <b>Hi,</b>
+                            <p style="font-size:13px;">{{message}}:{{tournament}}
+                                <br/>
+
+                            </p>
+                            {{#if eventsDetailsMail}}
+                            <table style="width:100%;border: 1px solid black; border-collapse: collapse;">
+                                <tr>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Sl.No</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Player Name</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Academy</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Affiliation Id</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Email</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Phone Number</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Guardian Name</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">DOB(DD/MMM/YYYY)</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Gender</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Address</th>
+                                    {{#each eventsDetailsMail}}
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">{{this}}
+                                        <p>Fee:{{eventFeesSendMAIL this}}/-</p>
+                                    </th>
+                                    {{/each}}
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Total</th>
+                                </tr>
+                                {{#each playersWithCheckMail}}
+                                <tr class="headerAnalytics3" id="headerAnalytics3">
+                                    <td style="border: 1px solid black !important;;">{{slNUM @index}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.userName}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.clubName}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.affiliationId}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.emailAddress}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.phoneNumber}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.guardianName}}</td>
+                                    <td style="border: 1px solid black !important;">{{upcomingformatDate this.dateOfBirth}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.gender}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.address}}</td>
+                                    {{#each this.subscribedEvents}}
+                                    <td style="border: 1px solid black !important;;">
+                                        {{#if checkZEROorONE this}}
+                                        <p style="text-align:center !important;color:green;">&#x2713;</p>
+                                        {{else}}
+                                        <p style="text-align:center !important;color:red;">&#10005;</p>
+                                        {{/if}}
+                                    </td>
+                                    {{/each}}
+                                    <td style="border: 1px solid black !important;">
+                                        <p style="text-align:center !important;">{{this.totalFee}}</p>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </table>
+                            {{/if}}
+                            {{#if teamEventNamesMAIL}}
+                            <p style="font-size:13px;">TeamDetails
+                                <br/>
+                            </p>
+                            
+                            <table style="width:100%;border: 1px solid black; border-collapse: collapse;">
+                                <tr>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Sl.No</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Team Manager Name</th>
+                                    {{#each teamEventNamesMAIL}}
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">{{this}}
+                                        <p>Fee:{{eventFeesSendMAIL this}}/-</p>
+                                    </th>
+                                    {{/each}}
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Total Fee For Team Events</th>
+                                </tr>
+                                {{#each playersWithCheckMail}}
+                                <tr class="headerAnalytics3" id="headerAnalytics3">
+                                    <td style="border: 1px solid black !important;;">{{slNUM @index}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.userName}}</td>
+                                    {{#each this.subscribedTeamsArray}}
+                                    <td style="border: 1px solid black !important;;">
+                                        {{#if checkZEROorONE this}}
+                                        <p style="text-align:left!important;color:green;">
+                                            {{getTeamNameForId this}}
+                                        </p>
+                                        {{else}}
+                                        <p style="text-align:center !important;color:red;">&#10005;</p>
+                                        {{/if}}
+                                    </td>
+                                    {{/each}}
+                                    <td style="border: 1px solid black !important;">
+                                        <p style="text-align:center !important;">{{this.teamTotalFee}}</p>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </table>
+                            {{/if}}
+                            {{#if myDetails}}
+                            <br/><span>From,</span>
+                            <br/>
+                            <span>Contact Details:</span>
+                            <br/> {{#each myDetails}}
+                            <span>{{this}}</span>
+                            <br/> {{/each}} {{/if}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>--
+                            <br />iPlayOn</td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </body>
+</template>
+
+<template name="sendSubscriptionEmailFromClubEntry_Ex">
+
+    <body style="background: #FAFAFA; color: #333333;">
+        <center>
+            <table border="0" cellpadding="20" cellspacing="0" height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+                <tbody>
+                    <tr>
+                        <td> <b>Hi,</b>
+                            <p style="font-size:13px;">{{message}}:{{tournament}}
+                                <br/>
+
+                            </p>
+                            <table style="width:100%;border: 1px solid black; border-collapse: collapse;">
+                                <tr>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Sl.No</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Player Name</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Academy</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Affiliation Id</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Email</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Phone Number</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Guardian Name</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">DOB(DD/MMM/YYYY)</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Gender</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Address</th>
+                                    {{#each eventsDetailsMail2}}
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">{{eventAbbName this}}
+                                        <p>Fee:{{eventFeesSendMAIL this}}/-</p>
+                                    </th>
+                                    {{/each}}
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Total</th>
+                                </tr>
+                                {{#each playersWithCheckMail2}}
+                                <tr class="headerAnalytics3" id="headerAnalytics3">
+                                    <td style="border: 1px solid black !important;;">{{slNUM @index}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.userName}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.clubName}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.affiliationId}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.emailAddress}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.phoneNumber}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.guardianName}}</td>
+                                    <td style="border: 1px solid black !important;">{{upcomingformatDate this.dateOfBirth}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.gender}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.address}}</td>
+                                    {{#each this.subscribedEvents}}
+                                    <td style="border: 1px solid black !important;;">
+                                        {{#if checkZEROorONE this}}
+                                        <p style="text-align:center !important;color:green;">&#x2713;</p>
+                                        {{else}}
+                                        <p style="text-align:center !important;color:red;">&#10005;</p>
+                                        {{/if}}
+                                    </td>
+                                    {{/each}}
+                                    <td style="border: 1px solid black !important;">
+                                        <p style="text-align:center !important;">{{this.totalFee}}</p>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </table>
+                            {{#if myDetails}}
+                            <br/><span>From,</span>
+                            <br/>
+                            <span>Contact Details:</span>
+                            <br/> {{#each myDetails}}
+                            <span>{{this}}</span>
+                            <br/> {{/each}} {{/if}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>--
+                            <br />iPlayOn</td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </body>
+</template>
+
+<template name="sendSubscribedEmail_Ex">
+    <!--div class="container col-md-12 col-xs-12 col-sm-12 col-lg-12">
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px!important;">
+            <p style="font-size:15px;">Hi,</p>
+            <p style="font-size:13px;">Please accept my subscription</p>
+            <p style="font-size:13px;">Name:{{userName}}</p>
+            <p style="font-size:13px;">DOB:{{dateOfBirth}}</p>
+            <p style="font-size:13px;"></p>
+            <p style="font-size:13px;">Event Names:{{eventName}}</p>
+        </div>
+    </div-->
+
+    <body style="background: #FAFAFA; color: #333333;">
+        <center>
+            <table border="0" cellpadding="20" cellspacing="0" height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+                <tbody>
+                    <tr>
+                        <td> <b>Hi {{myName}},</b>
+                            <p style="font-size:13px;">{{message}}:"{{tournament}}"</p>
+                            <br/>
+                            <table style="width:100%;border: 1px solid black; border-collapse: collapse;">
+                                <tr>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Event Name</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Starts On</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Ends On</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Entry Fee</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Subscription</th>
+                                    <!--th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Team Name</th-->
+                                </tr>
+                                {{#each eventNames}}
+                                <tr>
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{this.eventName}}</td>
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{this.eventStartDate}}</td>
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{this.eventEndDate}}</td>
+                                    {{#if this.sub}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;text-align: left;color:{{this.color}};">{{this.prize}}</td>
+                                    {{else}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;text-align: left;color:{{this.color}};">0</td>
+                                    {{/if}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{this.subscription}}</td>
+                                    <!--td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:{{this.color}};">{{getTeamNamesForMail this._id this.sub}}</td-->
+                                </tr>
+                                {{/each}}
+                            </table>
+                            <p style="font-size:13px;">Entry fee total: Rs. {{totalEntryFee}}/-</p>
+                            {{#if playerDetails}}
+                            <br/><span>From,</span>
+                            <br/>
+                            <span>Contact Details:</span>
+                            <br/> {{#each playerDetails}}
+                            <span>{{this}}</span>
+                            <br/> {{/each}} {{/if}}
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>--
+                            <br />iPlayOn</td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </body>
+</template>
+
+<template name="sendReceipt_Academy_financial">
+
+    <body style="background: #FAFAFA; color: #333333;">
+        <center>
+            <table border="0" cellpadding="20" cellspacing="0" height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+                <tbody>
+                    <tr>
+                        <td> <b>Hi {{myName}},</b>
+                            <p style="font-size:13px;">{{message}}:"{{tournament}}"</p>
+                            <br/>
+                            <p style="font-size:13px;">Academy Details:</p>
+                            <p style="font-size:13px;">Name:{{playerName}}/-</p>
+                            <p style="font-size:13px;">Phone:{{playerPhone}}/-</p>
+                            <table style="width:100%;border: 1px solid black; border-
+                         collapse: collapse;">
+                                <tr>
+                                    {{#if eventName}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Event Name:</td>
+                                    {{#each eventName}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:black;">{{this}}</td>
+                                    {{/each}} {{/if}}
+                                </tr>
+                                <tr>
+                                    {{#if prize}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Entry Fee:</td>
+                                    {{#each prize}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:black;">{{this}}</td>
+                                    {{/each}} {{/if}}
+                                </tr>
+
+                            </table>
+                            <p style="font-size:13px;">Entry fee total: Rs. {{total}}/-</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>--
+                            <br />iPlayOn</td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </body>
+</template>
+
+<template name="sendReceipt_DA_financial">
+
+    <body style="background: #FAFAFA; color: #333333;">
+        <center>
+            <table border="0" cellpadding="20" cellspacing="0" height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+                <tbody>
+                    <tr>
+                        <td> <b>Hi {{myName}},</b>
+                            <p style="font-size:13px;">{{message}}:"{{tournament}}"</p>
+                            <br/>
+                            <p style="font-size:13px;">District Association Details:</p>
+                            <p style="font-size:13px;">Name:{{playerName}}/-</p>
+                            <p style="font-size:13px;">Phone:{{playerPhone}}/-</p>
+                            <table style="width:100%;border: 1px solid black; border-
+                         collapse: collapse;">
+                                <tr>
+                                    {{#if eventName}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Event Name:</td>
+                                    {{#each eventName}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:black;">{{this}}</td>
+                                    {{/each}} {{/if}}
+                                </tr>
+                                <tr>
+                                    {{#if prize}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Entry Fee:</td>
+                                    {{#each prize}}
+                                    <td style="border: 1px solid black; border-collapse: collapse;padding: 5px;color:black;">{{this}}</td>
+                                    {{/each}} {{/if}}
+                                </tr>
+
+                            </table>
+                            <p style="font-size:13px;">Entry fee total: Rs. {{total}}/-</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>--
+                            <br />iPlayOn</td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </body>
+</template>

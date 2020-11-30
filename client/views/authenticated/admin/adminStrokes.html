@@ -1,0 +1,525 @@
+<template name="adminStrokes">
+	{{#if notAdmin}}
+	<div class=''>
+		<p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+	</div>
+	{{else}}
+	<div class="container" style="background:#333; height:auto;">
+		<div class="row navigationBar navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <span style="" class="websiteHeader">iPlayOn</span>
+                    </div>
+                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                     	<button type="button" class="ip_button_DarkGrey" id="serviceStrokeBtn">Service Strokes</button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                    	<button type="button" class="ip_button_DarkGrey" id="strokeBtn">Strokes</button>
+                        
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                    	<button type="button" class="ip_button_DarkGrey" id="destinationPointsBtn">Destination Points</button>             
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;"> 
+                    	<button type="button" class="ip_button_DarkGrey" id="analyticsApprovalBtn">Analytics Approval</button>             
+                    </div>
+
+                </div>
+            </div>
+        </div>	
+       
+	</div>
+	{{/if}}
+	{{> errorPopup}}
+	{{> sendingMailPopup3}}
+
+	<div id = "strokeForm"></div>
+	<div id="confirmInsertPlayerRender"></div>
+	<div id = "confirmDeleteTF"></div>
+	<div id = "createStrokeDiv"></div>
+</template>
+
+
+<template name="strokeDiv">
+	 <div class = "row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:40px !important">
+	        	<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+	        		<button type="button" id="adminCreateStroke" class="ip_button_DarkGrey">Create</button>
+	        	</div>		      
+	        </div>
+    	</div>
+    	<div class="row">
+        	<table class="table table-striped tableOFCSVHTML_New">
+            	<thead style="">
+                	<tr class="headerAnalytics2">
+	                    <th class="pAnalytics2">Short Name</th>
+	                    <th class="pAnalytics2">Short Code</th>
+	                    <th class="pAnalytics2">Stroke Style</th>
+	                    <th class="pAnalytics2">Comments</th>
+	                    <th class="pAnalytics2">Delete</th>
+                	</tr>
+                </thead>
+                <tbody id="selectTagop">
+                	{{#if strokeList}}
+                	{{#each strokeList}}               		
+                		<tr class="headerAnalytics3" name="sdfsd">
+                    		<td class="pAnalytics2">{{this.strokeName}}</td>
+                    		<td class="pAnalytics2">{{this.strokeShortCode}}</td>
+                    		<td class="pAnalytics2">{{this.strokeStyle}}</td>
+                    		<td class="pAnalytics2">{{this.strokeComment}}</td>
+                    		<td class="pAnalytics2"><span id="deleteStrokeEntry" name={{this._id}} style ="color:#FFA500;font-size: 18px;margin: 3px 0px 0px 0px;width:15%; transform: rotate(0deg);cursor: pointer" class="glyphicon glyphicon-remove"></span></td>
+                    	</tr>
+                    {{/each}}
+                    {{/if}}
+                </tbody>
+            </table>
+        </div>
+</template>
+
+<template name="servicestrokeDiv">
+	 <div class = "row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:40px !important">
+	        	<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+	        		<button type="button" id="adminCreateStroke" class="ip_button_DarkGrey">Create</button>
+	        	</div>		      
+	        </div>
+    	</div>
+    	<div class="row">
+        	<table class="table table-striped tableOFCSVHTML_New">
+            	<thead style="">
+                	<tr class="headerAnalytics2">
+	                    <th class="pAnalytics2">Short Name</th>
+	                    <th class="pAnalytics2">Short Code</th>
+	                    <th class="pAnalytics2">Comments</th>
+	                    <th class="pAnalytics2">Delete</th>
+                	</tr>
+                </thead>
+                <tbody id="selectTagop">
+	                {{#if strokeList}}
+	                	{{#each strokeList}}               		
+	                		<tr class="headerAnalytics3" name="sdfsd">
+		                    	<td class="pAnalytics2">{{this.serviceName}}</td>
+		                    	<td class="pAnalytics2">{{this.serviceShortName}}</td>
+		                    	<td class="pAnalytics2">{{this.serviceComment}}</td>
+		                    	<td class="pAnalytics2"><span id="deleteStrokeEntry" name={{this._id}} style ="color:#FFA500;font-size: 18px;margin: 3px 0px 0px 0px;width:15%; transform: rotate(0deg);cursor: pointer" class="glyphicon glyphicon-remove"></span></td>
+	                    	</tr>
+	                    {{/each}}               		              
+	                {{/if}}
+                </tbody>
+            </table>
+        </div>
+</template>
+
+<template name="destinationPointsDiv">
+	 <div class = "row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:40px !important">
+	        	<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+	        		<button type="button" id="adminCreateStroke" class="ip_button_DarkGrey">Create</button>
+	        	</div>		      
+	        </div>
+    	</div>
+    	<div class="row">
+        	<table class="table table-striped tableOFCSVHTML_New">
+            	<thead style="">
+                	<tr class="headerAnalytics2">
+	                    <th class="pAnalytics2">Short Name</th>
+	                    <th class="pAnalytics2">Short Code</th>
+	                    <th class="pAnalytics2">Comments</th>
+	                    <th class="pAnalytics2">Delete</th>
+                	</tr>
+                </thead>
+                <tbody id="selectTagop">
+	                {{#if strokeList}}                    
+		                {{#each strokeList}}               		
+		                	<tr class="headerAnalytics3" name="sdfsd">
+			                    <td class="pAnalytics2">{{this.destinationName}}</td>
+			                    <td class="pAnalytics2">{{this.destinationShortName}}</td>
+			                    <td class="pAnalytics2">{{this.destinationComment}}</td>
+			                    <td class="pAnalytics2"><span id="deleteStrokeEntry" name={{this._id}} style ="color:#FFA500;font-size: 18px;margin: 3px 0px 0px 0px;width:15%; transform: rotate(0deg);cursor: pointer" class="glyphicon glyphicon-remove"></span></td>
+		                    </tr>
+		                {{/each}}
+		            {{/if}}	          
+                </tbody>
+            </table>
+        </div>
+</template>
+
+
+<template name="createStroke">
+  	<div class="modal" id="createStroke" role="dialog" data-backdrop="static">
+    	<div class="modal-dialog modal-sm">
+      		<div class="modal-content modal-content-modReg1">
+        		<div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          			<div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            			<div class="row" style="margin:0 !important;">
+              				<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHead" style="border-top-right-radius: 5px;">
+              					{{#if checkDestinationType}}
+                					<p class="modal-title titeofregistemodal" style="">Create Destination</p>
+                				{{else}}
+	                				{{#if checkOnlyStrokeType}}
+	                					<p class="modal-title titeofregistemodal" style="">Create Stroke</p>
+	                				{{else}}
+	                					<p class="modal-title titeofregistemodal" style="">Create Service Stroke</p>
+	                				{{/if}}
+	                			{{/if}}
+              				</div>
+            			</div>
+          			</div>
+        		</div>
+
+		        <div class="modal-body  modal-body-modReg1">
+		            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+						<div class="row" style='margin-top:5px'>
+		                    <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+		                      <p class="labelWhoNew2">Sport*:</p>
+		                    </div>
+		                    <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-right:15px !important;padding-top:2px;padding-left:0px !important;">
+		                     	<select class="selectionForm_N6" id="sportList" name="sportList">
+                    				<option selected disabled value="0" name="0">Select Sports</option>
+				                    {{#if sports}}
+				                    {{#each sports}}
+				                     <option id="sportSelection" name="{{this._id}}">{{this.projectMainName}}</option>
+				                    {{/each}}
+				                    {{/if}}
+                				</select> 
+		                    </div>
+		                </div>
+
+		                {{#if checkDestinationType}}
+		                <div class="row" style='margin-top:5px'>
+		                    <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+		                      <p class="labelWhoNew2">Destination Type*:</p>
+		                    </div>
+		                    <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-right:15px !important;padding-top:2px;padding-left:0px !important;">
+		                     	<select class="selectionForm_N6" id="destinationTypeList" name="destinationTypeList">
+		                     		{{#if destinationType}}
+				                    {{#each destinationType}}
+				                     <option id="destinationTypeSelection" name="{{this}}">{{this}}</option>
+				                    {{/each}}
+				                    {{/if}}
+                				</select> 
+		                    </div>
+		                </div>
+		                <div class="row" style='margin-top:5px'>
+		                    <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+		                      <p class="labelWhoNew2">Losing Stroke:</p>
+		                    </div>
+		                    <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-right:15px !important;padding-top:2px;padding-left:0px !important;">
+		                     	<select class="selectionForm_N6" id="losingStrokeList" name="losingStrokeList">
+		                     		
+				                    <option selected disabled value="no" name="no">Select</option>
+				                    <option  value="yes" name="yes">yes</option>
+				                    <option  value="no" name="no">no</option>
+
+                				</select> 
+		                    </div>
+		                </div>
+
+		                {{/if}}
+
+
+		            	{{#if checkStrokeType}}
+		            	 <div class="row" style='margin-top:5px'>
+		                    <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+		                      <p class="labelWhoNew2">Short Hand*:</p>
+		                    </div>
+		                    <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-right:15px !important;padding-top:2px;padding-left:0px !important;">
+		                     <span class="userNameContact">FH<input type="checkbox" id="checkFH" style="cursor:pointer!important;" value="FH" ></span>
+		                     <span class="userNameContact">BH<input type="checkbox" id="checkBH" style="cursor:pointer!important;" value="BH" ></span>
+							<span class="userNameContact">None<input type="checkbox" id="checkNone" style="cursor:pointer!important;" value="None" ></span>		
+		                    </div>
+		                </div>
+		            	
+		                {{/if}}
+
+		                <div class="row" style='margin-top:5px'>
+		                    <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+		                      <p class="labelWhoNew2">Short Code*:</p>
+		                    </div>
+		                    <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-right:15px !important;padding-top:2px;padding-left:0px !important;">
+		                      <input type="text" id="shortCode"  maxlength="60" autocomplete="off" placeholder="Short Code" name="userNameContact" class="userNameContact" style="color:black;text-align:left;padding-left:2%;height:2em;width:100%;display:block;;font-size:13px;">
+		                    </div>
+		                </div>
+		                <div class="row" style='margin-top:5px'>
+		                    <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+		                      <p class="labelWhoNew2">Short Name*:</p>
+		                    </div>
+		                    <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-right:15px !important;padding-top:2px;padding-left:0px !important;">
+		                      <input type="text" id="shortName"  maxlength="60" autocomplete="off" placeholder="Short Name" name="userNameContact" class="userNameContact" style="color:black;text-align:left;padding-left:2%;height:2em;width:100%;display:block;;font-size:13px;">
+		                    </div>
+		                </div>
+		                <div class="row" style='margin-top:5px'>
+		                    <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+		                      <p class="labelWhoNew2">Comments:</p>
+		                    </div>
+		                    <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-right:15px !important;padding-top:2px;padding-left:0px !important;">
+		                      <input type="textarea" id="comments"  maxlength="60" autocomplete="off" placeholder="Comments" name="userNameContact" class="userNameContact" style="color:black;text-align:left;padding-left:2%;height:2em;width:100%;display:block;;font-size:13px;">
+		                    </div>
+		                </div>    
+
+		                {{#if checkOnlyStrokeType}}
+		                	<div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+		                      <p class="labelWhoNew2">Stroke Style*:</p>
+		                    </div>
+		                    <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-right:15px !important;padding-top:2px;padding-left:0px !important;">
+		                     	<select class="selectionForm_N6" id="strokeStyleList" name="strokeStyleList">
+		                     		<option selected disabled value="" name="">Select</option>
+		                     		{{#if strokeStyleList}}
+				                    {{#each strokeStyleList}}
+				                     <option id="destinationTypeSelection" name="{{this}}">{{this}}</option>
+				                    {{/each}}
+				                    {{/if}}
+                				</select> 
+		                    </div>
+
+		                {{/if}}   
+		            </div>
+		        </div>
+
+	            <div class="modal-footer">
+	              	<div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+		                <div class ="row">
+		                  	<p id="impMsg" class='impMsg'></p>
+		                </div>
+	                 	<div class="row">
+		                	<div class="col-md-2 col-xs-2 col-lg-2 col-sm-2" style="padding-right:0px !important;padding-bottom: 4px;">
+		                   	</div>
+
+		                  	<div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-bottom: 4px;">
+		                    	<button type="button" class="btn btn-default ip_button_Register_Popup" id="saveStroke" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Save
+		                    	</button>
+		                  	</div> 
+
+		                  	<div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-bottom: 4px;">
+		                    	<button type="button" class="btn btn-default ip_button_Register_Popup" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Cancel
+		                    </button>
+		                  	</div>  
+
+		                  	<div class="col-md-2 col-xs-2 col-lg-2 col-sm-2" style="padding-right:0px !important;padding-bottom: 4px;">
+		                   	</div>                        
+	                 	</div>
+	             	 </div>
+	          	</div>
+        	</div>
+    	</div>
+  	</div>
+</template>
+
+
+<template name="analyticsApproval">
+  	<div class="modal" id="analyticsApproval" role="dialog" data-backdrop="static">
+    	<div class="modal-dialog modal-sm">
+      		<div class="modal-content modal-content-modReg1">
+        		<div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          			<div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            			<div class="row" style="margin:0 !important;">
+              				<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHead" style="border-top-right-radius: 5px;">
+                				<p class="modal-title titeofregistemodal" style="">Analytics Approval</p>              				
+              				</div>
+            			</div>
+          			</div>
+        		</div>
+
+		        <div class="modal-body  modal-body-modReg1">
+		            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+						<div class="row" style='margin-top:5px'>
+		                    <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+		                      <p class="labelWhoNew2">Role*:</p>
+		                    </div>
+		                    <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-right:15px !important;padding-top:2px;padding-left:0px !important;">
+		                     	<select class="selectAnalyticsApprovalMenu show-menu-arrow" data-style="AnalysisClass_SEle AnalysisClass_Font"  id="typeOfRole">
+				                    <option style="font-size:12px;" value="1">Players</option>
+				                    <option style="font-size:12px;" value="2">Coach</option>
+				                    <option style="font-size:12px;" value="3">Association</option>
+				                    <option style="font-size:12px;" value="4">Academy</option>
+				                    <option style="font-size:12px;" value="5">Organiser</option>
+				                    <option style="font-size:12px;" value="6">Journalist</option>
+				                    <option style="font-size:12px;" value="7">Umpire</option>
+                				</select>
+		                    </div>
+		                </div>
+		             
+		                <div class="row" style='margin-top:5px'>
+		                    <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+		                      <p class="labelWhoNew2">User Name*:</p>
+		                    </div>
+		                    <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-right:15px !important;padding-top:2px;padding-left:0px !important;">
+		                      	<select class="selectApprovalUserMenu show-menu-arrow" data-style="btn-info AnalysisClass_Font"  data-live-search="true" id="userSelect">
+			                    	{{#each userSet}}
+			                    		<option style="font-size:12px;" value="{{this.userId}}">{{this.userName}}</option>
+			                    	{{/each}}
+                				</select>
+		                    </div>
+		                </div>	
+		                <div class="row" style='margin-top:5px'>
+		                    <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+		                      <p class="labelWhoNew2">Valid Upto*:</p>
+		                    </div>
+		                    <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-right:15px !important;padding-top:2px;padding-left:0px !important;">
+		                      <input type="text" name="validityDate" id="validityDate" placeholder="DD MMM YYYY" class="clubNameUserProf" value="" autocomplete="off" >
+		                    </div>
+		                </div>	                		                             
+		            </div>
+		        </div>
+
+	            <div class="modal-footer">
+	              	<div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+		                <div class ="row">
+		                  	<p id="impMsg" class='impMsg'></p>
+		                </div>
+	                 	<div class="row">
+		                	<div class="col-md-2 col-xs-2 col-lg-2 col-sm-2" style="padding-right:0px !important;padding-bottom: 4px;">
+		                   	</div>
+
+		                  	<div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-bottom: 4px;">
+		                    	<button type="button" class="btn btn-default ip_button_Register_Popup" id="saveApprovalAnalytics" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Save
+		                    	</button>
+		                  	</div> 
+
+		                  	<div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-bottom: 4px;">
+		                    	<button type="button" class="btn btn-default ip_button_Register_Popup" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Cancel
+		                    </button>
+		                  	</div>  
+
+		                  	<div class="col-md-2 col-xs-2 col-lg-2 col-sm-2" style="padding-right:0px !important;padding-bottom: 4px;">
+		                   	</div>                        
+	                 	</div>
+	             	 </div>
+	          	</div>
+        	</div>
+    	</div>
+  	</div>
+</template>
+
+
+
+<template name="editAnalyticsApproval">
+  	<div class="modal" id="editAnalyticsApproval" role="dialog" data-backdrop="static">
+    	<div class="modal-dialog modal-sm">
+      		<div class="modal-content modal-content-modReg1">
+        		<div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height: 3.4em;background:0;">
+          			<div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;">
+            			<div class="row" style="margin:0 !important;">
+              				<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHead" style="border-top-right-radius: 5px;">
+                				<p class="modal-title titeofregistemodal" style="">Edit Analytics Approval</p>              			
+              				</div>
+            			</div>
+          			</div>
+        		</div>
+
+		        <div class="modal-body  modal-body-modReg1">
+		            <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+							             
+		                <div class="row" style='margin-top:5px'>
+		                    <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+		                      <p class="labelWhoNew2">User Name *:</p>
+		                    </div>
+		                    <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-right:15px !important;padding-top:2px;padding-left:0px !important;">
+		                   	{{#if editAnalyticsUser}}
+		                   		{{#if editAnalyticsUser.userId}}
+		                   		<input type="text" class="clubNameUserProf" value={{displayUserName editAnalyticsUser.userId}} xxx= {{editAnalyticsUser.userId}} autocomplete="off" disabled readonly>
+		                   		{{/if}}
+		                   	{{/if}}
+		                    </div>
+		                </div>	
+		                <div class="row" style='margin-top:5px'>
+		                    <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+		                      <p class="labelWhoNew2">Valid Upto*:</p>
+		                    </div>
+		                    <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-right:15px !important;padding-top:2px;padding-left:0px !important;">
+			                    {{#if editAnalyticsUser}}
+			                    	 <input type="text" name="editValidityDate" id="editValidityDate" placeholder="DD MMM YYYY" class="clubNameUserProf" value={{upcomingformatDate editAnalyticsUser.validity}} autocomplete="off" >
+			                   	{{/if}}		 
+		                   	</div>
+                    
+		                </div>	
+		                <div class="row" style='margin-top:5px'>
+		                    <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-top:2px;">
+		                      <p class="labelWhoNew2">Status*:</p>
+		                    </div>
+		                    <div class="col-md-8 col-xs-8 col-lg-8 col-sm-8" style="padding-right:15px !important;padding-top:2px;padding-left:0px !important;">
+		                    {{#if editAnalyticsUser}}                    	
+		                    	<select class="selectionForm_N6" id="statusList" name="statusList">                   				
+				                    <option id="sportSelection" name="Active" {{checkUserStatus editAnalyticsUser.status 'Active'}}>Active</option>
+				                    <option id="sportSelection" name="Inactive" {{checkUserStatus editAnalyticsUser.status 'Inactive'}}>Inactive
+				                    </option>
+                				</select> 
+		                   	{{/if}}	
+		                   	</div>	                
+		                </div>                		                             
+		            </div>
+		        </div>
+
+	            <div class="modal-footer">
+	              	<div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+		                <div class ="row">
+		                  	<p id="impMsg" class='impMsg'></p>
+		                </div>
+	                 	<div class="row">
+		                	<div class="col-md-2 col-xs-2 col-lg-2 col-sm-2" style="padding-right:0px !important;padding-bottom: 4px;">
+		                   	</div>
+
+		                  	<div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-bottom: 4px;">
+		                    	<button type="button" class="btn btn-default ip_button_Register_Popup" id="editApprovalAnalytics" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Save
+		                    	</button>
+		                  	</div> 
+
+		                  	<div class="col-md-4 col-xs-4 col-lg-4 col-sm-4" style="padding-right:0px !important;padding-bottom: 4px;">
+		                    	<button type="button" class="btn btn-default ip_button_Register_Popup" id="cancel" data-dismiss="modal" style="order:1;margin:0px;padding:0px; width:100%!important; height:2.2em!important;">Cancel
+		                    </button>
+		                  	</div>  
+
+		                  	<div class="col-md-2 col-xs-2 col-lg-2 col-sm-2" style="padding-right:0px !important;padding-bottom: 4px;">
+		                   	</div>                        
+	                 	</div>
+	             	 </div>
+	          	</div>
+        	</div>
+    	</div>
+  	</div>
+</template>
+
+<template name="analyticsApprovalDiv">
+	 <div class = "row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 " style="margin-top:40px !important">
+	        	<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+	        		<button type="button" id="adminCreateStroke" class="ip_button_DarkGrey">Create</button>
+	        	</div>		      
+	        </div>
+    	</div>
+    	<div class="row">
+        	<table class="table table-striped tableOFCSVHTML_New">
+            	<thead style="">
+                	<tr class="headerAnalytics2">
+	                    <th class="pAnalytics2">User</th>
+	                    <th class="pAnalytics2">Validity</th>
+	                    <th class="pAnalytics2">Status</th>
+	                    <th class="pAnalytics2">Edit</th>
+	                    <th class="pAnalytics2">Delete</th>
+                	</tr>
+                </thead>
+                <tbody id="selectTagop">
+	               	{{#if analyticsList}}
+                	{{#each analyticsList}}               		
+                		<tr class="headerAnalytics3" name="sdfsd">
+                    		<td class="pAnalytics2">{{displayUserName this.userId}}</td>
+                    		<td class="pAnalytics2">{{upcomingformatDate this.validity}}</td>
+                    		<td class="pAnalytics2">{{this.status}}</td>
+                    		<td class="pAnalytics2"><span id="editApprovedUser" name={{this}} style ="color:#FFA500;font-size: 18px;margin: 3px 0px 0px 0px;width:15%; transform: rotate(0deg);cursor: pointer" class="glyphicon glyphicon-pencil"></span></td>
+                    		<td class="pAnalytics2"><span id="deleteApprovedUser" name={{this._id}} style ="color:#FFA500;font-size: 18px;margin: 3px 0px 0px 0px;width:15%; transform: rotate(0deg);cursor: pointer" class="glyphicon glyphicon-remove"></span></td>
+                    	</tr>
+                    {{/each}}
+                    {{/if}}         
+                </tbody>
+            </table>
+        </div>
+</template>
+
+
+
+
+
+
+
+

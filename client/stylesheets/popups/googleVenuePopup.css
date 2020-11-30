@@ -1,0 +1,215 @@
+#map {
+  height: 184px;
+  width: 481px;
+  border: 1px solid #333;
+  margin-top: 0.6em;
+}
+
+.googleMapModal-sm {
+    width: 520px;
+}
+
+#googleDetailsVenue.modal.fade.in{    
+    visibility: visible;
+}
+
+#googleDetailsVenue.modal.fade{
+    display: block;
+    visibility: hidden;
+}
+#googleDetailsVenueTournament.modal.fade.in{    
+    visibility: visible;
+}
+
+#googleDetailsVenueTournament.modal.fade{
+    display: block;
+    visibility: hidden;
+}
+.googleMapModalPopup {
+    width: 520px;
+    margin-top: 100px;
+    border-radius: 5px;
+    border: 0.01px outset;
+    box-shadow: 2px 2px 2px #808080;
+}
+
+.googleMapContentDiv {
+    font-size: 12px;
+    font-weight: normal;
+    box-sizing: border-box;
+    height: 16.5em;
+}
+.googleMapMainTitle {
+    order: 1;
+    margin-top: 0%;
+    border-radius: 5px;
+    height: 24.1em;
+    outline: 0px none;
+    padding-top: 0px;
+}
+.googleUploadsBody{
+    width:100%;
+    padding: 0px 17px 9px;
+}
+
+#googleUploadCenter{
+    transform: translate(0px, -59px);
+}
+
+#editGoogleDetailsVenue.modal.fade.in{    
+    visibility: visible;
+}
+
+#editGoogleDetailsVenue.modal.fade{
+    display: block;
+    visibility: hidden;
+}
+img[name=editGooglePopup]{
+    cursor: pointer;
+}
+
+.controls {
+    margin-top: 16px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+#pac-input {
+    background-color: #fff;
+    padding: 0 11px 0 13px;
+    width: 455px;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    text-overflow: ellipsis;
+    margin-top: auto;
+    height: 1.6em;
+}
+
+#pac-input-view {
+    background-color: #fff;
+    padding: 0 11px 0 13px;
+    width: 482px;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    text-overflow: ellipsis;
+    margin-top: 3%;
+    height: 1.6em;
+    cursor: default;
+}
+
+#pac-input-view:focus {
+    background-color: #fff;
+    padding: 0 11px 0 13px;
+    width: 482px;
+    cursor: default;
+    margin-left: -1px;
+    padding-left: 14px;
+    /* Regular padding-left + 1. */
+    width: 482px;
+    -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     -o-user-select: none;
+     user-select: none;  
+     outline: none;
+     text-shadow:000;
+     color: black;
+     text-indent: 9999em;
+}
+#pac-input-view1 {
+    background-color:none;
+    padding: 0 0px 0 0px;
+    width: 0px;
+    font-family: Roboto;
+    font-size: 0px;
+    font-weight: 0;
+    text-overflow: ellipsis;
+    margin-top: 0%;
+    height: 0em;
+    border: 0;
+}
+#pac-input-view1:focus {
+    border-color: none;
+    margin-left: 0px;
+    padding-left: 0px;
+    /* Regular padding-left + 1. */
+    width: 0px;
+    -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     -o-user-select: none;
+     user-select: none;  
+     border: 0;
+}
+#pac-input:focus {
+    border-color: #4d90fe;
+    margin-left: -1px;
+    padding-left: 14px;
+    /* Regular padding-left + 1. */
+    width: 456px;
+}
+.pac-container {
+    font-family: Roboto;
+}
+#type-selector {
+    color: #fff;
+    background-color: #4d90fe;
+    padding: 5px 11px 0px 11px;
+}
+#type-selector label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+/*confirm popup main content elements are displayed as flex*/
+.googleUploadsContent {
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    height: 5em;
+    padding-top: 4%;
+}
+
+.pac-container {
+    font-family: Roboto;
+    z-index:2000 !important; 
+}
+
+#viewGoogleDetailsVenue.modal.fade.in{    
+    visibility: visible;
+}
+
+#viewGoogleDetailsVenue.modal.fade{
+    display: block;
+    visibility: hidden;
+}
+
+.gooSer{
+    padding-top: auto;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 3em;
+}
+
+.clearGooSe{
+    background: #fff;
+    color: maroon !important;
+    font-size: 15px !important;
+    border: 0;
+    box-shadow: 2px 2px 2px #808080;
+    margin-left: 0.1%;
+    height: 1.6em;
+    margin-top: auto;
+}

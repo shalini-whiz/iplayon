@@ -1,0 +1,263 @@
+<!-- container of player rank list -->
+
+<template name="statistics">
+    <div style="background:#333;height:auto;" class="container">
+        <div id="filterSelectionForm">
+    </div>
+        {{#if selectedAssociation}}
+        <div id="listID">
+           
+
+        </div>
+        {{else}}
+        <div id="listID"> </div>
+        {{/if}}
+        <div id="rankID"> </div>
+        <div id="cdttaHTML"></div>
+
+        <div class="row navigationBar navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <span style="" class="websiteHeader">iPlayOn</span>
+                    </div>
+                    <!--<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <button type="button" class="ip_button_DarkGrey" id="playerListBtnTemp">Player List</button>
+                    </div>-->
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <button type="button" class="ip_button_DarkGrey" id="playerRankingBtn">Player Ranking</button>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="text-align:left;padding:5px;">
+                        
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <a href="/uploadPoints" style='font-size:14px'>Upload Points</a>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <button type="button" class="ip_button_White" id="rankPoints">Rank Filters</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="row navigationBar navbar-fixed-top">-->
+
+
+        <div id="statPlayerInfoPopUp"></div>
+        <div id = "academyProfilePopUp"></div>
+        <div id = "associationProfilePopUp"></div>
+        <div id = "tournamentProfilePopUp"></div>
+
+    </div>
+
+</template>
+
+
+<!-- filter content of player rank list -->
+
+<template name="selectionForm">
+    {{#if Template.subscriptionsReady}}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N" id="selectionFormData" style="">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="selectionForm_N2">Please Select Your Keys of Interest to Search:</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N3">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+               <p class="selectionForm_N4" id="sportsLabel"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Sports:</p>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <p class="selectionForm_N4" id="filterByLabel"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Filter By:</p> 
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 selectionForm_N5">
+                 <p class="selectionForm_N4" id="filterDataLabel">&nbsp;
+                  
+
+                </p> 
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5" >
+                 <p class="selectionForm_N4" id="filteredLabel2"><span class="impMsg" style="font-size:14px !important;font-weight:bold !important">*&nbsp;</span>Select Event</p> 
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5" id="approvalLabel" >
+                 <p class="selectionForm_N4" id="filteredLabel6"></p> 
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 selectionForm_N5" >
+                 <p class="selectionForm_N4">&nbsp;</p> 
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 selectionForm_N3">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <select class="selectionForm_N6" id="sportList" name="sportList">
+                    <option selected disabled value="0">Select Sports</option>
+                    {{#if sports}}
+                    {{#each sports}}
+                     <option id="sportSelection" name="{{this._id}}">{{this.projectMainName}}</option>
+                    {{/each}}
+                    {{/if}}
+                </select> 
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5">
+                <select class="selectionForm_N6" id="filterByList" name="filterByList">
+                    <option selected disabled value="0">Select Filter</option>
+                    <option id="filterBy" name="Event Organizer">Event Organizer</option>                    
+                </select>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 selectionForm_N5">
+                <select class="selectionForm_N6" id="filterData" name="filterDataList">
+                    <option selected disabled value="0">Select</option>
+                     
+                </select>
+            </div>
+
+           
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5" id="eventsMenu" style='' >
+                <select class="selectionForm_N6" id="FilterSelect3" name="eventList">
+                    <option selected disabled>Select Event</option>
+                    {{#if sportEvents}}
+                    {{#each sportEvents}}
+                        <option id="eventSelection" name="{{this._id}}">{{this.projectName}}</option>
+                    {{/each}}
+                    {{/if}}
+                </select>
+            </div>
+             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 selectionForm_N5" id="approvalMenu" style='display:none'>
+               <select class="selectionForm_N6" id="FilterSelect6" name="approvalList">
+                    <option selected disabled>Approval Status</option>
+                    <option id="genderSelection" name="Approved">Approved</option>
+                    <option id="genderSelection" name="Pending">Pending</option>
+                    <option id="genderSelection" name="All">All</option>
+                </select>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 selectionForm_N5" >
+                 <input type="button" class="selectionForm_N7" id="show"  value="Show"> 
+            </div>
+        </div>
+      
+    </div>
+    {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+
+<!-- Table content of player rank list -->
+<template name="statisticsPlayerRankData">
+    {{> searchTemplate}}
+
+    {{#if Template.subscriptionsReady}}
+    <div class="row">
+        <table class="table table-striped tableOFCSVHTML_New">
+            <thead style="">
+                <tr class="headerAnalytics2">
+                    <th class="pAnalytics2">No</th>
+                    <th class="pAnalytics2">Name</th>
+                    <th class="pAnalytics2">Academy</th>
+                    <th class="pAnalytics2">Association</th>
+                    <th class="pAnalytics2">City</th>
+                    <th class="pAnalytics2">State</th>
+                    
+                    {{#if PlayerRankHeader}}
+                        {{#each PlayerRankHeader}}
+                        
+
+                            <th class="pAnalytics2" name={{this.tournamentId}}>
+<a href="#" id="tournamentBtn" name="{{this.tournamentId}}">{{this.id}}</a>
+                                
+                            </th>
+                        {{/each}}
+                    {{/if}}
+                    <th class="pAnalytics2">Points</th>
+                </tr>
+            </thead>
+            <tbody id="selectTagop">
+                {{#if HTMLstatisticsPlayerRankData}}
+                {{#each HTMLstatisticsPlayerRankData}}
+                <tr class="headerAnalytics3" name="sdfsd">
+                    <td class="pAnalytics2">{{this.slNo}}</td>
+                    <td class="pAnalytics2" name={{this.userName}}>
+                        <a href="#" id="playerInfoBtn" name="{{this.userId}}">{{this.userName}}</a>
+                    </td>
+                    <td class="pAnalytics2" name={{this.academy}}>
+                        <a href="#" id="playerAcademyBtn" name="{{this.clubNameId}}">{{this.academy}}</a>
+                    </td>
+                    <td class="pAnalytics2" name={{getPlayerAssociation this.associationId}}>
+                        <a href="#" id="playerAssociationBtn" name="{{this.associationId}}">{{getPlayerAssociation this.associationId}}</a>
+                    </td>
+                    <td class="pAnalytics2" name={{this.city}}>{{this.city}}</td>
+                    <td class="pAnalytics2" name={{this.stateName}}>{{this.stateName}}</td>
+
+                    {{#each this.tournamentInfo}}
+                        <td class="pAnalytics2" name={{this.points}}>{{this.points}}</td>
+                    {{/each}}
+                    <td class="pAnalytics2" name={{this.totPoints}}>{{this.totPoints}}</td>
+                    
+                </tr>
+                {{/each}}
+                {{else}}
+                {{#if info}}
+                <tr class="headerAnalytics3">
+                    <td class="pAnalytics2" colspan="7">No Records Found</td>
+                </tr>
+                {{/if}}
+                {{/if}}
+            </tbody>
+        </table>
+    </div>
+    {{else}}
+        {{> loader}}
+    {{/if}}
+</template>
+
+
+<template name="cdttaTemplate">
+    {{> searchTemplate}}
+
+    <div class="row">
+        <table class="table table-striped tableOFCSVHTML_New">
+            <thead style="">
+                <tr class="headerAnalytics2">
+                    <td class="pAnalytics2">No</td>
+                    <td class="pAnalytics2">PLAYER</td>
+                    <td class="pAnalytics2">CLUB</td>
+                    <td class="pAnalytics2">1</td>
+                    <td class="pAnalytics2">2</td>
+                    <td class="pAnalytics2">3</td>
+                    <td class="pAnalytics2">4</td>
+                    <td class="pAnalytics2">5</td>
+                    <td class="pAnalytics2">6</td>
+                    <td class="pAnalytics2">7</td>
+                    <td class="pAnalytics2">Points</td>
+                    <td class="pAnalytics2">Rank</td>
+                </tr>
+            </thead>
+            <tbody id="selectTagop">
+                {{#if cdttaData}}
+                {{#each cdttaData}}
+
+                <tr class="headerAnalytics3" name="sdfsd">
+                    <td class="pAnalytics2" name={{this.sl}}>{{this.sl}}</td>
+                    <td class="pAnalytics2" name={{this.Player}}>{{this.Player}}</td>
+                    <td class="pAnalytics2" name={{this.CLUB}}>{{this.CLUB}}</td>
+                    <td class="pAnalytics2" name={{this.t1}}>{{this.t1}}</td>
+                    <td class="pAnalytics2" name={{this.t2}}>{{this.t2}}</td>
+                    <td class="pAnalytics2" name={{this.t3}}>{{this.t3}}</td>
+                    <td class="pAnalytics2" name={{this.t4}}>{{this.t4}}</td>
+                    <td class="pAnalytics2" name={{this.t5}}>{{this.t5}}</td>
+                    <td class="pAnalytics2" name={{this.t6}}>{{this.t6}}</td>
+                    <td class="pAnalytics2" name={{this.t7}}>{{this.t7}}</td>
+                    <td class="pAnalytics2" name={{this.total}}>{{this.total}}</td>
+                    <td class="pAnalytics2" name={{this.sl}}>{{this.sl}}</td> 
+                </tr>
+                {{/each}}
+                {{else}}
+                {{#if info}}
+                <tr class="headerAnalytics3">
+                    <td class="pAnalytics2" colspan="12">{{info}}</td>
+                </tr>
+                {{/if}}
+                {{/if}}
+
+            </tbody>
+        </table>
+    </div>
+</template>

@@ -1,0 +1,14 @@
+.fir2Teams {
+    color: #FFF;
+    cursor: pointer;
+    font-family: arial;
+    font-size: 14px;
+    width: 100%;
+    margin: 0px 2px 0px 0px;
+    font-weight: normal;
+    order: 2;
+    height: 2.35em;
+}
+#editIcon{
+	width:100%;
+}

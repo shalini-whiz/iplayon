@@ -1,0 +1,175 @@
+<template name="playerSequenceCreate">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 0px; padding-top: 0px; margin-top: 0px; padding-left: 15px ! important; height: 36px; padding-right: 15px ! important;">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 0px; padding-top: 0px; margin-top: 0px; padding-left: 0px ! important; padding-right: 0px ! important; height: 55px ! important; border-bottom: 1px solid rgb(208, 208, 208);">
+            <div style="padding: 0px ! important;" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top: 0px; padding-bottom: 0px; height: 35px; padding-right: 0px ! important; padding-left: 0px ! important;">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height: 35px; padding: 0px ! important; text-align: center ! important; margin-top: 5px; margin-right: 0px;">
+                        <input style="font-size: 13px ! important; height: 86%; background: none repeat scroll 0% 0% rgb(0, 164, 228); border: 0px none; color: white; border-radius: 0px; width: 100%;" value="Save" type="button">
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height: 35px ! important; padding: 0px 0px 0px 10px ! important;">
+                        <input style="width: 100%; height: 100%; border-width: 0px 0px 1px; border-style: none none solid; border-color: -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; font-size: 12px; text-align: center ! important;" placeholder="set" type="text">
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height: 35px ! important; padding-left: 10px ! important;">
+                        <input style="width: 100%; height: 100%; border-width: 0px 0px 1px; border-style: none none solid; border-color: -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; font-size: 12px; text-align: center ! important;" placeholder="score" type="text">
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 0px ! important;padding: 6px 0px 0px !important;margin-top: 0px;height: 35px !important;width: 31.25% !important;" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <input style="width: 100%; height: 100%; border-width: 0px 0px 1px; border-style: none none solid; border-color: -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; font-size: 12px; text-align: center ! important;background:#99d6ff;" placeholder="Player 1" type="text" id="searchUser1ForSPA">
+                 {{#if player1SearchResults_SPA}}
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 searchResultsPlayerAnalytics" style="margin-left: 0px ! important; padding-left: 10px ! important; padding-right: 10px ! important; border: 0px none ! important;">
+                    <div class="searchResults" style="left: 0px; z-index: 100; display: block; position: absolute; border: 1px solid black; width:100%; background: none repeat scroll 0% 0% wheat ! important;">
+                        {{#each player1SearchResults_SPA}}
+                        <div style="width: 100%; color: black ! important;" name="player1Focused" class="addIcon">
+                            {{#if this.userName}}
+                            <p id="{{this.userId}}" name="userName" value="{{this.userName}}" style="text-align: left; margin:0px !important; font-size:12px;">{{this.userName}}</p>
+                            {{else}} {{#if this.playerName}}
+                            <p id="{{this._id}}" name="userName" value="{{this.playerName}}" style="text-align: left; margin:0px !important; font-size:12px;">{{this.playerName}}</p>
+                            {{/if}} {{/if}}
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="font-size: 20px; font-weight: bold; margin-top: 5px; cursor: pointer; padding-top: 0px ! important; padding-right: 0px ! important; padding-bottom: 0px ! important; padding-left: 0px; width: 4%;">
+                <span class="glyphicon glyphicon-cog"></span>
+            </div>
+            <div style="padding: 0px ! important;padding: 6px 0px 0px !important;margin-top: 0px;height: 35px !important;width: 31.25% !important;" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <input style="width: 100%; height: 100%; border-width: 0px 0px 1px; border-style: none none solid; border-color: -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; font-size: 12px; text-align: center ! important;background:#e8e8e8;" placeholder="Player 2" type="text" id="searchUser2ForSPA"> 
+                {{#if player2SearchResults_SPA}}
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 searchResultsPlayerAnalytics" style="margin-left: 0px ! important; padding-left: 10px ! important; padding-right: 10px ! important; border: 0px none ! important;">
+                    <div class="searchResults" style="left: 0px; z-index: 100; display: block; position: absolute; border: 1px solid black; width: 100%; background: none repeat scroll 0% 0% wheat ! important;">
+                        {{#each player2SearchResults_SPA}}
+                        <div style="width: 100%; color: black ! important;" name="player2Focused" class="addIcon">
+                            {{#if this.userName}}
+                            <p id="{{this.userId}}" name="userName" value="{{this.userName}}" style="text-align: left; margin:0px !important; font-size:12px;">{{this.userName}}</p>
+                            {{else}} {{#if this.playerName}}
+                            <p id="{{this._id}}" name="userName" value="{{this.playerName}}" style="text-align: left; margin:0px !important; font-size:12px;">{{this.playerName}}</p>
+                            {{/if}} {{/if}}
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+            <div style="padding: 0px ! important;" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top: 0px; padding-bottom: 0px; height: 35px; padding-right: 0px ! important; padding-left: 0px ! important;">                    
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height: 35px ! important; padding: 0px 0px 0px 10px ! important;">
+                        <input style="width: 100%; height: 100%; border-width: 0px 0px 1px; border-style: none none solid; border-color: -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; font-size: 12px; text-align: center ! important;" placeholder="set" type="text">
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height: 35px ! important; padding-left: 10px ! important;">
+                        <input style="width: 100%; height: 100%; border-width: 0px 0px 1px; border-style: none none solid; border-color: -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; font-size: 12px; text-align: center ! important;" placeholder="score" type="text">
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height: 35px; padding: 0px ! important; text-align: center ! important; margin-top: 5px; margin-right: 0px;">
+                        <input style="font-size: 13px ! important; height: 86%; background: none repeat scroll 0% 0% rgb(0, 164, 228); border: 0px none; color: white; border-radius: 0px; width: 100%;" value="Reset" type="button">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> confirmDELETEShot}}
+</template>
+
+
+<template name="playerSequenceCreateSub">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 0px; padding-top: 0px; padding-left: 40px ! important; padding-right: 40px ! important; margin-top: 126px;">
+        <div style="padding: 0px ! important;" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <p style="margin: 0px ! important; font-size: 12px ! important; color: rgb(88, 88, 88); text-decoration: underline; text-align: center;">Stroke</p>
+        </div>
+        <div style="padding: 0px ! important;" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <p style="margin: 0px ! important; font-size: 12px ! important; color: rgb(88, 88, 88); text-decoration: underline; text-align: center;">Destination</p>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 0px; padding-top: 0px; padding-left: 0px ! important; padding-right: 0px ! important; margin-top: 11px;" id="divToAppend">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 0px; padding-top: 0px; padding-left: 40px ! important; padding-right: 40px ! important; margin-top: 0px;">
+            <div style="padding-top: 0px ! important; padding-bottom: 0px ! important; padding-right: 12px ! important; padding-left: 0px !important;" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input style="width: 97%; border-style: none solid solid; border-color: -moz-use-text-color rgb(184, 184, 184) rgb(184, 184, 184); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-width: 0px 1px 1px; margin-left: 3%; font-size: 12px;text-align:center;" type="text" id="mainStroke1" name="serviceStrokeInput">
+                <div class="serdest">
+                    {{#if searchServiceStrokes}}
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 searchResultsPlayerAnalytics ser" style="margin-left: 0px ! important; padding-left: 10px ! important; padding-right: 10px ! important; border: 0px none ! important;display:{{typeOfSearchDispl this.idNum}}" id="searchdiv">
+                        <div class="searchResults" style="left: 0px; z-index: 100; display: block; position: absolute; border: 1px solid black; width: 95%;margin-left:3%; background: none repeat scroll 0% 0% wheat ! important;">
+                            {{#each searchServiceStrokes}}
+                            <div style="width: 100%; color: black ! important;" name="strokesServiceFocused" class="addIcon">
+                                {{#if this.serviceName}}
+                                <p id="{{this.serviceShortName}}" name="strokesFocused" value="{{this.serviceName}}" style="text-align: left; margin:0px !important; font-size:12px;">{{this.serviceName}}</p>
+                                {{else}} {{#if this.strokeName}}
+                                <p id="{{this.strokeShortCode}}" name="strokesFocused{{idNum}}" value="{{this.strokeName}}" style="text-align: left; margin:0px !important; font-size:12px;">{{this.strokeName}}</p>
+                                {{/if}} {{/if}}
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            <div style="padding: 0px ! important; display: flex;" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <input style="border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgb(184, 184, 184) rgb(184, 184, 184); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; width: 97%; font-size: 12px; order: 1; margin-right: 2px;text-align:center;" type="text" id="mainDestination1" name="serviceDestInput">
+                <div class="serdest">
+                    {{#if searchdestinationStrokes}}
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 searchResultsPlayerAnalytics dest" style="margin-left: 0px ! important; padding-left: 10px ! important; padding-right: 10px ! important; border: 0px none ! important;" id="searchdiv">
+                        <div class="searchResults" style="left: 0px; z-index: 100; display: block; position: absolute; border: 1px solid black; width: 97%;margin-left:0%;margin-top:20px; background: none repeat scroll 0% 0% wheat ! important;">
+                            {{#each searchdestinationStrokes}}
+                            <div style="width: 100%; color: black ! important;" name="strokesDestFocused" class="addIcon">
+                                {{#if this.destinationName}}
+                                <p id="{{this.destinationShortName}}" name="strokesFocused" value="{{this.destinationName}}" style="text-align: left; margin:0px !important; font-size:12px;">{{this.destinationName}}</p>
+                                {{/if}}
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+                <span style="cursor: pointer !important; font-size: 12px; order: 2; margin-top: 2px; margin-left: 6px;" class="glyphicon glyphicon-trash" id="removeRow1"></span>
+            </div>
+        </div>
+    </div>
+    <div id="renderServiceBy"></div>
+</template>
+
+<template name="hiddenTemp">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 0px; padding-top: 0px; padding-left: 40px ! important; padding-right: 40px ! important; margin-top: 7px;">
+        <div style="padding-top: 0px ! important; padding-bottom: 0px ! important; padding-right: 12px ! important; padding-left: 0px !important;" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <input style="width: 97%; border-style: none solid solid; border-color: -moz-use-text-color rgb(184, 184, 184) rgb(184, 184, 184); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-width: 0px 1px 1px; margin-left: 3%; font-size: 12px;text-align:center;" type="text" id="mainStroke{{idNum}}" name="serviceStrokeInput">
+            <!--strokes-->
+            <div class="serdest{{idNum}}">
+                {{#if searchServiceStrokes}}
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 searchResultsPlayerAnalytics {{idNum}} ser" style="margin-left: 0px ! important; padding-left: 10px ! important; padding-right: 10px ! important; border: 0px none ! important;" id="searchdiv{{idNum}}">
+                    <div class="searchResults" style="left: 0px; z-index: 100; display: block; position: absolute; border: 1px solid black; width: 95%;margin-left:3%; background: none repeat scroll 0% 0% wheat ! important;">
+                        {{#each searchServiceStrokes}}
+                        <div style="width: 100%; color: black ! important;" name="strokesServiceFocused{{idNum}}" class="addIcon">
+                            {{#if this.serviceName}}
+                            <p id="{{this.serviceShortName}}" name="strokesFocused{{idNum}}" value="{{this.serviceName}}" style="text-align: left; margin:0px !important; font-size:12px;">{{this.serviceName}}</p>
+                            {{else}} {{#if this.strokeName}}
+                            <p id="{{this.strokeShortCode}}" name="strokesFocused{{idNum}}" value="{{this.strokeName}}" style="text-align: left; margin:0px !important; font-size:12px;">{{this.strokeName}}</p>
+                            {{/if}} {{/if}}
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+        <div style="padding: 0px ! important; display: flex;" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <input style="border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgb(184, 184, 184) rgb(184, 184, 184); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; width: 97%; font-size: 12px; order: 1; margin-right: 2px;text-align:center;" type="text" id="mainDestination{{idNum}}" name="serviceDestInput">
+            <!--dest-->
+            <div class="serdest{{idNum}}">
+                {{#if searchdestinationStrokes}}
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 searchResultsPlayerAnalytics {{idNum}} dest" style="margin-left: 0px ! important; padding-left: 10px ! important; padding-right: 10px ! important; border: 0px none ! important;" id="searchdiv{{idNum}}">
+                    <div class="searchResults" style="left: 0px; z-index: 100; display: block; position: absolute; border: 1px solid black; width: 97%;margin-left:0%;margin-top:20px; background: none repeat scroll 0% 0% wheat ! important;">
+                        {{#each searchdestinationStrokes}}
+                        <div style="width: 100%; color: black ! important;" name="strokesDestFocused{{idNum}}" class="addIcon">
+                            {{#if this.destinationName}}
+                            <p id="{{this.destinationShortName}}" name="strokesFocused{{idNum}}" value="{{this.destinationName}}" style="text-align: left; margin:0px !important; font-size:12px;">{{this.destinationName}}</p>
+                            {{/if}}
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+            {{paging}}
+            <span style="cursor: pointer !important; font-size: 12px; order: 2; margin-top: 2px; margin-left: 6px;" class="glyphicon glyphicon-trash" id="removeRow{{idNum}}"></span>
+        </div>
+    </div>
+</template>

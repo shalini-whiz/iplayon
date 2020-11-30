@@ -1,0 +1,86 @@
+    <!-- shalini codes starts here -->
+
+    <template name="result">
+     <div  class="modal" id="result" aria-hidden="true" >
+      <div class="modal-dialog result-lg">
+        <div class="modal-content">
+          <div class="modal-header headerClass">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title myModalLabel " style='text-align:center'>Email Result</h4>
+         </div>
+
+         <div class="modal-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label class="control-label col-sm-3 customLabel">Select Event:</label>
+              <div class="col-sm-9">
+                <div id ="ipSelectEveDropDown">
+                    <select id="selectWhich" class="form-control customDropDown" name="eventList">
+                      <option id="event_select" selected disabled>--select--</option>
+                    {{#if selectedSportOrNot}} 
+                    {{#each drawsEvents}}
+                        {{#if selectedSportFromLive this}}
+                         <option id="event_select">{{this}}</option>
+                         
+                          {{#each drawsEvents}}
+                            {{#if selectedEvent this}}
+                            {{else}}
+                            <option id="event_select">{{this}}</option>  
+                        
+                            {{/if}}
+                          {{/each}}
+                        {{/if}} 
+                        {{else}}
+                           
+                      {{/each}}
+                    {{else}} 
+                      {{#each drawsEvents}}
+                       <option id="event_select">{{this}}</option>
+                        
+                        {{else}}
+                         
+                      {{/each}}
+                    {{/if}}
+                    </select>
+                </div>
+              </div>
+            </div>
+
+             <div class="form-group">
+              <label class="control-label col-sm-3 customLabel">Comment:</label>
+              <div class="col-sm-9">
+                <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
+              </div>
+            </div>
+
+            
+            
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style='padding-bottom:4px;'>
+            <div class ="row">
+              <p id="impMsg" class='impMsg'></p><p id="infoMsg" class='impMsg'></p> 
+ 
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 " >
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " >
+                </div>
+
+                <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 " style='text-align:center;' >
+                  <button type="button" class="ip_button_Popup_Black" id="sendResultEmail">Email</button>
+                  <button type="button" class="ip_button_Popup_Red" data-dismiss="modal" id="closeResult">Cancel</button>
+                </div>
+
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 " > </div>               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<!-- shalini codes ends here -->

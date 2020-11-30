@@ -1,0 +1,188 @@
+.checkboxevents{
+	margin: 0;
+	cursor: pointer;
+}
+.checkPEvent{
+margin: 3px 3px 3px;
+}
+.eventAddTourModal-sm{
+    width:538px;
+}
+.selectStartEveAdd{
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	border: 0px none;
+	height: 2em;
+	width: 111px;
+	background: transparent none repeat scroll 0px center;
+	cursor: pointer;
+}
+.eveTournEnd {
+    width: 97%;
+    border-left: 1px solid black;
+    cursor: default;
+    /*border-right: 1px solid black;*/
+}
+.eveTournStart {
+    width: 97%;
+    border-left: 1px solid black;
+    cursor: default;
+    /*border-right: 1px solid black;*/
+}
+.selectEndEveAdd{
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	border: 0px none;
+	height: 2em;
+	width: 111px;
+	background: transparent none repeat scroll 0px center;
+	cursor: pointer;
+}
+.checkboxeventsCheckBoxDivLabel {
+    font-weight: normal;
+    width: 900px;
+    box-sizing: border-box;
+    margin-top: 0%;
+}
+.eventAddTourPopup {
+    width: 519px;
+    margin-top: 100px;
+    border-radius: 5px;
+    border: 0.01px outset;
+    box-shadow: 2px 2px 2px #808080;
+}
+
+.eventAddTourCheckBoxDiv {
+    font-size: 12px;
+    font-weight: normal;
+    height: 2em;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding-left: 4px;
+    border-bottom: 1px solid #000;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.closePopp {
+    order: 2;
+    background: transparent none repeat scroll 0px center;
+    width: 2px;
+    height: 1.5em;
+    margin: 0px;
+    border: 0;
+}
+
+.selectevenaddHeader {
+    background: #b30000;
+    color: white;
+    font-size: 13px;
+    text-align: left;
+    height: 2em;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 0px solid;
+    padding-top: 3px;
+    padding-left: 3px;
+    font-weight: bold;
+    background: black none repeat scroll 0% 0%;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.selectEventToAdd {
+    padding-left: 0%;
+    padding-right: 0%;
+    width: 100%;
+    height: 8.1em;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    border: 1px solid black;
+    outline: none;
+}
+
+#addEventsPopup.modal.fade.in{    
+    visibility: visible;
+}
+
+#editaddEventsPopup.modal.fade.in{    
+    visibility: visible;
+}
+
+.modal-open .modal {
+    overflow-x: hidden!important;
+    overflow-y: hidden!important;
+}
+
+.modal-open{
+    padding-right:0px !important; 
+}
+
+.datePickPopup{
+    width: 100%;
+    border: 0px none;
+    background: transparent none repeat scroll 0px center;
+    padding: 4%;
+    cursor: default;
+}
+
+.setemptyeventadd{
+    width: 81%;
+    margin: auto;
+}
+
+.setemptyeventaddDivEmpty {
+    font-size: 12px;
+    font-weight: normal;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: #808080;
+    padding-top: 11%;
+    padding-bottom: 11%;
+}
+
+.setemptyeventaddDivContentOk {
+    width: 100%;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    padding-top: 0%;
+    margin-top: 3%;
+    height: 2.5em;
+}
+.sponsorUploadsContentAddEvents {
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    height: 5em;
+}
+
+.eventAddTourCheckBoxDiv_NEW_title {
+    font-size: 12px;
+    font-weight: normal;
+    height: 2em;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-bottom: 1px solid #000;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: black none repeat scroll 0% 0%;
+    color: white;
+}

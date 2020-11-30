@@ -1,0 +1,258 @@
+.modal-content-modReg1{
+	width:384px!important;
+	/**margin-left:30%;
+	margin-top:-14%;**/
+	left: 50%;
+    transform: translateX(-50%);
+    /**top: 50%;
+    transform:translate(-50%,-50%);**/
+	
+}
+
+.modal-header-modReg1{
+	background-color:maroon;
+	background-color: #800000;
+	padding: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	height: 3.4em;
+}
+
+.modal-body-modReg1{
+    min-height:19em;
+}
+
+.roleText{
+	order:1;
+	font-size:14px;
+	width:34% !important;
+	height:2.6em;
+	background-color:rgb(204,204,204);
+	float:left;
+}
+
+.roleTextPara{
+	padding-left:23%;
+	padding-top:2.5%;
+	color:rgb(89, 89, 89);
+}
+
+.dropdown-modReg1{
+	order:2;
+	margin-left:0%;
+	width:42%;
+}
+
+.userProjectSearchDivModReg3{
+	border-top: 0px solid grey;
+    padding-top: 2px;
+    /*padding-left: 2px;*/
+    padding-right: 4px;
+    /*border-top-right-radius: 5px;*/
+}
+
+.userProjectSearchModReg3{
+	color: white;
+}
+
+#mt-command-dd{
+	width:99.5%;
+	border-radius:0px;
+	color:rgb(89,89,89);
+	border-color:rgb(204,204,204);
+	margin-top:0.2%;
+	height:2.55em;
+}
+
+#mt-command-dd:hover{
+	background-color:none;
+}
+#mt-command-dd:focus{
+	background-color:none;
+}
+
+.dropdown-menu-modReg1{
+	margin-top:21% !important;
+	margin-left:-0.5%;
+}
+
+.btn-modReg1{
+	background-color:rgb(204,204,204);
+	/*width:171px !important;
+	margin-right:48% !important;*/
+	color:rgb(89,89,89)!important;
+	height:2.6em;
+	border-radius:0px;
+	font-weight:normal !important;
+}
+
+.btn-modReg2{
+	background-color:rgb(204,204,204);
+	width:171px !important;
+	margin-right:48% !important;
+	color:rgb(89,89,89)!important;
+	height:2.6em;
+	border-radius:0px;
+	font-weight:normal !important;
+	margin-left:66%;
+}
+
+.glyphicon-forward-modReg1{
+	margin-right:5%;
+}
+.divider-modReg1{
+  margin:6px 0px !important;
+}
+
+.modal-content-modReg2{
+	width:64% !important;
+	/**margin-left:18%;
+		margin-top:-14%;**/
+	left: 50%;
+    transform: translateX(-50%);
+
+}
+
+.modal-header-modReg2{
+	background-color:white;
+	height:4em;
+	padding: 0px !important;
+}
+
+#navBar{
+	list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    color:rgb(89,89,89) !important;
+    font-size:13px;
+    width:100%;
+}
+
+#navBar li{
+	float: left;
+	width:33.3%;
+	
+}
+
+#navBar li a{
+	display: block;
+    color: rgb(89,89,89) !important;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 7px;
+    height: 2.7em;
+}
+
+.notActive{
+	padding-top:7px;
+	text-align: center;
+	color: rgb(89,89,89) !important;
+	height: 2.7em;
+}
+
+.checkBoxDivModReg3{
+	border:none!important;
+}
+
+.ul{
+	height:100%;
+	width:100%;
+}
+
+.active{
+	background-color:rgb(204,204,204);
+}
+
+.dobRegisterNEw{
+	border: medium none;
+	color: #800000;
+	order: 1;
+	width: 31px;
+	font-size: 14px;
+	font-weight: normal;
+	margin-right: 7px;
+}
+.inputBirthDateRegisterNew{
+	order: 2;
+	font-size: 13px;
+	height: 2em;
+	width: 31%;
+	background: transparent none repeat scroll 0px center;
+	border: 1px solid grey;
+}
+
+.dobNew{
+	text-align: left!important;
+	order: 2;
+	padding-left: 2%!important;
+	height: 2.1em!important;
+	margin-bottom: 0.25%!important;
+	font-size: 13px!important;
+	width: 100%!important;
+	background: transparent none repeat scroll 0px center!important;
+	border: 1px solid grey!important;
+	border-radius: 5px !important;
+}
+
+.alignGenderNew{
+	order:3;
+	display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 2em;
+	padding-top: 6px;
+}
+
+.alignAcademyNameNew{
+	border: medium none!important;
+	font-size: 14px!important;
+	font-weight: normal!important;
+	color: #800000!important;
+	order: 1!important;
+	width: 106px!important;
+}
+.titeofregistemodal{
+	color: white!important;
+	font-size: 15px;
+	cursor: default;
+}
+
+.contRegNEwHead{
+	padding-top: 3px !important;
+	padding-right: 0px !important;
+	padding-bottom: 0px !important;
+	background: maroon none repeat scroll 0% 0%;
+	border-top-left-radius: 5px;
+	height: 3.4em;
+}
+.selecSporTRegNewHead{
+	padding-top: 3px !important;
+	padding-right: 0px !important;
+	padding-bottom: 0px !important;
+	height: 3.4em;
+	padding-left: 6%;
+	border-right: 1px solid maroon;
+	border-bottom: 1px solid maroon;
+	border-top: 1px solid maroon;
+}
+
+.selecPlaceRegNewHead{
+	padding-right: 0px !important;
+	padding-bottom: 0px !important;
+	padding-top: 3px;
+	border-width: 1px 1px 1px 0px;
+	border-style: solid solid solid none;
+	border-color: #800000 #800000 #800000 -moz-use-text-color;
+	border-image: none;
+	height: 3.4em;
+	padding-left: 6% !important;
+	border-top-right-radius: 5px;
+}
+
+.titeofregistemodalNotActive{
+	color: black!important;
+	font-size: 14px;
+	cursor: default;
+}

@@ -1,0 +1,193 @@
+  {{{getDocType}}}
+<html lang="en">
+<head>
+    <style type="text/css">
+      {{css}}
+    </style>
+</head>
+<body>
+  <div class="container">
+        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+          <img src="{{imageURL}}/{{logoImg}}"  style="width:100%;float:right;margin:0px !important;margin-top:-3px !important;border:0;margin-bottom: :10px !important;" />
+        </div>
+        <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8" style="padding:0px!important;">
+          <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading" style="">Score Sheet</p>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading" style="">{{tournamentName_team}} - {{drawsEventName}}<br></p>
+            </div>
+           <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;"><p></p>
+           </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading2" style="margin-top:0px;">held at 
+                  <!--{{#if venueAddress_team}}
+                    {{venueAddress_team}}, 
+                  {{/if}}-->
+                  {{domainName_team}}
+                </p>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading2" style="margin-top:0px;">{{eventDate_team}}</p>
+            </div>
+           
+        </div>
+        {{#if get5sImage}}
+        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+          {{#if get5sImage.url}}
+          <img src="{{imageURL}}{{get5sImage.url}}" style="width:94%;height:14%;float:right;margin:0px !important;margin-top:-3px !important;border:0"/>
+          {{/if}}
+        </div>
+        {{/if}}
+  </div>
+  <div class="container">
+
+  {{#if getRoundRobinRecords}}
+    {{#each getRoundRobinRecords}}
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+          {{#if this.orderPlay}}
+          <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+            <table class="table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne"  style="width:100%;table-layout:fixed;" >
+              <tbody>            
+                <tr class="headerAnalytics3" id="headerAnalytics3">
+                  <td class="robin_header" style="border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;font-size:12px;">
+                    Match</p>
+                  </td>
+                  <td class="robin_header" style="border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;font-size:12px;">
+                    Date</p>
+                  </td>
+                  <td class="robin_header" style="border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;font-size:12px;">
+                    Time</p>
+                  </td>
+                  <td class="robin_header" style="border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;font-size:12px;">
+                    Table</p>
+                  </td>
+                </tr>
+                {{#each this.orderPlay}}
+                  <tr class="headerAnalytics3" id="headerAnalytics3">
+                    <td class="robin_td" style="border-spacing:0;padding:2px !important;">
+                      <p style="text-align:center;margin:0px;font-size:9px;">
+                        {{#each this.matchOrder}}
+                          {{this}}<br>
+                        {{/each}}
+                        
+                      </p>
+                    </td>
+                     <td class="robin_td" style="border-spacing:0;padding:2px !important;">
+                       -
+                     </td>
+                      <td class="robin_td" style="border-spacing:0;padding:2px !important;">-
+                      </td>
+                       <td class="robin_td" style="border-spacing:0;padding:2px !important;">-</td>
+                  </tr>
+                {{/each}}
+              </tbody>
+
+
+              
+            </table>
+          </div>
+
+          {{/if}}
+          <div class={{orderPlayExists this}}>
+
+          <table class="table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne"  style="width:100%;table-layout:fixed;" >
+              <tbody>
+
+                <tr class="headerAnalytics3" id="headerAnalytics3">
+                  <td class="robin_header" style="border-spacing:0;padding:2px !important;width:50px !important">
+                    <p style="text-align:center;margin:0px;margin-top:2px;width:50px !important">
+                    </p></td>
+                  <td class="robin_header" style="font-weight: bold;border-spacing:0;padding:2px !important;width: 30% !important">
+                    <p style="text-align:center;margin:0px;margin-top:2px;white-space: nowrap;">
+                      {{this.groupName}}
+                    </p>
+                  </td>
+                  {{#each loopCount this.groupMaxSize}}
+                    <td class="robin_header" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+                      <p style="text-align:center;margin:0px;margin-top:2px;">
+                        {{incremented @index}}
+                      </p>
+                      </td>
+                  {{/each}}
+                  <td class="robin_header" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;">
+                      Pts.
+                    </p>
+                  </td>
+                  <td class="robin_header" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+                    <p style="text-align:center;margin:0px;margin-top:2px;">
+                      Pos.
+                    </p>
+                  </td>
+                </tr>
+                {{#each loopCount this.groupMaxSize}}
+                  <tr class="headerAnalytics3" id="headerAnalytics3">
+                    <td class="robin_td" style="border-spacing:0;padding:2px !important;width:50px !important">
+                      <p style="font-family: sans-serif;text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;width:50px !important">
+                        {{incremented @index}}
+                      </p>
+                    </td>
+                    <td class="robin_td" style="font-weight:normal;border-spacing:0;padding:2px !important;width: 30% !important">
+                      <p style="font-family: sans-serif;text-align:left;margin:0px;margin-top:2px;margin-bottom:2px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;padding: 5px;  font-size: 14px;">
+                        {{#if fetchRowMember @index ../groupDetails}}
+                          {{fetchRowMember @index ../groupDetails}}
+                        {{else}}
+                          BYE
+                        {{/if}}
+                        
+                      </p>
+                    </td>
+                
+                    {{#each fetchRowRecord @index ../groupDetails ../groupMaxSize}} 
+                      {{#if compare this.rowNo this.colNo}} 
+                        <td class="robin_td robin_tdcolor" id="" name={{../../_id}} style="border-spacing:0;padding:2px !important;">   
+                          <p style="font-family: sans-serif;text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                          </p>                      
+                        </td>
+                      {{else}}
+                        {{#if and this.playersID.playerAId this.playersID.playerBId}}
+                          <td class="robin_td " id="detailScorePop" name={{../../_id}} style="border-spacing:0;padding:2px !important;">  
+                            <p style="font-family: sans-serif;text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">
+                              {{this.setWins.playerA}} - {{this.setWins.playerB}}
+                            </p>
+                          </td>
+                        {{else}}
+                          <td class="robin_td " id="" name={{../../_id}} style="border-spacing:0;padding:2px !important;">
+                            <p style="font-family: sans-serif;text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">
+                              &nbsp; - &nbsp;
+                            </p>
+                          </td>
+                        {{/if}}           
+                      {{/if}}                                       
+                    {{/each}}
+                    <td class="robin_td" style="border-spacing:0;padding:2px !important;" >
+                      <p style="font-family: sans-serif;text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">
+                        {{fetchRowPoints @index ../groupStandingInfo}}
+                      </p>
+                    </td>
+                    <td class="robin_td" style="border-spacing:0;padding:2px !important;" >
+                      <p style="font-family: sans-serif;text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;">
+                        {{fetchRowStandings @index ../groupStandingInfo}}
+                      </p>
+                    </td>
+                  </tr>
+                {{/each}}
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <br>
+    {{/each}}
+  {{/if}}
+  </div>
+
+</body>
+</html>

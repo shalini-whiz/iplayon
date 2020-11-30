@@ -1,0 +1,300 @@
+<template name="feeList">
+	<div class="row">
+	 	<div class ="row" style="display: flex; margin-top: 10px;padding: 5px 7px 5px 15px;">
+        	<a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 1; height: 30px;pointer-events:{{prevPageClass}};" href="{{prevPage}}" id="prevPage" >previous</a>
+        	<a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 1; margin-left: 5px; height: 30px;pointer-events:{{nextPageClass}};" href="{{nextPage}}" id="nextPage" >next</a>
+        
+    	</div>
+    </div>
+    <div class = "row">
+    	 <div id="id2" name="checkNEW" style="float:left;display: flex;  background: black none repeat scroll 0% 0%; border: 1px solid white;  padding: 5px 7px 5px 15px;margin-top:5px !important">
+            <input style="width: 300px; font-size: 12px; background: transparent none repeat scroll 0px center; border: 0px none; color: orange;" value="" placeholder="search by name" type="text" id="searchByAfilID">
+            <span style="font-size:14px!important;padding-right:10px !important" class="glyphicon glyphicon-remove-circle clearInputFiled" id="clearInputField"></span>
+            <input type="button" class="selectionForm_N7" id="searchByBtn" value="Display" style="width: 57px;height:20px;">
+
+        </div>
+
+    </div>
+
+	<div class="row">
+		{{#if Template.subscriptionsReady}}
+
+	    <table class="table table-striped tableOFCSVHTML">
+	        <thead style="">
+	        	<tr class="headerAnalytics2">
+	               <th class="pAnalytics2">No</th>
+	               <th class="pAnalytics2">Name</th>
+	               <th class="pAnalytics2">Academy</th>
+	               <th class="pAnalytics2">Email</th>
+	               <th class="pAnalytics2">Phone</th>
+	               <th class="pAnalytics2">DOB</th>
+	               {{#each HTMLViewOFFeeData.[0].eventNames}}
+	               	<th class="pAnalytics2">{{this}}</th>
+	               {{/each}}
+	               <th class="pAnalytics2">Total</th>
+	               <th class="pAnalytics2">Receipt</th>
+	               <!--th class="pAnalytics2">Dues</th-->
+	            </tr>
+	        </thead>
+	        <tbody>
+	        	{{#each HTMLViewOFFeeData}}
+	            <tr class="headerAnalytics3">
+	                <td class="pAnalytics2">{{this.slNo}}</td>
+	                <td class="pAnalytics2">{{this.playerName}}</td>
+	                <td class="pAnalytics2">{{this.academyName}}</td>
+	                <td class="pAnalytics2">{{this.emailAddress}}</td>
+	                <td class="pAnalytics2">{{this.phoneNumber}}</td>
+	                <td class="pAnalytics2">{{upcomingformatDate this.dob}}</td>
+	                {{#each this.eventFee}}
+	                	<td class="pAnalytics2">{{this}}</td>
+	                {{/each}}
+	                <td class="pAnalytics2">{{this.total}}/-</td>
+	                {{#if checkSubHideLastDATESUB eventId}}
+	                <td class="pAnalytics2">
+	                	<input type=button value="{{checkReceiptSent this.playerId}}" class="sendReciept"  id="" style="background:grey !important">
+	                </td>
+	                {{else}}
+	                <td class="pAnalytics2">
+	                	<input type=button value="{{checkReceiptSent this.playerId}}" class="sendReciept"  id="sendRec" style="">
+	                </td>
+	                {{/if}}
+	                <!--td class="pAnalytics2">
+	                	{{#each eventListsFees}}
+	                	<input type=button value="{{sums}}/-" style="color: #FFF;height: 42%;font-size: 12px;background: #3B5998 none repeat scroll 0% 0%;border: 1px solid;" id="dueId">
+	                	{{/each}}
+	                </td-->
+	            </tr>
+	            {{/each}}
+
+	       </tbody>
+	    </table>
+	   	{{/if}}
+
+	    <div id="confirmPasswordRender"></div>
+	    <div id="duesOfTournaRender"></div>
+
+	    {{> sendingMailPopup2}}
+	</div>
+</template>
+
+<template name="feeListHeader">
+    <div style="background:#333;height:auto;" class="container">
+
+
+        <div id="listID" style='margin-top:80px'></div>
+     
+
+        <div class="row navigationBar navbar-fixed-top" style='height: 80px !important'>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            		<p style="color:white;font-size:14px">{{tournamentName}}</p>
+            	</div>
+            <div class="container-fluid">
+            	
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <span style="" class="websiteHeader">iPlayOn</span>
+                    </div>
+
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <button type="button" class="ip_button_DarkGrey" id="playerWiseFinanceBtn">Player_Wise</button>
+                    </div>
+                   
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <button type="button" class="ip_button_DarkGrey" id="academyWiseFinanceBtn">Academy_Wise</button>
+                    </div>
+
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <button type="button" class="ip_button_DarkGrey" id="dAWiseFinanceBtn">DistrictAssociation_Wise</button>
+                    </div>
+
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <button type="button" class="ip_button_DarkGrey" id="teamWiseFinanceBtn">Team_Wise</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>
+
+<template name ="academyWise">
+	<div class="row">
+	 	<div class ="row" style="display: flex; margin-top: 10px;">
+        	<a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 1; height: 30px;pointer-events:{{prevPageClass}};" href="{{prevPage}}" id="prevPage" >previous</a>
+        	<a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 1; margin-left: 5px; height: 30px;pointer-events:{{nextPageClass}};" href="{{nextPage}}" id="nextPage" >next</a>
+        
+    	</div>
+    </div>
+	<div class="row">
+	    <table class="table table-striped tableOFCSVHTML">
+	        <thead style="">
+	        	<tr class="headerAnalytics2">
+	               <th class="pAnalytics2">No</th>
+	               <th class="pAnalytics2">Academy</th>
+	               <th class="pAnalytics2">Total</th>
+	               <th class="pAnalytics2">Receipt</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	        	{{#if Template.subscriptionsReady}}
+
+	        	{{#each HTMLViewOFAcademyFeeData1}}
+	            <tr class="headerAnalytics3">
+	                <td class="pAnalytics2">{{this.slNo}}</td>
+	                <td class="pAnalytics2">{{this.academyName}}</td>
+	                <td class="pAnalytics2">{{this.total}}/-</td>
+
+	                {{#if checkSubHideLastDATESUB eventId}}
+	                <td class="pAnalytics2">
+	                	<input type=button value="{{checkReceiptSent_Academy this.academyId}}" class="sendReciept"  id="" style="background:grey !important">
+	                </td>
+	                {{else}}
+	                <td class="pAnalytics2">
+	                	<input type=button value="{{checkReceiptSent_Academy this.academyId}}" class="sendReciept"  id="sendRec" style="">
+	                </td>
+	                {{/if}}
+	                
+	            </tr>
+
+
+	            {{/each}}
+	            {{/if}}
+
+	       </tbody>
+	    </table>
+	    <div id="confirmPasswordAcademyRender"></div>
+	    <div id="duesOfTournaRender"></div>
+	    {{> sendingMailPopup2}}
+	</div>
+</template>
+
+
+
+<template name ="dAWise">
+	<div class="row">
+	 	<div class ="row" style="display: flex; margin-top: 10px;">
+        	<a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 1; height: 30px;pointer-events:{{prevPageClass}};" href="{{prevPage}}" id="prevPage" >previous</a>
+        	<a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 1; margin-left: 5px; height: 30px;pointer-events:{{nextPageClass}};" href="{{nextPage}}" id="nextPage" >next</a>
+        
+    	</div>
+    </div>
+	<div class="row">
+	    <table class="table table-striped tableOFCSVHTML">
+	        <thead style="">
+	        	<tr class="headerAnalytics2">
+	               <th class="pAnalytics2">No</th>
+	               <th class="pAnalytics2">District Association</th>
+	               <th class="pAnalytics2">Total</th>
+	               <th class="pAnalytics2">Receipt</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	        	{{#if Template.subscriptionsReady}}
+
+	        	{{#each HTMLViewOfDAFeeData}}
+	            <tr class="headerAnalytics3">
+	                <td class="pAnalytics2">{{this.slNo}}</td>
+	                <td class="pAnalytics2">{{this.districtName}}</td>
+	                <td class="pAnalytics2">{{this.total}}/-</td>
+
+	                {{#if checkSubHideLastDATESUB eventId}}
+	                <td class="pAnalytics2">
+	                	<input type=button value="{{checkReceiptSent_DA this.districtAssociationId}}" class="sendReciept"  id="" style="background:grey !important">
+	                </td>
+	                {{else}}
+	                <td class="pAnalytics2">
+	                	<input type=button value="{{checkReceiptSent_DA this.districtAssociationId}}" class="sendReciept"  id="sendRec" style="">
+	                </td>
+	                {{/if}}
+	                
+	            </tr>
+
+
+	            {{/each}}
+	            {{/if}}
+
+	       </tbody>
+	    </table>
+	    <div id="confirmPasswordAcademyRender"></div>
+	   	<div id="confirmPasswordDARender"></div>
+	    <div id="duesOfTournaRender"></div>
+	    {{> sendingMailPopup2}}
+	</div>
+</template>
+
+
+<template name="playerTeamWise">
+	<div class="row">
+	 	<div class ="row" style="display: flex; margin-top: 10px;padding: 5px 7px 5px 15px;">
+        	<a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 1; height: 30px;pointer-events:{{prevPageClass}};" href="{{prevPage}}" id="prevPage" >previous</a>
+        	<a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 1; margin-left: 5px; height: 30px;pointer-events:{{nextPageClass}};" href="{{nextPage}}" id="nextPage" >next</a>
+        
+    	</div>
+    </div>
+    <div class = "row">
+    	 <div id="id2" name="checkNEW" style="float:left;display: flex;  background: black none repeat scroll 0% 0%; border: 1px solid white;  padding: 5px 7px 5px 15px;margin-top:5px !important">
+            <input style="width: 300px; font-size: 12px; background: transparent none repeat scroll 0px center; border: 0px none; color: orange;" value="" placeholder="search by name" type="text" id="searchByAfilID">
+            <span style="font-size:14px!important;padding-right:10px !important" class="glyphicon glyphicon-remove-circle clearInputFiled" id="clearInputField"></span>
+            <input type="button" class="selectionForm_N7" id="searchByBtn" value="Display" style="width: 57px;height:20px;">
+
+        </div>
+
+    </div>
+
+	<div class="row">
+		{{#if Template.subscriptionsReady}}
+
+	    <table class="table table-striped tableOFCSVHTML">
+	        <thead style="">
+	        	<tr class="headerAnalytics2">
+	               <th class="pAnalytics2">No</th>
+	               <th class="pAnalytics2">Name</th>
+	               <th class="pAnalytics2">Academy</th>
+	               <th class="pAnalytics2">Email</th>
+	               <th class="pAnalytics2">Phone</th>
+	               <th class="pAnalytics2">DOB</th>
+	               {{#each HTMLViewOFFeeData.[0].eventNames}}
+	               	<th class="pAnalytics2">{{this}}</th>
+	               {{/each}}
+	               <th class="pAnalytics2">Total</th>
+	               <th class="pAnalytics2">Receipt</th>
+	               <!--th class="pAnalytics2">Dues</th-->
+	            </tr>
+	        </thead>
+	        <tbody>
+	        	{{#each HTMLViewOFFeeData}}
+	            <tr class="headerAnalytics3">
+	                <td class="pAnalytics2">{{this.slNo}}</td>
+	                <td class="pAnalytics2">{{this.playerName}}</td>
+	                <td class="pAnalytics2">{{this.academyName}}</td>
+	                <td class="pAnalytics2">{{this.emailAddress}}</td>
+	                <td class="pAnalytics2">{{this.phoneNumber}}</td>
+	                <td class="pAnalytics2">{{upcomingformatDate this.dob}}</td>
+	               	{{#each this.eventFee}}
+	                	<td class="pAnalytics2">{{this}}</td>
+	                {{/each}}
+	                <td class="pAnalytics2">{{this.total}}/-</td>
+	                {{#if checkSubHideLastDATESUB eventId}}
+	                <td class="pAnalytics2">
+	                	<input type=button value="{{checkReceiptSent_playerTeam this.playerId}}" class="sendReciept"  id="" style="background:grey !important">
+	                </td>
+	                {{else}}
+	                <td class="pAnalytics2">
+	                	<input type=button value="{{checkReceiptSent_playerTeam this.playerId}}" class="sendReciept"  id="sendRec" style="">
+	                </td>
+	                {{/if}}	            
+	            </tr>
+	            {{/each}}
+
+	       </tbody>
+	    </table>
+	   	{{/if}}
+
+	    <div id="confirmPasswordRender"></div>
+	    <div id="duesOfTournaRender"></div>
+
+	    {{> sendingMailPopup2}}
+	</div>
+</template>

@@ -1,0 +1,71 @@
+<template name="approveArticles">
+   {{#if notAdmin}}
+   <div class=''>
+      <p style="color:orange;font-size:12px;">You are not authorised for this URL</p>
+   </div>
+   {{else}}
+   <div class="container" style="background:#333; height:auto;">
+      <form id="articleCreation" onkeypress="return event.keyCode != 13;">
+         <div class="row" style="height: -webkit-fill-available;font-family: Arial, Helvetica, sans-serif;font-size: 15px;padding-right: 2%;padding-left: 2%;margin: 3px 0px 0px 2px;">
+            <div class="row-same-height">
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                  <div class="mainTitle">
+                     <p class="title">
+                        Approve Articles / Packs
+                     </p>
+                     <input type="button" id="CancelView" class="ip_button_LightGrey" style="order:1" value="cancel">
+                  </div>
+               </div>
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                  </div>
+                  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                     
+                  </div>
+               </div>
+               <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="
+                  margin-top: 10px;
+                  ">
+                 
+                  <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+                     <thead style="">
+                        <tr class="headeSubDiv2_entryFAca_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">
+                           <th class="pAnalytics2_entryFAca_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">Sl No.</th>
+                           <th class="pAnalytics2_entryFAca_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">title</th>
+                            <th class="pAnalytics2_entryFAca_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">Publisher</th>
+                           <th class="pAnalytics2_entryFAca_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;width:30% !important">description</th>
+                           <th class="pAnalytics2_entryFAca_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">type</th>
+                           <th class="pAnalytics2_entryFAca_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">Admin Status</th>
+                           <th class="pAnalytics2_entryFAca_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;"></th>
+                        </tr>
+                     </thead>
+                     <tbody class="tableOFCSVHTML_entryFAcatableBody" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;">
+                        {{#each pendingArticleList}}
+                        <tr class="headerAnalytics3" id="headerAnalytics3" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;">
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background: transparent none repeat scroll 0px center !important;color:white;">{{getSLNUMBARticles @index}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">{{this.title}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">{{displayNameOfUser this.userId}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;width:30% !important">{{this.articleDesc}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">{{this.type}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">{{this.adminStatus}}</td>
+                           <td class="pAnalytics2_entryFAca2_backWhite" 
+                           style="background:transparent none repeat scroll 0px center !important;border:1px solid black;color:white;">
+
+<input type="button" class="selectionForm_N7" id="adminApprove" style="order:2;margin:0px;padding:0px; height:2.2em!important;" name={{this}} value="Approve">
+                           </td>
+                        </tr>
+                        {{/each}}
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </form>
+      <div id="displayPlayerProfile"></div>
+   </div>
+   {{/if}}
+</template>

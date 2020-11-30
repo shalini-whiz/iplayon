@@ -1,0 +1,82 @@
+<template name="teamsMorescores">
+	<div class="modal" id="teamsMorescores">
+		{{#if Template.subscriptionsReady}}
+        <div id="subDomainCenter" class="modal-dialog subTeamSubsModal-sm" style="width: 670px !important;">
+        	<div class="selectTeamSubsPopup" style="width: 670px !important;">
+        		<div class="modal-content">
+	        		<div class="modal-header selectSubDomainsHeader">
+	                    <p class="modal-title" id="setEventNameHeader" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;text-align:center">
+	                        Team More Set Scores
+	                    </p>
+	                </div>
+	                <div class="modal-body subDomainModalBody" style="max-height: 50vh;overflow: auto;">
+	                	<div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-bottom:4px;">
+	                		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;">
+	                			<p style="font-size:12px;width:100%;">{{roundNumMatchnumMore}}
+	                			</p>
+	                		</div>
+	                		
+	                		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;">
+	                			<p style="font-size:12px;width:100%;">{{getTeamsNamesForIdMOre teamIDAOthMore}}
+	                			</p>
+	                		</div>
+	                		<!--div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;">
+	                			{{#each numberOfScoresAndValuesA}}
+	                			{{/each}}
+	                		</div>
+	                		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;">
+	                			{{getTeamsNamesForIdMOre teamIDAOthMore}}
+	                		</div>
+	                		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;">
+
+	                		</div-->
+	                		<table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+								<tbody class="">
+								{{#each numberOfScoresAndValuesA}}
+									<td class="matchRowDEtScore" style="width:5%;{{Scores_teamSettingsB @index}}"><p style="font-size:12px;width:100%;text-align:center;" >{{this}}</p>
+									</td>
+								{{/each}}
+								</tbody>
+							</table>
+							<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding:0px!important;">
+								<p style="font-size:12px;width:100%;">
+	                			{{getTeamsNamesForIdMOre teamIDBOthMore}}
+	                			</p>
+	                		</div>
+	                		<table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+								<tbody class="">
+								{{#each numberOfScoresAndValuesB}}
+									<td class="matchRowDEtScore" style="width:5%;{{Scores_teamSettingsB @index}}"><p style="font-size:12px;width:100%;text-align:center;" >{{this}}</p>
+									</td>
+								{{/each}}
+								</tbody>
+							</table>
+	                	</div>
+	                </div>
+	                <div class="modal-footer">
+						<div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding-right:0px !important;padding-bottom: 4px;">
+							<div class="row">
+								<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
+								</div>
+								<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 ">
+									<div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 ">
+		                            </div>
+									<div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 " style='text-align:center;'>
+										<button type="button" class="ip_button_Popup_Red" id="closePopupp" >Ok
+		                                </button>
+									</div>
+		                            <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3 ">
+		                            </div>
+		                        </div>
+		                    </div>
+	 					</div>
+	        		</div>
+        		</div>
+			</div>
+		</div>
+        {{else}}
+           {{> loaderForUPCOM}}
+        {{/if}}
+ 	</div>
+</template>
+

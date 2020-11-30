@@ -1,0 +1,11 @@
+{
+  "galaxy.meteor.com": {
+    "env": {
+      "ROOT_URL":  "http://www.iplayon.in",
+      "MONGO_URL":
+"mongodb://iplayon:Rav1IsAtArra@ds019140-a0.mlab.com:19140/ia_iplayon",
+      "MONGO_OPLOG_URL":
+"mongodb://oplog-reader:Rav1IsAtArra@ds019140-a1.mlab.com:19140/local?authSource=admin"
+    }
+  }
+}

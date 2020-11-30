@@ -1,0 +1,123 @@
+<template name="profileAddress">
+  <div class="modal" id="profileAddress" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content modal-content-modReg1">
+        <div class="modal-header  modal-header-modReg1" style="padding:0px!important;padding-left: 0px!important;height:34px !important;background:0;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12" style="padding: 0px ! important;height:34px !important;">
+            <div class="row" style="margin:0 !important;height:34px !important;">
+              <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12 contRegNEwHead" style="border-top-right-radius: 5px;height:34px !important;">
+                <p class="modal-title titeofregistemodal" style="text-align: center;margin-top:5px;">Modfiy Profile</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body  modal-body-modReg1" style="min-height: 13.3em!important;">
+          <div class="container col-md-12 col-xs-12 col-lg-12 col-sm-12">
+            <div class="row">
+              <div class="row" style="margin-top: 5px;">
+                  <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:15px !important;padding-top:2px;">   
+                    <p class="labelWhoNew2">
+                      Address:
+                    </p>
+                  </div> 
+                  <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding-left: 30px!important;">
+                    <input type="text" id="address" autocomplete="off"   placeholder="Address" name="address" class="address" style="color:black;text-align:left;padding-left:2%;height:2em;width:100%;display:block;;font-size:13px;" value="{{profile.address}}">
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="row" style="margin-top: 5px;">
+                  <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:15px !important;padding-top:2px;">   
+                    <p class="labelWhoNew2">
+                      City:
+                    </p>
+                  </div> 
+                  <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding-left: 30px!important;">
+                    <input type="text" id="city" autocomplete="off"   placeholder="City" name="city" class="city" style="color:black;text-align:left;padding-left:2%;height:2em;width:100%;display:block;;font-size:13px;" value="{{profile.city}}">
+                  </div>
+              </div>
+            </div>
+
+            {{#if coachExists}}
+              <div class="row" style="padding-top:5px">
+              <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:15px !important;padding-top:2px;padding-left: 0px !important;">
+                <p class="labelWhoNew2">
+                  Country:
+                </p>
+              </div>
+              <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding-left: 23px !important;padding-right: 0px !important;">
+                <select id="country" name="country" style="width: 100%;height: 2em;font-size: 12px;">
+                  <option selected disabled>Country</option>
+                    {{#each lCountryName}}
+                      {{#if checkCountrySelection profile.country this.countryName}}
+                        <option value={{this.countryName}}  name={{this.countryName}} id="checkCountryName" class=""  style="cursor:pointer!important" selected>{{this.countryName}}</option>
+                      {{else}}
+                        <option value={{this.countryName}} name={{this.countryName}} id="checkCountryName">{{this.countryName}}</option>
+                      {{/if}}
+                    {{/each}}
+                </select>
+              </div>
+            </div>
+
+            {{/if}}
+            <div class="row" style="padding-top:5px">
+              <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:15px !important;padding-top:2px;padding-left: 0px !important;">
+                <p class="labelWhoNew2">
+                  State:
+                </p>
+              </div>
+              <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding-left: 23px !important;padding-right: 0px !important;">
+                <select id="state" name="state" style="width: 100%;height: 2em;font-size: 12px;">
+                  <option selected disabled>State</option>
+                    {{#each lDomainName}}
+                      {{#if checkDomainSelection this._id}}
+                        <option value={{this._id}}  name="checkDomainName" id="{{this._id}}" class=""  style="cursor:pointer!important" selected>{{this.domainName}} </option>
+                      {{else}}
+                        <option value={{this._id}} name="checkDomainName" id="{{this._id}}">{{this.domainName}}</option>
+                      {{/if}}
+                    {{/each}}
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="row" style="margin-top: 5px;">
+                  <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-right:15px !important;padding-top:2px;">   
+                    <p class="labelWhoNew2">
+                      Pincode:
+                    </p>
+                  </div> 
+                  <div class="col-md-9 col-xs-9 col-lg-9 col-sm-9" style="padding-left: 30px!important;">
+                    <input type="text" id="pinCode" autocomplete="off"   placeholder="pincode" name="pinCode" class="pinCode" style="color:black;text-align:left;padding-left:2%;height:2em;width:100%;display:block;;font-size:13px;" value="{{profile.pinCode}}">
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="row">
+                {{#if playerRoleExists}}
+                <p class="downloadAcceptTitle" style="color:black">* Change in state selection restricted if player is already affiliated</p>
+                {{/if}}
+              </div>
+              <div class="row" style="margin-top: 8px;">
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-left: 11px!important;">
+                </div>
+                <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3" style="padding-left: 17px!important;">
+                   <button type="button" class="ip_button_Popup_Black" id="profileAddressSave">Save</button>
+                </div>
+                <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2" style="padding-left: 13px!important;">
+                   <button type="button" class="ip_button_Popup_Red" data-dismiss="modal" id="close">Cancel</button>
+                </div>
+              </div>
+            </div>
+            <div class="row" id="errorDiv_EditAddress">
+              <div class="row" style="margin-top: 8px;">
+               <p id="impMsg" class='impMsg'></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+

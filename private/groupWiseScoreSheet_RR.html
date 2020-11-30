@@ -1,0 +1,539 @@
+  {{{getDocType}}}
+<html lang="en">
+<head>
+    <style type="text/css">
+      {{css}}
+    </style>
+</head>
+<body>
+  <div class="container">
+        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+         <img src="{{imageURL}}/{{logoImg}}"  style="width:100%;float:right;margin:0px !important;margin-top:-3px !important;border:0;margin-bottom: :10px !important;" />
+        </div>
+        <div class="col-md-8 col-xs-8 col-sm-8 col-lg-8" style="padding:0px!important;">
+          <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading" style="font-family: sans-serif;">Score Sheet</p>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:auto!important;">
+                <p class="pclassPDFHeading" style="font-family: sans-serif;">{{tournamentName_team}} - {{drawsEventName}}</p>
+            </div>
+            
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading2" style="margin-top:0px;font-family: sans-serif;">held at 
+                  {{domainName_team}}
+                </p>
+            </div>
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding:0px;height:22px!important;">
+                <p class="pclassPDFHeading2" style="margin-top:0px;font-family: sans-serif;">{{eventDate_team}}</p>
+            </div>
+           
+        </div>
+        {{#if get5sImage}}
+        <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"  style="padding:0px!important;margin:0px !important;">
+          {{#if get5sImage.url}}
+          <img src="{{imageURL}}{{get5sImage.url}}" style="width:94%;height:14%;float:right;margin:0px !important;margin-top:-3px !important;border:0"/>
+          {{/if}}
+        </div>
+        {{/if}}
+  </div>
+  
+  {{#if type}}
+
+    {{#each fetchDetailScore}}
+     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">  
+      {{#if this.groupName}}
+          <p style="margin:0px;font-family: sans-serif;">{{this.groupName}} </p>
+          {{/if}} 
+      <table class="able table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="width:100%;table-layout:fixed;">
+        <tbody class="">
+          <tr class="headerAnalytics3" id="headerAnalytics3">
+            <td class="headerDetScoreTeam" style="font-family: sans-serif;"></td>
+            <td class="headerDetScoreTeam" style="font-family: sans-serif;">set 1</td>
+            <td class="headerDetScoreTeam" style="font-family: sans-serif;">set 2</td>
+            <td class="headerDetScoreTeam" style="font-family: sans-serif;">set 3</td>
+            <td class="headerDetScoreTeam" style="font-family: sans-serif;">set 4</td>
+            <td class="headerDetScoreTeam" style="font-family: sans-serif;">set 5</td>
+            <td class="headerDetScoreTeam" style="font-family: sans-serif;">set 6</td>
+            <td class="headerDetScoreTeam" style="font-family: sans-serif;">set 7</td>                        
+        </tr>
+        <tr class="headerAnalytics3" id="headerAnalytics3">                   
+                           
+          <td class="robin_td" style="border-spacing:0;padding:2px !important;width: 20% !important" > <p style="text-align:left;margin-left:5px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">{{displayPlayerName this.playersID.playerAId}}</p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">
+                {{#if scoreType}}
+                  {{this.scores.setScoresA.[0]}}
+                {{else}}
+                  &nbsp;
+                {{/if}}
+              </p>
+            </td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">
+                {{#if scoreType}}
+                  {{this.scores.setScoresA.[1]}}
+                {{else}}
+                  &nbsp;
+                {{/if}}
+              </p> 
+            </td>
+                            
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">
+                {{#if scoreType}}
+                  {{this.scores.setScoresA.[2]}}
+                {{else}}
+                  &nbsp;
+                {{/if}}
+              </p>
+            </td>
+                            
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">
+                {{#if scoreType}}
+                  {{this.scores.setScoresA.[3]}}
+                {{else}}
+                  &nbsp;
+                {{/if}} 
+              </p>
+            </td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">
+                {{#if scoreType}}
+                  {{this.scores.setScoresA.[4]}}
+                {{else}}
+                  &nbsp;
+                {{/if}} 
+              </p>
+            </td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">
+                {{#if scoreType}}
+                  {{this.scores.setScoresA.[5]}}
+                {{else}}
+                  &nbsp;
+                {{/if}} 
+              </p>
+            </td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">
+                {{#if scoreType}}
+                  {{this.scores.setScoresA.[6]}}
+                {{else}}
+                  &nbsp;
+                {{/if}} 
+              </p>
+            </td>
+                                               
+          </tr>
+
+          <tr class="headerAnalytics3" id="headerAnalytics3">
+                               
+            <td class="robin_td" style="border-spacing:0;padding:2px !important;width: 20% !important"> <p style="text-align:left;margin-left: 5px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">{{displayPlayerName this.playersID.playerBId}}</p></td>
+                         
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;;">
+                <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">
+                  {{#if scoreType}}
+                    {{this.scores.setScoresB.[0]}}
+                  {{else}}
+                    &nbsp;
+                  {{/if}}       
+                </p>
+              </td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">
+                {{#if scoreType}}
+                  {{this.scores.setScoresB.[1]}}
+                {{else}}
+                  &nbsp;
+                {{/if}}
+              </p>
+            </td>
+                            
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">
+                {{#if scoreType}}
+                  {{this.scores.setScoresB.[2]}}
+                {{else}}
+                  &nbsp;
+                {{/if}}
+                </p>
+            </td>
+                
+                            
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">
+                {{#if scoreType}}
+                  {{this.scores.setScoresB.[3]}}
+                {{else}}
+                  &nbsp;
+                {{/if}}
+              </p>
+            </td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">
+                {{#if scoreType}}
+                  {{this.scores.setScoresB.[4]}}
+                {{else}}
+                  &nbsp;
+                {{/if}}
+            </p></td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">
+                {{#if scoreType}}  
+                  {{this.scores.setScoresB.[5]}}
+                {{else}}
+                  &nbsp;
+                {{/if}}
+              </p>
+            </td>
+
+            <td class="robin_td" style="font-weight: bold;border-spacing:0;padding:2px !important;">
+              <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">
+                {{#if scoreType}}
+                  {{this.scores.setScoresB.[6]}}
+                {{else}}
+                  &nbsp;
+                {{/if}}
+              </p>
+            </td>
+                             
+          </tr>                 
+        </tbody>
+      </table>
+      {{#if scoreType}}
+        {{#if this.setWins}}
+          <p style="text-align:left;margin-left:15px;margin-top:2px;font-family: sans-serif;">Match Score : 
+              <span>{{this.setWins.playerA}} - {{this.setWins.playerB}}</span>
+          </p>
+        {{/if}}
+        {{#if this.status}}
+          <p style="text-align:left;margin-left:15px;margin-top:2px;font-family: sans-serif;">Match Type : {{this.status}}</p>
+        {{/if}}
+        {{#if this.winnerID}}
+          <p style="text-align:left;margin-left:15px;font-family: sans-serif;">Winner : {{displayPlayerName this.winnerID}}</p>
+        {{/if}}
+
+      {{else}}
+        <p style="text-align:left;margin-left:15px;margin-top:2px;font-family: sans-serif;">Match Score : 
+              <span>&nbsp;&nbsp;</span>
+        </p>
+        <p style="text-align:left;margin-left:15px;margin-top:2px;font-family: sans-serif;">Match Type : &nbsp;</p>
+        <p style="text-align:left;margin-left:15px;font-family: sans-serif;">Winner : &nbsp;</p>
+
+      {{/if}}
+        
+      
+        
+  
+    
+    </div>
+    {{/each}}
+  {{else}}
+    {{#each fetchDetailScore}}
+      {{#if this.groupName}}
+        <p style="margin:0px;font-family: sans-serif;">{{this.groupName}} 
+          <span>
+            &nbsp; {{findTheTeamNamedraw this.teamsID.teamAId}} v/s {{findTheTeamNamedraw this.teamsID.teamBId}}
+          </span>
+
+        </p>
+      {{/if}} 
+    
+     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top:0px !important;padding:0px !important;">
+        <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="width:100%;">
+          <thead class="">
+              <!--match a vs x header-->
+              <tr class="headerAnalytics3" id="headerAnalytics3">
+                <td class="headerDetScoreTeam" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;"></p></td>
+                  <td class="headerDetScoreTeam" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">Match Type</p></td>
+                  <td class="headerDetScoreTeam" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">Names</p></td>
+                  <td class="headerDetScoreTeam" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">1</p></td>
+                  <td class="headerDetScoreTeam" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">2</p></td>
+                  <td class="headerDetScoreTeam" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">3</p></td>
+                  <td class="headerDetScoreTeam" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">4</p></td>
+                  <td class="headerDetScoreTeam" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">5</p></td>
+                  <td class="headerDetScoreTeam" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">6</p></td>
+                  <td class="headerDetScoreTeam" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">7</p></td>
+                  <td class="headerDetScoreTeam" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">Winner</p></td>
+              </tr>
+          </thead>
+          <tbody>
+          {{#each this.specifications}}
+
+              <!--player A-->
+              <tr class="headerAnalytics3" id="headerAnalytics3">
+                <td class="matchRowDEtScore" style="border-spacing:0;padding:2px !important;">
+                  <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">{{this.displayLabel}}
+                    </p>
+                </td>
+                <td class="matchRowDEtScore" style="">                                  
+                  {{setMatchStatus this.detailScore}}
+                </td>
+                  <td class="matchRowDEtScore" style="">
+                    {{#if eventType this.type}}
+                      <p style="text-align:left;margin-left:5px;margin-top:2px;margin-bottom:2px;font-size:14px;font-family: sans-serif;">{{setPlayerName this.detailScore 'playerA'}}
+                            </p>              
+                    {{else}}
+                      <p style="text-align:left;margin-left:5px;margin-top:2px;margin-bottom:2px;font-size:14px;font-family: sans-serif;">{{setPlayerName this.detailScore 'playerA'}}
+                            </p>  
+                            <p style="text-align:left;margin-left:5px;margin-top:2px;margin-bottom:2px;font-size:14px;font-family: sans-serif;">{{setPlayerName this.detailScore 'playerB'}}
+                            </p>                  
+                    {{/if}}
+                  </td>                     
+                 
+                  <td class="matchRowDEtScore" style="width:5%;">
+                      {{#if scoreType}}
+                        {{#if this.detailScore}}                              
+                          <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">{{detailScore.setScoresA.[0]}}</p>
+                        {{else}}
+                          <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">0</p>
+                        {{/if}}
+                      {{else}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">&nbsp;</p>
+                      {{/if}}
+                  </td>
+                  <td class="matchRowDEtScore" style="width:5%;">
+                    {{#if scoreType}}
+                      {{#if detailScore}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">{{detailScore.setScoresA.[1]}}</p>
+                      {{else}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">0</p>
+                      {{/if}}
+                    {{else}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">&nbsp;</p>
+                    {{/if}}
+                  </td>
+                  <td class="matchRowDEtScore" style="width:5%;">
+                    {{#if scoreType}}
+                      {{#if detailScore}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;">{{detailScore.setScoresA.[2]}}</p>
+                      {{else}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">0</p>
+                      {{/if}}
+                    {{else}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">&nbsp;</p>
+                    {{/if}}
+                  </td>
+                  <td class="matchRowDEtScore" style="width:5%;">
+                    {{#if scoreType}}
+                      {{#if detailScore}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">{{detailScore.setScoresA.[3]}}</p>
+                      {{else}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">0</p>
+                      {{/if}}
+                    {{else}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">&nbsp;</p>
+                    {{/if}}
+                  </td>
+                  <td class="matchRowDEtScore" style="width:5%;">
+                    {{#if scoreType}}
+                      {{#if detailScore}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">{{detailScore.setScoresA.[4]}}</p>
+                      {{else}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">0</p>
+                      {{/if}}
+                    {{else}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">&nbsp;</p>
+                    {{/if}}
+                  </td>
+                  <td class="matchRowDEtScore" style="width:5%;">
+                    {{#if scoreType}}
+                      {{#if detailScore}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">{{detailScore.setScoresA.[5]}}</p>
+                      {{else}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">0</p>
+                      {{/if}}
+                    {{else}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">&nbsp;</p>
+                    {{/if}}
+                  </td>
+                  <td class="matchRowDEtScore" style="width:5%;">
+                    {{#if scoreType}}
+                      {{#if detailScore}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">{{detailScore.setScoresA.[6]}}</p>
+                      {{else}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">0</p>
+                      {{/if}}
+                    {{else}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">&nbsp;</p>
+                    {{/if}}
+                  </td>
+                  <td class="matchRowDEtScore" style="border-spacing:0;padding:2px !important;">
+                    {{#if scoreType}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;font-family: sans-serif;">
+                        {{setWinner this.detailScore this.type}}</p>
+                      {{else}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:14px;font-family: sans-serif;">
+                        </p>
+                      {{/if}}
+                  </td>
+              </tr>
+
+              <!-- player x-->
+              <tr class="headerAnalytics3" id="headerAnalytics3">
+                  <td class="matchRowDEtScore" style="border-spacing:0;padding:2px !important;">
+
+                  </td> 
+                  <td class="matchRowDEtScore" style="">
+                  </td>
+                    
+                  <td class="matchRowDEtScore" style="border-spacing:0;padding:2px !important;">
+                    {{#if eventType this.type}}
+                <p style="text-align:left;margin-left:5px;margin-top:2px;margin-bottom:2px;font-size:14px;font-family: sans-serif;">{{setPlayerName this.detailScore 'playerX'}}
+                      </p>              
+              {{else}}
+                <p style="text-align:left;margin-left:5px;margin-top:2px;margin-bottom:2px;font-size:14px;font-family: sans-serif;">{{setPlayerName this.detailScore 'playerX'}}
+                      </p>  
+                      <p style="text-align:left;margin-left:5px;margin-top:2px;margin-bottom:2px;font-size:14px;font-family: sans-serif;">{{setPlayerName this.detailScore 'playerY'}}
+                      </p>                  
+              {{/if}}
+                  </td>
+                  <td class="matchRowDEtScore" style="width:5%;">
+                    {{#if scoreType}}
+                      {{#if detailScore}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">{{detailScore.setScoresB.[0]}}</p>
+                      {{else}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">0</p>
+                      {{/if}}
+                    {{else}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">&nbsp;</p>
+                    {{/if}}
+                  </td>
+                  <td class="matchRowDEtScore" style="width:5%;">
+                    {{#if scoreType}}
+                      {{#if detailScore}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">{{detailScore.setScoresB.[1]}}</p>
+                      {{else}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">0</p>
+                      {{/if}}
+                    {{else}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">&nbsp;</p>
+                    {{/if}}
+                  </td>
+                  <td class="matchRowDEtScore" style="width:5%;">
+                    {{#if scoreType}}
+                      {{#if detailScore}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">{{detailScore.setScoresB.[2]}}</p>
+                      {{else}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">0</p>
+                      {{/if}}
+                    {{else}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">&nbsp;</p>
+                    {{/if}}
+                  </td>
+                  <td class="matchRowDEtScore" style="width:5%;">
+                    {{#if scoreType}}
+                      {{#if detailScore}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">{{detailScore.setScoresB.[3]}}</p>
+                      {{else}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">0</p>
+                      {{/if}}
+                    {{else}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">&nbsp;</p>
+                    {{/if}}
+                  </td>
+                  <td class="matchRowDEtScore" style="width:5%;">
+                    {{#if scoreType}}
+                      {{#if detailScore}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">{{detailScore.setScoresB.[4]}}</p>
+                      {{else}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">0</p>
+                      {{/if}}
+                    {{else}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">&nbsp;</p>
+                    {{/if}}
+                  </td>
+                  <td class="matchRowDEtScore" style="width:5%;">
+                    {{#if scoreType}}
+                      {{#if detailScore}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">{{detailScore.setScoresB.[5]}}</p>
+                      {{else}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">0</p>
+                      {{/if}}
+                    {{else}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">&nbsp;</p>
+                    {{/if}}
+                  </td>
+                  <td class="matchRowDEtScore" style="width:5%;">
+                    {{#if scoreType}}
+                      {{#if detailScore}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">{{detailScore.setScoresB.[6]}}</p>
+                      {{else}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">0</p>
+                      {{/if}}
+                    {{else}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;margin-bottom:2px;font-size:12px;font-family: sans-serif;">&nbsp;</p>
+                    {{/if}}
+                  </td>
+                  <td class="matchRowDEtScore" style="border-spacing:0;padding:2px !important;">
+
+                  </td>
+              </tr>
+              {{/each}}
+
+  
+
+              
+          </tbody>
+      </table>
+       {{#if scoreType}}
+        {{#if this.setWins}}
+          <p style="text-align:left;margin-left:15px;margin-top:2px;font-family: sans-serif;">Match Score : 
+              <span>{{this.setWins.teamA}} - {{this.setWins.teamB}}</span>
+          </p>
+        {{/if}}
+      
+
+      {{else}}
+        <p style="text-align:left;margin-left:15px;margin-top:2px;font-family: sans-serif;">Match Score : 
+              <span>&nbsp;&nbsp;</span>
+        </p>
+        
+
+      {{/if}}
+
+      <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne" style="width:100%;margin-top:10px;">
+          <tbody class="">
+              <tr class="headerAnalytics3" id="headerAnalytics3">
+                  <td class="headerDetScoreTeamFinal" style="border-spacing:0;padding:2px !important;"><p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">Ultimate Winning Team</p></td>
+                  <td class="headerDetScoreTeamFinal" style="border-spacing:0;padding:2px !important;">
+                    {{#if scoreType}}
+                      {{#if this.teamMatchType}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">Match Type:{{this.teamMatchType}}</p>
+                      {{else}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">Not Played</p>
+                      {{/if}}
+                    {{else}}
+                        <p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">Match Type:&nbsp;</p>
+                    {{/if}}
+                  </td>
+                  <td class="headerDetScoreTeamFinal" style="border-spacing:0;padding:2px !important;">
+                    {{#if scoreType}}
+                      {{#if this.finalTeamWinner}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">    {{setTeamWinner this.finalTeamWinner}}</p>
+                      {{else}}
+                      <p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">&nbsp;</p>
+                      {{/if}}
+                    {{else}}
+                     <p style="text-align:center;margin:0px;margin-top:2px;font-family: sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                     {{/if}}
+                  </td>               
+              </tr>
+          </tbody>
+      </table>
+      <br>
+    </div>
+    {{/each}}
+  {{/if}}
+
+</body>
+</html>

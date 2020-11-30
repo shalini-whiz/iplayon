@@ -1,0 +1,135 @@
+
+select:-moz-focusring { 
+    color: transparent !important;
+    text-shadow: 0 0 0 #000 !important; 
+} 
+
+.statTitle
+{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.formClass1 {
+    margin-top:50px;
+    border:1px solid #808080;
+    background: white;
+    color:black;
+}
+
+.formClass {
+    margin-top:50px;
+    border:1px solid #808080;
+    background: #222 none repeat scroll 0% 0%;
+}
+
+
+    .customLabel {
+        font-weight: normal;
+        margin-top: 0%;
+        font-size: 12px;
+        height: 2em;
+        box-sizing: border-box;
+        overflow: hidden;
+        padding-left: 5%;
+        display: flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+
+    }
+    .websiteHeader
+    {
+        font-weight: normal;
+        margin:2px;
+        font-size: 18px; 
+        color:#FFA500;
+        text-align: center !important; 
+        float:left !important;
+    }
+    .navigationBar
+    {
+        margin:2px;
+        border-radius: 5px;
+        height:40px;
+        border-color: #808080;
+        background:#222;
+        border-style: solid;
+        border-width:1px;   
+        text-align: center !important; 
+
+    }
+    .impMsg
+    {
+        color:red;
+        font-size: 12px; 
+        font-weight: normal;
+        text-align:left;
+        margin-left:1%;
+
+    }
+    .dropdown-menu .divider
+    {
+        background-color: black;
+    }
+
+    .customDropDown {
+        font-weight: normal;
+        margin-top: 0%;
+        font-size: 12px; 
+        text-align:left !important;
+        height:38px !important;
+       
+    }
+
+
+    a.customDropDown:hover
+    {
+        color:white;
+        font-size: 14px; 
+        background:#222 !important;
+    }
+    a.customDropDown:link
+    {
+
+        color:white;
+        font-size: 14px; 
+        background:#222 !important;
+    }
+
+
+    .customInnerDropDown
+    {
+      background-color: #808080;
+    }
+    .dropdown-menu .customInnerDropDownAnchor
+    {
+        color:white;
+        font-size: 12px;
+        font-weight: normal;
+    }
+    a.customInnerDropDownAnchor:hover
+    { 
+        background:transparent linear-gradient(to right, #888, #505050) repeat scroll 0% 0%;;
+        font-size: 12px;
+        font-weight: normal;
+        color:white;
+    }
+a.customInnerDropDownAnchor:active
+    { 
+        background:#505050;
+        font-size: 12px;
+        font-weight: normal;
+        color:white;
+    }
+.clearInputFiled
+{
+    border: 0px none;
+    background: transparent none repeat scroll 0% 0%;
+    font-size: 13px;
+    font-weight: normal;
+    margin-top: 4px;
+    cursor: pointer;
+    color: #FFA500;
+}

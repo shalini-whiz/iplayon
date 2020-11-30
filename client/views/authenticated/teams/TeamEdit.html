@@ -1,0 +1,139 @@
+<template name="teamEdit">
+    <form id="teamEditForm" onkeypress="return event.keyCode != 13;">
+        <div class="row mainContent_myEvents">
+            <div class="row-same-height">
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                    <div class="mainTitle">
+                        <p class="title">
+                            Edit Team: {{teamName}}
+                        </p>
+                        <input type="button" id="cancel" class="ip_button_LightGrey" style="order:2" value="Cancel" />
+                        <input type="submit" id="save" class="ip_button_LightGrey" style="order:1" value="Save" />
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 " style="margin-top:1px;"><!--0.4%-->
+                    <div class="row no-gutter" style="cursor:default !important;">
+                        <div class="gamesParent">
+                            <div class="editgames" style="width:40% !important;">
+                                <input disabled id="teamNameCreate" value={{displayTeamProjectNAme lTeam.teamFormatId}} name="teamNameCreate" class="gamesSelect" style="padding-top: 8px !important;">
+                            </div>
+                            <input type="text" disabled name="teamName" value={{lTeam.teamName}} id="teamName" placeholder="<Provide Event Title Here>" class="eventTitle" style="width:60% !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:15px !important;padding-left:15px !important; margin-top: 2px;">
+                  <div class="row" style="">
+                    
+                     <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1 team">
+                        <p class="title" style="color:black">
+                            Owners
+                        </p>
+                    </div>
+                    <div class="col-md-5 col-xs-5 col-sm-5 col-lg-5 team">
+                      <input type="text" name="eventName" id="teamOwners" placeholder="Team Owner" class="teamTitle" style="height: auto !important" value= {{lTeam.teamOwners}}>
+                    </div>
+                     <div class="col-md-1 col-xs-1 col-sm-1 col-lg-1 team">
+                        <p class="title" style="color:black">
+                            Coach
+                        </p>
+                    </div>
+                    <div class="col-md-5 col-xs-5 col-sm-5 col-lg-5 team">
+                      <input type="text" name="eventName" id="teamCoach" placeholder="Team Coach" class="teamTitle" style="height: auto !important" value= {{lTeam.teamCoach}}>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 " style="padding-right:0px !important;padding-left:0px !important;height: 29px!important;">
+                    <div class="row no-gutter" style="">
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 " style="margin-top:-2px; padding-right:0px !important;padding-left:15px !important;" id="">
+                            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left: 0px !important;">
+                                <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+                                        <thead style="">
+                                            <tr class="headeSubDiv2_entryFAca_backWhite">
+                                                <th class="pAnalytics2_entryFAca_backWhite" style="background: #505050 !important;color:white;width: 55px;">Sl No.</th>
+                                                <th class="pAnalytics2_entryFAca_backWhite" style="background: #505050 !important;color:white;width: 296px!important;">Player Type</th>  
+                                                <th class="pAnalytics2_entryFAca_backWhite" style="background: #505050 !important;color:white;width: 474px!important;">Select Players</th>                 
+                                            </tr>
+                                        </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 " style="padding-right:0px !important;padding-left:0px !important;">
+                    <!--0.4%-->
+                    <div class="row no-gutter" style="">
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 " style="margin-top:-4px; padding-right:0px !important;padding-left:15px !important;" id="scrollableLisstPLAYEREdit">
+                            <div class="row no-gutter" style="">
+                                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left: 0px !important;">
+                                    <table class="table table table-fixed table-striped tableOFCSVHTML_entryFAca2_backWhite tableOFCSVHTML_entryFAcatableHead" id="tblOne">
+                                        <tbody class="tableOFCSVHTML_entryFAcatableBody">
+                                            {{#each playerCriteriasEdit}}
+                                            <tr class="headerAnalytics3" id="headerAnalytics3">
+                                                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;width: 55px;color:{{mandatoryColorEdit}}">{{getSlNoPlayerTeam this.playerNo}}{{mandatoryCriteriaEdit}}</td>
+                                                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;width: 296px!important;color:{{mandatoryColorEdit}}">
+                                                    <p style="text-align: left;margin:0px !important;font-size:12px;">&nbsp;Gender:&nbsp;{{GenderCriteriaEdit}}</p>
+                                                    <p style="text-align: left;margin:0px !important;font-size:12px;">&nbsp;Born:&nbsp;{{dobCriteriaEdit}}</p>
+                                                    <p style="text-align: left;margin:0px !important;font-size:12px;">&nbsp;Player Location:&nbsp;{{locCriteriaEdit}}</p>
+                                                    {{#if requiredAffiliation}}
+                                                    <p style="text-align: left;margin:0px !important;font-size:12px;">&nbsp;Affiliation Id:&nbsp;{{requiredAffiliation}}</p>
+                                                    {{/if}}
+                                                </td>
+                                                <td class="pAnalytics2_entryFAca2_backWhite" style="background: #e0e0e0 !important;width: 474px!important;">
+                                                    <input id="searchUserForTeam_Edit"  name="searchUserForTeam_Edit{{this.playerNo}}" type="text" placeholder="Type Team Player's name" autocomplete="off" spellcheck="off" style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; color: #000;border: 1px solid grey;border-radius: 5px;padding: 5px;"/>
+                                                    {{#if Template.subscriptionsReady}}
+                                                    {{#if searchResultsForTeamsEdit}}
+                                                    <div style="float: left; padding: 0px ! important; background: none repeat scroll 0% 0% #E0E0E0; border: 1px solid white; margin-top: 1px ! important;border:0px" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                        <div style="left: 0px; z-index: 100; display: block; position: absolute; background: #fff !important;width: 100%; border: 1px solid black;" class="searchResults">
+                                                            {{#each searchResultsForTeamsEdit}}
+                                                            <div id="{{this.playerId}}" class="addIcon" name="addAcademyMNM_PEdit" value="{{userNAMeForThisId this.userName}}">
+                                                                <p  id="{{this.userId}}" name="userName" value="{{this.userName}}"  style="text-align: left;margin:0px !important;font-size:12px;">{{this.userName}}</p>
+                                                            </div>
+                                                            {{/each}}
+                                                        </div>
+                                                    </div>
+                                                    {{/if}}
+                                                    {{/if}}
+                                                    {{#if selectedPlayerNameEdit}}
+                                                        {{#each selectedPlayerNameEdit}}
+                                                            <div type="text"  id="" class="addUSERSForTeam" >
+                                                                 <p class="userSelectedForTeamP" style="color:{{CriteriaValidOrNotTeamEdit}}!important;cursor:pointer!important;" name="userSelectedForTeamPEdit">&nbsp;&nbsp;{{userNAMeForThisId this.playerId}}</p>
+                                                                 <span name="deleteAddedUserEdit" style ="color:maroon;font-size: 15px;transform: rotate(0deg);cursor: pointer !important;background :none;margin-top:3px" class="glyphicon glyphicon-remove deleteIcon"  id="{{../playerNo}}"></span>
+                                                            </div>
+                                                       {{/each}}
+                                                    {{/if}}
+                                                </td>
+                                            </tr>
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-left: 11px !important;padding-right: 0px !important;margin-top: 1.1px;height: 2px;">
+                    <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-left: 0px !important;padding-right: 0px !important;">
+                    <div class="row no-gutter" style="">
+                        <div class="checkAcceptTerms">
+                            <input value=""  type="checkbox" name="checkAcceptbox" id="checkAcceptbox" class="checkboxAccept" />
+                            <p class="downloadAcceptTitle" style="color:grey">Accept </p>
+                            <a class="downloadAcceptPdf" href="/terms.pdf" download target="_parent">Terms & Conditions
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-left:39%!important;padding-right: 0px !important;">
+                    <div class="row no-gutter" style="">
+                        <div class="checkAcceptTerms">
+                            <p class="downloadAcceptTitle" style="color:black">* Mandatory</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <input type="text" id="addPlayersMandatoryEdit" name="addPlayersMandatoryEdit" style="background-color:none; border:none; cursor:default font-weight:normal;height: 0px !important;" onfocus="this.blur()" readonly>
+                {{>errorPopup}} {{> userOnlineStatus}} {{> confirm}} {{> confirmOkDelete}} {{> aboutTeam}}
+            </div>
+        </div>
+    </form>
+    <div id="displayPlayerProfileEdit"></div>
+</template>

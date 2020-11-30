@@ -1,0 +1,564 @@
+/*css for myEvents.html, upcomingEvents.html, pastEvents.html templates*/
+
+/*main content div of my events*/
+.mainContent_myEvents {
+    background: white;
+    /**padding-right: 5%;
+    padding-left: 5%;*/
+    height: 21.9em;
+    min-height: 21.9em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    border-width: 3px 3px 1.5px 1.5px;
+    border-style: solid;
+    border-color: grey;
+    border-radius:5px;
+    padding-right: 2%;
+    padding-left: 2%;
+   /** margin-left: 4px;*/
+    margin: 3px 0px 0px 2px;
+}
+.myEventsMainTitle{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: #b30000;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #888888;
+    padding-left: 0.6%;
+    outline: 0;
+    height: 2.46em;
+}
+/*not used*/
+.titleDiv {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 2.36em;
+}
+
+/*not used*/
+.userIcon {
+    width: 6%;
+    height: 8%;
+    margin-left: 93.5%;
+    margin-bottom: 0.1%;
+    margin-top: 0.2%;
+    outline: 0;
+    cursor: pointer;
+}
+
+/*not used*/
+.mainTitle_myEvents {
+    width: 100%;
+    order: 1;
+    background: #b30000;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px #888888;
+    padding-top: 19%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+/*not used*/
+.myEventstitle {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: #b30000;
+    margin-top: -0.3%;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px #888888;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    padding-left: 0.6%;
+    outline: 0;
+}
+
+/*title name is p tag which includes name like My events,
+Past events, Upcoming Events*/
+.titleName {
+    order: 1;
+    color: white;
+    font-weight: bold;
+    font-size: 13.5px;
+    outline: 0;
+}
+
+/*div which contains sort button for sorting my events,
+upcoming events and past events*/
+.myEventSort {
+    order: 2;
+    margin-left: 1%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+/*not used*/
+.selectSorts_1 {
+    cursor: pointer;
+    order: 2;
+    background: #fff url(/imageedit_5_4285196360.png) no-repeat 0%;
+    border-radius: 5px;
+    border: 0px solid;
+    color: grey;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 0px;
+    outline: 0;
+    color: #fff;
+    float: left;
+    clear: left;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    text-align: cen
+}
+
+/*not used*/
+.selectSorts_1:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+
+/*not used*/
+.selectSorts_1 > option {
+    color: black;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    background: white;
+    outline-color: none;
+    border: 1px solid grey;
+}
+
+/*not used*/
+.selectSorts_1 >option:checked,
+.selectSorts_1 > option:hover {
+    box-shadow: 0 0 10px 100px grey inset;
+    -webkit-transition: all 1s ease-in-out;
+    font-weight: 600;
+    -moz-transition: all .1s ease-in-out;
+    -ms-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    outline-color: none;
+    color: black;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*not used*/
+.selectSorts_1::-moz-focus-inner {
+    border: 0;
+}
+
+/*not used*/
+.sideButtons_1 {
+    order: 2;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: #b30000;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px #888888;
+    /*height:2.36em;*/
+    font-size: 14px;
+    height: 2.5em;
+    width: 24.5%;
+    min-width: 24.5%;
+    margin-top: -1%;
+    outline: 0px;
+}
+
+/*not used*/
+.title_buttons1 {
+    -webkit-box-flex: 1 200px;
+    -moz-box-flex: 1 200px;
+    flex: 1 200px;
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    color: white;
+    height: 2.5em;
+    background: #b30000;
+    border: 0px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: default;
+    font-size: 13px;
+}
+
+/*div which contains side menu buttons and main menu,
+all elements are displayed as flex*/
+.firstDiv {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 0.5%;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 18em;
+    min-height: 18em;
+    max-height: 18em;
+    padding-top: 0.1%;
+}
+
+/*div which contains dynamic event data
+like event name, domain name etc..
+all elements are displayed as flex*/
+.myEventsData {
+    order: 1;
+    /*margin-right:1.2%;*/
+    /*background: #F0F0F0 ;*/
+    /*border-radius: 5px;*/
+    /*border: 0px solid #B0B0B0;*/
+    color: black;
+    width: 100%;
+    height: 16em;
+    min-width:100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    /*box-shadow: 1px 1px 2px #888888;*/
+}
+
+/*------------css for side menu-------------*/
+
+/*div which includes side buttons menu at right*/
+.sideButtons {
+    order: 2;
+    width: 27%;
+    height: 16em;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+
+
+/*not used*/
+.sideButtons_2 {
+    width: 100%;
+    min-width: 100%;
+    height: 2.5em;
+    border-radius: 8px;
+    border: 0px solid;
+    color: white;
+    float: left;
+    margin-top: 3%;
+    cursor: pointer;
+}
+
+/*not used*/
+.title_buttons2 {
+    width: 100%;
+    -webkit-box-flex: 1 200px;
+    -moz-box-flex: 1 200px;
+    flex: 1 200px;
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    color: white;
+    height: 2.55em;
+    background: #b30000;
+    border: 0px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px #888888;
+    font-weight: bold;
+    cursor: default;
+    font-size: 13px;
+}
+/*main menu div of my events*/
+.eventDataParent {
+    width: 100%;
+    min-width: 100%;
+    height: 15.8em;
+    border-radius: 8px;
+    border: 0px solid;
+    color: white;
+    float: left;
+}
+/*not used*/
+.eventDataParent::-webkit-scrollbar {
+    width: 100%;
+    display: none;
+}
+
+/*div wrapper to wrap each dynamic data
+i.e like event name, event satrt date etc in one row*/
+.eventDataWrapper {
+    -webkit-box-flex: 1 200px;
+    -moz-box-flex: 1 200px;
+    flex: 1 200px;
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    height: 2.42em;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    color: white;
+    font-weight: normal;
+    font-size: 14px;
+    margin-top: 0%;
+}
+
+/*div for subscribers image in my events
+onclick of this shows subscriber list of event*/
+.eventEye_myTd {
+    order: 1;
+    height: 2.36em;
+    width: 9%;
+    padding-right: 0%;
+    padding-left: 0%;
+}
+
+/*not used*/
+.eventEye_my {
+    width: 100%;
+    margin: 0;
+    height: 90%;
+    border: 1px solid maroon;
+    border-radius: 25px;
+}
+
+/*div for displaying sports or project name,
+contains input button*/
+.eventName_myTd {
+    order: 2;
+    width: 255px;
+    text-overflow: ellipsis;
+    height: 2.36em;
+    padding-right: 0.5%;
+}
+
+/*input button to display sports name*/
+.eventName_myTdChild {
+    width: 100%;
+    background: #B0B0B0;
+    border-radius: 5px;
+    border: 0px solid;
+    height: 32px;
+    color: white;
+    float: left;
+    font-size: 11px;
+    cursor: pointer;
+    box-sizing: border-box;
+    white-space: normal;
+}
+
+/*div for displaying place or domain name,
+contains input button*/
+.eventPlace_myTd {
+    order: 2;
+    width: 17%;
+    height: 32px;
+}
+
+/*input button to display place or domain name*/
+.eventPlace_myTdChild {
+    width: 100%;
+    background: #B0B0B0;
+    border-radius: 5px;
+    border: 0px solid;
+    height: 32px;
+    color: white;
+    float: left;
+    font-size: 11px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+/*div for displaying event start date,
+contains input button*/
+.eventDate_myTd {
+    order: 3;
+    width: 36%;
+    height: 2.36em;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+}
+
+/*input button to display event start*/
+.eventDate_myTdChild {
+    width: 100%;
+    background: #B0B0B0;
+    border-radius: 5px;
+    border: 0px solid;
+    height: 32px;
+    color: white;
+    float: left;
+    font-size: 11px;
+    cursor: default;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/*div for displaying edit icon,
+contains input image*/
+.eventEdit_myTd {
+    order: 4;
+    width: 9%;
+    height: 32px;
+    padding-right: 0%;
+    padding-left: 0%;
+    box-sizing: border-box;
+}
+.eventdown_myTd {
+    order: 5;
+    width: 9%;
+    height: 32px;
+    padding-right: 0%;
+    padding-left: 0%;
+    box-sizing: border-box;
+}
+/*input image to display edit icon*/
+.eventEdit_my {
+    margin: 15px 0px 0px;
+    transform: rotate(-45deg);
+    width: 100%;
+    height: 32px;
+    box-sizing: border-box;
+}
+
+/*div for displaying delete icon,
+contains input image*/
+.eventDelete_myTd {
+    order: 5;
+    width: 7%;
+    height:32px;
+    padding-right: 0%;
+    padding-left: 1%;
+    box-sizing: border-box;
+}
+
+/*input image to display delete icon*/
+.eventDelete_my {
+    width: 100%;
+    height: 32px;
+    margin: 7px 0px 0px;
+    box-sizing: border-box;
+}
+
+/*set slimscroll bootstrap*/
+.slimScrollDiv {
+    width: 100%;
+    height: 16em;
+}
+
+/*changing default input group border bootstrap
+is used for datetime picker*/
+.input-group .form-control:last-child,
+.input-group-addon:last-child,
+.input-group-btn:last-child > .btn,
+.input-group-btn:last-child > .btn-group > .btn,
+.input-group-btn:last-child > .dropdown-toggle,
+.input-group-btn:first-child > .btn:not(:first-child),
+.input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.input-group .form-control:first-child,
+.input-group-addon:first-child,
+.input-group-btn:first-child > .btn,
+.input-group-btn:first-child > .btn-group > .btn,
+.input-group-btn:first-child > .dropdown-toggle,
+.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+.input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-radius: 5px;
+}
+.input-group-addon {
+    padding: 0px;
+}
+
+
+/**new things**/
+
+.downloadButtonsSub{
+    order: 3;
+    width: 6%;
+    margin:6px;
+    /*margin-left: 1%;*/
+    background: none;
+    border: 0;
+    color: white;
+    font-size: 19px;
+    outline: 0;
+    margin-left: auto;
+}
+
+.downloadButtonsSub:hover{
+    background: none;
+    color: white;
+    outline: 0;
+}
+
+.downloadButtonsSub:focus{
+    background: none;
+    color: white;
+    outline: 0;
+}
+
+.downloadButtonsSub:active{
+    background: none;
+    color: white;
+    outline: 0;
+}
+
+.eventDataWrapperError {
+    -webkit-box-flex: 1 200px;
+    -moz-box-flex: 1 200px;
+    flex: 1 200px;
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    height: 10em;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    color: white;
+    font-weight: normal;
+    font-size: 14px;
+    margin-top: 0%;
+}
+
+.eventDataWrapperErrorP{
+    font-size: 12px;
+    color: grey;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+}

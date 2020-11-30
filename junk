@@ -1,0 +1,2 @@
+Andhra Pradesh Table Tennis Association
+{ "genre": { "$regex":"Ananthapur*", "$options":"i" } }

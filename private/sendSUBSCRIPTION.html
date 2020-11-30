@@ -1,0 +1,111 @@
+{{{getDocType_team}}}
+<html lang="en">
+<head>
+    <style type="text/css">
+        {{css}}
+    </style>
+</head>
+    <body style="background: #FAFAFA; color: #333333;">
+        <center>
+            <table border="0" cellpadding="20" cellspacing="0" height="100%" width="600" style="background: #ffffff; border: 1px solid #DDDDDD;">
+                <tbody>
+                    <tr>
+                        <td> <b>Hi,</b>
+                            <p style="font-size:13px;">{{message}}:{{tournament}}
+                                <br/>
+
+                            </p>
+                            {{#if eventsDetailsMail}}
+                            <table style="width:100%;border: 1px solid black; border-collapse: collapse;">
+                                <tr>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Sl.No</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Player Name</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Affiliation Id</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Email</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Phone Number</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Guardian Name</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">DOB(DD/MMM/YYYY)</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Gender</th>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Address</th>
+                                    {{#each eventsDetailsMail}}
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">{{this}}
+                                        <p>Fee:{{eventFeesSendMAIL this}}/-</p>
+                                    </th>
+                                    {{/each}}
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Total</th>
+                                </tr>
+                                {{#each playersWithCheckMail}}
+                                <tr class="headerAnalytics3" id="headerAnalytics3">
+                                    <td style="border: 1px solid black !important;;">{{slNUM @index}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.userName}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.affiliationId}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.emailAddress}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.phoneNumber}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.guardianName}}</td>
+                                    <td style="border: 1px solid black !important;">{{upcomingformatDate this.dateOfBirth}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.gender}}</td>
+                                    <td style="border: 1px solid black !important;">{{this.address}}</td>
+                                    {{#each this.subscribedEvents}}
+                                    <td style="border: 1px solid black !important;;">
+                                        {{#if checkZEROorONE this}}
+                                        <p style="text-align:center !important;color:green;">&#x2713;</p>
+                                        {{else}}
+                                        <p style="text-align:center !important;color:red;">&#10005;</p>
+                                        {{/if}}
+                                    </td>
+                                    {{/each}}
+                                    <td style="border: 1px solid black !important;">
+                                        <p style="text-align:center !important;">{{this.totalFee}}</p>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </table>
+                            {{/if}}
+                            {{#if teamEventNamesMAIL}}
+                            <p style="font-size:13px;">TeamDetails
+                                <br/>
+                            </p>
+                            
+                            <table style="width:100%;border: 1px solid black; border-collapse: collapse;">
+                                <!--tr>
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">Sl.No</th>
+                                    {{#each teamEventNamesMAIL}}
+                                    <th style="border: 1px solid black; border-collapse: collapse;padding: 5px;text-align: left;color: #FFF;background: #545454">{{this}}
+                                        <p>Fee:{{eventFeesSendMAIL this}}/-</p>
+                                    </th>
+                                    {{/each}}
+                                </tr-->
+                                
+                                <tr class="headerAnalytics3" id="headerAnalytics3">
+                                    <td style="border: 1px solid black !important;;">1</td>                                    
+                                    {{#each teamResponse}}
+                                    {{#if checkZEROorONE this}}
+                                    <td style="border: 1px solid black !important;;">
+                                        
+                                        <p style="text-align:left!important;color:green;">
+                                            Team Name:{{this.teamName}}<br>
+                                            TeamMembers:{{this.teamMembers}}
+                                        </p>
+
+                                        
+                                    </td>
+                                    {{/if}}
+                                    {{/each}}
+                                </tr>
+                                
+                            </table>
+                            {{/if}}
+                            {{#if myDetails}}
+                            <br/><span>From,</span>
+                            <br/>
+                            <span>Contact Details:</span>
+                            <br/> {{#each myDetails}}
+                            <span>{{this}}</span>
+                            <br/> {{/each}} {{/if}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </body>
+</html>

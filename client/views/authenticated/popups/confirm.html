@@ -1,0 +1,195 @@
+<!-- Template for confirm-->
+<!-- this template is included in other templates
+    1. myEvents.html
+    2. userProfileSettings.html
+-->
+
+<!--Used CSS Classes and CSS Links-->
+<!--
+    1.FileName : confirm.css
+            classes : confirmPopup, confirmPopupContent, yes, no, yesButton,
+                      noButton, confirmHeader
+
+    2. FileName : sponsorUpload.css
+            classes :  modal-dialog,
+            ids     :  confirmCenter
+
+    3. bootstrap : modal-content,  modal-header, modal-sm, modal ,fade
+-->
+<template name="confirm">
+<!-- main div of confirm pop up-->
+  <div class="modal" id="confirmModal">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains yes and no buttons
+-->
+
+      <div id="confirmCenter" class="modal-dialog modal-sm">
+        <div class="confirmPopup">
+        <div class="modal-content">
+        <div class="modal-header confirmHeader">
+              <p class="modal-title" id="conFirmHeader"></p>
+            </div>
+             <div class="modal-body">
+               <p id = "infoMsg"></p>
+              <div class="confirmPopupContent">
+                <div class="yes">
+                  <button type="button" id="yesButton" class="ip_button_Popup_Black">OK</button>
+              </div>
+              <div class="no">
+                    <button type="button" id="noButton" class="ip_button_Popup_Red">CANCEL</button>
+              </div>
+            </div>
+
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>
+
+
+
+<template name="confirmNEWToRenew">
+<!-- main div of confirm pop up-->
+  <div class="modal" id="confirmNEWToRenew">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains yes and no buttons
+-->
+
+      <div id="confirmCenter" class="modal-dialog modal-sm">
+        <div class="confirmPopup">
+        <div class="modal-content">
+        <div class="modal-header confirmHeader">
+              <p class="modal-title" id="conFirmHeaderRenew"></p>
+            </div>
+             <div class="modal-body">
+               <p id = "infoMsg"></p>
+              <div class="confirmPopupContent">
+                <div class="yes">
+                  <button type="button" id="yesButtonRenew" class="ip_button_Popup_Black">OK</button>
+              </div>
+              <div class="no">
+                    <button type="button" id="noButtonREnew" class="ip_button_Popup_Red">CANCEL</button>
+              </div>
+            </div>
+
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>
+<template name="confirmModalwithterms">
+<!-- main div of confirm pop up-->
+  <div class="modal" id="confirmModalwithterms">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains yes and no buttons
+-->
+
+      <div id="confirmCenter" class="modal-dialog modal-sm">
+        <div class="confirmPopup">
+        <div class="modal-content">
+        <div class="modal-header confirmHeader">
+              <p class="modal-title" id="conFirmHeaderA"></p>
+            </div>
+             <div class="modal-body confirmWithAcceptModalBody" >
+                           <div class="checkAcceptTermsWithConfirm" style="margin-top:0%!important;">
+                        <input value=""  type="checkbox" name="checkAcceptbox" id="checkAcceptbox" class="checkboxAccept" style="margin-left: auto;
+                        margin-right: 1%;margin-top: 4px;"/>
+                        <p class="downloadAcceptTitle" style="color:grey">Accept&nbsp;</p>
+                        <a class="downloadAcceptPdf" href="/createEvents.pdf" download target="_parent" style="margin-right: auto!important;margin-left: 1%!important;margin-top: 2px!important;"><span style="color:blue">Terms & Conditions</span>
+                        <!--<span style="color:maroon!important; height: 2.2em!important;font-size:14px!important;margin-top: 2%;
+                                margin-left: 8%;" class="glyphicon glyphicon-download">
+                        </span>--></a>
+                    </div>
+                <div class="confirmPopupContentWithAcceptTerms" >
+                  <div class="yes">
+                    <button type="button" id="yesButtonWithATC" class="ip_button_Popup_Black">OK</button>
+                </div>
+                <div class="no">
+                      <button type="button" id="noButtonWithATC" class="ip_button_Popup_Red">CANCEL</button>
+                </div>
+              </div>
+ 
+                    <input type="text" id="confirmDomProvideDetails" name="confirmDomProvideDetails" style="background-color:none; border:none; cursor:default; font-weight:normal; width:100%; margin-top:2%!important;" onfocus="this.blur()" readonly>
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>
+
+<template name="confirmlogout">
+<!-- main div of confirm pop up-->
+  <div class="modal" id="confirmModalLogout">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains yes and no buttons
+-->
+
+      <div id="confirmCenter" class="modal-dialog modal-sm">
+        <div class="confirmPopup">
+        <div class="modal-content">
+        <div class="modal-header confirmHeader">
+              <p class="modal-title" id="conFirmHeaderLog"></p>
+            </div>
+             <div class="modal-body">
+              <div class="confirmPopupContent">
+                <div class="yes">
+                  <button type="button" id="yesButtonLogout" class="ip_button_Popup_Black">OK</button>
+              </div>
+              <div class="no">
+                    <button type="button" id="noButtonLogout" class="ip_button_Popup_Red">CANCEL</button>
+              </div>
+            </div>
+
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>
+
+<template name="confirmModalRedirect">
+<!-- main div of confirm pop up-->
+  <div class="modal" id="confirmModalRedirect">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains yes and no buttons
+-->
+
+      <div id="confirmCenter" class="modal-dialog modal-sm">
+        <div class="confirmPopup">
+        <div class="modal-content">
+        <div class="modal-header confirmHeader">
+              <p class="modal-title" id="confirmModalRedirectLog"></p>
+            </div>
+             <div class="modal-body">
+              <div class="confirmPopupContent">
+                <div class="yes">
+                  <button type="button" id="confirmModalRedirectYes" class="ip_button_Popup_Black">OK</button>
+              </div>
+              <div class="no">
+                    <button type="button" id="confirmModalRedirectNo" class="ip_button_Popup_Red" data-dismiss="modal">CANCEL</button>
+              </div>
+            </div>
+
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>

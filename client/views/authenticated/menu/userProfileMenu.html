@@ -1,0 +1,68 @@
+<template name="userProfileMenu">
+    <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '163472494505547',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v3.0'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" style="padding-right:0px !important;padding-left:0px !important;">
+        <div class="row no-gutter" style="">
+            <div class="userProfileMenu">
+                <!--{{#if type}}-->
+                <!--
+                <a class="downloadAcceptPdf" href="/iPlayOn.apk" download target="_parent" style="order:1;!important;"><span style="color: #800000;font-size: 17px !important;margin-top: 0px;cursor: pointer;margin-right: 10px;" class="glyphicon glyphicon-download-alt" aria-hidden="true" id=""></span></a>
+                -->
+                <span style="color: #800000;font-size: 17px !important;margin-top: 2px;cursor: pointer;margin-right: 10px;order:2;" class="glyphicon glyphicon-home" aria-hidden="true" id="gotohomePageMenu"></span>
+
+ <span style="color: rgb(0, 172, 237); font-size: 20px ! important;margin-top: 3px;cursor:pointer;order:3;margin-right: 10px;color:#3B5998" class="fa fa-facebook" aria-hidden="true" id="sendFeed"></span>
+
+                <span style="color: rgb(0, 172, 237); font-size: 20px ! important;margin-top: 3px;cursor:pointer;order:4;" class="fa fa-twitter" aria-hidden="true" id="sendCustomTweet"></span>
+
+                    <div id="userDropDown" class="ddmenu" style="order:5;">
+                        <span class="glyphicon glyphicon-stats logoutNewCss" id="analyticsForAss" style="font-size: 18px!important;margin-top:2px;order:5"></span>
+                        <ul style="left: 19% !important;width: 120px !important;">
+                        <li><a id="playersList_2" href="">Player List</a></li>
+                        <li><a id="playersRank_2" href="">Player Rank</a></li>
+                        <li><a id="playersAnalytics_2" href="">Player Analytics</a></li>
+                        <li><a id="playersChart_2" href="">Head to Head Collision</a></li>
+                        <!--li><a id="testCALENDER3" href="">test delete player</a></li>
+                        <li><a id="testCALENDER4" href="">update team</a></li>
+                        <li><a href="" id="sendEmailOfSchool">sendEmailOfSchool</a></li-->
+                        </ul>
+                    </div>
+                <!--{{/if}}-->
+                <span class="glyphicon glyphicon-question-sign logoutNewCss" id="userHelp" style="order:6"></span>
+                <span class="glyphicon glyphicon-cog logoutNewCss" id="userProfile" style="order:7"></span>
+                <span class="glyphicon glyphicon-off logoutNewCss" id="userLogout" style="font-size: 18px!important;margin-top:2px;order:8;"></span>
+
+            </div>
+        </div>
+        {{> confirmlogoutIplayon}}
+    </div>
+    <div id="rendercustomTweet"></div>
+    <!--<div class="userProfileMenu">
+        <div id="userDropDown" class="ddmenu">
+            <span class="glyphicon glyphicon-user userdGlyp" ></span>
+            <ul>
+                <li><a id="userProfile" href="">Profile</a>
+                </li>
+                <li><a id="userHelp" href="">Help</a>
+                </li>
+                <li><a id="userLogout" href="">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>-->
+</template>

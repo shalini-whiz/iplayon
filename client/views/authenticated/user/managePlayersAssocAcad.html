@@ -1,0 +1,260 @@
+<template name = "managePlayersAssocAcad">
+	<div style="background:#333;height:auto;" class="container">
+        <div class="row navigationBar navbar-fixed-top">
+            <div class="">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <span style="" class="websiteHeader">iPlayOn</span>
+                    </div>
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <button class="ip_button_DarkGrey" id="addPlayers">Add Players</button>
+                    </div>
+                    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2" style="text-align:left;padding:5px;">
+                        <button class="ip_button_DarkGrey" id="viewDeletePlayer">View/Delete Players</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> Template.dynamic template=whichTemplate}}
+</template>
+
+<template name="addPlayersManage">
+	<div style="padding: 0px ! important;" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div style="padding: 0px ! important; background: none repeat scroll 0% 0% black; border: 1px solid white; margin-top: 55px ! important; height: 30px;" class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+        	<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11" style="padding-bottom: 4px; padding-top: 4px ! important; padding-right: 0px ! important;">
+        		<input style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; border: 0px none; color: orange;" value="" placeholder="search existing player" id="searchUserManage_P" autocomplete="off" type="text">
+        	</div>
+        	{{#if searchResultsOfMNM_P}}
+        	<div class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="padding-right: 0px ! important; padding-top: 2px; background: none repeat scroll 0% 0% rgb(89, 89, 89); cursor: pointer; padding-left: 0px ! important; height: 26px;" id="addSearchedPLayers">
+			 	<input class="selectionForm_N7" id="addSearchedPLayers" value="Display" style="width: 100%; height: 26px;" type="button">
+			</div>
+			{{else}}
+			<div class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="padding-right: 0px ! important; padding-top: 2px; background: none repeat scroll 0% 0% rgb(89, 89, 89); cursor: pointer; padding-left: 0px ! important; height: 26px;" id="addSearchedPLayers">
+			 	<input class="selectionForm_N7" id="" value="Display" style="width: 100%; height: 26px;" type="button">
+			</div>
+			{{/if}}
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding: 0px ! important; background: none repeat scroll 0% 0% black; border: 1px solid white; margin-top: 55px ! important; height: 30px;margin-left:12px;">
+            <input class="selectionForm_N7" id="regisNewPlayer" value="Add New Player" style="width: 100%; height:100%;" type="button">
+        </div>
+    </div>
+	<div style="padding: 0px ! important;margin-bottom:15px;" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		{{#if searchResultsOfMNM_P}}
+        <div style="float: left; padding: 0px ! important; background: none repeat scroll 0% 0% black; border: 1px solid white; margin-top: 1px ! important;border:0px" class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+        	<div style="left: 0px; z-index: 100; display: block; position: absolute; background: #dfe3ee none repeat scroll 0% 0%; width: 100%; border: 0px solid maroon; min-height:20px; max-height:60px; overflow-y:auto;" class="searchResults">
+        		{{#each searchResultsOfMNM_P}}
+		        <div id="{{this.userId}}" class="addIcon" name="addAcademyMNM_P" value="{{this.userName}}">
+		          	<p  id="{{this.userId}}" name="userName" value="{{this.userName}}">{{this.userName}}</p>
+		        </div>
+		        {{/each}}
+	        </div>
+        </div>
+        {{/if}}
+    </div>
+	{{#if deleteSelectedClub_P}}
+		<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height: 22px; margin-top: 0px; margin-bottom: 21px; padding: 0px ! important;">
+	    	<div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 deleteConfirmationAcademy" style="padding: 0px ! important;">
+	    		<a style="font-size: 12px; color: white; border: 1px solid white; padding: 5px; text-align: center; order: 3; margin-left: 5px; height: 30px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" href="" id="saveDeleteAc1_P">Add selected Players</a>
+	    	</div>
+	    	<div style="padding: 0px ! important;" class="col-md-6 col-xs-6 col-lg-6 col-sm-6 deleteConfirmationAcademy">
+	    		{{#if deleteSelectedClub_P}}
+		   			<p style="text-align: left;" id="deleteConfirm2" class="yesDeleteP">Do you want to add ({{deleteSelectedClub_P}}) Players ?</p>
+	    		{{/if}}
+	    	</div>
+	    </div>
+	{{/if}}
+    {{#if addedAcademyArray_P}}
+    <table class="table table-striped tableOFCSVHTML_New">
+    	<thead style="">
+            <tr class="headerAnalytics2">
+	            <th class="pAnalytics2">Select to add</th>	
+	            <th class="pAnalytics2">Name</th>
+	            <th class="pAnalytics2">Guardian</th>
+	            <th class="pAnalytics2">DOB</th>
+                <th class="pAnalytics2">Gender</th>
+	            <th class="pAnalytics2">Address</th>
+	            <th class="pAnalytics2">City</th>
+	            <th class="pAnalytics2">State</th>
+	            <th class="pAnalytics2">Email</th>
+	            <th class="pAnalytics2">Phone Number</th>
+            </tr>
+        </thead>
+        {{#each addedAcademyArray_P}}
+                <tr class="headerAnalytics3">
+                	<td class="pAnalytics2">
+                		<input type="checkbox" id="checkedPlayers" style="cursor:pointer;">
+                	</td>
+                    <td class="pAnalytics2">
+						{{this.userName}}
+                    </td>
+                    <td class="pAnalytics2">
+                        {{this.guardianName}}
+                    </td>
+                    <td class="pAnalytics2">
+                        {{upcomingformatDate this.dateOfBirth}}
+                    </td>
+                    <td class="pAnalytics2">{{this.gender}}</td>
+                    <td class="pAnalytics2">{{this.address}}</td>
+                    <td class="pAnalytics2">{{this.city}}</td>
+                    <td class="pAnalytics2">{{getPlayerState this.state}}</td>
+                    <td class="pAnalytics2">{{this.emailAddress}}</td>
+                    <td class="pAnalytics2">{{this.phoneNumber}}</td>
+                </tr>
+        {{/each}}
+   	</table>
+   	{{/if}}
+    <div id="registerNewPlayerRen"></div>
+</template>
+
+<template name="viewDeletePlayer">
+    <div style="padding: 0px ! important;" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div style="padding: 0px ! important; background: none repeat scroll 0% 0% black; border: 1px solid white; margin-top: 55px ! important; height: 30px;" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="padding-bottom: 4px; padding-top: 4px ! important; padding-right: 0px ! important;">
+                <input style="width:100%; font-size: 12px; background: transparent none repeat scroll 0px center; border: 0px none; color: orange;" value="" placeholder="search player by name" id="searchPlayerName_P" autocomplete="off" type="text">
+            </div>
+             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding-bottom: 2px; padding-top: 2px ! important; padding-right: 0px ! important;">
+                <span style="font-size:14px!important;padding-right:10px !important" class="glyphicon glyphicon-remove-circle clearInputFiled" id="clearInputField_playersSearch"></span>
+            </div>
+            <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1" style="padding-right: 0px ! important; padding-top: 2px; background: none repeat scroll 0% 0% rgb(89, 89, 89); cursor: pointer; padding-left: 0px ! important; height: 26px;" id="">
+                <input class="selectionForm_N7" id="searchPlayerNameDisp_P" value="Display" style="width: 100%; height: 26px;" type="button">
+            </div>
+        </div>
+    </div>
+    {{#if deleteSelected_player}}
+        <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12" style="height: 22px; margin-top: 12px; margin-bottom: 21px; padding: 0px ! important;">
+            <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 deleteConfirmationAcademy" style="padding: 0px ! important;">
+                <a style="font-size: 12px; color: white; border: 1px solid white; padding: 5px; text-align: center; order: 3; margin-left: 5px; height: 30px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" href="" id="deleteSelectedCLUB2_P">Delete selected Players</a>
+            </div>
+            <div style="padding: 0px ! important;" class="col-md-6 col-xs-6 col-lg-6 col-sm-6 deleteConfirmationAcademy">
+                {{#if deleteSelected_player}}
+                    <p style="text-align: left;" id="deleteConfirm2" class="yesDeleteP">Do you want to delete ({{deleteSelected_player}}) Players ?</p>
+                {{/if}}
+            </div>
+        </div>
+    {{/if}}
+    <div class = "col-md-12 col-xs-12 col-lg-12 col-sm-12" style=" margin-top: 5px;margin-bottom:20px;height: 22px;padding: 0px ! important; ">
+        <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 deleteConfirmationAcademy" style="padding: 0px ! important;">
+            <a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 1; height: 30px;pointer-events:{{prevPageClass_player}};};cursor:{{prevPageClassPo_player}};" href="{{prevPage_player}}"   id="playerViewPrevious">previous</a>
+        </div>
+        <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2 deleteConfirmationAcademy" style="padding: 0px ! important;">
+            <a style="font-size: 16px; color: white; border: 1px solid white; padding: 2px; width: 100px; text-align: center; order: 2; margin-left: 5px; height: 30px;pointer-events:{{nextPageClass_player}};cursor:{{nextPageClassPo_player}};" href="{{nextPage_player}}"  id="playerViewNext" >next</a>
+        </div>
+    </div>
+     {{#if Template.subscriptionsReady}}
+    {{#if listOfAffiliatedUsers}}
+    <table class="table table-striped tableOFCSVHTML_New">
+        <thead style="">
+            <tr class="headerAnalytics2">
+                <th class="pAnalytics2">Select to delete</th> 
+                <th class="pAnalytics2">Name</th>
+                <th class="pAnalytics2">Guardian</th>
+                <th class="pAnalytics2">DOB</th>
+                <th class="pAnalytics2">Gender</th>
+                <th class="pAnalytics2">Address</th>
+                <th class="pAnalytics2">City</th>
+                <th class="pAnalytics2">State</th>
+                <th class="pAnalytics2">Email</th>
+                <th class="pAnalytics2">Phone Number</th>
+                <th class="pAnalytics2">Aff. Id</th>
+                <th class="pAnalytics2">National Aff. Id</th>
+            </tr>
+        </thead>
+        {{#each listOfAffiliatedUsers}}
+                <tr class="headerAnalytics3">
+                    <td class="pAnalytics2">
+                        <input type="checkbox" id="checkedPlayersToDelete" style="cursor:pointer;">
+                    </td>
+                    <td class="pAnalytics2">
+                        {{this.userName}}
+                    </td>
+                    <td class="pAnalytics2">
+                        {{this.guardianName}}
+                    </td>
+                    <td class="pAnalytics2">
+                        {{upcomingformatDate this.dateOfBirth}}
+                    </td>
+                    <td class="pAnalytics2">{{this.gender}}</td>
+                    <td class="pAnalytics2">{{this.address}}</td>
+                    <td class="pAnalytics2">{{this.city}}</td>
+                    <td class="pAnalytics2">{{getPlayerState this.state}}</td>
+                    <td class="pAnalytics2">{{this.emailAddress}}</td>
+                    <td class="pAnalytics2">{{this.phoneNumber}}</td>
+                    <td class="pAnalytics2">{{this.affiliationId}}</td>
+                    <td class="pAnalytics2">{{this.nationalAffliationId}}</td>
+                </tr>
+        {{/each}}
+    </table>
+    {{/if}}
+    {{/if}}
+    <div id="renderConfrimAndRoute">
+    </div>
+</template>
+
+<!--confirm popup on delete next and prev-->
+<template name="confirmDeleteAndNEXTPrev">
+<!-- main div of confirm pop up-->
+  <div class="modal" id="confirmDeleteAndNEXTPrev">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains yes and no buttons
+-->
+
+      <div id="confirmCenter" class="modal-dialog modal-sm">
+        <div class="confirmPopup">
+        <div class="modal-content">
+        <div class="modal-header confirmHeader" style="height:auto !important;">
+              <p class="modal-title" id="conFirmHeaderLog"></p>
+            </div>
+             <div class="modal-body">
+              <div class="confirmPopupContent">
+                <div class="yes">
+                  <button type="button" id="yesButtonDeleteSelected" class="ip_button_Popup_Black">OK</button>
+              </div>
+              <div class="no">
+                    <button type="button" id="noButtonDeleteSelected" class="ip_button_Popup_Red">CANCEL</button>
+              </div>
+            </div>
+
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>
+
+<!--confirm popup on delete next and prev-->
+<template name="confirmDeleteAndPrev">
+<!-- main div of confirm pop up-->
+  <div class="modal" id="confirmDeleteAndPrev">
+
+<!-- div is the center of the popup contains
+     1. header div which contains p tag, value of p tag is geven while
+     calling the modal using javascript methods.
+     2. body which contains yes and no buttons
+-->
+
+      <div id="confirmCenter" class="modal-dialog modal-sm">
+        <div class="confirmPopup">
+        <div class="modal-content">
+        <div class="modal-header confirmHeader" style="height:auto !important;">
+              <p class="modal-title" id="conFirmHeaderLogPrev"></p>
+            </div>
+             <div class="modal-body">
+              <div class="confirmPopupContent">
+                <div class="yes">
+                  <button type="button" id="yesButtonDeleteSelectedPrev" class="ip_button_Popup_Black">OK</button>
+              </div>
+              <div class="no">
+                    <button type="button" id="noButtonDeleteSelectedPrev" class="ip_button_Popup_Red">CANCEL</button>
+              </div>
+            </div>
+
+             </div>
+      </div>
+      </div>
+      </div>
+  </div>
+</template>
